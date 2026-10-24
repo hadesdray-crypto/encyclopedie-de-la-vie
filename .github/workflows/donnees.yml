@@ -21,7 +21,7 @@ concurrency:
 jobs:
   collecter:
     runs-on: ubuntu-latest
-    timeout-minutes: 340
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,7 +32,7 @@ jobs:
       - name: Collecter
         run: |
           for e in ${{ github.event.inputs.etapes }}; do
-            python scripts/donnees/collecter.py $e --limite ${{ github.event.inputs.limite }} || echo "étape $e incomplète"
+            timeout 300m python scripts/donnees/collecter.py $e --limite ${{ github.event.inputs.limite }} || echo "étape $e incomplète"
             git config user.name "github-actions[bot]"
             git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
             git add -A src/data public

@@ -49,6 +49,26 @@ def ecrire(nom, valeur):
     (DATA / nom).write_text(json.dumps(valeur, ensure_ascii=False, separators=(",", ":"), sort_keys=True))
 
 
+_dernier_envoi = [time.time()]
+
+
+def envoyer(message, force=False):
+    """Sur GitHub Actions, envoie le travail au dépôt toutes les 20 minutes :
+    si la tâche est coupée, rien n'est perdu et la suivante reprend là."""
+    import os
+
+    if not os.environ.get("GITHUB_ACTIONS"):
+        return
+    if not force and time.time() - _dernier_envoi[0] < 20 * 60:
+        return
+    _dernier_envoi[0] = time.time()
+    cmd = (
+        'git add -A src/data public && (git diff --cached --quiet || git commit -q -m "%s") '
+        "&& git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main"
+    ) % message
+    subprocess.run(cmd, shell=True, cwd=RACINE)
+
+
 _dernier = [0.0]
 
 
@@ -241,6 +261,7 @@ def etape_photos(limite):
             ecrire("credits-photos.json", credits)
             ecrire("photos-cherchees.json", sorted(deja_vus))
             print(f"photos : {n}/{len(a_faire)} — {len(credits)} nouvelles", flush=True)
+            envoyer(f"Données : photos ({n}/{len(a_faire)})")
     ecrire("photos.json", sorted(set(photos)))
     ecrire("credits-photos.json", credits)
     ecrire("photos-cherchees.json", sorted(deja_vus))
@@ -332,6 +353,7 @@ def etape_cris(limite):
             ecrire("credits-cris.json", credits)
             ecrire("cris-cherches.json", sorted(deja_vus))
             print(f"cris : {n}/{len(a_faire)} — {len(cris)} cris", flush=True)
+            envoyer(f"Données : cris ({n}/{len(a_faire)})")
     ecrire("cris.json", sorted(cris))
     ecrire("credits-cris.json", credits)
     ecrire("cris-cherches.json", sorted(deja_vus))
