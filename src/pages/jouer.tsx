@@ -3,6 +3,7 @@ import type { Espece } from "@/data/catalogue";
 import { lireVues } from "@/lib/carnet";
 import { sons } from "@/lib/sons";
 import { gagnerPaquet } from "@/lib/recompenses";
+import { plumeReagit } from "@/lib/plume";
 import { grammesDe } from "@/lib/poids";
 import { CarteMonde } from "@/components/carte-monde";
 import { CarteVerso } from "@/components/carte-animal";
@@ -166,6 +167,7 @@ function JeuMemoire() {
       setOuvertes([]);
       if (t.size === cases.length / 2) {
         window.setTimeout(() => sons.victoire(), 300);
+        window.setTimeout(() => plumeReagit("memoire"), 600);
         window.setTimeout(() => gagnerPaquet("Jeu de mémoire réussi"), 1400);
       }
       else window.setTimeout(() => sons.bonne(), 250);

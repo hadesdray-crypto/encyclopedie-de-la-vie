@@ -32,7 +32,7 @@ jobs:
           rm -f dist/sw.js
       - name: Préparer le projet Android
         run: |
-          npm install --no-save --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7
+          npm install --no-save --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor-community/text-to-speech@6
           npx cap add android
           pip install pillow
           python android-ressources/remplacer.py

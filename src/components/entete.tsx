@@ -1,14 +1,15 @@
-import { LuChevronLeft, LuCrown } from "react-icons/lu";
+import { LuChevronLeft } from "react-icons/lu";
+import { BoutonPlume } from "@/components/guide";
 import { retour } from "@/lib/routeur";
 
 /** En-tête des pages intérieures : le nom de Leonie et un gros bouton Retour. */
 export function Entete({ siVide = "/", label = "Retour" }: { siVide?: string; label?: string }) {
   return (
     <header className="flex items-center justify-between gap-3">
-      <p className="inline-flex items-center gap-2 font-display text-base text-[#f0d090]">
-        <LuCrown className="size-5" aria-hidden="true" />
-        Pour la princesse Leonie
-      </p>
+      <div className="flex items-center gap-2">
+        <BoutonPlume />
+        <p className="font-display text-base leading-tight text-[#f0d090]">Pour la princesse Leonie</p>
+      </div>
       <button
         type="button"
         onClick={() => retour(siVide)}

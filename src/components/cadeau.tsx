@@ -23,7 +23,7 @@ export function Cadeau() {
       style={{ top: "calc(env(safe-area-inset-top, 0px) + 0.75rem)" }}
       role="status"
     >
-      <img src="theme/cartes.webp" alt="" className="size-10 rounded-full" />
+      <img src="theme/plume.svg" alt="" className="size-12" />
       <span>
         <span className="block font-display text-lg text-[#f3d48a]">Tu gagnes un paquet !</span>
         <span className="block text-xs">{message}</span>

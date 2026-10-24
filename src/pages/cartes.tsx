@@ -4,6 +4,7 @@ import { FAMILLES } from "@/data/catalogue";
 import { lireVues, voirAnimal } from "@/lib/carnet";
 import { ALBUMS, ouvrirPaquet, type Tirage } from "@/lib/paquets";
 import { activerSons, sons, sonsActifs } from "@/lib/sons";
+import { plumeReagit } from "@/lib/plume";
 import { REGLES, paquetsDisponibles, paquetsIllimites, utiliserPaquet } from "@/lib/recompenses";
 import { Entete } from "@/components/entete";
 import { Portrait } from "@/components/portrait";
@@ -70,8 +71,13 @@ export function CartesPage() {
       setFace(true);
       sons.retourner();
       voirAnimal(carte.espece.id);
-      if (carte.chance) plus_tard(() => sons.fanfare(), 350);
-      else if (niveauDe(carte.rarete).rang >= 2 || carte.special) plus_tard(() => sons.brillant(), 350);
+      if (carte.chance) {
+        plus_tard(() => sons.fanfare(), 350);
+        plus_tard(() => plumeReagit("chance"), 500);
+      } else if (niveauDe(carte.rarete).rang >= 2 || carte.special) {
+        plus_tard(() => sons.brillant(), 350);
+        if (niveauDe(carte.rarete).rang >= 3) plus_tard(() => plumeReagit("rare"), 500);
+      }
       return;
     }
     if (index + 1 >= cartes.length) {

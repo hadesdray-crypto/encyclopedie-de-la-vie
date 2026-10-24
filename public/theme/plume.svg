@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="corps" cx="45%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#c9a4ff"/>
+      <stop offset="1" stop-color="#7a4fd0"/>
+    </radialGradient>
+    <radialGradient id="ventre" cx="50%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#fff6e6"/>
+      <stop offset="1" stop-color="#f3d9b8"/>
+    </radialGradient>
+  </defs>
+  <!-- oreilles -->
+  <path d="M48 62 L40 22 L78 48 Z" fill="#7a4fd0"/>
+  <path d="M152 62 L160 22 L122 48 Z" fill="#7a4fd0"/>
+  <path d="M50 55 L46 32 L68 48 Z" fill="#f3a0e0"/>
+  <path d="M150 55 L154 32 L132 48 Z" fill="#f3a0e0"/>
+  <!-- corps -->
+  <ellipse cx="100" cy="112" rx="70" ry="74" fill="url(#corps)"/>
+  <ellipse cx="100" cy="140" rx="42" ry="42" fill="url(#ventre)"/>
+  <path d="M84 128 q8 6 16 0 q8 6 16 0 M86 146 q7 5 14 0 q7 5 14 0" stroke="#e2bf8f" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- ailes -->
+  <path d="M32 112 q-14 28 10 48 q6-26 4-48 Z" fill="#6a3fc0"/>
+  <path d="M168 112 q14 28 -10 48 q-6-26 -4-48 Z" fill="#6a3fc0"/>
+  <!-- yeux manga -->
+  <circle cx="72" cy="92" r="24" fill="#fff"/>
+  <circle cx="128" cy="92" r="24" fill="#fff"/>
+  <circle cx="74" cy="95" r="17" fill="#2a1650"/>
+  <circle cx="126" cy="95" r="17" fill="#2a1650"/>
+  <circle cx="74" cy="99" r="10" fill="#5b3fb0"/>
+  <circle cx="126" cy="99" r="10" fill="#5b3fb0"/>
+  <circle cx="81" cy="87" r="7" fill="#fff"/>
+  <circle cx="133" cy="87" r="7" fill="#fff"/>
+  <circle cx="68" cy="104" r="3" fill="#fff"/>
+  <circle cx="120" cy="104" r="3" fill="#fff"/>
+  <!-- joues et bec -->
+  <ellipse cx="50" cy="118" rx="10" ry="6" fill="#ff9fcf" opacity=".7"/>
+  <ellipse cx="150" cy="118" rx="10" ry="6" fill="#ff9fcf" opacity=".7"/>
+  <path d="M93 112 L107 112 L100 124 Z" fill="#f3b54a"/>
+  <!-- petite couronne -->
+  <path d="M80 44 L86 26 L94 38 L100 22 L106 38 L114 26 L120 44 Z" fill="#f3d48a" stroke="#c9963a" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="100" cy="22" r="4" fill="#ff9fcf"/>
+  <!-- pattes -->
+  <path d="M82 184 q-4 8 4 8 q4-4 8 0 q2-6 -4-10 Z M118 184 q4 8 -4 8 q-4-4 -8 0 q-2-6 4-10 Z" fill="#f3b54a"/>
+  <!-- étoiles -->
+  <path d="M176 60 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z" fill="#fff3a6"/>
+  <path d="M22 80 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2 Z" fill="#fff3a6"/>
+</svg>

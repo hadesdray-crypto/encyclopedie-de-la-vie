@@ -1,4 +1,5 @@
 import { bonneReponse } from "@/lib/recompenses";
+import { plumeReagit } from "@/lib/plume";
 
 const VUES = "leonie-vues";
 const POINTS = "leonie-points";
@@ -33,6 +34,7 @@ export function lireScore() {
 }
 
 export function noterReponse(bonne: boolean) {
+  plumeReagit(bonne ? "bonne" : "mauvaise");
   if (bonne) bonneReponse();
   const score = lireScore();
   localStorage.setItem(POINTS, String(score.points + (bonne ? 1 : 0)));

@@ -1,4 +1,4 @@
-import { LuCrown } from "react-icons/lu";
+import { BoutonPlume } from "@/components/guide";
 import { Installer } from "@/components/installer";
 
 /*
@@ -41,9 +41,7 @@ export function Accueil() {
   return (
     <main className="mx-auto max-w-xl px-3 pt-4">
       <header className="grid grid-cols-[3.25rem_1fr_3.25rem] items-center gap-2">
-        <span className="medaillon grid size-13 place-items-center bg-[radial-gradient(circle_at_35%_30%,#3f2470,#140a26)] text-[#f3d48a]">
-          <LuCrown className="size-7" aria-hidden="true" />
-        </span>
+        <BoutonPlume taille="size-13" />
         <h1 className="titre-or whitespace-nowrap text-center text-[clamp(1.2rem,6vw,2.4rem)] leading-tight">Encyclopédie de la vie</h1>
         <img src="theme/coeur.webp" alt="" className="size-13 justify-self-end rounded-full mix-blend-screen" />
       </header>

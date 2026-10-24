@@ -393,3 +393,12 @@ body {
   .holo, .cadre-arc, .paquet, .rayons, .tremble, .arrivee { animation: none; }
   .retournable-interieur { transition: none; }
 }
+
+/* ---- Plume ---- */
+.plume-bouton { animation: plume-salut 5s ease-in-out infinite; transform-origin: 50% 90%; }
+@keyframes plume-salut { 0%, 86%, 100% { transform: rotate(0); } 90% { transform: rotate(-10deg); } 94% { transform: rotate(8deg); } }
+.plume-flotte { animation: bob 3.2s ease-in-out infinite; }
+.plume-parle { animation: plume-parle 0.45s ease-in-out infinite; }
+@keyframes plume-parle { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-3px) scale(1.04); } }
+.size-13 { width: 3.25rem; height: 3.25rem; }
+@media (prefers-reduced-motion: reduce) { .plume-bouton, .plume-flotte, .plume-parle { animation: none; } }
