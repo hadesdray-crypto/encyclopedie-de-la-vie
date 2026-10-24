@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { LuVolume2 as Volume2, LuVolumeX as VolumeX } from "react-icons/lu";
+import { tauxVoix } from "@/lib/reglages";
 
 function voixFrancaise() {
   return window.speechSynthesis
@@ -38,7 +39,7 @@ export async function lire(texte: string, onFin: () => void) {
   if (native) {
     try {
       await native.stop();
-      await native.speak({ text: texte, lang: "fr-FR", rate: 0.95 });
+      await native.speak({ text: texte, lang: "fr-FR", rate: tauxVoix() });
     } catch {
       /* pas de voix française installée */
     }
@@ -68,7 +69,7 @@ export async function lire(texte: string, onFin: () => void) {
     const phrase = new SpeechSynthesisUtterance(morceaux[index]);
     index += 1;
     phrase.lang = "fr-FR";
-    phrase.rate = 0.95;
+    phrase.rate = tauxVoix();
     if (voix) phrase.voice = voix;
     phrase.onend = suite;
     phrase.onerror = () => onFin();

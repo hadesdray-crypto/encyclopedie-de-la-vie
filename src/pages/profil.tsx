@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BoutonPlume } from "@/components/guide";
 import { choisirPlumeParle, choisirReactions, plumeParleSeule, reactionsActives, revoirExplications } from "@/lib/plume";
 import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
-import { AVATARS, avatar, choisirAvatar, choisirGrosTexte, grosTexte } from "@/lib/reglages";
+import { AVATARS, VITESSES, avatar, choisirAvatar, choisirGrosTexte, choisirVitesseVoix, grosTexte, vitesseVoix, type Vitesse } from "@/lib/reglages";
 import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireScore, lireVues } from "@/lib/carnet";
 import { EST_APK, VERSION_APK, useMajApk, verifierApk, lancerMajApk } from "@/lib/maj-apk";
@@ -162,6 +162,7 @@ function Confort() {
         <input type="checkbox" defaultChecked={grosTexte()} onChange={(e) => choisirGrosTexte(e.target.checked)} className="size-6 accent-[#8d4e1f]" />
         Écrire plus gros
       </label>
+      <ChoixVitesse />
       <label className="flex min-h-11 items-center gap-3 font-extrabold">
         <input type="checkbox" defaultChecked={plumeParleSeule()} onChange={(e) => choisirPlumeParle(e.target.checked)} className="size-6 accent-[#8d4e1f]" />
         Plume lit ses explications toute seule
@@ -195,5 +196,19 @@ function VersionApk() {
         </>
       )}
     </section>
+  );
+}
+
+function ChoixVitesse() {
+  const [v, setV] = useState<Vitesse>(vitesseVoix);
+  return (
+    <div className="flex min-h-11 flex-wrap items-center gap-2 font-extrabold">
+      <span>Vitesse de la voix :</span>
+      {VITESSES.map((x) => (
+        <button key={x.id} type="button" aria-pressed={v === x.id} onClick={() => { choisirVitesseVoix(x.id); setV(x.id); }} className={`rounded-full px-3 py-1.5 ${v === x.id ? "bouton-bois" : "bg-[#f3e2c2]"}`}>
+          {x.nom}
+        </button>
+      ))}
+    </div>
   );
 }

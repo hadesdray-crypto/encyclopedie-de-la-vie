@@ -40,3 +40,26 @@ export function avatar() {
 export function choisirAvatar(src: string) {
   ecrire(CLE_AVATAR, src);
 }
+
+// Vitesse de la voix (Plume et bouton « Écouter »).
+const CLE_VITESSE = "leonie-vitesse-voix";
+export const VITESSES = [
+  { id: "lente", nom: "Lente", taux: 0.75 },
+  { id: "normale", nom: "Normale", taux: 0.95 },
+  { id: "rapide", nom: "Rapide", taux: 1.15 },
+] as const;
+export type Vitesse = (typeof VITESSES)[number]["id"];
+
+export function vitesseVoix(): Vitesse {
+  const v = lire(CLE_VITESSE);
+  return v === "lente" || v === "rapide" ? v : "normale";
+}
+
+export function choisirVitesseVoix(v: Vitesse) {
+  ecrire(CLE_VITESSE, v);
+  window.dispatchEvent(new Event("leonie-vitesse"));
+}
+
+export function tauxVoix() {
+  return VITESSES.find((v) => v.id === vitesseVoix())!.taux;
+}
