@@ -23,7 +23,7 @@ import { revenir } from "@/lib/routeur";
 import { PlumeDessin } from "@/components/plume-dessin";
 import { ouvrirPlume } from "@/lib/plume";
 import { useIndice } from "@/lib/indice";
-import { Bataille, LePlusRapide, MemoryPlusieurs, MimeAnimal } from "@/pages/jeux-plusieurs";
+import { Bataille, LePlusRapide, MemoryPlusieurs, MimeAnimal, SeptFamilles } from "@/pages/jeux-plusieurs";
 
 function melanger<T>(l: T[], rnd: () => number = Math.random) {
   const c = [...l];
@@ -53,7 +53,7 @@ function questionTemps() {
   }
 }
 
-type Jeu = "defi" | "regime" | "temps" | "memoire" | "bataille" | "rapide" | "mime" | "poids" | "carte" | "cri";
+type Jeu = "defi" | "regime" | "temps" | "memoire" | "bataille" | "rapide" | "mime" | "familles" | "poids" | "carte" | "cri";
 
 const JEUX: { id: Jeu; nom: string; sous: string; niveau: 1 | 2 | 3; joueurs: string }[] = [
   { id: "defi", nom: "Le défi du jour", sous: "Cinq questions, chaque jour.", niveau: 1, joueurs: "Seule" },
@@ -61,6 +61,7 @@ const JEUX: { id: Jeu; nom: string; sous: string; niveau: 1 | 2 | 3; joueurs: st
   { id: "bataille", nom: "La bataille des animaux", sous: "Le plus gros chiffre gagne les cartes.", niveau: 2, joueurs: "2 à 4" },
   { id: "rapide", nom: "Le plus rapide", sous: "Face à face : le premier qui touche le bon animal.", niveau: 1, joueurs: "2 à 4" },
   { id: "mime", nom: "Mime l'animal", sous: "Mime un animal, les autres devinent.", niveau: 1, joueurs: "2 et plus" },
+  { id: "familles", nom: "Les 7 familles", sous: "Réunis des familles d'animaux complètes.", niveau: 3, joueurs: "2 à 4" },
   { id: "cri", nom: "Devine qui crie", sous: "De vrais cris d'animaux.", niveau: 1, joueurs: "Seule" },
   { id: "poids", nom: "Le plus lourd ?", sous: "Lequel pèse le plus ?", niveau: 1, joueurs: "Seule" },
   { id: "carte", nom: "Qui vit ici ?", sous: "Les pays en or sur la carte.", niveau: 2, joueurs: "Seule" },
@@ -97,7 +98,7 @@ export function JouerPage({ params }: { params: URLSearchParams }) {
   }
   return (
     <ModeJeu titre={choisi.nom}>
-      {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <MemoryPlusieurs /> : jeu === "bataille" ? <Bataille /> : jeu === "rapide" ? <LePlusRapide /> : jeu === "mime" ? <MimeAnimal /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
+      {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <MemoryPlusieurs /> : jeu === "bataille" ? <Bataille /> : jeu === "rapide" ? <LePlusRapide /> : jeu === "mime" ? <MimeAnimal /> : jeu === "familles" ? <SeptFamilles /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
     </ModeJeu>
   );
 }
