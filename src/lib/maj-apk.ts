@@ -33,9 +33,10 @@ export type EtatMaj = {
   phase: "rien" | "propose" | "telechargement" | "pret" | "erreur" | "termine";
   pourcent: number;
   verification: "" | "en-cours" | "a-jour" | "hors-ligne" | "erreur";
+  taille: number; // poids du téléchargement, en Mo (0 = inconnu)
 };
 
-let etat: EtatMaj = { nouvelle: null, phase: "rien", pourcent: 0, verification: "" };
+let etat: EtatMaj = { nouvelle: null, phase: "rien", pourcent: 0, verification: "", taille: 0 };
 let bundle: Bundle | null = null;
 const abonnes = new Set<(e: EtatMaj) => void>();
 function publier(e: Partial<EtatMaj>) {
@@ -61,8 +62,11 @@ export async function verifierApk() {
   publier({ verification: "en-cours" });
   try {
     const r = await fetch(API, { cache: "no-store" });
-    const n = Number(String((await r.json()).tag_name || "").replace(/\D/g, ""));
-    if (n > VERSION_APK) publier({ nouvelle: n, phase: etat.phase === "termine" ? "termine" : "propose", verification: "" });
+    const rel = await r.json();
+    const n = Number(String(rel.tag_name || "").replace(/\D/g, ""));
+    const zip = (rel.assets ?? []).find((a: { name: string }) => a.name === "web.zip");
+    const taille = zip ? Math.round(zip.size / 1048576) : 0;
+    if (n > VERSION_APK) publier({ nouvelle: n, taille, phase: etat.phase === "termine" ? "termine" : "propose", verification: "" });
     else publier({ verification: "a-jour" });
   } catch {
     publier({ verification: "erreur" });

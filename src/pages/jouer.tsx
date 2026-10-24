@@ -383,7 +383,7 @@ function JeuCarte() {
 
 // ---------- Devine qui crie ----------
 // Seulement les vrais cris enregistrés (licence libre). Jamais de son fabriqué.
-const CRIEURS = (crisConnus as string[]).map((id) => PAR_ID.get(id)).filter((e): e is Espece => !!e && aUnePhoto(e.id));
+const CRIEURS = (crisConnus as string[]).map((id) => PAR_ID.get(id)).filter((e): e is Espece => !!e && e.langue === "fr" && aUnePhoto(e.id));
 
 function questionCri(rnd: () => number = Math.random) {
   const [bon, ...autres] = melanger(CRIEURS, rnd).slice(0, 3);
