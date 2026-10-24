@@ -52,6 +52,7 @@ export function MiseAJour() {
           <p className="mt-2 text-sm">Il y a des nouveautés dans l'encyclopédie.</p>
         )}
         <p className="mt-2 text-xs">Tes cartes, tes points et tes médailles sont gardés.</p>
+        {EST_APK && apk.taille ? <p className="mt-2 text-center text-xs font-bold">Téléchargement : environ {apk.taille} Mo. Mieux avec le Wi-Fi.</p> : null}
         <div className="mt-3 grid grid-cols-2 gap-2">
           <button
             type="button"
