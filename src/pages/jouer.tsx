@@ -19,6 +19,7 @@ import { PAR_ID } from "@/data/catalogue";
 import crisConnus from "@/data/cris.json";
 import { LuFlame } from "react-icons/lu";
 import { useIndice } from "@/lib/indice";
+import { Bataille, MemoryPlusieurs } from "@/pages/jeux-plusieurs";
 
 function melanger<T>(l: T[], rnd: () => number = Math.random) {
   const c = [...l];
@@ -48,7 +49,7 @@ function questionTemps() {
   }
 }
 
-type Jeu = "defi" | "regime" | "temps" | "memoire" | "poids" | "carte" | "cri";
+type Jeu = "defi" | "regime" | "temps" | "memoire" | "bataille" | "poids" | "carte" | "cri";
 
 export function JouerPage({ params }: { params: URLSearchParams }) {
   const [jeu, setJeu] = useState<Jeu>((params.get("jeu") as Jeu) || "defi");
@@ -57,11 +58,11 @@ export function JouerPage({ params }: { params: URLSearchParams }) {
       <Entete />
       <Titre>Défis du jour</Titre>
       <div className="mt-4 flex flex-wrap justify-center gap-2">
-        {([["defi", "Défi du jour"], ["memoire", "Mémoire"], ["cri", "Devine qui crie"], ["poids", "Le plus lourd ?"], ["carte", "Qui vit ici ?"], ["regime", "Qu'est-ce qu'il mange ?"], ["temps", "Qui est arrivé en premier ?"]] as const).map(([id, nom]) => (
+        {([["defi", "Défi du jour"], ["memoire", "Mémory · 1 à 4"], ["bataille", "Bataille des animaux · 2 à 4"], ["cri", "Devine qui crie"], ["poids", "Le plus lourd ?"], ["carte", "Qui vit ici ?"], ["regime", "Qu'est-ce qu'il mange ?"], ["temps", "Qui est arrivé en premier ?"]] as const).map(([id, nom]) => (
           <button key={id} type="button" onClick={() => setJeu(id)} className={`min-h-12 rounded-2xl px-3 text-sm font-extrabold leading-tight ${jeu === id ? "bouton-bois" : "bg-card"}`}>{nom}</button>
         ))}
       </div>
-      {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <JeuMemoire /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
+      {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <MemoryPlusieurs /> : jeu === "bataille" ? <Bataille /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
     </main>
   );
 }

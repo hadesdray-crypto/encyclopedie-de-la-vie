@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Jouer à plusieurs",
+    "points": [
+      "Nouveau : la bataille des animaux, de 2 à 4 joueurs. Le plus gros chiffre gagne !",
+      "Le mémory se joue seul ou jusqu'à 4, avec le choix des cartes (félins, singes, chiens, chats…) et du nombre de paires.",
+      "Face à face : le téléphone posé à plat, chacun a son côté de l'écran.",
+      "On voit toujours à qui c'est le tour. Plume explique les règles avec le bouton « Règles »."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Chercher un animal",
     "points": [
       "Écris le début d'un nom : les animaux apparaissent tout de suite.",

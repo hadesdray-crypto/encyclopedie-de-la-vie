@@ -7,7 +7,7 @@ const CLE_PARLE = "leonie-plume-parle";
 const CLE_REACTIONS = "leonie-plume-reactions";
 
 export type Proposition = { texte: string; oui: string; action: () => void };
-type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation" | "presence" | "astuce"; coucou: number; proposition: Proposition | null; presence: Presence };
+type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation" | "presence" | "astuce" | "regles"; coucou: number; proposition: Proposition | null; presence: Presence };
 
 // ---- Combien Plume est présente ----
 // discrete : elle ne parle que si on la touche. presente : elle propose parfois une aide (réglage de départ).
@@ -176,3 +176,14 @@ export const choisirPlumeExplique = (oui: boolean) => ecrireReglage(CLE_AUTO, ou
 const CLE_COUCOU = "leonie-plume-coucou";
 export const plumeBouge = () => lireReglage(CLE_COUCOU, true);
 export const choisirPlumeBouge = (oui: boolean) => ecrireReglage(CLE_COUCOU, oui);
+
+// Les règles d'un jeu, que Plume explique (bouton « Règles » des jeux).
+import type { Explication } from "@/data/guide";
+let reglesActuelles: Explication | null = null;
+export function reglesEnCours() {
+  return reglesActuelles;
+}
+export function ouvrirRegles(r: Explication) {
+  reglesActuelles = r;
+  ouvrirPlume(true, "regles");
+}

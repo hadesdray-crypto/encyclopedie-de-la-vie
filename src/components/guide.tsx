@@ -15,6 +15,7 @@ import {
   plumeParleSeule,
   plumePropose,
   presentationFaite,
+  reglesEnCours,
   usePlume,
 } from "@/lib/plume";
 import { dire, taire, useParle } from "@/lib/parole";
@@ -156,7 +157,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
 
   return (
     <>
-      <div className={`fixed z-50 ${glisse ? "" : "transition-[left,right,bottom] duration-300"}`} style={style}>
+      <div className={`plume-racine fixed z-50 ${glisse ? "" : "transition-[left,right,bottom] duration-300"}`} style={style}>
         <button
           type="button"
           onPointerDown={appui}
@@ -220,7 +221,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   const astuces = ASTUCES[explicationPage.id] ?? ASTUCES.accueil;
   const [astuce, setAstuce] = useState(() => Math.floor(Math.random() * astuces.length));
   const explication =
-    contenu === "presentation" ? PRESENTATION : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
+    contenu === "presentation" ? PRESENTATION : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
   const [etape, setEtape] = useState(0);
   const [lecture, setLecture] = useState(false);
 
@@ -330,7 +331,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
                 onClick={() => (derniere ? fermer() : setEtape(etape + 1))}
                 className="inline-flex min-h-10 items-center gap-0.5 rounded-full bg-[#f3d48a] px-4 font-extrabold text-[#2a1c14]"
               >
-                {derniere ? (contenu === "presentation" ? "C'est parti !" : "J'ai compris") : "Suivant"}
+                {derniere ? (contenu === "presentation" || contenu === "regles" ? "C'est parti !" : "J'ai compris") : "Suivant"}
                 {derniere ? null : <LuChevronRight className="size-5" />}
               </button>
             </div>

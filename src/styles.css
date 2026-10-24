@@ -472,3 +472,6 @@ body {
 main { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
 main input, main textarea { -webkit-user-select: text; user-select: text; }
 .texte-lu { background: rgba(180, 140, 255, 0.28); box-shadow: 0 0 0 3px rgba(180, 140, 255, 0.7); border-radius: 0.6rem; transition: background 0.2s; }
+
+/* En face à face, Plume se cache (ses bulles aussi). */
+body[data-face-a-face] .plume-racine, body[data-face-a-face] [role="dialog"][aria-label^="Plume"] { display: none; }
