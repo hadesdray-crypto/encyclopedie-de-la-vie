@@ -12,7 +12,7 @@ on:
 
 permissions:
   contents: write
-  actions: write
+  pull-requests: write
 
 concurrency:
   group: donnees
@@ -31,16 +31,26 @@ jobs:
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - name: Collecter
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
           for e in ${{ github.event.inputs.etapes }}; do
             timeout 300m python scripts/donnees/collecter.py $e --limite ${{ github.event.inputs.limite }} || echo "étape $e incomplète"
-            git config user.name "github-actions[bot]"
-            git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
             git add -A src/data public
             git diff --cached --quiet || git commit -q -m "Données : étape $e"
-            git pull -q --rebase origin main && git push -q origin HEAD:main
+            git push -q -f origin HEAD:refs/heads/donnees-auto
           done
-      - name: Republier le site
+      - name: Demander l'accord pour publier
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run pages.yml --ref main
+        run: |
+          git fetch -q origin main donnees-auto || exit 0
+          if git diff --quiet origin/main origin/donnees-auto -- src/data public; then echo "Rien de nouveau."; exit 0; fi
+          if [ -n "$(gh pr list --head donnees-auto --state open --json number --jq '.[0].number')" ]; then echo "Demande déjà ouverte, mise à jour."; exit 0; fi
+          gh pr create --base main --head donnees-auto \
+            --title "Nouvelles données : ${{ github.event.inputs.etapes }}" \
+            --body "Données récupérées automatiquement (étapes : ${{ github.event.inputs.etapes }}).
+
+          Sources : Wikidata, Wikipédia, iNaturalist. Licences libres seulement, avec le nom de l'auteur.
+
+          **Rien n'est publié tant que tu n'as pas accepté.** Pour publier : « Merge pull request » puis « Confirm merge ». Pour refuser : « Close pull request »."
