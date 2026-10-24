@@ -1,69 +1,345 @@
 #!/usr/bin/env python3
-"""Le carnet des chiens de Plume : toutes les races de chiens reconnues.
+"""Le carnet des chiens et des chats de Plume : les races de chiens et de chats.
 Tourne sur GitHub Actions (.github/workflows/chiens.yml), qui a accès à Internet.
 
-Étapes :
-  explorer   Affiche des extraits des sources, pour vérifier leur forme.
-  collecter  Construit src/data/chiens.json et les photos public/chiens/.
+Étape :
+  collecter [N]   Construit src/data/chiens.json et les photos public/chiens/
+                  (N = nombre de races pour un essai ; 0 = toutes).
 
-Sources : la nomenclature de la FCI (Fédération cynologique internationale) pour la liste,
-les groupes et les pays ; Wikipédia en français pour le texte, la taille et le poids ;
-Wikidata et Wikimedia Commons pour les photos (licences libres, avec l'auteur).
-On n'invente rien : une valeur absente reste « Non connu ».
+Sources : Wikipédia en français (articles avec l'« Infobox Race », charte chien ou chat)
+pour le texte, l'origine, le groupe FCI, la taille, le poids, la robe, le caractère ;
+Wikidata pour l'espérance de vie et la taille des portées ; Wikimedia Commons pour les
+photos (seulement CC0, domaine public, CC BY et CC BY-SA, toujours avec l'auteur).
+On n'invente rien : une valeur absente reste « Non connu » dans l'application.
 """
 import json
 import re
 import sys
 import time
+import unicodedata
 import urllib.parse
 import urllib.request
+from io import BytesIO
+from pathlib import Path
 
 UA = "EncyclopedieLeonie/1.0 (application educative pour enfant; https://github.com/hadesdray-crypto/encyclopedie-de-la-vie)"
+RACINE = Path(__file__).resolve().parents[2]
+DATA = RACINE / "src/data"
+PHOTOS = RACINE / "public/chiens"
+API = "https://fr.wikipedia.org/w/api.php"
+COMMONS = "https://commons.wikimedia.org/w/api.php"
+
+# Les dix groupes de la FCI (Fédération cynologique internationale).
+GROUPES_FCI = {
+    "1": "Chiens de berger et de bouvier",
+    "2": "Pinschers, schnauzers, molosses et chiens de montagne",
+    "3": "Terriers",
+    "4": "Teckels",
+    "5": "Spitz et chiens de type primitif",
+    "6": "Chiens courants et chiens de recherche au sang",
+    "7": "Chiens d'arrêt",
+    "8": "Rapporteurs, leveurs de gibier et chiens d'eau",
+    "9": "Chiens d'agrément et de compagnie",
+    "10": "Lévriers",
+}
+LICENCES_OK = ("cc0", "cc-zero", "public domain", "domaine public", "pd-", "cc by", "cc-by")
 
 
-def get(url, data=None, accept=None):
+def get(url, binaire=False):
     for essai in range(4):
         try:
-            req = urllib.request.Request(url, data=data, headers={"User-Agent": UA, **({"Accept": accept} if accept else {})})
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
             with urllib.request.urlopen(req, timeout=60) as r:
-                return r.read().decode("utf-8", "replace")
+                b = r.read()
+                return b if binaire else b.decode("utf-8", "replace")
         except Exception as e:  # noqa: BLE001
-            print("  erreur", url, e)
+            print("  erreur", url[:120], e)
             time.sleep(3 * (essai + 1))
-    return ""
+    return b"" if binaire else ""
+
+
+def api(base, **p):
+    p.setdefault("format", "json")
+    p.setdefault("formatversion", "2")
+    t = get(base + "?" + urllib.parse.urlencode(p))
+    return json.loads(t) if t else {}
 
 
 def sparql(q):
-    t = get("https://query.wikidata.org/sparql?format=json&query=" + urllib.parse.quote(q), accept="application/sparql-results+json")
+    t = get("https://query.wikidata.org/sparql?format=json&query=" + urllib.parse.quote(q))
     return json.loads(t)["results"]["bindings"] if t else []
 
 
-def explorer():
-    print("==== FCI nomenclature (fr)")
-    for url in ["https://www.fci.be/fr/Nomenclature/", "https://www.fci.be/fr/nomenclature/1-Chiens-de-berger-et-de-bouvier-sauf-chiens-de-bouvier-suisses-44.html"]:
-        t = get(url)
-        print("----", url, len(t))
-        liens = sorted(set(re.findall(r'href="([^"]*[Nn]omenclature[^"]*)"', t)))
-        print("liens:", liens[:80])
-        i = t.find("Berger")
-        print(re.sub(r"\s+", " ", t[i - 1500 : i + 2500]) if i > 0 else t[:3000])
-    print("==== une race FCI")
-    t = get("https://www.fci.be/fr/nomenclature/BERGER-ALLEMAND-166.html")
-    print(len(t)); print(re.sub(r"\s+", " ", re.sub(r"<script.*?</script>", "", t, flags=re.S))[:6000])
-    print("==== Wikidata : races de chiens (Q39367)")
-    r = sparql("SELECT (COUNT(DISTINCT ?r) AS ?n) WHERE { ?r wdt:P31 wd:Q39367 }")
-    print(r)
-    r = sparql("""SELECT ?p ?pLabel (COUNT(?r) AS ?n) WHERE { ?r wdt:P31 wd:Q39367 ; ?pd ?v . ?p wikibase:directClaim ?pd .
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "fr,en". } } GROUP BY ?p ?pLabel ORDER BY DESC(?n) LIMIT 60""")
-    for x in r:
-        print(x["p"]["value"].split("/")[-1], x["pLabel"]["value"], x["n"]["value"])
-    print("==== Wikipédia fr : Berger allemand (wikitexte)")
-    t = get("https://fr.wikipedia.org/w/index.php?title=Berger_allemand&action=raw")
-    print(t[:5000])
-    t = get("https://fr.wikipedia.org/w/index.php?title=Caniche&action=raw")
-    print(t[:3000])
+def pages_avec_infobox():
+    titres, suite = [], {}
+    while True:
+        r = api(API, action="query", list="embeddedin", eititle="Modèle:Infobox Race", einamespace="0", eilimit="500", **suite)
+        titres += [x["title"] for x in r.get("query", {}).get("embeddedin", [])]
+        if "continue" not in r:
+            return titres
+        suite = {"eicontinue": r["continue"]["eicontinue"], "continue": r["continue"]["continue"]}
+
+
+def wikitextes(titres):
+    """Wikitexte et élément Wikidata de chaque article, par paquets de 50."""
+    res = {}
+    for i in range(0, len(titres), 50):
+        r = api(API, action="query", prop="revisions|pageprops", rvprop="content", rvslots="main", ppprop="wikibase_item", titles="|".join(titres[i : i + 50]))
+        for pg in r.get("query", {}).get("pages", []):
+            if "revisions" in pg:
+                res[pg["title"]] = (pg["revisions"][0]["slots"]["main"]["content"], pg.get("pageprops", {}).get("wikibase_item"))
+        time.sleep(0.5)
+    return res
+
+
+def bloc_modele(texte, debut):
+    """Le texte d'un modèle {{…}} complet, en comptant les accolades."""
+    i = texte.find(debut)
+    if i < 0:
+        return ""
+    n, j = 0, i
+    while j < len(texte):
+        if texte.startswith("{{", j):
+            n += 1
+            j += 2
+        elif texte.startswith("}}", j):
+            n -= 1
+            j += 2
+            if n == 0:
+                return texte[i + 2 : j - 2]
+        else:
+            j += 1
+    return ""
+
+
+def infobox(texte):
+    corps = bloc_modele(texte, "{{Infobox Race")
+    morceaux, courant, n, k = [], "", 0, 0
+    while k < len(corps):  # découper sur les « | » de premier niveau
+        c2 = corps[k : k + 2]
+        if c2 in ("{{", "[["):
+            n += 1
+            courant += c2
+            k += 2
+        elif c2 in ("}}", "]]"):
+            n -= 1
+            courant += c2
+            k += 2
+        elif corps[k] == "|" and n == 0:
+            morceaux.append(courant)
+            courant = ""
+            k += 1
+        else:
+            courant += corps[k]
+            k += 1
+    morceaux.append(courant)
+    champs = {}
+    for m in morceaux[1:]:
+        if "=" in m:
+            cle, v = m.split("=", 1)
+            champs[cle.strip().lower()] = v.strip()
+    return champs
+
+
+def nettoyer(v):
+    """Wikitexte → texte simple."""
+    if not v:
+        return ""
+    v = re.sub(r"<!--.*?-->", "", v, flags=re.S)
+    v = re.sub(r"<ref[^>]*/>", "", v)
+    v = re.sub(r"<ref[^>]*>.*?</ref>", "", v, flags=re.S)
+    v = re.sub(r"<br\s*/?>", " ; ", v)
+    v = re.sub(r"<[^>]+>", "", v)
+    v = re.sub(r"\{\{\s*drapeau[^}]*\}\}", "", v, flags=re.I)
+    v = re.sub(r"\{\{\s*(?:nombre|nobr|unité)\s*\|([^|}]*)\|?([^}]*)\}\}", lambda m: (m.group(1) + " " + m.group(2).replace("|", " ")).strip(), v, flags=re.I)
+    v = re.sub(r"\{\{\s*lien\s*\|([^}]*)\}\}", lambda m: lien(m.group(1)), v, flags=re.I)
+    v = re.sub(r"\{\{\s*([A-ZÉ][^{}|=]{1,40})\s*\}\}", r"\1", v)  # {{France}} → France
+    v = re.sub(r"\{\{[^{}]*\}\}", "", v)
+    v = re.sub(r"\[\[(?:[^|\]]*\|)?([^\]]+)\]\]", r"\1", v)
+    v = v.replace("'''", "").replace("''", "")
+    v = re.sub(r"(\s*;\s*)+", " ; ", v)
+    v = re.sub(r"\s+", " ", v).strip(" ;,")
+    return v
+
+
+def lien(p):
+    parts = [x.strip() for x in p.split("|")]
+    nommes = dict(x.split("=", 1) for x in parts if "=" in x)
+    for cle in ("texte", "fr"):
+        if nommes.get(cle):
+            return nommes[cle].strip()
+    libres = [x for x in parts if "=" not in x]
+    return libres[-1] if libres else ""
+
+
+def extrait(titre):
+    r = api(API, action="query", prop="extracts", explaintext="1", exsectionformat="wiki", titles=titre)
+    pg = (r.get("query", {}).get("pages") or [{}])[0]
+    return pg.get("extract", "")
+
+
+def phrases(t, n):
+    t = re.sub(r"\s+", " ", t or "").strip()
+    ps = re.split(r"(?<=[.!?])\s+(?=[A-ZÉÈÀÂÔÎ«])", t)
+    return " ".join(ps[:n]).strip()
+
+
+def sections(texte):
+    """L'extrait découpé : {titre de section : texte}. L'introduction a le titre ''."""
+    res, titre, buf = {}, "", []
+    for ligne in texte.split("\n"):
+        m = re.match(r"^(=+)\s*(.*?)\s*\1\s*$", ligne)
+        if m:
+            res.setdefault(titre, " ".join(buf))
+            titre, buf = m.group(2), []
+        else:
+            buf.append(ligne)
+    res.setdefault(titre, " ".join(buf))
+    return res
+
+
+def chercher_section(secs, *mots):
+    for t, v in secs.items():
+        if t and any(m in t.lower() for m in mots) and len(v.strip()) > 40:
+            return v
+    return ""
+
+
+def wikidata(qids):
+    res = {}
+    for i in range(0, len(qids), 150):
+        vals = " ".join("wd:" + q for q in qids[i : i + 150])
+        for x in sparql(
+            f"""SELECT ?r ?vie ?vieU ?portee WHERE {{ VALUES ?r {{ {vals} }}
+              OPTIONAL {{ ?r p:P2250/psv:P2250 [ wikibase:quantityAmount ?vie ; wikibase:quantityUnit ?vieU ] }}
+              OPTIONAL {{ ?r wdt:P7725 ?portee }} }}"""
+        ):
+            q = x["r"]["value"].split("/")[-1]
+            d = res.setdefault(q, {})
+            if "vie" in x and "vie" not in d and x.get("vieU", {}).get("value", "").endswith("/Q577"):
+                d["vie"] = f"environ {float(x['vie']['value']):g} ans".replace(".", ",")
+            if "portee" in x and "portee" not in d:
+                d["portee"] = f"environ {float(x['portee']['value']):g} petits".replace(".", ",")
+        time.sleep(1)
+    return res
+
+
+def info_image(fichier):
+    r = api(COMMONS, action="query", prop="imageinfo", iiprop="url|extmetadata|mime", iiurlwidth="480", titles="File:" + fichier)
+    pg = (r.get("query", {}).get("pages") or [{}])[0]
+    ii = (pg.get("imageinfo") or [None])[0]
+    if not ii or ii.get("mime") not in ("image/jpeg", "image/png", "image/webp"):
+        return None
+    meta = ii.get("extmetadata", {})
+    licence = re.sub(r"<[^>]+>", "", meta.get("LicenseShortName", {}).get("value", "")).strip()
+    bas = licence.lower()
+    if not licence or not any(l in bas for l in LICENCES_OK) or re.search(r"\b(nc|nd)\b", bas):
+        return None
+    auteur = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", meta.get("Artist", {}).get("value", ""))).strip() or "Auteur inconnu"
+    return {"url": ii.get("thumburl") or ii["url"], "licence": licence, "auteur": auteur[:120], "page": ii.get("descriptionurl", "")}
+
+
+def telecharger_photo(info, chemin):
+    from PIL import Image
+
+    im = Image.open(BytesIO(get(info["url"], binaire=True))).convert("RGB")
+    im.thumbnail((480, 480))
+    chemin.parent.mkdir(parents=True, exist_ok=True)
+    im.save(chemin, "WEBP", quality=68)
+
+
+def ident(titre):
+    t = unicodedata.normalize("NFKD", titre).encode("ascii", "ignore").decode().lower()
+    t = re.sub(r"\(.*?\)", "", t)
+    return re.sub(r"[^a-z0-9]+", "-", t).strip("-")
+
+
+def collecter(limite=0):
+    fichier = DATA / "chiens.json"
+    deja = json.loads(fichier.read_text()) if fichier.exists() else {}
+    anciennes = {r["id"]: r for k in ("chiens", "chats") for r in deja.get(k, [])}
+    titres = pages_avec_infobox()
+    print("pages avec « Infobox Race » :", len(titres))
+    textes = wikitextes(titres)
+    races = []
+    for titre, (wt, qid) in textes.items():
+        ib = infobox(wt)
+        charte = ib.get("charte", "").strip().lower()
+        if charte in ("chien", "chat"):
+            races.append((titre, qid, charte, ib, wt))
+    print("chiens :", sum(1 for r in races if r[2] == "chien"), "· chats :", sum(1 for r in races if r[2] == "chat"))
+    if limite:
+        races = [r for r in races if r[2] == "chien"][: limite // 2] + [r for r in races if r[2] == "chat"][: limite // 2]
+    wd = wikidata([q for _, q, *_ in races if q])
+    sortie = {"groupes": GROUPES_FCI, "chiens": [], "chats": []}
+    for n, (titre, qid, charte, ib, wt) in enumerate(races):
+        rid = ident(titre)
+        nom = nettoyer(ib.get("nom")) or re.sub(r"\s*\(.*?\)", "", titre)
+        secs = sections(extrait(titre))
+        r = {
+            "id": rid,
+            "nom": nom[:1].upper() + nom[1:],
+            "wiki": titre,
+            "origine": nettoyer(ib.get("origine") or ib.get("pays d'origine") or ib.get("région d'origine")),
+            "taille": nettoyer(ib.get("taille")),
+            "poids": nettoyer(ib.get("poids")),
+            "silhouette": nettoyer(ib.get("silhouette") or ib.get("corps")),
+            "poil": nettoyer(ib.get("poil")),
+            "robe": nettoyer(ib.get("robe")),
+            "tete": nettoyer(ib.get("tête")),
+            "yeux": nettoyer(ib.get("yeux")),
+            "oreilles": nettoyer(ib.get("oreilles")),
+            "queue": nettoyer(ib.get("queue")),
+            "caractere": nettoyer(ib.get("caractère")),
+            "intro": phrases(secs.get("", ""), 4),
+            "histoire": phrases(chercher_section(secs, "histoire", "origine"), 3),
+            "utilisation": phrases(chercher_section(secs, "utilisation", "fonction", "travail", "aptitude"), 2),
+            "sante": phrases(chercher_section(secs, "santé"), 2),
+        }
+        if charte == "chien":
+            g = re.sub(r"\D", "", ib.get("groupe fci", ""))
+            r["groupe"] = g if g in GROUPES_FCI else ""
+            r["fci"] = re.sub(r"\D", "", ib.get("numero fci", "") or ib.get("numéro fci", ""))
+        if qid in wd:
+            r.update(wd[qid])
+        # Photos : celle de l'infobox, puis jusqu'à deux de l'article. Licences libres seulement.
+        candidats = [nettoyer(ib.get("image", ""))] + re.findall(r"\[\[(?:Fichier|File|Image)\s*:\s*([^|\]]+)", wt)
+        photos, vus, ancien = [], set(), anciennes.get(rid, {})
+        for f in candidats:
+            f = f.strip()
+            if not f or f in vus or len(photos) >= 3 or not re.search(r"\.(jpe?g|png|webp)$", f, re.I):
+                continue
+            vus.add(f)
+            garde = next((p for p in ancien.get("photos", []) if p["fichier"] == f and (RACINE / "public" / p["src"]).exists()), None)
+            if garde:
+                photos.append(garde)
+                continue
+            info = info_image(f)
+            if not info:
+                continue
+            nom_fichier = f"{rid}-{len(photos) + 1}.webp"
+            try:
+                telecharger_photo(info, PHOTOS / nom_fichier)
+            except Exception as e:  # noqa: BLE001
+                print("  photo impossible", f, e)
+                continue
+            photos.append({"fichier": f, "src": "chiens/" + nom_fichier, "auteur": info["auteur"], "licence": info["licence"], "page": info["page"]})
+        r = {k: v for k, v in r.items() if v not in ("", None)}
+        r["photos"] = photos
+        sortie["chiens" if charte == "chien" else "chats"].append(r)
+        if n % 25 == 0:
+            print(f"{n}/{len(races)} {r['nom']} · {len(photos)} photo(s)", flush=True)
+            fichier.write_text(json.dumps(sortie, ensure_ascii=False, separators=(",", ":")))
+        time.sleep(0.2)
+    for k in ("chiens", "chats"):
+        sortie[k].sort(key=lambda x: x["nom"].lower())
+    fichier.write_text(json.dumps(sortie, ensure_ascii=False, separators=(",", ":")))
+    print("fini :", len(sortie["chiens"]), "chiens,", len(sortie["chats"]), "chats")
+    for r in sortie["chiens"][:4] + sortie["chats"][:3]:
+        print(json.dumps(r, ensure_ascii=False, indent=1)[:3000])
 
 
 if __name__ == "__main__":
-    etape = sys.argv[1] if len(sys.argv) > 1 else "explorer"
-    {"explorer": explorer}[etape]()
+    args = sys.argv[1:] or ["collecter"]
+    if args[0] == "collecter":
+        collecter(int(args[1]) if len(args) > 1 else 0)

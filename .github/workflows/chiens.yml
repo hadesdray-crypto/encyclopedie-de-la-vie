@@ -19,6 +19,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pillow
+      - name: Reprendre le travail déjà fait
+        run: git pull -q origin chiens || true
       - name: Collecter
         run: python scripts/donnees/chiens.py $(cat scripts/donnees/chiens-etape.txt) 2>&1 | tee scripts/donnees/chiens-journal.txt
       - name: Enregistrer
