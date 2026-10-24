@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-10-24",
+    "titre": "Le carnet de Plume : chiens et chats",
+    "points": [
+      "445 races de chiens et 87 races de chats, avec leurs photos.",
+      "Les chiens sont rangés dans les 10 groupes officiels, les chats selon leur poil.",
+      "Chaque fiche : origine, taille, poids, espérance de vie, poil, caractère, histoire.",
+      "Le petit cœur rouge montre les préférés de Plume."
+    ]
+  },
+  {
+    "date": "2026-10-24",
     "titre": "La page de Leonie",
     "points": [
       "Une nouvelle première page, rien que pour Leonie : son nom en grand, et Plume qui lui parle.",

@@ -42,6 +42,8 @@ GROUPES_FCI = {
     "9": "Chiens d'agrément et de compagnie",
     "10": "Lévriers",
 }
+# Photos retirées à la main après vérification (carte, statue, logo, autre animal…).
+RETIREES = {l.strip() for l in (RACINE / "scripts/chiens-photos-retirees.txt").read_text().splitlines() if l.strip() and not l.startswith("#")} if (RACINE / "scripts/chiens-photos-retirees.txt").exists() else set()
 LICENCES_OK = ("cc0", "cc-zero", "public domain", "domaine public", "pd-", "cc by", "cc-by")
 
 
@@ -341,7 +343,7 @@ def collecter(limite=0):
         photos, vus, ancien = [], set(), anciennes.get(rid, {})
         for f in candidats:
             f = f.strip()
-            if not f or f in vus or len(photos) >= 2 or not re.search(r"\.(jpe?g|png|webp)$", f, re.I):
+            if not f or f in vus or f in RETIREES or len(photos) >= 2 or not re.search(r"\.(jpe?g|png|webp)$", f, re.I):
                 continue
             vus.add(f)
             garde = next((p for p in ancien.get("photos", []) if p["fichier"] == f and (RACINE / "public" / p["src"]).exists()), None)
@@ -365,8 +367,13 @@ def collecter(limite=0):
             print(f"{n}/{len(races)} {r['nom']} · {len(photos)} photo(s)", flush=True)
             fichier.write_text(json.dumps(sortie, ensure_ascii=False, separators=(",", ":")))
         time.sleep(0.2)
+    vus = {}
     for k in ("chiens", "chats"):
         sortie[k].sort(key=lambda x: x["nom"].lower())
+        for r in sortie[k]:  # identifiants uniques
+            vus[r["id"]] = vus.get(r["id"], 0) + 1
+            if vus[r["id"]] > 1:
+                r["id"] = f"{r['id']}-{vus[r['id']]}"
     fichier.write_text(json.dumps(sortie, ensure_ascii=False, separators=(",", ":")))
     print("fini :", len(sortie["chiens"]), "chiens,", len(sortie["chats"]), "chats")
     for r in sortie["chiens"][:4] + sortie["chats"][:3]:
