@@ -1,149 +1,150 @@
 pages avec « Infobox Race » : 2404
 chiens : 445 · chats : 87
-0/20 Yorkshire terrier · 3 photo(s)
-fini : 10 chiens, 10 chats
+espèce chien {'P2250': [['9', 'Q577']]}
+espèce chat {'P3063': [['64', 'Q573']], 'P2250': [['15', 'Q577']]}
+0/532 Persan · 2 photo(s)
+25/532 Airedale Terrier · 2 photo(s)
+50/532 Beagle · 2 photo(s)
+75/532 British shorthair · 2 photo(s)
+100/532 Spitz-loup ; Keeshond · 2 photo(s)
+125/532 Chat sibérien · 2 photo(s)
+  erreur https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url%7Cextmetadata%7Cmime&iiurlwidth=480&title HTTP Error 429: Too Many Requests
+  erreur https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url%7Cextmetadata%7Cmime&iiurlwidth=480&title HTTP Error 429: Too Many Requests
+150/532 Épagneul nain continental · 1 photo(s)
+175/532 Chien d'eau romagnol · 1 photo(s)
+200/532 Berger hollandais · 1 photo(s)
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Deerhound&format HTTP Error 429: Too Many Requests
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Deerhound&format HTTP Error 429: Too Many Requests
+225/532 Field Spaniel · 2 photo(s)
+250/532 Berger croate · 1 photo(s)
+275/532 Eurohound / ESD · 1 photo(s)
+  erreur https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url%7Cextmetadata%7Cmime&iiurlwidth=480&title HTTP Error 429: Too Many Requests
+  erreur https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url%7Cextmetadata%7Cmime&iiurlwidth=480&title HTTP Error 429: Too Many Requests
+300/532 Cirneco de l'Etna · 2 photo(s)
+325/532 Chien de recherche au sang du Hanovre · 1 photo(s)
+350/532 Lévrier Tazi · 1 photo(s)
+  erreur https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url%7Cextmetadata%7Cmime&iiurlwidth=480&title HTTP Error 429: Too Many Requests
+375/532 Berger des Alpes et de Savoie · 1 photo(s)
+400/532 Chien d'élan norvégien noir · 1 photo(s)
+425/532 Chien noir et feu pour la chasse au raton laveur · 2 photo(s)
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Chien+courant+de HTTP Error 429: Too Many Requests
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Chien+courant+de HTTP Error 429: Too Many Requests
+450/532 Chien courant du Småland · 2 photo(s)
+475/532 Chien de la Serra da Estrela · 2 photo(s)
+500/532 Lykoï · 2 photo(s)
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Pomsky&format=js HTTP Error 429: Too Many Requests
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Pomsky&format=js HTTP Error 429: Too Many Requests
+525/532 Bobtail du Mékong · 2 photo(s)
+fini : 445 chiens, 87 chats
 {
- "id": "berger-allemand",
- "nom": "Berger allemand",
- "wiki": "Berger allemand",
+ "id": "affenpinscher",
+ "nom": "Affenpinscher",
+ "wiki": "Affenpinscher",
  "origine": "Allemagne",
- "taille": "60 à 65 cm (mâle) ; 55 à 60 cm (femelle)",
- "poids": "30 à 40 kg (mâle) ; 22 à 32 kg (femelle)",
- "poil": "Court ou long, dense et souple",
- "robe": "Noire marquée de taches brunes ou jaunes jusqu'à gris clair. Noir et gris unicolore (charbonné) ou noire",
- "tete": "Cunéiforme, proportionnée, stop peu prononcé, truffe noire",
- "yeux": "En amandes, obliques, le plus sombre possible",
- "oreilles": "Droites et asymétriques, de taille moyenne, pavillon vers l'avant",
- "queue": "Portée tombante décrivant une légère courbe",
- "caractere": "Équilibré, courageux, sûr de lui, protecteur et joueur",
- "intro": "Le berger allemand (aussi appelé berger d’Alsace, berger alsacien ou chien-loup d'Alsace) est une race de chiens (Canis lupus familiaris) tirant son nom de son pays d'origine, l'Allemagne, où elle est apparue à la fin du XIXe siècle. La Fédération cynologique internationale le reconnaît sous le nom de Deutscher Schäferhund, ce qui laisse à penser que durant des milliers d'années, des animaux proches des bergers allemands et de leurs cousins belge ou hollandais ont existé dans cette région d'Europe.",
- "histoire": "En 1878, les éleveurs allemands de chiens à aptitudes bergères réalisent une première tentative de regroupement dans le but d’améliorer leurs chiens. Ceux-ci sont très variés d’un point de vue phénotypique, notamment selon les régions : par exemple, le type Wurtemberg porte les oreilles droites, alors que celui de Thuringe a les oreilles tombantes. Il existe également des chiens différents en Bavière ou dans la Hesse.",
- "utilisation": "Le berger allemand est un chien de travail, utilisé comme guide d'aveugles, il est aussi capable de retrouver des rescapés victimes d'avalanches ou de tremblements de terre comme en Haïti, son flair est aussi utilisé pour retrouver de la drogue ou des explosifs. Il est encore utilisé comme chien de berger, notamment comme chien de rive (garder le troupeau dans une zone délimitée, et le protéger).",
- "sante": "Selon les sources, le Berger allemand a une espérance de vie à la naissance comprise entre 10 ans et 13 ans. La race est sujette à plusieurs pathologies : Syndrome de dilatation-torsion gastrique : retournement de l'estomac, ceci se produit principalement si le chien se met à l'effort après avoir mangé, il est donc indispensable de lui donner sa nourriture en fin de journée, avant de dormir, afin qu'il ait le temps de digérer.",
- "groupe": "1",
- "fci": "166",
- "vie": "environ 10 ans",
- "portee": "environ 6,1 petits",
- "photos": [
-  {
-   "fichier": "German-shepherd-4040871920. (2).jpg",
-   "src": "chiens/berger-allemand-1.webp",
-   "auteur": "Hans Kemperman , Pixabay",
-   "licence": "CC0",
-   "page": "https://commons.wikimedia.org/wiki/File:German-shepherd-4040871920._(2).jpg"
-  },
-  {
-   "fichier": "Max von Stephanitz.png",
-   "src": "chiens/berger-allemand-2.webp",
-   "auteur": "Anony
-{
- "id": "bouvier-bernois",
- "nom": "Bouvier bernois",
- "wiki": "Bouvier bernois",
- "origine": "Suisse",
- "taille": "Mâle : 64 à 70 cm Femelle : 58 à 66 cm",
- "silhouette": "42 à 62 kg",
- "poil": "long, lisse ou légèrement ondulé",
- "robe": "noire tricolore ; plastron blanc en forme de croix de Saint Georges ; liste blanche sur le front, sur le museau et entre les yeux ; bouts des pattes et bout de la queue blanche recherchés mais non obligatoires ; taches rousses au-dessus des yeux, sur les membres et les joues",
- "tete": "puissante, crâne de face et de profil peu bombé",
- "yeux": "de couleur noisette foncé",
- "oreilles": "triangulaire, arrondie à l'extrémité, ; attachée haut, tombante et bien accolée à la tête.",
- "queue": "attachée haut, portée gaiement",
- "caractere": "gardien calme, sensible, très affectueux et attaché à ses maîtres",
- "intro": "Le bouvier bernois est une race de chien dont la Fédération cynologique internationale attribue l'origine à la Suisse. Chien de ferme originellement conçu pour la garde des bâtiments, des bovins et le transport du lait, il est aujourd'hui un chien d’utilité polyvalent et chien de famille, mais reste sportif et peut être gardien même si ce n'est pas sa spécialité. Il appartient au groupe 2 de la classification de la FCI : « chiens de type pinscher et schnauzer, molossoïdes et chiens de montagne et de bouviers suisses ».",
- "histoire": "Le bouvier bernois appartient à la famille des bouviers suisses, son nom provient du nom allemand Berner Sennenhund, signifiant « chien alpin de vacher de Berne ». La race très ancienne émane des villages de Dürrbach et Berthoud près de Berne. Deux origines sont attribuées à l'ancêtre du bouvier bernois, soit un croisement avec le dogue du Tibet utilisé par les armées romaines comme chien de guerre et de garde de troupeaux, soit un chien de ferme transportant les charrettes de lait et gardant les troupeaux bovins depuis plusieurs millénaires.",
- "sante": "Dysplasie : problème lié à une nourriture pauvre en vitamines et nutriments. Selon Marc Torel et Klaus Dieter Kammerer, la dysplasie ne serait pas un problème génétique.",
+ "taille": "25 à 30 cm (au garrot)",
+ "poids": "6 à 8 kg (mâle et femelle)",
+ "poil": "Dur et bien fourni.",
+ "robe": "Noire, feu, argent, gris, rouge, belge.",
+ "tete": "De forme arrondie.",
+ "yeux": "Foncés, plutôt arrondis et en boule.",
+ "oreilles": "Droites, petites, attachées haut.",
+ "queue": "Non coupée.",
+ "caractere": "Intrépide, attentif, fidèle.",
+ "intro": "L'Affenpinscher est un chien d'origine allemande dont le nom signifie « griffon-singe ». Il est également appelé Zwergaffen. L'espérance moyenne de vie pour cette race est d'environ 15 ans.[réf. souhaitée]",
+ "histoire": "Cette race de chiens originaire d'Allemagne est très ancienne. À l'origine c'était probablement des chiens de famille. Des chiens semblables ont été représentés dès les XVe et XVIe siècles par les artistes Jan Van Eyck et Albrecht Dürer.",
  "groupe": "2",
- "fci": "45",
- "portee": "environ 6,4 petits",
+ "fci": "186",
+ "vie": "environ 15 ans",
+ "photos": []
+}
+{
+ "id": "africanis",
+ "nom": "Africanis",
+ "wiki": "Africanis",
+ "origine": "Afrique australe",
+ "poil": "Court",
+ "queue": "Longue",
+ "intro": "L'Africanis est un chien originaire d'Afrique australe, il est reconnu par le Kennel Union of South Africa (KUSA) mais pas encore par la FCI et il est considéré comme un chien antique descendant directement de chiens parias de l'ancienne Afrique.",
+ "vie": "environ 14 ans",
  "photos": [
   {
-   "fichier": "Bouvier Bernois de face.jpg",
-   "src": "chiens/bouvier-bernois-1.webp",
-   "auteur": "Heowin",
-   "licence": "CC BY 4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Bouvier_Bernois_de_face.jpg"
-  },
-  {
-   "fichier": "Bouvier bernois chiot.jpg",
-   "src": "chiens/bouvier-bernois-2.webp",
-   "auteur": "Amage9",
-   "licence": "CC BY-SA 4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Bouvier_bernois_chiot.jpg"
-  },
-  {
-   "fichier": "Bouvier bernois chien de montagne.jpg",
-   "src": "chiens/bouvier-bernois-3.webp",
-   "auteur": "Amage9",
-   "licence": "CC BY-SA 4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Bouvier_bernois_chien_de_montagne.jpg"
+   "fichier": "Africanis (1).jpg",
+   "src": "chiens/africanis-1.webp",
+   "auteur": "Bothar at English Wikipedia",
+   "licence": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Africanis_(1).jpg"
   }
  ]
 }
 {
- "id": "brachet-tyrolien",
- "nom": "Brachet tyrolien",
- "wiki": "Brachet tyrolien",
- "origine": "Autriche",
- "taille": "44 à 50 cm (M), 42 à 48 cm",
- "silhouette": "Chien courant de taille moyenne, d'allure musclée et robuste.",
- "poil": "Double, dense, plutôt grossier que fin",
- "robe": "Fauve ou noire et feu.",
- "tete": "Large avec un crâne légèrement bombé et un stop marqué.",
- "yeux": "Ronds, couleur marron foncé.",
- "oreilles": "Tombantes, larges, arrondies à l'extrémité, attachées haut.",
- "queue": "Longue, portée haut.",
- "caractere": "Équilibré, persévérant à la chasse, doux et amical à la maison.",
- "intro": "Le brachet tyrolien aussi appelé brachet autrichien et chien courant du Tyrol est une race de chien d'origine autrichienne. C'est un chien courant et un chien de recherche au sang.",
- "groupe": "6",
- "fci": "68",
+ "id": "airedale-terrier",
+ "nom": "Airedale Terrier",
+ "wiki": "Airedale Terrier",
+ "origine": "Angleterre",
+ "taille": "56 à 61 cm",
+ "poids": "27 à 32 kg (mais non précisé dans le standard)",
+ "poil": "dense, raide et dur",
+ "robe": "noir et feu, ou grisonné et feu",
+ "tete": "bien proportionnée, exempte de rides",
+ "yeux": "petits de couleur foncée",
+ "oreilles": "petites, en V, avec la ligne supérieure pliée au-dessus du crane.",
+ "queue": "attachée haut, portée gaiement, traditionnellement écourtée d'1/3 dans les pays autorisés",
+ "caractere": "vif, sociable, confiant, intrépide et courageux.",
+ "intro": "L'airedale terrier est une race de chien qui appartient au groupe des terriers. Par la taille, il est le plus grand représentant de cette famille. Il est aussi appelé Waterside Terrier, Bingley Terrier, Working Terrier ou Warfedale Terrier.",
+ "histoire": "La race date du milieu du XIXe siècle et résulte de croisements d'otterhounds et d'old english black, cette race aujourd'hui disparue. Originaire du nord de l'Angleterre, dans la région du Yorkshire et plus précisément de la vallée de l'Aire d'où il tire son nom. Il fut créé à l'origine pour chasser la loutre et le rat.",
+ "vie_texte": "Avec une activité et une nourriture saine, il peut avoir une espérance de vie de dix à treize ans.",
+ "groupe": "3",
+ "fci": "7",
+ "vie": "environ 14 ans",
  "photos": [
   {
-   "fichier": "Tiroler Bracke.jpg",
-   "src": "chiens/brachet-tyrolien-1.webp",
-   "auteur": "Ingrid F. (=Fotting)",
-   "licence": "CC BY-SA 2.0 de",
-   "page": "https://commons.wikimedia.org/wiki/File:Tiroler_Bracke.jpg"
+   "fichier": "Photo Airedale Terrier.png",
+   "src": "chiens/airedale-terrier-1.webp",
+   "auteur": "Jackjack01234",
+   "licence": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Photo_Airedale_Terrier.png"
   },
   {
-   "fichier": "Tiroler Bracke Baby.jpg",
-   "src": "chiens/brachet-tyrolien-2.webp",
-   "auteur": "E.peiffer@gmx.net 18:50, 30. Jan. 2008 (CET)",
-   "licence": "CC BY-SA 3.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Tiroler_Bracke_Baby.jpg"
+   "fichier": "Airedale terrier head, Josselin 01.jpg",
+   "src": "chiens/airedale-terrier-2.webp",
+   "auteur": "Amélie Tsaag Valren",
+   "licence": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Airedale_terrier_head,_Josselin_01.jpg"
   }
  ]
 }
 {
- "id": "colley",
- "nom": "Colley à poil long",
- "wiki": "Colley",
- "origine": "Écosse (UK)",
- "taille": "Mâles : 56 cm à 61 cm au garrot. Femelles : 51 cm à 56 cm au garrot.",
- "poids": "20 à 32 kg (non indiqué dans le standard).",
- "poil": "long et dense (forme un collier et un jabot très marqués), court sur la tête.",
- "robe": "zibeline et blanc, tricolore(noir, blanc et feu), bleu merle",
- "tete": "fine avec front plat et museau qui s'amincit graduellement.",
- "caractere": "disposition amicale ; aucunement craintif ni agressif.",
- "intro": "Le colley à poil long (nomenclature FCI : 1/1/156), ou berger écossais, généralement désigné sous le simple nom de « colley », est une variété de race de chien de berger Colley. Son image a été popularisée par la célèbre chienne de fiction Lassie, à la robe zibeline ; cependant, le colley tricolore est le plus répandu et le colley bleu-merle compte également bon nombre d'adeptes. Le colley à poil court (nomenclature FCI : 1/1/296) diffère du colley à poil long par son standard bien distinct.",
- "histoire": "D'origine britannique, cette race est fixée en Écosse vers la fin du XIXe siècle. Au départ, la race était très proche du border collie. Le Dictionnaire géographique universel (édition de 1826) décrit le colley (page 545) comme étant le « vrai chien de berger ».",
- "groupe": "1",
- "fci": "156",
- "portee": "environ 5,2 petits",
+ "id": "akbash",
+ "nom": "Akbash",
+ "wiki": "Akbash",
+ "origine": "Turquie",
+ "taille": "71 à 79 cm (mâle) ; 69 à 74 cm (femelle)",
+ "poids": "43 à 61 kg (mâle) ; 36 à 47 kg (femelle)",
+ "poil": "Moyen ou long",
+ "robe": "Blanche",
+ "tete": "Large, au stop marqué. Cou et mâchoires solides et puissante.",
+ "yeux": "Légèrement en amandes, de couleur marron ou marron sombre.",
+ "oreilles": "Tombantes, attachées en arrière.",
+ "queue": "Longue, tombante jusqu'au jarret ou courbée à l’extrémité",
+ "caractere": "Courageux, sûr de lui, protecteur, intelligent, loyal et indépendant",
+ "intro": "L'Akbash (en turc Akbaş signifiant tête blanche) est une race de chiens originaire de l'Anatolie, en actuelle Turquie occidentale.",
+ "histoire": "L'Akbash est une race ancienne de chien de berger, utilisé en Anatolie pour la protection des troupeaux contre les attaques des prédateurs (loups et ours). Il rejoint ainsi la famille des chiens de berger d'Anatolie dont le Karabash (tête noire en turc) est le plus connu. L'Akbash est aussi lié avec des chiens semblables comme l'Aïdi ou le chien de montagne des Pyrénées.",
+ "vie_texte": "L'Akbash a une espérance de vie en moyenne de 10 ans mais il peut vivre beaucoup plus longtemps.",
+ "vie": "environ 10 ans",
  "photos": [
   {
-   "fichier": "Rough Collie 600.jpg",
-   "src": "chiens/colley-1.webp",
-   "auteur": "Auteur inconnu",
-   "licence": "CC BY-SA 3.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Rough_Collie_600.jpg"
+   "fichier": "Turkish Akbash.jpg",
+   "src": "chiens/akbash-1.webp",
+   "auteur": "Teddy Llovet",
+   "licence": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Turkish_Akbash.jpg"
   },
   {
-   "fichier": "Rough Collies.jpg",
-   "src": "chiens/colley-2.webp",
-   "auteur": "Flickr user cjewell",
-   "licence": "CC BY-SA 2.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Rough_Collies.jpg"
+   "fichier": "Akbash dog on guard.jpg",
+   "src": "chiens/akbash-2.webp",
+   "auteur": "Jerry Kirkhart from Los Osos, Calif.",
+   "licence": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Akbash_dog_on_guard.jpg"
   }
  ]
 }
@@ -163,7 +164,7 @@ fini : 10 chiens, 10 chats
  "queue": "Longue et effilée",
  "intro": "L'abyssin, aussi appelé bunny cat (chat lapin), ou parfois Aby, est une race de chats originaire d'Asie. Ce chat est caractérisé par une robe à poil court au patron ticked tabby.",
  "histoire": "Le lieu de naissance de l'abyssin ne se situerait ni en Abyssinie, ni en Égypte, mais dans le sud-est asiatique, au bord de l'océan Indien. Toutefois, il se peut que la race soit africaine. Il se pourrait même que l'Abyssin soit l'héritier du chat sacré de l'Égypte antique.",
- "sante": "Les abyssins sont sujets à certaines maladies génétiques comme la PK DEF et la PRA mais également l'amyloïdose du chat. Il s'agit d'une maladie héréditaire qui se traduit par le dépôt progressif d'une substance amyloïde dans l'organisme, conduisant à une insuffisance rénale irréversible.",
+ "vie_texte": "Les abyssins ont une espérance de vie de treize à seize ans.",
  "photos": [
   {
    "fichier": "Kamee01.jpg",
@@ -178,94 +179,65 @@ fini : 10 chiens, 10 chats
    "auteur": "Auteur inconnu",
    "licence": "Public domain",
    "page": "https://commons.wikimedia.org/wiki/File:Zula.jpg"
-  },
-  {
-   "fichier": "Link Nyota Ziko Humu (Heikki)-ABY a-young male EX1 NOM.JPG",
-   "src": "chiens/abyssin-3.webp",
-   "auteur": "Heikki Siltala",
-   "licence": "CC BY 3.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Link_Nyota_Ziko_Humu_(Heikki)-ABY_a-young_male_EX1_NOM.JPG"
   }
  ]
 }
 {
- "id": "bengal",
- "nom": "Bengal",
- "wiki": "Bengal",
+ "id": "bobtail-americain",
+ "nom": "American Bobtail",
+ "wiki": "Bobtail américain",
  "origine": "États-Unis",
  "taille": "Moyenne à grande",
- "poids": "4 à 7 kg",
- "silhouette": "Longue et substantielle",
- "poil": "Court et soyeux",
- "robe": "' ou ' ' modifié)",
- "tete": "Triangle aux contours arrondis",
- "yeux": "Grands, ovales et bien espacés",
- "oreilles": "Moyennes à petites",
- "queue": "Moyenne, épaisse à la base",
- "intro": "Le bengal est une race de chats originaire des États-Unis. Cette race de taille moyenne à grande, par rapport aux autres chats, se caractérise par sa fourrure ressemblant à celle du Chat léopard du Bengale, une espèce de chat sauvage dont il est issu, par croisement avec des chats domestiques. Le bengal a une durée de vie entre douze et seize ans.",
- "histoire": "Le bengal résulte du croisement entre un chat domestique et le chat-léopard (Prionailurus bengalensis), petit félin sauvage que l'on trouve en Asie et en particulier dans la province du Bengale. C’est en 1963 que pour la première fois, l'on croisa chat domestique et félin sauvage. C'est une américaine, Jean S.",
+ "silhouette": "Médioligne Semi-cobby",
+ "poil": "Court et mi-long",
+ "robe": "Toutes les couleurs et robes acceptées",
+ "tete": "Large avec des mâchoires puissantes, sans surface plane",
+ "yeux": "Ovale",
+ "oreilles": "Placées bas, très poilues et possédant un plumet à l'extrémité",
+ "queue": "Courte, entre 2.5 et 10cm.",
+ "intro": "L'American Bobtail ou bobtail américain est une nouvelle race de chat originaire des États-Unis. Ce chat de taille moyenne à grande est caractérisé par sa quasi-absence de queue.",
+ "histoire": "La race fut découverte en 1965 par un couple d'Américains, les Sanders, dans l'État de l'Arizona. Le chaton avait une allure sauvage et la queue courte et remontée sur le dos. Ils décidèrent immédiatement de l'adopter et le nommèrent Yodie.",
+ "vie_texte": "Son espérance de vie se situe entre onze et quinze ans.",
  "photos": [
   {
-   "fichier": "Best_Stalk.jpg",
-   "src": "chiens/bengal-1.webp",
-   "auteur": "User:Lightburst",
-   "licence": "CC BY-SA 4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Best_Stalk.jpg"
-  },
-  {
-   "fichier": "Bengalkatze.jpg",
-   "src": "chiens/bengal-2.webp",
-   "auteur": "F. Spangenberg - Der Irbis",
+   "fichier": "Bobtail Tabby Cat MISSI WITH BABY-1996.jpg",
+   "src": "chiens/bobtail-americain-1.webp",
+   "auteur": "User:Klarissae",
    "licence": "CC BY-SA 3.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Bengalkatze.jpg"
-  },
-  {
-   "fichier": "Bengal - 18.jpg",
-   "src": "chiens/bengal-3.webp",
-   "auteur": "Another one of my pictures: This photograph was taken by Medium69 (William Crochot) and released under the license state",
-   "licence": "CC BY-SA 4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Bengal_-_18.jpg"
+   "page": "https://commons.wikimedia.org/wiki/File:Bobtail_Tabby_Cat_MISSI_WITH_BABY-1996.jpg"
   }
  ]
 }
 {
- "id": "burmese",
- "nom": "Burmese",
- "wiki": "Burmese",
- "origine": "Birmanie",
- "taille": "Moyenne",
- "poids": "4 à 4,5 kg pour les femelles, 5 à 6 kg pour les mâles (pour la race américaine) comptez 1 kg de moins pour la race anglaise",
- "silhouette": "Type semi-foreign chez l'Européen, cobby chez l'Américain",
- "poil": "Court et fin",
- "robe": "Sépia",
- "tete": "Triangulaire chez l'Européen, ronde chez l'Américain",
- "yeux": "Grands et ronds",
- "oreilles": "Moyennes, bien espacées",
- "queue": "Longueur moyenne, bout arrondi",
- "intro": "Le burmese est une race de chat originaire de Thaïlande. Ce chat de taille moyenne est caractérisé par sa robe à poils courts et au motif sépia. Il ne doit pas être confondu avec le Birman, plus connu sous le nom de Sacré de Birmanie.",
- "histoire": "Le Tamra Meow ou Livre de poèmes des chats est un recueil thaïlandais de vers richement illustré dont la rédaction est située entre 1350 et 1767 et qui décrit dix-sept chats différents, certains portant bonheur et d'autres non. Le manuscrit répertorie et décrit de façon poétique les races de chats existant à cette époque et fait la description du burmese. Il est possible que des burmeses aient concouru en Angleterre au XIXe siècle comme des siamois.",
- "sante": "Le chat Burmese peut être atteint par diverses maladies, voici les pathologies par lesquelles il est le plus susceptible d'être affecté : Lipémie de l'humeur aqueuse Dermoïde cornéen Syndrome de douleur orofaciale Maladie vestibulaire périphérique congénitale Anomalie craniofaciale Syndrome du chaton à poitrine plate Queue coudée Arthrose du coude Fibroélastose endocardique Cardiomyopathie dilatée, hypertrophie cardiaque Diabète félin Son espérance de vie est de dix à seize ans.",
+ "id": "american-curl",
+ "nom": "American curl",
+ "wiki": "American curl",
+ "origine": "États-Unis",
+ "taille": "De taille moyenne.",
+ "poids": "3 à 5 kg.",
+ "silhouette": "Médioligne semi-foreign.",
+ "poil": "Court ou mi-long.",
+ "robe": "Toutes robes admises.",
+ "tete": "Triangulaire, présentant des formes arrondies.",
+ "yeux": "En forme de noix, espacés d'un œil. Toutes couleurs admises.",
+ "oreilles": "Incurvées vers l'intérieur du crâne, en forme de croissant de lune.",
+ "queue": "De taille égale à celle du corps. En forme de plume pour le poil long.",
+ "intro": "L'american curl est une race de chats originaire des États-Unis. L'élevage commence dans les années 1980, à partir d'une chatte noire aux oreilles naturellement recourbées vers l'arrière, nommée Shulamith, recueillie par un couple de Californiens. Le programme d'élevage est basé sur des croisements avec des chats issus de Shulamith, aux oreilles recourbées, et des chats de gouttière. La race est reconnue par les deux principales fédérations américaines, The International Cat Association (TICA) et la Cat Fanciers' Association (CFA), respectivement en 1985 et 1991.",
+ "vie_texte": "L'espérance de vie de l'American Curl est de 12 à 16 ans.",
  "photos": [
   {
-   "fichier": "Burmakatze-chocolate.JPG",
-   "src": "chiens/burmese-1.webp",
-   "auteur": "Earth68",
-   "licence": "CC BY-SA 3.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Burmakatze-chocolate.JPG"
+   "fichier": "GIC Minnikatin Zelta ACS n 22 female EX1 CAGCIB GIC.JPG",
+   "src": "chiens/american-curl-1.webp",
+   "auteur": "Heikki Siltala",
+   "licence": "CC BY 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:GIC_Minnikatin_Zelta_ACS_n_22_female_EX1_CAGCIB_GIC.JPG"
   },
   {
-   "fichier": "Соболиный бурманский кот.jpg",
-   "src": "chiens/burmese-2.webp",
-   "auteur": "Валерий Синицын",
-   "licence": "CC BY-SA 3.0",
-   "page": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%BE%D0%B1%D0%BE%D0%BB%D0%B8%D0%BD%D1%8B%D0%B9_%D0%B1%D1%83%D1%80%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%BE%D1%82.jpg"
-  },
-  {
-   "fichier": "Бурманская кошка голубого окраса.jpg",
-   "src": "chiens/burmese-3.webp",
-   "auteur": "Валерий Синицын",
-   "licence": "CC BY-SA 3.0",
-   "page": "https://commons.wikimedia.org/wiki/File:%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%BA%D0%BE%D1%88%D0%BA%D0%B0_%D0%B3%D0%BE%D0%BB%D1%83%D0%B1%D0%BE%D0%B3%D0%BE_%D0%BE%D0%BA%D1%80%D0%B0%D1%81%D0%B0.jpg"
+   "fichier": "TICA.JPG",
+   "src": "chiens/american-curl-2.webp",
+   "auteur": "Heikki Siltala",
+   "licence": "CC BY 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:TICA.JPG"
   }
  ]
 }
