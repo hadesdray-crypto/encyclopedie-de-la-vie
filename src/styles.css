@@ -467,3 +467,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .onde { animation: none; }
 }
+
+/* ---- Appui long : le texte que Plume lit s'éclaire ---- */
+main { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+main input, main textarea { -webkit-user-select: text; user-select: text; }
+.texte-lu { background: rgba(180, 140, 255, 0.28); box-shadow: 0 0 0 3px rgba(180, 140, 255, 0.7); border-radius: 0.6rem; transition: background 0.2s; }

@@ -44,9 +44,9 @@ export function choisirAvatar(src: string) {
 // Vitesse de la voix (Plume et bouton « Écouter »).
 const CLE_VITESSE = "leonie-vitesse-voix";
 export const VITESSES = [
-  { id: "lente", nom: "Lente", taux: 0.75 },
-  { id: "normale", nom: "Normale", taux: 0.95 },
-  { id: "rapide", nom: "Rapide", taux: 1.15 },
+  { id: "lente", nom: "Lente", taux: 0.85 },
+  { id: "normale", nom: "Normale", taux: 1.05 },
+  { id: "rapide", nom: "Rapide", taux: 1.25 },
 ] as const;
 export type Vitesse = (typeof VITESSES)[number]["id"];
 

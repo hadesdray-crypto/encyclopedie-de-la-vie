@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BoutonPlume } from "@/components/guide";
 import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
 import { AVATARS, avatar, choisirAvatar } from "@/lib/reglages";
 import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
@@ -14,7 +13,6 @@ export function ProfilPage() {
   const score = lireScore();
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
-      <div className="flex"><BoutonPlume /></div>
       <ChoixAvatar />
       <h1 className="titre-or mt-4 text-center text-4xl">Princesse Leonie</h1>
       <p className="mt-2 text-center">Ton carnet. Il reste sur cet appareil.</p>

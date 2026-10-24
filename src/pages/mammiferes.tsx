@@ -15,6 +15,7 @@ import { voirAnimal } from "@/lib/carnet";
 import { LuBaby, LuEar, LuHeartPulse, LuHourglass, LuMapPin, LuSatellite, LuScale, LuShieldCheck, LuTreePine, LuUsers, LuUtensils } from "react-icons/lu";
 import type { IconType } from "react-icons";
 import { lireFiche } from "@/lib/recompenses";
+import { plumeRegarde } from "@/lib/caractere";
 import { comparerPoids } from "@/lib/poids";
 import wikipedia from "@/data/wikipedia-fr.json";
 import galerie from "@/data/galerie.json";
@@ -171,6 +172,7 @@ function Fiche({ id }: { id: string }) {
     if (e) {
       voirAnimal(e.id);
       lireFiche(e.id);
+      plumeRegarde(e);
     }
   }, [e]);
   if (!e) return <Inconnue />;
