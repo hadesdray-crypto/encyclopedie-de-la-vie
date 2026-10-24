@@ -1,4 +1,5 @@
 import { LuCrown } from "react-icons/lu";
+import { Installer } from "@/components/installer";
 
 /*
  * Page d'accueil, dans le style de l'image de référence :
@@ -47,6 +48,7 @@ export function Accueil() {
         <img src="theme/coeur.webp" alt="" className="size-13 justify-self-end rounded-full mix-blend-screen" />
       </header>
       <p className="mt-0.5 text-center font-display text-lg text-[#f0d090]">Pour la princesse Leonie</p>
+      <Installer />
 
       <div className="relative mx-auto mt-1 w-full" style={{ aspectRatio: `${L} / ${H}` }}>
         <svg viewBox={`0 0 ${L} ${H}`} className="absolute inset-0 size-full" aria-hidden="true">
