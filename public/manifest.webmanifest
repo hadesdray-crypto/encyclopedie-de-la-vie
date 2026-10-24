@@ -1,14 +1,18 @@
 {
+  "id": "./",
   "name": "Encyclopédie de la vie",
   "short_name": "Encyclopédie",
+  "description": "L'encyclopédie de la vie, pour la princesse Leonie.",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#120c2c",
-  "theme_color": "#140a1e",
+  "orientation": "any",
+  "background_color": "#1b1440",
+  "theme_color": "#1b1440",
   "icons": [
-    { "src": "icone-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icone-512.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icone-masquable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
