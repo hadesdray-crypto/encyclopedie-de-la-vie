@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-10-24",
+    "titre": "Plume, la chouette de Leonie",
+    "points": [
+      "Plume fait coucou et se présente à Leonie.",
+      "Touche Plume : elle ouvre ses ailes, avec lecture, pause, vitesse de la voix et sons des jeux.",
+      "Quand Plume parle, un petit bouton Pause est toujours à côté d'elle.",
+      "La voix marche dans l'application Android."
+    ]
+  },
+  {
+    "date": "2026-10-24",
     "titre": "La voix de Plume",
     "points": [
       "Tu peux choisir la vitesse de la voix : lente, normale ou rapide.",

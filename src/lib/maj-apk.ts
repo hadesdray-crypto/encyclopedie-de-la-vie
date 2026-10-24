@@ -4,6 +4,7 @@
 // 3. « Redémarrer » : l'application se relance toute seule et dit « Mise à jour terminée ».
 // Rien d'autre ne s'ouvre. Rien ne se fait sans qu'on l'ait demandé.
 import { useEffect, useState } from "react";
+import { appeler, ecouter, moduleDisponible } from "@/lib/natif";
 
 declare const __APK__: boolean;
 declare const __APK_VERSION__: number;
@@ -16,15 +17,15 @@ export const LIEN_APK = `${DEPOT}/releases/latest/download/encyclopedie-de-la-vi
 const CLE_TERMINEE = "leonie-maj-terminee";
 
 type Bundle = { id: string; version: string };
-type Updater = {
-  notifyAppReady: () => Promise<unknown>;
-  download: (o: { url: string; version: string }) => Promise<Bundle>;
-  set: (o: { id: string }) => Promise<void>;
-  addListener: (evt: "download", f: (e: { percent: number }) => void) => Promise<{ remove: () => void }>;
-};
-
-function updater(): Updater | undefined {
-  return (window as unknown as { Capacitor?: { Plugins?: { CapacitorUpdater?: Updater } } }).Capacitor?.Plugins?.CapacitorUpdater;
+const UPD = "CapacitorUpdater";
+function updater() {
+  if (!moduleDisponible(UPD)) return undefined;
+  return {
+    notifyAppReady: () => appeler(UPD, "notifyAppReady"),
+    download: (o: { url: string; version: string }) => appeler<Bundle>(UPD, "download", o),
+    set: (o: { id: string }) => appeler<void>(UPD, "set", o),
+    addListener: (evt: string, f: (e: { percent: number }) => void) => ecouter(UPD, evt, f as (d: never) => void),
+  };
 }
 
 export type EtatMaj = {
@@ -79,14 +80,14 @@ export async function lancerMajApk() {
     return;
   }
   publier({ phase: "telechargement", pourcent: 0 });
-  const ecoute = await u.addListener("download", (e) => publier({ pourcent: Math.max(0, Math.min(100, Math.round(e.percent))) }));
+  const arreter = await u.addListener("download", (e) => publier({ pourcent: Math.max(0, Math.min(100, Math.round(e.percent))) }));
   try {
     bundle = await u.download({ url: `${DEPOT}/releases/download/android-${n}/web.zip`, version: String(n) });
     publier({ phase: "pret", pourcent: 100 });
   } catch {
     publier({ phase: "erreur" });
   } finally {
-    ecoute.remove();
+    arreter();
   }
 }
 

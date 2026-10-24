@@ -179,3 +179,20 @@ export const REACTIONS = {
   bonne: ["Bonne réponse !", "Bravo !", "Exactement !", "Bien joué !"],
   mauvaise: ["Presque ! Regarde la réponse, tu sauras la prochaine fois.", "Pas grave, on apprend en se trompant !"],
 };
+
+/** Le petit discours de Plume : à la première ouverture, puis quand Leonie le demande. */
+export const PRESENTATION: Explication = {
+  id: "presentation",
+  titre: "Coucou Leonie !",
+  etapes: [
+    "Coucou Leonie ! Oh… c'est toi ? Je suis tellement contente que ce soit toi qui t'occupes de moi.",
+    "Je m'appelle Plume. Je suis ta chouette. Je suis un peu timide, mais je vais tout te montrer.",
+    "Cette encyclopédie a été faite rien que pour toi, Leonie. Elle raconte toute l'histoire de la vie, depuis la naissance de la Terre.",
+    "Au milieu de la première page, il y a la grande lune. Touche-la pour commencer le voyage dans le temps.",
+    "Tu peux aussi découvrir presque sept mille mammifères, avec leurs photos, ce qu'ils mangent et où ils vivent.",
+    "Il y a des jeux, un défi chaque jour, et des cartes d'animaux à collectionner. Les cartes se gagnent en lisant et en jouant !",
+    "Si tu ne sais pas quoi faire, touche-moi. J'ouvre mes ailes, et je t'explique la page où tu es.",
+    "Sur mes ailes, il y a des boutons pour ma voix : plus lente, plus rapide, ou pour me faire taire. Sur mon ventre, lecture et pause.",
+    "Et tout marche même sans Internet. Allez, on y va ? Je suis prête !",
+  ],
+};

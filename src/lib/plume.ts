@@ -6,8 +6,8 @@ const CLE_VUS = "leonie-guide-vu";
 const CLE_PARLE = "leonie-plume-parle";
 const CLE_REACTIONS = "leonie-plume-reactions";
 
-type Etat = { ouvert: boolean; reaction: string | null };
-let etat: Etat = { ouvert: false, reaction: null };
+type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation"; coucou: number };
+let etat: Etat = { ouvert: false, reaction: null, contenu: "page", coucou: 0 };
 const abonnes = new Set<(e: Etat) => void>();
 let minuteur = 0;
 
@@ -27,8 +27,29 @@ export function usePlume() {
   return e;
 }
 
-export function ouvrirPlume(oui = true) {
-  publier({ ouvert: oui, reaction: null });
+export function ouvrirPlume(oui = true, contenu: Etat["contenu"] = "page") {
+  publier({ ouvert: oui, reaction: null, contenu, coucou: oui ? etat.coucou + 1 : etat.coucou });
+}
+
+/** Plume fait un petit coucou avec son aile. */
+export function coucouPlume() {
+  publier({ coucou: etat.coucou + 1 });
+}
+
+const CLE_PRESENTEE = "leonie-plume-presentee";
+export function presentationFaite() {
+  try {
+    return localStorage.getItem(CLE_PRESENTEE) === "oui";
+  } catch {
+    return true;
+  }
+}
+export function marquerPresentation() {
+  try {
+    localStorage.setItem(CLE_PRESENTEE, "oui");
+  } catch {
+    /* rien */
+  }
 }
 
 function lireReglage(cle: string, defaut: boolean) {
@@ -75,6 +96,7 @@ export function marquerExplique(id: string) {
 export function revoirExplications() {
   try {
     localStorage.removeItem(CLE_VUS);
+    localStorage.removeItem(CLE_PRESENTEE);
   } catch {
     /* rien */
   }

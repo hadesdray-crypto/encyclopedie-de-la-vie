@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LuVolume2 as Volume2, LuVolumeX as VolumeX } from "react-icons/lu";
 import { tauxVoix } from "@/lib/reglages";
+import { appeler, moduleDisponible } from "@/lib/natif";
 
 function voixFrancaise() {
   return window.speechSynthesis
@@ -24,30 +25,43 @@ function attendreVoix() {
 }
 
 // Dans l'application Android, la voix passe par le moteur de lecture du téléphone
-// (plugin Capacitor), qui marche sans Internet. Dans un navigateur : speechSynthesis.
-type TTS = { speak: (o: { text: string; lang: string; rate: number }) => Promise<void>; stop: () => Promise<void> };
-function voixNative(): TTS | undefined {
-  return (window as unknown as { Capacitor?: { Plugins?: { TextToSpeech?: TTS } } }).Capacitor?.Plugins?.TextToSpeech;
+// (module TextToSpeech), qui marche sans Internet. Dans un navigateur : speechSynthesis.
+const TTS = "TextToSpeech";
+type TTSNatif = { speak: (o: { text: string; lang: string; rate: number }) => Promise<void>; stop: () => Promise<void> };
+function voixNative(): TTSNatif | undefined {
+  if (!moduleDisponible(TTS)) return undefined;
+  return {
+    speak: (o) => appeler<void>(TTS, "speak", { ...o, pitch: 1.1, volume: 1, category: "playback" }),
+    stop: () => appeler<void>(TTS, "stop"),
+  };
 }
 
 export function voixPossible() {
   return typeof window !== "undefined" && (!!voixNative() || "speechSynthesis" in window);
 }
 
+// Chaque lecture a un numéro : quand on arrête ou qu'on relance, l'ancienne lecture se tait pour de bon.
+let jeton = 0;
+
 export async function lire(texte: string, onFin: () => void) {
+  const moi = ++jeton;
+  const fini = () => {
+    if (moi === jeton) onFin();
+  };
   const native = voixNative();
   if (native) {
     try {
       await native.stop();
+      if (moi !== jeton) return;
       await native.speak({ text: texte, lang: "fr-FR", rate: tauxVoix() });
     } catch {
       /* pas de voix française installée */
     }
-    onFin();
+    fini();
     return;
   }
   if (!("speechSynthesis" in window)) {
-    onFin();
+    fini();
     return;
   }
   window.speechSynthesis.cancel();
@@ -56,14 +70,15 @@ export async function lire(texte: string, onFin: () => void) {
     .split(/(?<=[.!?])\s+/)
     .map((morceau) => morceau.trim())
     .filter(Boolean);
-  if (morceaux.length === 0) {
-    onFin();
+  if (morceaux.length === 0 || moi !== jeton) {
+    fini();
     return;
   }
   let index = 0;
   const suite = () => {
+    if (moi !== jeton) return;
     if (index >= morceaux.length) {
-      onFin();
+      fini();
       return;
     }
     const phrase = new SpeechSynthesisUtterance(morceaux[index]);
@@ -72,7 +87,7 @@ export async function lire(texte: string, onFin: () => void) {
     phrase.rate = tauxVoix();
     if (voix) phrase.voice = voix;
     phrase.onend = suite;
-    phrase.onerror = () => onFin();
+    phrase.onerror = () => fini();
     window.speechSynthesis.speak(phrase);
   };
   window.speechSynthesis.resume();
@@ -80,6 +95,7 @@ export async function lire(texte: string, onFin: () => void) {
 }
 
 export function stopper() {
+  jeton++;
   voixNative()?.stop().catch(() => {});
   if ("speechSynthesis" in window) window.speechSynthesis.cancel();
 }

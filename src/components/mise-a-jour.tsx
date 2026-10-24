@@ -3,6 +3,7 @@ import { CLE_MAJ_WEB, accepterMiseAJour, useHorsLigne } from "@/lib/hors-ligne";
 import { EST_APK, fermerMaj, lancerMajApk, redemarrerApk, useMajApk } from "@/lib/maj-apk";
 import { useNouveautes } from "@/lib/nouveautes";
 import { sons } from "@/lib/sons";
+import { PlumeDessin } from "@/components/plume-dessin";
 
 /**
  * La mise à jour, en étapes très simples, sans jamais quitter l'application :
@@ -74,7 +75,7 @@ export function MiseAJour() {
   return (
     <div className="fixed inset-0 z-[60] grid place-items-center bg-[#0b0820]/90 px-6 backdrop-blur-sm">
       <div className="arrivee w-full max-w-sm rounded-[2rem] border-2 border-[#e8c98a] bg-[#24123f] px-5 py-6 text-center shadow-[0_0_40px_rgba(160,110,255,.6)]">
-        <img src="theme/plume.svg" alt="" className={`mx-auto size-24 ${phase === "telechargement" ? "plume-parle" : "plume-flotte"}`} />
+        <PlumeDessin anim={phase === "telechargement" ? "parle" : phase === "termine" ? "coucou" : "rien"} className="mx-auto size-24" />
 
         {phase === "telechargement" ? (
           <>
