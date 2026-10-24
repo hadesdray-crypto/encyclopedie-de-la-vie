@@ -1,37 +1,72 @@
 import { useState } from "react";
+import { LuCheck, LuChevronRight, LuWifi } from "react-icons/lu";
 import { PAR_ID } from "@/data/catalogue";
-import suivi from "@/data/suivi-gps.json";
 import monde from "@/data/monde.json";
 import { useInternet } from "@/lib/internet";
 import { Entete, Titre } from "@/components/entete";
+import { Portrait } from "@/components/portrait";
+import CarteAventure, { etudeDe, garderTraces, lireTraces, voyageurs, COULEURS, type Etude, type Trace } from "@/components/carte-aventure";
 
-type Etude = { etude: number; nom: string; capteur: string };
-type Trace = { individu: string; points: [number, number][] };
-const ETUDES = suivi as Record<string, Etude[]>;
 const PAYS = (monde as { pays: Record<string, string> }).pays;
-const CLE = "leonie-traces-";
 
-function lireGarde(etude: number): Trace[] | null {
-  try { return JSON.parse(localStorage.getItem(CLE + etude) || "null"); } catch { return null; }
+/** La page Aventure : la carte du monde des animaux voyageurs, et les trajets enregistrés. */
+export function AventurePage() {
+  const liste = voyageurs();
+  const enregistres = liste.filter((v) => v.traces?.length).length;
+  return (
+    <main className="mx-auto max-w-xl px-4 pt-4">
+      <Entete siVide="/" />
+      <Titre sous="Des scientifiques posent parfois un collier GPS à un animal, pour suivre ses voyages.">Aventure</Titre>
+      <div className="relative mt-4">
+        <CarteAventure />
+      </div>
+      <p className="mt-2 text-center text-xs texte-doux">En couleur : les pays où vit chaque animal. Les traits : les trajets enregistrés sur l'appareil.</p>
+      <p className="mt-4 text-center font-extrabold text-[#f3d48a]">
+        {enregistres ? `${enregistres} trajet${enregistres > 1 ? "s" : ""} enregistré${enregistres > 1 ? "s" : ""} sur ${liste.length}` : "Aucun trajet enregistré pour l'instant"}
+      </p>
+      <ul className="mt-3 space-y-2">
+        {liste.map((v) => (
+          <li key={v.espece.id}>
+            <a href={`#/suivi/${v.espece.id}`} className="flex items-center gap-3 rounded-3xl bg-card px-3 py-2.5">
+              <span className="medaillon block size-14 shrink-0 overflow-hidden" style={{ boxShadow: `0 0 0 3px ${v.couleur}` }}>
+                <Portrait id={v.espece.id} />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block font-extrabold leading-tight">{v.espece.nom}</span>
+                <span className="block text-xs leading-tight">Étude : {v.etude.nom}</span>
+                <span className="mt-1 inline-flex items-center gap-1 text-xs font-extrabold">
+                  {v.traces?.length ? (
+                    <>
+                      <LuCheck className="size-3.5" aria-hidden="true" /> Trajet enregistré ({v.traces.length} animal{v.traces.length > 1 ? "aux" : ""})
+                    </>
+                  ) : (
+                    <>
+                      <LuWifi className="size-3.5" aria-hidden="true" /> Pas encore de trajet
+                    </>
+                  )}
+                </span>
+              </span>
+              <LuChevronRight className="size-6 shrink-0" aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 rounded-3xl carte-nuit px-4 py-3 text-sm">
+        Pour charger un trajet, il faut Internet et l'accord d'une grande personne (dans Options, « Pour les grandes personnes »). Une fois chargé, il reste sur l'appareil, même sans Internet.
+      </p>
+    </main>
+  );
 }
 
 export function SuiviPage({ id }: { id?: string }) {
-  if (!id) {
-    const ids = Object.keys(ETUDES).map((latin) => [...PAR_ID.values()].find((e) => e.latin === latin)).filter(Boolean);
-    return (
-      <main className="mx-auto max-w-xl px-4 pt-4">
-        <Entete />
-        <Titre sous="Des scientifiques posent des colliers GPS sur certains animaux pour suivre leurs voyages.">Suivi GPS</Titre>
-        <ul className="mt-5 space-y-2">{ids.map((e) => <li key={e!.id}><a href={`#/suivi/${e!.id}`} className="block rounded-3xl bg-card px-4 py-3 font-extrabold">{e!.nom}</a></li>)}</ul>
-      </main>
-    );
-  }
+  if (!id) return <AventurePage />;
   const e = PAR_ID.get(id);
-  const etude = e ? ETUDES[e.latin]?.[0] : undefined;
+  const etude = e ? etudeDe(e) : undefined;
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
-      <Entete siVide={`/mammiferes/e-${id}`} />
+      <Entete siVide="/aventure" />
       <Titre sous={etude ? `Étude publique : ${etude.nom}` : "Aucune étude publique n'est notée."}>{e ? e.nom : "Animal inconnu"}</Titre>
+      {e ? <a href={`#/mammiferes/e-${id}`} className="mx-auto mt-2 block w-max rounded-full bg-card px-4 py-1.5 text-sm font-extrabold">Voir sa fiche</a> : null}
       {etude ? <Trajets etude={etude} /> : null}
     </main>
   );
@@ -39,7 +74,7 @@ export function SuiviPage({ id }: { id?: string }) {
 
 function Trajets({ etude }: { etude: Etude }) {
   const { permis, connecte } = useInternet();
-  const [traces, setTraces] = useState<Trace[] | null>(() => lireGarde(etude.etude));
+  const [traces, setTraces] = useState<Trace[] | null>(() => lireTraces(etude.etude));
   const [etat, setEtat] = useState("");
 
   async function charger() {
@@ -54,10 +89,9 @@ function Trajets({ etude }: { etude: Etude }) {
         individu: i.individual_local_identifier || "Animal",
         points: (i.locations ?? []).filter((p) => Number.isFinite(p.location_lat)).map((p) => [p.location_lat, p.location_long] as [number, number]),
       })).filter((t) => t.points.length > 1);
-      const json = JSON.stringify(t);
-      try { localStorage.setItem(CLE + etude.etude, json); } catch { /* plein */ }
+      const taille = garderTraces(etude.etude, t);
       setTraces(t);
-      setEtat(`Téléchargé : ${Math.max(1, Math.round(texte.length / 1024))} Ko. Gardé sur l'appareil (${Math.max(1, Math.round(json.length / 1024))} Ko).`);
+      setEtat(`Téléchargé : ${Math.max(1, Math.round(texte.length / 1024))} Ko. Gardé sur l'appareil (${Math.max(1, Math.round(taille / 1024))} Ko).`);
     } catch {
       setEtat("Movebank n'a pas répondu, ou ne permet pas ce téléchargement depuis le navigateur. Rien n'a été inventé.");
     }
@@ -69,7 +103,7 @@ function Trajets({ etude }: { etude: Etude }) {
       <div className="carte-nuit rounded-3xl px-4 py-4 text-sm">
         <p className="font-extrabold text-[#f3d48a]">A besoin d'une connexion</p>
         <p className="mt-1">On charge seulement quelques points par animal (40 au plus, pour 6 animaux) : en général quelques dizaines de Ko. Une étude complète peut peser des centaines de Mo : elle n'est jamais téléchargée.</p>
-        {!permis ? <p className="mt-2">Un adulte peut allumer cette option dans Profil, « Coin des parents ».</p> : !connecte ? <p className="mt-2">L'appareil n'a pas de connexion en ce moment.</p> : (
+        {!permis ? <p className="mt-2">Un adulte peut allumer cette option dans Options, « Pour les grandes personnes ».</p> : !connecte ? <p className="mt-2">L'appareil n'a pas de connexion en ce moment.</p> : (
           <button type="button" onClick={charger} className="bouton-bois mt-3 rounded-full px-4 py-2 font-extrabold">Charger quelques points</button>
         )}
         {etat ? <p className="mt-2">{etat}</p> : null}
@@ -78,7 +112,6 @@ function Trajets({ etude }: { etude: Etude }) {
   );
 }
 
-const COULEURS = ["#f3c35a", "#7fd6ff", "#f3a0e0", "#9be08a", "#ff9f6e", "#c9a8ff"];
 
 function Dessin({ traces }: { traces: Trace[] }) {
   const pts = traces.flatMap((t) => t.points);

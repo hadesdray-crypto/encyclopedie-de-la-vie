@@ -36,7 +36,8 @@ export function coucouPlume() {
   publier({ coucou: etat.coucou + 1 });
 }
 
-const CLE_PRESENTEE = "leonie-plume-presentee";
+// « -2 » : la nouvelle présentation (accueil de Leonie, barre, Options) est montrée une fois.
+const CLE_PRESENTEE = "leonie-plume-presentee-2";
 export function presentationFaite() {
   try {
     return localStorage.getItem(CLE_PRESENTEE) === "oui";
@@ -110,3 +111,24 @@ export function plumeReagit(type: keyof typeof REACTIONS) {
   window.clearTimeout(minuteur);
   minuteur = window.setTimeout(() => publier({ reaction: null }), 3500);
 }
+
+/** Plume dit une petite phrase dans sa bulle, quelques secondes (même si les réactions sont éteintes). */
+export function plumeDit(texte: string, duree = 3000) {
+  publier({ reaction: texte });
+  window.clearTimeout(minuteur);
+  minuteur = window.setTimeout(() => publier({ reaction: null }), duree);
+}
+
+export function plumeOuverte() {
+  return etat.ouvert;
+}
+
+// Plume explique chaque nouvelle page toute seule ? Non par défaut : elle reste discrète.
+const CLE_AUTO = "leonie-plume-explique-seule";
+export const plumeExpliqueSeule = () => lireReglage(CLE_AUTO, false);
+export const choisirPlumeExplique = (oui: boolean) => ecrireReglage(CLE_AUTO, oui);
+
+// Plume fait coucou de temps en temps (animation).
+const CLE_COUCOU = "leonie-plume-coucou";
+export const plumeBouge = () => lireReglage(CLE_COUCOU, true);
+export const choisirPlumeBouge = (oui: boolean) => ecrireReglage(CLE_COUCOU, oui);

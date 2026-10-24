@@ -435,3 +435,35 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .plume-svg .pl-yeux, .plume-coucou .pl-aile-d, .plume-parle .pl-tete, .plume-parle .pl-bec, .ailes-menu { animation: none; }
 }
+
+/* ---- Barre du bas : petit saut quand on touche, pastilles qui respirent ---- */
+.saut { animation: saut 0.45s ease-out; }
+@keyframes saut {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-7px) scale(1.12); }
+  100% { transform: translateY(0) scale(1); }
+}
+.pastille-barre { animation: respire 1.8s ease-in-out infinite; }
+@keyframes respire {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .saut, .pastille-barre { animation: none; }
+}
+
+/* ---- Accueil : le nom de Leonie ---- */
+.nom-leonie {
+  color: #f3d48a;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 18px rgba(243, 212, 138, 0.55), 0 3px 0 #8a5a1a;
+}
+/* Les points de l'Aventure, qui envoient des ondes */
+.onde { animation: onde 2.2s ease-out infinite; }
+@keyframes onde {
+  0% { transform: scale(0.6); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .onde { animation: none; }
+}

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { LuChevronLeft, LuChevronRight, LuCircleHelp, LuMusic, LuPause, LuPlay, LuRotateCcw, LuSparkles, LuX } from "react-icons/lu";
+import { LuChevronLeft, LuChevronRight, LuCircleHelp, LuMusic, LuPause, LuPlay, LuRotateCcw, LuSettings, LuSparkles, LuX } from "react-icons/lu";
 import { PRESENTATION, explicationPour } from "@/data/guide";
 import { voixPossible } from "@/components/voix";
 import { PlumeDessin, type AnimPlume } from "@/components/plume-dessin";
@@ -9,6 +9,8 @@ import {
   marquerExplique,
   marquerPresentation,
   ouvrirPlume,
+  plumeBouge,
+  plumeExpliqueSeule,
   plumeParleSeule,
   presentationFaite,
   usePlume,
@@ -35,7 +37,7 @@ export function BoutonPlume({ taille = "size-12" }: { taille?: string }) {
   }, [coucou]);
   useEffect(() => {
     const t = window.setInterval(() => {
-      if (document.visibilityState === "visible" && Math.random() < 0.5) {
+      if (document.visibilityState === "visible" && plumeBouge() && Math.random() < 0.5) {
         setAnim("coucou");
         window.setTimeout(() => setAnim("rien"), 1700);
       }
@@ -82,7 +84,8 @@ export function PanneauPlume({ chemin, params }: { chemin: string; params: URLSe
   const [seule, setSeule] = useState(plumeParleSeule);
   const premier = useRef(true);
 
-  // Première ouverture de l'application : Plume se présente. Ensuite, la première visite de chaque page.
+  // Première ouverture de l'application : Plume se présente. Ensuite elle reste discrète :
+  // elle n'explique une page toute seule que si l'option « Plume explique chaque nouvelle page » est allumée.
   useEffect(() => {
     taire();
     setEtape(0);
@@ -95,7 +98,7 @@ export function PanneauPlume({ chemin, params }: { chemin: string; params: URLSe
       return;
     }
     premier.current = false;
-    if (!dejaExplique(explicationPage.id)) {
+    if (plumeExpliqueSeule() && !dejaExplique(explicationPage.id)) {
       marquerExplique(explicationPage.id);
       ouvrirPlume(true, "page");
     } else ouvrirPlume(false);
@@ -141,8 +144,8 @@ export function PanneauPlume({ chemin, params }: { chemin: string; params: URLSe
     <div className="fixed inset-0 z-40 bg-[#0b0820]/70" onClick={fermer}>
       <div className="mx-auto w-[min(100%,28rem)] px-3" style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 0.5rem)" }} onClick={(e) => e.stopPropagation()}>
         {/* Plume ailes ouvertes */}
-        <div className="ailes-menu relative mx-auto h-[15.5rem]">
-          <div className="aile-panneau aile-g absolute left-0 top-16 flex w-[37%] flex-col items-stretch gap-1.5 px-2.5 py-3 text-[13px]">
+        <div className="ailes-menu relative mx-auto h-[17.5rem]">
+          <div className="aile-panneau aile-g absolute left-0 top-16 flex w-[37%] flex-col items-stretch gap-1.5 py-3 pl-2.5 pr-4 text-[13px]">
             <button
               type="button"
               aria-pressed={sonsJeux}
@@ -181,8 +184,16 @@ export function PanneauPlume({ chemin, params }: { chemin: string; params: URLSe
                 </button>
               </>
             ) : null}
+            <a
+              href="#/options"
+              onClick={fermer}
+              className="flex min-h-10 items-center gap-1.5 rounded-xl bg-[#fff8ea] px-2 font-extrabold text-[#4a2a8a]"
+            >
+              <LuSettings className="size-4 shrink-0" aria-hidden="true" />
+              Options
+            </a>
           </div>
-          <div className="aile-panneau aile-d absolute right-0 top-16 flex w-[37%] flex-col items-stretch gap-1.5 px-2.5 py-3 text-[13px]">
+          <div className="aile-panneau aile-d absolute right-0 top-16 flex w-[37%] flex-col items-stretch gap-1.5 py-3 pl-5 pr-2.5 text-[13px]">
             {voix ? (
               <button
                 type="button"
@@ -202,7 +213,7 @@ export function PanneauPlume({ chemin, params }: { chemin: string; params: URLSe
               className="flex min-h-10 items-center gap-1.5 rounded-xl bg-[#fff8ea] px-2 text-left font-extrabold leading-tight text-[#4a2a8a]"
             >
               {contenu === "presentation" ? <LuCircleHelp className="size-4 shrink-0" aria-hidden="true" /> : <LuSparkles className="size-4 shrink-0" aria-hidden="true" />}
-              {contenu === "presentation" ? "Aide de la page" : "Qui est Plume ?"}
+              {contenu === "presentation" ? "Aide de la page" : "Tout me redire"}
             </button>
             <button type="button" onClick={fermer} className="flex min-h-10 items-center gap-1.5 rounded-xl bg-[#fff8ea] px-2 font-extrabold text-[#4a2a8a]">
               <LuX className="size-4 shrink-0" aria-hidden="true" />

@@ -12,6 +12,7 @@ import { REGIMES, type RegimeId } from "@/data/fiches-vie";
 import { ETAPES, FRISE } from "@/data/arbre";
 import { noterReponse } from "@/lib/carnet";
 import { Entete, Titre } from "@/components/entete";
+import { aujourdhui, lireDefis, noterDefi, serie } from "@/lib/defis";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import { Vignette } from "@/components/icone";
 import { PAR_ID } from "@/data/catalogue";
@@ -375,14 +376,6 @@ function QuestionCri() {
 
 // ---------- Défi du jour ----------
 // Cinq questions, les mêmes pour toute la journée. Une série compte les jours réussis d'affilée.
-const CLE_DEFIS = "leonie-defis";
-
-function aujourdhui(decalage = 0) {
-  const d = new Date();
-  d.setDate(d.getDate() - decalage);
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-}
-
 function hasard(graine: string) {
   let h = 1779033703;
   for (const c of graine) h = Math.imul(h ^ c.charCodeAt(0), 3432918353) | 0;
@@ -392,25 +385,6 @@ function hasard(graine: string) {
     h ^= h >>> 16;
     return (h >>> 0) / 4294967296;
   };
-}
-
-function lireDefis(): Record<string, number> {
-  try {
-    return JSON.parse(localStorage.getItem(CLE_DEFIS) || "{}");
-  } catch {
-    return {};
-  }
-}
-
-function serie(defis: Record<string, number>) {
-  let n = 0;
-  // Si le défi d'aujourd'hui n'est pas encore fait, la série d'hier compte toujours.
-  let i = defis[aujourdhui()] !== undefined ? 0 : 1;
-  while (defis[aujourdhui(i)] !== undefined) {
-    n++;
-    i++;
-  }
-  return n;
 }
 
 type QDefi = { consigne: string; audio?: string; carte?: string[]; choix: { id: string; nom: string; detail?: string }[]; bon: string; apres: string };
@@ -496,13 +470,7 @@ function DefiDuJour() {
   function suivante() {
     if (i + 1 >= questions.length) {
       const total = score;
-      const d = { ...lireDefis(), [aujourdhui()]: total };
-      try {
-        localStorage.setItem(CLE_DEFIS, JSON.stringify(d));
-      } catch {
-        /* rien */
-      }
-      setDefis(d);
+      setDefis(noterDefi(total));
       sons.victoire();
       window.setTimeout(() => gagnerPaquet("Défi du jour terminé"), 900);
     }

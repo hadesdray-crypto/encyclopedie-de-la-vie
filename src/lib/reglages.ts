@@ -63,3 +63,12 @@ export function choisirVitesseVoix(v: Vitesse) {
 export function tauxVoix() {
   return VITESSES.find((v) => v.id === vitesseVoix())!.taux;
 }
+
+// Plume dit le nom des boutons de la barre quand on les touche.
+const CLE_NOMS = "leonie-dire-boutons";
+export function direBoutons() {
+  return lire(CLE_NOMS) === "oui";
+}
+export function choisirDireBoutons(oui: boolean) {
+  ecrire(CLE_NOMS, oui ? "oui" : "non");
+}

@@ -8,6 +8,7 @@ import { appliquerGrosTexte } from "@/lib/reglages";
 import { useChemin } from "@/lib/routeur";
 import { demarrerHorsLigne } from "@/lib/hors-ligne";
 import { demarrerMajApk } from "@/lib/maj-apk";
+import { demarrerFleche } from "@/lib/fleche";
 import { Accueil } from "@/pages/accueil";
 import { ArbrePage } from "@/pages/arbre";
 import { FrisePage } from "@/pages/frise";
@@ -21,6 +22,8 @@ const Jouer = lazy(() => import("@/pages/jouer").then((m) => ({ default: m.Jouer
 const Cartes = lazy(() => import("@/pages/cartes").then((m) => ({ default: m.CartesPage })));
 const Profil = lazy(() => import("@/pages/profil").then((m) => ({ default: m.ProfilPage })));
 const Suivi = lazy(() => import("@/pages/suivi").then((m) => ({ default: m.SuiviPage })));
+const Aventure = lazy(() => import("@/pages/suivi").then((m) => ({ default: m.AventurePage })));
+const Options = lazy(() => import("@/pages/options").then((m) => ({ default: m.OptionsPage })));
 
 type Page = ComponentType<{ id?: string; params: URLSearchParams }>;
 
@@ -34,6 +37,8 @@ const ROUTES: [string, Page][] = [
   ["/cartes", Cartes],
   ["/profil", Profil],
   ["/suivi", Suivi],
+  ["/aventure", Aventure],
+  ["/options", Options],
   ["/sources", SourcesPage],
 ];
 
@@ -83,3 +88,4 @@ createRoot(document.getElementById("app")!).render(
 appliquerGrosTexte();
 demarrerHorsLigne();
 demarrerMajApk();
+demarrerFleche();
