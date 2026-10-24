@@ -645,3 +645,220 @@ export function MimeAnimal() {
     </section>
   );
 }
+
+// ---------------------------------------------------------------- les 7 familles (2 à 4, on se passe le téléphone)
+
+export const REGLES_FAMILLES: Explication = {
+  id: "regles-familles",
+  titre: "Les règles des 7 familles",
+  etapes: [
+    "Il y a sept familles d'animaux, avec six animaux dans chaque famille. Le but : réunir des familles complètes.",
+    "Chacun son tour, on prend le téléphone. Les autres ne regardent pas tes cartes !",
+    "Demande une carte à un joueur : « Dans la famille des félins, je voudrais le lion. » Tu dois déjà avoir une carte de cette famille.",
+    "S'il l'a, il te la donne et tu rejoues. Sinon : « Pioche ! » Si tu pioches la carte demandée, tu rejoues aussi.",
+    "Une famille complète se pose devant toi. À la fin, celui qui a le plus de familles gagne.",
+  ],
+};
+
+const FAMILLES_JEU = ["Felidae", "Canidae", "Cervidae", "Delphinidae", "Sciuridae", "Mustelidae", "Macropodidae"];
+const NOMS_FAMILLES: Record<string, string> = {
+  Felidae: "félins", Canidae: "loups et renards", Cervidae: "cerfs", Delphinidae: "dauphins", Sciuridae: "écureuils", Mustelidae: "belettes et loutres", Macropodidae: "kangourous",
+};
+type CarteFam = { id: string; nom: string; famille: string };
+
+function paquetFamilles(): CarteFam[] {
+  const toutes = [...PAR_ID.values()];
+  return FAMILLES_JEU.flatMap((f) =>
+    melanger(toutes.filter((e) => e.famille === f && e.langue === "fr" && !e.disparue && aUnePhotoFam(e.id)))
+      .slice(0, 6)
+      .map((e) => ({ id: e.id, nom: e.nom, famille: f })),
+  );
+}
+import { aUnePhoto as aUnePhotoFam } from "@/components/portrait";
+
+type EtatFam = { mains: CarteFam[][]; pioche: CarteFam[]; posees: string[][]; tour: number; vue: "cache" | "main" | "reponse"; message: string; rejoue: boolean };
+
+export function SeptFamilles() {
+  const [joueurs, setJoueurs] = useState<Joueur[]>(() => {
+    const j = lireJoueurs();
+    return j.length >= 2 ? j : [...j, { nom: "Joueur 2", couleur: "#2f5fa8", equipe: 1 }];
+  });
+  const [mode, setMode] = useState<Mode>("chacun");
+  const [e, setE] = useState<EtatFam | null>(null);
+  const [cible, setCible] = useState<number | null>(null);
+  const [famille, setFamille] = useState<string | null>(null);
+  const arreter = useCallback(() => setE(null), []);
+  useQuitterPartie(!!e, arreter);
+
+  function poser(main: CarteFam[], posees: string[]) {
+    let m = main;
+    const p = [...posees];
+    for (const f of FAMILLES_JEU) {
+      if (m.filter((c) => c.famille === f).length === 6) {
+        m = m.filter((c) => c.famille !== f);
+        p.push(f);
+      }
+    }
+    return { m, p };
+  }
+
+  function commencer() {
+    const paquet = melanger(paquetFamilles());
+    const n = joueurs.length === 2 ? 7 : 5;
+    const mains = joueurs.map((_, i) => paquet.slice(i * n, (i + 1) * n));
+    setE({ mains, pioche: paquet.slice(joueurs.length * n), posees: joueurs.map(() => []), tour: 0, vue: "cache", message: "", rejoue: false });
+    setCible(null);
+    setFamille(null);
+  }
+
+  if (!e) {
+    return (
+      <>
+        <div className="mt-3 flex justify-center"><BoutonRegles regles={REGLES_FAMILLES} /></div>
+        <Preparation joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace={false} setFaceAFace={() => {}} sansFaceAFace onJouer={commencer}>
+          <p className="px-1 text-sm texte-doux">Les familles : {FAMILLES_JEU.map((f) => NOMS_FAMILLES[f]).join(", ")}. Six vrais animaux dans chacune.</p>
+        </Preparation>
+      </>
+    );
+  }
+
+  const total = e.posees.reduce((s, p) => s + p.length, 0);
+  const fini = total === FAMILLES_JEU.length;
+  const moi = e.tour;
+  const main = e.mains[moi];
+
+  function demander(carte: CarteFam) {
+    if (!e || cible === null) return;
+    const mains = e.mains.map((m) => [...m]);
+    const posees = e.posees.map((p) => [...p]);
+    let pioche = [...e.pioche];
+    let message: string;
+    let rejoue = false;
+    const chez = mains[cible].findIndex((c) => c.id === carte.id);
+    const phrase = `Dans la famille des ${NOMS_FAMILLES[carte.famille]}, je voudrais ${carte.nom}.`;
+    if (chez >= 0) {
+      mains[cible].splice(chez, 1);
+      mains[moi].push(carte);
+      message = `${phrase} ${joueurs[cible].nom} l'avait ! Tu rejoues.`;
+      rejoue = true;
+      sons.bonne();
+    } else if (pioche.length) {
+      const tiree = pioche[0];
+      pioche = pioche.slice(1);
+      mains[moi].push(tiree);
+      rejoue = tiree.id === carte.id;
+      message = `${phrase} ${joueurs[cible].nom} ne l'a pas : pioche ! Tu as pioché ${tiree.nom}.${rejoue ? " Bonne pioche, tu rejoues !" : ""}`;
+    } else {
+      message = `${phrase} ${joueurs[cible].nom} ne l'a pas, et la pioche est vide.`;
+    }
+    const r = poser(mains[moi], posees[moi]);
+    if (r.p.length > posees[moi].length) message += ` Famille complète : les ${NOMS_FAMILLES[r.p[r.p.length - 1]]} !`;
+    mains[moi] = r.m;
+    posees[moi] = r.p;
+    plumeDit(phrase, 3000);
+    if (voixPossible()) dire(phrase);
+    setE({ ...e, mains, posees, pioche, vue: "reponse", message, rejoue });
+    setCible(null);
+    setFamille(null);
+  }
+
+  function continuer() {
+    if (!e) return;
+    if (e.rejoue && e.mains[moi].length) {
+      setE({ ...e, vue: "main", message: "" });
+      return;
+    }
+    // Joueur suivant qui a encore des cartes (ou qui peut piocher).
+    let t = (e.tour + 1) % joueurs.length;
+    for (let k = 0; k < joueurs.length && !e.mains[t].length && !e.pioche.length; k++) t = (t + 1) % joueurs.length;
+    const mains = e.mains.map((m) => [...m]);
+    let pioche = e.pioche;
+    if (!mains[t].length && pioche.length) {
+      mains[t].push(pioche[0]);
+      pioche = pioche.slice(1);
+    }
+    setE({ ...e, mains, pioche, tour: t, vue: "cache", message: "", rejoue: false });
+  }
+
+  const scores = e.posees.map((p) => p.length);
+  const parFamille = FAMILLES_JEU.map((f) => [f, main.filter((c) => c.famille === f)] as const).filter(([, l]) => l.length);
+  const autres = joueurs.map((_, i) => i).filter((i) => i !== moi && e.mains[i].length);
+
+  return (
+    <section className="mt-3">
+      <p className="text-center text-sm">{joueurs.map((j, i) => `${j.nom} : ${scores[i]} famille${scores[i] > 1 ? "s" : ""}`).join(" · ")} · pioche : {e.pioche.length}</p>
+      {fini ? (
+        <Fin texte={vainqueur(joueurs, scores, mode).texte} onRejouer={commencer} onReglages={arreter} />
+      ) : e.vue === "cache" ? (
+        <div className="mt-8 text-center">
+          <p className="font-display text-3xl" style={{ color: joueurs[moi].couleur }}>À toi, {joueurs[moi].nom} !</p>
+          <p className="mt-2">Prends le téléphone. Les autres ne regardent pas tes cartes !</p>
+          <button type="button" onClick={() => setE({ ...e, vue: "main" })} className="bouton-bois mt-5 rounded-full px-6 py-3 font-extrabold">Voir mes cartes</button>
+        </div>
+      ) : e.vue === "reponse" ? (
+        <div className="arrivee mt-6 text-center">
+          <p className="mx-auto max-w-sm rounded-3xl bg-[#fff8ea] px-4 py-3 font-bold text-[#4a2a8a]">{e.message}</p>
+          <button type="button" onClick={continuer} className="bouton-bois mt-4 rounded-full px-6 py-3 font-extrabold">{e.rejoue ? "Je rejoue" : "Cacher mes cartes et passer"}</button>
+        </div>
+      ) : (
+        <div className="mt-3">
+          <p className="text-center font-display text-2xl" style={{ color: joueurs[moi].couleur }}>Tes cartes, {joueurs[moi].nom}</p>
+          {e.posees[moi].length ? <p className="text-center text-xs">Tes familles : {e.posees[moi].map((f) => NOMS_FAMILLES[f]).join(", ")}</p> : null}
+          <div className="mt-2 space-y-2">
+            {parFamille.map(([f, l]) => (
+              <div key={f} className="rounded-2xl bg-[#2a1844]/70 px-2 py-1.5">
+                <p className="text-xs font-black text-[#f0d090]">Famille des {NOMS_FAMILLES[f]} · {l.length} sur 6</p>
+                <div className="mt-1 flex flex-wrap gap-1.5">
+                  {l.map((c) => (
+                    <span key={c.id} className="w-16 text-center">
+                      <span className="block aspect-square overflow-hidden rounded-xl ring-2 ring-[#d9b56a]"><Portrait id={c.id} /></span>
+                      <span className="line-clamp-2 block text-[9px] font-extrabold leading-tight">{c.nom}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          {!main.length ? (
+            <button type="button" onClick={continuer} className="bouton-bois mt-3 w-full rounded-2xl py-3 font-extrabold">Je n'ai plus de cartes : passer</button>
+          ) : (
+            <div className="mt-3 rounded-3xl bg-card px-3 py-3 text-[#2a1c14]">
+              <p className="font-extrabold">1. À qui demander ?</p>
+              <div className="mt-1 flex flex-wrap gap-1.5">
+                {autres.map((i) => <button key={i} type="button" onClick={() => setCible(i)} className="rounded-full px-3 py-1.5 font-extrabold text-white" style={{ background: joueurs[i].couleur, outline: cible === i ? "3px solid #2a1c14" : "none" }}>{joueurs[i].nom}</button>)}
+                {!autres.length ? <p className="text-sm">Les autres n'ont plus de cartes.</p> : null}
+              </div>
+              {cible !== null ? (
+                <>
+                  <p className="mt-2 font-extrabold">2. Quelle famille ?</p>
+                  <div className="mt-1 flex flex-wrap gap-1.5">
+                    {parFamille.map(([f]) => <Choix key={f} actif={famille === f} onClick={() => setFamille(f)}>{NOMS_FAMILLES[f]}</Choix>)}
+                  </div>
+                </>
+              ) : null}
+              {cible !== null && famille ? (
+                <>
+                  <p className="mt-2 font-extrabold">3. Quelle carte veux-tu ?</p>
+                  <div className="mt-1 grid grid-cols-3 gap-1.5">
+                    {paquetFamillesConnu(e, famille).filter((c) => !main.some((m) => m.id === c.id)).map((c) => (
+                      <button key={c.id} type="button" onClick={() => demander(c)} className="rounded-xl bg-[#fff8ea] p-1 text-center">
+                        <span className="block aspect-square overflow-hidden rounded-lg"><Portrait id={c.id} /></span>
+                        <span className="line-clamp-2 block text-[10px] font-extrabold leading-tight">{c.nom}</span>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              ) : null}
+            </div>
+          )}
+        </div>
+      )}
+    </section>
+  );
+}
+
+/** Les six cartes d'une famille dans cette partie (où qu'elles soient). */
+function paquetFamillesConnu(e: EtatFam, famille: string) {
+  const toutes = [...e.mains.flat(), ...e.pioche];
+  return toutes.filter((c) => c.famille === famille).sort((a, b) => a.nom.localeCompare(b.nom, "fr"));
+}
