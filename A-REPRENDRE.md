@@ -26,3 +26,10 @@ Aucune erreur dans la console. Les points 1 à 3 ci-dessous sont faits.
 4. Revoir les 3 360 photos (public/m). Il y a au moins une carte de géographie à retirer. Retirer aussi les animaux morts, garder crânes et squelettes.
 5. Avec accès à Wikipédia, Wikidata, GBIF et iNaturalist : noms français, crédits des photos, cris CC0/CC BY.
 6. GitHub : README, workflow GitHub Pages.
+
+## Mise à jour (24 octobre)
+- Ouverture de paquets animée (tremblement, déchirure, cartes retournées une à une, cadres par rareté, holographie, « Wah, la chance ! »), sons synthétisés (src/lib/sons.ts), bouton pour couper le son.
+- Jeu de mémoire (3 niveaux, avec les animaux de la collection).
+- Rareté calculée avec la liste des pays (plus de « répartition mal connue » à tort).
+- Les paquets tirent d'abord les animaux qui ont un nom français et une photo.
+- Photos relues une par une : 317 retirées (cartes de géographie, peaux de musée, animaux qui semblent morts, images vides). Liste : scripts/photos-retirees.txt.

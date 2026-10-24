@@ -1,3 +1,4 @@
+import { aUnePhoto } from "@/components/portrait";
 import { ESPECES, type Espece } from "@/data/catalogue";
 
 export const RARETES = ["Pas très répandu", "Assez peu répandu", "Peu répandu", "Très peu répandu"] as const;
@@ -39,10 +40,11 @@ function extremes() {
 
 const { petits: PLUS_PETITS, forts: PLUS_FORTS } = extremes();
 
-export function rareteDe(ou: string): Rarete | "Répandu" | null {
-  const trouve = ou.match(/(\d+)\s+pays/);
-  if (!trouve) return null;
-  const pays = Number(trouve[1]);
+export function rareteDe(espece: Espece): Rarete | "Répandu" | null {
+  // Nombre de pays où l'espèce vit, d'après la Mammal Diversity Database.
+  const trouve = espece.ou.match(/(\d+)\s+pays/);
+  const pays = espece.pays?.length || (trouve ? Number(trouve[1]) : 0);
+  if (!pays) return null;
   if (pays <= 5) return "Très peu répandu";
   if (pays <= 8) return "Peu répandu";
   if (pays <= 15) return "Assez peu répandu";
@@ -66,12 +68,12 @@ function construireAlbums(): Album[] {
     "Répartition mal connue": [],
   };
   for (const espece of vivants) {
-    const rarete = rareteDe(espece.ou);
+    const rarete = rareteDe(espece);
     groupes[rarete ?? "Répartition mal connue"].push(espece);
   }
   const regle = "Le nombre de pays est celui qui est publié. Chaque nom ouvre la fiche.";
   return [
-    { id: "tres", titre: "Très peu répandu", explique: `4 ou 5 pays. ${regle}`, especes: trier(groupes["Très peu répandu"]) },
+    { id: "tres", titre: "Très peu répandu", explique: `1 à 5 pays. ${regle}`, especes: trier(groupes["Très peu répandu"]) },
     { id: "peu", titre: "Peu répandu", explique: `6 à 8 pays. ${regle}`, especes: trier(groupes["Peu répandu"]) },
     { id: "assez", titre: "Assez peu répandu", explique: `9 à 15 pays. ${regle}`, especes: trier(groupes["Assez peu répandu"]) },
     { id: "pas", titre: "Pas très répandu", explique: `16 à 40 pays. ${regle}`, especes: trier(groupes["Pas très répandu"]) },
@@ -85,7 +87,7 @@ function construireAlbums(): Album[] {
 export const ALBUMS = construireAlbums();
 
 function marquer(espece: Espece, chance: boolean): Tirage {
-  const rarete = rareteDe(espece.ou);
+  const rarete = rareteDe(espece);
   return {
     espece,
     rarete: rarete === "Répandu" ? "Répandu" : rarete,
@@ -96,8 +98,11 @@ function marquer(espece: Espece, chance: boolean): Tirage {
 
 export function ouvrirPaquet(famille: string, deja: Set<string>) {
   const vivants = ESPECES.filter((espece) => !espece.disparue && (famille === "toutes" || espece.famille === famille));
-  const neufs = vivants.filter((espece) => !deja.has(espece.id));
-  const pile = neufs.length >= 10 ? neufs : vivants;
+  // On tire d'abord les animaux qui ont un nom français et une photo : c'est plus agréable.
+  const jolis = vivants.filter((espece) => espece.langue === "fr" && aUnePhoto(espece.id));
+  const base = jolis.length >= 11 ? jolis : vivants;
+  const neufs = base.filter((espece) => !deja.has(espece.id));
+  const pile = neufs.length >= 10 ? neufs : base;
   const melange = [...pile].sort(() => Math.random() - 0.5);
   const dix = melange.slice(0, 10).map((espece) => marquer(espece, false));
   const reste = melange.slice(10);

@@ -1,0 +1,319 @@
+# Photos retirées après relecture (cartes de géographie, peaux de musée étiquetées, animaux qui semblent morts).
+# Ces espèces affichent le dessin de remplacement. Une nouvelle photo vivante est à chercher.
+1000003	Zaglossus attenboroughi	Attenborough's Long-beaked Echidna
+1000007	Caenolestes condorensis	Condor Shrew-opossum
+1000028	Philander deltae	Orinoco Four-eyed Opossum
+1000029	Philander mcilhennyi	McIlhenny's Four-eyed Opossum
+1000044	Marmosa macrotarsus	Western Amazonian Mouse Opossum
+1000084	Monodelphis unistriata	Single-striped Opossum
+1000093	Chacodelphys formosa	Pygmy Opossum
+1000096	Cryptonanus guahybae	Guaiba Mouse Opossum
+1000102	Gracilinanus marica	Northern Gracile Opossum
+1000114	Marmosops invictus	Panama Slender Opossum
+1000115	Marmosops juninensis	Junin Slender Opossum
+1000123	Marmosops pinheiroi	Pinheiro's Slender Opossum
+1000127	Thylamys karimii	Karimi's Fat-tailed Opossum
+1000135	Thylamys venustus	Buff-bellied Fat-tailed Opossum
+1000141	Notoryctes caurinus	Northwestern Marsupial Mole
+1000151	Dasyurus spartacus	Bronze Quoll
+1000161	Pseudantechinus bilarni	Sandstone Pseudantechinus
+1000164	Pseudantechinus ningbing	Ningbing Pseudantechinus
+1000169	Antechinus argentus	Silver-headed Antechinus
+1000173	Antechinus godmani	Atherton Antechinus
+1000174	Antechinus leo	Cinnamon Antechinus
+1000182	Murexia habbema	Habbema Dasyure
+1000183	Murexia longicaudata	Aru Short-furred Dasyure
+1000185	Murexia naso	Western Long-nosed Dasyure
+1000188	Phascogale pirata	Northern Brush-tailed Phascogale
+1000197	Ningaui timealeyi	Pilbara Ningaui
+1000200	Sminthopsis bindi	Kakadu Dunnart
+1000208	Sminthopsis granulipes	Dunnart cendré à queue blanche
+1000209	Sminthopsis hirtipes	Greater Hairy-footed Dunnart
+1000211	Antechinomys longicaudatus	Greater Long-tailed Dunnart
+1000214	Sminthopsis ooldea	Dunnart Ooldea
+1000227	Echymipera rufescens	Long-nosed Spiny Bandicoot
+1000232	Rhynchomeles prattorum	Péramèle de Céram
+1000239	Perameles eremiana	Desert Bandicoot
+1000258	Dendrolagus mayri	Wondiwoi Tree Kangaroo
+1000266	Dorcopsis atrata	Black Forest Wallaby
+1000296	Petrogale coenensis	Cape York Rock Wallaby
+1000320	Bettongia anhydra	Desert Bettong
+1000335	Dactylopsila megalura	Great-tailed Striped Possum
+1000336	Dactylonax palpator	Triok à longs doigts
+1000337	Dactylopsila tatei	Tate's Striped Possum
+1000379	Phalanger alexandrae	Gebe Cuscus
+1000385	Phalanger matanim	Telefomin Cuscus
+1000391	Phalanger sericeus	Silky Cuscus
+1000393	Spilocuscus kraemeri	Couscous de l'île de l'Amirauté
+1000489	Geogale aurita	Large-eared Tenrec
+1000490	Microgale brevicaudata	Short-tailed Shrew Tenrec
+1000492	Microgale drouhardi	Drouhard's Shrew Tenrec
+1000493	Microgale dryas	Dryad Shrew Tenrec
+1000494	Microgale fotsifotsy	Pale Shrew Tenrec
+1000495	Microgale gracilis	Gracile Shrew Tenrec
+1000496	Microgale grandidieri	Grandidier's Shrew Tenrec
+1000497	Microgale gymnorhyncha	Naked-nosed Shrew Tenrec
+1000498	Microgale jenkinsae	Jenkins's Shrew Tenrec
+1000499	Microgale jobihely	Dark Shrew Tenrec
+1000500	Microgale longicaudata	Lesser Long-tailed Shrew Tenrec
+1000501	Microgale majori	Major's Shrew Tenrec
+1000502	Microgale mergulus	Limnogale
+1000503	Microgale monticola	Montane Shrew Tenrec
+1000504	Microgale nasoloi	Nasolo's Shrew Tenrec
+1000505	Microgale parvula	Pygmy Shrew Tenrec
+1000506	Microgale principula	Greater Long-tailed Shrew Tenrec
+1000507	Microgale pusilla	Least Shrew Tenrec
+1000541	Tupaia chrysogaster	Golden-bellied Treeshrew
+1000544	Tupaia everetti	Mindanao Treeshrew
+1000554	Tupaia palawanensis	Palawan Treeshrew
+1000589	Erythrocebus baumstarki	Southern Patas Monkey
+1000644	Piliocolobus foai	Foa's Red Colobus
+1000647	Piliocolobus langi	Lang's Red Colobus
+1000650	Piliocolobus parmentieri	Lomami Red Colobus
+1000654	Piliocolobus semlikiensis	Semliki Red Colobus
+1000656	Piliocolobus tholloni	Colobe bai à mains noires
+1000657	Piliocolobus waldroni	Miss Waldron's Red Colobus
+1000669	Presbytis natunae	Natuna Islands Langur
+1000671	Presbytis potenziani	Semnopithèque de Mentawai
+1000799	Mico marcai	Marca's Marmoset
+1000818	Saguinus martinsi	Martins's Bare-faced Tamarin
+1000881	Plecturocebus modestus	Río Beni Titi
+1000893	Cacajao ayresi	Araçá Uacari
+1000919	Tarsius lariang	Lariang Tarsier
+1000922	Tarsius pumilus	Tarsier pygmée
+1000938	Cheirogaleus sibreei	Sibree's Dwarf Lemur
+1000964	Microcebus tavaratra	Microcèbe roux du Nord
+1000980	Avahi unicolor	Avahi du Sambirano
+1001047	Galagoides kumbirensis	Angolan Dwarf Galago
+1001053	Paragalago orinus	Mountain Dwarf Galago
+1001055	Paragalago zanzibaricus	Tanzania Coast Dwarf Galago
+1001091	Lepus fagani	Ethiopian Hare
+1001153	Ochotona coreana	Korean Pika
+1001290	Hystrix sumatrae	Sumatran Porcupine
+1001444	Callistomys pictus	Painted Tree-rat
+1001471	Thrichomys inermis	Jacobina Punare
+1001472	Thrichomys laurentius	Sao Lourenço Punare
+1001486	Boromys offella	Oriente Cave Rat
+1001493	Octodon bridgesii	Dègue de Bridges
+1001555	Exilisciurus concinnus	Philippine Pygmy Squirrel
+1001564	Lariscus obscurus	Mentawai Three-striped Squirrel
+1001582	Sundasciurus hoogstraali	Busuanga Squirrel
+1001615	Biswamoyopterus biswasi	Namdapha Flying Squirrel
+1001617	Biswamoyopterus laoensis	Laotian Flying Squirrel
+1001632	Hylopetes winstoni	Sumatran Flying Squirrel
+1001731	Marmota kastschenkoi	Forest Steppe Marmot
+1001840	Anomalurus derbianus	Lord Derby's Anomalure
+1001867	Heterogeomys cavator	Chiriqui Pocket Gopher
+1001889	Dipodomys agilis	Agile Kangaroo Rat
+1001893	Dipodomys elator	Rat-kangourou du Texas
+1001899	Dipodomys nelsoni	Nelson's Kangaroo Rat
+1001914	Heteromys catopterius	Overlook Spiny Pocket Mouse
+1001965	Pygeretmus platyurus	Lesser Fat-tailed Jerboa
+1001966	Pygeretmus pumilio	Dwarf Fat-tailed Jerboa
+1001967	Pygeretmus shitkovi	Greater Fat-tailed Jerboa
+1001978	Salpingotus heptneri	Heptner's Pygmy Jerboa
+1002012	Eozapus setchuanus	Sichuan Jumping Mouse
+1002051	Microtus abbreviatus	Singing Vole
+1002058	Microtus cabrerae	Cabrera's Vole
+1002060	Microtus canicaudus	Gray-tailed Vole
+1002128	Dicrostonyx nunatakensis	Ogilvie Mountains Collared Lemming
+1002225	Nelsonia neotomodon	Western Diminutive Woodrat
+1002248	Neotoma stephensi	Stephens's Woodrat
+1002262	Megadontomys thomasi	Thomas's Big-toothed Deermouse
+1002312	Peromyscus melanophrys	Plateau Deermouse
+1002386	Notiomys edwardsii	Edwards's Long-clawed Mouse
+1002388	Akodon aerosus	Yungas Grass Mouse
+1002389	Akodon affinis	Colombian Grass Mouse
+1002396	Akodon cursor	Cursorial Grass Mouse
+1002441	Juscelinomys candango	Candango Burrowing Mouse
+1002490	Ichthyomys pittieri	Rat mangeur de crabes de Pittier
+1002492	Ichthyomys tweedii	Tweedy's Crab-eating Rat
+1002501	Rheomys raptor	Goldman's Water Mouse
+1002572	Microakodontomys transitorius	Intermediate Lesser Grass Mouse
+1002594	Nectomys rattus	South American Water Rat
+1002615	Noronhomys vespuccii	Vespucci's Rat
+1002636	Oligoryzomys brendae	San Javier's Pygmy Rice Rat
+1002649	Oligoryzomys nigripes	Black-footed Pygmy Rice Rat
+1002669	Sigmodontomys alfari	Alfaro's Water Rat
+1002675	Zygodontomys brevicauda	Short-tailed Cane Mouse
+1003051	Dasymys foxi	Fox's Shaggy Rat
+1003056	Dasymys montanus	Rwenzori Shaggy Rat
+1003057	Dasymys nudipes	Angolan Shaggy Rat
+1003071	Grammomys cometes	Mozambique Thicket Rat
+1003137	Apomys insignis	Mindanao Montane Forest Mouse
+1003142	Apomys microdon	Small Luzon Forest Mouse
+1003144	Apomys musculus	Least Philippine Forest Mouse
+1003145	Apomys sacobianus	Long-nosed Luzon Forest Mouse
+1003157	Chiropodomys muroides	Gray-bellied Pencil-tailed Tree Mouse
+1003175	Crossomys moncktoni	Earless New Guinea Water Rat
+1003186	Leggadina lakedownensis	Northern Short-tailed Mouse
+1003190	Leptomys elegans	Elegant Water Rat
+1003191	Leptomys ernstmayri	Ernst Mayr's Water Rat
+1003193	Leptomys signatus	Fly River Water Rat
+1003243	Parahydromys asper	New Guinea Waterside Rat
+1003244	Paraleptomys rufilatus	Northern Water Rat
+1003245	Paraleptomys wilhelmina	Short-haired Water Rat
+1003268	Pseudohydromys fuscus	Mottled-tailed Shrew Mouse
+1003284	Pseudomys desertor	Desert Mouse
+1003321	Uromys porculus	Guadalcanal Giant Rat
+1003331	Zyzomys woodwardi	Kimberley Rock Rat
+1003388	Mus triton	Gray-bellied Mouse
+1003422	Batomys dentatus	Large-toothed Hairy-tailed Rat
+1003460	Hylomyscus stella	Stella Wood Mouse
+1003469	Mastomys natalensis	Natal Multimammate Mouse
+1003480	Montemys delectorum	Delicate Montane Mouse
+1003497	Zelotomys hildegardeae	Hildegarde's Broad-headed Mouse
+1003512	Bunomys chrysocomus	Common Hill Rat
+1003528	Echiothrix centrosa	Central Sulawesi Spiny Rat
+1003536	Komodomys rintjanus	Komodo Rat
+1003550	Limnomys sibuanus	Long-tailed Moss Mouse
+1003551	Margaretamys beccarii	Beccari's Margareta Rat
+1003584	Niviventer confucianus	Confucian White-bellied Rat
+1003585	Niviventer coninga	Spiny Taiwan White-bellied Rat
+1003587	Niviventer culturatus	Soft-furred Taiwan White-bellied Rat
+1003605	Papagomys armandvillei	Armandville's Giant Tree Rat
+1003606	Taeromys dominator	Giant Sulawesi Rat
+1003609	Rattus adustus	Burnished Enggano Rat
+1003620	Rattus elaphinus	Sula Archipelago Rat
+1003630	Rattus hoogerwerfi	Hoogerwerf's Sumatran Rat
+1003639	Rattus marmosurus	Marmoset Xanthurus Rat
+1003648	Rattus nitidus	White-footed Indochinese Rat
+1003667	Rattus steini	Stein's New Guinea Rat
+1003675	Rattus verecundus	New Guinea Slender Rat
+1003683	Sundamys maxi	Bartels's Rat
+1003734	Steatomys krebsii	Krebs's Fat Mouse
+1003736	Steatomys parvus	Tiny Fat Mouse
+1003737	Steatomys pratensis	Common Fat Mouse
+1003742	Brachyuromys ramirohitra	Large Short-tailed Rat
+1003788	Rhizomys pruinosus	Hoary Bamboo Rat
+1003789	Rhizomys sinensis	Chinese Bamboo Rat
+1003815	Mesechinus hughi	Hugh's Hedgehog
+1003824	Hylomys parvus	Dwarf Gymnure
+1003843	Crocidura aleksandrisi	Cyrenaica White-toothed Shrew
+1003852	Crocidura attenuata	Asian Gray White-toothed Shrew
+1003861	Crocidura brunnea	Thick-tailed White-toothed Shrew
+1003894	Crocidura fumosa	Smoky White-toothed Shrew
+1003915	Crocidura hutanis	Hutan White-toothed Shrew
+1003928	Crocidura lepidura	Sumatran Giant White-toothed Shrew
+1003930	Crocidura levicula	Sulawesi Tiny White-toothed Shrew
+1004027	Crocidura viaria	Savanna Path White-toothed Shrew
+1004033	Crocidura whitakeri	Musaraigne de Whitaker
+1004098	Myosorex jejei	Kahuzi Mouse Shrew
+1004111	Surdisorex polulus	Mount Kenya Mole Shrew
+1004123	Blarina peninsulae	Everglades Short-tailed Shrew
+1004146	Cryptotis mam	Mam Broad-clawed Shrew
+1004150	Cryptotis medellinius	Medellín Small-eared Shrew
+1004239	Sorex fumeus	Smoky Shrew
+1004252	Sorex lyelli	Mount Lyell Shrew
+1004255	Sorex maritimensis	Musaraigne des Maritimes
+1004263	Sorex monticolus	Southern Montane Shrew
+1004271	Sorex pacificus	Pacific Shrew
+1004278	Sorex roboratus	Flat-skulled Shrew
+1004301	Parascalops breweri	Hairy-tailed Mole
+1004307	Scapanus townsendii	Taupe de Townsend
+1004324	Mogera insularis	Formosan Mole
+1004392	Dobsonia beauforti	Beaufort's Naked-backed Fruit Bat
+1004395	Dobsonia emersa	Biak Naked-backed Fruit Bat
+1004429	Paranyctimene raptor	Unstriped Tube-nosed Fruit Bat
+1004463	Pteropus faunulus	Nicobar Flying Fox
+1004493	Pteropus rayneri	Solomons Flying Fox
+1004506	Pteropus ualanus	Kosrae Flying Fox
+1004527	Epomops buettikoferi	Büttikofer's Epauletted Fruit Bat
+1004530	Nanonycteris veldkampii	Veldkamp's Epauletted Fruit Bat
+1004531	Myonycteris angolensis	Roussette de l'Angola
+1004537	Myonycteris torquata	Little Collared Fruit Bat
+1004549	Casinycteris ophiodon	Pohle's Fruit Bat
+1004625	Hipposideros papua	Biak Roundleaf Bat
+1004628	Hipposideros pomona	Pomona Roundleaf Bat
+1004632	Hipposideros ruber	Noack's Roundleaf Bat
+1004637	Hipposideros swinhoii	Swinhoe's Roundleaf Bat
+1004639	Hipposideros turpis	Lesser Roundleaf Bat
+1004644	Macronycteris vittata	Striped Roundleaf Bat
+1004652	Rhinolophus acuminatus	Acuminate Horseshoe Bat
+1004662	Rhinolophus bocharicus	Bokhara Horseshoe Bat
+1004664	Rhinolophus canuti	Knud's Horseshoe Bat
+1004674	Rhinolophus cornutus	Little Japanese Horseshoe Bat
+1004678	Rhinolophus deckenii	Decken's Horseshoe Bat
+1004716	Rhinolophus monoceros	Formosan Horseshoe Bat
+1004741	Rhinolophus shameli	Shamel's Horseshoe Bat
+1004746	Rhinolophus sinicus	Chinese Rufous Horseshoe Bat
+1004748	Rhinolophus stheno	Lesser Brown Horseshoe Bat
+1004766	Triaenops afer	African Trident Bat
+1004767	Triaenops menamena	Rufous Trident Bat
+1004780	Centronycteris maximiliani	Common Shaggy Bat
+1004807	Emballonura raffrayana	Raffray's Sheath-tailed Bat
+1004813	Saccolaimus flaviventris	Yellow-bellied Sheath-tailed Bat
+1004816	Saccolaimus saccolaimus	Bare-rumped Sheath-tailed Bat
+1004833	Nycteris arge	Bates's Slit-faced Bat
+1004836	Nycteris grandis	Large Slit-faced Bat
+1004839	Nycteris javanica	Javan Slit-faced Bat
+1004847	Nycteris woodi	Wood's Slit-faced Bat
+1004892	Anoura cultrata	Handley's Tailless Bat
+1004896	Anoura latidens	Broad-toothed Tailless Bat
+1004905	Lichonycteris degener	Pale Brown Long-tongued Bat
+1004911	Glossophaga longirostris	Miller's Long-tongued Bat
+1004927	Hsunycteris thomasi	Thomas's Nectar Bat
+1004933	Lonchophylla fornicata	Pacific Forest Long-tongued Bat
+1004936	Lonchophylla inexpectata	Pale-bellied Nectar Bat
+1004952	Lampronycteris brachyotis	Orange-throated Bat
+1004977	Lophostoma schulzi	Schulz's Round-eared Bat
+1004981	Phyllostomus elongatus	Lesser Spear-nosed Bat
+1004995	Ametrida centurio	Little White-shouldered Bat
+1005004	Artibeus concolor	Brown Fruit-eating Bat
+1005034	Platyrrhinus angustirostris	Slender Broad-nosed Bat
+1005037	Platyrrhinus brachycephalus	Short-headed Broad-nosed Bat
+1005060	Vampyressa elisabethae	Kalko's Yellow-eared Bat
+1005145	Mops ansorgei	Ansorge's Free-tailed Bat
+1005148	Mops bivittatus	Spotted Free-tailed Bat
+1005157	Mops nigeriae	Nigerian Free-tailed Bat
+1005174	Eumops auripendulus	Black Bonneted Bat
+1005188	Eumops trumbulli	Trumbull's Bonneted Bat
+1005210	Mops condylurus	Angolan Free-tailed Bat
+1005214	Mops midas	Midas Free-tailed Bat
+1005276	Natalus major	Hispaniolan Greater Funnel-eared Bat
+1005316	Harpiola isodon	Formosan Tube-nosed Bat
+1005330	Murina fusca	Dusky Tube-nosed Bat
+1005358	Myotis adversus	Gray Large-footed Myotis
+1005438	Myotis midastactus	Golden Myotis
+1005508	Arielulus circumdatus	Bronze Sprite
+1005514	Neoeptesicus brasiliensis	Brazilian Serotine
+1005517	Cnephaeus floweri	Horn-skinned Serotine
+1005538	Glauconycteris beatrix	Beatrix's Butterfly Bat
+1005580	Lasiurus ega	Southern Yellow Bat
+1005581	Lasiurus egregius	Big Red Bat
+1005592	Nycticeius aenobarbus	Temminck's Mysterious Bat
+1005626	Alionoctula murrayi	Christmas Island Pipistrelle
+1005645	Scotoecus hirundo	Dark-winged Lesser House Bat
+1005687	Scotophilus kuhlii	Lesser Asian Yellow Bat
+1005695	Scotophilus robustus	Robust Yellow Bat
+1005698	Scotophilus viridis	Eastern Greenish Yellow Bat
+1005718	Hypsugo imbricatus	Brown Pipistrelle
+1005774	Pseudoromicia rendalli	Rendall's Serotine
+1005781	Tylonycteris robustula	Sumatran Greater Bamboo Bat
+1005831	Melogale subaurantiaca	Formosan Ferret-badger
+1006077	Genetta bourloni	Bourlon's Genet
+1006106	Viverra civettina	Malabar Civet
+1006178	Arabitragus jayakari	Tahr d'Arabie
+1006359	Tragulus versicolor	Silver-backed Chevrotain
+1006360	Tragulus williamsoni	Northern Chevrotain
+1006457	Pontoporia blainvillei	Dauphin de la Plata
+1006458	Lipotes vexillifer	Dauphin de Chine
+1006491	Cheirogaleus minusculus	Lesser Iron-gray Dwarf Lemur
+1006518	Sicista severtzovi	Severtzov's Birch Mouse
+1006552	Crocidura narcondamica	Narcondam White-toothed Shrew
+1006632	Mindomys kutuku	Kutukú Rice Rat
+1006688	Calomyscus behzadi	Behzad's Brush-tailed Mouse
+1006766	Calomyscus kermanensis	Kerman Brush-tailed Mouse
+1006879	Neohylomys vietnamensis	Vietnam Gymnure
+1006967	Muntiacus montanus	Sumatran Mountain Muntjac
+1006995	Euroscaptor darwini	Darwin's Mole
+1007017	Diplomesodon sonnerati	Sonnerat's Shrew
+1006449	Phocoena dioptrica	Spectacled Porpoise	(image vide)
+1006451	Phocoena sinus	Vaquita	(image vide)
+1006452	Phocoena spinipinnis	Marsouin de Burmeister	(image vide)
+1006459	Kogia breviceps	Pygmy Sperm Whale	(image vide)
+1006472	Mesoplodon densirostris	Blainville's Beaked Whale	(image vide)
+1006475	Mesoplodon grayi	Baleine à bec de Gray	(image vide)
+1006476	Mesoplodon hectori	Baleine à bec d'Hector	(image vide)
+1006481	Mesoplodon peruvianus	Baleine à bec pygmée	(image vide)
+1006547	Platanista minor	Dauphin de l'Indus	(image vide)
