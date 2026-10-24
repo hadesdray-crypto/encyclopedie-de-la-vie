@@ -3,12 +3,13 @@ import { createRoot } from "react-dom/client";
 import { Barre } from "@/components/barre";
 import { Cadeau } from "@/components/cadeau";
 import { MiseAJour } from "@/components/mise-a-jour";
-import { PanneauPlume } from "@/components/guide";
+import { Plume } from "@/components/guide";
 import { appliquerGrosTexte } from "@/lib/reglages";
 import { useChemin } from "@/lib/routeur";
 import { demarrerHorsLigne } from "@/lib/hors-ligne";
 import { demarrerMajApk } from "@/lib/maj-apk";
 import { demarrerFleche } from "@/lib/fleche";
+import { demarrerLectureLongue } from "@/lib/lecture-longue";
 import { Accueil } from "@/pages/accueil";
 import { ArbrePage } from "@/pages/arbre";
 import { FrisePage } from "@/pages/frise";
@@ -23,6 +24,8 @@ const Cartes = lazy(() => import("@/pages/cartes").then((m) => ({ default: m.Car
 const Profil = lazy(() => import("@/pages/profil").then((m) => ({ default: m.ProfilPage })));
 const Suivi = lazy(() => import("@/pages/suivi").then((m) => ({ default: m.SuiviPage })));
 const Aventure = lazy(() => import("@/pages/suivi").then((m) => ({ default: m.AventurePage })));
+const Compagnons = lazy(() => import("@/pages/compagnons").then((m) => ({ default: m.CompagnonsPage })));
+const Chercher = lazy(() => import("@/pages/chercher").then((m) => ({ default: m.ChercherPage })));
 const Options = lazy(() => import("@/pages/options").then((m) => ({ default: m.OptionsPage })));
 
 type Page = ComponentType<{ id?: string; params: URLSearchParams }>;
@@ -39,6 +42,8 @@ const ROUTES: [string, Page][] = [
   ["/suivi", Suivi],
   ["/aventure", Aventure],
   ["/options", Options],
+  ["/chercher", Chercher],
+  ["/compagnons", Compagnons],
   ["/sources", SourcesPage],
 ];
 
@@ -74,7 +79,7 @@ function App() {
       <Barre chemin={chemin} />
       <Cadeau />
       <MiseAJour />
-      <PanneauPlume chemin={chemin} params={params} />
+      <Plume chemin={chemin} params={params} />
     </>
   );
 }
@@ -89,3 +94,4 @@ appliquerGrosTexte();
 demarrerHorsLigne();
 demarrerMajApk();
 demarrerFleche();
+demarrerLectureLongue();

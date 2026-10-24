@@ -6,8 +6,30 @@ const CLE_VUS = "leonie-guide-vu";
 const CLE_PARLE = "leonie-plume-parle";
 const CLE_REACTIONS = "leonie-plume-reactions";
 
-type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation"; coucou: number };
-let etat: Etat = { ouvert: false, reaction: null, contenu: "page", coucou: 0 };
+export type Proposition = { texte: string; oui: string; action: () => void };
+type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation" | "presence" | "astuce"; coucou: number; proposition: Proposition | null; presence: Presence };
+
+// ---- Combien Plume est présente ----
+// discrete : elle ne parle que si on la touche. presente : elle propose parfois une aide (réglage de départ).
+// toujours : elle lit tout à voix haute toute seule. repos : elle se cache (on la rappelle dans Options).
+export type Presence = "discrete" | "presente" | "toujours" | "repos";
+export const PRESENCES: { id: Presence; nom: string; explique: string }[] = [
+  { id: "discrete", nom: "Discrète", explique: "Je reste dans mon coin. Je parle seulement si tu me touches." },
+  { id: "presente", nom: "Présente", explique: "De temps en temps, je te propose un indice ou une petite phrase." },
+  { id: "toujours", nom: "Toujours avec moi", explique: "Je lis tout à voix haute, toute seule." },
+  { id: "repos", nom: "Plume se repose", explique: "Je me cache. Pour me rappeler, va dans les Options." },
+];
+const CLE_PRESENCE = "leonie-plume-presence";
+function lirePresence(): Presence {
+  try {
+    const v = localStorage.getItem(CLE_PRESENCE);
+    return v === "discrete" || v === "toujours" || v === "repos" ? v : "presente";
+  } catch {
+    return "presente";
+  }
+}
+
+let etat: Etat = { ouvert: false, reaction: null, contenu: "page", coucou: 0, proposition: null, presence: lirePresence() };
 const abonnes = new Set<(e: Etat) => void>();
 let minuteur = 0;
 
@@ -28,7 +50,28 @@ export function usePlume() {
 }
 
 export function ouvrirPlume(oui = true, contenu: Etat["contenu"] = "page") {
-  publier({ ouvert: oui, reaction: null, contenu, coucou: oui ? etat.coucou + 1 : etat.coucou });
+  publier({ ouvert: oui, reaction: null, proposition: oui ? null : etat.proposition, contenu, coucou: oui ? etat.coucou + 1 : etat.coucou });
+}
+
+export function presence() {
+  return etat.presence;
+}
+export function choisirPresence(p: Presence) {
+  try {
+    localStorage.setItem(CLE_PRESENCE, p);
+  } catch {
+    /* rien */
+  }
+  publier({ presence: p, ouvert: false, reaction: null, proposition: null });
+}
+/** Plume peut-elle proposer quelque chose d'elle-même ? */
+export function plumePeutProposer() {
+  return (etat.presence === "presente" || etat.presence === "toujours") && !etat.ouvert;
+}
+
+/** Plume propose une aide (par exemple un indice). Leonie peut dire oui, ou ignorer. */
+export function plumePropose(p: Proposition | null) {
+  publier({ proposition: p });
 }
 
 /** Plume fait un petit coucou avec son aile. */
@@ -71,7 +114,7 @@ function ecrireReglage(cle: string, oui: boolean) {
 }
 
 /** Plume lit toute seule ses explications à voix haute. */
-export const plumeParleSeule = () => lireReglage(CLE_PARLE, false);
+export const plumeParleSeule = () => etat.presence === "toujours";
 export const choisirPlumeParle = (oui: boolean) => ecrireReglage(CLE_PARLE, oui);
 /** Plume fait des petits commentaires pendant les jeux. */
 export const reactionsActives = () => lireReglage(CLE_REACTIONS, true);
@@ -105,7 +148,7 @@ export function revoirExplications() {
 
 /** Plume réagit : une petite bulle à côté d'elle, quelques secondes. */
 export function plumeReagit(type: keyof typeof REACTIONS) {
-  if (!reactionsActives() || etat.ouvert) return;
+  if (!reactionsActives() || etat.ouvert || etat.presence === "discrete" || etat.presence === "repos") return;
   const phrases = REACTIONS[type];
   publier({ reaction: phrases[Math.floor(Math.random() * phrases.length)] });
   window.clearTimeout(minuteur);
@@ -114,6 +157,7 @@ export function plumeReagit(type: keyof typeof REACTIONS) {
 
 /** Plume dit une petite phrase dans sa bulle, quelques secondes (même si les réactions sont éteintes). */
 export function plumeDit(texte: string, duree = 3000) {
+  if (etat.presence === "repos") return;
   publier({ reaction: texte });
   window.clearTimeout(minuteur);
   minuteur = window.setTimeout(() => publier({ reaction: null }), duree);

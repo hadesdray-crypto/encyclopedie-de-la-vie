@@ -18,6 +18,7 @@ import { Vignette } from "@/components/icone";
 import { PAR_ID } from "@/data/catalogue";
 import crisConnus from "@/data/cris.json";
 import { LuFlame } from "react-icons/lu";
+import { useIndice } from "@/lib/indice";
 
 function melanger<T>(l: T[], rnd: () => number = Math.random) {
   const c = [...l];
@@ -68,6 +69,7 @@ export function JouerPage({ params }: { params: URLSearchParams }) {
 function JeuRegime() {
   const [q, setQ] = useState(questionRegime);
   const [rep, setRep] = useState<RegimeId | null>(null);
+  const effaces = useIndice(q.e.id, q.choix, q.bon, rep !== null);
   return (
     <section className="mt-5">
       <a href={`#/mammiferes/e-${q.e.id}`} className="medaillon-or mx-auto block size-36 overflow-hidden"><Portrait id={q.e.id} /></a>
@@ -79,7 +81,7 @@ function JeuRegime() {
           const faux = rep === id && id !== q.bon;
           return (
             <li key={id}>
-              <button type="button" onClick={() => { if (!rep) { setRep(id); noterReponse(id === q.bon); if (id === q.bon) sons.bonne(); else sons.mauvaise(); } }} className={`w-full rounded-2xl px-4 py-4 text-left text-[#2a1c14] ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"}`}>
+              <button type="button" disabled={!rep && effaces.has(id)} onClick={() => { if (!rep) { setRep(id); noterReponse(id === q.bon); if (id === q.bon) sons.bonne(); else sons.mauvaise(); } }} className={`w-full rounded-2xl px-4 py-4 text-left text-[#2a1c14] transition-opacity ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"} ${!rep && effaces.has(id) ? "opacity-25" : ""}`}>
                 <span className="block font-display text-2xl">{REGIMES[id].nom}</span>
                 <span className="block text-sm">{REGIMES[id].explique}</span>
               </button>
@@ -293,6 +295,7 @@ function questionCarte() {
 function JeuCarte() {
   const [q, setQ] = useState(questionCarte);
   const [rep, setRep] = useState<string | null>(null);
+  const effaces = useIndice(q.bon.id, q.choix.map((e) => e.id), q.bon.id, rep !== null);
   return (
     <section className="mt-5">
       <p className="text-center text-lg">Les pays en or montrent où vit un animal. Lequel ?</p>
@@ -303,7 +306,7 @@ function JeuCarte() {
           const faux = rep === e.id && e.id !== q.bon.id;
           return (
             <li key={e.id}>
-              <button type="button" onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon.id); if (e.id === q.bon.id) sons.bonne(); else sons.mauvaise(); } }} className={`flex h-full w-full flex-col items-center rounded-3xl px-1 py-3 text-[#2a1c14] ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"}`}>
+              <button type="button" disabled={!rep && effaces.has(e.id)} onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon.id); if (e.id === q.bon.id) sons.bonne(); else sons.mauvaise(); } }} className={`flex h-full w-full flex-col items-center rounded-3xl px-1 py-3 text-[#2a1c14] transition-opacity ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"} ${!rep && effaces.has(e.id) ? "opacity-25" : ""}`}>
                 <span className="medaillon block size-20 overflow-hidden"><Portrait id={e.id} /></span>
                 <span className="mt-2 text-sm font-extrabold leading-tight">{e.nom}</span>
               </button>
@@ -346,6 +349,7 @@ function JeuCri() {
 function QuestionCri() {
   const [q, setQ] = useState(() => questionCri());
   const [rep, setRep] = useState<string | null>(null);
+  const effaces = useIndice(q.bon.id, q.choix.map((e) => e.id), q.bon.id, rep !== null);
   return (
     <section className="mt-5 text-center">
       <p className="text-lg">Écoute bien. Quel animal fait ce bruit ?</p>
@@ -356,7 +360,7 @@ function QuestionCri() {
           const faux = rep === e.id && e.id !== q.bon.id;
           return (
             <li key={e.id}>
-              <button type="button" onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon.id); if (e.id === q.bon.id) sons.bonne(); else sons.mauvaise(); } }} className={`flex h-full w-full flex-col items-center rounded-3xl px-1 py-3 text-[#2a1c14] ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"}`}>
+              <button type="button" disabled={!rep && effaces.has(e.id)} onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon.id); if (e.id === q.bon.id) sons.bonne(); else sons.mauvaise(); } }} className={`flex h-full w-full flex-col items-center rounded-3xl px-1 py-3 text-[#2a1c14] transition-opacity ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"} ${!rep && effaces.has(e.id) ? "opacity-25" : ""}`}>
                 <span className="medaillon block size-20 overflow-hidden"><Portrait id={e.id} /></span>
                 <span className="mt-2 text-sm font-extrabold leading-tight">{e.nom}</span>
               </button>
@@ -433,6 +437,8 @@ function DefiDuJour() {
   const [score, setScore] = useState(0);
   const fait = defis[aujourdhui()];
   const n = serie(defis);
+  const enCours = questions[i];
+  const effaces = useIndice(`defi-${i}`, enCours ? enCours.choix.map((c) => c.id) : [], enCours?.bon ?? "", rep !== null || !enCours || (fait !== undefined && i === 0));
 
   if (fait !== undefined && i === 0 && !rep) {
     return (
@@ -495,7 +501,7 @@ function DefiDuJour() {
           const animal = PAR_ID.get(c.id);
           return (
             <li key={c.id}>
-              <button type="button" onClick={() => choisir(c.id)} className={`flex h-full w-full items-center gap-3 rounded-3xl px-3 py-3 text-left text-[#2a1c14] ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"} ${q.choix.length === 2 ? "flex-col text-center" : ""}`}>
+              <button type="button" disabled={!rep && effaces.has(c.id)} onClick={() => choisir(c.id)} className={`flex h-full w-full items-center gap-3 rounded-3xl px-3 py-3 text-left text-[#2a1c14] transition-opacity ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"} ${q.choix.length === 2 ? "flex-col text-center" : ""} ${!rep && effaces.has(c.id) ? "opacity-25" : ""}`}>
                 {animal ? <span className="medaillon block size-16 shrink-0 overflow-hidden"><Portrait id={animal.id} /></span> : null}
                 <span>
                   <span className="block font-display text-xl leading-tight">{c.nom}</span>

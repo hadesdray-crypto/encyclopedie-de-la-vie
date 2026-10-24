@@ -49,7 +49,7 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
     overflow-x: hidden;
-    padding-bottom: calc(var(--bas) + 1.5rem);
+    padding-bottom: calc(var(--bas) + 4.75rem); /* place pour Plume, qui flotte au-dessus de la barre */
     min-height: 100dvh;
     background:
       radial-gradient(1.2px 1.2px at 12% 18%, rgba(255, 255, 255, 0.75), transparent 60%),
@@ -467,3 +467,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .onde { animation: none; }
 }
+
+/* ---- Appui long : le texte que Plume lit s'éclaire ---- */
+main { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+main input, main textarea { -webkit-user-select: text; user-select: text; }
+.texte-lu { background: rgba(180, 140, 255, 0.28); box-shadow: 0 0 0 3px rgba(180, 140, 255, 0.7); border-radius: 0.6rem; transition: background 0.2s; }

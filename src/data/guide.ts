@@ -161,6 +161,17 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     ],
   },
   {
+    id: "compagnons",
+    titre: "Mon carnet des chiens et des chats",
+    test: (c) => c.startsWith("/compagnons"),
+    etapes: [
+      "C'est mon carnet à moi : toutes les races de chiens et de chats que j'ai trouvées.",
+      "Les chiens sont rangés en dix groupes, comme le fait la Fédération cynologique internationale. Touche un groupe pour l'ouvrir.",
+      "Chaque fiche dit d'où vient la race, sa taille, son poids, son caractère et son histoire. Si on ne sait pas, c'est écrit « Non connu ».",
+      "Le petit cœur rouge, ce sont mes préférés.",
+    ],
+  },
+  {
     id: "options",
     titre: "Les options",
     test: (c) => c.startsWith("/options"),
@@ -193,12 +204,12 @@ export function explicationPour(chemin: string, params: URLSearchParams): Explic
 
 /** Petites phrases de Plume quand il se passe quelque chose. */
 export const REACTIONS = {
-  paquet: ["Bravo ! Tu gagnes un paquet de cartes !", "Super ! Un nouveau paquet t'attend dans les cartes.", "Youpi, un paquet de plus !"],
-  chance: ["Wah, la chance ! Une onzième carte !", "Une carte en plus ! Incroyable !"],
-  rare: ["Oh, une carte rare !", "Regarde ces étoiles, elle est rare !"],
-  memoire: ["Bravo, toutes les paires ! Tu as une super mémoire.", "Gagné ! Quelle mémoire !"],
-  bonne: ["Bonne réponse !", "Bravo !", "Exactement !", "Bien joué !"],
-  mauvaise: ["Presque ! Regarde la réponse, tu sauras la prochaine fois.", "Pas grave, on apprend en se trompant !"],
+  paquet: ["Un paquet de cartes pour toi.", "Un nouveau paquet t'attend dans les cartes.", "Tu as gagné un paquet."],
+  chance: ["Une onzième carte… quelle chance.", "Une carte en plus."],
+  rare: ["Oh… une carte rare.", "Regarde ses étoiles : elle est rare."],
+  memoire: ["Toutes les paires. Belle mémoire.", "Gagné. Tu as bien retenu."],
+  bonne: ["Bonne réponse.", "C'est ça.", "Bien vu.", "Exactement."],
+  mauvaise: ["Presque. Regarde la réponse, tu sauras la prochaine fois.", "Ce n'est pas grave : on apprend en se trompant."],
 };
 
 /** Le petit discours de Plume : à la première ouverture, puis quand Leonie le demande. */
@@ -213,9 +224,34 @@ export const PRESENTATION: Explication = {
     "Juste en dessous : Jouer, pour les jeux et le défi du jour, et Mes cartes, pour ta collection d'animaux.",
     "L'Aventure te montre, sur une carte du monde, des animaux que des scientifiques suivent avec un collier GPS.",
     "En bas de l'écran, la barre t'emmène partout. Une petite flamme veut dire que le défi du jour t'attend. Un chiffre rouge, ce sont tes paquets de cartes à ouvrir.",
-    "Pour revenir en arrière, utilise la flèche du téléphone, ou le bouton Retour en haut. On revient pas à pas, par le même chemin.",
+    "Pour revenir en arrière, utilise la flèche du téléphone, ou le bouton Retour en haut.",
     "La petite roue, c'est les Options : la voix, les sons, l'écriture plus grosse. Tout y est écrit, et je peux te le lire.",
-    "Ensuite, je reste dans mon coin, sans te déranger. Si tu as besoin de moi, touche-moi : j'ouvre mes ailes et je t'explique la page.",
+    "J'aime tous les animaux. Mes préférés, ce sont les chiens… comme toi, Leonie. Et je me méfie un peu du grand-duc : c'est une très grande chouette, qui chasse aussi les petites chouettes comme moi.",
+    "Ensuite, je reste dans mon coin, sans te déranger. Tu peux me déplacer avec ton doigt. Touche-moi si tu as besoin de moi, et appuie longtemps sur moi pour choisir si je suis discrète ou bavarde.",
+    "Une astuce : appuie longtemps sur un texte, et je te le lis à voix haute.",
     "Et tout marche même sans Internet. Allez, on y va ? Je suis prête !",
   ],
+};
+
+/** Les astuces de Plume, page par page (le bouton « Astuce » de sa bulle). */
+export const ASTUCES: Record<string, string[]> = {
+  accueil: ["Appuie longtemps sur un texte : je te le lis.", "Le chiffre rouge, en bas, compte tes paquets de cartes à ouvrir.", "Fais le défi chaque jour pour faire grandir ta flamme !"],
+  arbre: ["Le chemin, tout en haut, te ramène aux étapes d'avant.", "Touche « Comment on le sait ? » pour découvrir les preuves des scientifiques."],
+  frise: ["Si toute l'histoire de la Terre durait une journée, les humains arriveraient à la toute fin, juste avant minuit."],
+  fiche: ["Les mots en pointillés sont des mots de scientifique : touche-les pour l'explication.", "Le bouton « Écouter » lit toute la fiche."],
+  famille: ["Touche un animal pour ouvrir sa fiche. Chaque nouvelle fiche t'aide à gagner un paquet."],
+  mammiferes: ["Écris le nom d'un animal à côté de la loupe pour le trouver vite."],
+  cartes: ["Lis trois nouvelles fiches pour gagner un paquet.", "La plus belle carte arrive toujours en dernier !"],
+  memoire: ["Commence par retourner les cartes dans l'ordre, et retiens bien où sont les animaux."],
+  defi: ["Si tu hésites longtemps, je peux t'aider avec un indice."],
+  cri: ["Tu peux réécouter le cri autant de fois que tu veux."],
+  jouer: ["Si tu hésites longtemps, je peux t'aider avec un indice."],
+  fossiles: ["Les fossiles sont des traces très anciennes : des os, des coquilles, des empreintes."],
+  lexique: ["Touche « Écouter » pour entendre une définition."],
+  profil: ["Touche ton image pour en choisir une autre."],
+  aventure: ["Un trajet chargé une fois reste dans l'application, même sans Internet."],
+  suivi: ["Un trajet chargé une fois reste dans l'application, même sans Internet."],
+  compagnons: ["Écris le nom d'une race à côté de la loupe pour la trouver vite.", "Le petit cœur rouge, ce sont mes préférés."],
+  options: ["Appuie longtemps sur moi, n'importe où, pour me rendre plus discrète ou plus bavarde."],
+  sources: ["Les scientifiques disent toujours d'où viennent leurs informations."],
 };

@@ -1,0 +1,243 @@
+pages avec « Infobox Race » : 2404
+chiens : 445 · chats : 87
+espèce chien {'P2250': [['9', 'Q577']]}
+espèce chat {'P3063': [['64', 'Q573']], 'P2250': [['15', 'Q577']]}
+0/532 Persan · 2 photo(s)
+25/532 Airedale Terrier · 2 photo(s)
+50/532 Beagle · 2 photo(s)
+75/532 British shorthair · 2 photo(s)
+100/532 Spitz-loup ; Keeshond · 2 photo(s)
+125/532 Chat sibérien · 2 photo(s)
+  erreur https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url%7Cextmetadata%7Cmime&iiurlwidth=480&title HTTP Error 429: Too Many Requests
+  erreur https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url%7Cextmetadata%7Cmime&iiurlwidth=480&title HTTP Error 429: Too Many Requests
+150/532 Épagneul nain continental · 1 photo(s)
+175/532 Chien d'eau romagnol · 1 photo(s)
+200/532 Berger hollandais · 1 photo(s)
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Deerhound&format HTTP Error 429: Too Many Requests
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Deerhound&format HTTP Error 429: Too Many Requests
+225/532 Field Spaniel · 2 photo(s)
+250/532 Berger croate · 1 photo(s)
+275/532 Eurohound / ESD · 1 photo(s)
+  erreur https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url%7Cextmetadata%7Cmime&iiurlwidth=480&title HTTP Error 429: Too Many Requests
+  erreur https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url%7Cextmetadata%7Cmime&iiurlwidth=480&title HTTP Error 429: Too Many Requests
+300/532 Cirneco de l'Etna · 2 photo(s)
+325/532 Chien de recherche au sang du Hanovre · 1 photo(s)
+350/532 Lévrier Tazi · 1 photo(s)
+  erreur https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url%7Cextmetadata%7Cmime&iiurlwidth=480&title HTTP Error 429: Too Many Requests
+375/532 Berger des Alpes et de Savoie · 1 photo(s)
+400/532 Chien d'élan norvégien noir · 1 photo(s)
+425/532 Chien noir et feu pour la chasse au raton laveur · 2 photo(s)
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Chien+courant+de HTTP Error 429: Too Many Requests
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Chien+courant+de HTTP Error 429: Too Many Requests
+450/532 Chien courant du Småland · 2 photo(s)
+475/532 Chien de la Serra da Estrela · 2 photo(s)
+500/532 Lykoï · 2 photo(s)
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Pomsky&format=js HTTP Error 429: Too Many Requests
+  erreur https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&exsectionformat=wiki&titles=Pomsky&format=js HTTP Error 429: Too Many Requests
+525/532 Bobtail du Mékong · 2 photo(s)
+fini : 445 chiens, 87 chats
+{
+ "id": "affenpinscher",
+ "nom": "Affenpinscher",
+ "wiki": "Affenpinscher",
+ "origine": "Allemagne",
+ "taille": "25 à 30 cm (au garrot)",
+ "poids": "6 à 8 kg (mâle et femelle)",
+ "poil": "Dur et bien fourni.",
+ "robe": "Noire, feu, argent, gris, rouge, belge.",
+ "tete": "De forme arrondie.",
+ "yeux": "Foncés, plutôt arrondis et en boule.",
+ "oreilles": "Droites, petites, attachées haut.",
+ "queue": "Non coupée.",
+ "caractere": "Intrépide, attentif, fidèle.",
+ "intro": "L'Affenpinscher est un chien d'origine allemande dont le nom signifie « griffon-singe ». Il est également appelé Zwergaffen. L'espérance moyenne de vie pour cette race est d'environ 15 ans.[réf. souhaitée]",
+ "histoire": "Cette race de chiens originaire d'Allemagne est très ancienne. À l'origine c'était probablement des chiens de famille. Des chiens semblables ont été représentés dès les XVe et XVIe siècles par les artistes Jan Van Eyck et Albrecht Dürer.",
+ "groupe": "2",
+ "fci": "186",
+ "vie": "environ 15 ans",
+ "photos": []
+}
+{
+ "id": "africanis",
+ "nom": "Africanis",
+ "wiki": "Africanis",
+ "origine": "Afrique australe",
+ "poil": "Court",
+ "queue": "Longue",
+ "intro": "L'Africanis est un chien originaire d'Afrique australe, il est reconnu par le Kennel Union of South Africa (KUSA) mais pas encore par la FCI et il est considéré comme un chien antique descendant directement de chiens parias de l'ancienne Afrique.",
+ "vie": "environ 14 ans",
+ "photos": [
+  {
+   "fichier": "Africanis (1).jpg",
+   "src": "chiens/africanis-1.webp",
+   "auteur": "Bothar at English Wikipedia",
+   "licence": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Africanis_(1).jpg"
+  }
+ ]
+}
+{
+ "id": "airedale-terrier",
+ "nom": "Airedale Terrier",
+ "wiki": "Airedale Terrier",
+ "origine": "Angleterre",
+ "taille": "56 à 61 cm",
+ "poids": "27 à 32 kg (mais non précisé dans le standard)",
+ "poil": "dense, raide et dur",
+ "robe": "noir et feu, ou grisonné et feu",
+ "tete": "bien proportionnée, exempte de rides",
+ "yeux": "petits de couleur foncée",
+ "oreilles": "petites, en V, avec la ligne supérieure pliée au-dessus du crane.",
+ "queue": "attachée haut, portée gaiement, traditionnellement écourtée d'1/3 dans les pays autorisés",
+ "caractere": "vif, sociable, confiant, intrépide et courageux.",
+ "intro": "L'airedale terrier est une race de chien qui appartient au groupe des terriers. Par la taille, il est le plus grand représentant de cette famille. Il est aussi appelé Waterside Terrier, Bingley Terrier, Working Terrier ou Warfedale Terrier.",
+ "histoire": "La race date du milieu du XIXe siècle et résulte de croisements d'otterhounds et d'old english black, cette race aujourd'hui disparue. Originaire du nord de l'Angleterre, dans la région du Yorkshire et plus précisément de la vallée de l'Aire d'où il tire son nom. Il fut créé à l'origine pour chasser la loutre et le rat.",
+ "vie_texte": "Avec une activité et une nourriture saine, il peut avoir une espérance de vie de dix à treize ans.",
+ "groupe": "3",
+ "fci": "7",
+ "vie": "environ 14 ans",
+ "photos": [
+  {
+   "fichier": "Photo Airedale Terrier.png",
+   "src": "chiens/airedale-terrier-1.webp",
+   "auteur": "Jackjack01234",
+   "licence": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Photo_Airedale_Terrier.png"
+  },
+  {
+   "fichier": "Airedale terrier head, Josselin 01.jpg",
+   "src": "chiens/airedale-terrier-2.webp",
+   "auteur": "Amélie Tsaag Valren",
+   "licence": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Airedale_terrier_head,_Josselin_01.jpg"
+  }
+ ]
+}
+{
+ "id": "akbash",
+ "nom": "Akbash",
+ "wiki": "Akbash",
+ "origine": "Turquie",
+ "taille": "71 à 79 cm (mâle) ; 69 à 74 cm (femelle)",
+ "poids": "43 à 61 kg (mâle) ; 36 à 47 kg (femelle)",
+ "poil": "Moyen ou long",
+ "robe": "Blanche",
+ "tete": "Large, au stop marqué. Cou et mâchoires solides et puissante.",
+ "yeux": "Légèrement en amandes, de couleur marron ou marron sombre.",
+ "oreilles": "Tombantes, attachées en arrière.",
+ "queue": "Longue, tombante jusqu'au jarret ou courbée à l’extrémité",
+ "caractere": "Courageux, sûr de lui, protecteur, intelligent, loyal et indépendant",
+ "intro": "L'Akbash (en turc Akbaş signifiant tête blanche) est une race de chiens originaire de l'Anatolie, en actuelle Turquie occidentale.",
+ "histoire": "L'Akbash est une race ancienne de chien de berger, utilisé en Anatolie pour la protection des troupeaux contre les attaques des prédateurs (loups et ours). Il rejoint ainsi la famille des chiens de berger d'Anatolie dont le Karabash (tête noire en turc) est le plus connu. L'Akbash est aussi lié avec des chiens semblables comme l'Aïdi ou le chien de montagne des Pyrénées.",
+ "vie_texte": "L'Akbash a une espérance de vie en moyenne de 10 ans mais il peut vivre beaucoup plus longtemps.",
+ "vie": "environ 10 ans",
+ "photos": [
+  {
+   "fichier": "Turkish Akbash.jpg",
+   "src": "chiens/akbash-1.webp",
+   "auteur": "Teddy Llovet",
+   "licence": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Turkish_Akbash.jpg"
+  },
+  {
+   "fichier": "Akbash dog on guard.jpg",
+   "src": "chiens/akbash-2.webp",
+   "auteur": "Jerry Kirkhart from Los Osos, Calif.",
+   "licence": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Akbash_dog_on_guard.jpg"
+  }
+ ]
+}
+{
+ "id": "abyssin",
+ "nom": "Abyssin",
+ "wiki": "Abyssin",
+ "origine": "Controversée",
+ "taille": "Moyenne",
+ "poids": "Moyen. De 2.7 à 5,5 kilos.",
+ "silhouette": "Médioligne Foreign",
+ "poil": "Court. Plus long sur l'épine dorsale",
+ "robe": "Lièvre, sorrel, bleu, fawn (faon)",
+ "tete": "Triangulaire, front bombé.",
+ "yeux": "Grands,en amande, de couleur or, ambre ou vert",
+ "oreilles": "Grandes, peu arrondies",
+ "queue": "Longue et effilée",
+ "intro": "L'abyssin, aussi appelé bunny cat (chat lapin), ou parfois Aby, est une race de chats originaire d'Asie. Ce chat est caractérisé par une robe à poil court au patron ticked tabby.",
+ "histoire": "Le lieu de naissance de l'abyssin ne se situerait ni en Abyssinie, ni en Égypte, mais dans le sud-est asiatique, au bord de l'océan Indien. Toutefois, il se peut que la race soit africaine. Il se pourrait même que l'Abyssin soit l'héritier du chat sacré de l'Égypte antique.",
+ "vie_texte": "Les abyssins ont une espérance de vie de treize à seize ans.",
+ "photos": [
+  {
+   "fichier": "Kamee01.jpg",
+   "src": "chiens/abyssin-1.webp",
+   "auteur": "Martin Bahmann",
+   "licence": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Kamee01.jpg"
+  },
+  {
+   "fichier": "Zula.jpg",
+   "src": "chiens/abyssin-2.webp",
+   "auteur": "Auteur inconnu",
+   "licence": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Zula.jpg"
+  }
+ ]
+}
+{
+ "id": "bobtail-americain",
+ "nom": "American Bobtail",
+ "wiki": "Bobtail américain",
+ "origine": "États-Unis",
+ "taille": "Moyenne à grande",
+ "silhouette": "Médioligne Semi-cobby",
+ "poil": "Court et mi-long",
+ "robe": "Toutes les couleurs et robes acceptées",
+ "tete": "Large avec des mâchoires puissantes, sans surface plane",
+ "yeux": "Ovale",
+ "oreilles": "Placées bas, très poilues et possédant un plumet à l'extrémité",
+ "queue": "Courte, entre 2.5 et 10cm.",
+ "intro": "L'American Bobtail ou bobtail américain est une nouvelle race de chat originaire des États-Unis. Ce chat de taille moyenne à grande est caractérisé par sa quasi-absence de queue.",
+ "histoire": "La race fut découverte en 1965 par un couple d'Américains, les Sanders, dans l'État de l'Arizona. Le chaton avait une allure sauvage et la queue courte et remontée sur le dos. Ils décidèrent immédiatement de l'adopter et le nommèrent Yodie.",
+ "vie_texte": "Son espérance de vie se situe entre onze et quinze ans.",
+ "photos": [
+  {
+   "fichier": "Bobtail Tabby Cat MISSI WITH BABY-1996.jpg",
+   "src": "chiens/bobtail-americain-1.webp",
+   "auteur": "User:Klarissae",
+   "licence": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Bobtail_Tabby_Cat_MISSI_WITH_BABY-1996.jpg"
+  }
+ ]
+}
+{
+ "id": "american-curl",
+ "nom": "American curl",
+ "wiki": "American curl",
+ "origine": "États-Unis",
+ "taille": "De taille moyenne.",
+ "poids": "3 à 5 kg.",
+ "silhouette": "Médioligne semi-foreign.",
+ "poil": "Court ou mi-long.",
+ "robe": "Toutes robes admises.",
+ "tete": "Triangulaire, présentant des formes arrondies.",
+ "yeux": "En forme de noix, espacés d'un œil. Toutes couleurs admises.",
+ "oreilles": "Incurvées vers l'intérieur du crâne, en forme de croissant de lune.",
+ "queue": "De taille égale à celle du corps. En forme de plume pour le poil long.",
+ "intro": "L'american curl est une race de chats originaire des États-Unis. L'élevage commence dans les années 1980, à partir d'une chatte noire aux oreilles naturellement recourbées vers l'arrière, nommée Shulamith, recueillie par un couple de Californiens. Le programme d'élevage est basé sur des croisements avec des chats issus de Shulamith, aux oreilles recourbées, et des chats de gouttière. La race est reconnue par les deux principales fédérations américaines, The International Cat Association (TICA) et la Cat Fanciers' Association (CFA), respectivement en 1985 et 1991.",
+ "vie_texte": "L'espérance de vie de l'American Curl est de 12 à 16 ans.",
+ "photos": [
+  {
+   "fichier": "GIC Minnikatin Zelta ACS n 22 female EX1 CAGCIB GIC.JPG",
+   "src": "chiens/american-curl-1.webp",
+   "auteur": "Heikki Siltala",
+   "licence": "CC BY 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:GIC_Minnikatin_Zelta_ACS_n_22_female_EX1_CAGCIB_GIC.JPG"
+  },
+  {
+   "fichier": "TICA.JPG",
+   "src": "chiens/american-curl-2.webp",
+   "auteur": "Heikki Siltala",
+   "licence": "CC BY 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:TICA.JPG"
+  }
+ ]
+}

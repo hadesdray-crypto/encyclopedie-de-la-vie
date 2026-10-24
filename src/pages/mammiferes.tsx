@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LuSearch } from "react-icons/lu";
-import { FAMILLES, GROUPES, PAR_ID, chercher, chercherFamilles, chercherOrdres, especesDe, famillesDe, ordreDe, type Espece } from "@/data/catalogue";
+import { FAMILLES, GROUPES, PAR_ID, especesDe, famillesDe, ordreDe, type Espece } from "@/data/catalogue";
+import { chercherTout } from "@/lib/recherche";
 import { FICHES } from "@/data/fiches";
 import { REGIMES, VIE } from "@/data/fiches-vie";
 import crisConnus from "@/data/cris.json";
@@ -15,6 +16,7 @@ import { voirAnimal } from "@/lib/carnet";
 import { LuBaby, LuEar, LuHeartPulse, LuHourglass, LuMapPin, LuSatellite, LuScale, LuShieldCheck, LuTreePine, LuUsers, LuUtensils } from "react-icons/lu";
 import type { IconType } from "react-icons";
 import { lireFiche } from "@/lib/recompenses";
+import { plumeRegarde } from "@/lib/caractere";
 import { comparerPoids } from "@/lib/poids";
 import wikipedia from "@/data/wikipedia-fr.json";
 import galerie from "@/data/galerie.json";
@@ -66,13 +68,14 @@ function Index({ groupe }: { groupe: string }) {
       <Titre sous="Dix groupes pour s'y retrouver. Dedans, les vrais ordres, puis les familles, puis les espèces.">Mammifères</Titre>
       <label className="mt-4 flex items-center gap-2 rounded-full bg-card px-4 py-3">
         <LuSearch className="size-5 text-[#6d5648]" aria-hidden="true" />
-        <input value={texte} onChange={(e) => setTexte(e.target.value)} placeholder="Un animal, une famille, un ordre" className="w-full bg-transparent text-base outline-none placeholder:text-[#8a7462]" />
+        <input value={texte} onChange={(e) => setTexte(e.target.value)} placeholder="Un animal, une race, une famille…" className="w-full bg-transparent text-base outline-none placeholder:text-[#8a7462]" />
       </label>
       {cherche ? (
         <div className="mt-4 space-y-2">
-          {chercherOrdres(texte).map((o) => <Ligne key={o.id} vers={`/mammiferes/o-${o.id}`} titre={o.nom} sous={o.phrase} />)}
-          {chercherFamilles(texte).map(([code, f]) => <Ligne key={code} vers={`/mammiferes/f-${code}`} titre={f.nom} sous={`${f.n} espèces`} />)}
-          {chercher(texte).map((e) => <LigneEspece key={e.id} espece={e} />)}
+          {chercherTout(texte).slice(0, 40).map((r) =>
+            r.sorte === "espece" ? <LigneEspece key={r.id} espece={PAR_ID.get(r.id)!} /> : <Ligne key={`${r.sorte}-${r.id}`} vers={r.vers} titre={r.nom} sous={r.sous} />,
+          )}
+          <a href={`#/chercher?q=${encodeURIComponent(texte)}`} className="block text-center font-extrabold underline">Chercher aussi par catégorie ou sur la carte</a>
         </div>
       ) : (
         <ul className="mt-5 space-y-3">
@@ -171,6 +174,7 @@ function Fiche({ id }: { id: string }) {
     if (e) {
       voirAnimal(e.id);
       lireFiche(e.id);
+      plumeRegarde(e);
     }
   }, [e]);
   if (!e) return <Inconnue />;
@@ -205,6 +209,11 @@ function Fiche({ id }: { id: string }) {
       </div>
       {e.disparue ? <p className="mt-2 text-center font-extrabold text-[#f3a0a0]">Espèce disparue.</p> : null}
       {e.domestique ? <p className="mt-2 text-center font-extrabold">Espèce domestique.</p> : null}
+      {e.latin === "Canis familiaris" || e.latin === "Felis catus" ? (
+        <a href={`#/compagnons/${e.latin === "Canis familiaris" ? "chiens" : "chats"}`} className="bouton-bois mx-auto mt-3 flex w-max items-center gap-2 rounded-full px-5 py-2.5 font-extrabold">
+          {e.latin === "Canis familiaris" ? "Toutes les races de chiens" : "Toutes les races de chats"} · le carnet de Plume
+        </a>
+      ) : null}
       {grande ? <p className="mx-auto mt-3 max-w-sm text-center text-lg"><Texte>{grande.phrase}</Texte></p> : null}
       {CREDITS_PHOTOS[e.id] && !grande ? <p className="mt-1 text-center text-[11px] texte-doux">Photo : {credit(CREDITS_PHOTOS[e.id])}</p> : null}
       {GALERIE[e.id]?.length ? (
