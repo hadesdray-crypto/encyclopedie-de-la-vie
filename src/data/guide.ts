@@ -193,12 +193,12 @@ export function explicationPour(chemin: string, params: URLSearchParams): Explic
 
 /** Petites phrases de Plume quand il se passe quelque chose. */
 export const REACTIONS = {
-  paquet: ["Bravo ! Tu gagnes un paquet de cartes !", "Super ! Un nouveau paquet t'attend dans les cartes.", "Youpi, un paquet de plus !"],
-  chance: ["Wah, la chance ! Une onzième carte !", "Une carte en plus ! Incroyable !"],
-  rare: ["Oh, une carte rare !", "Regarde ces étoiles, elle est rare !"],
-  memoire: ["Bravo, toutes les paires ! Tu as une super mémoire.", "Gagné ! Quelle mémoire !"],
-  bonne: ["Bonne réponse !", "Bravo !", "Exactement !", "Bien joué !"],
-  mauvaise: ["Presque ! Regarde la réponse, tu sauras la prochaine fois.", "Pas grave, on apprend en se trompant !"],
+  paquet: ["Un paquet de cartes pour toi.", "Un nouveau paquet t'attend dans les cartes.", "Tu as gagné un paquet."],
+  chance: ["Une onzième carte… quelle chance.", "Une carte en plus."],
+  rare: ["Oh… une carte rare.", "Regarde ses étoiles : elle est rare."],
+  memoire: ["Toutes les paires. Belle mémoire.", "Gagné. Tu as bien retenu."],
+  bonne: ["Bonne réponse.", "C'est ça.", "Bien vu.", "Exactement."],
+  mauvaise: ["Presque. Regarde la réponse, tu sauras la prochaine fois.", "Ce n'est pas grave : on apprend en se trompant."],
 };
 
 /** Le petit discours de Plume : à la première ouverture, puis quand Leonie le demande. */
@@ -215,7 +215,7 @@ export const PRESENTATION: Explication = {
     "En bas de l'écran, la barre t'emmène partout. Une petite flamme veut dire que le défi du jour t'attend. Un chiffre rouge, ce sont tes paquets de cartes à ouvrir.",
     "Pour revenir en arrière, utilise la flèche du téléphone, ou le bouton Retour en haut.",
     "La petite roue, c'est les Options : la voix, les sons, l'écriture plus grosse. Tout y est écrit, et je peux te le lire.",
-    "J'adore tous les animaux… mais mes préférés, ce sont les chiens. Comme toi, Leonie ! Par contre, j'ai un peu peur du grand-duc : c'est une très grande chouette, qui chasse même les petites chouettes comme moi.",
+    "J'aime tous les animaux. Mes préférés, ce sont les chiens… comme toi, Leonie. Et je me méfie un peu du grand-duc : c'est une très grande chouette, qui chasse aussi les petites chouettes comme moi.",
     "Ensuite, je reste dans mon coin, sans te déranger. Tu peux me déplacer avec ton doigt. Touche-moi si tu as besoin de moi, et appuie longtemps sur moi pour choisir si je suis discrète ou bavarde.",
     "Une astuce : appuie longtemps sur un texte, et je te le lis à voix haute.",
     "Et tout marche même sans Internet. Allez, on y va ? Je suis prête !",
