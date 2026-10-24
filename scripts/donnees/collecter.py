@@ -207,6 +207,12 @@ def enregistrer_webp(url, chemin, cote, qualite):
         return False
     im = Image.open(BytesIO(brut)).convert("RGB")
     im.thumbnail((cote, cote))
+    # Pas de photo de piège photographique (noir et blanc infrarouge) ni de photo trop sombre.
+    from PIL import ImageStat
+
+    _, saturation, luminosite = ImageStat.Stat(im.convert("HSV")).mean
+    if saturation < 25 or luminosite < 45:
+        return False
     chemin.parent.mkdir(parents=True, exist_ok=True)
     im.save(chemin, "WEBP", quality=qualite, method=6)
     return True
@@ -222,10 +228,11 @@ def etape_photos(limite):
         a_faire = a_faire[:limite]
     for n, e in enumerate(a_faire, 1):
         try:
-            choix = choisir_photos(e["latin"], 1)
-            if choix and enregistrer_webp(choix[0]["url"], RACINE / "public/m" / f"{e['id']}.webp", 420, 62):
-                photos.append(e["id"])
-                credits[e["id"]] = {k: choix[0][k] for k in ("auteur", "licence", "source")}
+            for c in choisir_photos(e["latin"], 4):
+                if enregistrer_webp(c["url"], RACINE / "public/m" / f"{e['id']}.webp", 420, 62):
+                    photos.append(e["id"])
+                    credits[e["id"]] = {k: c[k] for k in ("auteur", "licence", "source")}
+                    break
         except Exception as exc:
             print("photo", e["latin"], exc, file=sys.stderr)
         deja_vus.add(e["id"])
@@ -262,10 +269,11 @@ def etape_galerie(limite):
         if e["id"] in galerie:
             continue
         try:
-            choix = choisir_photos(e["latin"], 3)[1:3]
             garde = []
-            for k, c in enumerate(choix, 1):
-                if enregistrer_webp(c["url"], RACINE / "public/g" / f"{e['id']}-{k}.webp", 380, 55):
+            for c in choisir_photos(e["latin"], 8)[1:]:
+                if len(garde) == 2:
+                    break
+                if enregistrer_webp(c["url"], RACINE / "public/g" / f"{e['id']}-{len(garde) + 1}.webp", 380, 55):
                     garde.append({key: c[key] for key in ("auteur", "licence", "source")})
             galerie[e["id"]] = garde
         except Exception as exc:
