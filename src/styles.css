@@ -472,3 +472,10 @@ body {
 main { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
 main input, main textarea { -webkit-user-select: text; user-select: text; }
 .texte-lu { background: rgba(180, 140, 255, 0.28); box-shadow: 0 0 0 3px rgba(180, 140, 255, 0.7); border-radius: 0.6rem; transition: background 0.2s; }
+
+/* En face à face, Plume se cache (ses bulles aussi). */
+body[data-face-a-face] .plume-racine, body[data-face-a-face] [role="dialog"][aria-label^="Plume"] { display: none; }
+
+/* Mode jeu : pas de barre du bas, pas de Plume flottante (elle est dans le bandeau du jeu). */
+body[data-jeu] nav[aria-label="Salles"], body[data-jeu] .plume-racine { display: none; }
+body[data-jeu] { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem); }

@@ -17,8 +17,13 @@ import { Portrait, aUnePhoto } from "@/components/portrait";
 import { Vignette } from "@/components/icone";
 import { PAR_ID } from "@/data/catalogue";
 import crisConnus from "@/data/cris.json";
-import { LuFlame } from "react-icons/lu";
+import { LuChevronLeft, LuFlame } from "react-icons/lu";
+import { useModeJeu } from "@/lib/mode-jeu";
+import { revenir } from "@/lib/routeur";
+import { PlumeDessin } from "@/components/plume-dessin";
+import { ouvrirPlume } from "@/lib/plume";
 import { useIndice } from "@/lib/indice";
+import { Bataille, MemoryPlusieurs } from "@/pages/jeux-plusieurs";
 
 function melanger<T>(l: T[], rnd: () => number = Math.random) {
   const c = [...l];
@@ -48,20 +53,68 @@ function questionTemps() {
   }
 }
 
-type Jeu = "defi" | "regime" | "temps" | "memoire" | "poids" | "carte" | "cri";
+type Jeu = "defi" | "regime" | "temps" | "memoire" | "bataille" | "poids" | "carte" | "cri";
+
+const JEUX: { id: Jeu; nom: string; sous: string; niveau: 1 | 2 | 3; joueurs: string }[] = [
+  { id: "defi", nom: "Le défi du jour", sous: "Cinq questions, chaque jour.", niveau: 1, joueurs: "Seule" },
+  { id: "memoire", nom: "Mémory", sous: "Retrouve les paires d'animaux.", niveau: 1, joueurs: "1 à 4" },
+  { id: "bataille", nom: "La bataille des animaux", sous: "Le plus gros chiffre gagne les cartes.", niveau: 2, joueurs: "2 à 4" },
+  { id: "cri", nom: "Devine qui crie", sous: "De vrais cris d'animaux.", niveau: 1, joueurs: "Seule" },
+  { id: "poids", nom: "Le plus lourd ?", sous: "Lequel pèse le plus ?", niveau: 1, joueurs: "Seule" },
+  { id: "carte", nom: "Qui vit ici ?", sous: "Les pays en or sur la carte.", niveau: 2, joueurs: "Seule" },
+  { id: "regime", nom: "Qu'est-ce qu'il mange ?", sous: "Viande, plantes, insectes…", niveau: 1, joueurs: "Seule" },
+  { id: "temps", nom: "Qui est arrivé en premier ?", sous: "Dans l'histoire de la vie.", niveau: 2, joueurs: "Seule" },
+];
 
 export function JouerPage({ params }: { params: URLSearchParams }) {
-  const [jeu, setJeu] = useState<Jeu>((params.get("jeu") as Jeu) || "defi");
+  const jeu = params.get("jeu") as Jeu | null;
+  const choisi = JEUX.find((j) => j.id === jeu);
+  if (!choisi) {
+    return (
+      <main className="mx-auto max-w-xl px-4 pt-4">
+        <Entete siVide="/" />
+        <Titre sous="Touche un jeu pour commencer.">Jouer</Titre>
+        <ul className="mt-4 space-y-2">
+          {JEUX.map((j) => (
+            <li key={j.id}>
+              <a href={`#/jouer?jeu=${j.id}`} className="flex items-center gap-3 rounded-3xl bg-card px-4 py-3 text-[#2a1c14]">
+                <span className="min-w-0 flex-1">
+                  <span className="block font-display text-xl leading-tight">{j.nom}</span>
+                  <span className="block text-sm">{j.sous}</span>
+                </span>
+                <span className="shrink-0 text-right text-xs font-black">
+                  <span className="block text-[#d6a531]">{"★".repeat(j.niveau)}<span className="text-[#cdb89a]">{"★".repeat(3 - j.niveau)}</span></span>
+                  <span className="block">{j.joueurs}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </main>
+    );
+  }
   return (
-    <main className="mx-auto max-w-xl px-4 pt-4">
-      <Entete />
-      <Titre>Défis du jour</Titre>
-      <div className="mt-4 flex flex-wrap justify-center gap-2">
-        {([["defi", "Défi du jour"], ["memoire", "Mémoire"], ["cri", "Devine qui crie"], ["poids", "Le plus lourd ?"], ["carte", "Qui vit ici ?"], ["regime", "Qu'est-ce qu'il mange ?"], ["temps", "Qui est arrivé en premier ?"]] as const).map(([id, nom]) => (
-          <button key={id} type="button" onClick={() => setJeu(id)} className={`min-h-12 rounded-2xl px-3 text-sm font-extrabold leading-tight ${jeu === id ? "bouton-bois" : "bg-card"}`}>{nom}</button>
-        ))}
-      </div>
-      {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <JeuMemoire /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
+    <ModeJeu titre={choisi.nom}>
+      {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <MemoryPlusieurs /> : jeu === "bataille" ? <Bataille /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
+    </ModeJeu>
+  );
+}
+
+/** Le jeu prend tout l'écran : seulement un petit bandeau en haut, avec Plume et Retour. */
+function ModeJeu({ titre, children }: { titre: string; children: React.ReactNode }) {
+  useModeJeu();
+  return (
+    <main className="mx-auto max-w-xl px-3 pt-2">
+      <header className="sticky top-0 z-30 -mx-3 flex items-center gap-2 bg-[#120c2c]/90 px-3 py-1.5 backdrop-blur">
+        <button type="button" onClick={() => ouvrirPlume(true, "page")} aria-label="Plume : aide" className="size-11 shrink-0">
+          <PlumeDessin className="size-full" />
+        </button>
+        <p className="min-w-0 flex-1 truncate font-display text-lg text-[#f3d48a]">{titre}</p>
+        <button type="button" onClick={() => revenir("/jouer")} className="inline-flex min-h-10 items-center gap-1 rounded-full bg-card px-3.5 text-sm font-extrabold text-[#2a1c14]">
+          <LuChevronLeft className="size-5" aria-hidden="true" /> Retour
+        </button>
+      </header>
+      {children}
     </main>
   );
 }
