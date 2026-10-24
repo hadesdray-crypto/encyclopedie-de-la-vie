@@ -4,6 +4,7 @@
 // Il garde aussi le chemin suivi dans l'application (accueil → mammifères → famille → fiche…),
 // pour que « Retour » (le bouton en haut, ou la flèche du téléphone) revienne pas à pas.
 import { useEffect, useState, type AnchorHTMLAttributes, type ReactNode } from "react";
+import { quitterPartieSiEnCours } from "@/lib/mode-jeu";
 
 function cheminActuel() {
   const brut = window.location.hash.replace(/^#/, "") || "/";
@@ -101,6 +102,8 @@ function parent(chemin: string) {
 
 /** Revenir d'un pas. Renvoie false si on est déjà à l'accueil sans chemin derrière. */
 export function revenir(siVide?: string) {
+  // Pendant une partie, Retour quitte d'abord la partie.
+  if (quitterPartieSiEnCours()) return true;
   if (position > 0) {
     window.history.back();
     return true;

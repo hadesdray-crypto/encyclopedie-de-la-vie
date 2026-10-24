@@ -9,6 +9,8 @@ import { gagnerPaquet } from "@/lib/recompenses";
 import { plumeDit } from "@/lib/plume";
 import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
+import { useQuitterPartie } from "@/lib/mode-jeu";
+import { useCallback } from "react";
 
 // ---------------------------------------------------------------- les règles, que Plume explique
 
@@ -57,6 +59,8 @@ export function MemoryPlusieurs() {
   const [note, setNote] = useState("");
 
   useAnnonceTour(joueurs[tour], `${tour}-${partie ? 1 : 0}`, !!partie && joueurs.length > 1);
+  const arreter = useCallback(() => setPartie(null), []);
+  useQuitterPartie(!!partie, arreter);
 
   function commencer() {
     let source = PAQUETS_MEMORY.find((p) => p.id === paquet)!.cartes();
@@ -201,6 +205,8 @@ export function Bataille() {
   const [note, setNote] = useState("");
 
   useAnnonceTour(joueurs[e?.tour ?? 0], `${e?.tour}-${e?.manche}`, !!e && !e.duel);
+  const arreter = useCallback(() => setE(null), []);
+  useQuitterPartie(!!e, arreter);
 
   function commencer() {
     let paquet = paquetBataille(source);
