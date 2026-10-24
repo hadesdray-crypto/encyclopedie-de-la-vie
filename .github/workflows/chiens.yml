@@ -3,7 +3,7 @@ name: Chiens de Plume
 on:
   push:
     branches: [chiens]
-    paths: [scripts/donnees/chiens.py, scripts/donnees/chiens-etape.txt, .github/workflows/chiens.yml]
+    paths: [scripts/donnees/chiens-etape.txt]
   workflow_dispatch:
 
 permissions:
