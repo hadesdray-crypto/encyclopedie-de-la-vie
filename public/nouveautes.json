@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Deux nouveaux jeux",
+    "points": [
+      "Le plus rapide : face à face, le premier qui touche le bon animal gagne.",
+      "Mime l'animal : un joueur mime, les autres devinent en une minute.",
+      "Pendant les jeux, la barre du bas disparaît. Retour pour quitter."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Jouer à plusieurs",
     "points": [
       "Nouveau : la bataille des animaux, de 2 à 4 joueurs. Le plus gros chiffre gagne !",

@@ -25,10 +25,10 @@ export function BoutonRegles({ regles }: { regles: Explication }) {
 }
 
 export function Preparation({
-  joueurs, setJoueurs, min = 1, mode, setMode, faceAFace, setFaceAFace, children, onJouer,
+  joueurs, setJoueurs, min = 1, mode, setMode, faceAFace, setFaceAFace, children, onJouer, sansFaceAFace = false,
 }: {
   joueurs: Joueur[]; setJoueurs: (j: Joueur[]) => void; min?: number; mode: Mode; setMode: (m: Mode) => void;
-  faceAFace: boolean; setFaceAFace: (b: boolean) => void; children?: ReactNode; onJouer: () => void;
+  faceAFace: boolean; setFaceAFace: (b: boolean) => void; children?: ReactNode; onJouer: () => void; sansFaceAFace?: boolean;
 }) {
   const changer = (j: Joueur[]) => {
     setJoueurs(j);
@@ -82,7 +82,7 @@ export function Preparation({
         </div>
       ) : null}
 
-      {joueurs.length >= 2 ? (
+      {joueurs.length >= 2 && !sansFaceAFace ? (
         <label className="flex items-center gap-3 rounded-2xl bg-card px-3 py-2.5 text-[#2a1c14]">
           <input type="checkbox" checked={faceAFace} onChange={(e) => setFaceAFace(e.target.checked)} className="size-6 accent-[#6a3fc0]" />
           <span>
