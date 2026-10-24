@@ -14,6 +14,8 @@ const RACINE = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = join(RACINE, "dist");
 const SERVE = process.argv.includes("--serve");
 const ARTIFACT = process.argv.includes("--artifact");
+// --apk : tout est déjà dans l'application Android, pas besoin du service worker.
+const APK = process.argv.includes("--apk");
 const require = createRequire(import.meta.url);
 
 function fichiers(dossier) {
@@ -60,7 +62,7 @@ const OPTIONS = {
   sourcemap: SERVE,
   metafile: true,
   logLevel: "warning",
-  define: { "process.env.NODE_ENV": SERVE ? '"development"' : '"production"', __HORS_LIGNE__: SERVE || ARTIFACT ? "false" : "true", __PAQUETS__: ARTIFACT ? "true" : "false" },
+  define: { "process.env.NODE_ENV": SERVE ? '"development"' : '"production"', __HORS_LIGNE__: SERVE || ARTIFACT || APK ? "false" : "true", __PAQUETS__: ARTIFACT ? "true" : "false" },
 };
 
 function ecrirePage(js, css) {
