@@ -3,6 +3,7 @@ import { LuChevronLeft, LuChevronRight, LuVolume2, LuVolumeX, LuX } from "react-
 import { explicationPour } from "@/data/guide";
 import { lire, stopper, voixPossible } from "@/components/voix";
 import { dejaExplique, marquerExplique, ouvrirPlume, plumeParleSeule, usePlume } from "@/lib/plume";
+import { VITESSES, choisirVitesseVoix, vitesseVoix } from "@/lib/reglages";
 
 /** Le bouton Plume, placé dans l'en-tête de chaque page : il ne cache jamais rien. */
 export function BoutonPlume({ taille = "size-12" }: { taille?: string }) {
@@ -33,6 +34,9 @@ export function PanneauPlume({ chemin, params }: { chemin: string; params: URLSe
   const explication = explicationPour(chemin, params);
   const [etape, setEtape] = useState(0);
   const [parle, setParle] = useState(false);
+  // Une fois qu'on a touché « Écouter », Plume continue de parler quand on passe à la bulle suivante.
+  const [lecture, setLecture] = useState(false);
+  const [vitesse, setVitesse] = useState(vitesseVoix);
 
   // Nouvelle page : on repart de la première bulle. La première fois, Plume se présente toute seule.
   useEffect(() => {
@@ -55,10 +59,11 @@ export function PanneauPlume({ chemin, params }: { chemin: string; params: URLSe
   }
 
   useEffect(() => {
-    if (ouvert && plumeParleSeule()) dire(texte);
+    if (ouvert && (plumeParleSeule() || lecture)) dire(texte);
     if (!ouvert) {
       stopper();
       setParle(false);
+      setLecture(false);
     }
   }, [ouvert, texte]);
 
@@ -98,6 +103,27 @@ export function PanneauPlume({ chemin, params }: { chemin: string; params: URLSe
 
         <p key={etape} className="arrivee mt-3 min-h-[4.5rem] text-lg leading-snug">{texte}</p>
 
+        {voixPossible() ? (
+          <div className="mt-2 flex items-center gap-1.5 text-sm" role="group" aria-label="Vitesse de la voix">
+            <span className="font-extrabold text-[#6a3fc0]">Voix :</span>
+            {VITESSES.map((v) => (
+              <button
+                key={v.id}
+                type="button"
+                aria-pressed={vitesse === v.id}
+                onClick={() => {
+                  choisirVitesseVoix(v.id);
+                  setVitesse(v.id);
+                  if (parle) dire(texte);
+                }}
+                className={`min-h-9 rounded-full px-3 font-extrabold ${vitesse === v.id ? "bg-[#6a3fc0] text-white" : "bg-[#efe3ff] text-[#6a3fc0]"}`}
+              >
+                {v.nom}
+              </button>
+            ))}
+          </div>
+        ) : null}
+
         <div className="mt-3 flex items-center gap-2">
           {voixPossible() ? (
             <button
@@ -106,7 +132,11 @@ export function PanneauPlume({ chemin, params }: { chemin: string; params: URLSe
                 if (parle) {
                   stopper();
                   setParle(false);
-                } else dire(texte);
+                  setLecture(false);
+                } else {
+                  setLecture(true);
+                  dire(texte);
+                }
               }}
               className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#6a3fc0] px-4 font-extrabold text-white"
             >

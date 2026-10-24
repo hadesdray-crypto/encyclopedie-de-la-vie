@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-10-24",
+    "titre": "La voix de Plume",
+    "points": [
+      "Tu peux choisir la vitesse de la voix : lente, normale ou rapide.",
+      "Quand Plume lit, « Suivant » continue la lecture tout seul."
+    ]
+  },
+  {
+    "date": "2026-10-24",
     "titre": "Mise à jour plus simple et fiches plus complètes",
     "points": [
       "La mise à jour se fait dans l'application : une barre de chargement, puis « Redémarrer ».",
