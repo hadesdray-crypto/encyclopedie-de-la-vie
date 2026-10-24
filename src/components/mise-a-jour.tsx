@@ -1,0 +1,29 @@
+import { useState } from "react";
+import { accepterMiseAJour, useHorsLigne } from "@/lib/hors-ligne";
+
+/** Bandeau « Mise à jour disponible ». Rien ne change tant qu'on n'a pas dit oui. */
+export function MiseAJour() {
+  const { majDisponible } = useHorsLigne();
+  const [plusTard, setPlusTard] = useState(false);
+  const [enCours, setEnCours] = useState(false);
+  if (!majDisponible || plusTard) return null;
+  return (
+    <div
+      role="dialog"
+      aria-label="Mise à jour disponible"
+      className="arrivee fixed inset-x-0 z-50 mx-auto w-[min(92%,30rem)] rounded-3xl border-2 border-[#e8c98a] bg-[#24123f] px-4 py-3 shadow-[0_0_30px_rgba(160,110,255,.6)]"
+      style={{ top: "calc(env(safe-area-inset-top, 0px) + 0.75rem)" }}
+    >
+      <p className="font-display text-xl text-[#f3d48a]">Mise à jour disponible</p>
+      <p className="mt-1 text-sm">Une nouvelle version de l'encyclopédie est prête. Les cartes et les points sont gardés.</p>
+      <div className="mt-3 grid grid-cols-2 gap-2">
+        <button type="button" disabled={enCours} onClick={() => { setEnCours(true); accepterMiseAJour(); }} className="bouton-bois rounded-2xl py-3 font-extrabold">
+          {enCours ? "Un instant…" : "Mettre à jour"}
+        </button>
+        <button type="button" onClick={() => setPlusTard(true)} className="rounded-2xl bg-card py-3 font-extrabold">
+          Plus tard
+        </button>
+      </div>
+    </div>
+  );
+}

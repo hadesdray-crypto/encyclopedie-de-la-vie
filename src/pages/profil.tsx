@@ -4,7 +4,7 @@ import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
 import { AVATARS, avatar, choisirAvatar, choisirGrosTexte, grosTexte } from "@/lib/reglages";
 import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireScore, lireVues } from "@/lib/carnet";
-import { relancerHorsLigne, useHorsLigne } from "@/lib/hors-ligne";
+import { VERSION_APP, accepterMiseAJour, relancerHorsLigne, useHorsLigne, verifierMiseAJour } from "@/lib/hors-ligne";
 import { permettreInternet, useInternet } from "@/lib/internet";
 import { Portrait } from "@/components/portrait";
 
@@ -47,6 +47,19 @@ export function ProfilPage() {
         ) : (
           <p className="mt-1 text-sm">L'application s'enregistre sur l'appareil quand on l'ouvre depuis son adresse Internet.</p>
         )}
+        <div className="mt-4 border-t border-[#e8c98a]/30 pt-3 text-sm">
+          <p>Version du {VERSION_APP.split(" ")[0].split("-").reverse().join("/")} à {VERSION_APP.split(" ")[1]}</p>
+          {hl.majDisponible ? (
+            <button type="button" onClick={accepterMiseAJour} className="bouton-bois mt-2 rounded-full px-4 py-2 font-extrabold">Installer la mise à jour</button>
+          ) : hl.possible ? (
+            <>
+              <button type="button" onClick={verifierMiseAJour} className="mt-2 rounded-full bg-card px-4 py-2 font-extrabold text-[#2a1c14]">Chercher une mise à jour</button>
+              <p className="mt-1 text-xs">
+                {hl.verification === "en-cours" ? "Recherche…" : hl.verification === "a-jour" ? "C'est la dernière version." : hl.verification === "hors-ligne" ? "Pas de connexion : on regardera plus tard." : ""}
+              </p>
+            </>
+          ) : null}
+        </div>
       </section>
       <CoinParents />
       <a href="#/sources" className="mt-4 block text-center font-extrabold underline">Sources et crédits</a>

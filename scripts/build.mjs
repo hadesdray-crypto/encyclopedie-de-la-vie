@@ -62,7 +62,7 @@ const OPTIONS = {
   sourcemap: SERVE,
   metafile: true,
   logLevel: "warning",
-  define: { "process.env.NODE_ENV": SERVE ? '"development"' : '"production"', __HORS_LIGNE__: SERVE || ARTIFACT || APK ? "false" : "true", __PAQUETS__: ARTIFACT ? "true" : "false" },
+  define: { "process.env.NODE_ENV": SERVE ? '"development"' : '"production"', __HORS_LIGNE__: SERVE || ARTIFACT || APK ? "false" : "true", __PAQUETS__: ARTIFACT ? "true" : "false", __VERSION_APP__: JSON.stringify(new Date().toISOString().slice(0, 16).replace("T", " ")) },
 };
 
 function ecrirePage(js, css) {

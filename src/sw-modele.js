@@ -15,8 +15,9 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
       .open(CACHE_BASE)
-      .then((cache) => cache.addAll(COQUILLE))
-      .then(() => self.skipWaiting()),
+      // cache: "reload" : on prend les fichiers neufs, jamais une vieille copie du navigateur.
+      .then((cache) => cache.addAll(COQUILLE.map((u) => new Request(u, { cache: "reload" })))),
+    // Pas de skipWaiting ici : la nouvelle version attend que l'utilisateur dise oui.
   );
 });
 
@@ -83,6 +84,10 @@ async function prevenir(message) {
 
 let enCours = false;
 self.addEventListener("message", (event) => {
+  if (event.data === "mettre-a-jour") {
+    self.skipWaiting();
+    return;
+  }
   if (event.data === "etat") {
     etat().then(({ total, prets }) => prevenir({ type: "etat", total, prets, enCours }));
   }

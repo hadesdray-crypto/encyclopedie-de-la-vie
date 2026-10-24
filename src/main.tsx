@@ -2,6 +2,7 @@ import { StrictMode, Suspense, lazy, type ComponentType } from "react";
 import { createRoot } from "react-dom/client";
 import { Barre } from "@/components/barre";
 import { Cadeau } from "@/components/cadeau";
+import { MiseAJour } from "@/components/mise-a-jour";
 import { appliquerGrosTexte } from "@/lib/reglages";
 import { useChemin } from "@/lib/routeur";
 import { demarrerHorsLigne } from "@/lib/hors-ligne";
@@ -65,6 +66,7 @@ function App() {
       <Suspense fallback={<Chargement />}>{contenu}</Suspense>
       <Barre chemin={chemin} />
       <Cadeau />
+      <MiseAJour />
     </>
   );
 }
