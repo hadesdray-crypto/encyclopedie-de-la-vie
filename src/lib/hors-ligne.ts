@@ -88,7 +88,14 @@ export async function verifierMiseAJour() {
   }, 4000);
 }
 
+export const CLE_MAJ_WEB = "leonie-maj-web-terminee";
+
 export function accepterMiseAJour() {
+  try {
+    localStorage.setItem(CLE_MAJ_WEB, "oui");
+  } catch {
+    /* rien */
+  }
   const enAttente = enregistrement?.waiting;
   if (enAttente) enAttente.postMessage("mettre-a-jour");
   else location.reload();

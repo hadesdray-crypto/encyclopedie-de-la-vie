@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-10-24",
+    "titre": "Mise à jour plus simple et fiches plus complètes",
+    "points": [
+      "La mise à jour se fait dans l'application : une barre de chargement, puis « Redémarrer ».",
+      "Plus de 3 000 fiches ont des estimations quand la mesure manque, toujours marquées « estimé »."
+    ]
+  },
+  {
+    "date": "2026-10-24",
     "titre": "Pictogrammes, défi du jour et nouveau jeu",
     "points": [
       "Chaque rubrique des fiches a son petit dessin : la carte, l'assiette, la balance…",
@@ -13,6 +21,8 @@
   {
     "date": "2026-10-24",
     "titre": "Plume arrive",
-    "points": ["Plume, la petite chouette, explique chaque page et peut parler."]
+    "points": [
+      "Plume, la petite chouette, explique chaque page et peut parler."
+    ]
   }
 ]

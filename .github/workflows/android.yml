@@ -30,9 +30,12 @@ jobs:
           npm install --no-audit --no-fund
           APK_VERSION=${{ github.run_number }} npm run apk
           rm -f dist/sw.js
+          # Paquet de mise à jour : l'application le télécharge elle-même, sans rien réinstaller.
+          (cd dist && zip -qr ../web.zip .)
+          ls -la web.zip
       - name: Préparer le projet Android
         run: |
-          npm install --no-save --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor-community/text-to-speech@6
+          npm install --no-save --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor-community/text-to-speech@6 @capgo/capacitor-updater@7
           npx cap add android
           pip install pillow
           python android-ressources/remplacer.py
@@ -51,7 +54,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "android-${{ github.run_number }}" encyclopedie-de-la-vie.apk \
+          gh release create "android-${{ github.run_number }}" encyclopedie-de-la-vie.apk web.zip \
             --title "Application Android, version 1.${{ github.run_number }}" \
             --notes "Ouvrir ce fichier sur le téléphone Android et toucher Installer. Tout est dans l'application : elle marche sans Internet. Pour une mise à jour, installer simplement la nouvelle version par-dessus : rien n'est perdu." \
             --latest
