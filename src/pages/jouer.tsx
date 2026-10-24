@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import type { Espece } from "@/data/catalogue";
 import { lireVues } from "@/lib/carnet";
 import { sons } from "@/lib/sons";
+import { gagnerPaquet } from "@/lib/recompenses";
+import { grammesDe } from "@/lib/poids";
+import { CarteMonde } from "@/components/carte-monde";
 import { CarteVerso } from "@/components/carte-animal";
 import { ESPECES } from "@/data/catalogue";
 import { REGIMES, type RegimeId } from "@/data/fiches-vie";
@@ -39,7 +42,7 @@ function questionTemps() {
   }
 }
 
-type Jeu = "regime" | "temps" | "memoire";
+type Jeu = "regime" | "temps" | "memoire" | "poids" | "carte";
 
 export function JouerPage({ params }: { params: URLSearchParams }) {
   const [jeu, setJeu] = useState<Jeu>((params.get("jeu") as Jeu) || "memoire");
@@ -47,12 +50,12 @@ export function JouerPage({ params }: { params: URLSearchParams }) {
     <main className="mx-auto max-w-xl px-4 pt-4">
       <Entete />
       <Titre>Défis du jour</Titre>
-      <div className="mt-4 grid grid-cols-3 gap-2">
-        {([["memoire", "Mémoire"], ["regime", "Qu'est-ce qu'il mange ?"], ["temps", "Qui est arrivé en premier ?"]] as const).map(([id, nom]) => (
-          <button key={id} type="button" onClick={() => setJeu(id)} className={`min-h-14 rounded-2xl px-1 text-sm font-extrabold leading-tight ${jeu === id ? "bouton-bois" : "bg-card"}`}>{nom}</button>
+      <div className="mt-4 flex flex-wrap justify-center gap-2">
+        {([["memoire", "Mémoire"], ["poids", "Le plus lourd ?"], ["carte", "Qui vit ici ?"], ["regime", "Qu'est-ce qu'il mange ?"], ["temps", "Qui est arrivé en premier ?"]] as const).map(([id, nom]) => (
+          <button key={id} type="button" onClick={() => setJeu(id)} className={`min-h-12 rounded-2xl px-3 text-sm font-extrabold leading-tight ${jeu === id ? "bouton-bois" : "bg-card"}`}>{nom}</button>
         ))}
       </div>
-      {jeu === "memoire" ? <JeuMemoire /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
+      {jeu === "memoire" ? <JeuMemoire /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
     </main>
   );
 }
@@ -161,7 +164,10 @@ function JeuMemoire() {
       const t = new Set(trouvees).add(cases[a].espece.id);
       setTrouvees(t);
       setOuvertes([]);
-      if (t.size === cases.length / 2) window.setTimeout(() => sons.victoire(), 300);
+      if (t.size === cases.length / 2) {
+        window.setTimeout(() => sons.victoire(), 300);
+        window.setTimeout(() => gagnerPaquet("Jeu de mémoire réussi"), 1400);
+      }
       else window.setTimeout(() => sons.bonne(), 250);
     } else {
       setBloque(true);
@@ -218,6 +224,93 @@ function JeuMemoire() {
           </div>
           <button type="button" onClick={() => nouvellePartie()} className="bouton-bois mt-4 w-full rounded-2xl py-4 font-display text-2xl">Rejouer</button>
         </div>
+      ) : null}
+    </section>
+  );
+}
+
+// ---------- Le plus lourd ? ----------
+const PESES = ESPECES.filter((e) => e.langue === "fr" && !e.disparue && aUnePhoto(e.id) && grammesDe(e.masse));
+
+function questionPoids() {
+  for (;;) {
+    const [a, b] = melanger(PESES).slice(0, 2);
+    const ga = grammesDe(a.masse)!;
+    const gb = grammesDe(b.masse)!;
+    // Au moins deux fois plus lourd : la réponse ne fait aucun doute.
+    if (Math.max(ga, gb) / Math.min(ga, gb) >= 2) return { a, b, bon: ga > gb ? a.id : b.id };
+  }
+}
+
+function JeuPoids() {
+  const [q, setQ] = useState(questionPoids);
+  const [rep, setRep] = useState<string | null>(null);
+  return (
+    <section className="mt-5">
+      <p className="text-center text-lg">Touche l'animal le plus lourd, quand il est adulte.</p>
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        {[q.a, q.b].map((e) => {
+          const juste = rep && e.id === q.bon;
+          const faux = rep === e.id && e.id !== q.bon;
+          return (
+            <button key={e.id} type="button" onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon); if (e.id === q.bon) sons.bonne(); else sons.mauvaise(); } }} className={`flex flex-col items-center rounded-3xl px-2 py-4 text-[#2a1c14] ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"}`}>
+              <span className="medaillon block size-28 overflow-hidden"><Portrait id={e.id} /></span>
+              <span className="mt-2 font-display text-xl leading-tight">{e.nom}</span>
+              {rep ? <span className="mt-1 text-sm font-extrabold">{e.masse}</span> : null}
+            </button>
+          );
+        })}
+      </div>
+      {rep ? (
+        <>
+          <p className="mt-4 text-center text-lg font-extrabold">{rep === q.bon ? "Bravo !" : "Raté, regarde les poids !"}</p>
+          <button type="button" onClick={() => { setQ(questionPoids()); setRep(null); }} className="bouton-bois au-dessus-barre mt-4 w-full rounded-2xl py-4 font-display text-2xl">Une autre</button>
+        </>
+      ) : null}
+    </section>
+  );
+}
+
+// ---------- Qui vit ici ? ----------
+const LOCALISES = ESPECES.filter((e) => e.langue === "fr" && !e.disparue && aUnePhoto(e.id) && e.pays && e.pays.length > 0 && e.pays.length <= 25);
+
+function questionCarte() {
+  for (;;) {
+    const bon = LOCALISES[Math.floor(Math.random() * LOCALISES.length)];
+    const ici = new Set(bon.pays);
+    // Les autres choix ne vivent dans aucun des pays coloriés.
+    const autres = melanger(LOCALISES.filter((e) => e.id !== bon.id && !e.pays!.some((p) => ici.has(p)))).slice(0, 2);
+    if (autres.length === 2) return { bon, choix: melanger([bon, ...autres]) };
+  }
+}
+
+function JeuCarte() {
+  const [q, setQ] = useState(questionCarte);
+  const [rep, setRep] = useState<string | null>(null);
+  return (
+    <section className="mt-5">
+      <p className="text-center text-lg">Les pays en or montrent où vit un animal. Lequel ?</p>
+      <div className="mt-3"><CarteMonde pays={q.bon.pays!} /></div>
+      <ul className="mt-4 grid grid-cols-3 gap-2">
+        {q.choix.map((e) => {
+          const juste = rep && e.id === q.bon.id;
+          const faux = rep === e.id && e.id !== q.bon.id;
+          return (
+            <li key={e.id}>
+              <button type="button" onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon.id); if (e.id === q.bon.id) sons.bonne(); else sons.mauvaise(); } }} className={`flex h-full w-full flex-col items-center rounded-3xl px-1 py-3 text-[#2a1c14] ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"}`}>
+                <span className="medaillon block size-20 overflow-hidden"><Portrait id={e.id} /></span>
+                <span className="mt-2 text-sm font-extrabold leading-tight">{e.nom}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {rep ? (
+        <>
+          <p className="mt-4 text-center text-lg font-extrabold">{rep === q.bon.id ? "Bravo !" : `C'était ${q.bon.nom}.`}</p>
+          <p className="text-center text-sm">{q.bon.ou}</p>
+          <button type="button" onClick={() => { setQ(questionCarte()); setRep(null); }} className="bouton-bois au-dessus-barre mt-4 w-full rounded-2xl py-4 font-display text-2xl">Une autre</button>
+        </>
       ) : null}
     </section>
   );

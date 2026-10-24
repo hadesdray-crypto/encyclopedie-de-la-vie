@@ -38,7 +38,7 @@ self.addEventListener("activate", (event) => {
 });
 
 function estMedia(url) {
-  return /\/(m|fiches|s)\/[^/]+$/.test(url.pathname);
+  return /\/(m|g|fiches|s)\/[^/]+$/.test(url.pathname);
 }
 
 self.addEventListener("fetch", (event) => {

@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: donnees
@@ -38,3 +39,8 @@ jobs:
             git diff --cached --quiet || git commit -q -m "Données : étape $e"
             git pull -q --rebase origin main && git push -q origin HEAD:main
           done
+      - name: Republier le site
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main

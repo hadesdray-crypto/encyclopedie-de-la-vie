@@ -4,6 +4,7 @@ import { FAMILLES } from "@/data/catalogue";
 import { lireVues, voirAnimal } from "@/lib/carnet";
 import { ALBUMS, ouvrirPaquet, type Tirage } from "@/lib/paquets";
 import { activerSons, sons, sonsActifs } from "@/lib/sons";
+import { REGLES, paquetsDisponibles, paquetsIllimites, utiliserPaquet } from "@/lib/recompenses";
 import { Entete } from "@/components/entete";
 import { Portrait } from "@/components/portrait";
 import { CarteRecto, CarteVerso, niveauDe } from "@/components/carte-animal";
@@ -40,8 +41,13 @@ export function CartesPage() {
     minuteurs.current.push(window.setTimeout(f, ms));
   }
 
+  const [reserve, setReserve] = useState(paquetsDisponibles);
+  const illimite = paquetsIllimites();
+
   function ouvrir() {
     if (etape !== "pret") return;
+    if (!utiliserPaquet()) return;
+    setReserve(paquetsDisponibles());
     const avant = new Set(lireVues());
     setDeja(avant);
     const paquet = ouvrirPaquet(famille, avant);
@@ -123,10 +129,28 @@ export function CartesPage() {
               ))}
             </select>
           </label>
-          <button type="button" onClick={ouvrir} className="mx-auto mt-6 block w-52" aria-label="Ouvrir le paquet">
-            <Paquet />
-            <span className="mt-4 block text-center font-display text-xl text-[#f3d48a]">Touche le paquet pour l'ouvrir</span>
-          </button>
+          <p className="mt-4 text-center font-display text-2xl text-[#f3d48a]">
+            {illimite ? "Paquets illimités" : `${reserve} paquet${reserve > 1 ? "s" : ""} à ouvrir`}
+          </p>
+          {illimite || reserve > 0 ? (
+            <button type="button" onClick={ouvrir} className="mx-auto mt-3 block w-52" aria-label="Ouvrir le paquet">
+              <Paquet />
+              <span className="mt-4 block text-center font-display text-xl text-[#f3d48a]">Touche le paquet pour l'ouvrir</span>
+            </button>
+          ) : (
+            <div className="carte-nuit mx-auto mt-3 max-w-sm rounded-3xl px-4 py-4 text-center">
+              <p className="font-extrabold">Pour gagner un nouveau paquet :</p>
+              <ul className="mt-2 space-y-1 text-sm">
+                <li>lis {REGLES.fichesParPaquet} fiches d'animaux que tu n'as jamais ouvertes,</li>
+                <li>ou donne {REGLES.bonnesParPaquet} bonnes réponses aux défis,</li>
+                <li>ou réussis un jeu de mémoire.</li>
+              </ul>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <a href="#/mammiferes" className="bouton-bois rounded-2xl py-3 font-extrabold">Lire des fiches</a>
+                <a href="#/jouer" className="bouton-parchemin rounded-2xl py-3 font-extrabold">Jouer</a>
+              </div>
+            </div>
+          )}
         </>
       ) : null}
 

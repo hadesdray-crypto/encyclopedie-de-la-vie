@@ -74,7 +74,7 @@ function ecrireServiceWorker() {
   const tous = fichiers(DIST)
     .map((f) => relative(DIST, f).split(sep).join("/"))
     .filter((f) => f !== "sw.js" && !f.endsWith(".map"));
-  const lourds = tous.filter((f) => /^(m|fiches|s)\//.test(f));
+  const lourds = tous.filter((f) => /^(m|g|fiches|s)\//.test(f));
   const coquille = tous.filter((f) => !lourds.includes(f));
   const empreinte = createHash("sha256");
   for (const f of tous.sort()) {

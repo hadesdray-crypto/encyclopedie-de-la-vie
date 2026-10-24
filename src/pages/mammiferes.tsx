@@ -12,9 +12,24 @@ import { Mot, Texte } from "@/components/mot";
 import { Ecouter } from "@/components/voix";
 import { CarteMonde } from "@/components/carte-monde";
 import { voirAnimal } from "@/lib/carnet";
+import { lireFiche } from "@/lib/recompenses";
+import { comparerPoids } from "@/lib/poids";
+import wikipedia from "@/data/wikipedia-fr.json";
+import galerie from "@/data/galerie.json";
+import creditsPhotos from "@/data/credits-photos.json";
 
 const CRIS = new Set(crisConnus as string[]);
-const CREDITS = creditsCris as Record<string, string>;
+type Credit = { auteur: string; licence: string; source: string };
+const CREDITS = creditsCris as Record<string, string | Credit>;
+const WIKI = wikipedia as Record<string, { texte: string; titre: string }>;
+const GALERIE = galerie as Record<string, Credit[]>;
+const CREDITS_PHOTOS = creditsPhotos as Record<string, Credit>;
+
+function credit(c: string | Credit | undefined) {
+  if (!c) return "Licence libre";
+  if (typeof c === "string") return `Licence : ${c}`;
+  return `${c.auteur.replace(/, some rights reserved/i, "")} — ${c.licence}`;
+}
 const SUIVI = suivi as Record<string, { etude: number }[]>;
 const FICHE_PAR_LATIN = new Map(FICHES.map((f) => [f.latin, f]));
 
@@ -137,7 +152,12 @@ function Famille({ id }: { id: string }) {
 
 function Fiche({ id }: { id: string }) {
   const e = PAR_ID.get(id);
-  useEffect(() => { if (e) voirAnimal(e.id); }, [e]);
+  useEffect(() => {
+    if (e) {
+      voirAnimal(e.id);
+      lireFiche(e.id);
+    }
+  }, [e]);
   if (!e) return <Inconnue />;
   const grande = FICHE_PAR_LATIN.get(e.latin);
   const vie = grande ? VIE[grande.id] : undefined;
@@ -166,6 +186,24 @@ function Fiche({ id }: { id: string }) {
       {e.disparue ? <p className="mt-2 text-center font-extrabold text-[#f3a0a0]">Espèce disparue.</p> : null}
       {e.domestique ? <p className="mt-2 text-center font-extrabold">Espèce domestique.</p> : null}
       {grande ? <p className="mx-auto mt-3 max-w-sm text-center text-lg"><Texte>{grande.phrase}</Texte></p> : null}
+      {CREDITS_PHOTOS[e.id] && !grande ? <p className="mt-1 text-center text-[11px] texte-doux">Photo : {credit(CREDITS_PHOTOS[e.id])}</p> : null}
+      {GALERIE[e.id]?.length ? (
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          {GALERIE[e.id].map((c, i) => (
+            <figure key={i}>
+              <img src={`g/${e.id}-${i + 1}.webp`} alt="" loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-[0_8px_18px_rgba(0,0,0,.4)]" />
+              <figcaption className="mt-1 text-[10px] leading-tight texte-doux">{credit(c)}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : null}
+      {WIKI[e.id] ? (
+        <section className="carte-nuit mt-4 rounded-3xl px-4 py-3">
+          <p className="font-display text-lg text-[#f3d48a]">Ce qu'en dit Wikipédia</p>
+          <p className="mt-1 leading-relaxed">{WIKI[e.id].texte}</p>
+          <p className="mt-1 text-[11px] texte-doux">Extrait de l'article « {WIKI[e.id].titre} », Wikipédia en français, licence CC BY-SA.</p>
+        </section>
+      ) : null}
       <dl className="mt-5 space-y-3">
         <Bloc mot="repartition" texte={vie?.ou ?? e.ou}>{e.pays?.length ? <div className="mt-2"><CarteMonde pays={e.pays} /><p className="mt-1 text-xs">Pays en or : d'après la Mammal Diversity Database. Les très petites îles n'apparaissent pas.</p></div> : null}</Bloc>
         <div className="rounded-3xl bg-card px-4 py-3">
@@ -177,12 +215,12 @@ function Fiche({ id }: { id: string }) {
         <Bloc mot="milieu" texte={e.milieu ?? "Mal connu."} />
         <Bloc mot="portee" texte={vie?.bebes ?? e.portee ?? "Mal connu."} />
         <Bloc mot="gestation" texte={vie?.gestation ?? e.gestation ?? "Mal connu."} />
-        {grande ? (<><Bloc mot="male" texte={grande.male} /><Bloc mot="femelle" texte={grande.femelle} /><Bloc mot="dimorphisme" texte={grande.difference} /></>) : <Bloc mot="masse" texte={e.masse ?? "Mal connu."} />}
+        {grande ? (<><Bloc mot="male" texte={grande.male} /><Bloc mot="femelle" texte={grande.femelle} /><Bloc mot="dimorphisme" texte={grande.difference} /></>) : <Bloc mot="masse" texte={e.masse ?? "Mal connu."}>{comparerPoids(e.masse) ? <p className="mt-1 text-sm font-extrabold text-[#8d4e1f]">{comparerPoids(e.masse)}</p> : null}</Bloc>}
         <Bloc mot="longevite" texte={grande?.vie ?? e.longevite ?? "Mal connu."} />
         <Bloc mot="statut" texte={e.statut ?? "Non évalué."} />
         <div className="rounded-3xl bg-card px-4 py-3">
           <Mot id="cri" />
-          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.mp3`} className="mt-2 w-full" /><p className="mt-1 text-xs">Licence : {CREDITS[e.id] ?? "libre"}</p></>) : <p className="mt-1 font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
+          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.mp3`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p></>) : <p className="mt-1 font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
         </div>
         <div className="rounded-3xl bg-card px-4 py-3">
           <p className="font-extrabold">{etude ? "Une étude GPS publique existe" : "Pas de suivi GPS enregistré"}</p>

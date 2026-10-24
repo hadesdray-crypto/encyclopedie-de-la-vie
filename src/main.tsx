@@ -1,6 +1,8 @@
 import { StrictMode, Suspense, lazy, type ComponentType } from "react";
 import { createRoot } from "react-dom/client";
 import { Barre } from "@/components/barre";
+import { Cadeau } from "@/components/cadeau";
+import { appliquerGrosTexte } from "@/lib/reglages";
 import { useChemin } from "@/lib/routeur";
 import { demarrerHorsLigne } from "@/lib/hors-ligne";
 import { Accueil } from "@/pages/accueil";
@@ -54,7 +56,7 @@ function App() {
   for (const [base, Composant] of ROUTES) {
     if (chemin === base || chemin.startsWith(`${base}/`)) {
       const id = chemin.length > base.length ? chemin.slice(base.length + 1) : undefined;
-      contenu = <Composant key={chemin} id={id} params={params} />;
+      contenu = <Composant key={chemin + "?" + params.toString()} id={id} params={params} />;
       break;
     }
   }
@@ -62,6 +64,7 @@ function App() {
     <>
       <Suspense fallback={<Chargement />}>{contenu}</Suspense>
       <Barre chemin={chemin} />
+      <Cadeau />
     </>
   );
 }
@@ -72,4 +75,5 @@ createRoot(document.getElementById("app")!).render(
   </StrictMode>,
 );
 
+appliquerGrosTexte();
 demarrerHorsLigne();

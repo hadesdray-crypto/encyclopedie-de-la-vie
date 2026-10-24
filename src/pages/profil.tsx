@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { LuCrown } from "react-icons/lu";
-import { PAR_ID } from "@/data/catalogue";
+import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
+import { AVATARS, avatar, choisirAvatar, choisirGrosTexte, grosTexte } from "@/lib/reglages";
+import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireScore, lireVues } from "@/lib/carnet";
 import { relancerHorsLigne, useHorsLigne } from "@/lib/hors-ligne";
 import { permettreInternet, useInternet } from "@/lib/internet";
@@ -12,13 +14,17 @@ export function ProfilPage() {
   const hl = useHorsLigne();
   return (
     <main className="mx-auto max-w-xl px-4 pt-6">
-      <div className="medaillon-or mx-auto grid size-24 place-items-center bg-[radial-gradient(circle_at_35%_30%,#3f2470,#140a26)] text-[#f3d48a]"><LuCrown className="size-12" aria-hidden="true" /></div>
+      <ChoixAvatar />
       <h1 className="titre-or mt-4 text-center text-4xl">Princesse Leonie</h1>
       <p className="mt-2 text-center">Ton carnet. Il reste sur cet appareil.</p>
       <div className="mt-5 grid grid-cols-2 gap-3">
         <a href="#/cartes" className="rounded-3xl bg-card px-4 py-4"><p className="font-display text-3xl">{vues.length}</p><p>fiches et cartes vues</p></a>
         <a href="#/jouer" className="rounded-3xl bg-card px-4 py-4"><p className="font-display text-3xl">{score.points} / {score.parties}</p><p>bonnes réponses</p></a>
+        <a href="#/mammiferes" className="rounded-3xl bg-card px-4 py-4"><p className="font-display text-3xl">{fichesLues().length}</p><p>fiches lues</p></a>
+        <a href="#/cartes" className="rounded-3xl bg-card px-4 py-4"><p className="font-display text-3xl">{paquetsIllimites() ? "∞" : paquetsDisponibles()}</p><p>paquets à ouvrir</p></a>
       </div>
+      <Medailles vues={vues} />
+      <Confort />
       {vues.length ? (
         <>
           <h2 className="titre-or mt-6 text-center text-2xl">Déjà vus</h2>
@@ -57,6 +63,10 @@ function CoinParents() {
       <button type="button" onClick={() => setOuvert((o) => !o)} className="w-full text-left font-display text-xl">Coin des parents</button>
       {ouvert ? (
         <div className="mt-2 text-sm">
+          <label className="mb-3 flex items-center gap-2 font-extrabold">
+            <input type="checkbox" defaultChecked={paquetsIllimites()} onChange={(e) => choisirIllimite(e.target.checked)} className="size-5 accent-[#8d4e1f]" />
+            Paquets de cartes illimités (sinon, ils se gagnent en lisant et en jouant)
+          </label>
           <p>Certaines options ont besoin d'une connexion : les trajets GPS (Movebank). Elles sont éteintes. Rien ne se télécharge tout seul.</p>
           {permis ? (
             <button type="button" onClick={() => permettreInternet(false)} className="bouton-bois mt-3 rounded-full px-4 py-2 font-extrabold">Éteindre les options Internet</button>
@@ -69,6 +79,71 @@ function CoinParents() {
           )}
         </div>
       ) : null}
+    </section>
+  );
+}
+
+function ChoixAvatar() {
+  const [actuel, setActuel] = useState(avatar);
+  const [ouvert, setOuvert] = useState(false);
+  return (
+    <div className="text-center">
+      <button type="button" onClick={() => setOuvert((o) => !o)} className="medaillon-or mx-auto block size-24 overflow-hidden" aria-label="Changer d'image">
+        <img src={actuel} alt="" className="size-full object-cover" />
+      </button>
+      {ouvert ? (
+        <div className="mx-auto mt-3 grid max-w-xs grid-cols-4 gap-2">
+          {AVATARS.map((a) => (
+            <button key={a} type="button" onClick={() => { choisirAvatar(a); setActuel(a); setOuvert(false); }} className={`medaillon block aspect-square overflow-hidden ${a === actuel ? "ring-4 ring-[#f3d48a]" : ""}`}>
+              <img src={a} alt="" className="size-full object-cover" />
+            </button>
+          ))}
+        </div>
+      ) : (
+        <p className="mt-1 text-xs texte-doux">Touche l'image pour la changer.</p>
+      )}
+    </div>
+  );
+}
+
+const PALIERS = [10, 25, 50, 100, 250, 500, 1000, 2000];
+
+function Medailles({ vues }: { vues: string[] }) {
+  const vu = new Set(vues);
+  const ordres = ORDRES.filter((o) => ESPECES.some((e) => e.ordre === o.id && vu.has(e.id)));
+  const completes = Object.entries(FAMILLES).filter(([code]) => {
+    const vivantes = ESPECES.filter((e) => e.famille === code && !e.disparue);
+    return vivantes.length > 0 && vivantes.every((e) => vu.has(e.id));
+  });
+  return (
+    <section className="mt-6">
+      <h2 className="titre-or text-center text-2xl">Médailles</h2>
+      <ul className="mt-3 flex flex-wrap justify-center gap-2">
+        {PALIERS.map((p) => (
+          <li key={p} className={`grid size-16 place-items-center rounded-full text-center text-xs font-extrabold leading-tight ${vues.length >= p ? "medaillon-or bg-[radial-gradient(circle,#fff1b8,#d6a531)] text-[#2a1c14]" : "border-2 border-dashed border-[#e8c98a]/40 text-[#e8c98a]/50"}`}>
+            {p}<br />cartes
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 text-center font-extrabold">Exploratrice des ordres : {ordres.length} / {ORDRES.length}</p>
+      <div className="mt-2 flex flex-wrap justify-center gap-1.5">
+        {ORDRES.map((o) => (
+          <a key={o.id} href={`#/mammiferes/o-${o.id}`} className={`rounded-full px-2.5 py-1 text-xs font-extrabold ${ordres.includes(o) ? "bg-[#f3d48a] text-[#2a1c14]" : "bg-[#2a1844] text-[#e7d7be]/60"}`}>{o.nom}</a>
+        ))}
+      </div>
+      <p className="mt-4 text-center font-extrabold">Familles complètes : {completes.length}</p>
+      {completes.length ? <p className="text-center text-sm">{completes.map(([, f]) => f.nom).join(", ")}</p> : <p className="text-center text-sm texte-doux">Trouve toutes les espèces d'une famille pour gagner sa médaille. Les Ornithorynques n'en ont qu'une !</p>}
+    </section>
+  );
+}
+
+function Confort() {
+  return (
+    <section className="mt-6 rounded-3xl bg-card px-4 py-3">
+      <label className="flex min-h-11 items-center gap-3 font-extrabold">
+        <input type="checkbox" defaultChecked={grosTexte()} onChange={(e) => choisirGrosTexte(e.target.checked)} className="size-6 accent-[#8d4e1f]" />
+        Écrire plus gros
+      </label>
     </section>
   );
 }

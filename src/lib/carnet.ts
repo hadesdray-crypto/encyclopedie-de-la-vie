@@ -1,3 +1,5 @@
+import { bonneReponse } from "@/lib/recompenses";
+
 const VUES = "leonie-vues";
 const POINTS = "leonie-points";
 const PARTIES = "leonie-parties";
@@ -31,6 +33,7 @@ export function lireScore() {
 }
 
 export function noterReponse(bonne: boolean) {
+  if (bonne) bonneReponse();
   const score = lireScore();
   localStorage.setItem(POINTS, String(score.points + (bonne ? 1 : 0)));
   localStorage.setItem(PARTIES, String(score.parties + 1));

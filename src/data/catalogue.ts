@@ -1,4 +1,5 @@
 import brut from "@/data/mammiferes.json";
+import nomsFr from "@/data/noms-fr.json";
 
 export type Espece = {
   id: string;
@@ -31,6 +32,15 @@ const data = brut as {
 };
 
 export const FAMILLES = data.familles;
+// Noms français trouvés sur Wikidata (scripts/donnees/collecter.py) : ils remplacent les noms anglais.
+const NOMS_FR = nomsFr as Record<string, string>;
+for (const espece of data.especes) {
+  const fr = NOMS_FR[espece.id];
+  if (fr && espece.langue !== "fr") {
+    espece.nom = fr;
+    espece.langue = "fr";
+  }
+}
 export const ESPECES = data.especes;
 
 export const ORDRES: { id: string; nom: string; phrase: string }[] = [
