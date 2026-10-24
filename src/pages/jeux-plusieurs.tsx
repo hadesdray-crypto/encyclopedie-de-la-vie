@@ -762,6 +762,25 @@ export function SeptFamilles() {
     setFamille(null);
   }
 
+  /** Personne à qui demander : on pioche une carte (ou on passe). */
+  function piocherSeul() {
+    if (!e) return;
+    const mains = e.mains.map((m) => [...m]);
+    const posees = e.posees.map((p) => [...p]);
+    let pioche = [...e.pioche];
+    let message = "Personne à qui demander.";
+    if (pioche.length) {
+      mains[moi].push(pioche[0]);
+      message = `Personne à qui demander : tu pioches ${pioche[0].nom}.`;
+      pioche = pioche.slice(1);
+    }
+    const r = poser(mains[moi], posees[moi]);
+    if (r.p.length > posees[moi].length) message += ` Famille complète : les ${NOMS_FAMILLES[r.p[r.p.length - 1]]} !`;
+    mains[moi] = r.m;
+    posees[moi] = r.p;
+    setE({ ...e, mains, posees, pioche, vue: "reponse", message, rejoue: false });
+  }
+
   function continuer() {
     if (!e) return;
     if (e.rejoue && e.mains[moi].length) {
@@ -826,7 +845,11 @@ export function SeptFamilles() {
               <p className="font-extrabold">1. À qui demander ?</p>
               <div className="mt-1 flex flex-wrap gap-1.5">
                 {autres.map((i) => <button key={i} type="button" onClick={() => setCible(i)} className="rounded-full px-3 py-1.5 font-extrabold text-white" style={{ background: joueurs[i].couleur, outline: cible === i ? "3px solid #2a1c14" : "none" }}>{joueurs[i].nom}</button>)}
-                {!autres.length ? <p className="text-sm">Les autres n'ont plus de cartes.</p> : null}
+                {!autres.length ? (
+                  <button type="button" onClick={piocherSeul} className="bouton-bois rounded-full px-4 py-2 font-extrabold">
+                    {e.pioche.length ? "Les autres n'ont plus de cartes : je pioche" : "Passer"}
+                  </button>
+                ) : null}
               </div>
               {cible !== null ? (
                 <>
