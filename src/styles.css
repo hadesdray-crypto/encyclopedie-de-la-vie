@@ -402,3 +402,68 @@ body {
 @keyframes plume-parle { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-3px) scale(1.04); } }
 .size-13 { width: 3.25rem; height: 3.25rem; }
 @media (prefers-reduced-motion: reduce) { .plume-bouton, .plume-flotte, .plume-parle { animation: none; } }
+
+/* ---- Plume qui bouge ---- */
+.plume-svg { overflow: visible; }
+.plume-svg .pl-aile-d { transform-origin: 162px 112px; transform-box: view-box; }
+.plume-svg .pl-aile-g { transform-origin: 38px 112px; transform-box: view-box; }
+.plume-svg .pl-yeux { transform-origin: 100px 95px; transform-box: view-box; animation: pl-cligne 5s infinite; }
+@keyframes pl-cligne { 0%, 94%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.1); } }
+/* Coucou : l'aile droite se lève et fait bonjour */
+.plume-coucou .pl-aile-d { animation: pl-coucou 1.6s ease-in-out; }
+@keyframes pl-coucou {
+  0% { transform: rotate(0); }
+  20% { transform: rotate(-120deg); }
+  35% { transform: rotate(-95deg); }
+  50% { transform: rotate(-125deg); }
+  65% { transform: rotate(-95deg); }
+  80% { transform: rotate(-120deg); }
+  100% { transform: rotate(0); }
+}
+.plume-parle .pl-tete { transform-origin: 100px 190px; transform-box: view-box; animation: plume-parle 0.45s ease-in-out infinite; }
+.plume-parle .pl-bec { transform-origin: 100px 112px; transform-box: view-box; animation: pl-bec 0.3s ease-in-out infinite; }
+@keyframes pl-bec { 50% { transform: scaleY(1.35); } }
+/* Ailes ouvertes pour le menu */
+.plume-ailes .pl-aile-g { transform: rotate(55deg) scale(1.15); transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.3); }
+.plume-ailes .pl-aile-d { transform: rotate(-55deg) scale(1.15); transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.3); }
+/* Menu en ailes */
+.ailes-menu { animation: ailes-ouvre 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2); }
+@keyframes ailes-ouvre { from { transform: scale(0.4) translateY(-30px); opacity: 0; } to { transform: none; opacity: 1; } }
+.aile-panneau { background: linear-gradient(160deg, #a57bf0, #6a3fc0); border: 3px solid #e8c98a; box-shadow: 0 0 30px rgba(150, 110, 255, 0.5); }
+.aile-g { border-radius: 110px 18px 36px 90px; }
+.aile-d { border-radius: 18px 110px 90px 36px; }
+@media (prefers-reduced-motion: reduce) {
+  .plume-svg .pl-yeux, .plume-coucou .pl-aile-d, .plume-parle .pl-tete, .plume-parle .pl-bec, .ailes-menu { animation: none; }
+}
+
+/* ---- Barre du bas : petit saut quand on touche, pastilles qui respirent ---- */
+.saut { animation: saut 0.45s ease-out; }
+@keyframes saut {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-7px) scale(1.12); }
+  100% { transform: translateY(0) scale(1); }
+}
+.pastille-barre { animation: respire 1.8s ease-in-out infinite; }
+@keyframes respire {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .saut, .pastille-barre { animation: none; }
+}
+
+/* ---- Accueil : le nom de Leonie ---- */
+.nom-leonie {
+  color: #f3d48a;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 18px rgba(243, 212, 138, 0.55), 0 3px 0 #8a5a1a;
+}
+/* Les points de l'Aventure, qui envoient des ondes */
+.onde { animation: onde 2.2s ease-out infinite; }
+@keyframes onde {
+  0% { transform: scale(0.6); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .onde { animation: none; }
+}

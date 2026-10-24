@@ -1,23 +1,36 @@
-import { LuChevronLeft } from "react-icons/lu";
+import { useEffect } from "react";
+import { LuChevronLeft, LuSettings } from "react-icons/lu";
 import { BoutonPlume } from "@/components/guide";
-import { retour } from "@/lib/routeur";
+import { declarerParent, revenir } from "@/lib/routeur";
 
-/** En-tête des pages intérieures : le nom de Leonie et un gros bouton Retour. */
-export function Entete({ siVide = "/", label = "Retour" }: { siVide?: string; label?: string }) {
+/**
+ * En-tête des pages intérieures : Plume, le nom de Leonie, Options et Retour.
+ * Retour revient pas à pas sur le chemin suivi (comme la flèche du téléphone).
+ * siVide : la page où aller si on est arrivé ici directement.
+ */
+export function Entete({ siVide, label = "Retour" }: { siVide?: string; label?: string }) {
+  useEffect(() => {
+    if (siVide) declarerParent(siVide);
+  }, [siVide]);
   return (
-    <header className="flex items-center justify-between gap-3">
-      <div className="flex items-center gap-2">
+    <header className="flex items-center justify-between gap-2">
+      <div className="flex min-w-0 items-center gap-2">
         <BoutonPlume />
         <p className="font-display text-base leading-tight text-[#f0d090]">Pour la princesse Leonie</p>
       </div>
-      <button
-        type="button"
-        onClick={() => retour(siVide)}
-        className="inline-flex min-h-11 items-center gap-1 rounded-full bg-card px-4 py-2 text-sm font-extrabold"
-      >
-        <LuChevronLeft className="size-5" aria-hidden="true" />
-        {label}
-      </button>
+      <div className="flex shrink-0 items-center gap-2">
+        <a href="#/options" aria-label="Options" className="grid size-11 place-items-center rounded-full bg-[#2a1844] text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
+          <LuSettings className="size-5" aria-hidden="true" />
+        </a>
+        <button
+          type="button"
+          onClick={() => revenir(siVide)}
+          className="inline-flex min-h-11 items-center gap-1 rounded-full bg-card px-4 py-2 text-sm font-extrabold text-[#2a1c14]"
+        >
+          <LuChevronLeft className="size-5" aria-hidden="true" />
+          {label}
+        </button>
+      </div>
     </header>
   );
 }

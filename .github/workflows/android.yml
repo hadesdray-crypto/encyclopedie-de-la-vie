@@ -35,12 +35,17 @@ jobs:
           ls -la web.zip
       - name: Préparer le projet Android
         run: |
-          npm install --no-save --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor-community/text-to-speech@6 @capgo/capacitor-updater@7
+          npm install --save --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor-community/text-to-speech@6 @capgo/capacitor-updater@7 @capacitor/app@7
           npx cap add android
           pip install pillow
           python android-ressources/remplacer.py
           sed -i "s/versionCode [0-9]*/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"1.${{ github.run_number }}\"/" android/app/build.gradle
           npx cap sync android
+          echo "Modules du téléphone inclus :"; cat android/app/src/main/assets/capacitor.plugins.json
+          # Sécurité : on s'arrête si la voix ou la mise à jour manquent.
+          grep -q TextToSpeech android/app/src/main/assets/capacitor.plugins.json
+          grep -q CapacitorUpdater android/app/src/main/assets/capacitor.plugins.json
+          grep -q '"App"\|capacitor-app\|AppPlugin' android/app/src/main/assets/capacitor.plugins.json
       - name: Compiler
         run: cd android && ./gradlew assembleRelease --no-daemon -q
       - name: Signer

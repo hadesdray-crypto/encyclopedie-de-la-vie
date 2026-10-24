@@ -10,12 +10,12 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     titre: "Bienvenue !",
     test: (c) => c === "/" || c === "",
     etapes: [
-      "Bonjour, je suis Plume ! Je vais te montrer comment marche ton encyclopédie.",
-      "La grande lune, au milieu, c'est le début de tout. Touche-la pour commencer l'histoire de la vie.",
-      "Les bulles autour t'emmènent tout droit vers les bactéries, les plantes, les champignons ou les animaux.",
-      "Les parchemins ouvrent d'autres salles : la frise du temps, les fossiles, les défis du jour.",
-      "En bas de l'écran, il y a tes salles préférées : l'arbre, les jeux, les cartes et ton profil.",
-      "Si tu as une question, touche-moi. Je t'explique chaque page !",
+      "C'est ta page à toi, Leonie !",
+      "La grande lune, au milieu, c'est le début de tout. Les bulles autour t'emmènent vers les bactéries, les plantes, les champignons ou les animaux.",
+      "Jouer ouvre les jeux et le défi du jour. Mes cartes, c'est ta collection d'animaux.",
+      "L'Aventure, c'est la carte du monde des animaux que des scientifiques suivent par GPS.",
+      "Les petits boutons ouvrent les mammifères, les fossiles, la frise du temps et les vrais mots.",
+      "Touche ton image, en haut à droite, pour voir ton carnet. La petite roue, c'est les Options.",
     ],
   },
   {
@@ -150,6 +150,27 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     ],
   },
   {
+    id: "aventure",
+    titre: "L'Aventure",
+    test: (c) => c.startsWith("/aventure") || c === "/suivi",
+    etapes: [
+      "Voici la carte du monde des animaux voyageurs.",
+      "Des scientifiques leur mettent un collier GPS, pour savoir où ils vont.",
+      "En couleur, les pays où vit chaque animal. Touche un animal, en dessous, pour voir son trajet.",
+      "Pour charger un trajet, il faut Internet et l'accord d'une grande personne. Ensuite, il reste dans l'application.",
+    ],
+  },
+  {
+    id: "options",
+    titre: "Les options",
+    test: (c) => c.startsWith("/options"),
+    etapes: [
+      "Ici, tu choisis comment marche ton encyclopédie : la voix, les sons, l'écriture.",
+      "Touche le petit haut-parleur à côté d'un réglage, et je te le lis.",
+      "Le bouton Oui ou Non allume ou éteint le réglage.",
+    ],
+  },
+  {
     id: "suivi",
     titre: "Le suivi GPS",
     test: (c) => c.startsWith("/suivi"),
@@ -178,4 +199,23 @@ export const REACTIONS = {
   memoire: ["Bravo, toutes les paires ! Tu as une super mémoire.", "Gagné ! Quelle mémoire !"],
   bonne: ["Bonne réponse !", "Bravo !", "Exactement !", "Bien joué !"],
   mauvaise: ["Presque ! Regarde la réponse, tu sauras la prochaine fois.", "Pas grave, on apprend en se trompant !"],
+};
+
+/** Le petit discours de Plume : à la première ouverture, puis quand Leonie le demande. */
+export const PRESENTATION: Explication = {
+  id: "presentation",
+  titre: "Coucou Leonie !",
+  etapes: [
+    "Coucou Leonie ! Oh… c'est toi ? Je suis tellement contente que ce soit toi qui t'occupes de moi.",
+    "Je m'appelle Plume. Je suis ta chouette. Je suis un peu timide, mais je vais tout te montrer.",
+    "Cette encyclopédie a été faite rien que pour toi, Leonie. Elle raconte toute l'histoire de la vie, depuis la naissance de la Terre.",
+    "Sur la première page, la grande lune au milieu, c'est le début de tout. Touche-la pour commencer le voyage dans le temps.",
+    "Juste en dessous : Jouer, pour les jeux et le défi du jour, et Mes cartes, pour ta collection d'animaux.",
+    "L'Aventure te montre, sur une carte du monde, des animaux que des scientifiques suivent avec un collier GPS.",
+    "En bas de l'écran, la barre t'emmène partout. Une petite flamme veut dire que le défi du jour t'attend. Un chiffre rouge, ce sont tes paquets de cartes à ouvrir.",
+    "Pour revenir en arrière, utilise la flèche du téléphone, ou le bouton Retour en haut. On revient pas à pas, par le même chemin.",
+    "La petite roue, c'est les Options : la voix, les sons, l'écriture plus grosse. Tout y est écrit, et je peux te le lire.",
+    "Ensuite, je reste dans mon coin, sans te déranger. Si tu as besoin de moi, touche-moi : j'ouvre mes ailes et je t'explique la page.",
+    "Et tout marche même sans Internet. Allez, on y va ? Je suis prête !",
+  ],
 };

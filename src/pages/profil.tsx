@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { BoutonPlume } from "@/components/guide";
-import { choisirPlumeParle, choisirReactions, plumeParleSeule, reactionsActives, revoirExplications } from "@/lib/plume";
 import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
-import { AVATARS, VITESSES, avatar, choisirAvatar, choisirGrosTexte, choisirVitesseVoix, grosTexte, vitesseVoix, type Vitesse } from "@/lib/reglages";
+import { AVATARS, avatar, choisirAvatar } from "@/lib/reglages";
 import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireScore, lireVues } from "@/lib/carnet";
 import { EST_APK, VERSION_APK, useMajApk, verifierApk, lancerMajApk } from "@/lib/maj-apk";
@@ -13,7 +12,6 @@ import { Portrait } from "@/components/portrait";
 export function ProfilPage() {
   const vues = lireVues();
   const score = lireScore();
-  const hl = useHorsLigne();
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
       <div className="flex"><BoutonPlume /></div>
@@ -27,7 +25,6 @@ export function ProfilPage() {
         <a href="#/cartes" className="rounded-3xl bg-card px-4 py-4"><p className="font-display text-3xl">{paquetsIllimites() ? "∞" : paquetsDisponibles()}</p><p>paquets à ouvrir</p></a>
       </div>
       <Medailles vues={vues} />
-      <Confort />
       {vues.length ? (
         <>
           <h2 className="titre-or mt-6 text-center text-2xl">Déjà vus</h2>
@@ -39,40 +36,50 @@ export function ProfilPage() {
           </ul>
         </>
       ) : null}
-      {EST_APK ? <VersionApk /> : (
-      <section className="carte-nuit mt-6 rounded-3xl px-4 py-4">
-        <p className="font-display text-xl text-[#f3d48a]">Sans Internet</p>
-        {hl.possible ? (
-          <>
-            <p className="mt-1 text-sm">Photos et cris enregistrés sur l'appareil : {hl.prets} sur {hl.total}.</p>
-            <div className="mt-2 h-3 overflow-hidden rounded-full bg-[#0f0a20]"><div className="h-full bg-[#f3d48a]" style={{ width: `${hl.total ? (hl.prets / hl.total) * 100 : 0}%` }} /></div>
-            {hl.prets < hl.total && !hl.enCours ? <button type="button" onClick={relancerHorsLigne} className="bouton-bois mt-3 rounded-full px-4 py-2 font-extrabold">Finir d'enregistrer</button> : null}
-          </>
-        ) : (
-          <p className="mt-1 text-sm">L'application s'enregistre sur l'appareil quand on l'ouvre depuis son adresse Internet.</p>
-        )}
-        <div className="mt-4 border-t border-[#e8c98a]/30 pt-3 text-sm">
-          <p>Version du {VERSION_APP.split(" ")[0].split("-").reverse().join("/")} à {VERSION_APP.split(" ")[1]}</p>
-          {hl.majDisponible ? (
-            <button type="button" onClick={accepterMiseAJour} className="bouton-bois mt-2 rounded-full px-4 py-2 font-extrabold">Installer la mise à jour</button>
-          ) : hl.possible ? (
-            <>
-              <button type="button" onClick={verifierMiseAJour} className="mt-2 rounded-full bg-card px-4 py-2 font-extrabold text-[#2a1c14]">Chercher une mise à jour</button>
-              <p className="mt-1 text-xs">
-                {hl.verification === "en-cours" ? "Recherche…" : hl.verification === "a-jour" ? "C'est la dernière version." : hl.verification === "hors-ligne" ? "Pas de connexion : on regardera plus tard." : ""}
-              </p>
-            </>
-          ) : null}
-        </div>
-      </section>
-      )}
-      <CoinParents />
+      <a href="#/options" className="bouton-bois mt-6 flex items-center justify-center gap-2 rounded-3xl px-4 py-3 font-display text-xl">
+        Options et réglages
+      </a>
       <a href="#/sources" className="mt-4 block text-center font-extrabold underline">Sources et crédits</a>
     </main>
   );
 }
 
-function CoinParents() {
+export function Application() {
+  const hl = useHorsLigne();
+  return (
+    <>
+        {EST_APK ? <VersionApk /> : (
+        <section className="carte-nuit mt-6 rounded-3xl px-4 py-4">
+          <p className="font-display text-xl text-[#f3d48a]">Sans Internet</p>
+          {hl.possible ? (
+            <>
+                <p className="mt-1 text-sm">Photos et cris enregistrés sur l'appareil : {hl.prets} sur {hl.total}.</p>
+                <div className="mt-2 h-3 overflow-hidden rounded-full bg-[#0f0a20]"><div className="h-full bg-[#f3d48a]" style={{ width: `${hl.total ? (hl.prets / hl.total) * 100 : 0}%` }} /></div>
+                {hl.prets < hl.total && !hl.enCours ? <button type="button" onClick={relancerHorsLigne} className="bouton-bois mt-3 rounded-full px-4 py-2 font-extrabold">Finir d'enregistrer</button> : null}
+            </>
+          ) : (
+            <p className="mt-1 text-sm">L'application s'enregistre sur l'appareil quand on l'ouvre depuis son adresse Internet.</p>
+          )}
+          <div className="mt-4 border-t border-[#e8c98a]/30 pt-3 text-sm">
+            <p>Version du {VERSION_APP.split(" ")[0].split("-").reverse().join("/")} à {VERSION_APP.split(" ")[1]}</p>
+            {hl.majDisponible ? (
+                <button type="button" onClick={accepterMiseAJour} className="bouton-bois mt-2 rounded-full px-4 py-2 font-extrabold">Installer la mise à jour</button>
+            ) : hl.possible ? (
+                <>
+                  <button type="button" onClick={verifierMiseAJour} className="mt-2 rounded-full bg-card px-4 py-2 font-extrabold text-[#2a1c14]">Chercher une mise à jour</button>
+                  <p className="mt-1 text-xs">
+                    {hl.verification === "en-cours" ? "Recherche…" : hl.verification === "a-jour" ? "C'est la dernière version." : hl.verification === "hors-ligne" ? "Pas de connexion : on regardera plus tard." : ""}
+                  </p>
+                </>
+            ) : null}
+          </div>
+        </section>
+        )}
+    </>
+  );
+}
+
+export function CoinParents() {
   const { permis } = useInternet();
   const [reponse, setReponse] = useState("");
   const [ouvert, setOuvert] = useState(false);
@@ -155,29 +162,6 @@ function Medailles({ vues }: { vues: string[] }) {
   );
 }
 
-function Confort() {
-  return (
-    <section className="mt-6 rounded-3xl bg-card px-4 py-3">
-      <label className="flex min-h-11 items-center gap-3 font-extrabold">
-        <input type="checkbox" defaultChecked={grosTexte()} onChange={(e) => choisirGrosTexte(e.target.checked)} className="size-6 accent-[#8d4e1f]" />
-        Écrire plus gros
-      </label>
-      <ChoixVitesse />
-      <label className="flex min-h-11 items-center gap-3 font-extrabold">
-        <input type="checkbox" defaultChecked={plumeParleSeule()} onChange={(e) => choisirPlumeParle(e.target.checked)} className="size-6 accent-[#8d4e1f]" />
-        Plume lit ses explications toute seule
-      </label>
-      <label className="flex min-h-11 items-center gap-3 font-extrabold">
-        <input type="checkbox" defaultChecked={reactionsActives()} onChange={(e) => choisirReactions(e.target.checked)} className="size-6 accent-[#8d4e1f]" />
-        Plume me félicite pendant les jeux
-      </label>
-      <button type="button" onClick={() => { revoirExplications(); location.hash = "#/"; }} className="mt-2 rounded-full bg-[#f3e2c2] px-4 py-2 font-extrabold">
-        Revoir toutes les explications de Plume
-      </button>
-    </section>
-  );
-}
-
 function VersionApk() {
   const m = useMajApk();
   return (
@@ -196,19 +180,5 @@ function VersionApk() {
         </>
       )}
     </section>
-  );
-}
-
-function ChoixVitesse() {
-  const [v, setV] = useState<Vitesse>(vitesseVoix);
-  return (
-    <div className="flex min-h-11 flex-wrap items-center gap-2 font-extrabold">
-      <span>Vitesse de la voix :</span>
-      {VITESSES.map((x) => (
-        <button key={x.id} type="button" aria-pressed={v === x.id} onClick={() => { choisirVitesseVoix(x.id); setV(x.id); }} className={`rounded-full px-3 py-1.5 ${v === x.id ? "bouton-bois" : "bg-[#f3e2c2]"}`}>
-          {x.nom}
-        </button>
-      ))}
-    </div>
   );
 }
