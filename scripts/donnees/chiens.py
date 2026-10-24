@@ -198,6 +198,14 @@ def sections(texte):
     return res
 
 
+def phrase_avec(secs, expressions):
+    for v in secs.values():
+        for p in re.split(r"(?<=[.!?])\s+", re.sub(r"\s+", " ", v)):
+            if any(e in p.lower() for e in expressions) and 20 < len(p) < 260:
+                return p.strip()
+    return ""
+
+
 def chercher_section(secs, *mots):
     for t, v in secs.items():
         if t and any(m in t.lower() for m in mots) and len(v.strip()) > 40:
@@ -224,6 +232,21 @@ def wikidata(qids):
     return res
 
 
+def especes():
+    """Ce qui est vrai pour tous les chiens (Q144) et tous les chats (Q146), d'après Wikidata :
+    gestation (P3063), espérance de vie (P2250), taille de portée (P7725). Valeur + unité."""
+    res = {}
+    for nom, q in (("chien", "Q144"), ("chat", "Q146")):
+        d = {}
+        for prop in ("P3063", "P2250", "P7725"):
+            for x in sparql(f"""SELECT ?v ?u WHERE {{ wd:{q} p:{prop} ?st . ?st psv:{prop} ?n .
+                  ?n wikibase:quantityAmount ?v . OPTIONAL {{ ?n wikibase:quantityUnit ?u }} }}"""):
+                d.setdefault(prop, []).append([x["v"]["value"], x.get("u", {}).get("value", "").split("/")[-1]])
+        res[nom] = d
+        print("espèce", nom, d)
+    return res
+
+
 def info_image(fichier):
     r = api(COMMONS, action="query", prop="imageinfo", iiprop="url|extmetadata|mime", iiurlwidth="480", titles="File:" + fichier)
     pg = (r.get("query", {}).get("pages") or [{}])[0]
@@ -243,9 +266,9 @@ def telecharger_photo(info, chemin):
     from PIL import Image
 
     im = Image.open(BytesIO(get(info["url"], binaire=True))).convert("RGB")
-    im.thumbnail((480, 480))
+    im.thumbnail((420, 420))
     chemin.parent.mkdir(parents=True, exist_ok=True)
-    im.save(chemin, "WEBP", quality=68)
+    im.save(chemin, "WEBP", quality=62)
 
 
 def ident(titre):
@@ -271,7 +294,7 @@ def collecter(limite=0):
     if limite:
         races = [r for r in races if r[2] == "chien"][: limite // 2] + [r for r in races if r[2] == "chat"][: limite // 2]
     wd = wikidata([q for _, q, *_ in races if q])
-    sortie = {"groupes": GROUPES_FCI, "chiens": [], "chats": []}
+    sortie = {"groupes": GROUPES_FCI, "chiens": [], "chats": [], "especes": especes()}
     for n, (titre, qid, charte, ib, wt) in enumerate(races):
         rid = ident(titre)
         nom = nettoyer(ib.get("nom")) or re.sub(r"\s*\(.*?\)", "", titre)
@@ -294,20 +317,31 @@ def collecter(limite=0):
             "intro": phrases(secs.get("", ""), 4),
             "histoire": phrases(chercher_section(secs, "histoire", "origine"), 3),
             "utilisation": phrases(chercher_section(secs, "utilisation", "fonction", "travail", "aptitude"), 2),
-            "sante": phrases(chercher_section(secs, "santé"), 2),
+            "vie_texte": phrase_avec(secs, ("durée de vie", "espérance de vie", "vit en moyenne")),
         }
+        # Le poids est parfois rangé dans « silhouette » ou « corps ».
+        if not r["poids"] and re.search(r"\d\s*kg", r["silhouette"]):
+            r["poids"], r["silhouette"] = r["silhouette"], ""
+        for k in list(r):
+            if k not in ("id", "wiki") and isinstance(r[k], str) and len(re.findall(r"[A-Za-zÀ-ÿ0-9]", r[k])) < 3:
+                r[k] = ""
         if charte == "chien":
             g = re.sub(r"\D", "", ib.get("groupe fci", ""))
             r["groupe"] = g if g in GROUPES_FCI else ""
             r["fci"] = re.sub(r"\D", "", ib.get("numero fci", "") or ib.get("numéro fci", ""))
         if qid in wd:
             r.update(wd[qid])
-        # Photos : celle de l'infobox, puis jusqu'à deux de l'article. Licences libres seulement.
-        candidats = [nettoyer(ib.get("image", ""))] + re.findall(r"\[\[(?:Fichier|File|Image)\s*:\s*([^|\]]+)", wt)
+        # Photos : celle de l'infobox, puis une de l'article, seulement si son nom ou sa légende
+        # parle bien de cette race (pour ne pas montrer un autre animal). Licences libres seulement.
+        mots = [m for m in ident(nom).split("-") if len(m) >= 4] or [ident(nom)]
+        candidats = [nettoyer(ib.get("image", ""))]
+        for f, reste in re.findall(r"\[\[(?:Fichier|File|Image)\s*:\s*([^|\]]+)((?:\|[^\]]*)?)\]\]", wt):
+            if all(m in ident(f + " " + reste) for m in mots):
+                candidats.append(f)
         photos, vus, ancien = [], set(), anciennes.get(rid, {})
         for f in candidats:
             f = f.strip()
-            if not f or f in vus or len(photos) >= 3 or not re.search(r"\.(jpe?g|png|webp)$", f, re.I):
+            if not f or f in vus or len(photos) >= 2 or not re.search(r"\.(jpe?g|png|webp)$", f, re.I):
                 continue
             vus.add(f)
             garde = next((p for p in ancien.get("photos", []) if p["fichier"] == f and (RACINE / "public" / p["src"]).exists()), None)
