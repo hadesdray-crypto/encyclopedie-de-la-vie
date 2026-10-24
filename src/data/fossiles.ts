@@ -1,0 +1,227 @@
+/**
+ * Salle des fossiles : des animaux disparus depuis longtemps, connus par leurs os,
+ * leurs coquilles, leurs dents ou leurs empreintes. Jamais de cadavre.
+ * Les dates sont des ordres de grandeur publiés.
+ */
+
+export type Fossile = {
+  id: string;
+  nom: string;
+  latin?: string;
+  groupe: string;
+  quand: string;
+  /** Millions d'années, pour ranger du plus ancien au plus récent. */
+  ma: number;
+  ou: string;
+  texte: string;
+  anecdote?: string;
+  icone: string;
+  image?: string;
+};
+
+export const FOSSILES: Fossile[] = [
+  {
+    id: "dickinsonia",
+    nom: "Dickinsonia",
+    groupe: "Un des premiers animaux",
+    quand: "Il y a environ 560 millions d'années",
+    ma: 560,
+    ou: "Australie et Russie",
+    texte: "Un animal tout plat, en forme de galette rayée, qui vivait au fond de la mer. Il n'avait ni tête, ni pattes, ni bouche visible.",
+    anecdote: "En 2018, des chercheurs ont trouvé du cholestérol dans un fossile de Dickinsonia. C'est la preuve que c'était bien un animal.",
+    icone: "Layers",
+  },
+  {
+    id: "trilobites",
+    nom: "Trilobites",
+    groupe: "Arthropodes",
+    quand: "De 521 à 252 millions d'années",
+    ma: 521,
+    ou: "Partout dans les mers du monde",
+    texte: "Des arthropodes de la mer, avec une carapace en trois bandes. Certains avaient des yeux en cristal de calcite. Ils ont vécu pendant près de 270 millions d'années.",
+    anecdote: "Ils ont disparu pendant la plus grande extinction de l'histoire, il y a 252 millions d'années, avant les dinosaures.",
+    icone: "Bug",
+  },
+  {
+    id: "dunkleosteus",
+    nom: "Dunkleosteus",
+    groupe: "Poissons cuirassés",
+    quand: "Il y a environ 360 millions d'années",
+    ma: 360,
+    ou: "Amérique du Nord, Europe, Afrique",
+    texte: "Un grand poisson à la tête couverte de plaques d'os. Il n'avait pas de dents, mais des lames d'os tranchantes.",
+    icone: "Fish",
+  },
+  {
+    id: "tiktaalik",
+    nom: "Tiktaalik",
+    latin: "Tiktaalik roseae",
+    groupe: "Entre poisson et tétrapode",
+    quand: "Il y a environ 375 millions d'années",
+    ma: 375,
+    ou: "Arctique canadien",
+    texte: "Un poisson avec un cou et des nageoires qui contenaient des os de bras et de poignet. Il montre comment les nageoires sont devenues des pattes.",
+    anecdote: "Les chercheurs l'ont cherché exprès dans des roches de cet âge, et ils l'ont trouvé en 2004.",
+    icone: "Footprints",
+  },
+  {
+    id: "ammonites",
+    nom: "Ammonites",
+    groupe: "Mollusques",
+    quand: "D'environ 400 à 66 millions d'années",
+    ma: 400,
+    ou: "Partout dans les mers du monde",
+    texte: "Des cousines des pieuvres et des calmars, qui vivaient dans une coquille enroulée en spirale. On en trouve beaucoup, même en France.",
+    anecdote: "Elles ont disparu en même temps que les grands dinosaures.",
+    icone: "Shell",
+  },
+  {
+    id: "ichtyosaures",
+    nom: "Ichtyosaures",
+    groupe: "Reptiles marins, pas des dinosaures",
+    quand: "D'environ 250 à 90 millions d'années",
+    ma: 250,
+    ou: "Mers du monde",
+    texte: "Des reptiles qui ressemblaient à des dauphins. Ils respiraient de l'air et ne pondaient pas d'œufs : les petits naissaient dans l'eau.",
+    anecdote: "Vers 1811, en Angleterre, Mary Anning et son frère ont trouvé un squelette d'ichtyosaure. Mary avait environ 12 ans. Elle est devenue une grande chercheuse de fossiles.",
+    icone: "Fish",
+  },
+  {
+    id: "pterosaures",
+    nom: "Ptérosaures",
+    groupe: "Reptiles volants, pas des dinosaures",
+    quand: "D'environ 228 à 66 millions d'années",
+    ma: 228,
+    ou: "Partout dans le monde",
+    texte: "Les premiers vertébrés à voler en battant des ailes. Leur aile était une peau tendue sur un quatrième doigt très long.",
+    anecdote: "Quetzalcoatlus avait une envergure d'environ 10 mètres, autant qu'un petit avion.",
+    icone: "Feather",
+  },
+  {
+    id: "brachiosaure",
+    nom: "Brachiosaure",
+    latin: "Brachiosaurus altithorax",
+    groupe: "Dinosaures à long cou",
+    quand: "Il y a environ 154 à 150 millions d'années",
+    ma: 154,
+    ou: "Amérique du Nord",
+    texte: "Un dinosaure herbivore géant, avec des pattes avant plus longues que les pattes arrière. Il pouvait brouter très haut dans les arbres.",
+    icone: "Bone",
+    image: "art/dino.jpg",
+  },
+  {
+    id: "stegosaure",
+    nom: "Stégosaure",
+    latin: "Stegosaurus",
+    groupe: "Dinosaures",
+    quand: "Il y a environ 155 à 150 millions d'années",
+    ma: 155,
+    ou: "Amérique du Nord et Portugal",
+    texte: "Un herbivore avec de grandes plaques sur le dos et des pointes au bout de la queue.",
+    anecdote: "Le stégosaure a vécu plus loin du T. rex dans le temps que le T. rex de nous !",
+    icone: "Bone",
+  },
+  {
+    id: "archaeopteryx",
+    nom: "Archaeopteryx",
+    latin: "Archaeopteryx",
+    groupe: "Dinosaure à plumes",
+    quand: "Il y a environ 150 millions d'années",
+    ma: 150,
+    ou: "Allemagne",
+    texte: "Il avait des plumes et des ailes, mais aussi des dents, une longue queue en os et des griffes au bout des ailes. Un mélange de dinosaure et d'oiseau.",
+    icone: "Feather",
+  },
+  {
+    id: "velociraptor",
+    nom: "Vélociraptor",
+    latin: "Velociraptor mongoliensis",
+    groupe: "Dinosaures carnivores",
+    quand: "Il y a environ 75 à 71 millions d'années",
+    ma: 75,
+    ou: "Mongolie",
+    texte: "Un petit carnivore rapide, à peu près de la taille d'une dinde, avec une grande griffe sur chaque pied. Il avait des plumes.",
+    anecdote: "Sur un de ses os de bras, on voit les petites bosses où s'accrochaient les plumes.",
+    icone: "Bone",
+  },
+  {
+    id: "trex",
+    nom: "Tyrannosaure",
+    latin: "Tyrannosaurus rex",
+    groupe: "Dinosaures carnivores",
+    quand: "Il y a environ 68 à 66 millions d'années",
+    ma: 68,
+    ou: "Amérique du Nord",
+    texte: "Un des plus grands carnivores terrestres de tous les temps : environ 12 mètres de long. Ses dents pouvaient broyer les os.",
+    anecdote: "Le squelette surnommé Sue, à Chicago, est l'un des plus complets jamais trouvés.",
+    icone: "Bone",
+  },
+  {
+    id: "triceratops",
+    nom: "Tricératops",
+    latin: "Triceratops",
+    groupe: "Dinosaures à cornes",
+    quand: "Il y a environ 68 à 66 millions d'années",
+    ma: 67,
+    ou: "Amérique du Nord",
+    texte: "Un herbivore avec trois cornes et une grande collerette en os autour du cou. Il vivait à la même époque que le T. rex.",
+    icone: "Bone",
+  },
+  {
+    id: "megalodon",
+    nom: "Mégalodon",
+    latin: "Otodus megalodon",
+    groupe: "Requins",
+    quand: "D'environ 20 à 3,6 millions d'années",
+    ma: 20,
+    ou: "Océans du monde",
+    texte: "Un requin géant. On le connaît surtout par ses dents, qui peuvent être plus grandes qu'une main d'enfant, car son squelette en cartilage se fossilise mal.",
+    icone: "Fish",
+  },
+  {
+    id: "lucy",
+    nom: "Lucy",
+    latin: "Australopithecus afarensis",
+    groupe: "Cousine des humains",
+    quand: "Il y a environ 3,2 millions d'années",
+    ma: 3.2,
+    ou: "Éthiopie",
+    texte: "Un squelette découvert en 1974. Lucy marchait debout sur deux jambes, mais elle grimpait encore aux arbres. Son cerveau était à peu près de la taille de celui d'un chimpanzé.",
+    anecdote: "Elle doit son surnom à une chanson des Beatles, que l'équipe écoutait le soir de la découverte.",
+    icone: "Footprints",
+  },
+  {
+    id: "smilodon",
+    nom: "Smilodon",
+    latin: "Smilodon",
+    groupe: "Félins à dents de sabre",
+    quand: "D'environ 2,5 millions à 10 000 ans",
+    ma: 2.5,
+    ou: "Amériques",
+    texte: "Un grand félin avec deux canines très longues, comme des sabres. Ce n'est pas un ancêtre du tigre : c'est une branche à part.",
+    anecdote: "Dans les mares de goudron de La Brea, à Los Angeles, on a retrouvé les os de plus de 2 000 smilodons.",
+    icone: "Bone",
+  },
+  {
+    id: "mammouth",
+    nom: "Mammouth laineux",
+    latin: "Mammuthus primigenius",
+    groupe: "Éléphants",
+    quand: "Jusqu'à il y a environ 4 000 ans",
+    ma: 0.3,
+    ou: "Europe, Asie, Amérique du Nord",
+    texte: "Un cousin de l'éléphant, couvert de longs poils, avec de grandes défenses courbées. Il vivait dans le froid de l'ère glaciaire. Les humains de la Préhistoire l'ont peint dans des grottes.",
+    anecdote: "Les derniers mammouths vivaient sur l'île Wrangel, en Russie, il y a environ 4 000 ans. Les pyramides d'Égypte existaient déjà !",
+    icone: "Bone",
+  },
+];
+
+export const FOSSILES_TRIES = [...FOSSILES].sort((a, b) => b.ma - a.ma);
+
+export const EXTINCTIONS = [
+  { quand: "Il y a environ 445 millions d'années", nom: "Fin de l'Ordovicien", texte: "Un grand froid et la baisse de la mer font disparaître beaucoup d'animaux marins." },
+  { quand: "Il y a environ 372 millions d'années", nom: "Fin du Dévonien", texte: "Les récifs et beaucoup de poissons disparaissent." },
+  { quand: "Il y a environ 252 millions d'années", nom: "Fin du Permien", texte: "La plus grande de toutes. D'énormes volcans en Sibérie réchauffent la Terre. La plupart des espèces marines disparaissent, dont les trilobites." },
+  { quand: "Il y a environ 201 millions d'années", nom: "Fin du Trias", texte: "Après cette crise, les dinosaures deviennent les plus nombreux sur la terre ferme." },
+  { quand: "Il y a 66 millions d'années", nom: "Fin du Crétacé", texte: "Un astéroïde tombe au Mexique. Les grands dinosaures, les ptérosaures et les ammonites disparaissent. Les oiseaux et les mammifères survivent." },
+];

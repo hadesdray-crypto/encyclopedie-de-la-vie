@@ -1,0 +1,16 @@
+{
+  "Panthera leo": [
+    {
+      "etude": 220229,
+      "nom": "Tsavo Lion Study",
+      "capteur": "gps"
+    }
+  ],
+  "Potos flavus": [
+    {
+      "etude": 1120749252,
+      "nom": "Food for Thought: Comparative Frugivore Tracking [cleaned]",
+      "capteur": "gps"
+    }
+  ]
+}

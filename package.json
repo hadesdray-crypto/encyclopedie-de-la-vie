@@ -1,0 +1,21 @@
+{
+  "name": "encyclopedie-de-la-vie",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "L'encyclopédie de la vie, pour la princesse Leonie : arbre de l'évolution, mammifères, fossiles, jeux et cartes. Marche sans Internet.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --serve",
+    "lien": "node scripts/build.mjs --artifact"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-icons": "5.7.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "tailwindcss": "4.3.3"
+  }
+}
