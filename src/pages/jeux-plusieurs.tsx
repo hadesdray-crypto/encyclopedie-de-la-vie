@@ -9,6 +9,7 @@ import { gagnerPaquet } from "@/lib/recompenses";
 import { plumeDit } from "@/lib/plume";
 import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
+import { PAR_ID, type Espece } from "@/data/catalogue";
 import { useQuitterPartie } from "@/lib/mode-jeu";
 import { useCallback } from "react";
 
@@ -370,4 +371,277 @@ function PetiteCarte({ c, joueur, carac, gagne, compacte = false }: { c: CarteBa
 /** Pour l'aide de Plume : combien de cartes de bataille existent. */
 export function useNombreCartes() {
   return useMemo(() => paquetBataille("tous").length, []);
+}
+
+// ---------------------------------------------------------------- le plus rapide (2 à 4, face à face)
+
+export const REGLES_RAPIDE: Explication = {
+  id: "regles-rapide",
+  titre: "Les règles du plus rapide",
+  etapes: [
+    "Posez le téléphone à plat : chacun a son côté de l'écran, avec les mêmes trois animaux.",
+    "Une consigne apparaît, par exemple « Touche le plus lourd ! ». Le premier qui touche le bon animal gagne un point.",
+    "Attention : si tu te trompes, tu ne peux plus jouer pendant ce tour !",
+    "Après dix tours, celui qui a le plus de points gagne. Tous les chiffres sont vrais.",
+  ],
+};
+
+const CONSIGNES: { carac: string; texte: string }[] = [
+  { carac: "poids", texte: "Touche le plus lourd !" },
+  { carac: "vie", texte: "Touche celui qui peut vivre le plus longtemps !" },
+  { carac: "portee", texte: "Touche celui qui a le plus de petits à la fois !" },
+  { carac: "pays", texte: "Touche celui qui vit dans le plus de pays !" },
+  { carac: "gestation", texte: "Touche celui qui porte son bébé le plus longtemps !" },
+];
+const TOURS_RAPIDE = 10;
+
+function questionRapide() {
+  const pool = paquetBataille("tous");
+  for (;;) {
+    const c = CONSIGNES[Math.floor(Math.random() * CONSIGNES.length)];
+    const trois = melanger(pool).slice(0, 3);
+    const v = trois.map((x) => x.caracs.find((k) => k.id === c.carac)!.valeur).sort((a, b) => b - a);
+    // La réponse doit être claire : le premier dépasse nettement le deuxième.
+    if (v[0] >= v[1] * 1.4) {
+      const bon = trois.find((x) => x.caracs.find((k) => k.id === c.carac)!.valeur === v[0])!;
+      return { consigne: c, trois, bon: bon.id };
+    }
+  }
+}
+
+export function LePlusRapide() {
+  const [joueurs, setJoueurs] = useState<Joueur[]>(() => {
+    const j = lireJoueurs();
+    return j.length >= 2 ? j : [...j, { nom: "Joueur 2", couleur: "#2f5fa8", equipe: 1 }];
+  });
+  const [mode, setMode] = useState<Mode>("chacun");
+  const [enCours, setEnCours] = useState(false);
+  const [n, setN] = useState(1);
+  const [q, setQ] = useState(questionRapide);
+  const [points, setPoints] = useState<number[]>([]);
+  const [bloques, setBloques] = useState<Set<number>>(new Set());
+  const [gagnant, setGagnant] = useState<number | null | undefined>(undefined);
+  const arreter = useCallback(() => setEnCours(false), []);
+  useQuitterPartie(enCours, arreter);
+
+  function commencer() {
+    setPoints(joueurs.map(() => 0));
+    setN(1);
+    setQ(questionRapide());
+    setBloques(new Set());
+    setGagnant(undefined);
+    setEnCours(true);
+  }
+
+  function suivant() {
+    setN((x) => x + 1);
+    setQ(questionRapide());
+    setBloques(new Set());
+    setGagnant(undefined);
+  }
+
+  function toucher(i: number, id: string) {
+    if (gagnant !== undefined || bloques.has(i)) return;
+    if (id === q.bon) {
+      sons.bonne();
+      setGagnant(i);
+      setPoints((p) => p.map((x, k) => (k === i ? x + 1 : x)));
+      window.setTimeout(suivant, 2200);
+    } else {
+      sons.mauvaise();
+      const b = new Set(bloques).add(i);
+      setBloques(b);
+      if (b.size >= joueurs.length) {
+        setGagnant(null);
+        window.setTimeout(suivant, 2200);
+      }
+    }
+  }
+
+  if (!enCours) {
+    return (
+      <>
+        <div className="mt-3 flex justify-center"><BoutonRegles regles={REGLES_RAPIDE} /></div>
+        <Preparation joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace onJouer={commencer} setFaceAFace={() => {}} sansFaceAFace>
+          <p className="px-1 text-sm texte-doux">Ce jeu se joue toujours en face à face : posez le téléphone à plat entre vous.</p>
+        </Preparation>
+      </>
+    );
+  }
+
+  const fini = n > TOURS_RAPIDE;
+  const bonNom = q.trois.find((x) => x.id === q.bon)!.nom;
+  const resultat = gagnant === undefined ? null : gagnant === null ? `Personne ! C'était ${bonNom}.` : `${joueurs[gagnant].nom} gagne : ${bonNom} !`;
+  return (
+    <Table
+      joueurs={joueurs}
+      actif={null}
+      faceAFace
+      onQuitter={arreter}
+      centre={
+        fini ? (
+          <Fin texte={vainqueur(joueurs, points, mode).texte} onRejouer={commencer} onReglages={arreter} />
+        ) : (
+          <div className="grid h-full place-items-center text-center">
+            <div>
+              <p className="text-xs font-extrabold text-[#f0d090]">Tour {n} sur {TOURS_RAPIDE}</p>
+              {resultat ? <p className="arrivee mt-1 font-display text-xl text-white">{resultat}</p> : <p className="mt-1 text-sm">Le premier qui touche le bon animal gagne !</p>}
+              <p className="mt-2 text-xs">{joueurs.map((j, i) => `${j.nom} : ${points[i]}`).join(" · ")}</p>
+            </div>
+          </div>
+        )
+      }
+      zone={(i) =>
+        fini ? (
+          <p className="text-sm font-black text-white">{points[i]} point{points[i] > 1 ? "s" : ""}</p>
+        ) : (
+          <div className={bloques.has(i) ? "opacity-40" : ""}>
+            <p className="font-display text-sm leading-tight text-white">{q.consigne.texte}</p>
+            <div className="mt-1 grid grid-cols-3 gap-1">
+              {q.trois.map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => toucher(i, c.id)}
+                  className="overflow-hidden rounded-xl bg-card text-[#2a1c14]"
+                  style={gagnant !== undefined && c.id === q.bon ? { boxShadow: "0 0 0 3px #9be08a" } : undefined}
+                >
+                  <span className="block aspect-[4/3] overflow-hidden"><Portrait id={c.espece} /></span>
+                  <span className="line-clamp-2 block px-0.5 text-[10px] font-extrabold leading-tight">{c.nom}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    />
+  );
+}
+
+// ---------------------------------------------------------------- mime l'animal (2 à 4 et plus)
+
+export const REGLES_MIME: Explication = {
+  id: "regles-mime",
+  titre: "Les règles de mime l'animal",
+  etapes: [
+    "Chacun son tour, un joueur prend le téléphone. Les autres ne regardent pas !",
+    "Il découvre un animal, et il doit le mimer sans parler, ni faire de bruit… sauf le cri de l'animal, si vous êtes d'accord.",
+    "Les autres ont une minute pour deviner. Celui qui trouve et celui qui mime gagnent chacun un point.",
+    "Après chaque animal, je vous dis une petite chose vraie sur lui.",
+  ],
+};
+
+// Des animaux faciles à mimer (noms latins de la Mammal Diversity Database).
+const A_MIMER = [
+  "Panthera leo", "Panthera tigris", "Loxodonta africana", "Giraffa camelopardalis", "Pan troglodytes", "Gorilla gorilla", "Osphranter rufus",
+  "Ursus arctos", "Oryctolagus cuniculus", "Canis familiaris", "Felis catus", "Equus caballus", "Bos taurus", "Ovis aries", "Capra hircus",
+  "Erinaceus europaeus", "Sciurus vulgaris", "Tursiops truncatus", "Balaenoptera musculus", "Phoca vitulina", "Odobenus rosmarus",
+  "Phascolarctos cinereus", "Ailuropoda melanoleuca", "Equus quagga", "Hippopotamus amphibius", "Ceratotherium simum", "Camelus dromedarius",
+  "Canis lupus", "Vulpes vulpes", "Suricata suricatta", "Procyon lotor", "Castor fiber", "Mus musculus", "Talpa europaea", "Bradypus variegatus",
+  "Ornithorhynchus anatinus", "Ursus maritimus", "Lama glama", "Sus scrofa", "Macaca fuscata",
+];
+
+function faitVrai(e: { nom: string; masse?: string; longevite?: string; ou?: string; pays?: string[] }) {
+  if (e.masse) return `${e.nom} : ${e.masse}, d'après les mesures des scientifiques.`;
+  if (e.longevite) return `${e.nom} : longévité ${e.longevite}.`;
+  return `${e.nom}. ${e.ou ?? ""}`;
+}
+
+export function MimeAnimal() {
+  const [joueurs, setJoueurs] = useState<Joueur[]>(() => {
+    const j = lireJoueurs();
+    return j.length >= 2 ? j : [...j, { nom: "Joueur 2", couleur: "#2f5fa8", equipe: 1 }];
+  });
+  const [mode, setMode] = useState<Mode>("chacun");
+  const [enCours, setEnCours] = useState(false);
+  const [tour, setTour] = useState(0);
+  const [etape, setEtape] = useState<"cache" | "voit" | "mime" | "fait">("cache");
+  const [animaux, setAnimaux] = useState<string[]>([]);
+  const [points, setPoints] = useState<number[]>([]);
+  const [temps, setTemps] = useState(60);
+  const arreter = useCallback(() => setEnCours(false), []);
+  useQuitterPartie(enCours, arreter);
+
+  const liste = useMemo(() => A_MIMER.map((l) => [...PAR_ID.values()].find((e) => e.latin === l)).filter((e): e is Espece => !!e && e.langue === "fr"), []);
+
+  useEffect(() => {
+    if (etape !== "mime") return;
+    if (temps <= 0) {
+      setEtape("fait");
+      return;
+    }
+    const t = window.setTimeout(() => setTemps((x) => x - 1), 1000);
+    return () => window.clearTimeout(t);
+  }, [etape, temps]);
+
+  function commencer() {
+    setAnimaux(melanger(liste.map((e) => e.id)));
+    setPoints(joueurs.map(() => 0));
+    setTour(0);
+    setEtape("cache");
+    setEnCours(true);
+  }
+
+  if (!enCours) {
+    return (
+      <>
+        <div className="mt-3 flex justify-center"><BoutonRegles regles={REGLES_MIME} /></div>
+        <Preparation joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace={false} setFaceAFace={() => {}} sansFaceAFace onJouer={commencer} />
+      </>
+    );
+  }
+
+  const mimeur = tour % joueurs.length;
+  const e = PAR_ID.get(animaux[tour % animaux.length])!;
+  function trouve(qui: number | null) {
+    setPoints((p) => p.map((x, k) => (qui !== null && (k === qui || k === mimeur) ? x + 1 : x)));
+    if (qui !== null) sons.bonne();
+    const fait = faitVrai(e);
+    plumeDit(fait, 5000);
+    if (voixPossible()) dire(fait);
+    setEtape("fait");
+  }
+  function suivant() {
+    setTour((t) => t + 1);
+    setEtape("cache");
+    setTemps(60);
+  }
+
+  return (
+    <section className="mt-3 text-center">
+      <p className="text-sm">{joueurs.map((j, i) => `${j.nom} : ${points[i]}`).join(" · ")}</p>
+      {etape === "cache" ? (
+        <div className="mt-6">
+          <p className="font-display text-3xl" style={{ color: joueurs[mimeur].couleur }}>À toi de mimer, {joueurs[mimeur].nom} !</p>
+          <p className="mt-2">Prends le téléphone. Les autres ne regardent pas !</p>
+          <button type="button" onClick={() => setEtape("voit")} className="bouton-bois mt-5 rounded-full px-6 py-3 font-extrabold">Voir mon animal</button>
+        </div>
+      ) : etape === "voit" ? (
+        <div className="mt-4">
+          <span className="medaillon-or mx-auto block size-48 overflow-hidden"><Portrait id={e.id} /></span>
+          <p className="titre-or mt-3 text-4xl">{e.nom}</p>
+          <p className="mt-2 text-sm">Cache l'écran, puis mime cet animal sans parler.</p>
+          <button type="button" onClick={() => { setTemps(60); setEtape("mime"); }} className="mt-4 w-full rounded-[1.4rem] bg-[linear-gradient(180deg,#ff9f4a,#c2402a)] py-3.5 font-display text-2xl text-white">Je suis prête, on lance la minute !</button>
+        </div>
+      ) : etape === "mime" ? (
+        <div className="mt-4">
+          <p className="font-display text-7xl text-[#f3d48a]">{temps}</p>
+          <p className="mt-1">secondes pour deviner</p>
+          <p className="mt-4 font-extrabold">Qui a trouvé ?</p>
+          <div className="mt-2 grid grid-cols-2 gap-2">
+            {joueurs.map((j, i) => (i === mimeur ? null : <button key={i} type="button" onClick={() => trouve(i)} className="rounded-2xl py-3 font-extrabold text-white" style={{ background: j.couleur }}>{j.nom}</button>))}
+          </div>
+          <button type="button" onClick={() => trouve(null)} className="mt-2 w-full rounded-2xl bg-[#f3e2c2] py-3 font-extrabold text-[#2a1c14]">Personne</button>
+        </div>
+      ) : (
+        <div className="mt-4">
+          <span className="medaillon-or mx-auto block size-36 overflow-hidden"><Portrait id={e.id} /></span>
+          <p className="titre-or mt-2 text-3xl">C'était : {e.nom}</p>
+          <p className="mx-auto mt-2 max-w-sm rounded-2xl bg-[#fff8ea] px-3 py-2 text-sm font-bold text-[#4a2a8a]">{faitVrai(e)}</p>
+          <a href={`#/mammiferes/e-${e.id}`} className="mt-2 inline-block text-sm font-extrabold underline">Voir sa fiche</a>
+          <button type="button" onClick={suivant} className="bouton-bois mt-4 w-full rounded-2xl py-3 font-extrabold">Joueur suivant</button>
+        </div>
+      )}
+    </section>
+  );
 }
