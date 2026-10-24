@@ -51,43 +51,46 @@ export function Installer() {
   }
 
   return (
-    <section className="carte-nuit mx-auto mt-3 max-w-md rounded-3xl px-4 py-4 text-center">
-      <p className="font-display text-xl text-[#f3d48a]">Installer l'encyclopédie</p>
-      <p className="mt-1 text-sm">
-        Tout s'installe sur le téléphone : les photos, les fiches, les jeux et les cartes. Ensuite, elle marche sans Internet.
-      </p>
-      {p === "android" ? (
-        <>
-          <a href={LIEN_APK} onClick={() => setAide(true)} className="bouton-bois mt-3 block rounded-2xl py-4 font-display text-xl">
-            Installer l'application (82 Mo)
+    <section className="carte-nuit mx-auto mt-3 max-w-md rounded-2xl px-3 py-2">
+      <div className="flex items-center gap-2">
+        {p === "android" ? (
+          <a href={LIEN_APK} onClick={() => setAide(true)} className="bouton-bois flex-1 rounded-xl px-3 py-2.5 text-center font-extrabold">
+            Installer l'application · 82 Mo
           </a>
-          {aide ? (
-            <ol className="mt-3 list-decimal space-y-1 pl-5 text-left text-sm">
-              <li>Attends la fin du téléchargement, puis ouvre le fichier.</li>
-              <li>Si le téléphone bloque l'installation : « Paramètres », active « Autoriser depuis cette source », puis reviens.</li>
-              <li>Touche « Installer » (et « Installer quand même » si Play Protect le demande).</li>
-              <li>L'icône « Encyclopédie de la vie » apparaît avec les autres applications.</li>
-            </ol>
-          ) : (
-            <p className="mt-2 text-xs">Mieux vaut être en Wi-Fi.</p>
-          )}
-        </>
-      ) : p === "ios" ? (
-        <ol className="mt-3 list-decimal space-y-1 pl-5 text-left text-sm">
-          <li>Dans Safari, touche le bouton Partager (le carré avec une flèche).</li>
-          <li>Choisis « Sur l'écran d'accueil », puis « Ajouter ».</li>
-          <li>Ouvre l'encyclopédie depuis sa nouvelle icône, avec Internet, et laisse-la ouverte quelques minutes : elle enregistre les photos.</li>
-        </ol>
-      ) : invite ? (
-        <button type="button" onClick={() => invite.prompt()} className="bouton-bois mt-3 block w-full rounded-2xl py-4 font-display text-xl">
-          Installer l'application
+        ) : p === "autre" && invite ? (
+          <button type="button" onClick={() => invite.prompt()} className="bouton-bois flex-1 rounded-xl px-3 py-2.5 font-extrabold">
+            Installer l'application
+          </button>
+        ) : (
+          <button type="button" onClick={() => setAide((a) => !a)} className="bouton-bois flex-1 rounded-xl px-3 py-2.5 font-extrabold">
+            Installer l'application
+          </button>
+        )}
+        <button type="button" onClick={cacher} aria-label="Ne plus afficher" className="grid size-10 shrink-0 place-items-center rounded-full bg-[#2a1844] text-lg font-extrabold">
+          ×
         </button>
+      </div>
+      {aide ? (
+        <ol className="mt-2 list-decimal space-y-1 pl-5 text-left text-sm">
+          {p === "android" ? (
+            <>
+              <li>Attends la fin du téléchargement, puis ouvre le fichier.</li>
+              <li>Si le téléphone bloque : « Paramètres », active « Autoriser depuis cette source », puis reviens.</li>
+              <li>Touche « Installer » (et « Installer quand même » si Play Protect le demande).</li>
+            </>
+          ) : p === "ios" ? (
+            <>
+              <li>Dans Safari, touche Partager (le carré avec une flèche).</li>
+              <li>Choisis « Sur l'écran d'accueil », puis « Ajouter ».</li>
+              <li>Ouvre l'encyclopédie depuis sa nouvelle icône, avec Internet, quelques minutes : elle enregistre les photos.</li>
+            </>
+          ) : (
+            <li>Ouvre ce lien sur un téléphone Android pour installer l'application complète.</li>
+          )}
+        </ol>
       ) : (
-        <p className="mt-3 text-sm">Sur un téléphone Android, ouvre ce lien pour avoir le bouton d'installation.</p>
+        <p className="mt-1 text-center text-xs">Tout est rangé dans le téléphone : ensuite, plus besoin d'Internet.</p>
       )}
-      <button type="button" onClick={cacher} className="mt-3 text-sm underline">
-        Ne plus afficher
-      </button>
     </section>
   );
 }

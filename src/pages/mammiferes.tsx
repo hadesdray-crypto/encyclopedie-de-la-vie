@@ -12,6 +12,8 @@ import { Mot, Texte } from "@/components/mot";
 import { Ecouter } from "@/components/voix";
 import { CarteMonde } from "@/components/carte-monde";
 import { voirAnimal } from "@/lib/carnet";
+import { LuBaby, LuEar, LuHeartPulse, LuHourglass, LuMapPin, LuSatellite, LuScale, LuShieldCheck, LuTreePine, LuUsers, LuUtensils } from "react-icons/lu";
+import type { IconType } from "react-icons";
 import { lireFiche } from "@/lib/recompenses";
 import { comparerPoids } from "@/lib/poids";
 import wikipedia from "@/data/wikipedia-fr.json";
@@ -206,38 +208,77 @@ function Fiche({ id }: { id: string }) {
       ) : null}
       <dl className="mt-5 space-y-3">
         <Bloc mot="repartition" texte={vie?.ou ?? e.ou}>{e.pays?.length ? <div className="mt-2"><CarteMonde pays={e.pays} /><p className="mt-1 text-xs">Pays en or : d'après la Mammal Diversity Database. Les très petites îles n'apparaissent pas.</p></div> : null}</Bloc>
-        <div className="rounded-3xl bg-card px-4 py-3">
-          <Mot id="regime" />
-          <div className="mt-1 font-display text-2xl">{regime ? regime.nom : "Mal connu."}</div>
+        <Rubrique mot="regime">
+          <div className="font-display text-2xl">{regime ? regime.nom : "Mal connu."}</div>
           {regime ? <div className="mt-1"><Texte>{regime.explique}</Texte></div> : null}
           {vie?.mange ?? e.mange ? <div className="mt-2"><Mot id="alimentation" /> : <Texte>{(vie?.mange ?? e.mange)!}</Texte></div> : null}
-        </div>
+        </Rubrique>
         <Bloc mot="milieu" texte={e.milieu ?? "Mal connu."} />
         <Bloc mot="portee" texte={vie?.bebes ?? e.portee ?? "Mal connu."} />
         <Bloc mot="gestation" texte={vie?.gestation ?? e.gestation ?? "Mal connu."} />
         {grande ? (<><Bloc mot="male" texte={grande.male} /><Bloc mot="femelle" texte={grande.femelle} /><Bloc mot="dimorphisme" texte={grande.difference} /></>) : <Bloc mot="masse" texte={e.masse ?? "Mal connu."}>{comparerPoids(e.masse) ? <p className="mt-1 text-sm font-extrabold text-[#8d4e1f]">{comparerPoids(e.masse)}</p> : null}</Bloc>}
         <Bloc mot="longevite" texte={grande?.vie ?? e.longevite ?? "Mal connu."} />
         <Bloc mot="statut" texte={e.statut ?? "Non évalué."} />
-        <div className="rounded-3xl bg-card px-4 py-3">
-          <Mot id="cri" />
-          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.mp3`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p></>) : <p className="mt-1 font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
-        </div>
-        <div className="rounded-3xl bg-card px-4 py-3">
+        <Rubrique mot="cri">
+          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.mp3`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p></>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
+        </Rubrique>
+        <Rubrique mot="gps" titre={<span className="font-extrabold">Suivi GPS</span>}>
           <p className="font-extrabold">{etude ? "Une étude GPS publique existe" : "Pas de suivi GPS enregistré"}</p>
           {etude ? <a href={`#/suivi/${e.id}`} className="bouton-bois mt-2 inline-block rounded-full px-4 py-2 font-extrabold">Voir les déplacements</a> : <p className="text-sm">Aucune étude publique n'est notée pour cet animal.</p>}
-        </div>
+        </Rubrique>
       </dl>
       <p className="mx-auto mt-4 max-w-sm text-center text-sm texte-doux">Classement : Mammal Diversity Database. Les chiffres sont des mesures publiées. « Mal connu » veut dire que la mesure n'est pas publiée.</p>
     </main>
   );
 }
 
+/** Un pictogramme par rubrique, pour repérer l'information d'un coup d'œil. */
+const PICTOS: Record<string, { icone: IconType; couleur: string }> = {
+  repartition: { icone: LuMapPin, couleur: "#2f7d6d" },
+  regime: { icone: LuUtensils, couleur: "#b5562a" },
+  milieu: { icone: LuTreePine, couleur: "#3f7f2f" },
+  portee: { icone: LuBaby, couleur: "#c2457a" },
+  gestation: { icone: LuHourglass, couleur: "#7a4fd0" },
+  masse: { icone: LuScale, couleur: "#8d4e1f" },
+  male: { icone: LuScale, couleur: "#2f5fa8" },
+  femelle: { icone: LuScale, couleur: "#c2457a" },
+  dimorphisme: { icone: LuUsers, couleur: "#7a4fd0" },
+  longevite: { icone: LuHeartPulse, couleur: "#c23a3a" },
+  statut: { icone: LuShieldCheck, couleur: "#2f7d6d" },
+  cri: { icone: LuEar, couleur: "#b5562a" },
+  gps: { icone: LuSatellite, couleur: "#2f5fa8" },
+};
+
+function Picto({ mot }: { mot: string }) {
+  const p = PICTOS[mot];
+  if (!p) return null;
+  const Icone = p.icone;
+  return (
+    <span className="grid size-11 shrink-0 place-items-center rounded-2xl text-white shadow-[inset_0_-3px_0_rgba(0,0,0,.18)]" style={{ background: p.couleur }} aria-hidden="true">
+      <Icone className="size-6" />
+    </span>
+  );
+}
+
+/** Une rubrique de fiche : le pictogramme à gauche, le vrai mot, puis le texte. */
+function Rubrique({ mot, titre, children }: { mot: string; titre?: React.ReactNode; children: React.ReactNode }) {
+  return (
+    <div className="flex gap-3 rounded-3xl bg-card px-3 py-3">
+      <Picto mot={mot} />
+      <div className="min-w-0 flex-1">
+        <dt className="text-sm">{titre ?? <Mot id={mot} />}</dt>
+        <dd className="mt-0.5 leading-relaxed">{children}</dd>
+      </div>
+    </div>
+  );
+}
+
 function Bloc({ mot, texte, children }: { mot: string; texte: string; children?: React.ReactNode }) {
   return (
-    <div className="rounded-3xl bg-card px-4 py-3">
-      <dt><Mot id={mot} /></dt>
-      <dd className="mt-1 leading-relaxed"><Texte>{texte}</Texte>{children}</dd>
-    </div>
+    <Rubrique mot={mot}>
+      <Texte>{texte}</Texte>
+      {children}
+    </Rubrique>
   );
 }
 
