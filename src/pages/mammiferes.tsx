@@ -205,6 +205,11 @@ function Fiche({ id }: { id: string }) {
       </div>
       {e.disparue ? <p className="mt-2 text-center font-extrabold text-[#f3a0a0]">Espèce disparue.</p> : null}
       {e.domestique ? <p className="mt-2 text-center font-extrabold">Espèce domestique.</p> : null}
+      {e.latin === "Canis familiaris" || e.latin === "Felis catus" ? (
+        <a href={`#/compagnons/${e.latin === "Canis familiaris" ? "chiens" : "chats"}`} className="bouton-bois mx-auto mt-3 flex w-max items-center gap-2 rounded-full px-5 py-2.5 font-extrabold">
+          {e.latin === "Canis familiaris" ? "Toutes les races de chiens" : "Toutes les races de chats"} · le carnet de Plume
+        </a>
+      ) : null}
       {grande ? <p className="mx-auto mt-3 max-w-sm text-center text-lg"><Texte>{grande.phrase}</Texte></p> : null}
       {CREDITS_PHOTOS[e.id] && !grande ? <p className="mt-1 text-center text-[11px] texte-doux">Photo : {credit(CREDITS_PHOTOS[e.id])}</p> : null}
       {GALERIE[e.id]?.length ? (

@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useState, type ComponentType } from "react";
-import { LuBone, LuBookOpen, LuChevronRight, LuCrown, LuDices, LuFlame, LuHourglass, LuLayers, LuPawPrint, LuSettings } from "react-icons/lu";
+import { LuBone, LuBookOpen, LuChevronRight, LuCrown, LuDices, LuDog, LuFlame, LuHourglass, LuLayers, LuPawPrint, LuSettings } from "react-icons/lu";
 import { BoutonPlume } from "@/components/guide";
 import { Installer } from "@/components/installer";
 import { voixPossible } from "@/components/voix";
@@ -34,6 +34,7 @@ const PETITS: { vers: string; label: string; icone: ComponentType<{ className?: 
   { vers: "/fossiles", label: "Fossiles", icone: LuBone, fond: "linear-gradient(160deg,#a99067,#6b5a3a)" },
   { vers: "/frise", label: "Frise", icone: LuHourglass, fond: "linear-gradient(160deg,#5fc2b0,#2f7d6d)" },
   { vers: "/lexique", label: "Vrais mots", icone: LuBookOpen, fond: "linear-gradient(160deg,#f07aa8,#b8457a)" },
+  { vers: "/compagnons", label: "Chiens et chats", icone: LuDog, fond: "linear-gradient(160deg,#f0b860,#b5562a)" },
 ];
 
 /** Ce que Plume dit à Leonie en arrivant, selon ce qui l'attend. */
@@ -156,7 +157,7 @@ export function Accueil() {
       </a>
 
       {/* Les autres salles */}
-      <nav className="mt-3 grid grid-cols-4 gap-1.5" aria-label="Les autres salles">
+      <nav className="mt-3 grid grid-cols-5 gap-1" aria-label="Les autres salles">
         {PETITS.map(({ vers, label, icone: Icone, fond }) => (
           <a key={vers} href={`#${vers}`} className="text-center text-[11.5px] font-extrabold leading-tight">
             <span className="mx-auto mb-1 grid size-12 place-items-center rounded-2xl text-white shadow-[inset_0_-3px_0_rgba(0,0,0,.2),0_6px_12px_rgba(0,0,0,.35)]" style={{ background: fond }}>

@@ -23,6 +23,7 @@ const Cartes = lazy(() => import("@/pages/cartes").then((m) => ({ default: m.Car
 const Profil = lazy(() => import("@/pages/profil").then((m) => ({ default: m.ProfilPage })));
 const Suivi = lazy(() => import("@/pages/suivi").then((m) => ({ default: m.SuiviPage })));
 const Aventure = lazy(() => import("@/pages/suivi").then((m) => ({ default: m.AventurePage })));
+const Compagnons = lazy(() => import("@/pages/compagnons").then((m) => ({ default: m.CompagnonsPage })));
 const Options = lazy(() => import("@/pages/options").then((m) => ({ default: m.OptionsPage })));
 
 type Page = ComponentType<{ id?: string; params: URLSearchParams }>;
@@ -39,6 +40,7 @@ const ROUTES: [string, Page][] = [
   ["/suivi", Suivi],
   ["/aventure", Aventure],
   ["/options", Options],
+  ["/compagnons", Compagnons],
   ["/sources", SourcesPage],
 ];
 

@@ -161,6 +161,17 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     ],
   },
   {
+    id: "compagnons",
+    titre: "Mon carnet des chiens et des chats",
+    test: (c) => c.startsWith("/compagnons"),
+    etapes: [
+      "C'est mon carnet à moi : toutes les races de chiens et de chats que j'ai trouvées.",
+      "Les chiens sont rangés en dix groupes, comme le fait la Fédération cynologique internationale. Touche un groupe pour l'ouvrir.",
+      "Chaque fiche dit d'où vient la race, sa taille, son poids, son caractère et son histoire. Si on ne sait pas, c'est écrit « Non connu ».",
+      "Le petit cœur rouge, ce sont mes préférés.",
+    ],
+  },
+  {
     id: "options",
     titre: "Les options",
     test: (c) => c.startsWith("/options"),
