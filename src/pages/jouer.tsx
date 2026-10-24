@@ -14,11 +14,14 @@ import { noterReponse } from "@/lib/carnet";
 import { Entete, Titre } from "@/components/entete";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import { Vignette } from "@/components/icone";
+import { PAR_ID } from "@/data/catalogue";
+import crisConnus from "@/data/cris.json";
+import { LuFlame } from "react-icons/lu";
 
-function melanger<T>(l: T[]) {
+function melanger<T>(l: T[], rnd: () => number = Math.random) {
   const c = [...l];
   for (let i = c.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(rnd() * (i + 1));
     [c[i], c[j]] = [c[j], c[i]];
   }
   return c;
@@ -43,20 +46,20 @@ function questionTemps() {
   }
 }
 
-type Jeu = "regime" | "temps" | "memoire" | "poids" | "carte";
+type Jeu = "defi" | "regime" | "temps" | "memoire" | "poids" | "carte" | "cri";
 
 export function JouerPage({ params }: { params: URLSearchParams }) {
-  const [jeu, setJeu] = useState<Jeu>((params.get("jeu") as Jeu) || "memoire");
+  const [jeu, setJeu] = useState<Jeu>((params.get("jeu") as Jeu) || "defi");
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
       <Entete />
       <Titre>Défis du jour</Titre>
       <div className="mt-4 flex flex-wrap justify-center gap-2">
-        {([["memoire", "Mémoire"], ["poids", "Le plus lourd ?"], ["carte", "Qui vit ici ?"], ["regime", "Qu'est-ce qu'il mange ?"], ["temps", "Qui est arrivé en premier ?"]] as const).map(([id, nom]) => (
+        {([["defi", "Défi du jour"], ["memoire", "Mémoire"], ["cri", "Devine qui crie"], ["poids", "Le plus lourd ?"], ["carte", "Qui vit ici ?"], ["regime", "Qu'est-ce qu'il mange ?"], ["temps", "Qui est arrivé en premier ?"]] as const).map(([id, nom]) => (
           <button key={id} type="button" onClick={() => setJeu(id)} className={`min-h-12 rounded-2xl px-3 text-sm font-extrabold leading-tight ${jeu === id ? "bouton-bois" : "bg-card"}`}>{nom}</button>
         ))}
       </div>
-      {jeu === "memoire" ? <JeuMemoire /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
+      {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <JeuMemoire /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
     </main>
   );
 }
@@ -315,5 +318,243 @@ function JeuCarte() {
         </>
       ) : null}
     </section>
+  );
+}
+
+// ---------- Devine qui crie ----------
+// Seulement les vrais cris enregistrés (licence libre). Jamais de son fabriqué.
+const CRIEURS = (crisConnus as string[]).map((id) => PAR_ID.get(id)).filter((e): e is Espece => !!e && aUnePhoto(e.id));
+
+function questionCri(rnd: () => number = Math.random) {
+  const [bon, ...autres] = melanger(CRIEURS, rnd).slice(0, 3);
+  return { bon, choix: melanger([bon, ...autres], rnd) };
+}
+
+function JeuCri() {
+  if (CRIEURS.length < 3) {
+    return (
+      <section className="carte-nuit mt-5 rounded-3xl px-4 py-5 text-center">
+        <p className="font-display text-2xl text-[#f3d48a]">Bientôt !</p>
+        <p className="mt-2">On cherche encore les vrais cris des animaux. Ce jeu s'ouvrira quand on en aura assez.</p>
+      </section>
+    );
+  }
+  return <QuestionCri key="cri" />;
+}
+
+function QuestionCri() {
+  const [q, setQ] = useState(() => questionCri());
+  const [rep, setRep] = useState<string | null>(null);
+  return (
+    <section className="mt-5 text-center">
+      <p className="text-lg">Écoute bien. Quel animal fait ce bruit ?</p>
+      <audio key={q.bon.id} controls preload="auto" src={`s/${q.bon.id}.mp3`} className="mx-auto mt-3 w-full max-w-sm" />
+      <ul className="mt-4 grid grid-cols-3 gap-2">
+        {q.choix.map((e) => {
+          const juste = rep && e.id === q.bon.id;
+          const faux = rep === e.id && e.id !== q.bon.id;
+          return (
+            <li key={e.id}>
+              <button type="button" onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon.id); if (e.id === q.bon.id) sons.bonne(); else sons.mauvaise(); } }} className={`flex h-full w-full flex-col items-center rounded-3xl px-1 py-3 text-[#2a1c14] ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"}`}>
+                <span className="medaillon block size-20 overflow-hidden"><Portrait id={e.id} /></span>
+                <span className="mt-2 text-sm font-extrabold leading-tight">{e.nom}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {rep ? (
+        <>
+          <p className="mt-4 text-lg font-extrabold">{rep === q.bon.id ? "Bravo !" : `C'était ${q.bon.nom}.`}</p>
+          <button type="button" onClick={() => { setQ(questionCri()); setRep(null); }} className="bouton-bois au-dessus-barre mt-4 w-full rounded-2xl py-4 font-display text-2xl">Un autre cri</button>
+        </>
+      ) : null}
+    </section>
+  );
+}
+
+// ---------- Défi du jour ----------
+// Cinq questions, les mêmes pour toute la journée. Une série compte les jours réussis d'affilée.
+const CLE_DEFIS = "leonie-defis";
+
+function aujourdhui(decalage = 0) {
+  const d = new Date();
+  d.setDate(d.getDate() - decalage);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function hasard(graine: string) {
+  let h = 1779033703;
+  for (const c of graine) h = Math.imul(h ^ c.charCodeAt(0), 3432918353) | 0;
+  return () => {
+    h = Math.imul(h ^ (h >>> 16), 2246822507);
+    h = Math.imul(h ^ (h >>> 13), 3266489909);
+    h ^= h >>> 16;
+    return (h >>> 0) / 4294967296;
+  };
+}
+
+function lireDefis(): Record<string, number> {
+  try {
+    return JSON.parse(localStorage.getItem(CLE_DEFIS) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function serie(defis: Record<string, number>) {
+  let n = 0;
+  // Si le défi d'aujourd'hui n'est pas encore fait, la série d'hier compte toujours.
+  let i = defis[aujourdhui()] !== undefined ? 0 : 1;
+  while (defis[aujourdhui(i)] !== undefined) {
+    n++;
+    i++;
+  }
+  return n;
+}
+
+type QDefi = { consigne: string; audio?: string; carte?: string[]; choix: { id: string; nom: string; detail?: string }[]; bon: string; apres: string };
+
+function questionsDuJour(): QDefi[] {
+  const rnd = hasard(aujourdhui());
+  const types = melanger(["poids", "carte", "regime", "poids", "carte", ...(CRIEURS.length >= 3 ? ["cri", "cri"] : ["regime"])], rnd).slice(0, 5);
+  return types.map((t) => {
+    if (t === "cri") {
+      const q = questionCri(rnd);
+      return { consigne: "Quel animal fait ce bruit ?", audio: q.bon.id, choix: q.choix.map((e) => ({ id: e.id, nom: e.nom })), bon: q.bon.id, apres: `C'est ${q.bon.nom}.` };
+    }
+    if (t === "carte") {
+      for (;;) {
+        const bon = LOCALISES[Math.floor(rnd() * LOCALISES.length)];
+        const ici = new Set(bon.pays);
+        const autres = melanger(LOCALISES.filter((e) => e.id !== bon.id && !e.pays!.some((p) => ici.has(p))), rnd).slice(0, 2);
+        if (autres.length === 2) {
+          const choix = melanger([bon, ...autres], rnd);
+          return { consigne: "Qui vit dans les pays en or ?", carte: bon.pays, choix: choix.map((e) => ({ id: e.id, nom: e.nom })), bon: bon.id, apres: `C'est ${bon.nom}. ${bon.ou}` };
+        }
+      }
+    }
+    if (t === "regime") {
+      const e = POOL[Math.floor(rnd() * POOL.length)];
+      const bon = e.regime as RegimeId;
+      const autres = melanger((Object.keys(REGIMES) as RegimeId[]).filter((r) => r !== bon), rnd).slice(0, 2);
+      return { consigne: `${e.nom} mange surtout…`, carte: undefined, choix: melanger([bon, ...autres], rnd).map((r) => ({ id: r, nom: REGIMES[r].nom, detail: REGIMES[r].explique })), bon, apres: `${e.nom} est ${REGIMES[bon].nom.toLowerCase()}.`, audio: undefined, ...{ portrait: e.id } };
+    }
+    for (;;) {
+      const [a, b] = melanger(PESES, rnd).slice(0, 2);
+      const ga = grammesDe(a.masse)!;
+      const gb = grammesDe(b.masse)!;
+      if (Math.max(ga, gb) / Math.min(ga, gb) >= 2) {
+        return { consigne: "Lequel est le plus lourd, adulte ?", choix: [a, b].map((e) => ({ id: e.id, nom: e.nom, detail: e.masse })), bon: ga > gb ? a.id : b.id, apres: `${a.nom} : ${a.masse}. ${b.nom} : ${b.masse}.` };
+      }
+    }
+  });
+}
+
+function DefiDuJour() {
+  const [defis, setDefis] = useState(lireDefis);
+  const [questions] = useState(questionsDuJour);
+  const [i, setI] = useState(0);
+  const [rep, setRep] = useState<string | null>(null);
+  const [score, setScore] = useState(0);
+  const fait = defis[aujourdhui()];
+  const n = serie(defis);
+
+  if (fait !== undefined && i === 0 && !rep) {
+    return (
+      <section className="mt-5 text-center">
+        <SerieFlamme n={n} />
+        <p className="titre-or mt-3 text-3xl">Défi réussi aujourd'hui !</p>
+        <p className="mt-1">Tu as eu {fait} bonne{fait > 1 ? "s" : ""} réponse{fait > 1 ? "s" : ""} sur 5. Reviens demain pour un nouveau défi.</p>
+      </section>
+    );
+  }
+
+  const q = questions[i];
+  const fin = i >= questions.length;
+  if (fin) {
+    return (
+      <section className="arrivee mt-5 text-center">
+        <SerieFlamme n={n} />
+        <p className="titre-or mt-3 text-3xl">{score >= 4 ? "Bravo !" : "Défi terminé !"}</p>
+        <p className="mt-1">{score} bonne{score > 1 ? "s" : ""} réponse{score > 1 ? "s" : ""} sur 5. Un paquet de cartes t'attend !</p>
+      </section>
+    );
+  }
+
+  function choisir(id: string) {
+    if (rep) return;
+    setRep(id);
+    const bonne = id === q.bon;
+    noterReponse(bonne);
+    if (bonne) {
+      sons.bonne();
+      setScore((x) => x + 1);
+    } else sons.mauvaise();
+  }
+
+  function suivante() {
+    if (i + 1 >= questions.length) {
+      const total = score;
+      const d = { ...lireDefis(), [aujourdhui()]: total };
+      try {
+        localStorage.setItem(CLE_DEFIS, JSON.stringify(d));
+      } catch {
+        /* rien */
+      }
+      setDefis(d);
+      sons.victoire();
+      window.setTimeout(() => gagnerPaquet("Défi du jour terminé"), 900);
+    }
+    setI(i + 1);
+    setRep(null);
+  }
+
+  return (
+    <section className="mt-5">
+      <div className="flex items-center justify-between">
+        <SerieFlamme n={n} petite />
+        <p className="font-extrabold text-[#f0d090]">Question {i + 1} sur 5</p>
+      </div>
+      <p className="titre-or mt-3 text-center text-2xl">{q.consigne}</p>
+      {q.audio ? <audio key={q.audio} controls preload="auto" src={`s/${q.audio}.mp3`} className="mx-auto mt-3 w-full max-w-sm" /> : null}
+      {q.carte ? <div className="mt-3"><CarteMonde pays={q.carte} /></div> : null}
+      {"portrait" in q ? <span className="medaillon-or mx-auto mt-3 block size-28 overflow-hidden"><Portrait id={(q as { portrait: string }).portrait} /></span> : null}
+      <ul className={`mt-4 grid gap-2 ${q.choix.length === 2 ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-3"}`}>
+        {q.choix.map((c) => {
+          const juste = rep && c.id === q.bon;
+          const faux = rep === c.id && c.id !== q.bon;
+          const animal = PAR_ID.get(c.id);
+          return (
+            <li key={c.id}>
+              <button type="button" onClick={() => choisir(c.id)} className={`flex h-full w-full items-center gap-3 rounded-3xl px-3 py-3 text-left text-[#2a1c14] ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"} ${q.choix.length === 2 ? "flex-col text-center" : ""}`}>
+                {animal ? <span className="medaillon block size-16 shrink-0 overflow-hidden"><Portrait id={animal.id} /></span> : null}
+                <span>
+                  <span className="block font-display text-xl leading-tight">{c.nom}</span>
+                  {c.detail && (rep || !animal) ? <span className="block text-sm">{c.detail}</span> : null}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {rep ? (
+        <>
+          <p className="mt-3 text-center font-extrabold">{rep === q.bon ? "Bravo !" : "Pas tout à fait."} {q.apres}</p>
+          <button type="button" onClick={suivante} className="bouton-bois mt-4 w-full rounded-2xl py-4 font-display text-2xl">
+            {i + 1 >= questions.length ? "Voir mon résultat" : "Question suivante"}
+          </button>
+        </>
+      ) : null}
+    </section>
+  );
+}
+
+function SerieFlamme({ n, petite = false }: { n: number; petite?: boolean }) {
+  return (
+    <span className={`inline-flex items-center gap-1.5 rounded-full bg-[#2a1650] font-extrabold text-[#ffb35c] ${petite ? "px-3 py-1 text-sm" : "px-4 py-2 text-lg"}`}>
+      <LuFlame className={petite ? "size-4" : "size-6"} aria-hidden="true" />
+      {n} jour{n > 1 ? "s" : ""} d'affilée
+    </span>
   );
 }

@@ -88,13 +88,31 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
   {
     id: "memoire",
     titre: "Le jeu de mémoire",
-    test: (c, p) => c.startsWith("/jouer") && (p.get("jeu") ?? "memoire") === "memoire",
+    test: (c, p) => c.startsWith("/jouer") && p.get("jeu") === "memoire",
     etapes: [
       "Retrouve les paires d'animaux !",
       "Touche deux cartes. Si c'est le même animal, elles restent ouvertes. Sinon, elles se retournent.",
       "Essaie de te souvenir où sont les animaux. Moins tu fais de coups, mieux c'est !",
       "Choisis Facile, Moyen ou Difficile en haut. Une partie gagnée te donne un paquet de cartes.",
     ],
+  },
+  {
+    id: "defi",
+    titre: "Le défi du jour",
+    test: (c, p) => c.startsWith("/jouer") && (p.get("jeu") ?? "defi") === "defi",
+    etapes: [
+      "Chaque jour, un nouveau défi de cinq questions t'attend !",
+      "Réponds à chaque question, puis regarde l'explication avant de passer à la suivante.",
+      "La petite flamme compte les jours réussis d'affilée. Reviens demain pour la faire grandir !",
+      "À la fin du défi, tu gagnes un paquet de cartes.",
+      "Les autres jeux sont dans les boutons en haut : mémoire, cris d'animaux, poids, cartes du monde.",
+    ],
+  },
+  {
+    id: "cri",
+    titre: "Devine qui crie",
+    test: (c, p) => c.startsWith("/jouer") && p.get("jeu") === "cri",
+    etapes: ["Appuie sur le bouton lecture pour écouter le cri.", "Puis touche l'animal qui fait ce bruit. Ce sont de vrais enregistrements !"],
   },
   {
     id: "jouer",

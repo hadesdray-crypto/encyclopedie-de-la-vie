@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { accepterMiseAJour, useHorsLigne } from "@/lib/hors-ligne";
 import { EST_APK, telechargerApk, useMajApk } from "@/lib/maj-apk";
+import { useNouveautes } from "@/lib/nouveautes";
 
 /** Bandeau « Mise à jour disponible ». Rien ne change tant qu'on n'a pas dit oui. */
 export function MiseAJour() {
@@ -9,7 +10,9 @@ export function MiseAJour() {
   const [plusTard, setPlusTard] = useState(false);
   const [enCours, setEnCours] = useState(false);
   const visible = EST_APK ? apk.nouvelle !== null : majDisponible;
+  const nouveautes = useNouveautes(visible);
   if (!visible || plusTard) return null;
+  const derniere = nouveautes?.[0];
   return (
     <div
       role="dialog"
@@ -25,6 +28,16 @@ export function MiseAJour() {
       ) : (
         <p className="mt-1 text-sm">Une nouvelle version de l'encyclopédie est prête. Les cartes et les points sont gardés.</p>
       )}
+      {derniere ? (
+        <div className="mt-2 rounded-2xl bg-[#2f1a55] px-3 py-2">
+          <p className="text-sm font-extrabold text-[#f3d48a]">Ce qui change : {derniere.titre}</p>
+          <ul className="mt-1 list-disc space-y-0.5 pl-5 text-sm">
+            {derniere.points.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
       <div className="mt-3 grid grid-cols-2 gap-2">
         <button
           type="button"
