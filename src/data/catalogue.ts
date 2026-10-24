@@ -1,5 +1,6 @@
 import brut from "@/data/mammiferes.json";
 import nomsFr from "@/data/noms-fr.json";
+import nomsTraduits from "@/data/noms-traduits.json";
 
 export type Espece = {
   id: string;
@@ -8,7 +9,10 @@ export type Espece = {
   ordre: string;
   famille: string;
   ou: string;
-  langue?: "fr" | "en";
+  /** fr : vrai nom français ; trad : nom anglais traduit mot à mot ; en : nom anglais (français en cours). */
+  langue?: "fr" | "en" | "trad";
+  /** Le nom anglais d'origine, quand le nom affiché est une traduction. */
+  nomAnglais?: string;
   disparue?: 1;
   domestique?: 1;
   statut?: string;
@@ -39,6 +43,16 @@ for (const espece of data.especes) {
   if (fr && espece.langue !== "fr") {
     espece.nom = fr;
     espece.langue = "fr";
+  }
+}
+// Pas encore de nom français : une traduction du nom anglais (scripts/donnees/traduire_noms.py), signalée sur la fiche.
+const TRADUITS = nomsTraduits as Record<string, string>;
+for (const espece of data.especes) {
+  const t = TRADUITS[espece.id];
+  if (t && espece.langue !== "fr") {
+    espece.nomAnglais = espece.nom;
+    espece.nom = t;
+    espece.langue = "trad";
   }
 }
 export const ESPECES = data.especes;

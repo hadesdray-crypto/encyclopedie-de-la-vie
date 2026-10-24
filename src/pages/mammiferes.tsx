@@ -157,6 +157,7 @@ function Famille({ id }: { id: string }) {
               <span className="medaillon block size-24 overflow-hidden"><Portrait id={e.id} /></span>
               <span className="mt-2 font-extrabold leading-tight">{e.nom}</span>
               {e.disparue ? <span className="text-xs font-extrabold text-[#8d4e1f]">Disparue</span> : null}
+              {e.langue === "en" ? <span className="text-[10px] font-bold text-[#8a7462]">nom anglais · français en cours</span> : e.langue === "trad" ? <span className="text-[10px] font-bold text-[#8a7462]">nom traduit</span> : null}
             </a>
           </li>
         ))}
@@ -202,7 +203,7 @@ function Fiche({ id }: { id: string }) {
       <Titre>{e.nom}</Titre>
       <p className="text-center italic texte-doux">{e.latin}</p>
       <p className="text-center text-sm"><Mot id="nom-scientifique" /></p>
-      {e.langue === "en" ? <p className="mt-1 text-center text-sm texte-doux">Nom anglais : le nom français n'est pas encore dans l'application.</p> : null}
+      {e.langue === "trad" ? <p className="mx-auto mt-1 max-w-sm text-center text-sm texte-doux">Nom traduit de l'anglais (« {e.nomAnglais} »). Cet animal n'a pas encore de nom français officiel.</p> : e.langue !== "fr" ? <p className="mt-1 text-center text-sm texte-doux">Nom anglais : le nom français est en cours.</p> : null}
       <p className="mt-2 text-center text-sm font-extrabold text-[#f0d090]"><a href={`#/mammiferes/f-${e.famille}`} className="underline">{FAMILLES[e.famille]?.nom}</a> · <a href={`#/mammiferes/o-${e.ordre}`} className="underline">{ordreDe(e.ordre)?.nom}</a></p>
       <div className="mt-3 flex justify-center">
         <Ecouter gros texte={[e.nom, grande?.phrase, `Répartition. ${vie?.ou ?? e.ou}`, regime ? `Régime. ${regime.nom}. ${regime.explique}` : "Régime. Mal connu.", `Portée. ${vie?.bebes ?? e.portee ?? "Mal connu."}`, `Gestation. ${vie?.gestation ?? e.gestation ?? "Mal connu."}`, `Longévité. ${grande?.vie ?? e.longevite ?? "Mal connu."}`, `Statut. ${e.statut ?? "Non évalué."}`].filter(Boolean).join(" ")} />

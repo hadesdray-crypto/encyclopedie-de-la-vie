@@ -49,7 +49,7 @@ function depuisEspece(e: Espece): Resultat {
       sorte: "espece",
       id: e.id,
       nom: e.nom,
-      sous: FAMILLES[e.famille]?.nom ?? "",
+      sous: (FAMILLES[e.famille]?.nom ?? "") + (e.langue === "en" ? " · nom anglais (français en cours)" : e.langue === "trad" ? " · nom traduit" : ""),
       vers: `/mammiferes/e-${e.id}`,
       pays: e.pays ?? [],
       groupe: GROUPE_DE_ORDRE.get(e.ordre),
@@ -57,7 +57,7 @@ function depuisEspece(e: Espece): Resultat {
       menace: MENACES.has(e.statut ?? ""),
       connu: (e.langue === "fr" ? 2 : 0) + (aUnePhoto(e.id) ? 1 : 0),
     },
-    e.latin,
+    `${e.latin} ${e.nomAnglais ?? ""}`,
   );
 }
 

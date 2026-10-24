@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Plus de noms en français",
+    "points": [
+      "Près de 3 900 animaux qui n'avaient qu'un nom anglais ont maintenant un nom traduit en français (c'est écrit sur leur fiche).",
+      "Ceux qui restent en anglais sont marqués « français en cours ».",
+      "Les 7 familles ne se bloquent plus jamais.",
+      "La mise à jour indique son poids : mieux vaut le Wi-Fi."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Les 7 familles",
     "points": [
       "Nouveau jeu de 2 à 4 joueurs : félins, loups et renards, cerfs, dauphins, écureuils, belettes et loutres, kangourous.",
