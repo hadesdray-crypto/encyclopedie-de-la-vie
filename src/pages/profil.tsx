@@ -5,7 +5,7 @@ import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
 import { AVATARS, avatar, choisirAvatar, choisirGrosTexte, grosTexte } from "@/lib/reglages";
 import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireScore, lireVues } from "@/lib/carnet";
-import { EST_APK, VERSION_APK, useMajApk, verifierApk, telechargerApk } from "@/lib/maj-apk";
+import { EST_APK, VERSION_APK, useMajApk, verifierApk, lancerMajApk } from "@/lib/maj-apk";
 import { VERSION_APP, accepterMiseAJour, relancerHorsLigne, useHorsLigne, verifierMiseAJour } from "@/lib/hors-ligne";
 import { permettreInternet, useInternet } from "@/lib/internet";
 import { Portrait } from "@/components/portrait";
@@ -185,7 +185,7 @@ function VersionApk() {
       <p className="mt-1">Tout est dans l'application : elle marche sans Internet.</p>
       <p className="mt-2">Version 1.{VERSION_APK}</p>
       {m.nouvelle ? (
-        <button type="button" onClick={telechargerApk} className="bouton-bois mt-2 rounded-full px-4 py-2 font-extrabold">Télécharger la version 1.{m.nouvelle}</button>
+        <button type="button" onClick={lancerMajApk} className="bouton-bois mt-2 rounded-full px-4 py-2 font-extrabold">Mettre à jour (version 1.{m.nouvelle})</button>
       ) : (
         <>
           <button type="button" onClick={verifierApk} className="mt-2 rounded-full bg-card px-4 py-2 font-extrabold text-[#2a1c14]">Chercher une mise à jour</button>

@@ -3,5 +3,14 @@
   "appName": "Encyclopédie de la vie",
   "webDir": "dist",
   "backgroundColor": "#1b1440",
-  "android": { "allowMixedContent": false }
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "CapacitorUpdater": {
+      "autoUpdate": false,
+      "appReadyTimeout": 15000,
+      "resetWhenUpdate": true
+    }
+  }
 }

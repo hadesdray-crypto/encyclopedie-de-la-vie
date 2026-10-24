@@ -19,6 +19,19 @@ import { comparerPoids } from "@/lib/poids";
 import wikipedia from "@/data/wikipedia-fr.json";
 import galerie from "@/data/galerie.json";
 import creditsPhotos from "@/data/credits-photos.json";
+import estimations from "@/data/estimations.json";
+
+type Estimation = { t: string; n: number; p?: number; accord?: number };
+const ESTIMATIONS = estimations as Record<string, Record<string, Estimation>>;
+
+/** Petite ligne grise sous une valeur estimée : on dit toujours que c'est une estimation. */
+function NoteEstimation({ est }: { est: Estimation }) {
+  return (
+    <span className="mt-0.5 block text-xs font-extrabold text-[#7a5a8a]">
+      Estimé d'après {est.n} espèces du même genre{est.p ? ` · ± ${est.p} %` : ""}
+    </span>
+  );
+}
 
 const CRIS = new Set(crisConnus as string[]);
 type Credit = { auteur: string; licence: string; source: string };
@@ -163,7 +176,12 @@ function Fiche({ id }: { id: string }) {
   if (!e) return <Inconnue />;
   const grande = FICHE_PAR_LATIN.get(e.latin);
   const vie = grande ? VIE[grande.id] : undefined;
-  const regime = e.regime ? REGIMES[e.regime as keyof typeof REGIMES] : vie ? REGIMES[vie.regime] : undefined;
+  const est = ESTIMATIONS[e.id] ?? {};
+  const regimeEstime = !e.regime && !vie && est.regime ? est.regime : undefined;
+  const regime = e.regime ? REGIMES[e.regime as keyof typeof REGIMES] : vie ? REGIMES[vie.regime] : regimeEstime ? REGIMES[regimeEstime.t as keyof typeof REGIMES] : undefined;
+  /** La mesure publiée ; sinon l'estimation (marquée) ; sinon « Mal connu ». */
+  const valeur = (cle: string, mesure: string | undefined) =>
+    mesure ? { texte: mesure } : est[cle] ? { texte: est[cle].t, note: est[cle] } : { texte: "Mal connu." };
   const etude = (SUIVI[e.latin] ?? []).length > 0;
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
@@ -209,15 +227,16 @@ function Fiche({ id }: { id: string }) {
       <dl className="mt-5 space-y-3">
         <Bloc mot="repartition" texte={vie?.ou ?? e.ou}>{e.pays?.length ? <div className="mt-2"><CarteMonde pays={e.pays} /><p className="mt-1 text-xs">Pays en or : d'après la Mammal Diversity Database. Les très petites îles n'apparaissent pas.</p></div> : null}</Bloc>
         <Rubrique mot="regime">
-          <div className="font-display text-2xl">{regime ? regime.nom : "Mal connu."}</div>
+          <div className="font-display text-2xl">{regime ? (regimeEstime ? `Sans doute ${regime.nom.toLowerCase()}` : regime.nom) : "Mal connu."}</div>
+          {regimeEstime ? <NoteEstimation est={regimeEstime} /> : null}
           {regime ? <div className="mt-1"><Texte>{regime.explique}</Texte></div> : null}
           {vie?.mange ?? e.mange ? <div className="mt-2"><Mot id="alimentation" /> : <Texte>{(vie?.mange ?? e.mange)!}</Texte></div> : null}
         </Rubrique>
-        <Bloc mot="milieu" texte={e.milieu ?? "Mal connu."} />
-        <Bloc mot="portee" texte={vie?.bebes ?? e.portee ?? "Mal connu."} />
-        <Bloc mot="gestation" texte={vie?.gestation ?? e.gestation ?? "Mal connu."} />
-        {grande ? (<><Bloc mot="male" texte={grande.male} /><Bloc mot="femelle" texte={grande.femelle} /><Bloc mot="dimorphisme" texte={grande.difference} /></>) : <Bloc mot="masse" texte={e.masse ?? "Mal connu."}>{comparerPoids(e.masse) ? <p className="mt-1 text-sm font-extrabold text-[#8d4e1f]">{comparerPoids(e.masse)}</p> : null}</Bloc>}
-        <Bloc mot="longevite" texte={grande?.vie ?? e.longevite ?? "Mal connu."} />
+        <BlocValeur mot="milieu" v={valeur("milieu", e.milieu)} />
+        <BlocValeur mot="portee" v={valeur("portee", vie?.bebes ?? e.portee)} />
+        <BlocValeur mot="gestation" v={valeur("gestation", vie?.gestation ?? e.gestation)} />
+        {grande ? (<><Bloc mot="male" texte={grande.male} /><Bloc mot="femelle" texte={grande.femelle} /><Bloc mot="dimorphisme" texte={grande.difference} /></>) : <BlocValeur mot="masse" v={valeur("masse", e.masse)}>{comparerPoids(e.masse ?? est.masse?.t) ? <p className="mt-1 text-sm font-extrabold text-[#8d4e1f]">{comparerPoids(e.masse ?? est.masse?.t)}</p> : null}</BlocValeur>}
+        <BlocValeur mot="longevite" v={valeur("longevite", grande?.vie ?? e.longevite)} />
         <Bloc mot="statut" texte={e.statut ?? "Non évalué."} />
         <Rubrique mot="cri">
           {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.mp3`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p></>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
@@ -227,7 +246,7 @@ function Fiche({ id }: { id: string }) {
           {etude ? <a href={`#/suivi/${e.id}`} className="bouton-bois mt-2 inline-block rounded-full px-4 py-2 font-extrabold">Voir les déplacements</a> : <p className="text-sm">Aucune étude publique n'est notée pour cet animal.</p>}
         </Rubrique>
       </dl>
-      <p className="mx-auto mt-4 max-w-sm text-center text-sm texte-doux">Classement : Mammal Diversity Database. Les chiffres sont des mesures publiées. « Mal connu » veut dire que la mesure n'est pas publiée.</p>
+      <p className="mx-auto mt-4 max-w-sm text-center text-sm texte-doux">Classement : Mammal Diversity Database. Les chiffres sont des mesures publiées. « Estimé » veut dire calculé d’après les espèces cousines, avec l’écart entre elles en pourcentage. « Mal connu » : ni mesure, ni estimation fiable.</p>
     </main>
   );
 }
@@ -270,6 +289,16 @@ function Rubrique({ mot, titre, children }: { mot: string; titre?: React.ReactNo
         <dd className="mt-0.5 leading-relaxed">{children}</dd>
       </div>
     </div>
+  );
+}
+
+function BlocValeur({ mot, v, children }: { mot: string; v: { texte: string; note?: Estimation }; children?: React.ReactNode }) {
+  return (
+    <Rubrique mot={mot}>
+      <Texte>{v.texte}</Texte>
+      {v.note ? <NoteEstimation est={v.note} /> : null}
+      {children}
+    </Rubrique>
   );
 }
 
