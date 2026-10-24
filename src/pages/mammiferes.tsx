@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LuSearch } from "react-icons/lu";
-import { FAMILLES, GROUPES, PAR_ID, chercher, chercherFamilles, chercherOrdres, especesDe, famillesDe, ordreDe, type Espece } from "@/data/catalogue";
+import { FAMILLES, GROUPES, PAR_ID, especesDe, famillesDe, ordreDe, type Espece } from "@/data/catalogue";
+import { chercherTout } from "@/lib/recherche";
 import { FICHES } from "@/data/fiches";
 import { REGIMES, VIE } from "@/data/fiches-vie";
 import crisConnus from "@/data/cris.json";
@@ -67,13 +68,14 @@ function Index({ groupe }: { groupe: string }) {
       <Titre sous="Dix groupes pour s'y retrouver. Dedans, les vrais ordres, puis les familles, puis les espèces.">Mammifères</Titre>
       <label className="mt-4 flex items-center gap-2 rounded-full bg-card px-4 py-3">
         <LuSearch className="size-5 text-[#6d5648]" aria-hidden="true" />
-        <input value={texte} onChange={(e) => setTexte(e.target.value)} placeholder="Un animal, une famille, un ordre" className="w-full bg-transparent text-base outline-none placeholder:text-[#8a7462]" />
+        <input value={texte} onChange={(e) => setTexte(e.target.value)} placeholder="Un animal, une race, une famille…" className="w-full bg-transparent text-base outline-none placeholder:text-[#8a7462]" />
       </label>
       {cherche ? (
         <div className="mt-4 space-y-2">
-          {chercherOrdres(texte).map((o) => <Ligne key={o.id} vers={`/mammiferes/o-${o.id}`} titre={o.nom} sous={o.phrase} />)}
-          {chercherFamilles(texte).map(([code, f]) => <Ligne key={code} vers={`/mammiferes/f-${code}`} titre={f.nom} sous={`${f.n} espèces`} />)}
-          {chercher(texte).map((e) => <LigneEspece key={e.id} espece={e} />)}
+          {chercherTout(texte).slice(0, 40).map((r) =>
+            r.sorte === "espece" ? <LigneEspece key={r.id} espece={PAR_ID.get(r.id)!} /> : <Ligne key={`${r.sorte}-${r.id}`} vers={r.vers} titre={r.nom} sous={r.sous} />,
+          )}
+          <a href={`#/chercher?q=${encodeURIComponent(texte)}`} className="block text-center font-extrabold underline">Chercher aussi par catégorie ou sur la carte</a>
         </div>
       ) : (
         <ul className="mt-5 space-y-3">

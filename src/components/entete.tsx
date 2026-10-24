@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { LuChevronLeft, LuCrown, LuSettings } from "react-icons/lu";
+import { LuChevronLeft, LuCrown, LuSearch, LuSettings } from "react-icons/lu";
 import { declarerParent, revenir } from "@/lib/routeur";
 
 /**
@@ -18,6 +18,9 @@ export function Entete({ siVide, label = "Retour" }: { siVide?: string; label?: 
         <p className="font-display text-base leading-tight text-[#f0d090]">Pour la princesse Leonie</p>
       </div>
       <div className="flex shrink-0 items-center gap-2">
+        <a href="#/chercher" aria-label="Chercher un animal" className="grid size-11 place-items-center rounded-full bg-[#2a1844] text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
+          <LuSearch className="size-5" aria-hidden="true" />
+        </a>
         <a href="#/options" aria-label="Options" className="grid size-11 place-items-center rounded-full bg-[#2a1844] text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
           <LuSettings className="size-5" aria-hidden="true" />
         </a>

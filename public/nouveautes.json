@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-25",
+    "titre": "Chercher un animal",
+    "points": [
+      "Écris le début d'un nom : les animaux apparaissent tout de suite.",
+      "Même mal écrit, on le trouve : « lyon » trouve le lion, « kaniche » le caniche.",
+      "Les chiens et les chats sont mélangés avec tous les autres animaux.",
+      "Choisis une catégorie : sauvages, chiens, chats, menacés, un groupe, ce qu'il mange.",
+      "Sur la carte : touche un continent, puis un pays, pour voir tous ses animaux."
+    ]
+  },
+  {
     "date": "2026-10-24",
     "titre": "Le carnet de Plume : chiens et chats",
     "points": [

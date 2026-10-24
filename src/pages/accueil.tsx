@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useState, type ComponentType } from "react";
-import { LuBone, LuBookOpen, LuChevronRight, LuCrown, LuDices, LuDog, LuFlame, LuHourglass, LuLayers, LuPawPrint, LuSettings } from "react-icons/lu";
+import { LuBone, LuBookOpen, LuChevronRight, LuCrown, LuDices, LuDog, LuFlame, LuHourglass, LuLayers, LuMap, LuPawPrint, LuSearch, LuSettings } from "react-icons/lu";
 import { Installer } from "@/components/installer";
 import { voixPossible } from "@/components/voix";
 import { avatar } from "@/lib/reglages";
@@ -82,6 +82,17 @@ export function Accueil() {
           <img src={image} alt="" className="size-full object-cover" />
         </a>
       </header>
+
+      {/* Chercher un animal (ou sur la carte) */}
+      <div className="mt-3 flex gap-2">
+        <a href="#/chercher" className="flex min-h-11 flex-1 items-center gap-2 rounded-full border-2 border-[#e8c98a]/70 bg-card px-4 text-[#8a7462]">
+          <LuSearch className="size-5 text-[#8d4e1f]" aria-hidden="true" />
+          Chercher un animal…
+        </a>
+        <a href="#/chercher?carte=1" aria-label="Chercher sur la carte du monde" className="grid size-11 place-items-center rounded-full bg-[#2a1844] text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
+          <LuMap className="size-5" aria-hidden="true" />
+        </a>
+      </div>
       <Installer />
 
       {/* Le voyage dans le temps */}

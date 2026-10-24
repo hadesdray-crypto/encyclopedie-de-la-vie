@@ -22,7 +22,9 @@ jobs:
       - name: Reprendre le travail déjà fait
         run: git pull -q origin chiens || true
       - name: Collecter
-        run: python scripts/donnees/chiens.py $(cat scripts/donnees/chiens-etape.txt) 2>&1 | tee scripts/donnees/chiens-journal.txt
+        run: |
+          python scripts/donnees/chiens.py $(cat scripts/donnees/chiens-etape.txt) 2>&1 | tee scripts/donnees/chiens-journal.txt
+          python scripts/donnees/chiens-pays.py
       - name: Enregistrer
         run: |
           git config user.name "github-actions[bot]"

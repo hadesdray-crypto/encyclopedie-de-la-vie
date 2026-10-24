@@ -5,6 +5,7 @@ import {
   LuHourglass, LuMapPin, LuRuler, LuScale, LuSearch, LuSparkles, LuStar, LuUsers,
 } from "react-icons/lu";
 import donnees from "@/data/chiens.json";
+import { plier } from "@/data/catalogue";
 import { Entete, Titre } from "@/components/entete";
 import { Ecouter } from "@/components/voix";
 import { PlumeDessin } from "@/components/plume-dessin";
@@ -22,8 +23,13 @@ export type Race = {
   id: string; nom: string; wiki: string; origine?: string; taille?: string; poids?: string; silhouette?: string;
   poil?: string; robe?: string; tete?: string; yeux?: string; oreilles?: string; queue?: string; caractere?: string;
   intro?: string; histoire?: string; utilisation?: string; vie?: string; vie_texte?: string; portee?: string;
-  groupe?: string; fci?: string; photos: Photo[];
+  groupe?: string; fci?: string; pays?: string[]; photos: Photo[];
 };
+
+/** Le nom à afficher : sans les autres noms (« Akita ; Akita inu » → « Akita »). */
+export function nomCourt(nom: string) {
+  return nom.split(/\s+[;/]\s+|\s+ou\s+/)[0].trim();
+}
 type Quantite = [string, string][];
 type Donnees = { groupes: Record<string, string>; chiens: Race[]; chats: Race[]; especes?: Record<string, Record<string, Quantite>> };
 
@@ -156,7 +162,7 @@ function Liste({ sorte }: { sorte: Sorte }) {
     return [...m.entries()].filter(([, l]) => l.length);
   }, [sorte]);
   const cherche = q.trim().toLowerCase();
-  const trouves = cherche ? races.filter((r) => r.nom.toLowerCase().includes(cherche)) : [];
+  const trouves = cherche ? races.filter((r) => plier(r.nom).includes(plier(cherche))) : [];
   const nomGroupe = (g: string) => (sorte === "chien" ? (g === "autres" ? "Autres races" : `Groupe ${g} · ${D.groupes[g]}`) : g);
 
   return (
@@ -222,7 +228,7 @@ function Grille({ races, sorte, vide }: { races: Race[]; sorte: Sorte; vide?: st
         <li key={r.id}>
           <a href={`#/compagnons/${sorte}/${r.id}`} className="relative block rounded-2xl bg-card px-1 pb-2 pt-1.5 text-center text-[#2a1c14]">
             <span className="mx-auto block aspect-square w-[86%] overflow-hidden rounded-full ring-2 ring-[#d9b56a]"><Vignette r={r} /></span>
-            <span className="mt-1 block text-[12px] font-extrabold leading-tight">{r.nom}</span>
+            <span className="mt-1 block text-[12px] font-extrabold leading-tight">{nomCourt(r.nom)}</span>
             {PREFERES.has(r.id) ? <LuHeart className="absolute right-1.5 top-1.5 size-4 fill-[#e2453c] text-[#e2453c]" aria-label="Préféré de Plume" /> : null}
           </a>
         </li>
@@ -255,7 +261,7 @@ function Fiche({ sorte, race: r }: { sorte: Sorte; race?: Race }) {
   const vie = r.vie ?? r.vie_texte;
   const allure = [r.silhouette && `Silhouette : ${r.silhouette}.`, r.tete && `Tête : ${r.tete}.`, r.yeux && `Yeux : ${r.yeux}.`, r.oreilles && `Oreilles : ${r.oreilles}.`, r.queue && `Queue : ${r.queue}.`].filter(Boolean).join(" ");
   const aLire = [
-    r.nom,
+    nomCourt(r.nom),
     r.intro,
     `Origine. ${r.origine ?? NC}.`,
     sorte === "chien" ? `Groupe. ${r.groupe ? D.groupes[r.groupe] : NC}.` : "",
@@ -274,7 +280,8 @@ function Fiche({ sorte, race: r }: { sorte: Sorte; race?: Race }) {
           <span className="absolute -right-6 bottom-1 rotate-[-8deg] rounded-full border-2 border-[#e2453c] bg-[#fff8ea] px-2 py-0.5 text-[11px] font-black uppercase text-[#e2453c]">Préféré de Plume</span>
         ) : null}
       </div>
-      <Titre>{r.nom}</Titre>
+      <Titre>{nomCourt(r.nom)}</Titre>
+      {nomCourt(r.nom) !== r.nom ? <p className="text-center text-sm texte-doux">Aussi appelé : {r.nom.split(/\s+[;/]\s+|\s+ou\s+/).slice(1).join(", ")}</p> : null}
       <p className="mt-1 text-center text-sm font-extrabold text-[#f0d090]">
         {sorte === "chien" ? "Race de chien" : "Race de chat"}
         {r.origine ? ` · ${r.origine}` : ""}
