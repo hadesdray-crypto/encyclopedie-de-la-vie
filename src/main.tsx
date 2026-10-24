@@ -6,6 +6,7 @@ import { MiseAJour } from "@/components/mise-a-jour";
 import { appliquerGrosTexte } from "@/lib/reglages";
 import { useChemin } from "@/lib/routeur";
 import { demarrerHorsLigne } from "@/lib/hors-ligne";
+import { demarrerMajApk } from "@/lib/maj-apk";
 import { Accueil } from "@/pages/accueil";
 import { ArbrePage } from "@/pages/arbre";
 import { FrisePage } from "@/pages/frise";
@@ -79,3 +80,4 @@ createRoot(document.getElementById("app")!).render(
 
 appliquerGrosTexte();
 demarrerHorsLigne();
+demarrerMajApk();

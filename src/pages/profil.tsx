@@ -4,6 +4,7 @@ import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
 import { AVATARS, avatar, choisirAvatar, choisirGrosTexte, grosTexte } from "@/lib/reglages";
 import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireScore, lireVues } from "@/lib/carnet";
+import { EST_APK, VERSION_APK, useMajApk, verifierApk, telechargerApk } from "@/lib/maj-apk";
 import { VERSION_APP, accepterMiseAJour, relancerHorsLigne, useHorsLigne, verifierMiseAJour } from "@/lib/hors-ligne";
 import { permettreInternet, useInternet } from "@/lib/internet";
 import { Portrait } from "@/components/portrait";
@@ -36,6 +37,7 @@ export function ProfilPage() {
           </ul>
         </>
       ) : null}
+      {EST_APK ? <VersionApk /> : (
       <section className="carte-nuit mt-6 rounded-3xl px-4 py-4">
         <p className="font-display text-xl text-[#f3d48a]">Sans Internet</p>
         {hl.possible ? (
@@ -61,6 +63,7 @@ export function ProfilPage() {
           ) : null}
         </div>
       </section>
+      )}
       <CoinParents />
       <a href="#/sources" className="mt-4 block text-center font-extrabold underline">Sources et crédits</a>
     </main>
@@ -157,6 +160,27 @@ function Confort() {
         <input type="checkbox" defaultChecked={grosTexte()} onChange={(e) => choisirGrosTexte(e.target.checked)} className="size-6 accent-[#8d4e1f]" />
         Écrire plus gros
       </label>
+    </section>
+  );
+}
+
+function VersionApk() {
+  const m = useMajApk();
+  return (
+    <section className="carte-nuit mt-6 rounded-3xl px-4 py-4 text-sm">
+      <p className="font-display text-xl text-[#f3d48a]">Application</p>
+      <p className="mt-1">Tout est dans l'application : elle marche sans Internet.</p>
+      <p className="mt-2">Version 1.{VERSION_APK}</p>
+      {m.nouvelle ? (
+        <button type="button" onClick={telechargerApk} className="bouton-bois mt-2 rounded-full px-4 py-2 font-extrabold">Télécharger la version 1.{m.nouvelle}</button>
+      ) : (
+        <>
+          <button type="button" onClick={verifierApk} className="mt-2 rounded-full bg-card px-4 py-2 font-extrabold text-[#2a1c14]">Chercher une mise à jour</button>
+          <p className="mt-1 text-xs">
+            {m.verification === "en-cours" ? "Recherche…" : m.verification === "a-jour" ? "C'est la dernière version." : m.verification === "hors-ligne" ? "Pas de connexion : on regardera plus tard." : m.verification === "erreur" ? "Impossible de vérifier pour l'instant." : ""}
+          </p>
+        </>
+      )}
     </section>
   );
 }
