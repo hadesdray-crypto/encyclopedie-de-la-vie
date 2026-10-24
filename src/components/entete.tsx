@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { LuChevronLeft, LuSettings } from "react-icons/lu";
-import { BoutonPlume } from "@/components/guide";
+import { LuChevronLeft, LuCrown, LuSettings } from "react-icons/lu";
 import { declarerParent, revenir } from "@/lib/routeur";
 
 /**
- * En-tête des pages intérieures : Plume, le nom de Leonie, Options et Retour.
+ * En-tête des pages intérieures : le nom de Leonie, Options et Retour.
  * Retour revient pas à pas sur le chemin suivi (comme la flèche du téléphone).
  * siVide : la page où aller si on est arrivé ici directement.
  */
@@ -15,7 +14,7 @@ export function Entete({ siVide, label = "Retour" }: { siVide?: string; label?: 
   return (
     <header className="flex items-center justify-between gap-2">
       <div className="flex min-w-0 items-center gap-2">
-        <BoutonPlume />
+        <LuCrown className="size-6 shrink-0 text-[#f3d48a]" aria-hidden="true" />
         <p className="font-display text-base leading-tight text-[#f0d090]">Pour la princesse Leonie</p>
       </div>
       <div className="flex shrink-0 items-center gap-2">

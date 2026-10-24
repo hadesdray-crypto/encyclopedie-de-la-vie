@@ -8,16 +8,19 @@ import { dire, taire, useParle } from "@/lib/parole";
 import {
   choisirPlumeBouge,
   choisirPlumeExplique,
-  choisirPlumeParle,
   choisirReactions,
+  PRESENCES,
+  choisirPresence,
   ouvrirPlume,
+  usePlume,
   plumeBouge,
   plumeExpliqueSeule,
-  plumeParleSeule,
   reactionsActives,
 } from "@/lib/plume";
 import { VITESSES, choisirDireBoutons, choisirGrosTexte, choisirVitesseVoix, direBoutons, grosTexte, vitesseVoix, type Vitesse } from "@/lib/reglages";
 import { activerSons, sonsActifs } from "@/lib/sons";
+import { choisirLectureLongue, lectureLongue } from "@/lib/lecture-longue";
+import { presence as presenceActuelle } from "@/lib/plume";
 
 /*
  * Les options : chaque réglage est écrit en phrases simples, et Plume peut le lire à voix haute
@@ -27,7 +30,7 @@ import { activerSons, sonsActifs } from "@/lib/sons";
 type Interrupteur = { id: string; titre: string; explication: string; lire: () => boolean; choisir: (oui: boolean) => void };
 
 const VOIX: Interrupteur[] = [
-  { id: "seule", titre: "Plume lit toute seule", explication: "Quand Plume explique quelque chose, elle le lit aussi à voix haute.", lire: plumeParleSeule, choisir: choisirPlumeParle },
+  { id: "longue", titre: "Appuyer longtemps pour écouter", explication: "Appuie longtemps sur un texte, et Plume te le lit à voix haute.", lire: lectureLongue, choisir: choisirLectureLongue },
   { id: "boutons", titre: "Dire le nom des boutons", explication: "Quand tu touches un bouton de la barre du bas, Plume dit son nom.", lire: direBoutons, choisir: choisirDireBoutons },
 ];
 
@@ -58,6 +61,8 @@ function textePage() {
     `La vitesse de la voix. En ce moment, elle est ${NOM_VITESSE[vitesseVoix()]}.`,
     ...VOIX.map(texteInterrupteur),
     "Plume.",
+    `Comment Plume reste avec toi. En ce moment : ${PRESENCES.find((p) => p.id === presenceActuelle())?.nom}.`,
+    ...PRESENCES.map((p) => `${p.nom} : ${p.explique}`),
     ...PLUME.map(texteInterrupteur),
     "Le bouton « Plume se présente encore » lui fait refaire sa présentation.",
     ...SONS.map(texteInterrupteur),
@@ -91,6 +96,7 @@ export function OptionsPage() {
       </Groupe>
 
       <Groupe icone={LuFeather} titre="Plume">
+        <ChoixPresence />
         {PLUME.map((r) => (
           <Ligne key={r.id} r={r} />
         ))}
@@ -211,6 +217,39 @@ function ChoixVitesse() {
             className={`min-h-11 rounded-2xl font-extrabold ${v === x.id ? "bouton-bois" : "bg-[#f3e2c2]"}`}
           >
             {x.nom}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ChoixPresence() {
+  const { presence } = usePlume();
+  return (
+    <div className="py-2.5">
+      <div className="flex items-center gap-2">
+        <BoutonEcouter texte={() => `Comment Plume reste avec toi. ${PRESENCES.map((p) => `${p.nom} : ${p.explique}`).join(" ")}`} label="Comment Plume reste avec toi" />
+        <div className="flex-1">
+          <p className="font-extrabold leading-tight">Comment Plume reste avec toi</p>
+          <p className="text-xs leading-snug">Tu peux aussi appuyer longtemps sur Plume.</p>
+        </div>
+      </div>
+      <div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Comment Plume reste avec toi">
+        {PRESENCES.map((p) => (
+          <button
+            key={p.id}
+            type="button"
+            role="radio"
+            aria-checked={presence === p.id}
+            onClick={() => {
+              choisirPresence(p.id);
+              if (voixPossible() && p.id !== "repos") dire(p.explique);
+            }}
+            className={`rounded-2xl px-3 py-2 text-left ${presence === p.id ? "bouton-bois" : "bg-[#f3e2c2]"}`}
+          >
+            <span className="block font-extrabold leading-tight">{p.nom}</span>
+            <span className="block text-[11px] leading-snug">{p.explique}</span>
           </button>
         ))}
       </div>

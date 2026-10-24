@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type { IconType } from "react-icons";
 import {
   LuBaby, LuBookOpen, LuBriefcase, LuChevronDown, LuChevronRight, LuDog, LuCat, LuEye, LuHeart, LuHeartPulse,
@@ -8,6 +8,7 @@ import donnees from "@/data/chiens.json";
 import { Entete, Titre } from "@/components/entete";
 import { Ecouter } from "@/components/voix";
 import { PlumeDessin } from "@/components/plume-dessin";
+import { plumeDit, plumePeutProposer } from "@/lib/plume";
 
 /*
  * Le carnet de Plume : les races de chiens et de chats.
@@ -235,6 +236,12 @@ function Grille({ races, sorte, vide }: { races: Race[]; sorte: Sorte; vide?: st
 const NC = "Non connu";
 
 function Fiche({ sorte, race: r }: { sorte: Sorte; race?: Race }) {
+  // Plume murmure quand c'est un de ses préférés.
+  useEffect(() => {
+    if (!r || !PREFERES.has(r.id)) return;
+    const t = window.setTimeout(() => plumePeutProposer() && plumeDit("Celui-là… c'est un de mes préférés.", 3500), 1200);
+    return () => window.clearTimeout(t);
+  }, [r?.id]);
   if (!r) {
     return (
       <main className="mx-auto max-w-xl px-4 pt-4">

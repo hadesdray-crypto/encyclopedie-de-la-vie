@@ -1,6 +1,5 @@
 import { Suspense, lazy, useEffect, useState, type ComponentType } from "react";
 import { LuBone, LuBookOpen, LuChevronRight, LuCrown, LuDices, LuDog, LuFlame, LuHourglass, LuLayers, LuPawPrint, LuSettings } from "react-icons/lu";
-import { BoutonPlume } from "@/components/guide";
 import { Installer } from "@/components/installer";
 import { voixPossible } from "@/components/voix";
 import { avatar } from "@/lib/reglages";
@@ -8,13 +7,14 @@ import { paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireVues } from "@/lib/carnet";
 import { defiFait, serie } from "@/lib/defis";
 import { dire } from "@/lib/parole";
+import { plumeDit, plumeParleSeule, plumePeutProposer, presentationFaite } from "@/lib/plume";
 
 // La carte du monde de l'Aventure est lourde : elle se charge juste après la page.
 const CarteAventure = lazy(() => import("@/components/carte-aventure"));
 
 /*
  * La page d'accueil, centrée sur Leonie :
- * son nom en grand, Plume qui lui parle, le voyage dans le temps au milieu,
+ * son nom en grand (Plume lui dit un mot depuis son coin), le voyage dans le temps au milieu,
  * puis Jouer, Mes cartes, l'Aventure et les autres salles.
  */
 
@@ -53,15 +53,26 @@ export function Accueil() {
   const defi = !defiFait();
   const jours = serie();
   const trouves = lireVues().length;
-  const [phrase] = useState(() => phraseDuJour(paquets, defi, jours));
   const [image, setImage] = useState(avatar);
   useEffect(() => setImage(avatar()), []);
+  // Plume dit un petit mot depuis son coin, si elle n'est pas en mode discret.
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      if (!plumePeutProposer() || !presentationFaite()) return;
+      const phrase = phraseDuJour(paquets, defi, jours);
+      plumeDit(phrase, 4500);
+      if (plumeParleSeule() && voixPossible()) dire(phrase);
+    }, 900);
+    return () => window.clearTimeout(t);
+  }, []);
 
   return (
     <main className="mx-auto max-w-xl px-3.5 pt-3">
       {/* Le nom de Leonie */}
       <header className="grid grid-cols-[3.6rem_1fr_3.6rem] items-center gap-1 pt-3">
-        <BoutonPlume taille="size-14" />
+        <a href="#/options" aria-label="Options" className="grid size-11 place-items-center rounded-full bg-[#2a1844] text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
+          <LuSettings className="size-5" aria-hidden="true" />
+        </a>
         <div className="relative text-center">
           <LuCrown className="absolute left-1/2 top-0 size-6 -translate-x-1/2 -translate-y-[85%] text-[#f3d48a] drop-shadow-[0_0_8px_rgba(243,212,138,.7)]" aria-hidden="true" />
           <p className="font-display text-[13px] tracking-wide text-[#e7d7ff]">L'encyclopédie de la vie de</p>
@@ -71,20 +82,6 @@ export function Accueil() {
           <img src={image} alt="" className="size-full object-cover" />
         </a>
       </header>
-
-      {/* Plume parle à Leonie, et la petite roue des options */}
-      <div className="mt-2 flex items-center gap-2">
-        <button
-          type="button"
-          onClick={() => voixPossible() && dire(phrase)}
-          className="arrivee ml-[3.2rem] min-h-9 flex-1 rounded-2xl rounded-tl-sm bg-[#fff8ea] px-3 py-1.5 text-left text-[14px] font-extrabold leading-snug text-[#4a2a8a] shadow-[0_6px_16px_rgba(0,0,0,.35)]"
-        >
-          {phrase}
-        </button>
-        <a href="#/options" aria-label="Options" className="grid size-10 shrink-0 place-items-center rounded-full bg-[#2a1844] text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
-          <LuSettings className="size-5" aria-hidden="true" />
-        </a>
-      </div>
       <Installer />
 
       {/* Le voyage dans le temps */}

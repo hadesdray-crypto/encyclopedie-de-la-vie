@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import { LuChevronLeft, LuChevronRight, LuCircleHelp, LuMusic, LuPause, LuPlay, LuRotateCcw, LuSettings, LuSparkles, LuX } from "react-icons/lu";
-import { PRESENTATION, explicationPour } from "@/data/guide";
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as PE } from "react";
+import { LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
+import { ASTUCES, PRESENTATION, explicationPour } from "@/data/guide";
 import { voixPossible } from "@/components/voix";
 import { PlumeDessin, type AnimPlume } from "@/components/plume-dessin";
 import {
-  choisirPlumeParle,
+  PRESENCES,
+  choisirPresence,
   dejaExplique,
   marquerExplique,
   marquerPresentation,
@@ -12,267 +13,379 @@ import {
   plumeBouge,
   plumeExpliqueSeule,
   plumeParleSeule,
+  plumePropose,
   presentationFaite,
   usePlume,
 } from "@/lib/plume";
-import { VITESSES, choisirVitesseVoix, vitesseVoix } from "@/lib/reglages";
-import { activerSons, sonsActifs } from "@/lib/sons";
-import { dire, redire, taire, useParle } from "@/lib/parole";
+import { dire, taire, useParle } from "@/lib/parole";
+import { aller } from "@/lib/routeur";
 
-/**
- * Plume, dans l'en-tête de chaque page. Elle fait coucou de temps en temps.
- * Quand elle parle, un petit bouton Pause apparaît à côté d'elle.
- * On la touche : elle ouvre ses ailes (le menu de la voix) et explique la page.
+/*
+ * Plume, la petite chouette de Leonie.
+ * Elle flotte dans un coin de l'écran, au-dessus de la barre du bas. On peut la déplacer avec le doigt.
+ * - On la touche : une petite bulle s'ouvre à côté d'elle (la page reste visible et utilisable).
+ * - On appuie longtemps : on choisit si elle est discrète, présente, toujours là, ou au repos.
+ * Elle ne s'ouvre jamais toute seule, sauf la toute première fois pour se présenter.
  */
-export function BoutonPlume({ taille = "size-12" }: { taille?: string }) {
-  const { ouvert, reaction, coucou } = usePlume();
-  const parle = useParle();
-  const [anim, setAnim] = useState<AnimPlume>("coucou");
 
-  // Coucou à l'arrivée, à chaque toucher, puis de temps en temps.
-  useEffect(() => {
-    setAnim("coucou");
-    const fin = window.setTimeout(() => setAnim("rien"), 1700);
-    return () => window.clearTimeout(fin);
-  }, [coucou]);
-  useEffect(() => {
-    const t = window.setInterval(() => {
-      if (document.visibilityState === "visible" && plumeBouge() && Math.random() < 0.5) {
-        setAnim("coucou");
-        window.setTimeout(() => setAnim("rien"), 1700);
-      }
-    }, 20000);
-    return () => window.clearInterval(t);
-  }, []);
+type Position = { cote: "gauche" | "droite"; bas: number };
+const CLE_POSITION = "leonie-plume-position";
+const TAILLE = 62;
 
-  return (
-    <span className="relative inline-flex items-center gap-1.5">
-      <button
-        type="button"
-        onClick={() => ouvrirPlume(!ouvert)}
-        aria-label="Plume : ouvrir ses ailes et expliquer la page"
-        aria-expanded={ouvert}
-        className={`block shrink-0 ${taille}`}
-      >
-        <PlumeDessin anim={parle && !ouvert ? "parle" : anim} className="size-full drop-shadow-[0_4px_10px_rgba(0,0,0,.45)]" />
-      </button>
-      {parle && !ouvert ? (
-        <button type="button" onClick={taire} className="arrivee inline-flex min-h-10 items-center gap-1 rounded-full border-2 border-[#e8c98a] bg-[#24123f] px-3 text-sm font-extrabold text-[#f3d48a]">
-          <LuPause className="size-4" aria-hidden="true" />
-          Pause
-        </button>
-      ) : null}
-      {reaction && !parle ? (
-        <span role="status" className="arrivee pointer-events-none absolute left-full top-1 z-40 ml-2 w-max max-w-[60vw] rounded-2xl rounded-tl-sm bg-[#fff8ea] px-3 py-2 text-sm font-extrabold text-[#4a2a8a] shadow-[0_6px_18px_rgba(0,0,0,.4)]">
-          {reaction}
-        </span>
-      ) : null}
-    </span>
-  );
+function lirePosition(): Position {
+  try {
+    const p = JSON.parse(localStorage.getItem(CLE_POSITION) || "null");
+    if (p && (p.cote === "gauche" || p.cote === "droite") && typeof p.bas === "number") return p;
+  } catch {
+    /* rien */
+  }
+  return { cote: "droite", bas: 100 };
 }
 
-/** Plume ailes ouvertes : le menu de la voix, et la bulle qui explique. */
-export function PanneauPlume({ chemin, params }: { chemin: string; params: URLSearchParams }) {
-  const { ouvert, contenu } = usePlume();
-  const parle = useParle();
-  const explicationPage = explicationPour(chemin, params);
-  const explication = contenu === "presentation" ? PRESENTATION : explicationPage;
-  const [etape, setEtape] = useState(0);
-  const [lecture, setLecture] = useState(false);
-  const [vitesse, setVitesse] = useState(vitesseVoix);
-  const [sonsJeux, setSonsJeux] = useState(sonsActifs);
-  const [seule, setSeule] = useState(plumeParleSeule);
-  const premier = useRef(true);
+function garderPosition(p: Position) {
+  try {
+    localStorage.setItem(CLE_POSITION, JSON.stringify(p));
+  } catch {
+    /* rien */
+  }
+}
 
-  // Première ouverture de l'application : Plume se présente. Ensuite elle reste discrète :
-  // elle n'explique une page toute seule que si l'option « Plume explique chaque nouvelle page » est allumée.
+function limiterBas(bas: number) {
+  return Math.max(92, Math.min(window.innerHeight - TAILLE - 70, bas));
+}
+
+export function Plume({ chemin, params }: { chemin: string; params: URLSearchParams }) {
+  const { ouvert, contenu, reaction, proposition, presence, coucou } = usePlume();
+  const parle = useParle();
+  const [pos, setPos] = useState(lirePosition);
+  const [glisse, setGlisse] = useState<{ x: number; y: number } | null>(null);
+  const [anim, setAnim] = useState<AnimPlume>("rien");
+  const depart = useRef<{ x: number; y: number; t: number; long: number; bouge: boolean } | null>(null);
+  const premier = useRef(true);
+  const explicationPage = explicationPour(chemin, params);
+
+  // Première ouverture : Plume se présente. Ensuite, elle ne s'ouvre seule que si on l'a demandé dans les Options.
   useEffect(() => {
-    taire();
-    setEtape(0);
-    setLecture(false);
     if (premier.current && !presentationFaite()) {
       premier.current = false;
       marquerPresentation();
       marquerExplique(explicationPage.id);
-      ouvrirPlume(true, "presentation");
+      window.setTimeout(() => ouvrirPlume(true, "presentation"), 600);
       return;
     }
     premier.current = false;
-    if (plumeExpliqueSeule() && !dejaExplique(explicationPage.id)) {
+    taire();
+    if (plumeExpliqueSeule() && presence !== "repos" && !dejaExplique(explicationPage.id)) {
       marquerExplique(explicationPage.id);
       ouvrirPlume(true, "page");
     } else ouvrirPlume(false);
   }, [explicationPage.id]);
 
+  // Petit coucou de l'aile : quand elle s'ouvre, et rarement de temps en temps.
   useEffect(() => {
-    setEtape(0);
-  }, [contenu]);
+    if (!coucou) return;
+    setAnim("coucou");
+    const t = window.setTimeout(() => setAnim("rien"), 1600);
+    return () => window.clearTimeout(t);
+  }, [coucou]);
+  useEffect(() => {
+    const t = window.setInterval(() => {
+      if (document.visibilityState === "visible" && plumeBouge() && Math.random() < 0.25) {
+        setAnim("coucou");
+        window.setTimeout(() => setAnim("rien"), 1600);
+      }
+    }, 45000);
+    return () => window.clearInterval(t);
+  }, []);
+
+  useEffect(() => {
+    const replacer = () => setPos((p) => ({ ...p, bas: limiterBas(p.bas) }));
+    window.addEventListener("resize", replacer);
+    return () => window.removeEventListener("resize", replacer);
+  }, []);
+
+  // Au repos, Plume se cache (sauf pour sa toute première présentation).
+  if (presence === "repos" && !(ouvert && contenu === "presentation")) return null;
+
+  function appui(e: PE<HTMLButtonElement>) {
+    e.currentTarget.setPointerCapture(e.pointerId);
+    const long = window.setTimeout(() => {
+      if (depart.current && !depart.current.bouge) {
+        depart.current = null;
+        navigator.vibrate?.(15);
+        ouvrirPlume(true, "presence");
+      }
+    }, 600);
+    depart.current = { x: e.clientX, y: e.clientY, t: Date.now(), long, bouge: false };
+  }
+
+  function deplacement(e: PE<HTMLButtonElement>) {
+    const d = depart.current;
+    if (!d) return;
+    if (!d.bouge && Math.hypot(e.clientX - d.x, e.clientY - d.y) > 10) {
+      d.bouge = true;
+      window.clearTimeout(d.long);
+    }
+    if (d.bouge) setGlisse({ x: e.clientX, y: e.clientY });
+  }
+
+  function lacher(e: PE<HTMLButtonElement>) {
+    const d = depart.current;
+    depart.current = null;
+    if (!d) return;
+    window.clearTimeout(d.long);
+    if (d.bouge) {
+      const p: Position = { cote: e.clientX < window.innerWidth / 2 ? "gauche" : "droite", bas: limiterBas(window.innerHeight - e.clientY - TAILLE / 2) };
+      setPos(p);
+      garderPosition(p);
+      setGlisse(null);
+      return;
+    }
+    // Un simple toucher : ouvrir ou fermer la bulle.
+    if (ouvert) {
+      taire();
+      ouvrirPlume(false);
+    } else ouvrirPlume(true, "page");
+  }
+
+  const gauche = pos.cote === "gauche";
+  const style: CSSProperties = glisse
+    ? { left: glisse.x - TAILLE / 2, top: glisse.y - TAILLE / 2, width: TAILLE, height: TAILLE }
+    : { [gauche ? "left" : "right"]: 10, bottom: `calc(env(safe-area-inset-bottom, 0px) + ${pos.bas}px)`, width: TAILLE, height: TAILLE };
+  const cote = gauche ? "left-full ml-1.5 rounded-bl-sm" : "right-full mr-1.5 rounded-br-sm";
+
+  return (
+    <>
+      <div className={`fixed z-50 ${glisse ? "" : "transition-[left,right,bottom] duration-300"}`} style={style}>
+        <button
+          type="button"
+          onPointerDown={appui}
+          onPointerMove={deplacement}
+          onPointerUp={lacher}
+          onPointerCancel={() => {
+            if (depart.current) window.clearTimeout(depart.current.long);
+            depart.current = null;
+            setGlisse(null);
+          }}
+          onContextMenu={(e) => e.preventDefault()}
+          aria-label="Plume. Touche pour de l'aide, appuie longtemps pour la régler."
+          aria-expanded={ouvert}
+          className={`block size-full touch-none select-none ${glisse || ouvert || parle ? "" : "plume-flotte"}`}
+        >
+          <span className="absolute inset-1 -z-10 rounded-full bg-[radial-gradient(circle,rgba(180,140,255,.45),transparent_70%)]" />
+          <PlumeDessin anim={parle ? "parle" : ouvert ? "ailes" : anim} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
+        </button>
+
+        {/* Quand Plume parle, bulle fermée : un petit bouton Pause à côté d'elle. */}
+        {parle && !ouvert ? (
+          <button type="button" onClick={taire} aria-label="Pause" className={`arrivee absolute top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-[#6a3fc0] text-white shadow-lg ring-2 ring-[#fff3d0] ${gauche ? "left-full ml-1.5" : "right-full mr-1.5"}`}>
+            <LuPause className="size-5" />
+          </button>
+        ) : null}
+
+        {/* Une petite phrase, quelques secondes. */}
+        {reaction && !ouvert && !parle && !proposition ? (
+          <span role="status" className={`arrivee pointer-events-none absolute bottom-3 w-max max-w-[min(15rem,70vw)] rounded-2xl bg-[#fff8ea] px-3 py-2 text-sm font-extrabold leading-snug text-[#4a2a8a] shadow-[0_6px_18px_rgba(0,0,0,.4)] ${cote}`}>
+            {reaction}
+          </span>
+        ) : null}
+
+        {/* Une proposition d'aide : on peut dire oui, ou l'ignorer. */}
+        {proposition && !ouvert ? (
+          <div role="status" className={`arrivee absolute bottom-2 w-max max-w-[min(15rem,70vw)] rounded-2xl bg-[#fff8ea] px-3 py-2 text-[#4a2a8a] shadow-[0_6px_18px_rgba(0,0,0,.45)] ${cote}`}>
+            <p className="text-sm font-extrabold leading-snug">{proposition.texte}</p>
+            <div className="mt-1.5 flex gap-1.5">
+              <button type="button" onClick={proposition.action} className="min-h-9 rounded-full bg-[#6a3fc0] px-3 text-sm font-extrabold text-white">
+                {proposition.oui}
+              </button>
+              <button type="button" onClick={() => plumePropose(null)} className="min-h-9 rounded-full px-2 text-sm font-extrabold underline">
+                Non merci
+              </button>
+            </div>
+          </div>
+        ) : null}
+      </div>
+
+      {ouvert ? <Bulle chemin={chemin} params={params} pos={pos} /> : null}
+    </>
+  );
+}
+
+/** La petite bulle de Plume, posée à côté d'elle. Elle se referme quand on touche ailleurs. */
+function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParams; pos: Position }) {
+  const { contenu, presence } = usePlume();
+  const parle = useParle();
+  const ref = useRef<HTMLDivElement>(null);
+  const explicationPage = explicationPour(chemin, params);
+  const astuces = ASTUCES[explicationPage.id] ?? ASTUCES.accueil;
+  const [astuce, setAstuce] = useState(() => Math.floor(Math.random() * astuces.length));
+  const explication =
+    contenu === "presentation" ? PRESENTATION : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
+  const [etape, setEtape] = useState(0);
+  const [lecture, setLecture] = useState(false);
+
+  useEffect(() => setEtape(0), [contenu]);
 
   const texte = explication.etapes[etape] ?? explication.etapes[0];
   const derniere = etape >= explication.etapes.length - 1;
+  const voix = voixPossible();
 
-  // « Suivant » continue la lecture si on a demandé à Plume de lire.
+  // Plume lit si on le lui a demandé (bouton Écouter, ou « toujours avec moi »).
   useEffect(() => {
-    if (ouvert && voixPossible() && (seule || lecture)) dire(texte);
-    if (!ouvert) {
-      taire();
-      setLecture(false);
-    }
-  }, [ouvert, texte]);
+    if (contenu !== "presence" && voix && (plumeParleSeule() || lecture)) dire(texte);
+  }, [texte, contenu]);
 
-  if (!ouvert) return null;
+  // Toucher ailleurs referme la bulle (la page reste utilisable).
+  useEffect(() => {
+    const dehors = (e: PointerEvent) => {
+      const cible = e.target as Node;
+      if (ref.current?.contains(cible)) return;
+      if ((cible as HTMLElement).closest?.('[aria-label^="Plume."]')) return;
+      fermer();
+    };
+    const t = window.setTimeout(() => document.addEventListener("pointerdown", dehors), 50);
+    return () => {
+      window.clearTimeout(t);
+      document.removeEventListener("pointerdown", dehors);
+    };
+  }, []);
 
   function fermer() {
     taire();
-    setLecture(false);
     ouvrirPlume(false);
   }
 
-  function lecturePause() {
-    if (parle) {
-      taire();
-      setLecture(false);
-    } else {
-      setLecture(true);
-      dire(texte);
-    }
+  const gauche = pos.cote === "gauche";
+  const style: CSSProperties = {
+    [gauche ? "left" : "right"]: 10,
+    bottom: `calc(env(safe-area-inset-bottom, 0px) + ${pos.bas + TAILLE + 6}px)`,
+  };
+  const haut = pos.bas > window.innerHeight * 0.55;
+  if (haut) {
+    delete style.bottom;
+    style.top = `calc(${window.innerHeight - pos.bas + 6}px)`;
   }
 
-  const voix = voixPossible();
-
   return (
-    <div className="fixed inset-0 z-40 bg-[#0b0820]/70" onClick={fermer}>
-      <div className="mx-auto w-[min(100%,28rem)] px-3" style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 0.5rem)" }} onClick={(e) => e.stopPropagation()}>
-        {/* Plume ailes ouvertes */}
-        <div className="ailes-menu relative mx-auto h-[17.5rem]">
-          <div className="aile-panneau aile-g absolute left-0 top-16 flex w-[37%] flex-col items-stretch gap-1.5 py-3 pl-2.5 pr-4 text-[13px]">
-            <button
-              type="button"
-              aria-pressed={sonsJeux}
-              onClick={() => {
-                activerSons(!sonsJeux);
-                setSonsJeux(!sonsJeux);
-              }}
-              className={`flex min-h-10 items-center gap-1.5 rounded-xl px-2 font-extrabold ${sonsJeux ? "bg-[#fff8ea] text-[#4a2a8a]" : "bg-[#3a2266] text-[#e7d7ff]"}`}
-            >
-              <LuMusic className="size-4 shrink-0" aria-hidden="true" />
-              {sonsJeux ? "Sons : oui" : "Sons : non"}
-            </button>
-            {voix ? (
-              <>
-                <div className="flex justify-between gap-1" role="group" aria-label="Vitesse de la voix">
-                  {VITESSES.map((v) => (
-                    <button
-                      key={v.id}
-                      type="button"
-                      aria-pressed={vitesse === v.id}
-                      aria-label={`Voix ${v.nom.toLowerCase()}`}
-                      onClick={() => {
-                        choisirVitesseVoix(v.id);
-                        setVitesse(v.id);
-                        if (parle) dire(texte);
-                      }}
-                      className={`min-h-9 flex-1 rounded-lg text-[11px] font-extrabold ${vitesse === v.id ? "bg-[#f3d48a] text-[#2a1c14]" : "bg-[#fff8ea] text-[#4a2a8a]"}`}
-                    >
-                      {v.id === "lente" ? "Lent" : v.id === "rapide" ? "Vite" : "Normal"}
-                    </button>
-                  ))}
-                </div>
-                <button type="button" onClick={() => { setLecture(true); redire(); }} className="flex min-h-10 items-center gap-1.5 rounded-xl bg-[#fff8ea] px-2 font-extrabold text-[#4a2a8a]">
-                  <LuRotateCcw className="size-4 shrink-0" aria-hidden="true" />
-                  Relire
-                </button>
-              </>
-            ) : null}
-            <a
-              href="#/options"
-              onClick={fermer}
-              className="flex min-h-10 items-center gap-1.5 rounded-xl bg-[#fff8ea] px-2 font-extrabold text-[#4a2a8a]"
-            >
-              <LuSettings className="size-4 shrink-0" aria-hidden="true" />
-              Options
-            </a>
-          </div>
-          <div className="aile-panneau aile-d absolute right-0 top-16 flex w-[37%] flex-col items-stretch gap-1.5 py-3 pl-5 pr-2.5 text-[13px]">
-            {voix ? (
-              <button
-                type="button"
-                aria-pressed={seule}
-                onClick={() => {
-                  choisirPlumeParle(!seule);
-                  setSeule(!seule);
-                }}
-                className={`flex min-h-10 items-center gap-1.5 rounded-xl px-2 text-left font-extrabold leading-tight ${seule ? "bg-[#f3d48a] text-[#2a1c14]" : "bg-[#fff8ea] text-[#4a2a8a]"}`}
-              >
-                Je lis toute seule
-              </button>
-            ) : null}
-            <button
-              type="button"
-              onClick={() => ouvrirPlume(true, contenu === "presentation" ? "page" : "presentation")}
-              className="flex min-h-10 items-center gap-1.5 rounded-xl bg-[#fff8ea] px-2 text-left font-extrabold leading-tight text-[#4a2a8a]"
-            >
-              {contenu === "presentation" ? <LuCircleHelp className="size-4 shrink-0" aria-hidden="true" /> : <LuSparkles className="size-4 shrink-0" aria-hidden="true" />}
-              {contenu === "presentation" ? "Aide de la page" : "Tout me redire"}
-            </button>
-            <button type="button" onClick={fermer} className="flex min-h-10 items-center gap-1.5 rounded-xl bg-[#fff8ea] px-2 font-extrabold text-[#4a2a8a]">
-              <LuX className="size-4 shrink-0" aria-hidden="true" />
-              Fermer
-            </button>
-          </div>
-          <div className="absolute left-1/2 top-0 z-10 w-[38%] -translate-x-1/2">
-            <PlumeDessin anim={parle ? "parle" : "ailes"} className="w-full drop-shadow-[0_8px_18px_rgba(0,0,0,.5)]" />
-            {voix ? (
-              <button
-                type="button"
-                onClick={lecturePause}
-                aria-label={parle ? "Pause" : "Écouter Plume"}
-                className="absolute left-1/2 top-[64%] grid size-14 -translate-x-1/2 place-items-center rounded-full border-4 border-[#fff3d0] bg-[#6a3fc0] text-white shadow-[0_0_0_6px_rgba(106,63,192,.35),0_6px_14px_rgba(0,0,0,.45)]"
-              >
-                {parle ? <LuPause className="size-7" /> : <LuPlay className="ml-1 size-7" />}
-              </button>
-            ) : null}
-          </div>
-        </div>
+    <div
+      ref={ref}
+      role="dialog"
+      aria-label={`Plume : ${contenu === "presence" ? "comment je reste" : explication.titre}`}
+      className={`arrivee fixed z-50 w-[min(20rem,calc(100vw-1.25rem))] rounded-3xl border-2 border-[#c9a4ff] bg-[#fff8ea] px-3.5 pb-3 pt-2.5 text-[#2a1c14] shadow-[0_16px_36px_rgba(0,0,0,.55)] ${haut ? "" : gauche ? "rounded-bl-md" : "rounded-br-md"}`}
+      style={style}
+    >
+      <div className="flex items-start gap-2">
+        <p className="flex-1 font-display text-lg leading-tight text-[#6a3fc0]">{contenu === "presence" ? "Je reste comment ?" : explication.titre}</p>
+        <button type="button" onClick={fermer} aria-label="Fermer" className="-mr-1 grid size-8 shrink-0 place-items-center rounded-full text-[#7a5a8a]">
+          <LuX className="size-5" />
+        </button>
+      </div>
 
-        {/* La bulle */}
-        <div role="dialog" aria-label={`Plume : ${explication.titre}`} className="arrivee mt-2 rounded-3xl border-[3px] border-[#c9a4ff] bg-[#fff8ea] px-4 pb-4 pt-3 text-[#2a1c14] shadow-[0_18px_40px_rgba(0,0,0,.55)]">
-          <div>
-            <p className="font-display text-xl leading-tight text-[#6a3fc0]">{explication.titre}</p>
-            {explication.etapes.length > 1 ? (
-              <p className="mt-1 flex gap-1" aria-label={`Bulle ${etape + 1} sur ${explication.etapes.length}`}>
-                {explication.etapes.map((_, i) => (
-                  <span key={i} className={`h-2 rounded-full ${i === etape ? "w-5 bg-[#6a3fc0]" : "w-2 bg-[#d9c7f0]"}`} />
-                ))}
-              </p>
-            ) : null}
-          </div>
-          <p key={`${contenu}-${etape}`} className="arrivee mt-2 min-h-[4.5rem] text-lg leading-snug">
+      {contenu === "presence" ? (
+        <ul className="mt-1.5 space-y-1.5">
+          {PRESENCES.map((p) => (
+            <li key={p.id}>
+              <button
+                type="button"
+                aria-pressed={presence === p.id}
+                onClick={() => {
+                  choisirPresence(p.id);
+                  if (voix && p.id !== "repos") dire(p.explique);
+                }}
+                className={`w-full rounded-2xl px-3 py-2 text-left ${presence === p.id ? "bg-[#6a3fc0] text-white" : "bg-[#efe3ff] text-[#2a1c14]"}`}
+              >
+                <span className="block font-extrabold leading-tight">{p.nom}</span>
+                <span className="block text-xs leading-snug">{p.explique}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <>
+          {explication.etapes.length > 1 ? (
+            <p className="mt-1 flex gap-1" aria-label={`Bulle ${etape + 1} sur ${explication.etapes.length}`}>
+              {explication.etapes.map((_, i) => (
+                <span key={i} className={`h-1.5 rounded-full ${i === etape ? "w-4 bg-[#6a3fc0]" : "w-1.5 bg-[#d9c7f0]"}`} />
+              ))}
+            </p>
+          ) : null}
+          <p key={`${contenu}-${etape}`} className="arrivee mt-1.5 text-[1.05rem] leading-snug">
             {texte}
           </p>
-          <div className="mt-3 flex items-center gap-2">
-            {etape > 0 ? (
-              <button type="button" onClick={() => setEtape(etape - 1)} aria-label="Bulle précédente" className="grid size-12 place-items-center rounded-full bg-[#efe3ff] text-[#6a3fc0]">
-                <LuChevronLeft className="size-6" />
+          {explication.etapes.length > 1 ? (
+            <div className="mt-2 flex items-center gap-1.5">
+              {etape > 0 ? (
+                <button type="button" onClick={() => setEtape(etape - 1)} aria-label="Bulle précédente" className="grid size-10 place-items-center rounded-full bg-[#efe3ff] text-[#6a3fc0]">
+                  <LuChevronLeft className="size-5" />
+                </button>
+              ) : null}
+              {!derniere ? (
+                <button type="button" onClick={fermer} className="min-h-10 px-2 text-sm font-extrabold text-[#7a5a8a] underline">
+                  Passer
+                </button>
+              ) : null}
+              <span className="flex-1" />
+              <button
+                type="button"
+                onClick={() => (derniere ? fermer() : setEtape(etape + 1))}
+                className="inline-flex min-h-10 items-center gap-0.5 rounded-full bg-[#f3d48a] px-4 font-extrabold text-[#2a1c14]"
+              >
+                {derniere ? (contenu === "presentation" ? "C'est parti !" : "J'ai compris") : "Suivant"}
+                {derniere ? null : <LuChevronRight className="size-5" />}
               </button>
-            ) : null}
-            {!derniere ? (
-              <button type="button" onClick={fermer} className="min-h-12 rounded-full px-3 text-sm font-extrabold text-[#7a5a8a] underline">
-                Passer
-              </button>
-            ) : null}
-            <span className="flex-1" />
-            <button
-              type="button"
-              onClick={() => (derniere ? fermer() : setEtape(etape + 1))}
-              className="inline-flex min-h-12 items-center gap-1 rounded-full bg-[#f3d48a] px-5 font-extrabold text-[#2a1c14]"
-            >
-              {derniere ? (contenu === "presentation" ? "C'est parti !" : "J'ai compris !") : "Suivant"}
-              {derniere ? null : <LuChevronRight className="size-5" />}
-            </button>
-          </div>
-        </div>
+            </div>
+          ) : null}
+        </>
+      )}
+
+      {/* Les quatre boutons ronds de Plume */}
+      <div className="mt-2.5 flex justify-between border-t border-[#e3d3f5] pt-2">
+        {voix ? (
+          <Rond
+            icone={parle ? LuPause : LuPlay}
+            label={parle ? "Pause" : "Écouter"}
+            plein
+            onClick={() => {
+              if (parle) {
+                taire();
+                setLecture(false);
+              } else {
+                setLecture(true);
+                dire(contenu === "presence" ? PRESENCES.map((p) => `${p.nom}. ${p.explique}`).join(" ") : texte);
+              }
+            }}
+          />
+        ) : null}
+        <Rond icone={LuCircleHelp} label="Aide" actif={contenu === "page"} onClick={() => ouvrirPlume(true, "page")} />
+        <Rond
+          icone={LuLightbulb}
+          label="Astuce"
+          actif={contenu === "astuce"}
+          onClick={() => {
+            if (contenu === "astuce") setAstuce((a) => a + 1);
+            ouvrirPlume(true, "astuce");
+          }}
+        />
+        <Rond
+          icone={LuSettings}
+          label="Réglages"
+          onClick={() => {
+            fermer();
+            aller("/options");
+          }}
+        />
       </div>
     </div>
+  );
+}
+
+function Rond({ icone: Icone, label, onClick, plein = false, actif = false }: { icone: typeof LuPlay; label: string; onClick: () => void; plein?: boolean; actif?: boolean }) {
+  return (
+    <button type="button" onClick={onClick} className="flex w-[4.2rem] flex-col items-center gap-0.5 text-[11px] font-extrabold text-[#6a3fc0]">
+      <span className={`grid size-10 place-items-center rounded-full ${plein ? "bg-[#6a3fc0] text-white" : actif ? "bg-[#f3d48a] text-[#2a1c14]" : "bg-[#efe3ff]"}`}>
+        <Icone className="size-5" aria-hidden="true" />
+      </span>
+      {label}
+    </button>
   );
 }

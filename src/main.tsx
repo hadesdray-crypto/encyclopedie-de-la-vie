@@ -3,12 +3,13 @@ import { createRoot } from "react-dom/client";
 import { Barre } from "@/components/barre";
 import { Cadeau } from "@/components/cadeau";
 import { MiseAJour } from "@/components/mise-a-jour";
-import { PanneauPlume } from "@/components/guide";
+import { Plume } from "@/components/guide";
 import { appliquerGrosTexte } from "@/lib/reglages";
 import { useChemin } from "@/lib/routeur";
 import { demarrerHorsLigne } from "@/lib/hors-ligne";
 import { demarrerMajApk } from "@/lib/maj-apk";
 import { demarrerFleche } from "@/lib/fleche";
+import { demarrerLectureLongue } from "@/lib/lecture-longue";
 import { Accueil } from "@/pages/accueil";
 import { ArbrePage } from "@/pages/arbre";
 import { FrisePage } from "@/pages/frise";
@@ -76,7 +77,7 @@ function App() {
       <Barre chemin={chemin} />
       <Cadeau />
       <MiseAJour />
-      <PanneauPlume chemin={chemin} params={params} />
+      <Plume chemin={chemin} params={params} />
     </>
   );
 }
@@ -91,3 +92,4 @@ appliquerGrosTexte();
 demarrerHorsLigne();
 demarrerMajApk();
 demarrerFleche();
+demarrerLectureLongue();
