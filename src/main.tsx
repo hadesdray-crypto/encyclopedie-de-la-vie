@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { Barre } from "@/components/barre";
 import { Cadeau } from "@/components/cadeau";
 import { MiseAJour } from "@/components/mise-a-jour";
+import { PanneauPlume } from "@/components/guide";
 import { appliquerGrosTexte } from "@/lib/reglages";
 import { useChemin } from "@/lib/routeur";
 import { demarrerHorsLigne } from "@/lib/hors-ligne";
@@ -68,6 +69,7 @@ function App() {
       <Barre chemin={chemin} />
       <Cadeau />
       <MiseAJour />
+      <PanneauPlume chemin={chemin} params={params} />
     </>
   );
 }

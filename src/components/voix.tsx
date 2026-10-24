@@ -22,7 +22,33 @@ function attendreVoix() {
   });
 }
 
+// Dans l'application Android, la voix passe par le moteur de lecture du téléphone
+// (plugin Capacitor), qui marche sans Internet. Dans un navigateur : speechSynthesis.
+type TTS = { speak: (o: { text: string; lang: string; rate: number }) => Promise<void>; stop: () => Promise<void> };
+function voixNative(): TTS | undefined {
+  return (window as unknown as { Capacitor?: { Plugins?: { TextToSpeech?: TTS } } }).Capacitor?.Plugins?.TextToSpeech;
+}
+
+export function voixPossible() {
+  return typeof window !== "undefined" && (!!voixNative() || "speechSynthesis" in window);
+}
+
 export async function lire(texte: string, onFin: () => void) {
+  const native = voixNative();
+  if (native) {
+    try {
+      await native.stop();
+      await native.speak({ text: texte, lang: "fr-FR", rate: 0.95 });
+    } catch {
+      /* pas de voix française installée */
+    }
+    onFin();
+    return;
+  }
+  if (!("speechSynthesis" in window)) {
+    onFin();
+    return;
+  }
   window.speechSynthesis.cancel();
   const voix = await attendreVoix();
   const morceaux = texte
@@ -53,17 +79,18 @@ export async function lire(texte: string, onFin: () => void) {
 }
 
 export function stopper() {
-  window.speechSynthesis.cancel();
+  voixNative()?.stop().catch(() => {});
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
 }
 
 export function Ecouter({ texte, gros = false }: { texte: string; gros?: boolean }) {
   const [enCours, setEnCours] = useState(false);
 
-  const possible = typeof window !== "undefined" && "speechSynthesis" in window;
+  const possible = voixPossible();
   useEffect(() => {
     if (!possible) return;
-    window.speechSynthesis.getVoices();
-    return () => window.speechSynthesis.cancel();
+    if ("speechSynthesis" in window) window.speechSynthesis.getVoices();
+    return () => stopper();
   }, [possible]);
   if (!possible) return null;
 

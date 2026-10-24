@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { LuCrown } from "react-icons/lu";
+import { BoutonPlume } from "@/components/guide";
+import { choisirPlumeParle, choisirReactions, plumeParleSeule, reactionsActives, revoirExplications } from "@/lib/plume";
 import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
 import { AVATARS, avatar, choisirAvatar, choisirGrosTexte, grosTexte } from "@/lib/reglages";
 import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
@@ -14,7 +15,8 @@ export function ProfilPage() {
   const score = lireScore();
   const hl = useHorsLigne();
   return (
-    <main className="mx-auto max-w-xl px-4 pt-6">
+    <main className="mx-auto max-w-xl px-4 pt-4">
+      <div className="flex"><BoutonPlume /></div>
       <ChoixAvatar />
       <h1 className="titre-or mt-4 text-center text-4xl">Princesse Leonie</h1>
       <p className="mt-2 text-center">Ton carnet. Il reste sur cet appareil.</p>
@@ -160,6 +162,17 @@ function Confort() {
         <input type="checkbox" defaultChecked={grosTexte()} onChange={(e) => choisirGrosTexte(e.target.checked)} className="size-6 accent-[#8d4e1f]" />
         Écrire plus gros
       </label>
+      <label className="flex min-h-11 items-center gap-3 font-extrabold">
+        <input type="checkbox" defaultChecked={plumeParleSeule()} onChange={(e) => choisirPlumeParle(e.target.checked)} className="size-6 accent-[#8d4e1f]" />
+        Plume lit ses explications toute seule
+      </label>
+      <label className="flex min-h-11 items-center gap-3 font-extrabold">
+        <input type="checkbox" defaultChecked={reactionsActives()} onChange={(e) => choisirReactions(e.target.checked)} className="size-6 accent-[#8d4e1f]" />
+        Plume me félicite pendant les jeux
+      </label>
+      <button type="button" onClick={() => { revoirExplications(); location.hash = "#/"; }} className="mt-2 rounded-full bg-[#f3e2c2] px-4 py-2 font-extrabold">
+        Revoir toutes les explications de Plume
+      </button>
     </section>
   );
 }
