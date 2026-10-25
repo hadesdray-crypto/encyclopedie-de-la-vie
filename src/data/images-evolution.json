@@ -101,11 +101,11 @@
  "eucaryotes": {
   "src": "evo/eucaryotes.webp",
   "sorte": "photo",
-  "article": "Amoeba proteus",
-  "fichier": "Wilson1900Fig3.jpg",
-  "auteur": "Edmund Beecher Wilson (1856–1939)",
-  "licence": "Public domain",
-  "page": "https://commons.wikimedia.org/wiki/File:Wilson1900Fig3.jpg"
+  "article": "Volvox",
+  "fichier": "Alga_volvox.png",
+  "auteur": "Auteur inconnu",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Alga_volvox.png"
  },
  "autres-eucaryotes": {
   "src": "evo/autres-eucaryotes.webp",
@@ -236,11 +236,11 @@
  "araignees": {
   "src": "evo/araignees.webp",
   "sorte": "photo",
-  "article": "Épeire diadème",
-  "fichier": "Araneus_diadematus_(Gartenkreuzspinne_mit_Wespe).jpg",
-  "auteur": "Jürgen Howaldt",
-  "licence": "CC BY-SA 2.0 de",
-  "page": "https://commons.wikimedia.org/wiki/File:Araneus_diadematus_(Gartenkreuzspinne_mit_Wespe).jpg"
+  "article": "Salticidae",
+  "fichier": "Flickr_-_Lukjonis_-_Male_Jumping_spider_-_Evarcha_arcuata_(Set_of_pictures).jpg",
+  "auteur": "Lukas Jonaitis from Vilnius, Lithuania",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Flickr_-_Lukjonis_-_Male_Jumping_spider_-_Evarcha_arcuata_(Set_of_pictures).jpg"
  },
  "crustaces": {
   "src": "evo/crustaces.webp",
@@ -254,11 +254,11 @@
  "mille-pattes": {
   "src": "evo/mille-pattes.webp",
   "sorte": "photo",
-  "article": "Myriapoda",
-  "fichier": "Myriapod_collage.png",
-  "auteur": "Collage: Animalparty (collage), original authors: see source images.",
-  "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Myriapod_collage.png"
+  "article": "Glomeris marginata",
+  "fichier": "Glomeris-marginata-13-04-2008-077.jpg",
+  "auteur": "Botaurus stellaris",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Glomeris-marginata-13-04-2008-077.jpg"
  },
  "echinodermes": {
   "src": "evo/echinodermes.webp",
@@ -316,7 +316,7 @@
  },
  "hors": {
   "src": "evo/hors.webp",
-  "sorte": "reconstitution",
+  "sorte": "fossile",
   "article": "Tiktaalik",
   "fichier": "Tiktaalik_roseae_(fish_to_amphibian_transitional_fossil)_(Fram_Formation,_Upper_Devonian;_Ellesmere_Island,_Arctic_Canada)_1_(49755118288).jpg",
   "auteur": "James St. John",
@@ -379,7 +379,7 @@
  },
  "dinosaures": {
   "src": "evo/dinosaures.webp",
-  "sorte": "reconstitution",
+  "sorte": "fossile",
   "article": "Tyrannosaurus",
   "fichier": "Sues_skeleton.jpg",
   "auteur": "Connie Ma from Chicago, United States of America",
@@ -421,6 +421,15 @@
   "auteur": "Diliff",
   "licence": "CC BY-SA 3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Koala_climbing_tree.jpg"
+ },
+ "placentaires": {
+  "src": "evo/placentaires.webp",
+  "sorte": "photo",
+  "article": "Hippopotame",
+  "fichier": "Hippo_pod_edit.jpg",
+  "auteur": "Paul Maritz",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hippo_pod_edit.jpg"
  },
  "accueil-commencer": {
   "src": "evo/accueil-commencer.webp",

@@ -17,7 +17,8 @@ archees-chaleur ← Grand Prismatic Spring · Aerial_image_of_Grand_Prismatic_Sp
 archees-methane Methanosarcina licence non libre ou pas une photo : Methanosarcina_barkeri_fusaro.gif
 archees-methane AUCUNE IMAGE
 asgard ← Fumeur noir · Blacksmoker_in_Atlantic_Ocean.jpg · Public domain
-eucaryotes ← Amoeba proteus · Wilson1900Fig3.jpg · Public domain
+eucaryotes Euglena licence non libre ou pas une photo : Euglena_-_schema.svg
+eucaryotes ← Volvox · Alga_volvox.png · CC BY-SA 3.0
 autres-eucaryotes ← Paramécie · Paramecium.jpg · CC BY-SA 3.0
 plantes ← Chêne pédonculé · Quercus_robur_JPG_(d1).jpg · CC BY-SA 3.0
 mousses ← Bryophyta · Mousse,_Bryophyta.jpg · CC BY-SA 4.0
@@ -32,9 +33,9 @@ vers ← Lombric commun · Earthworm_on_earth_-_heart.jpg · CC BY-SA 2.0
 mollusques ← Nautilus pompilius · Nautilus_pompilius.jpg · Public domain
 pattes ← Coccinelle à sept points · P1170487_Coccinella_septempunctata.jpg · CC BY 3.0
 insectes ← Papilio machaon · Schwalbenschwanz-Duell_Winterthur_Schweiz.jpg · CC BY-SA 4.0
-araignees ← Épeire diadème · Araneus_diadematus_(Gartenkreuzspinne_mit_Wespe).jpg · CC BY-SA 2.0 de
+araignees ← Salticidae · Flickr_-_Lukjonis_-_Male_Jumping_spider_-_Evarcha_arcuata_(Set_of_pictures).jpg · CC BY 2.0
 crustaces ← Homard européen · KreeftbijDenOsse.jpg · Public domain
-mille-pattes ← Myriapoda · Myriapod_collage.png · CC BY-SA 4.0
+mille-pattes ← Glomeris marginata · Glomeris-marginata-13-04-2008-077.jpg · Public domain
 echinodermes ← Asterias rubens · Asterias_rubens.jpg · CC BY-SA 4.0
 vertebres ← Amphiprion ocellaris · Amphiprion_ocellaris_(Clown_anemonefish)_in_Heteractis_magnifica_(Sea_anemone).jpg · CC BY-SA 3.0
 sans-machoires ← Agnatha · Jõesilmud2.jpg · CC BY-SA 3.0
@@ -52,10 +53,9 @@ dinosaures ← Tyrannosaurus · Sues_skeleton.jpg · CC BY-SA 2.0
 oiseaux ← Rouge-gorge familier · 030_European_robin_in_the_Camargue_Photo_by_Giles_Laurent.jpg · CC BY-SA 4.0
 mammiferes ← Renard roux · Portrait_of_a_red_fox_in_Rautas_fjällurskog.jpg · CC BY-SA 4.0
 monotremes ← Ornithorynque · Ornithorhynchus.jpg · CC BY-SA 4.0
-marsupiaux Kangourou roux licence non libre ou pas une photo : Red_kangaroo_-_melbourne_zoo.jpg
 marsupiaux ← Koala · Koala_climbing_tree.jpg · CC BY-SA 3.0
-placentaires Éléphant de savane d'Afrique licence non libre ou pas une photo : African_Bush_Elephant.jpg
-placentaires AUCUNE IMAGE
+placentaires Éléphant d'Asie licence non libre ou pas une photo : Asian_elephant_-_melbourne_zoo.jpg
+placentaires ← Hippopotame · Hippo_pod_edit.jpg · CC BY-SA 3.0
 accueil-commencer ← Terre · The_Blue_Marble_(remastered).jpg · Public domain
 accueil-reptiles ← Caméléon panthère · FurciferPardalisMale.JPG · CC BY-SA 3.0
-fini : 49 sur 55
+fini : 50 sur 55
