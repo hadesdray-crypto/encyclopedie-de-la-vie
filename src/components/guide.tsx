@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as PE } from "react";
 import { LuBookOpen, LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
-import { ASTUCES, PRESENTATION, explicationPour } from "@/data/guide";
+import { ASTUCES, PRESENTATION, SUJETS, explicationPour } from "@/data/guide";
 import { voixPossible } from "@/components/voix";
 import { sons } from "@/lib/sons";
 import { PlumeDessin, type AnimPlume, type Caractere } from "@/components/plume-dessin";
@@ -522,14 +522,29 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   const [motChoisi, setMotChoisi] = useState<string | null>(null);
   useEffect(() => setMotChoisi(null), [contenu]);
   const defMot = motChoisi ? motDuLexique(motChoisi) : undefined;
+  // Présentation : après le résumé, on peut choisir un sujet à expliquer en détail.
+  const [sujet, setSujet] = useState<string | null>(null);
   const explication =
     contenu === "mots"
       ? { id: "mots", titre: "Les mots de cette page", etapes: [defMot ? `${defMot.mot} : ${defMot.definition}` : mots.length ? "Touche un mot, je te l'explique." : "Il n'y a pas de mot compliqué sur cette page."] }
-      : contenu === "presentation" ? PRESENTATION : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
+      : contenu === "presentation" ? (sujet ? SUJETS.find((x) => x.id === sujet) ?? PRESENTATION : PRESENTATION) : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
   const [etape, setEtape] = useState(0);
   const [lecture, setLecture] = useState(false);
 
-  useEffect(() => setEtape(0), [contenu]);
+  useEffect(() => {
+    setEtape(0);
+    setSujet(null);
+  }, [contenu]);
+
+  /** « C'est bon, je vais explorer » : Plume dit c'est parti, et se range dans son coin. */
+  function explorer() {
+    const phrase = "C'est parti ! Je te laisse explorer, Leonie. Touche-moi deux fois si tu as besoin de moi.";
+    fermer();
+    window.setTimeout(() => {
+      plumeDit(phrase, 5000);
+      if (voixPossible() && plumeParleSeule()) dire(phrase);
+    }, 300);
+  }
 
   const texte = explication.etapes[etape] ?? explication.etapes[0];
   const derniere = etape >= explication.etapes.length - 1;
@@ -634,7 +649,29 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
               ))}
             </div>
           ) : null}
-          {explication.etapes.length > 1 ? (
+          {contenu === "presentation" && derniere && !sujet ? (
+            <div className="mt-2">
+              <div className="flex flex-wrap gap-1.5">
+                {SUJETS.map((x) => (
+                  <button key={x.id} type="button" onClick={() => { setSujet(x.id); setEtape(0); }} className="rounded-full bg-[#efe3ff] px-3 py-1.5 text-sm font-extrabold text-[#4a2a8a]">
+                    {x.bouton}
+                  </button>
+                ))}
+              </div>
+              <button type="button" onClick={explorer} className="mt-2 w-full rounded-full bg-[#f3d48a] py-2.5 font-extrabold text-[#2a1c14]">
+                C'est bon, je vais explorer !
+              </button>
+            </div>
+          ) : contenu === "presentation" && sujet && derniere ? (
+            <div className="mt-2 flex gap-1.5">
+              <button type="button" onClick={() => { setSujet(null); setEtape(PRESENTATION.etapes.length - 1); }} className="flex-1 rounded-full bg-[#efe3ff] py-2.5 text-sm font-extrabold text-[#4a2a8a]">
+                Autre chose ?
+              </button>
+              <button type="button" onClick={explorer} className="flex-1 rounded-full bg-[#f3d48a] py-2.5 text-sm font-extrabold text-[#2a1c14]">
+                J'explore !
+              </button>
+            </div>
+          ) : explication.etapes.length > 1 ? (
             <div className="mt-2 flex items-center gap-1.5">
               {etape > 0 ? (
                 <button type="button" onClick={() => setEtape(etape - 1)} aria-label="Bulle précédente" className="grid size-10 place-items-center rounded-full bg-[#efe3ff] text-[#6a3fc0]">

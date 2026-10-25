@@ -219,7 +219,7 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     test: (c) => c.startsWith("/suivi"),
     etapes: [
       "Des scientifiques mettent parfois un collier GPS à un animal pour suivre ses voyages.",
-      "Pour voir ces trajets, il faut Internet et l'accord d'une grande personne.",
+      "Les trajets déjà rangés dans l'application s'affichent sans Internet. Pour en charger d'autres, il faut Internet et l'accord d'une grande personne.",
     ],
   },
   {
@@ -249,21 +249,74 @@ export const PRESENTATION: Explication = {
   id: "presentation",
   titre: "Coucou Leonie !",
   etapes: [
-    "Coucou Leonie ! Oh… c'est toi ? Je suis tellement contente que ce soit toi qui t'occupes de moi.",
-    "Je m'appelle Plume. Je suis ta chouette. Je suis un peu timide, mais je vais tout te montrer.",
-    "Cette encyclopédie a été faite rien que pour toi, Leonie. Elle raconte toute l'histoire de la vie, depuis la naissance de la Terre.",
-    "Sur la première page, la grande lune au milieu, c'est le début de tout. Touche-la pour commencer le voyage dans le temps.",
-    "Juste en dessous : Jouer, pour les jeux et le défi du jour, et Mes cartes, pour ta collection d'animaux.",
-    "L'Aventure te montre, sur une carte du monde, des animaux que des scientifiques suivent avec un collier GPS.",
-    "En bas de l'écran, la barre t'emmène partout. Une petite flamme veut dire que le défi du jour t'attend. Un chiffre rouge, ce sont tes paquets de cartes à ouvrir.",
-    "Pour revenir en arrière, utilise la flèche du téléphone, ou le bouton Retour en haut.",
-    "La petite roue, c'est les Options : la voix, les sons, l'écriture plus grosse. Tout y est écrit, et je peux te le lire.",
-    "J'aime tous les animaux. Mes préférés, ce sont les chiens… comme toi, Leonie. Et je me méfie un peu du grand-duc : c'est une très grande chouette, qui chasse aussi les petites chouettes comme moi.",
-    "Ensuite, je reste dans mon coin, sans te déranger. Touche-moi deux fois si tu as besoin de moi. Appuie longtemps sur moi : je grandis un peu, et tu peux me poser où tu veux.",
-    "Une astuce : appuie longtemps sur un texte, et je te le lis à voix haute.",
-    "Et tout marche même sans Internet. Allez, on y va ? Je suis prête !",
+    "Coucou Leonie ! Oh… c'est toi ? Je suis tellement contente que ce soit toi qui t'occupes de moi. Je m'appelle Plume, je suis ta chouette.",
+    "Cette encyclopédie a été faite rien que pour toi. Elle raconte toute l'histoire de la vie, depuis la naissance de la Terre. Et elle marche même sans Internet.",
+    "En résumé : tu peux remonter le temps dans l'arbre de la vie, découvrir presque 7 000 mammifères, jouer, collectionner des cartes d'animaux, et suivre de vrais animaux voyageurs.",
+    "Et moi, je suis toujours là pour t'aider. Touche-moi deux fois pour ouvrir mon menu. Appuie longtemps pour me déplacer. Mon caractère et ma voix se changent dans mon menu, avec Réglages.",
+    "Tu veux que je t'explique une partie en détail ? Choisis un bouton. Ou bien pars explorer toute seule !",
   ],
 };
+
+/** Les explications en détail, au choix, à la fin de la présentation. */
+export const SUJETS: (Explication & { bouton: string })[] = [
+  {
+    id: "sujet-arbre", bouton: "L'arbre de la vie", titre: "L'arbre de la vie",
+    etapes: [
+      "Sur l'accueil, la grande image au milieu, c'est le tout début de la Terre. Touche-la pour commencer le voyage dans le temps.",
+      "Les bulles autour t'emmènent directement vers les bactéries, les plantes, les champignons, les reptiles ou les animaux.",
+      "Sur chaque image, une petite étiquette dit si c'est une vraie photo, un vrai fossile, ou une reconstitution faite par des scientifiques.",
+      "La frise du temps range toute l'histoire de la vie sur une seule journée : les humains n'arrivent qu'à la toute fin !",
+    ],
+  },
+  {
+    id: "sujet-animaux", bouton: "Les animaux", titre: "Les animaux et leurs fiches",
+    etapes: [
+      "La porte « Animaux » de l'accueil montre tous les grands groupes. Les mammifères ont déjà toutes leurs fiches : presque 7 000 !",
+      "Sur une fiche : où vit l'animal sur la carte, ce qu'il mange, son poids, combien de temps il vit… « Mal connu » veut dire que les scientifiques ne le savent pas encore. On n'invente jamais.",
+      "Les mots en pointillés sont de vrais mots de scientifique : touche-les, je te les explique.",
+      "Touche la photo pour voir l'animal en entier. Et s'il y a une vidéo, un adulte peut l'allumer.",
+      "La loupe cherche un animal dès que tu commences à écrire. Il y a aussi une salle rien que pour les chiens et les chats.",
+    ],
+  },
+  {
+    id: "sujet-jouer", bouton: "Jouer et les cartes", titre: "Jouer et les cartes",
+    etapes: [
+      "Jouer ouvre tous les jeux : seule, ou à plusieurs sur le même téléphone, parfois face à face.",
+      "Le défi du jour revient chaque jour. Si tu le fais plusieurs jours de suite, ta petite flamme grandit !",
+      "En lisant des fiches et en jouant, tu gagnes des paquets de cartes d'animaux pour ta collection.",
+      "Et si tu remplis toutes les tables magiques de multiplication, tu gagnes le Plumedex !",
+    ],
+  },
+  {
+    id: "sujet-aventure", bouton: "L'Aventure", titre: "L'Aventure",
+    etapes: [
+      "Des scientifiques posent parfois un collier GPS à un animal pour suivre ses voyages.",
+      "Dans l'Aventure, tu vois sur la carte du monde où ces animaux sont allés. Ce sont de vrais trajets.",
+    ],
+  },
+  {
+    id: "sujet-plume", bouton: "Moi, Plume", titre: "Moi, Plume",
+    etapes: [
+      "Touche-moi une fois : je te fais coucou. Deux fois : mon menu s'ouvre, pour t'aider sur la page où tu es.",
+      "Appuie longtemps sur moi : je grandis un peu, et tu peux me poser où tu veux sur l'écran.",
+      "Tu peux même me lancer d'un geste rapide… mais je n'aime pas trop ça ! Et si tu secoues le téléphone, ça me fait tourner la tête.",
+      "Mon menu a cinq boutons : Écouter (je lis la page), Aide (j'explique la page), Mots (les mots difficiles), Astuce, et Réglages.",
+      "J'ai quatre caractères, avec chacun sa tenue, ses gestes et sa voix : discrète (je ne fais que cligner des yeux), présente, étudiante (avec mes lunettes et mon chapeau), ou passionnée (la savante folle !). On les choisit dans Réglages. Je peux aussi me reposer.",
+      "Dans les Options, tu peux aussi décider si je lis toute seule, si je réagis aux animaux, et à quelle vitesse je parle.",
+      "Une astuce : appuie longtemps sur un texte, et je te le lis à voix haute.",
+    ],
+  },
+  {
+    id: "sujet-options", bouton: "Les réglages", titre: "Les réglages et le coin des parents",
+    etapes: [
+      "La petite roue, en haut de l'accueil, ouvre les Options : la voix et sa vitesse, les sons, l'écriture plus grosse, et mon caractère.",
+      "C'est aussi là que l'application cherche ses mises à jour.",
+      "Le Coin des parents est pour les grandes personnes : le temps d'écran de la journée, et Internet pour les vidéos.",
+      "Et le bouton « Revivre la première utilisation » me fait tout te présenter de nouveau, comme aujourd'hui.",
+    ],
+  },
+];
+
 
 /** Les astuces de Plume, page par page (le bouton « Astuce » de sa bulle). */
 export const ASTUCES: Record<string, string[]> = {
