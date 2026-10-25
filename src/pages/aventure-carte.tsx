@@ -31,8 +31,10 @@ function especesDuPays(code: string) {
 }
 
 export function AventureCartePage({ params }: { params: URLSearchParams }) {
-  const [onglet, setOnglet] = useState<"pays" | "voyages">(params.get("voyages") ? "voyages" : "pays");
-  const [suivre, setSuivre] = useState<number | null>(null);
+  // « suivre » : on arrive depuis la fiche d'un animal pour voir son voyage.
+  const latinSuivi = params.get("suivre");
+  const [onglet, setOnglet] = useState<"pays" | "voyages">(params.get("voyages") || latinSuivi ? "voyages" : "pays");
+  const [suivre, setSuivre] = useState<number | null>(() => (latinSuivi ? voyagesDe("", latinSuivi)[0]?.i ?? null : null));
   return (
     <main className="mx-auto max-w-xl pt-4">
       <div className="px-4"><Entete siVide="/" /></div>

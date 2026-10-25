@@ -29,8 +29,11 @@ const Voyageurs = lazy(() => import("@/pages/aventure-carte").then((m) => ({ def
 const Jouer = lazy(() => import("@/pages/jouer").then((m) => ({ default: m.JouerPage })));
 const Cartes = lazy(() => import("@/pages/cartes").then((m) => ({ default: m.CartesPage })));
 const Profil = lazy(() => import("@/pages/profil").then((m) => ({ default: m.ProfilPage })));
-const Suivi = lazy(() => import("@/pages/suivi").then((m) => ({ default: m.SuiviPage })));
-const Aventure = lazy(() => import("@/pages/suivi").then((m) => ({ default: m.AventurePage })));
+// L'ancienne liste des animaux suivis est remplacée par « Les voyages » (dans Aventure).
+function VersVoyages() {
+  location.replace("#/voyageurs?voyages=1");
+  return null;
+}
 const Compagnons = lazy(() => import("@/pages/compagnons").then((m) => ({ default: m.CompagnonsPage })));
 const Chercher = lazy(() => import("@/pages/chercher").then((m) => ({ default: m.ChercherPage })));
 const Options = lazy(() => import("@/pages/options").then((m) => ({ default: m.OptionsPage })));
@@ -46,8 +49,8 @@ const ROUTES: [string, Page][] = [
   ["/jouer", Jouer],
   ["/cartes", Cartes],
   ["/profil", Profil],
-  ["/suivi", Suivi],
-  ["/aventure", Aventure],
+  ["/suivi", VersVoyages],
+  ["/aventure", VersVoyages],
   ["/options", Options],
   ["/chercher", Chercher],
   ["/compagnons", Compagnons],
