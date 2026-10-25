@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LuFlame } from "react-icons/lu";
-import { paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
+import { paquetDuJour, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { defiFait } from "@/lib/defis";
 import { direBoutons } from "@/lib/reglages";
 import { dire } from "@/lib/parole";
@@ -18,7 +18,7 @@ const SALLES: Salle[] = [
 
 /** Les petites pastilles : paquets à ouvrir, défi du jour qui attend. Elles se mettent à jour toutes seules. */
 function usePastilles() {
-  const lire = () => ({ paquets: paquetsIllimites() ? 0 : paquetsDisponibles(), defi: !defiFait() });
+  const lire = () => ({ paquets: (paquetsIllimites() ? 0 : paquetsDisponibles()) + (paquetDuJour() ? 1 : 0), defi: !defiFait() });
   const [p, setP] = useState(lire);
   useEffect(() => {
     const maj = () => setP(lire());

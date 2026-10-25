@@ -3,7 +3,7 @@ import { LuBone, LuBookOpen, LuChevronRight, LuCrown, LuDices, LuDog, LuFlame, L
 import { Installer } from "@/components/installer";
 import { voixPossible } from "@/components/voix";
 import { avatar } from "@/lib/reglages";
-import { paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
+import { paquetDuJour, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireVues } from "@/lib/carnet";
 import { defiFait, serie } from "@/lib/defis";
 import { dire } from "@/lib/parole";
@@ -50,7 +50,7 @@ function phraseDuJour(paquets: number, defi: boolean, jours: number) {
 
 export function Accueil() {
   const illimite = paquetsIllimites();
-  const paquets = illimite ? 0 : paquetsDisponibles();
+  const paquets = (illimite ? 0 : paquetsDisponibles()) + (paquetDuJour() ? 1 : 0);
   const defi = !defiFait();
   const jours = serie();
   const trouves = lireVues().length;

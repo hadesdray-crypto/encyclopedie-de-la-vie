@@ -96,16 +96,16 @@ function marquer(espece: Espece, chance: boolean): Tirage {
   };
 }
 
-export function ouvrirPaquet(famille: string, deja: Set<string>) {
+export function ouvrirPaquet(famille: string, deja: Set<string>, taille = 10) {
   const vivants = ESPECES.filter((espece) => !espece.disparue && (famille === "toutes" || espece.famille === famille));
   // On tire d'abord les animaux qui ont un nom français et une photo : c'est plus agréable.
   const jolis = vivants.filter((espece) => espece.langue === "fr" && aUnePhoto(espece.id));
   const base = jolis.length >= 11 ? jolis : vivants;
   const neufs = base.filter((espece) => !deja.has(espece.id));
-  const pile = neufs.length >= 10 ? neufs : base;
+  const pile = neufs.length >= taille ? neufs : base;
   const melange = [...pile].sort(() => Math.random() - 0.5);
-  const dix = melange.slice(0, 10).map((espece) => marquer(espece, false));
-  const reste = melange.slice(10);
+  const dix = melange.slice(0, taille).map((espece) => marquer(espece, false));
+  const reste = melange.slice(taille);
   const seuil = Math.random() * 0.22;
   const chance = reste.length > 0 && Math.random() < seuil;
   const cartes = chance ? [...dix, marquer(reste[0], true)] : dix;

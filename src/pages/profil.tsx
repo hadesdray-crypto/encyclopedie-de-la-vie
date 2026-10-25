@@ -88,7 +88,7 @@ export function CoinParents() {
       <button type="button" onClick={() => setOuvert((o) => !o)} className="w-full text-left font-display text-xl">Coin des parents</button>
       {ouvert ? (
         <div className="mt-2 text-sm">
-          <p className="mb-3 font-extrabold">Paquets de cartes illimités : {paquetsIllimites() ? "gagnés !" : "Leonie les gagne en remplissant toutes les tables de multiplication (Jouer → Les tables magiques)."}</p>
+          <p className="mb-3 font-extrabold">Les paquets de cartes : un paquet de 5, 10 ou 15 cartes chaque jour, et d'autres à gagner en lisant des fiches et en jouant.</p>
           <TempsParJour />
           <PhotosSignalees />
           <p>Certaines options ont besoin d'une connexion : les trajets GPS (Movebank), les vidéos des animaux et des frères Kratt. Elles sont éteintes. Rien ne se télécharge tout seul.</p>

@@ -7,8 +7,8 @@ const CLE_BONNES = "leonie-bonnes";
 
 export const REGLES = {
   depart: 3,
-  fichesParPaquet: 3,
-  bonnesParPaquet: 5,
+  fichesParPaquet: 5,
+  bonnesParPaquet: 8,
 };
 
 function lireNombre(cle: string, defaut: number) {
@@ -28,12 +28,28 @@ function ecrire(cle: string, v: string) {
   }
 }
 
+/** Les paquets illimités n'existent plus : les tables donnent le Plumedex, et les cartes se gagnent (une fois par jour, et en explorant). */
 export function paquetsIllimites() {
+  void CLE_ILLIMITE;
+  return false;
+}
+
+// Le paquet du jour : un paquet offert chaque jour, de 5, 10 ou 15 cartes (au hasard, découvert en l'ouvrant).
+const CLE_JOUR = "leonie-paquet-du-jour";
+const aujourdhui = () => new Date().toLocaleDateString("fr-CA");
+export function paquetDuJour() {
   try {
-    return localStorage.getItem(CLE_ILLIMITE) === "oui";
+    return localStorage.getItem(CLE_JOUR) !== aujourdhui();
   } catch {
     return false;
   }
+}
+/** On prend le paquet du jour : renvoie sa taille (5, 10 ou 15), ou 0 s'il est déjà ouvert. */
+export function prendrePaquetDuJour(): number {
+  if (!paquetDuJour()) return 0;
+  ecrire(CLE_JOUR, aujourdhui());
+  window.dispatchEvent(new Event("leonie-paquets"));
+  return [5, 10, 15][Math.floor(Math.random() * 3)];
 }
 
 export function choisirIllimite(oui: boolean) {
@@ -46,7 +62,6 @@ export function paquetsDisponibles() {
 }
 
 export function utiliserPaquet() {
-  if (paquetsIllimites()) return true;
   const n = paquetsDisponibles();
   if (n <= 0) return false;
   ecrire(CLE_PAQUETS, String(n - 1));
