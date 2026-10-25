@@ -35,7 +35,7 @@ jobs:
           ls -la web.zip
       - name: Préparer le projet Android
         run: |
-          npm install --save --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor-community/text-to-speech@6 @capgo/capacitor-updater@7 @capacitor/app@7
+          npm install --save --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor-community/text-to-speech@6 @capgo/capacitor-updater@7.53.0 @capacitor/app@7
           npx cap add android
           pip install pillow
           python android-ressources/remplacer.py
@@ -64,5 +64,7 @@ jobs:
         run: |
           gh release create "android-${{ github.run_number }}" encyclopedie-de-la-vie.apk web.zip \
             --title "Application Android, version 1.${{ github.run_number }}" \
-            --notes "Ouvrir ce fichier sur le téléphone Android et toucher Installer. Tout est dans l'application : elle marche sans Internet. Pour une mise à jour, installer simplement la nouvelle version par-dessus : rien n'est perdu." \
+            --notes "Ouvrir ce fichier sur le téléphone Android et toucher Installer. Tout est dans l'application : elle marche sans Internet. Pour une mise à jour, installer simplement la nouvelle version par-dessus : rien n'est perdu.
+
+          web.zip sha256 : $(sha256sum web.zip | cut -d' ' -f1)" \
             --latest
