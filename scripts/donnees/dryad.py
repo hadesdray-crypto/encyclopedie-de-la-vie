@@ -104,7 +104,9 @@ def main():
                 fichiers = [f for f in ((fs.get("_embedded") or {}).get("stash:files", [])) if re.search(r"\.(csv|txt|zip)$", f.get("path", ""), re.I) and f.get("size", 0) < MAX_OCTETS]
                 n = 0
                 for f in sorted(fichiers, key=lambda f: f.get("size", 0))[:3]:
-                    url = API + f["_links"]["stash:download"]["href"]
+                    lien = (f.get("_links") or {}).get("stash:download") or (f.get("_links") or {}).get("stash:file-download")
+                    if not lien: continue  # fichier non téléchargeable
+                    url = API + lien["href"]
                     brut = get(url, binaire=True)
                     if not brut: continue
                     try:
