@@ -38,17 +38,16 @@ export function Portrait({ id, src }: { id: string; src?: string }) {
   }, [id, parPaquet]);
   const chemin = src ?? (parPaquet ? image : PRESENTS.has(id) ? `m/${id}.webp` : "m/absent.webp");
   if (!chemin) return <span className="block size-full animate-pulse bg-[#2a1844]" />;
+  const secours = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    if (!img.src.endsWith("absent.webp")) img.src = "m/absent.webp";
+  };
+  // L'animal en entier (pas un morceau coupé au milieu) : la photo tient dans le cercle,
+  // et le fond est la même photo, floue, pour remplir joliment.
   return (
-    <img
-      src={chemin}
-      alt=""
-      loading="lazy"
-      decoding="async"
-      className="size-full object-cover"
-      onError={(e) => {
-        const img = e.currentTarget;
-        if (!img.src.endsWith("absent.webp")) img.src = "m/absent.webp";
-      }}
-    />
+    <span className="relative block size-full overflow-hidden">
+      <img src={chemin} alt="" aria-hidden="true" loading="lazy" decoding="async" className="absolute inset-0 size-full scale-125 object-cover blur-md brightness-75" onError={secours} />
+      <img src={chemin} alt="" loading="lazy" decoding="async" className="relative size-full object-contain!" onError={secours} />
+    </span>
   );
 }

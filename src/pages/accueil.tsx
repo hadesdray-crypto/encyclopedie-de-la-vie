@@ -150,14 +150,14 @@ export function Accueil() {
         </a>
       </div>
 
-      {/* L'Aventure */}
+      {/* La carte du monde */}
       <a href="#/voyageurs" className="relative mt-2.5 block h-[7.4rem] overflow-hidden rounded-[1.4rem] border-2 border-[#e8c98a] bg-[#14214a] shadow-[0_10px_22px_rgba(0,0,0,.45)]">
         <Suspense fallback={null}>
           <CarteAventure petite />
         </Suspense>
         <span className="absolute left-3 top-2">
-          <span className="block font-display text-[1.35rem] text-[#f3d48a] [text-shadow:0_2px_6px_#000]">Aventure</span>
-          <span className="block text-[12.5px] font-bold text-[#dbe6ff] [text-shadow:0_1px_4px_#000]">Les animaux voyageurs, suivis par GPS</span>
+          <span className="block font-display text-[1.35rem] text-[#f3d48a] [text-shadow:0_2px_6px_#000]">La carte du monde</span>
+          <span className="block text-[12.5px] font-bold text-[#dbe6ff] [text-shadow:0_1px_4px_#000]">Où vivent les animaux, et leurs vrais voyages</span>
         </span>
         <span className="absolute bottom-2.5 right-2.5 inline-flex items-center gap-0.5 rounded-full bg-[#f3d48a] px-3 py-1 text-[13px] font-black text-[#2a1650]">
           Explorer

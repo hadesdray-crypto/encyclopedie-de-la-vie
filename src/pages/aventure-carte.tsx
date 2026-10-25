@@ -11,6 +11,11 @@ import { Portrait, aUnePhoto } from "@/components/portrait";
 import { ESPECES, FAMILLES, GROUPES, groupeDeOrdre, type Espece } from "@/data/catalogue";
 import { NOMS_PAYS } from "@/data/pays-noms";
 import { plumeDit } from "@/lib/plume";
+import { connu } from "@/lib/connu";
+import { recitPays } from "@/lib/pays-infos";
+import { definirEcran } from "@/lib/plume";
+import { Ecouter } from "@/components/voix";
+import { LuSlidersHorizontal } from "react-icons/lu";
 import { VoyageursPage, voyagesDe } from "@/pages/voyageurs";
 
 const sansAccent = (t: string) => t.toLocaleLowerCase("fr").normalize("NFD").replace(/\p{M}/gu, "");
@@ -25,10 +30,16 @@ function especesDuPays(code: string) {
       INDEX.get(c)!.push(e);
     }
     // D'abord les animaux sauvages qui ont un nom français et une photo ; les animaux domestiques à la fin.
-    for (const l of INDEX.values()) l.sort((a, b) => Number(!!a.domestique) - Number(!!b.domestique) || Number(b.langue === "fr") - Number(a.langue === "fr") || Number(aUnePhoto(b.id)) - Number(aUnePhoto(a.id)) || a.nom.localeCompare(b.nom, "fr"));
+    // Du plus connu au moins connu (visites Wikipédia) ; les animaux domestiques, présents partout, à la fin.
+    for (const l of INDEX.values()) l.sort((a, b) => Number(!!a.domestique) - Number(!!b.domestique) || connu(b.id) - connu(a.id) || Number(b.langue === "fr") - Number(a.langue === "fr") || Number(aUnePhoto(b.id)) - Number(aUnePhoto(a.id)) || a.nom.localeCompare(b.nom, "fr"));
   }
   return INDEX.get(code) ?? [];
 }
+
+// Les animaux sauvages les plus connus (visites Wikipédia), pour commencer à explorer.
+const CELEBRES = ESPECES.filter((e) => !e.domestique && e.pays?.length && e.langue === "fr" && aUnePhoto(e.id))
+  .sort((a, b) => connu(b.id) - connu(a.id))
+  .slice(0, 16);
 
 export function AventureCartePage({ params }: { params: URLSearchParams }) {
   // « suivre » : on arrive depuis la fiche d'un animal pour voir son voyage.
@@ -38,7 +49,7 @@ export function AventureCartePage({ params }: { params: URLSearchParams }) {
   return (
     <main className="mx-auto max-w-xl pt-4">
       <div className="px-4"><Entete siVide="/" /></div>
-      <h1 className="sr-only">Aventure</h1>
+      <h1 className="sr-only">La carte du monde</h1>
       <div role="tablist" className="mx-auto mt-2 grid w-[calc(100%-2rem)] max-w-sm grid-cols-2 gap-1 rounded-full bg-[#2a1844] p-1 ring-1 ring-[#e8c98a]/40">
         {([["pays", "Où vivent-ils ?"], ["voyages", "Les voyages"]] as const).map(([id, label]) => (
           <button key={id} type="button" role="tab" aria-selected={onglet === id} onClick={() => { setOnglet(id); setSuivre(null); }} className={`min-h-10 rounded-full text-sm font-extrabold transition-colors ${onglet === id ? "bg-[#f3d48a] text-[#2a1650]" : "text-[#f3d48a]"}`}>
@@ -57,7 +68,8 @@ function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
   const [q, setQ] = useState("");
   const [cherche, setCherche] = useState(false);
   const [groupe, setGroupe] = useState<string | null>(null);
-  const [montre, setMontre] = useState(30);
+  const [montre, setMontre] = useState(24);
+  const [trier, setTrier] = useState(false);
   const [animal, setAnimal] = useState<Espece | null>(null);
   const [mode, setMode] = useState<"pays" | "animal">("pays");
   // La fenêtre se met toute seule en bandeau quand une fiche s'affiche ; on peut la changer à la main.
@@ -83,7 +95,7 @@ function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
     setAnimal(null);
     setPays(code);
     setGroupe(null);
-    setMontre(30);
+    setMontre(24);
     setCherche(false);
     setQ("");
     if (code && centrer) {
@@ -96,7 +108,7 @@ function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
     const t = sansAccent(q.trim());
     if (mode !== "animal" || t.length < 2) return [];
     return ESPECES.filter((e) => e.pays?.length && sansAccent(`${e.nom} ${e.latin}`).includes(t))
-      .sort((a, b) => Number(sansAccent(b.nom) === t) - Number(sansAccent(a.nom) === t) || Number(sansAccent(b.nom).startsWith(t)) - Number(sansAccent(a.nom).startsWith(t)) || Number(b.langue === "fr") - Number(a.langue === "fr") || a.nom.length - b.nom.length)
+      .sort((a, b) => Number(sansAccent(b.nom) === t) - Number(sansAccent(a.nom) === t) || Number(sansAccent(b.nom).startsWith(t)) - Number(sansAccent(a.nom).startsWith(t)) || connu(b.id) - connu(a.id) || Number(b.langue === "fr") - Number(a.langue === "fr") || a.nom.length - b.nom.length)
       .slice(0, 8);
   }, [q, mode]);
 
@@ -107,6 +119,18 @@ function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
   }, [q, mode]);
 
   const tous = pays ? especesDuPays(pays) : [];
+  const recit = useMemo(() => (pays ? recitPays(pays, especesDuPays(pays)) : []), [pays]);
+  // Plume peut toujours raconter ce qui est à l'écran : le pays ouvert, ou l'animal choisi.
+  useEffect(() => {
+    if (pays) {
+      definirEcran({ id: `pays-${pays}`, titre: NOMS_PAYS[pays] ?? pays, etapes: recit });
+      plumeDit("Touche « Écouter » : je te raconte ce pays !", 4000);
+    } else if (animal) {
+      const n = animal.pays?.length ?? 0;
+      definirEcran({ id: `animal-${animal.id}`, titre: animal.nom, etapes: [`${animal.nom} vit dans ${n} pays : ils sont en or sur le globe.`, voyagesDe(animal.id, animal.latin).length ? "Des scientifiques l'ont suivi par GPS : touche « Voir son voyage GPS » pour voir son vrai trajet." : "Touche « Voir sa fiche » pour tout savoir sur lui.", "Touche un pays doré pour voir les autres animaux qui y vivent."] });
+    } else definirEcran(null);
+  }, [pays, animal?.id]);
+  useEffect(() => () => definirEcran(null), []);
   const groupesIci = GROUPES.filter((g) => tous.some((e) => g.ordres.includes(e.ordre)));
   const liste = groupe ? tous.filter((e) => groupeDeOrdre(e.ordre)?.id === groupe) : tous;
 
@@ -186,38 +210,68 @@ function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
       ) : pays ? (
         <section className="carte-nuit apparait mt-1 rounded-[1.75rem] px-4 py-4">
           <div className="flex items-start justify-between gap-2">
-            <div>
+            <div className="min-w-0">
               <p className="font-display text-2xl leading-tight text-[#f3d48a]">{NOMS_PAYS[pays] ?? pays}</p>
-              <p className="text-sm font-bold">{tous.length ? `${tous.length} espèces de mammifères y vivent.` : "Pas de mammifère noté pour ce pays."}</p>
+              <p className="text-sm font-bold">{tous.length ? `${tous.length} espèces de mammifères y vivent. Les plus connues d'abord.` : "Pas de mammifère noté pour ce pays."}</p>
             </div>
             <button type="button" aria-label="Fermer" onClick={() => choisir(null)} className="grid size-9 shrink-0 place-items-center rounded-full bg-white/10"><LuX className="size-5" /></button>
           </div>
+          {recit.length ? (
+            <details className="mt-2 rounded-2xl bg-white/5 px-3 py-2">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-2 text-sm font-extrabold text-[#f3d48a]">
+                <span>🦉 Plume te raconte ce pays</span>
+                <span className="text-xs texte-doux">Lire +</span>
+              </summary>
+              <div className="mt-1.5 space-y-1 text-[13px] leading-snug">{recit.map((p) => <p key={p}>{p}</p>)}</div>
+              <p className="mt-1 text-[10px] texte-doux">Climat : d'après la latitude du pays. Animaux : Mammal Diversity Database. Les plus connus : visites Wikipédia.</p>
+            </details>
+          ) : null}
+          {recit.length ? <div className="mt-2"><Ecouter texte={recit.join(" ")} /></div> : null}
           {groupesIci.length > 1 ? (
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              <button type="button" onClick={() => { setGroupe(null); setMontre(30); }} className={`rounded-full px-3 py-1.5 text-xs font-extrabold ${groupe === null ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>Tous</button>
-              {groupesIci.map((g) => (
-                <button key={g.id} type="button" onClick={() => { setGroupe(g.id); setMontre(30); }} className={`rounded-full px-3 py-1.5 text-xs font-extrabold ${groupe === g.id ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>{g.nom}</button>
-              ))}
+            <div className="mt-2">
+              <button type="button" aria-expanded={trier} onClick={() => setTrier((t) => !t)} className={`inline-flex min-h-8 items-center gap-1.5 rounded-full px-3 text-xs font-extrabold ${trier || groupe ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>
+                <LuSlidersHorizontal className="size-3.5" aria-hidden="true" /> {groupe ? GROUPES.find((g) => g.id === groupe)?.nom : "Trier par groupe"} {trier ? "−" : "+"}
+              </button>
+              {trier ? (
+                <div className="apparait mt-2 flex flex-wrap gap-1">
+                  <button type="button" onClick={() => { setGroupe(null); setMontre(24); setTrier(false); }} className={`rounded-full px-2.5 py-1 text-[11px] font-extrabold ${groupe === null ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>Tous</button>
+                  {groupesIci.map((g) => (
+                    <button key={g.id} type="button" onClick={() => { setGroupe(g.id); setMontre(24); setTrier(false); }} className={`rounded-full px-2.5 py-1 text-[11px] font-extrabold ${groupe === g.id ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>{g.nom}</button>
+                  ))}
+                </div>
+              ) : null}
             </div>
           ) : null}
-          <ul className="mt-3 grid grid-cols-3 gap-x-2 gap-y-3">
+          <ul className="mt-3 grid grid-cols-4 gap-x-1.5 gap-y-2.5">
             {liste.slice(0, montre).map((e) => (
               <li key={e.id} className="text-center">
-                <a href={`#/mammiferes/e-${e.id}`} className="block">
-                  <span className="medaillon-or mx-auto block aspect-square w-[86%] overflow-hidden [&_img]:size-full [&_img]:object-cover"><Portrait id={e.id} /></span>
-                  <span className="mt-1 block text-[12px] font-extrabold leading-tight">{e.nom}</span>
-                  <span className="block text-[10px] leading-tight texte-doux">{FAMILLES[e.famille]?.nom}</span>
+                <a href={`#/mammiferes/e-${e.id}`} className="block active:scale-95 transition-transform">
+                  <span className="medaillon-or mx-auto block aspect-square w-[92%] overflow-hidden [&_img]:size-full [&_img]:object-cover"><Portrait id={e.id} /></span>
+                  <span className="mt-1 block text-[11px] font-extrabold leading-tight">{e.nom}</span>
                 </a>
               </li>
             ))}
           </ul>
           {montre < liste.length ? (
-            <button type="button" onClick={() => setMontre((n) => n + 30)} className="bouton-bois mt-4 w-full rounded-2xl py-3 font-extrabold">Voir la suite ({liste.length - montre} encore)</button>
+            <button type="button" onClick={() => setMontre((n) => n + 24)} className="bouton-bois mt-4 w-full rounded-2xl py-3 font-extrabold">Voir la suite ({liste.length - montre} encore)</button>
           ) : null}
           <p className="mt-3 text-[11px] texte-doux">Répartition : Mammal Diversity Database. Les petites îles ne sont pas sur le globe : on les trouve sur la fiche de chaque animal.</p>
         </section>
       ) : (
-        <p className="mt-3 text-center text-sm texte-doux">Fais tourner le globe avec ton doigt, zoome avec deux doigts, et touche un pays.</p>
+        <section className="carte-nuit apparait mt-1 rounded-[1.75rem] px-3 py-3">
+          <p className="px-1 font-display text-lg text-[#f3d48a]">Où vivent-ils ? Essaie avec…</p>
+          <ul className="mt-2 flex gap-2 overflow-x-auto pb-1">
+            {CELEBRES.map((e) => (
+              <li key={e.id} className="w-[4.6rem] shrink-0 text-center">
+                <button type="button" onClick={() => choisirAnimal(e)} className="block w-full active:scale-95 transition-transform">
+                  <span className="medaillon-or mx-auto block size-16 overflow-hidden [&_img]:size-full [&_img]:object-cover"><Portrait id={e.id} /></span>
+                  <span className="mt-1 block text-[11px] font-extrabold leading-tight">{e.nom}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2 px-1 text-xs texte-doux">Ou touche un pays sur le globe pour voir tous ses animaux.</p>
+        </section>
       )}
       </div>
     </section>

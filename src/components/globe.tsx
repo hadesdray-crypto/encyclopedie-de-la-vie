@@ -276,6 +276,17 @@ export function cadrer(points: [number, number][]) {
   return { lat, lon, zoom: Math.max(1, Math.min(ZOOM_MAX, 60 / etendue)) };
 }
 
+/** Les latitudes extrêmes (sud, nord) de la plus grande partie d'un pays (sans les îles et territoires lointains). */
+export function latitudesPays(code: string): [number, number] | null {
+  const f = LISTE_PAYS.find((c) => c.properties.code === code) as unknown as { geometry: { coordinates: [number, number][][][] } } | undefined;
+  if (!f) return null;
+  const polys = f.geometry.coordinates.map((c) => ({ type: "Polygon" as const, coordinates: c }));
+  if (!polys.length) return null;
+  const grand = polys.reduce((a, b) => (geoArea(b) > geoArea(a) ? b : a));
+  const [[, y0], [, y1]] = geoBounds(grand as unknown as GeoPermissibleObjects);
+  return [y0, y1];
+}
+
 /** Le centre d'un pays et le zoom pour bien le voir. */
 export function cadrerPays(code: string) {
   const f = LISTE_PAYS.find((c) => c.properties.code === code) as unknown as GeoPermissibleObjects | undefined;

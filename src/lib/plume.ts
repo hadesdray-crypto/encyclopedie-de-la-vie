@@ -213,6 +213,16 @@ export const choisirPlumeBouge = (oui: boolean) => ecrireReglage(CLE_COUCOU, oui
 // Les règles d'un jeu, que Plume explique (bouton « Règles » des jeux).
 import type { Explication } from "@/data/guide";
 let reglesActuelles: Explication | null = null;
+
+// Ce qui est affiché à l'écran en ce moment (un pays, un animal, un voyage) : Plume peut le raconter.
+let ecranActuel: Explication | null = null;
+export function ecranEnCours() {
+  return ecranActuel;
+}
+export function definirEcran(e: Explication | null) {
+  ecranActuel = e;
+  publier({});
+}
 export function reglesEnCours() {
   return reglesActuelles;
 }
