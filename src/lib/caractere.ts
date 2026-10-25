@@ -2,7 +2,7 @@
 // Elle ne dit que des choses vraies : ses phrases s'appuient sur les données de la fiche.
 import type { Espece } from "@/data/catalogue";
 import { grammesDe } from "@/lib/poids";
-import { plumeAPeur, plumeDit, plumeParleSeule, plumePeutProposer } from "@/lib/plume";
+import { plumeAPeur, plumeDit, plumeGeste, plumeParleSeule, plumePeutProposer } from "@/lib/plume";
 import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
 
@@ -10,12 +10,22 @@ import { voixPossible } from "@/components/voix";
  * Ce que Plume pense de cet animal, ou rien : elle ne parle pas à chaque fiche.
  * Son émerveillement reste discret : une petite phrase douce, jamais de cris.
  */
+/** Le geste qui va avec : chaque situation a le sien. */
+export function gesteDePlume(e: Espece): string | null {
+  if (e.disparue || e.statut === "Éteint") return "triste";
+  if (e.latin === "Canis familiaris") return "bravo";
+  if (e.ordre === "Chiroptera") return "coucou";
+  return null;
+}
+
 export function avisDePlume(e: Espece): string | null {
   // Sérieuse : les espèces disparues ou menacées.
   if (e.disparue || e.statut === "Éteint") return "Cette espèce a disparu. On la connaît grâce aux os, aux dessins et aux livres.";
   if (e.statut === "Éteint à l'état sauvage") return "Il n'en reste plus dans la nature. Ils vivent seulement là où des humains s'en occupent.";
   if (e.statut === "En danger critique") return "Il en reste très peu dans la nature. Bien le connaître aide à le protéger.";
   if (e.statut === "En danger" || e.statut === "Vulnérable") return "Celui-ci est menacé. Bien le connaître aide à le protéger.";
+  // Les chauves-souris sortent la nuit, comme les chouettes.
+  if (e.ordre === "Chiroptera" && Math.random() < 0.5) return "Elles sortent la nuit… comme moi !";
   // Ses préférés : les chiens, comme Leonie.
   if (e.latin === "Canis familiaris") return "Un chien… mes préférés. Comme toi, Leonie.";
   // Émerveillée, mais tout bas : des chiffres vrais, tirés de la fiche, et pas souvent.
@@ -52,6 +62,8 @@ export function plumeRegarde(e: Espece) {
     const avis = avisDePlume(e);
     if (!avis) return;
     plumeDit(avis, 4000);
+    const geste = gesteDePlume(e);
+    if (geste) plumeGeste(geste);
     if (plumeParleSeule() && voixPossible()) dire(avis);
   }, 1200);
 }

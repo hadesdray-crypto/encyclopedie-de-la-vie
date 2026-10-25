@@ -21,6 +21,7 @@ import {
   plumePropose,
   presentationFaite,
   reglesEnCours,
+  plumeDit,
   usePlume,
 } from "@/lib/plume";
 import { dire, taire, useParle } from "@/lib/parole";
@@ -76,12 +77,15 @@ function limiterBas(bas: number) {
 }
 
 export function Plume({ chemin, params }: { chemin: string; params: URLSearchParams }) {
-  const { ouvert, contenu, reaction, proposition, presence, coucou, peur } = usePlume();
+  const { ouvert, contenu, reaction, proposition, presence, coucou, peur, geste } = usePlume();
   const parle = useParle();
   const [pos, setPos] = useState(lirePosition);
   const [glisse, setGlisse] = useState<{ x: number; y: number } | null>(null);
   const [anim, setAnim] = useState<AnimPlume>("rien");
   const depart = useRef<{ x: number; y: number; t: number; long: number; bouge: boolean } | null>(null);
+  // Les derniers mouvements du doigt : pour savoir si on a lancé Plume (et à quelle vitesse).
+  const traces = useRef<{ x: number; y: number; t: number }[]>([]);
+  const [vol, setVol] = useState<{ x: number; y: number; r: number } | null>(null);
   const premier = useRef(true);
   const explicationPage = explicationPour(chemin, params);
 
@@ -161,6 +165,14 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     return () => window.clearTimeout(t);
   }, [peur]);
 
+  // Un geste devant un animal (joie pour un chien, tristesse pour une espèce disparue…).
+  useEffect(() => {
+    if (!geste.n || presence === "discrete" || presence === "repos") return;
+    setAnim(geste.anim as AnimPlume);
+    const t = window.setTimeout(() => setAnim("rien"), 2800);
+    return () => window.clearTimeout(t);
+  }, [geste.n]);
+
   // Petit coucou de l'aile : quand elle s'ouvre, et rarement de temps en temps.
   useEffect(() => {
     if (!coucou) return;
@@ -206,7 +218,68 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       d.bouge = true;
       window.clearTimeout(d.long);
     }
-    if (d.bouge) setGlisse({ x: e.clientX, y: e.clientY });
+    if (d.bouge) {
+      setGlisse({ x: e.clientX, y: e.clientY });
+      traces.current = [...traces.current.slice(-5), { x: e.clientX, y: e.clientY, t: performance.now() }];
+    }
+  }
+
+  /** Plume est lancée : chaque caractère réagit à sa façon. */
+  function lancer(x: number, y: number, vx: number, vy: number) {
+    const sorte = presence === "presente" ? "vole" : presence === "passionnee" ? "looping" : "tombe";
+    const sol = window.innerHeight - TAILLE - 86;
+    const largeur = window.innerWidth - TAILLE;
+    let px = x - TAILLE / 2, py = y - TAILLE / 2, r = 0;
+    let t0 = performance.now(), debut = t0;
+    setGlisse(null);
+    setAnim(sorte === "tombe" ? "rien" : "vole");
+    const maison = lirePosition();
+    const cible = { x: maison.cote === "gauche" ? 10 : window.innerWidth - TAILLE - 10, y: window.innerHeight - maison.bas - TAILLE };
+    const fin = (p: Position, apres: AnimPlume, phrase?: string) => {
+      setVol(null);
+      setPos(p);
+      garderPosition(p);
+      setAnim(apres);
+      if (phrase && presence !== "repos") plumeDit(phrase, 3500);
+      window.setTimeout(() => setAnim("rien"), 2600);
+    };
+    const pas = (t: number) => {
+      const dt = Math.min(32, t - t0) / 16;
+      t0 = t;
+      if (sorte === "tombe") {
+        vy += 0.9 * dt;
+        px += vx * dt;
+        py += vy * dt;
+        r += vx * 1.5 * dt;
+        if (px < 0 || px > largeur) { vx = -vx * 0.6; px = Math.max(0, Math.min(largeur, px)); }
+        if (py < 0) { py = 0; vy = -vy * 0.5; }
+        if (py >= sol) {
+          py = sol;
+          if (Math.abs(vy) > 4) { vy = -vy * 0.4; vx *= 0.7; navigator.vibrate?.(10); }
+          else {
+            const p: Position = { cote: px + TAILLE / 2 < window.innerWidth / 2 ? "gauche" : "droite", bas: limiterBas(window.innerHeight - sol - TAILLE) };
+            if (presence === "discrete") fin(p, "triste", "Oh… doucement, s'il te plaît.");
+            else if (presence === "etudiante") fin(p, "etourdie", "Aïe ! Tout ce qui tombe va de plus en plus vite : c'est la gravité.");
+            else fin(p, "rien");
+            return;
+          }
+        }
+      } else {
+        // Elle reprend son vol et revient à sa place, en battant des ailes (la passionnée fait un looping).
+        const k = Math.min(1, (t - debut) / 1300);
+        const e = 1 - Math.pow(1 - k, 3);
+        px = px + (cible.x - px) * e * 0.12 + vx * (1 - k) * 0.6;
+        py = py + (cible.y - py) * e * 0.12 + vy * (1 - k) * 0.6 - Math.sin(k * Math.PI) * 2;
+        r = sorte === "looping" ? k * 360 : Math.sin(k * Math.PI * 4) * 12;
+        if (k >= 1) {
+          fin(maison, sorte === "looping" ? "bravo" : "coucou", sorte === "looping" ? "Wouhouuu ! Encore ! Encore !" : "Je vole ! Les chouettes volent sans bruit, grâce à leurs plumes toutes douces.");
+          return;
+        }
+      }
+      setVol({ x: px, y: py, r });
+      requestAnimationFrame(pas);
+    };
+    requestAnimationFrame(pas);
   }
 
   function lacher(e: PE<HTMLButtonElement>) {
@@ -215,6 +288,17 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     if (!d) return;
     window.clearTimeout(d.long);
     if (d.bouge) {
+      const tr = traces.current;
+      traces.current = [];
+      if (tr.length >= 2) {
+        const a = tr[0], b = tr[tr.length - 1];
+        const dt = Math.max(1, b.t - a.t);
+        const vx = ((b.x - a.x) / dt) * 16, vy = ((b.y - a.y) / dt) * 16;
+        if (Math.hypot(vx, vy) > 14 && performance.now() - b.t < 120) {
+          lancer(b.x, b.y, Math.max(-40, Math.min(40, vx)), Math.max(-40, Math.min(40, vy)));
+          return;
+        }
+      }
       const p: Position = { cote: e.clientX < window.innerWidth / 2 ? "gauche" : "droite", bas: limiterBas(window.innerHeight - e.clientY - TAILLE / 2) };
       setPos(p);
       garderPosition(p);
@@ -233,14 +317,16 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
   }
 
   const gauche = pos.cote === "gauche";
-  const style: CSSProperties = glisse
+  const style: CSSProperties = vol
+    ? { left: vol.x, top: vol.y, width: TAILLE, height: TAILLE }
+    : glisse
     ? { left: glisse.x - TAILLE / 2, top: glisse.y - TAILLE / 2, width: TAILLE, height: TAILLE }
     : { [gauche ? "left" : "right"]: 10, bottom: `calc(env(safe-area-inset-bottom, 0px) + ${pos.bas}px)`, width: TAILLE, height: TAILLE };
   const cote = gauche ? "left-full ml-1.5 rounded-bl-sm" : "right-full mr-1.5 rounded-br-sm";
 
   return (
     <>
-      <div className={`plume-racine fixed z-50 ${glisse ? "" : "transition-[left,right,bottom] duration-300"}`} style={style}>
+      <div className={`plume-racine fixed z-50 ${glisse || vol ? "" : "transition-[left,right,bottom] duration-300"}`} style={style}>
         <button
           type="button"
           onPointerDown={appui}
@@ -264,8 +350,8 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
               <span className="etincelle etincelle-3 pointer-events-none absolute -top-2 left-1/2 text-[10px] text-[#ff9fcf]">✦</span>
             </>
           ) : null}
-          <span className="block size-full">
-            <PlumeDessin anim={anim === "peur" ? "peur" : parle ? "parle" : ouvert ? "ailes" : anim} caractere={CARACTERE[presence] ?? 0} lit={parle && anim !== "peur"} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
+          <span className="block size-full" style={vol ? { transform: `rotate(${vol.r}deg)` } : undefined}>
+            <PlumeDessin anim={["peur", "vole", "triste", "etourdie", "bravo"].includes(anim) ? anim : parle ? "parle" : ouvert ? "ailes" : anim} caractere={CARACTERE[presence] ?? 0} lit={parle && !["peur", "vole", "triste", "etourdie"].includes(anim)} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
           </span>
         </button>
 
@@ -286,14 +372,14 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
         ) : null}
 
         {/* Une petite phrase, quelques secondes. */}
-        {reaction && !ouvert && !parle && !proposition ? (
+        {reaction && !ouvert && !parle && !proposition && !vol ? (
           <span role="status" className={`arrivee pointer-events-none absolute bottom-3 w-max max-w-[min(15rem,70vw)] rounded-2xl bg-[#fff8ea] px-3 py-2 text-sm font-extrabold leading-snug text-[#4a2a8a] shadow-[0_6px_18px_rgba(0,0,0,.4)] ${cote}`}>
             {reaction}
           </span>
         ) : null}
 
         {/* Une proposition d'aide : on peut dire oui, ou l'ignorer. */}
-        {proposition && !ouvert && !parle ? (
+        {proposition && !ouvert && !parle && !vol ? (
           <div role="status" className={`arrivee absolute bottom-2 w-max max-w-[min(15rem,70vw)] rounded-2xl bg-[#fff8ea] px-3 py-2 text-[#4a2a8a] shadow-[0_6px_18px_rgba(0,0,0,.45)] ${cote}`}>
             <p className="text-sm font-extrabold leading-snug">{proposition.texte}</p>
             <div className="mt-1.5 flex gap-1.5">
