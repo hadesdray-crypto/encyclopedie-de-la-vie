@@ -1,0 +1,38 @@
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/sons.py", line 52, in <module>
+    ANALYSEUR = Analyzer()
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/birdnetlib/analyzer.py", line 122, in __init__
+    self.load_model()
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/birdnetlib/analyzer.py", line 386, in load_model
+    self.interpreter = tflite.Interpreter(
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/tflite_runtime/interpreter.py", line 464, in __init__
+    self._interpreter = _interpreter_wrapper.CreateWrapperFromFile(
+AttributeError: _ARRAY_API not found
+Labels loaded.
+load model True
+ImportError: numpy.core.multiarray failed to import
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/sons.py", line 52, in <module>
+    ANALYSEUR = Analyzer()
+                ^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/birdnetlib/analyzer.py", line 122, in __init__
+    self.load_model()
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/birdnetlib/analyzer.py", line 386, in load_model
+    self.interpreter = tflite.Interpreter(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/tflite_runtime/interpreter.py", line 464, in __init__
+    self._interpreter = _interpreter_wrapper.CreateWrapperFromFile(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SystemError: <built-in method CreateWrapperFromFile of PyCapsule object at 0x7f4857cebb70> returned a result with an exception set
