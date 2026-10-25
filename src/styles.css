@@ -667,3 +667,8 @@ body[data-dex][data-jeu] .dex-bas, body[data-dex][data-jeu] .dex-haut, body[data
 .plume-fachee .pl-tete { transform-origin: 100px 190px; transform-box: view-box; animation: tete-non 0.5s ease-in-out infinite; }
 @keyframes tete-non { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
 @media (prefers-reduced-motion: reduce) { .plume-fachee .pl-vapeur, .plume-fachee .pl-tete { animation: none !important; } }
+
+/* Grands voyageurs : le trajet se dessine petit à petit. */
+.trajet { stroke-dasharray: 1; stroke-dashoffset: 1; animation: trace 2.6s ease-out forwards; }
+@keyframes trace { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .trajet { animation: none; stroke-dashoffset: 0; } }

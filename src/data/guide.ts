@@ -51,6 +51,18 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     ],
   },
   {
+    id: "voyageurs",
+    titre: "Les grands voyageurs",
+    test: (c) => c.startsWith("/voyageurs"),
+    etapes: [
+      "Chaque trait est le vrai voyage d'un animal, suivi par GPS par des scientifiques.",
+      "Bleu : les animaux de la mer. Vert : les herbivores. Doré : les oiseaux. Rouge : les prédateurs. Touche une couleur pour la cacher ou la montrer.",
+      "Touche un trait pour savoir qui a voyagé, combien de kilomètres, et quand.",
+      "Un doigt déplace la carte. Deux doigts : écarte-les pour zoomer, tourne-les pour faire tourner la carte. La flèche ronde remet tout comme au début.",
+      "La loupe, en haut, cherche un animal.",
+    ],
+  },
+  {
     id: "animaux",
     titre: "Les animaux",
     test: (c) => c.startsWith("/animaux"),
