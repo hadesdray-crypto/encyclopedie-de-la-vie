@@ -132,7 +132,7 @@ export function AtelierPage({ params }: { params: URLSearchParams }) {
 
       {onglet === "look" ? (
         <div className="mt-3">
-          <Cabine look={c.look} setLook={(l) => setC((x) => ({ ...x, look: l }))} caractere={NUM[c.caractere]} nouveau={!existe} />
+          <Cabine look={c.look} setLook={(l) => setC((x) => ({ ...x, look: l }))} caractere={NUM[c.caractere]} nouveau={!existe} nom={c.nom} createur={c.createur} />
         </div>
       ) : onglet === "caractere" ? (
         <div className="mt-3 space-y-2">

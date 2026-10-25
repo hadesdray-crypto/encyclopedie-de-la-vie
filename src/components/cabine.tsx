@@ -27,7 +27,24 @@ const ecrire = (k: string, v: string) => { try { localStorage.setItem(k, v); } c
 /** Le peignoir blanc de l'arrivée. */
 const PEIGNOIR = (l: Look): Look => ({ ...l, haut: "peignoir", bas: "aucun", chapeau: "aucun", lunettes: "aucune", chaussures: "aucune", objet: "aucun", couleurs: {} });
 
-export function Cabine({ look, setLook, caractere, nouveau }: { look: Look; setLook: (l: Look) => void; caractere: Caractere; nouveau: boolean }) {
+// Les tenues toutes faites : un toucher habille tout, puis on change ce qu'on veut.
+const TOUTES_FAITES: { nom: string; icone: string; t: Omit<Tenue, "couleurs"> }[] = [
+  { nom: "Docteur", icone: "🩺", t: { haut: "medecin", bas: "pantalon", chapeau: "aucun", lunettes: "rondes", chaussures: "baskets", objet: "piqure" } },
+  { nom: "Danseuse", icone: "🩰", t: { haut: "danseuse", bas: "tutu", chapeau: "diademe", lunettes: "aucune", chaussures: "pointes", objet: "baguette" } },
+  { nom: "Pompier", icone: "🚒", t: { haut: "pompier", bas: "pantalon", chapeau: "pompier", lunettes: "aucune", chaussures: "bottespompier", objet: "pelle" } },
+  { nom: "Footballeur", icone: "⚽", t: { haut: "foot", bas: "shortfoot", chapeau: "casquette", lunettes: "aucune", chaussures: "crampons", objet: "ballon" } },
+  { nom: "Princesse", icone: "👑", t: { haut: "princesse", bas: "longue", chapeau: "diademe", lunettes: "coeurs", chaussures: "ballerines", objet: "baguette" } },
+  { nom: "Pirate", icone: "🏴‍☠️", t: { haut: "chemise", bas: "pantalon", chapeau: "pirate", lunettes: "aucune", chaussures: "bottescowboy", objet: "epee" } },
+  { nom: "Jardinier", icone: "🌻", t: { haut: "tshirt", bas: "salopette", chapeau: "paille", lunettes: "soleil", chaussures: "pluie", objet: "rateau" } },
+  { nom: "Chevalier", icone: "🛡️", t: { haut: "chevalier", bas: "pantalon", chapeau: "chevalier", lunettes: "aucune", chaussures: "bottescowboy", objet: "epee" } },
+  { nom: "Rockeur", icone: "🎸", t: { haut: "sweat", bas: "jean", chapeau: "aucun", lunettes: "soleil", chaussures: "baskets", objet: "guitare" } },
+  { nom: "Cuisinier", icone: "👨‍🍳", t: { haut: "cuisine", bas: "pantalon", chapeau: "toque", lunettes: "aucune", chaussures: "vernis", objet: "livre" } },
+];
+// Le personnage réagit à ce qu'on lui donne.
+const REACTION: Record<Cle, AnimPlume> = { haut: "bravo", bas: "bravo", chapeau: "coucou", lunettes: "parle", chaussures: "jeu", objet: "coucou" };
+const auHasard = <T,>(l: T[]) => l[Math.floor(Math.random() * l.length)];
+
+export function Cabine({ look, setLook, caractere, nouveau, nom = "", createur = "" }: { look: Look; setLook: (l: Look) => void; caractere: Caractere; nouveau: boolean; nom?: string; createur?: string }) {
   const direct = lire(CLE_DIRECT) === "oui";
   const [rayon, setRayon] = useState<(typeof RAYONS)[number]["cle"]>("haut");
   // Les étapes : il arrive, il entre, la cabine se ferme ; on choisit ; on ouvre.
@@ -38,6 +55,8 @@ export function Cabine({ look, setLook, caractere, nouveau }: { look: Look; setL
   const [vole, setVole] = useState<{ cle: Cle; id: string; n: number } | null>(null);
   const [zoom, setZoom] = useState<"corps" | "tete">("corps");
   const [anim, setAnim] = useState<AnimPlume>("rien");
+  const [flash, setFlash] = useState(0); // la photo souvenir
+  const [photo, setPhoto] = useState(false);
   const n = useRef(0);
 
   // L'arrivée : il marche jusqu'à la cabine, entre, et les volets se ferment.
@@ -56,12 +75,37 @@ export function Cabine({ look, setLook, caractere, nouveau }: { look: Look; setL
       setClin(true);
       sons.retourner();
       window.setTimeout(() => setVu(nouveauLook), 380);
-      window.setTimeout(() => { setClin(false); setAnim("bravo"); window.setTimeout(() => setAnim("rien"), 1200); }, 760);
+      window.setTimeout(() => { setClin(false); setAnim(REACTION[cle]); sons.clic(); window.setTimeout(() => setAnim("rien"), 1400); }, 760);
     } else {
       // Surprise : on ne voit rien, mais la cabine bouge et le vêtement s'envole dedans.
       setTremble((x) => x + 1);
       setVole({ cle, id, n: ++n.current });
+      sons.trembler();
     }
+  }
+  /** Habiller d'un coup : une tenue toute faite, ou une tenue au hasard (le dé). */
+  function habiller(t: Omit<Tenue, "couleurs">, couleurs: Tenue["couleurs"] = {}) {
+    const l = { ...look, ...t, couleurs } as Look;
+    setLook(l);
+    if (etape === "ouvert") {
+      setClin(true);
+      sons.retourner();
+      window.setTimeout(() => setVu(l), 380);
+      window.setTimeout(() => { setClin(false); setAnim("bravo"); sons.brillant(); window.setTimeout(() => setAnim("rien"), 1600); }, 820);
+    } else {
+      setTremble((x) => x + 1);
+      setVole({ cle: "haut", id: t.haut, n: ++n.current });
+      sons.trembler();
+    }
+  }
+  function de() {
+    const tir = (l: Piece[]) => auHasard(l.filter((x) => x.id !== "aucun" && x.id !== "aucune")).id;
+    const coul = () => (Math.random() < 0.5 ? auHasard(TEINTES).id : undefined);
+    habiller(
+      { haut: tir(HAUTS.filter((x) => x.id !== "peignoir")), bas: Math.random() < 0.8 ? tir(BAS) : "aucun", chapeau: tir(CHAPEAUX2), lunettes: Math.random() < 0.5 ? tir(LUNETTES) : "aucune", chaussures: tir(CHAUSSURES), objet: tir(OBJETS) },
+      { haut: coul(), bas: coul(), chapeau: coul(), chaussures: coul(), objet: coul() },
+    );
+    plumeDit("🎲 Une tenue au hasard !", 2000);
   }
   function couleur(c: keyof Tenue["couleurs"], v: string | undefined) {
     const l = { ...look, couleurs: { ...look.couleurs, [c]: v } };
@@ -75,8 +119,15 @@ export function Cabine({ look, setLook, caractere, nouveau }: { look: Look; setL
     setVu((v) => ({ ...v, ...l }));
   }
   function ouvrir() {
+    // Roulement de tambour… puis les volets s'ouvrent, et clic : la photo souvenir !
+    sons.trembler();
+    window.setTimeout(() => sons.trembler(), 250);
+    window.setTimeout(reveler, 600);
+  }
+  function reveler() {
     setVu(look);
     setEtape("ouvert");
+    window.setTimeout(() => { setFlash((x) => x + 1); setPhoto(true); sons.clic(); }, 1300);
     sons.victoire();
     setAnim("bravo");
     window.setTimeout(() => setAnim("rien"), 1800);
@@ -121,6 +172,7 @@ export function Cabine({ look, setLook, caractere, nouveau }: { look: Look; setL
           </div>
         ) : null}
         {etape === "ouvert" && !clin ? <Confettis /> : null}
+        {flash ? <div key={`f${flash}`} className="flash-photo pointer-events-none absolute inset-0 bg-white" /> : null}
         {etape === "ferme" ? <p className="absolute inset-x-0 top-2 text-center text-xs font-extrabold text-white/85 [text-shadow:0_1px_3px_#000]">Il se change… Choisis ses vêtements en dessous !</p> : null}
       </div>
 
@@ -129,6 +181,28 @@ export function Cabine({ look, setLook, caractere, nouveau }: { look: Look; setL
       ) : etape === "ouvert" && !direct ? (
         <button type="button" onClick={() => { setEtape("ferme"); sons.retourner(); }} className="verre-jeu mx-auto mt-3 block w-full max-w-sm rounded-full py-2.5 text-sm font-extrabold text-white">Refermer pour une nouvelle surprise</button>
       ) : null}
+
+      {/* La photo souvenir, après la surprise */}
+      {photo && etape === "ouvert" ? (
+        <div className="polaroid apparait mx-auto mt-3 w-52 rotate-[-3deg] rounded-md bg-white p-2 pb-3 text-center text-[#2a1c14] shadow-[0_10px_20px_rgba(0,0,0,.5)]">
+          <div className="grid h-40 place-items-center rounded bg-[radial-gradient(circle_at_50%_35%,#fff6d6,#f0d8a8)]"><PlumeDessin caractere={caractere} look={vu} className="size-36" /></div>
+          <p className="mt-1.5 font-display text-lg leading-tight">{nom.trim() || "Mon personnage"}</p>
+          <p className="text-[11px] font-bold opacity-70">{createur.trim() ? `créé par ${createur.trim()}` : "personnage bonus"} · {new Date().toLocaleDateString("fr-FR")}</p>
+        </div>
+      ) : null}
+
+      {/* Le dé et les tenues toutes faites */}
+      <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
+        <button type="button" onClick={de} className="flex w-[4.6rem] shrink-0 flex-col items-center rounded-2xl bg-gradient-to-b from-[#8a5cf0] to-[#5a2fc0] py-2 text-[11px] font-extrabold text-white shadow-[0_0_16px_rgba(160,110,255,.5)]">
+          <span className="de-anim text-3xl">🎲</span>Au hasard
+        </button>
+        {TOUTES_FAITES.map((f) => (
+          <button key={f.nom} type="button" onClick={() => habiller(f.t)} className="tuile-vetement flex w-[4.6rem] shrink-0 flex-col items-center rounded-2xl py-1.5 text-[11px] font-extrabold">
+            <PlumeDessin caractere={caractere} look={{ ...look, ...f.t, couleurs: {} } as Look} className="size-12" />
+            {f.icone} {f.nom}
+          </button>
+        ))}
+      </div>
 
       {/* Les rayons du vestiaire : une étagère en bois avec une icône par rayon */}
       <div className="etagere mt-4 grid grid-cols-7 gap-0.5 rounded-[1.4rem] px-1.5 py-2">
