@@ -5,7 +5,7 @@
    (muséums, phonothèques) — pas les observations d'amateurs (iNaturalist, observation.org…).
 2. Chaque son est réduit à ses 15 secondes les plus fortes, puis analysé par BirdNET :
    si BirdNET entend un oiseau, un insecte, une grenouille, une voix humaine ou un moteur, le son est rejeté.
-3. Volume égal pour tous. Un seul son par espèce. Jamais deux espèces avec le même fichier.
+3. Le vent et le bruit de fond sont atténués (filtre sous 80 Hz + débruitage), puis volume égal pour tous. Un seul son par espèce. Jamais deux espèces avec le même fichier.
 Les cris d'iNaturalist déjà présents passent aussi par BirdNET : ceux qui sont rejetés sont retirés.
 Tout est écrit dans scripts/donnees/sons-journal.txt et src/data/sons-rapport.json.
 """
@@ -95,7 +95,7 @@ def preparer(brut, sortie_mp3, dossier):
     n = min(15, len(rms))
     debut = int(np.argmax(np.convolve(rms, np.ones(n), "valid"))) if len(rms) > n else 0
     morceau = Path(dossier) / "morceau.wav"
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(debut), "-t", str(n), "-i", str(wav), "-af", "loudnorm=I=-18:TP=-2:LRA=11", "-ar", "48000", str(morceau)], check=True)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(debut), "-t", str(n), "-i", str(wav), "-af", "highpass=f=80,afftdn=nr=12:nf=-30,loudnorm=I=-18:TP=-2:LRA=11", "-ar", "48000", str(morceau)], check=True)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(morceau), "-ac", "1", "-ar", "44100", "-b:a", "64k", str(sortie_mp3)], check=True)
     return morceau
 
