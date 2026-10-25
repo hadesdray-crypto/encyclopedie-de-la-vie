@@ -1,0 +1,27 @@
+name: Grands voyageurs
+
+on:
+  push:
+    branches: [voyageurs]
+    paths: [scripts/donnees/voyageurs.py]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  voyageurs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: set -o pipefail; python scripts/donnees/voyageurs.py 2>&1 | tee scripts/donnees/voyageurs-journal.txt
+      - if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
+          git add -A src/data/voyageurs.json scripts/donnees/voyageurs-journal.txt
+          git diff --cached --quiet || (git commit -q -m "Données : grands voyageurs" && git pull -q --rebase origin voyageurs && git push -q origin HEAD:voyageurs)
