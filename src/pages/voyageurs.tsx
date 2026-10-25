@@ -90,14 +90,42 @@ export function VoyageursPage() {
     return () => window.clearTimeout(t);
   }, []);
 
-  /** Coordonnées du doigt dans l'image de la carte (unités de la carte, 360 × 180). */
-  function local(x: number, y: number) {
-    const r = boite.current!.getBoundingClientRect();
-    return { x: ((x - r.left) / r.width) * 360, y: ((y - r.top) / r.height) * 180 };
+  // La taille de la carte à l'écran : elle prend presque toute la hauteur (comme une vraie carte).
+  const [haut, setHaut] = useState(180);
+  useEffect(() => {
+    const el = boite.current;
+    if (!el) return;
+    const maj = () => {
+      const r = el.getBoundingClientRect();
+      if (r.width) setHaut((360 * r.height) / r.width);
+    };
+    maj();
+    const ro = new ResizeObserver(maj);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  const sMin = Math.max(1, haut / 180);
+  const departVue = (): Vue => ({ s: sMin, r: 0, x: 180 - 180 * sMin, y: 90 - 90 * sMin });
+  const premiere = useRef(true);
+  useEffect(() => {
+    if (premiere.current && haut !== 180) {
+      premiere.current = false;
+      setVue(departVue());
+    }
+  }, [haut]);
+
+  /** Le doigt, en unités de la carte, sans la rotation. */
+  function local(x: number, y: number, r = vue.r) {
+    const b = boite.current!.getBoundingClientRect();
+    const px = ((x - b.left) / b.width) * 360, py = 90 - haut / 2 + ((y - b.top) / b.height) * haut;
+    const t = (-r * Math.PI) / 180, dx = px - 180, dy = py - 90;
+    return { x: 180 + dx * Math.cos(t) - dy * Math.sin(t), y: 90 + dx * Math.sin(t) + dy * Math.cos(t), ex: x, ey: y };
   }
+  const vitesse = useRef({ x: 0, y: 0, t: 0 });
   function appui(e: PE<SVGSVGElement>) {
+    cancelAnimationFrame(animation.current);
     e.currentTarget.setPointerCapture(e.pointerId);
-    doigts.current.set(e.pointerId, local(e.clientX, e.clientY));
+    doigts.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     bouge.current = 0;
     depart();
   }
@@ -107,36 +135,65 @@ export function VoyageursPage() {
     const cx = p.reduce((s, a) => s + a.x, 0) / p.length, cy = p.reduce((s, a) => s + a.y, 0) / p.length;
     const d = p.length > 1 ? Math.hypot(p[1].x - p[0].x, p[1].y - p[0].y) : 0;
     const a = p.length > 1 ? Math.atan2(p[1].y - p[0].y, p[1].x - p[0].x) : 0;
-    avant.current = { vue, d, a, cx, cy };
+    const u = local(cx, cy);
+    // Le point de la carte qui est sous les doigts : il doit y rester.
+    avant.current = { vue, d, a, cx: (u.x - vue.x) / vue.s, cy: (u.y - vue.y) / vue.s };
   }
   function deplace(e: PE<SVGSVGElement>) {
     if (!doigts.current.has(e.pointerId) || !avant.current) return;
-    doigts.current.set(e.pointerId, local(e.clientX, e.clientY));
+    const ancien = doigts.current.get(e.pointerId)!;
+    doigts.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     const p = [...doigts.current.values()];
     const b = avant.current;
     const cx = p.reduce((s, a) => s + a.x, 0) / p.length, cy = p.reduce((s, a) => s + a.y, 0) / p.length;
     bouge.current += 1;
+    let s = b.vue.s, r = b.vue.r;
     if (p.length > 1 && b.d > 0) {
       const d = Math.hypot(p[1].x - p[0].x, p[1].y - p[0].y);
       const a = Math.atan2(p[1].y - p[0].y, p[1].x - p[0].x);
-      const s = Math.max(1, Math.min(200, (b.vue.s * d) / b.d));
-      setVue({ x: b.vue.x + (cx - b.cx), y: b.vue.y + (cy - b.cy), s, r: b.vue.r + ((a - b.a) * 180) / Math.PI });
-    } else setVue({ ...b.vue, x: b.vue.x + (cx - b.cx), y: b.vue.y + (cy - b.cy) });
+      s = Math.max(sMin, Math.min(300, (b.vue.s * d) / b.d));
+      r = b.vue.r + ((a - b.a) * 180) / Math.PI;
+    } else {
+      const t = performance.now(), dt = Math.max(1, t - vitesse.current.t);
+      vitesse.current = { x: (e.clientX - ancien.x) / dt, y: (e.clientY - ancien.y) / dt, t };
+    }
+    const u = local(cx, cy, r);
+    setVue({ s, r, x: u.x - b.cx * s, y: u.y - b.cy * s });
   }
   function lache(e: PE<SVGSVGElement>) {
+    const seul = doigts.current.size === 1;
     doigts.current.delete(e.pointerId);
     depart();
+    // Elle continue de glisser un peu, comme une vraie carte.
+    const v = vitesse.current;
+    if (seul && performance.now() - v.t < 80 && Math.hypot(v.x, v.y) > 0.3) {
+      const b = boite.current!.getBoundingClientRect();
+      let vx = (v.x * 360) / b.width, vy = (v.y * haut) / b.height;
+      let t0 = performance.now();
+      const pas = (t: number) => {
+        const dt = t - t0; t0 = t;
+        const k = (vue.r * Math.PI) / 180;
+        setVue((w) => ({ ...w, x: w.x + (vx * Math.cos(-k) - vy * Math.sin(-k)) * dt, y: w.y + (vx * Math.sin(-k) + vy * Math.cos(-k)) * dt }));
+        vx *= 0.92; vy *= 0.92;
+        if (Math.hypot(vx, vy) > 0.002) animation.current = requestAnimationFrame(pas);
+      };
+      animation.current = requestAnimationFrame(pas);
+    }
+    vitesse.current = { x: 0, y: 0, t: 0 };
   }
+  /** Zoom autour du centre de l'écran. */
   function zoom(f: number) {
-    setVue((v) => ({ ...v, s: Math.max(1, Math.min(200, v.s * f)) }));
+    const s = Math.max(sMin, Math.min(300, vue.s * f));
+    const mx = (180 - vue.x) / vue.s, my = (90 - vue.y) / vue.s;
+    allerVers({ ...vue, s, x: 180 - mx * s, y: 90 - my * s }, 350);
   }
 
   /** Glisse doucement vers une vue. */
-  function allerVers(cible: Vue) {
+  function allerVers(cible: Vue, duree = 900) {
     cancelAnimationFrame(animation.current);
     const de = vue, t0 = performance.now();
     const pas = (t: number) => {
-      const k = Math.min(1, (t - t0) / 900), e = 1 - Math.pow(1 - k, 3);
+      const k = Math.min(1, (t - t0) / duree), e = 1 - Math.pow(1 - k, 3);
       setVue({ x: de.x + (cible.x - de.x) * e, y: de.y + (cible.y - de.y) * e, s: de.s + (cible.s - de.s) * e, r: de.r + (cible.r - de.r) * e });
       if (k < 1) animation.current = requestAnimationFrame(pas);
     };
@@ -152,7 +209,7 @@ export function VoyageursPage() {
     const pts = VOYAGEURS[i].points;
     const xs = pts.map((p) => p[1] + 180), ys = pts.map((p) => 90 - p[0]);
     const w = Math.max(...xs) - Math.min(...xs) + 0.5, h = Math.max(...ys) - Math.min(...ys) + 0.5;
-    const s = Math.max(1, Math.min(150, Math.min(360 / w, 180 / h) * 0.8));
+    const s = Math.max(sMin, Math.min(150, Math.min(360 / w, haut / h) * 0.8));
     const cx = (Math.max(...xs) + Math.min(...xs)) / 2, cy = (Math.max(...ys) + Math.min(...ys)) / 2;
     allerVers({ s, r: 0, x: 180 - cx * s, y: 90 - cy * s });
   }
@@ -197,18 +254,18 @@ export function VoyageursPage() {
       <div className="relative mt-2 overflow-hidden rounded-3xl border-2 border-[#e8c98a]/60 bg-[#0b1230] shadow-[0_10px_22px_rgba(0,0,0,.45)]">
         <svg
           ref={boite}
-          viewBox="0 0 360 180"
-          className="block aspect-[2/1] w-full touch-none select-none"
+          viewBox={`0 ${90 - haut / 2} 360 ${haut}`}
+          className="block h-[62vh] min-h-[340px] w-full touch-none select-none"
           onPointerDown={appui}
           onPointerMove={deplace}
           onPointerUp={lache}
           onPointerCancel={lache}
-          onWheel={(e) => zoom(e.deltaY < 0 ? 1.2 : 1 / 1.2)}
+          onWheel={(e) => zoom(e.deltaY < 0 ? 1.25 : 1 / 1.25)}
           role="img"
           aria-label="Carte du monde des trajets"
         >
           <g transform={transformation}>
-            <rect x="-360" y="-180" width="1080" height="540" fill="#0b1230" />
+            <rect x="-720" y="-540" width="1800" height="1260" fill="#0b1230" />
             {Object.entries(PAYS).map(([c, d]) => <path key={c} d={d} fill="#1e2b55" stroke="#0b1230" strokeWidth={0.3 / vue.s} />)}
             {visibles.map((t) =>
               lignes[t.i].map((pts, k) => (
@@ -246,7 +303,7 @@ export function VoyageursPage() {
         <div className="absolute right-2 top-2 flex flex-col gap-1.5">
           <button type="button" aria-label="Zoomer" onClick={() => zoom(1.5)} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuPlus className="size-5" /></button>
           <button type="button" aria-label="Dézoomer" onClick={() => zoom(1 / 1.5)} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuMinus className="size-5" /></button>
-          <button type="button" aria-label="Revenir à toute la carte" onClick={() => { allerVers(DEPART); setChoisi(null); }} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuRotateCcw className="size-5" /></button>
+          <button type="button" aria-label="Revenir à toute la carte" onClick={() => { allerVers(departVue()); setChoisi(null); }} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuRotateCcw className="size-5" /></button>
         </div>
         {!VOYAGEURS.length ? <p className="absolute inset-x-0 bottom-3 text-center text-sm font-bold text-white/80">Les trajets arrivent : la recherche est en cours.</p> : null}
       </div>
