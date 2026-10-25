@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Explication } from "@/data/guide";
 import { Portrait } from "@/components/portrait";
 import { CarteVerso } from "@/components/carte-animal";
@@ -7,6 +7,9 @@ import { CARACS, PAQUETS_MEMORY, lireJoueurs, melanger, paquetBataille, type Car
 import { sons } from "@/lib/sons";
 import { gagnerPaquet } from "@/lib/recompenses";
 import { plumeDit } from "@/lib/plume";
+import { estPlume, lireForce, plumeEnJeu, plumeJoueuseDit, plumeMotGentil, plumeOuvrePartie } from "@/lib/plume-joueuse";
+import { groupeDeOrdre as groupeOrdre } from "@/data/catalogue";
+const groupeDeOrdreMime = (o: string) => groupeOrdre(o)?.nom;
 import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
 import { PAR_ID, type Espece } from "@/data/catalogue";
@@ -59,11 +62,14 @@ export function MemoryPlusieurs() {
   const [bloque, setBloque] = useState(false);
   const [note, setNote] = useState("");
 
-  useAnnonceTour(joueurs[tour], `${tour}-${partie ? 1 : 0}`, !!partie && joueurs.length > 1);
+  useAnnonceTour(joueurs[tour], `${tour}-${partie ? 1 : 0}-${trouvees.size}`, !!partie && joueurs.length > 1);
   const arreter = useCallback(() => setPartie(null), []);
+  // Ce que Plume a vu (case → animal). Selon sa force, elle l'oublie plus ou moins.
+  const memoirePlume = useRef(new Map<number, string>());
   useQuitterPartie(!!partie, arreter);
 
   function commencer() {
+    plumeOuvrePartie(joueurs);
     let source = PAQUETS_MEMORY.find((p) => p.id === paquet)!.cartes();
     let info = "";
     if (source.length < paires) {
@@ -78,13 +84,41 @@ export function MemoryPlusieurs() {
     setTour(0);
     setBloque(false);
     setNote(info);
+    memoirePlume.current = new Map();
   }
+
+  // Quand c'est à Plume : elle retourne deux cartes, en s'aidant de ce qu'elle a retenu.
+  useEffect(() => {
+    if (!partie || bloque || !estPlume(joueurs[tour])) return;
+    const cases = partie.cases;
+    if (trouvees.size === cases.length / 2) return;
+    const cachees = cases.map((_, i) => i).filter((i) => !trouvees.has(cases[i].c.id) && !ouvertes.includes(i));
+    if (!cachees.length) return;
+    const m = memoirePlume.current;
+    const t = window.setTimeout(() => {
+      if (ouvertes.length === 0) {
+        // Une paire déjà vue ? Elle commence par elle.
+        const vu = new Map<string, number[]>();
+        for (const i of cachees) { const id = m.get(i); if (id) vu.set(id, [...(vu.get(id) ?? []), i]); }
+        const paire = [...vu.values()].find((l) => l.length >= 2);
+        const inconnues = cachees.filter((i) => !m.has(i));
+        toucher(paire ? paire[0] : (inconnues.length ? inconnues : cachees)[Math.floor(Math.random() * (inconnues.length ? inconnues : cachees).length)], true);
+      } else {
+        const premiere = ouvertes[0], id = cases[premiere].c.id;
+        const connue = cachees.find((i) => m.get(i) === id);
+        const inconnues = cachees.filter((i) => !m.has(i));
+        const choix = connue ?? (inconnues.length ? inconnues : cachees)[Math.floor(Math.random() * (inconnues.length ? inconnues : cachees).length)];
+        toucher(choix, true);
+      }
+    }, ouvertes.length ? 900 : 1300);
+    return () => window.clearTimeout(t);
+  }, [tour, ouvertes, bloque, partie, trouvees]);
 
   if (!partie) {
     return (
       <>
         <div className="mt-3 flex justify-center"><BoutonRegles regles={REGLES_MEMORY} /></div>
-        <Preparation joueurs={joueurs} setJoueurs={setJoueurs} mode={mode} setMode={setMode} faceAFace={faceAFace} setFaceAFace={setFaceAFace} onJouer={commencer}>
+        <Preparation avecPlume joueurs={joueurs} setJoueurs={setJoueurs} mode={mode} setMode={setMode} faceAFace={faceAFace} setFaceAFace={setFaceAFace} onJouer={commencer}>
           <div>
             <p className="px-1 text-sm font-black text-[#f0d090]">Avec quelles cartes ?</p>
             <div className="mt-1.5 grid grid-cols-3 gap-1.5">
@@ -106,9 +140,12 @@ export function MemoryPlusieurs() {
   const fini = trouvees.size === cases.length / 2;
   const points = joueurs.map((_, i) => [...trouvees.values()].filter((v) => v === i).length);
 
-  function toucher(i: number) {
+  function toucher(i: number, parPlume = false) {
     if (bloque || fini || ouvertes.includes(i) || trouvees.has(cases[i].c.id)) return;
+    if (estPlume(joueurs[tour]) && !parPlume) return; // c'est Plume qui joue
     sons.retourner();
+    // Plume regarde chaque carte retournée ; elle la retient plus ou moins bien selon sa force.
+    if (Math.random() < [0, 0.4, 0.7, 0.95][lireForce()]) memoirePlume.current.set(i, cases[i].c.id);
     const suite = [...ouvertes, i];
     setOuvertes(suite);
     if (suite.length < 2) return;
@@ -118,17 +155,19 @@ export function MemoryPlusieurs() {
       setTrouvees(t);
       setOuvertes([]);
       window.setTimeout(() => sons.bonne(), 200);
+      if (estPlume(joueurs[tour])) plumeJoueuseDit("bien");
       if (t.size === cases.length / 2) {
         window.setTimeout(() => sons.victoire(), 400);
         window.setTimeout(() => gagnerPaquet("Mémory réussi"), 1500);
       }
     } else {
       setBloque(true);
+      if (estPlume(joueurs[tour])) plumeJoueuseDit("rate");
       window.setTimeout(() => {
         setOuvertes([]);
         setBloque(false);
         setTour((x) => (x + 1) % joueurs.length);
-      }, 1100);
+      }, 1300);
     }
   }
 
@@ -175,13 +214,14 @@ function Fin({ texte, onRejouer, onReglages }: { texte: string; onRejouer: () =>
   useEffect(() => {
     plumeDit(texte, 4000);
     if (voixPossible()) dire(texte);
+    if (plumeEnJeu()) plumeMotGentil();
   }, []);
   return (
-    <div className="arrivee mt-3 rounded-3xl bg-card px-4 py-4 text-center text-[#2a1c14]">
+    <div className="resultat-jeu resultat-juste arrivee mt-3 rounded-[1.6rem] px-4 py-4 text-center text-white">
       <p className="font-display text-2xl">{texte}</p>
       <div className="mt-3 grid grid-cols-2 gap-2">
-        <button type="button" onClick={onRejouer} className="bouton-bois rounded-2xl py-3 font-extrabold">Rejouer</button>
-        <button type="button" onClick={onReglages} className="rounded-2xl bg-[#f3e2c2] py-3 font-extrabold">Changer les joueurs</button>
+        <button type="button" onClick={onRejouer} className="bouton-jeu rounded-full py-3 font-extrabold">Rejouer</button>
+        <button type="button" onClick={onReglages} className="verre-jeu rounded-full py-3 font-extrabold text-white">Changer les joueurs</button>
       </div>
     </div>
   );
@@ -192,6 +232,10 @@ function Fin({ texte, onRejouer, onReglages }: { texte: string; onRejouer: () =>
 type EtatBataille = { mains: CarteBataille[][]; pot: CarteBataille[]; tour: number; manche: number; duel: { carac: string; cartes: (CarteBataille | null)[]; gagnant: number | null } | null };
 
 const MAX_MANCHES = 20;
+
+// Toutes les cartes de bataille : Plume s'en sert pour savoir si un chiffre de sa carte est fort ou faible.
+let TOUTES: CarteBataille[] | null = null;
+const toutesBataille = () => (TOUTES ??= paquetBataille("tous"));
 
 export function Bataille() {
   const [joueurs, setJoueurs] = useState<Joueur[]>(() => {
@@ -204,12 +248,14 @@ export function Bataille() {
   const [parJoueur, setParJoueur] = useState(8);
   const [e, setE] = useState<EtatBataille | null>(null);
   const [note, setNote] = useState("");
+  const choixPlume = useRef(false);
 
   useAnnonceTour(joueurs[e?.tour ?? 0], `${e?.tour}-${e?.manche}`, !!e && !e.duel);
   const arreter = useCallback(() => setE(null), []);
   useQuitterPartie(!!e, arreter);
 
   function commencer() {
+    plumeOuvrePartie(joueurs);
     let paquet = paquetBataille(source);
     let info = "";
     const besoin = parJoueur * joueurs.length;
@@ -223,11 +269,41 @@ export function Bataille() {
     setNote(info);
   }
 
+  // Quand c'est à Plume de choisir : elle regarde sa carte et choisit le chiffre qui lui semble le plus fort.
+  // Championne : le meilleur choix ; moyenne : souvent le bon ; débutante : souvent au hasard.
+  useEffect(() => {
+    if (!e || e.duel || !estPlume(joueurs[e.tour]) || !e.mains[e.tour].length) return;
+    if (e.mains.filter((m) => m.length).length <= 1 || e.manche > MAX_MANCHES) return;
+    const carte = e.mains[e.tour][0];
+    const t = window.setTimeout(() => {
+      const rangs = CARACS.map((c) => {
+        const v = carte.caracs.find((x) => x.id === c.id)!.valeur;
+        const toutes = toutesBataille().map((x) => x.caracs.find((k) => k.id === c.id)!.valeur);
+        return { id: c.id, rang: toutes.filter((x) => x < v).length / Math.max(1, toutes.length) };
+      }).sort((a, b) => b.rang - a.rang);
+      const f = lireForce();
+      const hasard = Math.random() < [0, 0.6, 0.25, 0][f];
+      const pris = hasard ? rangs[Math.floor(Math.random() * rangs.length)] : rangs[0];
+      choixPlume.current = true;
+      choisir(pris.id);
+    }, 1600);
+    return () => window.clearTimeout(t);
+  }, [e?.tour, e?.manche, e?.duel]);
+
+  // Plume réagit quand elle gagne ou perd un duel.
+  useEffect(() => {
+    if (!e?.duel) return;
+    const p = joueurs.findIndex((j) => j.plume);
+    if (p < 0 || !e.duel.cartes[p]) return;
+    const t = window.setTimeout(() => plumeJoueuseDit(e.duel!.gagnant === p ? "bien" : "rate"), 1800);
+    return () => window.clearTimeout(t);
+  }, [e?.duel]);
+
   if (!e) {
     return (
       <>
         <div className="mt-3 flex justify-center"><BoutonRegles regles={REGLES_BATAILLE} /></div>
-        <Preparation joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace={faceAFace} setFaceAFace={setFaceAFace} onJouer={commencer}>
+        <Preparation avecPlume joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace={faceAFace} setFaceAFace={setFaceAFace} onJouer={commencer}>
           <div>
             <p className="px-1 text-sm font-black text-[#f0d090]">Avec quelles cartes ?</p>
             <div className="mt-1.5 grid grid-cols-2 gap-1.5">
@@ -254,6 +330,8 @@ export function Bataille() {
 
   function choisir(carac: string) {
     if (!e || e.duel) return;
+    if (estPlume(joueurs[e.tour]) && !choixPlume.current) return;
+    choixPlume.current = false;
     const cartes = e.mains.map((m) => m[0] ?? null);
     const valeurs = cartes.map((c) => (c ? c.caracs.find((x) => x.id === carac)!.valeur : -1));
     const max = Math.max(...valeurs);
@@ -425,6 +503,7 @@ export function LePlusRapide() {
   useQuitterPartie(enCours, arreter);
 
   function commencer() {
+    plumeOuvrePartie(joueurs);
     setPoints(joueurs.map(() => 0));
     setN(1);
     setQ(questionRapide());
@@ -440,8 +519,10 @@ export function LePlusRapide() {
     setGagnant(undefined);
   }
 
-  function toucher(i: number, id: string) {
+  function toucher(i: number, id: string, parPlume = false) {
     if (gagnant !== undefined || bloques.has(i)) return;
+    if (joueurs[i]?.plume && !parPlume) return;
+    if (joueurs[i]?.plume) plumeJoueuseDit(id === q.bon ? "bien" : "rate");
     if (id === q.bon) {
       sons.bonne();
       setGagnant(i);
@@ -458,11 +539,25 @@ export function LePlusRapide() {
     }
   }
 
+  // Plume joue aussi : elle cherche, puis touche un animal (plus ou moins vite et juste selon sa force).
+  useEffect(() => {
+    const p = joueurs.findIndex((j) => j.plume);
+    if (!enCours || p < 0 || gagnant !== undefined || bloques.has(p) || n > TOURS_RAPIDE) return;
+    const f = lireForce();
+    const [min, max, juste] = [[0, 0, 0], [3500, 6000, 0.7], [2200, 4000, 0.85], [1200, 2600, 0.95]][f];
+    const t = window.setTimeout(() => {
+      const bien = Math.random() < juste;
+      const faux = q.trois.filter((c) => c.id !== q.bon);
+      toucher(p, bien ? q.bon : faux[Math.floor(Math.random() * faux.length)].id, true);
+    }, min + Math.random() * (max - min));
+    return () => window.clearTimeout(t);
+  }, [enCours, q, gagnant, bloques, n]);
+
   if (!enCours) {
     return (
       <>
         <div className="mt-3 flex justify-center"><BoutonRegles regles={REGLES_RAPIDE} /></div>
-        <Preparation joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace onJouer={commencer} setFaceAFace={() => {}} sansFaceAFace>
+        <Preparation avecPlume joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace onJouer={commencer} setFaceAFace={() => {}} sansFaceAFace>
           <p className="px-1 text-sm texte-doux">Ce jeu se joue toujours en face à face : posez le téléphone à plat entre vous.</p>
         </Preparation>
       </>
@@ -495,6 +590,12 @@ export function LePlusRapide() {
         fini ? (
           <p className="text-sm font-black text-white">{points[i]} point{points[i] > 1 ? "s" : ""}</p>
         ) : (
+          joueurs[i].plume ? (
+            <div className={`grid place-items-center py-3 text-center ${bloques.has(i) ? "opacity-40" : ""}`}>
+              <span className="text-4xl">🦉</span>
+              <p className="mt-1 text-sm font-extrabold text-white">{bloques.has(i) ? "Plume s'est trompée !" : gagnant === i ? "Plume a trouvé !" : "Plume cherche…"}</p>
+            </div>
+          ) : (
           <div className={bloques.has(i) ? "opacity-40" : ""}>
             <p className="font-display text-sm leading-tight text-white">{q.consigne.texte}</p>
             <div className="mt-1 grid grid-cols-3 gap-1">
@@ -512,6 +613,7 @@ export function LePlusRapide() {
               ))}
             </div>
           </div>
+          )
         )
       }
     />
@@ -574,7 +676,23 @@ export function MimeAnimal() {
     return () => window.clearTimeout(t);
   }, [etape, temps]);
 
+  // Quand Plume mime, elle dit chaque nouvel indice à voix haute.
+  const dernierIndice = useRef(-1);
+  useEffect(() => {
+    if (!enCours || etape !== "mime") { dernierIndice.current = -1; return; }
+    const m = tour % joueurs.length;
+    if (!joueurs[m]?.plume) return;
+    const n = Math.min(indicesRef.current.length, 1 + Math.floor((60 - temps) / 10));
+    if (n - 1 > dernierIndice.current) {
+      dernierIndice.current = n - 1;
+      const t = indicesRef.current[n - 1];
+      if (t) { plumeDit(t, 6000); if (voixPossible()) dire(t); }
+    }
+  }, [etape, temps, enCours]);
+  const indicesRef = useRef<string[]>([]);
+
   function commencer() {
+    plumeOuvrePartie(joueurs);
     setAnimaux(melanger(liste.map((e) => e.id)));
     setPoints(joueurs.map(() => 0));
     setTour(0);
@@ -586,13 +704,26 @@ export function MimeAnimal() {
     return (
       <>
         <div className="mt-3 flex justify-center"><BoutonRegles regles={REGLES_MIME} /></div>
-        <Preparation joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace={false} setFaceAFace={() => {}} sansFaceAFace onJouer={commencer} />
+        <Preparation avecPlume joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace={false} setFaceAFace={() => {}} sansFaceAFace onJouer={commencer}>
+          <p className="px-1 text-sm texte-doux">Plume ne peut pas bouger comme vous : quand c'est son tour, elle « mime » avec des indices vrais, un toutes les dix secondes.</p>
+        </Preparation>
       </>
     );
   }
 
   const mimeur = tour % joueurs.length;
   const e = PAR_ID.get(animaux[tour % animaux.length])!;
+  const plumeMime = !!joueurs[mimeur]?.plume;
+  // Les indices de Plume : de vraies informations de la fiche, du plus difficile au plus facile.
+  const indices = [
+    e.milieu ? `Je vis ${e.milieu.replace(/^Surtout /, "surtout ").replace(/\.$/, "").toLowerCase()}.` : null,
+    groupeDeOrdreMime(e.ordre) ? `Je fais partie du groupe : ${groupeDeOrdreMime(e.ordre)!.toLowerCase()}.` : null,
+    e.masse ? `Adulte, je pèse ${e.masse}.` : null,
+    e.ou ? `On me trouve en ${e.ou.split(".")[0].replace(/, /g, ", ")}.` : null,
+    `Mon nom commence par la lettre « ${e.nom[0].toUpperCase()} ».`,
+  ].filter((x): x is string => !!x);
+  const nbIndices = Math.min(indices.length, 1 + Math.floor((60 - temps) / 10));
+  indicesRef.current = indices;
   function trouve(qui: number | null) {
     setPoints((p) => p.map((x, k) => (qui !== null && (k === qui || k === mimeur) ? x + 1 : x)));
     if (qui !== null) sons.bonne();
@@ -610,7 +741,14 @@ export function MimeAnimal() {
   return (
     <section className="mt-3 text-center">
       <p className="text-sm">{joueurs.map((j, i) => `${j.nom} : ${points[i]}`).join(" · ")}</p>
-      {etape === "cache" ? (
+      {etape === "cache" && plumeMime ? (
+        <div className="mt-6">
+          <span className="text-6xl">🦉</span>
+          <p className="font-display text-3xl text-[#c9a4ff]">C'est Plume qui mime !</p>
+          <p className="mt-2">Elle a choisi un animal. Écoutez bien ses indices et devinez !</p>
+          <button type="button" onClick={() => { setTemps(60); setEtape("mime"); }} className="bouton-jeu mt-5 rounded-full px-6 py-3 font-display text-xl">On écoute Plume ➜</button>
+        </div>
+      ) : etape === "cache" ? (
         <div className="mt-6">
           <p className="font-display text-3xl" style={{ color: joueurs[mimeur].couleur }}>À toi de mimer, {joueurs[mimeur].nom} !</p>
           <p className="mt-2">Prends le téléphone. Les autres ne regardent pas !</p>
@@ -627,9 +765,14 @@ export function MimeAnimal() {
         <div className="mt-4">
           <p className="font-display text-7xl text-[#f3d48a]">{temps}</p>
           <p className="mt-1">secondes pour deviner</p>
+          {plumeMime ? (
+            <ul className="mx-auto mt-3 max-w-sm space-y-1.5 text-left">
+              {indices.slice(0, nbIndices).map((t, k) => <li key={k} className="verre-jeu apparait rounded-2xl px-3 py-2 text-sm font-bold">🦉 {t}</li>)}
+            </ul>
+          ) : null}
           <p className="mt-4 font-extrabold">Qui a trouvé ?</p>
           <div className="mt-2 grid grid-cols-2 gap-2">
-            {joueurs.map((j, i) => (i === mimeur ? null : <button key={i} type="button" onClick={() => trouve(i)} className="rounded-2xl py-3 font-extrabold text-white" style={{ background: j.couleur }}>{j.nom}</button>))}
+            {joueurs.map((j, i) => (i === mimeur || j.plume ? null : <button key={i} type="button" onClick={() => trouve(i)} className="rounded-2xl py-3 font-extrabold text-white" style={{ background: j.couleur }}>{j.nom}</button>))}
           </div>
           <button type="button" onClick={() => trouve(null)} className="mt-2 w-full rounded-2xl bg-[#f3e2c2] py-3 font-extrabold text-[#2a1c14]">Personne</button>
         </div>
@@ -703,6 +846,7 @@ export function SeptFamilles() {
   }
 
   function commencer() {
+    plumeOuvrePartie(joueurs);
     const paquet = melanger(paquetFamilles());
     const n = joueurs.length === 2 ? 7 : 5;
     const mains = joueurs.map((_, i) => paquet.slice(i * n, (i + 1) * n));
@@ -711,11 +855,37 @@ export function SeptFamilles() {
     setFamille(null);
   }
 
+  // Plume joue aussi : elle choisit une famille qu'elle a, demande une carte qui lui manque,
+  // et (si elle est forte) elle se souvient de qui a demandé quelle famille.
+  const demandes = useRef<{ qui: number; famille: string }[]>([]);
+  useEffect(() => {
+    if (!e || !joueurs[e.tour]?.plume || (e.vue !== "cache" && e.vue !== "main")) return;
+    if (e.posees.reduce((s, p) => s + p.length, 0) === FAMILLES_JEU.length) return;
+    const moi = e.tour, main = e.mains[moi];
+    const t = window.setTimeout(() => {
+      const autres = joueurs.map((_, i) => i).filter((i) => i !== moi && e.mains[i].length);
+      if (!main.length || !autres.length) return piocherSeul();
+      const f = lireForce();
+      const toutes = [...e.mains.flat(), ...e.pioche];
+      const fams = FAMILLES_JEU.map((fa) => ({ fa, n: main.filter((c) => c.famille === fa).length })).filter((x) => x.n).sort((a, b) => b.n - a.n);
+      const fam = f === 1 ? fams[Math.floor(Math.random() * fams.length)].fa : fams[0].fa;
+      const manque = toutes.filter((c) => c.famille === fam && !main.some((m) => m.id === c.id));
+      if (!manque.length) return piocherSeul();
+      const carte = manque[Math.floor(Math.random() * manque.length)];
+      // Qui a demandé cette famille récemment ? Il a sûrement des cartes de cette famille.
+      const souvenir = [...demandes.current].reverse().find((d) => d.famille === fam && d.qui !== moi && autres.includes(d.qui));
+      const seFie = souvenir && Math.random() < [0, 0.2, 0.6, 0.95][f];
+      const qui = seFie ? souvenir!.qui : autres[Math.floor(Math.random() * autres.length)];
+      demander(carte, qui);
+    }, 1600);
+    return () => window.clearTimeout(t);
+  }, [e?.tour, e?.vue, e?.mains]);
+
   if (!e) {
     return (
       <>
         <div className="mt-3 flex justify-center"><BoutonRegles regles={REGLES_FAMILLES} /></div>
-        <Preparation joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace={false} setFaceAFace={() => {}} sansFaceAFace onJouer={commencer}>
+        <Preparation avecPlume joueurs={joueurs} setJoueurs={setJoueurs} min={2} mode={mode} setMode={setMode} faceAFace={false} setFaceAFace={() => {}} sansFaceAFace onJouer={commencer}>
           <p className="px-1 text-sm texte-doux">Les familles : {FAMILLES_JEU.map((f) => NOMS_FAMILLES[f]).join(", ")}. Six vrais animaux dans chacune.</p>
         </Preparation>
       </>
@@ -727,8 +897,10 @@ export function SeptFamilles() {
   const moi = e.tour;
   const main = e.mains[moi];
 
-  function demander(carte: CarteFam) {
+  function demander(carte: CarteFam, qui: number | null = cible) {
+    const cible = qui;
     if (!e || cible === null) return;
+    demandes.current.push({ qui: e.tour, famille: carte.famille });
     const mains = e.mains.map((m) => [...m]);
     const posees = e.posees.map((p) => [...p]);
     let pioche = [...e.pioche];
@@ -739,7 +911,7 @@ export function SeptFamilles() {
     if (chez >= 0) {
       mains[cible].splice(chez, 1);
       mains[moi].push(carte);
-      message = `${phrase} ${joueurs[cible].nom} l'avait ! Tu rejoues.`;
+      message = `${phrase} ${joueurs[cible].nom} l'avait ! ${joueurs[moi].plume ? "Plume rejoue." : "Tu rejoues."}`;
       rejoue = true;
       sons.bonne();
     } else if (pioche.length) {
@@ -747,7 +919,7 @@ export function SeptFamilles() {
       pioche = pioche.slice(1);
       mains[moi].push(tiree);
       rejoue = tiree.id === carte.id;
-      message = `${phrase} ${joueurs[cible].nom} ne l'a pas : pioche ! Tu as pioché ${tiree.nom}.${rejoue ? " Bonne pioche, tu rejoues !" : ""}`;
+      message = joueurs[moi].plume ? `${phrase} ${joueurs[cible].nom} ne l'a pas : Plume pioche une carte.${rejoue ? " C'était la bonne, Plume rejoue !" : ""}` : `${phrase} ${joueurs[cible].nom} ne l'a pas : pioche ! Tu as pioché ${tiree.nom}.${rejoue ? " Bonne pioche, tu rejoues !" : ""}`;
     } else {
       message = `${phrase} ${joueurs[cible].nom} ne l'a pas, et la pioche est vide.`;
     }
@@ -808,6 +980,12 @@ export function SeptFamilles() {
       <p className="text-center text-sm">{joueurs.map((j, i) => `${j.nom} : ${scores[i]} famille${scores[i] > 1 ? "s" : ""}`).join(" · ")} · pioche : {e.pioche.length}</p>
       {fini ? (
         <Fin texte={vainqueur(joueurs, scores, mode).texte} onRejouer={commencer} onReglages={arreter} />
+      ) : joueurs[moi].plume && e.vue !== "reponse" ? (
+        <div className="mt-10 text-center">
+          <span className="text-6xl">🦉</span>
+          <p className="mt-2 font-display text-2xl text-[#c9a4ff]">Plume réfléchit…</p>
+          <p className="mt-1 text-sm texte-doux">Elle choisit à qui demander une carte.</p>
+        </div>
       ) : e.vue === "cache" ? (
         <div className="mt-8 text-center">
           <p className="font-display text-3xl" style={{ color: joueurs[moi].couleur }}>À toi, {joueurs[moi].nom} !</p>
@@ -817,7 +995,7 @@ export function SeptFamilles() {
       ) : e.vue === "reponse" ? (
         <div className="arrivee mt-6 text-center">
           <p className="mx-auto max-w-sm rounded-3xl bg-[#fff8ea] px-4 py-3 font-bold text-[#4a2a8a]">{e.message}</p>
-          <button type="button" onClick={continuer} className="bouton-bois mt-4 rounded-full px-6 py-3 font-extrabold">{e.rejoue ? "Je rejoue" : "Cacher mes cartes et passer"}</button>
+          <button type="button" onClick={continuer} className="bouton-bois mt-4 rounded-full px-6 py-3 font-extrabold">{joueurs[moi].plume ? (e.rejoue ? "Plume rejoue" : "Au suivant") : e.rejoue ? "Je rejoue" : "Cacher mes cartes et passer"}</button>
         </div>
       ) : (
         <div className="mt-3">

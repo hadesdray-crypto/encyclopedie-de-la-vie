@@ -6,7 +6,7 @@ import { grammesDe } from "@/lib/poids";
 import { CHATS, CHIENS, nomCourt } from "@/pages/compagnons";
 import { PAYS } from "@/lib/recherche";
 
-export type Joueur = { nom: string; couleur: string; equipe: 0 | 1 };
+export type Joueur = { nom: string; couleur: string; equipe: 0 | 1; plume?: boolean };
 export const COULEURS = ["#c2457a", "#2f5fa8", "#3f7f2f", "#d6801c"];
 export const NOMS_EQUIPES = ["Lune", "Soleil"];
 const CLE = "leonie-joueurs";
