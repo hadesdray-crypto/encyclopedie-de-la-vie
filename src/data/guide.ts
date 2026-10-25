@@ -56,6 +56,7 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     test: (c) => c.startsWith("/voyageurs"),
     etapes: [
       "Voici la Terre ! Fais-la tourner avec ton doigt. Écarte deux doigts pour zoomer, ou utilise les boutons plus et moins.",
+      "Le globe est dans une fenêtre dorée. La poignée en bas, avec les engrenages, la met en bandeau en haut ou l'agrandit. Quand une fiche s'ouvre, elle se met toute seule en bandeau : tu peux toujours toucher le globe.",
       "« Où vivent-ils ? » : touche un pays, ou cherche-le avec la loupe. Je te montre tous les mammifères qui y vivent, et tu peux les trier par groupe.",
       "« Les voyages » : chaque trait est le vrai voyage d'un animal suivi par GPS. Touche un trait pour savoir qui a voyagé, d'où il est parti et jusqu'où il est allé.",
       "Certains voyages sont tout petits, comme ceux des chats : zoome beaucoup pour bien les voir.",
