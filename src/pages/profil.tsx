@@ -3,7 +3,7 @@ import { LIMITES, choisirLimiteEcran, limiteEcran, useTempsEcran } from "@/lib/t
 import { useState } from "react";
 import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
 import { AVATARS, avatar, choisirAvatar } from "@/lib/reglages";
-import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
+import { fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireScore, lireVues } from "@/lib/carnet";
 import { EST_APK, VERSION_APK, useMajApk, verifierApk, lancerMajApk, telechargerApk } from "@/lib/maj-apk";
 import { VERSION_APP, accepterMiseAJour, relancerHorsLigne, useHorsLigne, verifierMiseAJour } from "@/lib/hors-ligne";
@@ -88,10 +88,7 @@ export function CoinParents() {
       <button type="button" onClick={() => setOuvert((o) => !o)} className="w-full text-left font-display text-xl">Coin des parents</button>
       {ouvert ? (
         <div className="mt-2 text-sm">
-          <label className="mb-3 flex items-center gap-2 font-extrabold">
-            <input type="checkbox" defaultChecked={paquetsIllimites()} onChange={(e) => choisirIllimite(e.target.checked)} className="size-5 accent-[#8d4e1f]" />
-            Paquets de cartes illimités (sinon, ils se gagnent en lisant et en jouant)
-          </label>
+          <p className="mb-3 font-extrabold">Paquets de cartes illimités : {paquetsIllimites() ? "gagnés !" : "Leonie les gagne en remplissant toutes les tables de multiplication (Jouer → Les tables magiques)."}</p>
           <TempsParJour />
           <PhotosSignalees />
           <p>Certaines options ont besoin d'une connexion : les trajets GPS (Movebank), les vidéos des animaux et des frères Kratt. Elles sont éteintes. Rien ne se télécharge tout seul.</p>

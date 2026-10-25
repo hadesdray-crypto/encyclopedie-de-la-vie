@@ -22,6 +22,7 @@ import { plumeRegarde } from "@/lib/caractere";
 import { comparerPoids } from "@/lib/poids";
 import wikipedia from "@/data/wikipedia-fr.json";
 import galerie from "@/data/galerie.json";
+import crisVerifies from "@/data/cris-verifies.json";
 import creditsPhotos from "@/data/credits-photos.json";
 import estimations from "@/data/estimations.json";
 
@@ -42,6 +43,7 @@ type Credit = { auteur: string; licence: string; source: string };
 const CREDITS = creditsCris as Record<string, string | Credit>;
 const WIKI = wikipedia as Record<string, { texte: string; titre: string }>;
 const GALERIE = galerie as Record<string, Credit[]>;
+const VERIFIES = new Set(crisVerifies as string[]);
 const CREDITS_PHOTOS = creditsPhotos as Record<string, Credit>;
 
 function credit(c: string | Credit | undefined) {
@@ -253,7 +255,7 @@ function Fiche({ id }: { id: string }) {
         <BlocValeur mot="longevite" v={valeur("longevite", grande?.vie ?? e.longevite)} />
         <Bloc mot="statut" texte={e.statut ?? "Non évalué."} />
         <Rubrique mot="cri">
-          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.mp3`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p></>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
+          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.mp3`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p>{VERIFIES.has(e.id) ? <p className="mt-1 text-xs font-extrabold">Cri vérifié : enregistrement d'archive scientifique.</p> : <p className="mt-1 text-xs font-extrabold text-[#8d4e1f]">Pas encore vérifié : on entend peut-être d'autres animaux derrière.</p>}</>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
         </Rubrique>
         <Rubrique mot="gps" titre={<span className="font-extrabold">Suivi GPS</span>}>
           <p className="font-extrabold">{etude ? "Une étude GPS publique existe" : "Pas de suivi GPS enregistré"}</p>

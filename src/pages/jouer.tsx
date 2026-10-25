@@ -16,13 +16,14 @@ import { aujourdhui, lireDefis, noterDefi, serie } from "@/lib/defis";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import { Vignette } from "@/components/icone";
 import { PAR_ID } from "@/data/catalogue";
-import crisConnus from "@/data/cris.json";
+import crisVerifies from "@/data/cris-verifies.json";
 import { LuChevronLeft, LuFlame, LuGalleryVertical, LuLayoutGrid, LuList, LuUser, LuUsers } from "react-icons/lu";
 import { useModeJeu } from "@/lib/mode-jeu";
 import { revenir } from "@/lib/routeur";
 import { PlumeDessin } from "@/components/plume-dessin";
 import { ouvrirPlume, usePlume } from "@/lib/plume";
 import { useIndice } from "@/lib/indice";
+import { TablesMultiplication } from "@/pages/tables";
 import { Bataille, LePlusRapide, MemoryPlusieurs, MimeAnimal, SeptFamilles } from "@/pages/jeux-plusieurs";
 
 function melanger<T>(l: T[], rnd: () => number = Math.random) {
@@ -53,7 +54,7 @@ function questionTemps() {
   }
 }
 
-type Jeu = "defi" | "regime" | "temps" | "memoire" | "bataille" | "rapide" | "mime" | "familles" | "poids" | "carte" | "cri";
+type Jeu = "tables" | "defi" | "regime" | "temps" | "memoire" | "bataille" | "rapide" | "mime" | "familles" | "poids" | "carte" | "cri";
 
 // Chaque jeu a son animal (une vraie photo) et ses couleurs.
 const LOOK: Record<Jeu, { latin: string; fond: string }> = {
@@ -67,6 +68,7 @@ const LOOK: Record<Jeu, { latin: string; fond: string }> = {
   poids: { latin: "Loxodonta africana", fond: "linear-gradient(160deg,#c9b8a0,#6b5a3a)" },
   carte: { latin: "Phascolarctos cinereus", fond: "linear-gradient(160deg,#5fc2b0,#1f5f7a)" },
   regime: { latin: "Ailuropoda melanoleuca", fond: "linear-gradient(160deg,#9be07a,#3f8a2a)" },
+  tables: { latin: "Pongo abelii", fond: "linear-gradient(160deg,#ffd84a,#8d4e1f)" },
   temps: { latin: "Tachyglossus aculeatus", fond: "linear-gradient(160deg,#f07aa8,#6a2a8a)" },
 };
 function photoDuJeu(j: Jeu) {
@@ -86,6 +88,7 @@ const JEUX: { id: Jeu; nom: string; sous: string; niveau: 1 | 2 | 3; joueurs: st
   { id: "carte", nom: "Qui vit ici ?", sous: "Les pays en or sur la carte.", niveau: 2, joueurs: "Seule" },
   { id: "regime", nom: "Qu'est-ce qu'il mange ?", sous: "Viande, plantes, insectes…", niveau: 1, joueurs: "Seule" },
   { id: "temps", nom: "Qui est arrivé en premier ?", sous: "Dans l'histoire de la vie.", niveau: 2, joueurs: "Seule" },
+  { id: "tables", nom: "Les tables magiques", sous: "Toutes les tables de 1 à 9 : paquets illimités !", niveau: 2, joueurs: "Seule" },
 ];
 
 export function JouerPage({ params }: { params: URLSearchParams }) {
@@ -94,7 +97,7 @@ export function JouerPage({ params }: { params: URLSearchParams }) {
   if (!choisi) return <MenuJeux />;
   return (
     <ModeJeu titre={choisi.nom} jeu={jeu}>
-      {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <MemoryPlusieurs /> : jeu === "bataille" ? <Bataille /> : jeu === "rapide" ? <LePlusRapide /> : jeu === "mime" ? <MimeAnimal /> : jeu === "familles" ? <SeptFamilles /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
+      {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <MemoryPlusieurs /> : jeu === "bataille" ? <Bataille /> : jeu === "rapide" ? <LePlusRapide /> : jeu === "mime" ? <MimeAnimal /> : jeu === "familles" ? <SeptFamilles /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : jeu === "tables" ? <TablesMultiplication /> : <JeuTemps />}
     </ModeJeu>
   );
 }
@@ -389,7 +392,7 @@ function JeuCarte() {
 
 // ---------- Devine qui crie ----------
 // Seulement les vrais cris enregistrés (licence libre). Jamais de son fabriqué.
-const CRIEURS = (crisConnus as string[]).map((id) => PAR_ID.get(id))
+const CRIEURS = (crisVerifies as string[]).map((id) => PAR_ID.get(id))
   // Pas les chauves-souris : leurs cris se ressemblent trop (et sont souvent des ultrasons).
   .filter((e): e is Espece => !!e && e.langue === "fr" && e.ordre !== "Chiroptera" && aUnePhoto(e.id));
 
