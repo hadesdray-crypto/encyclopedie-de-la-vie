@@ -19,9 +19,9 @@ jobs:
         with:
           python-version: "3.11"
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-      - run: pip install -q birdnetlib tflite-runtime librosa resampy soundfile numpy
+      - run: pip install -q "numpy<2" birdnetlib tflite-runtime librosa resampy soundfile
       - name: Analyser
-        run: python scripts/donnees/sons.py 2>&1 | tee scripts/donnees/sons-journal.txt
+        run: set -o pipefail; python scripts/donnees/sons.py 2>&1 | tee scripts/donnees/sons-journal.txt
       - name: Enregistrer
         if: always()
         run: |
