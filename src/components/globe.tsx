@@ -34,15 +34,15 @@ export const ZOOM_MAX = 3000; // assez pour voir un chat faire le tour de son ja
 
 type Etat = { lon: number; lat: number; zoom: number };
 
-export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays }: { traces: TraceGlobe[]; choisi: number | null; vers: { lon: number; lat: number; zoom: number; n: number } | null; onChoisir: (i: number) => void; pays?: string | null; onPays?: (code: string | null) => void }) {
+export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, surligne = [] }: { traces: TraceGlobe[]; choisi: number | null; vers: { lon: number; lat: number; zoom: number; n: number } | null; onChoisir: (i: number) => void; pays?: string | null; onPays?: (code: string | null) => void; surligne?: string[] }) {
   const toile = useRef<HTMLCanvasElement>(null);
   const etat = useRef<Etat>({ lon: -10, lat: 25, zoom: 1 });
   const elan = useRef({ vlon: 0, vlat: 0 });
   const doigts = useRef(new Map<number, { x: number; y: number }>());
   const avant = useRef<{ e: Etat; d: number; x: number; y: number } | null>(null);
   const bouge = useRef(0);
-  const donnees = useRef({ traces, choisi, pays });
-  donnees.current = { traces, choisi, pays };
+  const donnees = useRef({ traces, choisi, pays, surligne });
+  donnees.current = { traces, choisi, pays, surligne };
   const anim = useRef<{ de: Etat; a: Etat; t0: number } | null>(null);
 
   // Aller vers un trajet (après une recherche ou un toucher) : le globe tourne doucement jusqu'à lui.
@@ -94,6 +94,13 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays }: 
       ctx.fillStyle = mer; ctx.beginPath(); chemin({ type: "Sphere" }); ctx.fill();
       ctx.strokeStyle = "rgba(255,255,255,.05)"; ctx.lineWidth = 0.6; ctx.beginPath(); chemin(GRILLE); ctx.stroke();
       ctx.fillStyle = "#3b4a7a"; ctx.strokeStyle = "#0f1838"; ctx.lineWidth = 0.5; ctx.beginPath(); chemin(PAYS); ctx.fill(); ctx.stroke();
+      // Les pays où vit l'animal cherché, en or (comme sur la carte des fiches)
+      if (donnees.current.surligne.length) {
+        const set = new Set(donnees.current.surligne);
+        ctx.fillStyle = "#f3c35a"; ctx.beginPath();
+        for (const f of LISTE_PAYS) if (set.has(f.properties.code)) chemin(f as unknown as GeoPermissibleObjects);
+        ctx.fill(); ctx.stroke();
+      }
       // Le pays choisi, en or (comme sur la carte des fiches)
       const choix = donnees.current.pays ? LISTE_PAYS.find((f) => f.properties.code === donnees.current.pays) : undefined;
       if (choix) { ctx.fillStyle = "#f3c35a"; ctx.beginPath(); chemin(choix as unknown as GeoPermissibleObjects); ctx.fill(); ctx.stroke(); }
@@ -227,4 +234,15 @@ export function cadrerPays(code: string) {
   const [[x0, y0], [x1, y1]] = geoBounds(f);
   const etendue = Math.max(y1 - y0, ((x1 - x0 + 360) % 360 || 360) * Math.cos((lat * Math.PI) / 180), 1);
   return { lat, lon, zoom: Math.max(1, Math.min(ZOOM_MAX, 70 / etendue)) };
+}
+
+/** Le centre et le zoom pour voir tous les pays d'une liste. */
+export function cadrerListe(codes: string[]) {
+  const fs = LISTE_PAYS.filter((c) => codes.includes(c.properties.code));
+  if (!fs.length) return null;
+  const tout = { type: "FeatureCollection", features: fs } as unknown as GeoPermissibleObjects;
+  const [lon, lat] = geoCentroid(tout);
+  const [[x0, y0], [x1, y1]] = geoBounds(tout);
+  const etendue = Math.max(y1 - y0, ((x1 - x0 + 360) % 360 || 360) * Math.cos((lat * Math.PI) / 180), 1);
+  return { lat, lon, zoom: Math.max(1, Math.min(8, 70 / etendue)) };
 }

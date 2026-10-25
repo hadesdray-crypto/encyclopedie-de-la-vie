@@ -4,7 +4,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { LuSearch, LuX } from "react-icons/lu";
 import { Entete, Titre } from "@/components/entete";
-import { Globe, cadrerPays } from "@/components/globe";
+import { Globe, cadrerListe, cadrerPays } from "@/components/globe";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import { ESPECES, FAMILLES, GROUPES, groupeDeOrdre, type Espece } from "@/data/catalogue";
 import { NOMS_PAYS } from "@/data/pays-noms";
@@ -53,13 +53,25 @@ function OuViventIls() {
   const [cherche, setCherche] = useState(false);
   const [groupe, setGroupe] = useState<string | null>(null);
   const [montre, setMontre] = useState(30);
+  const [animal, setAnimal] = useState<Espece | null>(null);
+  const [mode, setMode] = useState<"pays" | "animal">("pays");
 
   useEffect(() => {
     const t = window.setTimeout(() => plumeDit("Touche un pays sur le globe : je te montre tous les animaux qui y vivent !", 5000), 1000);
     return () => window.clearTimeout(t);
   }, []);
 
+  const choisirAnimal = (e: Espece) => {
+    setAnimal(e);
+    setPays(null);
+    setCherche(false);
+    setQ("");
+    const c = cadrerListe(e.pays ?? []);
+    if (c) setVers((v) => ({ ...c, n: (v?.n ?? 0) + 1 }));
+  };
+
   const choisir = (code: string | null, centrer = false) => {
+    setAnimal(null);
     setPays(code);
     setGroupe(null);
     setMontre(30);
@@ -71,11 +83,19 @@ function OuViventIls() {
     }
   };
 
+  const animaux = useMemo(() => {
+    const t = sansAccent(q.trim());
+    if (mode !== "animal" || t.length < 2) return [];
+    return ESPECES.filter((e) => e.pays?.length && sansAccent(`${e.nom} ${e.latin}`).includes(t))
+      .sort((a, b) => Number(sansAccent(b.nom) === t) - Number(sansAccent(a.nom) === t) || Number(sansAccent(b.nom).startsWith(t)) - Number(sansAccent(a.nom).startsWith(t)) || Number(b.langue === "fr") - Number(a.langue === "fr") || a.nom.length - b.nom.length)
+      .slice(0, 8);
+  }, [q, mode]);
+
   const resultats = useMemo(() => {
     const t = sansAccent(q.trim());
-    if (t.length < 2) return [];
+    if (mode !== "pays" || t.length < 2) return [];
     return Object.entries(NOMS_PAYS).filter(([, n]) => sansAccent(n).includes(t)).sort((a, b) => Number(sansAccent(b[1]).startsWith(t)) - Number(sansAccent(a[1]).startsWith(t))).slice(0, 8);
-  }, [q]);
+  }, [q, mode]);
 
   const tous = pays ? especesDuPays(pays) : [];
   const groupesIci = GROUPES.filter((g) => tous.some((e) => g.ordres.includes(e.ordre)));
@@ -88,14 +108,31 @@ function OuViventIls() {
         {cherche ? (
           <label className="flex items-center gap-2 rounded-full bg-card px-4 py-2.5">
             <LuSearch className="size-5 text-[#6d5648]" aria-hidden="true" />
-            <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Un pays…" className="w-full bg-transparent outline-none placeholder:text-[#8a7462]" />
+            <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder={mode === "pays" ? "Un pays…" : "Un animal…"} className="w-full bg-transparent outline-none placeholder:text-[#8a7462]" />
             <button type="button" aria-label="Fermer la recherche" onClick={() => { setCherche(false); setQ(""); }}><LuX className="size-5 text-[#6d5648]" /></button>
           </label>
         ) : (
-          <button type="button" onClick={() => setCherche(true)} className="ml-auto flex min-h-10 items-center gap-2 rounded-full bg-[#2a1844] px-4 text-sm font-extrabold text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
-            <LuSearch className="size-4" aria-hidden="true" /> Chercher un pays
-          </button>
+          <div className="flex justify-end gap-2">
+            <button type="button" onClick={() => { setMode("pays"); setCherche(true); }} className="flex min-h-10 items-center gap-2 rounded-full bg-[#2a1844] px-4 text-sm font-extrabold text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
+              <LuSearch className="size-4" aria-hidden="true" /> Un pays
+            </button>
+            <button type="button" onClick={() => { setMode("animal"); setCherche(true); }} className="flex min-h-10 items-center gap-2 rounded-full bg-[#2a1844] px-4 text-sm font-extrabold text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
+              <LuSearch className="size-4" aria-hidden="true" /> Un animal
+            </button>
+          </div>
         )}
+        {cherche && animaux.length ? (
+          <ul className="absolute inset-x-0 top-full z-20 mt-1 rounded-2xl bg-card p-1 shadow-xl">
+            {animaux.map((e) => (
+              <li key={e.id}>
+                <button type="button" onClick={() => choisirAnimal(e)} className="flex w-full items-center gap-2 rounded-xl px-2 py-1.5 text-left text-[#2a1c14]">
+                  <span className="block size-9 shrink-0 overflow-hidden rounded-full [&_img]:size-full [&_img]:object-cover"><Portrait id={e.id} /></span>
+                  <span className="min-w-0 flex-1"><span className="block font-extrabold leading-tight">{e.nom}</span><span className="block text-xs italic">{e.latin} · {e.pays!.length} pays</span></span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : null}
         {cherche && resultats.length ? (
           <ul className="absolute inset-x-0 top-full z-20 mt-1 rounded-2xl bg-card p-1 shadow-xl">
             {resultats.map(([code, nom]) => (
@@ -110,10 +147,25 @@ function OuViventIls() {
       </div>
 
       <div className="mt-2 overflow-hidden rounded-3xl border-2 border-[#e8c98a]/60 bg-[#0b1230] shadow-[0_10px_22px_rgba(0,0,0,.45)]">
-        <Globe traces={[]} choisi={null} vers={vers} onChoisir={() => {}} pays={pays} onPays={(c) => choisir(c, true)} />
+        <Globe traces={[]} choisi={null} vers={vers} onChoisir={() => {}} pays={pays} onPays={(c) => choisir(c, true)} surligne={animal?.pays ?? []} />
       </div>
 
-      {pays ? (
+      {animal ? (
+        <section className="carte-nuit mt-4 rounded-3xl px-4 py-4">
+          <div className="flex items-start gap-3">
+            <span className="medaillon-or block size-16 shrink-0 overflow-hidden [&_img]:size-full [&_img]:object-cover"><Portrait id={animal.id} /></span>
+            <div className="min-w-0 flex-1">
+              <p className="font-display text-2xl leading-tight text-[#f3d48a]">{animal.nom}</p>
+              <p className="text-sm italic texte-doux">{animal.latin}</p>
+              <p className="mt-1 text-sm font-bold">Il vit dans {animal.pays!.length} pays (en or sur le globe).</p>
+            </div>
+            <button type="button" aria-label="Fermer" onClick={() => setAnimal(null)} className="grid size-9 shrink-0 place-items-center rounded-full bg-white/10"><LuX className="size-5" /></button>
+          </div>
+          <p className="mt-2 text-sm">{animal.pays!.map((c) => NOMS_PAYS[c] ?? c).sort((a, b) => a.localeCompare(b, "fr")).join(", ")}.</p>
+          <a href={`#/mammiferes/e-${animal.id}`} className="bouton-bois mt-3 inline-block rounded-full px-4 py-2 font-extrabold">Voir sa fiche</a>
+          <p className="mt-2 text-[11px] texte-doux">Touche un pays doré pour voir les autres animaux qui y vivent.</p>
+        </section>
+      ) : pays ? (
         <section className="carte-nuit mt-4 rounded-3xl px-4 py-4">
           <div className="flex items-start justify-between gap-2">
             <div>
