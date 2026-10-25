@@ -1,9 +1,10 @@
 import { plumeFete } from "@/lib/plume";
-import { useEffect, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { LuCircleHelp, LuMinus, LuPlus, LuX } from "react-icons/lu";
 import type { Explication } from "@/data/guide";
 import { COULEURS, NOMS_EQUIPES, garderJoueurs, type Joueur } from "@/lib/partie";
 import { ouvrirRegles, plumeDit, plumePeutProposer } from "@/lib/plume";
+import { FORCES, PLUME_JOUEUSE, garderForce, lireForce, plumeJoueuseDit, type Force } from "@/lib/plume-joueuse";
 import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
 
@@ -26,11 +27,14 @@ export function BoutonRegles({ regles }: { regles: Explication }) {
 }
 
 export function Preparation({
-  joueurs, setJoueurs, min = 1, mode, setMode, faceAFace, setFaceAFace, children, onJouer, sansFaceAFace = false,
+  joueurs, setJoueurs, min = 1, mode, setMode, faceAFace, setFaceAFace, children, onJouer, sansFaceAFace = false, avecPlume = false,
 }: {
   joueurs: Joueur[]; setJoueurs: (j: Joueur[]) => void; min?: number; mode: Mode; setMode: (m: Mode) => void;
-  faceAFace: boolean; setFaceAFace: (b: boolean) => void; children?: ReactNode; onJouer: () => void; sansFaceAFace?: boolean;
+  faceAFace: boolean; setFaceAFace: (b: boolean) => void; children?: ReactNode; onJouer: () => void; sansFaceAFace?: boolean; avecPlume?: boolean;
 }) {
+  const [force, setForce] = useState<Force>(lireForce);
+  const plumeIci = joueurs.some((j) => j.plume);
+  const humains = joueurs.filter((j) => !j.plume).length;
   const changer = (j: Joueur[]) => {
     setJoueurs(j);
     garderJoueurs(j);
@@ -42,19 +46,19 @@ export function Preparation({
         <ul className="mt-1.5 space-y-2">
           {joueurs.map((j, i) => (
             <li key={i} className="verre-jeu flex items-center gap-2 rounded-full px-2 py-1.5 text-white">
-              <span className="grid size-9 shrink-0 place-items-center rounded-full font-black text-white" style={{ background: j.couleur }}>{(j.nom[0] ?? "?").toUpperCase()}</span>
-              <input
+              <span className="grid size-9 shrink-0 place-items-center rounded-full font-black text-white" style={{ background: j.couleur }}>{j.plume ? "🦉" : (j.nom[0] ?? "?").toUpperCase()}</span>
+              {j.plume ? <span className="min-w-0 flex-1 text-lg font-extrabold">Plume <span className="text-xs font-bold text-white/70">· {FORCES.find((f) => f.id === force)?.nom}</span></span> : <input
                 value={j.nom}
                 onChange={(e) => changer(joueurs.map((x, k) => (k === i ? { ...x, nom: e.target.value.slice(0, 14) } : x)))}
                 aria-label={`Prénom du joueur ${i + 1}`}
                 className="min-w-0 flex-1 bg-transparent text-lg font-extrabold text-white outline-none"
-              />
+              />}
               {mode === "equipes" && joueurs.length > 2 ? (
                 <button type="button" onClick={() => changer(joueurs.map((x, k) => (k === i ? { ...x, equipe: x.equipe ? 0 : 1 } : x)))} className={`rounded-full px-2.5 py-1 text-xs font-black ${j.equipe ? "bg-[#ffe7a8]" : "bg-[#e7d7ff]"}`}>
                   Équipe {NOMS_EQUIPES[j.equipe]}
                 </button>
               ) : null}
-              {joueurs.length > min ? (
+              {joueurs.length > min && (j.plume || humains > 1) ? (
                 <button type="button" onClick={() => changer(joueurs.filter((_, k) => k !== i))} aria-label={`Enlever ${j.nom}`} className="grid size-8 place-items-center rounded-full bg-white/15 text-white">
                   <LuMinus className="size-4" />
                 </button>
@@ -62,6 +66,20 @@ export function Preparation({
             </li>
           ))}
         </ul>
+        {avecPlume && !plumeIci && joueurs.length < 4 ? (
+          <button type="button" onClick={() => changer([...joueurs, { ...PLUME_JOUEUSE, equipe: (joueurs.length % 2) as 0 | 1 }])} className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#8a5cf0] to-[#c27af0] py-2.5 font-extrabold text-white shadow-[0_0_20px_rgba(160,110,255,.45)]">
+            🦉 Jouer avec Plume
+          </button>
+        ) : null}
+        {avecPlume && plumeIci ? (
+          <div className="verre-jeu mt-2 rounded-[1.4rem] px-3 py-2.5">
+            <p className="text-sm font-black text-[#f3d48a]">La force de Plume</p>
+            <div className="mt-1.5 grid grid-cols-3 gap-1.5">
+              {FORCES.map((f) => <Choix key={f.id} actif={force === f.id} onClick={() => { setForce(f.id); garderForce(f.id); }}>{f.nom}</Choix>)}
+            </div>
+            <p className="mt-1 text-xs text-white/75">{FORCES.find((f) => f.id === force)?.explique}</p>
+          </div>
+        ) : null}
         {joueurs.length < 4 ? (
           <button
             type="button"
@@ -114,6 +132,7 @@ export function Choix({ actif, onClick, children }: { actif: boolean; onClick: (
 export function useAnnonceTour(joueur: Joueur | undefined, cle: unknown, actif = true) {
   useEffect(() => {
     if (!joueur || !actif) return;
+    if (joueur.plume) return plumeJoueuseDit("tour");
     if (plumePeutProposer()) {
       plumeDit(`À toi, ${joueur.nom} !`, 2000);
       if (voixPossible()) dire(`À toi, ${joueur.nom} !`);
