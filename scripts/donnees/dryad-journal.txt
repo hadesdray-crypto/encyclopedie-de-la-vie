@@ -31,36 +31,36 @@
   échec https://datadryad.org/api/v2/files/376046/download : HTTP Error 401: Unauthorized
   échec https://datadryad.org/api/v2/files/376044/download : HTTP Error 401: Unauthorized
   échec https://datadryad.org/api/v2/files/376045/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/629249/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3078872/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3078873/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/2441660/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4532755/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/215577/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/215579/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/215582/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/2614956/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4631501/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/174430/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4917158/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4917159/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3895502/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3895503/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/23098/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1686885/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1686869/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1737636/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/2314885/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/2314891/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/2314883/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/70765/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/70764/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4135440/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4533332/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4533334/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4533329/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/76770/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/76764/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/629249/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3078872/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3078873/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/2441660/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4532755/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/215577/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/215579/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/215582/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/2614956/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4631501/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/174430/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4917158/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4917159/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3895502/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3895503/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/23098/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1686885/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1686869/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1737636/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/2314885/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/2314891/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/2314883/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/70765/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/70764/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4135440/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4533332/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4533334/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4533329/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/76770/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/76764/download : HTTP Error 401: Unauthorized
   échec https://datadryad.org/api/v2/files/76767/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/4920972/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/4920973/download : HTTP Error 429: Too Many Requests
@@ -178,40 +178,40 @@
   échec https://datadryad.org/api/v2/files/3106862/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/3106865/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/2309499/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/2309505/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/2309503/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/2297568/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/2089999/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/796205/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/796204/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/1145560/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/1145561/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/321350/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/321359/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/321361/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/17584/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/17583/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/1138967/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/21265/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/82275/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/82276/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/4372389/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/4372392/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/4372391/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/4212511/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/4134545/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/4145561/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/3490243/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/3490253/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/2942176/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/2942177/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/1581164/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/1581163/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/182135/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/182136/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/4649770/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/4649769/download : HTTP Error 401: Unauthorized
-  échec https://datadryad.org/api/v2/files/4649771/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/2309505/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2309503/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2297568/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2089999/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/796205/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/796204/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1145560/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1145561/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/321350/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/321359/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/321361/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/17584/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/17583/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1138967/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/21265/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/82275/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/82276/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4372389/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4372392/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4372391/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4212511/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4134545/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4145561/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3490243/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3490253/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2942176/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2942177/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1581164/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1581163/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/182135/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/182136/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4649770/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4649769/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4649771/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/4060028/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/3838608/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/3838609/download : HTTP Error 429: Too Many Requests
@@ -375,40 +375,40 @@
   échec https://datadryad.org/api/v2/files/2968009/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/4974488/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/785328/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/785329/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3334125/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3334126/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1173962/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1173966/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1173963/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4589064/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4589063/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4759328/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4759327/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3577282/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3577283/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3577284/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1715809/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1715808/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1715820/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4497893/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4964063/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4964058/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4964059/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/380956/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1885412/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/1885324/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4376604/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3499708/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3499709/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/3499713/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/155283/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/21784/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/21783/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/21789/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/92181/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/92182/download : HTTP Error 429: Too Many Requests
-  échec https://datadryad.org/api/v2/files/4471916/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/785329/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3334125/download : HTTP Error 502: Bad Gateway
+  échec https://datadryad.org/api/v2/files/3334126/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1173962/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1173966/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1173963/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4589064/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4589063/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4759328/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4759327/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3577282/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3577283/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3577284/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1715809/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1715808/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1715820/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4497893/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4964063/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4964058/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4964059/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/380956/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1885412/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/1885324/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4376604/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3499708/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3499709/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/3499713/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/155283/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/21784/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/21783/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/21789/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/92181/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/92182/download : HTTP Error 401: Unauthorized
+  échec https://datadryad.org/api/v2/files/4471916/download : HTTP Error 401: Unauthorized
   échec https://datadryad.org/api/v2/files/4471918/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/4471917/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/174425/download : HTTP Error 429: Too Many Requests
@@ -424,12 +424,131 @@
   échec https://datadryad.org/api/v2/files/210038/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/210035/download : HTTP Error 429: Too Many Requests
   échec https://datadryad.org/api/v2/files/210040/download : HTTP Error 429: Too Many Requests
-Traceback (most recent call last):
-  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/dryad.py", line 143, in <module>
-    try: main()
-         ^^^^^^
-  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/dryad.py", line 107, in main
-    url = API + f["_links"]["stash:download"]["href"]
-                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-KeyError: 'stash:download'
-ARRÊT sur erreur
+  échec https://datadryad.org/api/v2/files/4604415/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4604417/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4604416/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/572755/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/572757/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/81627/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/75154/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/75152/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/75153/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/70246/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3696768/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3129538/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1742546/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1742544/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1742545/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1378165/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4572483/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3854125/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3854127/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3854121/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/585066/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/585067/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/585068/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/344684/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/344685/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/53482/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/53481/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/55895/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/74071/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/74072/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/74070/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/69488/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/69496/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/69494/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/103631/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/103630/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4503610/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/538863/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/538108/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/538107/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3760414/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3760416/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3535779/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3535777/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3535778/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3158342/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3158343/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/109854/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/109857/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/109853/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/59694/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/59693/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/59695/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/60431/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/60433/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/60430/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4670978/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4203008/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3967281/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3191449/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3119338/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3119339/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2273121/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2273122/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2256205/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2256204/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2256206/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1935286/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1935280/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1375833/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1375831/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1375827/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/466820/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/466819/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/466810/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/257743/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/257744/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/257746/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/108611/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4490481/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4490480/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4490478/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3097261/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2054643/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/728078/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/728076/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/728077/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/111760/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/6578/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/6582/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/6580/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/10827/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/10828/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/10832/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3651714/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3651715/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3651716/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/3627742/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1878899/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1878900/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1878902/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/111178/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/111179/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/111180/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/67231/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/67230/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2010209/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2010210/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/2010212/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1474624/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/794749/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/794748/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/794745/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/89507/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/89506/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1089103/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1089495/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4548645/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4548647/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/4548646/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/673880/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/673879/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1308753/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1308743/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/1308742/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/78655/download : HTTP Error 429: Too Many Requests
+  échec https://datadryad.org/api/v2/files/78654/download : HTTP Error 429: Too Many Requests
+FIN : 0 trajets, 0 espèces
