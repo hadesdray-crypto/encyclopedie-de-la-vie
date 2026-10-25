@@ -51,6 +51,18 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     ],
   },
   {
+    id: "voyageurs",
+    titre: "Les grands voyageurs",
+    test: (c) => c.startsWith("/voyageurs"),
+    etapes: [
+      "Chaque trait est le vrai voyage d'un animal, suivi par GPS par des scientifiques.",
+      "Bleu : les animaux de la mer. Vert : les herbivores. Doré : les oiseaux. Rouge : les prédateurs. Touche une couleur pour la cacher ou la montrer.",
+      "Touche un trait pour savoir qui a voyagé, combien de kilomètres, et quand.",
+      "Un doigt déplace la carte. Deux doigts : écarte-les pour zoomer, tourne-les pour faire tourner la carte. La flèche ronde remet tout comme au début.",
+      "La loupe, en haut, cherche un animal.",
+    ],
+  },
+  {
     id: "animaux",
     titre: "Les animaux",
     test: (c) => c.startsWith("/animaux"),
@@ -291,7 +303,8 @@ export const SUJETS: (Explication & { bouton: string })[] = [
     id: "sujet-aventure", bouton: "L'Aventure", titre: "L'Aventure",
     etapes: [
       "Des scientifiques posent parfois un collier GPS à un animal pour suivre ses voyages.",
-      "Dans l'Aventure, tu vois sur la carte du monde où ces animaux sont allés. Ce sont de vrais trajets.",
+      "L'Aventure ouvre le globe : fais tourner la Terre avec ton doigt, et touche un trajet pour savoir qui a voyagé, d'où il est parti et jusqu'où il est allé.",
+      "Chaque couleur est une famille d'animaux : bleu pour la mer, vert pour les herbivores, doré pour les oiseaux, rouge pour les prédateurs. D'autres voyageurs arriveront plus tard.",
     ],
   },
   {
