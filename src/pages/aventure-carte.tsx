@@ -3,7 +3,9 @@
 // « Les voyages » : les vrais trajets GPS des animaux suivis par des scientifiques.
 import { useEffect, useMemo, useState } from "react";
 import { LuSearch, LuX } from "react-icons/lu";
-import { Entete, Titre } from "@/components/entete";
+import { RecherchePlein } from "@/components/recherche-plein";
+import { CadreGlobe } from "@/components/cadre-globe";
+import { Entete } from "@/components/entete";
 import { Globe, cadrerListe, cadrerPays } from "@/components/globe";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import { ESPECES, FAMILLES, GROUPES, groupeDeOrdre, type Espece } from "@/data/catalogue";
@@ -31,12 +33,12 @@ function especesDuPays(code: string) {
 export function AventureCartePage({ params }: { params: URLSearchParams }) {
   const [onglet, setOnglet] = useState<"pays" | "voyages">(params.get("voyages") ? "voyages" : "pays");
   return (
-    <main className="mx-auto max-w-xl px-4 pt-4">
-      <Entete siVide="/" />
-      <Titre sous={onglet === "pays" ? "Touche un pays pour voir les animaux qui y vivent." : "De vrais trajets, suivis par GPS par des scientifiques."}>Aventure</Titre>
-      <div role="tablist" className="mx-auto mt-3 grid w-full max-w-sm grid-cols-2 gap-1 rounded-full bg-[#2a1844] p-1 ring-1 ring-[#e8c98a]/40">
+    <main className="mx-auto max-w-xl pt-4">
+      <div className="px-4"><Entete siVide="/" /></div>
+      <h1 className="sr-only">Aventure</h1>
+      <div role="tablist" className="mx-auto mt-2 grid w-[calc(100%-2rem)] max-w-sm grid-cols-2 gap-1 rounded-full bg-[#2a1844] p-1 ring-1 ring-[#e8c98a]/40">
         {([["pays", "Où vivent-ils ?"], ["voyages", "Les voyages"]] as const).map(([id, label]) => (
-          <button key={id} type="button" role="tab" aria-selected={onglet === id} onClick={() => setOnglet(id)} className={`min-h-10 rounded-full text-sm font-extrabold ${onglet === id ? "bg-[#f3d48a] text-[#2a1650]" : "text-[#f3d48a]"}`}>
+          <button key={id} type="button" role="tab" aria-selected={onglet === id} onClick={() => setOnglet(id)} className={`min-h-10 rounded-full text-sm font-extrabold transition-colors ${onglet === id ? "bg-[#f3d48a] text-[#2a1650]" : "text-[#f3d48a]"}`}>
             {label}
           </button>
         ))}
@@ -55,6 +57,10 @@ function OuViventIls() {
   const [montre, setMontre] = useState(30);
   const [animal, setAnimal] = useState<Espece | null>(null);
   const [mode, setMode] = useState<"pays" | "animal">("pays");
+  // La fenêtre se met toute seule en bandeau quand une fiche s'affiche ; on peut la changer à la main.
+  const [force, setForce] = useState<boolean | null>(null);
+  const petit = force ?? !!(pays || animal);
+  useEffect(() => setForce(null), [pays, animal]);
 
   useEffect(() => {
     const t = window.setTimeout(() => plumeDit("Touche un pays sur le globe : je te montre tous les animaux qui y vivent !", 5000), 1000);
@@ -101,57 +107,56 @@ function OuViventIls() {
   const groupesIci = GROUPES.filter((g) => tous.some((e) => g.ordres.includes(e.ordre)));
   const liste = groupe ? tous.filter((e) => groupeDeOrdre(e.ordre)?.id === groupe) : tous;
 
+  const fermerRecherche = () => { setCherche(false); setQ(""); };
+  const ligneAnimal = (e: Espece) => (
+    <li key={e.id}>
+      <button type="button" onClick={() => choisirAnimal(e)} className="flex w-full items-center gap-3 rounded-2xl px-2 py-2 text-left active:bg-white/10">
+        <span className="medaillon-or block size-12 shrink-0 overflow-hidden [&_img]:size-full [&_img]:object-cover"><Portrait id={e.id} /></span>
+        <span className="min-w-0 flex-1"><span className="block font-extrabold leading-tight text-white">{e.nom}</span><span className="block text-xs italic texte-doux">{e.latin} · {e.pays!.length} pays</span></span>
+      </button>
+    </li>
+  );
+
   return (
-    <section>
-      {/* Chercher un pays */}
-      <div className="relative mt-3">
-        {cherche ? (
-          <label className="flex items-center gap-2 rounded-full bg-card px-4 py-2.5">
-            <LuSearch className="size-5 text-[#6d5648]" aria-hidden="true" />
-            <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder={mode === "pays" ? "Un pays…" : "Un animal…"} className="w-full bg-transparent outline-none placeholder:text-[#8a7462]" />
-            <button type="button" aria-label="Fermer la recherche" onClick={() => { setCherche(false); setQ(""); }}><LuX className="size-5 text-[#6d5648]" /></button>
-          </label>
-        ) : (
-          <div className="flex justify-end gap-2">
-            <button type="button" onClick={() => { setMode("pays"); setCherche(true); }} className="flex min-h-10 items-center gap-2 rounded-full bg-[#2a1844] px-4 text-sm font-extrabold text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
+    <section className="mt-2">
+      {cherche ? (
+        <RecherchePlein q={q} setQ={setQ} placeholder={mode === "pays" ? "Un pays…" : "Un animal…"} onFermer={fermerRecherche} vide={<p className="mt-6 text-center text-sm texte-doux">Rien trouvé. Essaie un autre nom.</p>}>
+          {mode === "animal" && animaux.length ? <ul className="space-y-1">{animaux.map(ligneAnimal)}</ul> : mode === "pays" && resultats.length ? (
+            <ul className="space-y-1">
+              {resultats.map(([code, nom]) => (
+                <li key={code}>
+                  <button type="button" onClick={() => choisir(code, true)} className="flex w-full items-center justify-between rounded-2xl bg-white/5 px-4 py-3 text-left font-extrabold text-white active:bg-white/10">
+                    {nom} <span className="text-xs font-bold text-[#f3d48a]">{especesDuPays(code).length} espèces</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </RecherchePlein>
+      ) : null}
+
+      {/* Le globe dans sa fenêtre de laiton : en grand, ou en bandeau quand une fiche s'affiche. */}
+      <CadreGlobe
+        petit={petit}
+        onBascule={() => setForce(!petit)}
+        dessus={
+          <div className="absolute bottom-2 left-2 flex gap-2">
+            <button type="button" onClick={() => { setMode("pays"); setCherche(true); }} className="flex min-h-9 items-center gap-1.5 rounded-full bg-white/12 px-3.5 text-sm font-extrabold text-white ring-1 ring-white/25 backdrop-blur-md">
               <LuSearch className="size-4" aria-hidden="true" /> Un pays
             </button>
-            <button type="button" onClick={() => { setMode("animal"); setCherche(true); }} className="flex min-h-10 items-center gap-2 rounded-full bg-[#2a1844] px-4 text-sm font-extrabold text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
+            <button type="button" onClick={() => { setMode("animal"); setCherche(true); }} className="flex min-h-9 items-center gap-1.5 rounded-full bg-white/12 px-3.5 text-sm font-extrabold text-white ring-1 ring-white/25 backdrop-blur-md">
               <LuSearch className="size-4" aria-hidden="true" /> Un animal
             </button>
           </div>
-        )}
-        {cherche && animaux.length ? (
-          <ul className="absolute inset-x-0 top-full z-20 mt-1 rounded-2xl bg-card p-1 shadow-xl">
-            {animaux.map((e) => (
-              <li key={e.id}>
-                <button type="button" onClick={() => choisirAnimal(e)} className="flex w-full items-center gap-2 rounded-xl px-2 py-1.5 text-left text-[#2a1c14]">
-                  <span className="block size-9 shrink-0 overflow-hidden rounded-full [&_img]:size-full [&_img]:object-cover"><Portrait id={e.id} /></span>
-                  <span className="min-w-0 flex-1"><span className="block font-extrabold leading-tight">{e.nom}</span><span className="block text-xs italic">{e.latin} · {e.pays!.length} pays</span></span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-        {cherche && resultats.length ? (
-          <ul className="absolute inset-x-0 top-full z-20 mt-1 rounded-2xl bg-card p-1 shadow-xl">
-            {resultats.map(([code, nom]) => (
-              <li key={code}>
-                <button type="button" onClick={() => choisir(code, true)} className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left font-extrabold text-[#2a1c14]">
-                  {nom} <span className="text-xs font-bold text-[#8d4e1f]">{especesDuPays(code).length} espèces</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </div>
+        }
+      >
+        <Globe traces={[]} choisi={null} vers={vers} onChoisir={() => {}} pays={pays} onPays={(c) => choisir(c, true)} surligne={animal?.pays ?? []} hauteur="h-full" />
+      </CadreGlobe>
 
-      <div className="mt-2 overflow-hidden rounded-3xl border-2 border-[#e8c98a]/60 bg-[#0b1230] shadow-[0_10px_22px_rgba(0,0,0,.45)]">
-        <Globe traces={[]} choisi={null} vers={vers} onChoisir={() => {}} pays={pays} onPays={(c) => choisir(c, true)} surligne={animal?.pays ?? []} />
-      </div>
-
+      {/* La fiche glisse par-dessus le globe quand on la fait défiler. */}
+      <div className="relative z-10 px-3">
       {animal ? (
-        <section className="carte-nuit mt-4 rounded-3xl px-4 py-4">
+        <section className="carte-nuit apparait mt-1 rounded-[1.75rem] px-4 py-4">
           <div className="flex items-start gap-3">
             <span className="medaillon-or block size-16 shrink-0 overflow-hidden [&_img]:size-full [&_img]:object-cover"><Portrait id={animal.id} /></span>
             <div className="min-w-0 flex-1">
@@ -166,7 +171,7 @@ function OuViventIls() {
           <p className="mt-2 text-[11px] texte-doux">Touche un pays doré pour voir les autres animaux qui y vivent.</p>
         </section>
       ) : pays ? (
-        <section className="carte-nuit mt-4 rounded-3xl px-4 py-4">
+        <section className="carte-nuit apparait mt-1 rounded-[1.75rem] px-4 py-4">
           <div className="flex items-start justify-between gap-2">
             <div>
               <p className="font-display text-2xl leading-tight text-[#f3d48a]">{NOMS_PAYS[pays] ?? pays}</p>
@@ -201,6 +206,7 @@ function OuViventIls() {
       ) : (
         <p className="mt-3 text-center text-sm texte-doux">Fais tourner le globe avec ton doigt, zoome avec deux doigts, et touche un pays.</p>
       )}
+      </div>
     </section>
   );
 }
