@@ -11,7 +11,7 @@ type Salle = { vers: string; label: string; dit: string; icone: string; actif: (
 const SALLES: Salle[] = [
   { vers: "/", label: "Accueil", dit: "L'accueil", icone: "theme/maison.webp", actif: (c) => c === "/" || c === "" },
   { vers: "/arbre", label: "Arbre", dit: "L'arbre de la vie", icone: "theme/cristal.webp", actif: (c) => c.startsWith("/arbre") || c.startsWith("/frise") },
-  { vers: "/aventure", label: "Aventure", dit: "L'aventure : les animaux voyageurs", icone: "theme/terre.webp", actif: (c) => c.startsWith("/aventure") || c.startsWith("/suivi") },
+  { vers: "/voyageurs", label: "Aventure", dit: "L'aventure : les animaux voyageurs", icone: "theme/terre.webp", actif: (c) => c.startsWith("/voyageurs") || c.startsWith("/aventure") || c.startsWith("/suivi") },
   { vers: "/cartes", label: "Cartes", dit: "Mes cartes", icone: "theme/cartes.webp", actif: (c) => c.startsWith("/cartes") },
   { vers: "/jouer", label: "Jouer", dit: "Les jeux", icone: "theme/etoile.webp", actif: (c) => c.startsWith("/jouer") },
 ];

@@ -151,7 +151,7 @@ export function Accueil() {
       </div>
 
       {/* L'Aventure */}
-      <a href="#/aventure" className="relative mt-2.5 block h-[7.4rem] overflow-hidden rounded-[1.4rem] border-2 border-[#e8c98a] bg-[#14214a] shadow-[0_10px_22px_rgba(0,0,0,.45)]">
+      <a href="#/voyageurs" className="relative mt-2.5 block h-[7.4rem] overflow-hidden rounded-[1.4rem] border-2 border-[#e8c98a] bg-[#14214a] shadow-[0_10px_22px_rgba(0,0,0,.45)]">
         <Suspense fallback={null}>
           <CarteAventure petite />
         </Suspense>

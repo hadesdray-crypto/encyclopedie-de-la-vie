@@ -19,6 +19,11 @@ export function AventurePage() {
     <main className="mx-auto max-w-xl px-4 pt-4">
       <Entete siVide="/" />
       <Titre sous="Des scientifiques posent parfois un collier GPS à un animal, pour suivre ses voyages.">Aventure</Titre>
+      <a href="#/voyageurs" className="relative mt-4 block overflow-hidden rounded-[1.4rem] border-2 border-[#e8c98a] bg-[#0b1230] px-4 py-4 shadow-[0_10px_22px_rgba(0,0,0,.45)]">
+        <span className="block font-display text-2xl text-[#f3d48a]">Les grands voyageurs</span>
+        <span className="mt-1 block text-sm font-bold text-[#dbe6ff]">Baleines, oiseaux, caribous, loups… leurs vrais trajets sur la carte du monde.</span>
+        <span className="mt-2 flex gap-1.5">{["#4fb6ff", "#5fe07a", "#f3c35a", "#ff5a5a"].map((c) => <span key={c} className="h-1.5 w-8 rounded-full" style={{ background: c }} />)}</span>
+      </a>
       <div className="relative mt-4">
         <CarteAventure />
       </div>
