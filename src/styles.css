@@ -701,3 +701,40 @@ input, textarea { scroll-margin-top: 12px; }
 @media (prefers-reduced-motion: reduce) { .apparait { animation: none; } }
 .trajet-lent { stroke-dasharray: 1; stroke-dashoffset: 1; animation: trace 6s linear forwards; }
 @media (prefers-reduced-motion: reduce) { .trajet-lent { animation: none; stroke-dashoffset: 0; } }
+
+/* ---------- Les jeux : cartes à toucher, ruban de question, VS, confettis ---------- */
+.choix-jeu {
+  background: linear-gradient(180deg, #fff7e3, #f1dcae);
+  color: #2a1c14;
+  box-shadow: 0 0 0 3px #d9a54a, 0 0 0 5px #7a4a1c, 0 10px 18px rgba(0,0,0,.45);
+  transition: transform .18s ease, opacity .25s ease, box-shadow .25s ease;
+  animation: choix-arrive .42s cubic-bezier(.2,.9,.3,1.25) both;
+}
+.choix-jeu:nth-child(2), li:nth-child(2) > .choix-jeu { animation-delay: .06s; }
+li:nth-child(3) > .choix-jeu { animation-delay: .12s; }
+.choix-jeu:active { transform: scale(.96); }
+.ruban-jeu { background: linear-gradient(180deg, rgba(255,255,255,.0), rgba(255,255,255,.35)); }
+.choix-juste { box-shadow: 0 0 0 4px #5fe07a, 0 0 0 6px #1f7a3a, 0 0 26px rgba(95,224,122,.8); animation: choix-pop .5s cubic-bezier(.2,.9,.3,1.4) both; }
+.choix-faux { box-shadow: 0 0 0 4px #ff6b6b, 0 0 0 6px #8a1f1f, 0 8px 16px rgba(0,0,0,.4); animation: choix-secoue .45s ease both; }
+.choix-autre { opacity: .55; filter: saturate(.7); }
+.choix-efface { opacity: .2; filter: grayscale(1); }
+.badge-jeu { position: absolute; right: .5rem; top: .5rem; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 9999px; color: #fff; font-size: 1.3rem; font-weight: 900; box-shadow: 0 0 0 3px #fff, 0 4px 8px rgba(0,0,0,.4); animation: choix-pop .45s cubic-bezier(.2,.9,.3,1.5) both; }
+.consigne-jeu {
+  background: linear-gradient(180deg, #fff0b8 0%, #f3c35a 55%, #d9a54a 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 0 0 2px #7a4a1c, 0 10px 20px rgba(0,0,0,.45);
+}
+.versus-jeu {
+  background: radial-gradient(circle at 35% 30%, #fff3c4, #f3c35a 55%, #a8682a);
+  box-shadow: 0 0 0 3px #3a2008, 0 6px 14px rgba(0,0,0,.55);
+  animation: versus 1.6s ease-in-out infinite;
+}
+.confetti { position: absolute; top: 0; width: .55rem; height: .9rem; border-radius: 2px; animation: confetti 1.3s cubic-bezier(.2,.7,.4,1) both; }
+@keyframes choix-arrive { from { opacity: 0; transform: translateY(14px) scale(.94); } to { opacity: 1; transform: none; } }
+@keyframes choix-pop { 0% { transform: scale(1); } 45% { transform: scale(1.07); } 100% { transform: scale(1.02); } }
+@keyframes choix-secoue { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-7px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
+@keyframes versus { 0%,100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.1); } }
+@keyframes confetti { from { transform: translateY(0) rotate(0); opacity: 1; } to { transform: translateY(-120px) translateX(var(--dx, 0)) rotate(360deg); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .choix-jeu, .choix-juste, .choix-faux, .badge-jeu, .versus-jeu, .confetti { animation: none; } }
+.lecteur-cri { background: linear-gradient(180deg, #fff0b8, #d9a54a); box-shadow: 0 0 0 2px #7a4a1c, 0 8px 16px rgba(0,0,0,.45); }
+.barre-poids { animation: barre-poids .9s cubic-bezier(.2,.9,.3,1) both; transform-origin: left; }
+@keyframes barre-poids { from { transform: scaleX(0); } to { transform: scaleX(1); } }
