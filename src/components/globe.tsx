@@ -55,6 +55,14 @@ export function Globe({ traces, choisi, vers, onChoisir }: { traces: TraceGlobe[
     let raf = 0;
     const debut = performance.now();
     const dessine = (t: number) => {
+      try {
+        dessiner(t);
+      } catch {
+        /* une image ratée : on continue avec la suivante */
+      }
+      raf = requestAnimationFrame(dessine);
+    };
+    const dessiner = (t: number) => {
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       const w = c.clientWidth, h = c.clientHeight;
       if (c.width !== w * dpr) { c.width = w * dpr; c.height = h * dpr; }
@@ -92,7 +100,7 @@ export function Globe({ traces, choisi, vers, onChoisir }: { traces: TraceGlobe[
         ctx.beginPath(); chemin({ type: "LineString", coordinates: v.points.map(([la, lo]) => [lo, la]) }); ctx.stroke();
         if (actif && v.points.length > 1) {
           const duree = ch === v.i ? 4000 : 7000 + (v.i % 5) * 1000;
-          const k = (((t - debut) / duree) + (v.i % 7) * 0.13) % 1;
+          const k = ((((t - debut) / duree + (v.i % 7) * 0.13) % 1) + 1) % 1; // toujours entre 0 et 1
           const n = v.points.length - 1, f = k * n, j = Math.floor(f);
           const [a, b] = [v.points[j], v.points[Math.min(n, j + 1)]];
           const p = geoInterpolate([a[1], a[0]], [b[1], b[0]])(f - j);
@@ -109,7 +117,6 @@ export function Globe({ traces, choisi, vers, onChoisir }: { traces: TraceGlobe[
         }
       }
       ctx.globalAlpha = 1;
-      raf = requestAnimationFrame(dessine);
     };
     raf = requestAnimationFrame(dessine);
     return () => cancelAnimationFrame(raf);

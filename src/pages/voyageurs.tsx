@@ -9,6 +9,7 @@ import { Portrait, aUnePhoto } from "@/components/portrait";
 import monde from "@/data/monde.json";
 import donnees from "@/data/voyageurs.json";
 import { plumeDit } from "@/lib/plume";
+import { useInternet } from "@/lib/internet";
 
 type Voyageur = {
   latin: string; nom: string | null; fiche: string | null; groupe: "marin" | "herbivore" | "oiseau" | "predateur" | "autre";
@@ -365,7 +366,43 @@ export function VoyageursPage() {
         </section>
       ) : null}
       <a href="#/aventure" className="mx-auto mt-4 block w-max rounded-full bg-card px-4 py-2 text-sm font-extrabold text-[#2a1c14]">La liste des animaux suivis</a>
+      <PlusLoin />
       <p className="mx-auto mt-4 max-w-sm text-center text-[11px] texte-doux">Données : Movebank Data Repository (jeux de données publiés en licence libre). Rien n'est inventé : chaque trait est un vrai suivi GPS.</p>
     </main>
+  );
+}
+
+/** Pour aller plus loin : des liens vers Google Earth et les cartes des scientifiques (sur Internet). */
+const LIENS: { titre: string; sous: string; url: string }[] = [
+  { titre: "Les éléphants de Samburu (Kenya)", sous: "Google Earth, avec l'association Save the Elephants, qui suit des éléphants par GPS.", url: "https://earth.google.com/web/data=CkwSShIgYzYxYzZiNGZmZGM2MTFlNjgwY2YxYjMxZWFiNDNjN2QaJlRyZWtzOiBTYW1idXJ1IE5hdGlvbmFsIFJlc2VydmUsIEtlbnlhKAI" },
+  { titre: "Les chimpanzés de Gombe (Tanzanie)", sous: "Google Earth, avec Jane Goodall, qui étudie les chimpanzés depuis des dizaines d'années.", url: "https://earth.google.com/web/data=Cj8SPRIgMTA2NTQ0Mzg0ZWFmMTFlNmI2MTYxOWZkN2FmNGM1ZTAaGUdvb2RhbGwsIEdvbWJlIGFuZCBHb29nbGU" },
+  { titre: "Le golfe de Californie (Mexique)", sous: "Google Earth, avec l'océanographe Sylvia Earle : raies mobula et vie marine.", url: "https://earth.google.com/web/data=CkcSRRIgOTEzMzAyMmVkZjQ1MTFlNmFjMzAwZjRkOGQ3ZDM0OWQaIUhvcGUgU3BvdDogVGhlIEd1bGYgb2YgQ2FsaWZvcm5pYQ" },
+  { titre: "Protéger la faune d'Afrique", sous: "Google Earth : comment on protège les animaux sauvages d'Afrique.", url: "https://earth.google.com/web/data=CkISQBIgODBkNjNmY2ZkZjU4MTFlNmE0YWIwZjRkOGQ3ZDM0OWQaHFByb3RlY3RpbmcgQWZyaWNhJ3MgV2lsZGxpZmU" },
+  { titre: "La carte de Movebank", sous: "La grande carte des scientifiques : des milliers d'études de suivi d'animaux (site en anglais).", url: "https://www.movebank.org/cms/webapp" },
+  { titre: "L'application Animal Tracker", sous: "Pour suivre des animaux équipés de balises, avec l'institut Max Planck (site en anglais).", url: "https://www.movebank.org/cms/movebank-content/animal-tracker" },
+  { titre: "OCEARCH", sous: "Des requins et des tortues suivis en mer (site en anglais).", url: "https://www.ocearch.org/" },
+];
+
+function PlusLoin() {
+  const { permis } = useInternet();
+  return (
+    <details className="carte-nuit mt-4 rounded-3xl px-4 py-3">
+      <summary className="cursor-pointer list-none font-display text-lg text-[#f3d48a]">📁 Pour aller plus loin</summary>
+      <p className="mt-1 text-xs texte-doux">Ces liens s'ouvrent sur Internet (Google Earth et les sites des scientifiques). Ils ne font pas partie de l'application.</p>
+      {permis ? (
+        <ul className="mt-2 space-y-2">
+          {LIENS.map((l) => (
+            <li key={l.url}>
+              <a href={l.url} target="_blank" rel="noopener noreferrer" className="block rounded-2xl bg-white/5 px-3 py-2">
+                <span className="block font-extrabold">{l.titre}</span>
+                <span className="block text-xs texte-doux">{l.sous}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="mt-2 text-sm font-bold">Un adulte peut allumer Internet dans le Coin des parents (Options) pour ouvrir ces liens.</p>
+      )}
+    </details>
   );
 }
