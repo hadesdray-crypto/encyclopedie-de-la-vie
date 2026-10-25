@@ -1,6 +1,7 @@
 // L'état de Plume : bulle ouverte ou fermée, petites réactions, réglages.
 import { useEffect, useState } from "react";
 import { REACTIONS } from "@/data/guide";
+import { compagnonExprime, nomCompagnon, type Expression } from "@/lib/compagnons";
 
 const CLE_VUS = "leonie-guide-vu";
 const CLE_PARLE = "leonie-plume-parle";
@@ -47,6 +48,8 @@ const abonnes = new Set<(e: Etat) => void>();
 let minuteur = 0;
 
 function publier(e: Partial<Etat>) {
+  // Un personnage bonus parle de lui avec son nom à lui.
+  if (typeof e.reaction === "string") { const n = nomCompagnon(); if (n !== "Plume") e = { ...e, reaction: e.reaction.replace(/\bPlume\b/g, n) }; }
   etat = { ...etat, ...e };
   abonnes.forEach((f) => f(etat));
 }
@@ -89,7 +92,7 @@ export function plumePropose(p: Proposition | null) {
 
 /** Plume a un peu peur : elle se cache les yeux, tremble et pousse un petit « Hou ! ». */
 export function plumeAPeur(texte: string, duree = 4000) {
-  plumeDit(texte, duree);
+  parler("peur", texte, duree);
   publier({ peur: etat.peur + 1 });
 }
 
@@ -109,6 +112,8 @@ export function plumeGeste(anim: string) {
 /** Plume fait un petit coucou avec son aile. */
 export function coucouPlume() {
   publier({ coucou: etat.coucou + 1 });
+  const perso = compagnonExprime("coucou");
+  if (perso) plumeDit(perso, 2500);
 }
 
 // « -2 » : la nouvelle présentation (accueil de Leonie, barre, Options) est montrée une fois.
@@ -183,9 +188,19 @@ export function revoirExplications() {
 export function plumeReagit(type: keyof typeof REACTIONS) {
   if (!reactionsActives() || etat.ouvert || etat.presence === "discrete" || etat.presence === "repos") return;
   const phrases = REACTIONS[type];
-  publier({ reaction: phrases[Math.floor(Math.random() * phrases.length)] });
+  const perso = type === "bonne" || type === "mauvaise" || type === "paquet" ? compagnonExprime(type) : null;
+  publier({ reaction: perso ?? phrases[Math.floor(Math.random() * phrases.length)] });
   window.clearTimeout(minuteur);
   minuteur = window.setTimeout(() => publier({ reaction: null }), 3500);
+}
+
+/**
+ * Un moment où le compagnon parle : si c'est un personnage bonus, on joue son enregistrement
+ * et on montre sa phrase à lui (s'il en a une) ; sinon, la phrase habituelle.
+ */
+export function parler(e: Expression, defaut: string, duree = 3000) {
+  const perso = compagnonExprime(e);
+  plumeDit(perso ?? defaut, duree);
 }
 
 /** Plume dit une petite phrase dans sa bulle, quelques secondes (même si les réactions sont éteintes). */

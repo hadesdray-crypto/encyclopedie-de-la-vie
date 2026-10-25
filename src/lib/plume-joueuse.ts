@@ -1,11 +1,14 @@
 // Plume joueuse : elle peut prendre une place autour de la table (Mémory, Bataille, Le plus rapide).
 // Sa force se règle (débutante, moyenne, championne) et elle parle selon son caractère.
 import type { Joueur } from "@/lib/partie";
-import { plumeDit, presence } from "@/lib/plume";
+import { parler, plumeDit, presence } from "@/lib/plume";
+import { compagnonExprime, nomCompagnon, type Expression } from "@/lib/compagnons";
 import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
 
 export const PLUME_JOUEUSE: Joueur = { nom: "Plume", couleur: "#8a5cf0", equipe: 1, plume: true };
+/** La joueuse « Plume » prend le nom du personnage choisi (Plume, ou un personnage bonus). */
+export const joueuseCompagnon = (): Joueur => ({ ...PLUME_JOUEUSE, nom: nomCompagnon() });
 export const estPlume = (j: Joueur | undefined) => !!j?.plume;
 
 export type Force = 1 | 2 | 3;
@@ -63,9 +66,12 @@ const PHRASES: Record<string, Record<Moment, string[]>> = {
     perd: ["Bravo ! Tu es une championne !", "Tu m'as battue ! Quelle partie !"],
   },
 };
+const EXPR: Partial<Record<Moment, Expression>> = { tour: "tour", bien: "trouve", rate: "rate" };
 export function plumeJoueuseDit(m: Moment) {
   const p = PHRASES[presence()] ?? PHRASES.presente;
   const l = p[m];
+  const e = EXPR[m];
+  if (e) return parler(e, l[Math.floor(Math.random() * l.length)], 2600);
   plumeDit(l[Math.floor(Math.random() * l.length)], 2600);
 }
 
@@ -87,8 +93,10 @@ export function plumeOuvrePartie(joueurs: Joueur[]) {
         "Avant de commencer, un grand merci à la princesse Leonie, sans qui ce jeu n'existerait pas, et au Concepteur qui l'a construit !",
       ];
   const t = phrases[Math.floor(Math.random() * phrases.length)];
-  plumeDit(t, 6000);
-  if (voixPossible()) dire(t);
+  const perso = compagnonExprime("debut");
+  plumeDit(perso ?? t, 6000);
+  // Si le personnage bonus a son propre enregistrement, on n'ajoute pas la voix de synthèse.
+  if (!perso && voixPossible()) dire(t);
 }
 
 // De temps en temps, à la fin d'une partie, un petit mot gentil.
