@@ -366,6 +366,21 @@ export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean
           </div>
           <p className={`mt-2 inline-block rounded-full px-3 py-1 text-xs font-extrabold ${estComplet(v) ? "bg-[#4cd964]/20 text-[#9dffb0]" : "bg-white/10 texte-doux"}`}>{estComplet(v) ? "✓ Trajet complet : départ et arrivée connus" : "Trajet partiel : seulement le début est connu"}</p>
           <Parcours key={v.i} points={v.points} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} arrivee={estComplet(v)} />
+          {(() => {
+            const autres = voyagesDe(v.fiche ?? "", v.latin);
+            return autres.length > 1 ? (
+              <div className="mt-3">
+                <p className="text-xs font-extrabold texte-doux">Les {autres.length} voyages de cet animal :</p>
+                <div className="mt-1.5 flex gap-1.5 overflow-x-auto pb-1">
+                  {autres.map((a, k) => (
+                    <button key={a.i} type="button" onClick={() => montrer(a.i)} className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-extrabold ${a.i === v.i ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>
+                      {k + 1}. « {a.individu.slice(0, 14)} »{a.km ? ` · ${a.km.toLocaleString("fr-FR")} km` : ""}{estComplet(a) ? "" : " · partiel"}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : null;
+          })()}
           <dl className="mt-3 grid grid-cols-2 gap-2 text-sm">
             <div className="rounded-2xl bg-white/5 px-3 py-2"><dt className="text-xs texte-doux">Distance du trajet</dt><dd className="font-display text-xl">{v.km !== null && v.km !== undefined ? `${v.km.toLocaleString("fr-FR")} km` : "Non connue"}</dd></div>
             <div className="rounded-2xl bg-white/5 px-3 py-2"><dt className="text-xs texte-doux">Points GPS</dt><dd className="font-display text-xl">{v.nbPoints ? v.nbPoints.toLocaleString("fr-FR") : "Non connu"}</dd></div>
@@ -390,11 +405,68 @@ export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean
       </div>
       <p className="mt-2 text-center text-xs texte-doux">{visibles.length} trajets sur {VOYAGEURS.length}{visibles.length < VOYAGEURS.length ? " · zoome pour en voir plus" : ""} · un doigt pour déplacer, deux pour zoomer et tourner.</p>
 
-      <a href="#/aventure" className="mx-auto mt-4 block w-max rounded-full bg-card px-4 py-2 text-sm font-extrabold text-[#2a1c14]">La liste des animaux suivis</a>
+      <TousLesVoyageurs choisi={choisi} onChoisir={(i) => { montrer(i); }} />
       <PlusLoin />
       <p className="mx-auto mt-4 max-w-sm text-center text-[11px] texte-doux">Données : Movebank Data Repository (jeux de données publiés en licence libre). Rien n'est inventé : chaque trait est un vrai suivi GPS.</p>
       </div>
     </div>
+  );
+}
+
+/** Tous les voyageurs : une carte par animal (les espèces avec un trajet complet d'abord). On touche : son plus beau voyage s'affiche. */
+const ESPECES_VOYAGE = (() => {
+  const par = new Map<string, (typeof VOYAGEURS)[number][]>();
+  for (const v of VOYAGEURS) {
+    if (!par.has(v.latin)) par.set(v.latin, []);
+    par.get(v.latin)!.push(v);
+  }
+  return [...par.values()]
+    .map((vs) => vs.sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || (b.km ?? 0) - (a.km ?? 0)))
+    .sort((a, b) => Number(estComplet(b[0])) - Number(estComplet(a[0])) || Number(!!b[0].nom) - Number(!!a[0].nom) || b.length - a.length || nomDe(a[0]).localeCompare(nomDe(b[0]), "fr"));
+})();
+
+function TousLesVoyageurs({ choisi, onChoisir }: { choisi: number | null; onChoisir: (i: number) => void }) {
+  const [groupe, setGroupe] = useState<G | null>(null);
+  const [montre, setMontre] = useState(12);
+  const liste = groupe ? ESPECES_VOYAGE.filter((vs) => vs[0].groupe === groupe) : ESPECES_VOYAGE;
+  const presents = (Object.keys(GROUPES_VOYAGE) as G[]).filter((g) => ESPECES_VOYAGE.some((vs) => vs[0].groupe === g));
+  return (
+    <section className="carte-nuit mt-4 rounded-3xl px-3 py-4">
+      <p className="px-1 font-display text-2xl text-[#f3d48a]">Tous les voyageurs</p>
+      <p className="px-1 text-xs texte-doux">{ESPECES_VOYAGE.length} animaux différents, {VOYAGEURS.length} vrais voyages GPS. Touche un animal pour voir son voyage.</p>
+      <div className="mt-3 flex gap-1.5 overflow-x-auto px-1 pb-1">
+        <button type="button" onClick={() => { setGroupe(null); setMontre(12); }} className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-extrabold ${groupe === null ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>Tous</button>
+        {presents.map((g) => (
+          <button key={g} type="button" onClick={() => { setGroupe(g); setMontre(12); }} className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-extrabold ${groupe === g ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>
+            <span className="h-1.5 w-4 rounded-full" style={{ background: GROUPES_VOYAGE[g].couleur }} /> {GROUPES_VOYAGE[g].label}
+          </button>
+        ))}
+      </div>
+      <ul className="mt-3 grid grid-cols-2 gap-2">
+        {liste.slice(0, montre).map((vs) => {
+          const v = vs[0], c = GROUPES_VOYAGE[v.groupe as G].couleur, actif = vs.some((x) => x.i === choisi);
+          return (
+            <li key={v.latin}>
+              <button type="button" onClick={() => onChoisir(v.i)} className={`flex h-full w-full items-center gap-2 rounded-2xl px-2 py-2 text-left ${actif ? "bg-[#f3d48a]/20 ring-2 ring-[#f3d48a]" : "bg-white/5 active:bg-white/10"}`}>
+                {v.fiche && aUnePhoto(v.fiche) ? (
+                  <span className="block size-12 shrink-0 overflow-hidden rounded-full [&_img]:size-full [&_img]:object-cover" style={{ boxShadow: `0 0 0 2px ${c}` }}><Portrait id={v.fiche} /></span>
+                ) : (
+                  <span className="grid size-12 shrink-0 place-items-center rounded-full" style={{ background: c + "33", boxShadow: `0 0 0 2px ${c}` }}><span className="size-3 rounded-full" style={{ background: c }} /></span>
+                )}
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-extrabold leading-tight">{nomDe(v)}</span>
+                  <span className="block text-[11px] leading-tight texte-doux">{vs.length > 1 ? `${vs.length} voyages` : "1 voyage"}{v.km ? ` · ${v.km.toLocaleString("fr-FR")} km` : ""}</span>
+                  {estComplet(v) ? null : <span className="block text-[10px] font-bold texte-doux">début seulement</span>}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {montre < liste.length ? (
+        <button type="button" onClick={() => setMontre((n) => n + 24)} className="bouton-bois mt-3 w-full rounded-2xl py-3 font-extrabold">Voir plus d'animaux ({liste.length - montre} encore)</button>
+      ) : null}
+    </section>
   );
 }
 

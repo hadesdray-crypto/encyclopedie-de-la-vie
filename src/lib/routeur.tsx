@@ -95,7 +95,6 @@ function parent(chemin: string) {
   const [c] = chemin.split("?");
   if (c === "/" || c === "") return null;
   if (c.startsWith("/mammiferes/e-") || c.startsWith("/mammiferes/f-") || c.startsWith("/mammiferes/o-")) return "/mammiferes";
-  if (c.startsWith("/suivi")) return "/aventure";
   const morceaux = c.split("/").filter(Boolean);
   return morceaux.length > 1 ? `/${morceaux.slice(0, -1).join("/")}` : "/";
 }

@@ -6,7 +6,6 @@ import { FICHES } from "@/data/fiches";
 import { REGIMES, VIE } from "@/data/fiches-vie";
 import crisConnus from "@/data/cris.json";
 import creditsCris from "@/data/credits-cris.json";
-import suivi from "@/data/suivi-gps.json";
 import { Entete, Titre } from "@/components/entete";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import { Mot, Texte } from "@/components/mot";
@@ -52,7 +51,26 @@ function credit(c: string | Credit | undefined) {
   if (typeof c === "string") return `Licence : ${c}`;
   return `${c.auteur.replace(/, some rights reserved/i, "")} — ${c.licence}${(c as { archive?: string }).archive === "Xeno-canto" ? " · son nettoyé (bruit réduit, volume réglé, raccourci)" : ""}`;
 }
-const SUIVI = suivi as Record<string, { etude: number }[]>;
+/** Le vrai voyage GPS de l'animal, s'il est dans l'application (chargé seulement quand on ouvre la fiche). */
+function VoyageGps({ id, latin }: { id: string; latin: string }) {
+  const [n, setN] = useState<{ total: number; km: number | null } | null>(null);
+  useEffect(() => {
+    let vivant = true;
+    import("@/pages/voyageurs").then((m) => {
+      const vs = m.voyagesDe(id, latin);
+      if (vivant) setN({ total: vs.length, km: vs[0]?.km ?? null });
+    });
+    return () => { vivant = false; };
+  }, [id, latin]);
+  if (!n) return <p className="text-sm">…</p>;
+  if (!n.total) return <p className="text-sm">Pas de voyage GPS de cet animal dans l'application.</p>;
+  return (
+    <>
+      <p className="font-extrabold">{n.total > 1 ? `${n.total} vrais voyages suivis par GPS` : "Un vrai voyage suivi par GPS"}{n.km ? ` (jusqu'à ${n.km.toLocaleString("fr-FR")} km)` : ""}</p>
+      <a href={`#/voyageurs?suivre=${encodeURIComponent(latin)}`} className="bouton-bois mt-2 inline-block rounded-full px-4 py-2 font-extrabold">🧭 Voir son voyage</a>
+    </>
+  );
+}
 const FICHE_PAR_LATIN = new Map(FICHES.map((f) => [f.latin, f]));
 
 export function MammiferesPage({ id, params }: { id?: string; params: URLSearchParams }) {
@@ -217,7 +235,6 @@ function Fiche({ id }: { id: string }) {
   /** La mesure publiée ; sinon l'estimation (marquée) ; sinon « Mal connu ». */
   const valeur = (cle: string, mesure: string | undefined) =>
     mesure ? { texte: mesure } : est[cle] ? { texte: est[cle].t, note: est[cle] } : { texte: "Mal connu." };
-  const etude = (SUIVI[e.latin] ?? []).length > 0;
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
       <Entete siVide={`/mammiferes/f-${e.famille}`} />
@@ -284,8 +301,7 @@ function Fiche({ id }: { id: string }) {
           {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.webm`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p>{VERIFIES.has(e.id) ? <p className="mt-1 text-xs font-extrabold">Cri vérifié : enregistrement d'archive scientifique.</p> : <p className="mt-1 text-xs font-extrabold text-[#8d4e1f]">Pas encore vérifié : on entend peut-être d'autres animaux derrière.</p>}</>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
         </Rubrique>
         <Rubrique mot="gps" titre={<span className="font-extrabold">Suivi GPS</span>}>
-          <p className="font-extrabold">{etude ? "Une étude GPS publique existe" : "Pas de suivi GPS enregistré"}</p>
-          {etude ? <a href={`#/suivi/${e.id}`} className="bouton-bois mt-2 inline-block rounded-full px-4 py-2 font-extrabold">Voir les déplacements</a> : <p className="text-sm">Aucune étude publique n'est notée pour cet animal.</p>}
+          <VoyageGps id={e.id} latin={e.latin} />
         </Rubrique>
       </dl>
       <p className="mx-auto mt-4 max-w-sm text-center text-sm texte-doux">Classement : Mammal Diversity Database. Les chiffres sont des mesures publiées. « Estimé » veut dire calculé d’après les espèces cousines, avec l’écart entre elles en pourcentage. « Mal connu » : ni mesure, ni estimation fiable.</p>
