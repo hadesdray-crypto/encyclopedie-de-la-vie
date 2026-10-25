@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Une présentation fluide",
+    "points": [
+      "La présentation se déroule toute seule, d'une voix normale : rien à toucher.",
+      "Elle s'arrête seulement après le résumé de toute l'application et de comment parler à Plume ; ensuite, on choisit les détails.",
+      "Dans les Options, tout en haut : « Présentation pour un nouvel utilisateur » et « Plume se présente ».",
+      "Le bouton Réglages de Plume ouvre directement les Options : il n'y a plus deux menus pour la même chose."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Une présentation plus claire",
     "points": [
       "Plume résume d'abord toute l'application, et comment lui parler.",
