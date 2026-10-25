@@ -36,6 +36,7 @@ function VersVoyages() {
 }
 const Compagnons = lazy(() => import("@/pages/compagnons").then((m) => ({ default: m.CompagnonsPage })));
 const Chercher = lazy(() => import("@/pages/chercher").then((m) => ({ default: m.ChercherPage })));
+const Atelier = lazy(() => import("@/pages/atelier").then((m) => ({ default: m.AtelierPage })));
 const Options = lazy(() => import("@/pages/options").then((m) => ({ default: m.OptionsPage })));
 
 type Page = ComponentType<{ id?: string; params: URLSearchParams }>;
@@ -52,6 +53,7 @@ const ROUTES: [string, Page][] = [
   ["/suivi", VersVoyages],
   ["/aventure", VersVoyages],
   ["/options", Options],
+  ["/atelier", Atelier],
   ["/chercher", Chercher],
   ["/compagnons", Compagnons],
   ["/sources", SourcesPage],

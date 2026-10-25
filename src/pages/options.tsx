@@ -26,6 +26,7 @@ import { VITESSES, choisirDireBoutons, choisirGrosTexte, choisirVitesseVoix, dir
 import { activerSons, sonsActifs } from "@/lib/sons";
 import { choisirLectureLongue, lectureLongue } from "@/lib/lecture-longue";
 import { presence as presenceActuelle } from "@/lib/plume";
+import { MAX_BONUS, choisirCompagnon, useCompagnon, useCompagnons } from "@/lib/compagnons";
 
 /*
  * Les options : chaque réglage est écrit en phrases simples, et Plume peut le lire à voix haute
@@ -274,6 +275,7 @@ function ChoixVitesse() {
 
 function ChoixPresence() {
   const { presence } = usePlume();
+  const perso = useCompagnon();
   return (
     <div className="py-2.5">
       <div className="flex items-center gap-2">
@@ -289,12 +291,13 @@ function ChoixPresence() {
             key={p.id}
             type="button"
             role="radio"
-            aria-checked={presence === p.id}
+            aria-checked={presence === p.id && !perso}
             onClick={() => {
+              choisirCompagnon(null);
               choisirPresence(p.id);
               if (voixPossible() && p.id !== "repos") dire(p.explique);
             }}
-            className={`rounded-2xl px-3 py-2 text-left ${presence === p.id ? "bouton-bois" : "bg-[#f3e2c2]"}`}
+            className={`rounded-2xl px-3 py-2 text-left ${presence === p.id && !perso ? "bouton-bois" : "bg-[#f3e2c2]"}`}
           >
             {p.id !== "repos" ? (
               <span className="mb-1 flex justify-center gap-1">
@@ -306,6 +309,37 @@ function ChoixPresence() {
             <span className="block text-[11px] leading-snug">{p.explique}</span>
           </button>
         ))}
+      </div>
+      <PersonnagesBonus />
+    </div>
+  );
+}
+
+/** Les personnages bonus : à la suite des 4 caractères de Plume. Jusqu'à 4, créés par la famille. */
+function PersonnagesBonus() {
+  const liste = useCompagnons();
+  const actif = useCompagnon();
+  const vides = Math.max(0, MAX_BONUS - liste.length);
+  return (
+    <div className="mt-4">
+      <p className="font-extrabold leading-tight">Les personnages bonus</p>
+      <p className="text-xs leading-snug">Crée jusqu'à {MAX_BONUS} compagnons : ils font tout comme Plume (aider, réagir, jouer), avec leur nom, leur look, leur caractère et tes paroles enregistrées.</p>
+      <div className="mt-2 grid grid-cols-2 gap-2">
+        {liste.map((c) => (
+          <div key={c.id} className={`rounded-2xl px-2 py-2 text-center ${actif?.id === c.id ? "bouton-bois" : "bg-[#f3e2c2]"}`}>
+            <button type="button" onClick={() => { choisirCompagnon(c.id); choisirPresence(c.caractere); }} className="block w-full" aria-pressed={actif?.id === c.id}>
+              <PlumeDessin caractere={({ discrete: 1, presente: 2, etudiante: 3, passionnee: 4 } as const)[c.caractere]} look={c.look} className="mx-auto size-16" />
+              <span className="block font-extrabold leading-tight">{c.nom}</span>
+              <span className="block text-[11px] leading-snug">{c.age ? `${c.age} ans · ` : ""}{c.createur ? `créé par ${c.createur}` : "personnage bonus"}</span>
+            </button>
+            <a href={`#/atelier?id=${c.id}`} className="mt-1 inline-block text-xs font-extrabold underline">Modifier</a>
+          </div>
+        ))}
+        {vides > 0 ? (
+          <a href="#/atelier" className="grid min-h-28 place-items-center rounded-2xl bg-gradient-to-b from-[#ff6b5a] to-[#d2302a] px-2 py-2 text-center font-extrabold text-white shadow-[0_0_18px_rgba(226,69,60,.45)]">
+            <span><span className="block text-4xl leading-none">＋</span>{liste.length ? "Encore un personnage" : "Créer un personnage bonus"}<span className="block text-[11px] font-bold opacity-85">{vides} place{vides > 1 ? "s" : ""} libre{vides > 1 ? "s" : ""}</span></span>
+          </a>
+        ) : null}
       </div>
     </div>
   );

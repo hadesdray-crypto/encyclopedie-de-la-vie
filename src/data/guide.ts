@@ -242,6 +242,9 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
   },
 ];
 
+/** Toutes les pages que Plume explique (pour que les personnages bonus puissent avoir leurs propres explications). */
+export const PAGES_EXPLIQUEES: Explication[] = PAGES.map(({ id, titre, etapes }) => ({ id, titre, etapes }));
+
 export function explicationPour(chemin: string, params: URLSearchParams): Explication {
   return PAGES.find((p) => p.test(chemin, params)) ?? PAGES[0];
 }

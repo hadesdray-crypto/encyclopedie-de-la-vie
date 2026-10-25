@@ -1,0 +1,293 @@
+// L'atelier des personnages bonus : on crée (jusqu'à 4) des compagnons qui font tout comme Plume,
+// avec leur nom, leur âge, qui les a créés, leur look, leur caractère, et leurs propres paroles enregistrées.
+import { useEffect, useRef, useState } from "react";
+import { LuMic, LuPlay, LuSquare, LuTrash2 } from "react-icons/lu";
+import { Entete, Titre } from "@/components/entete";
+import { PlumeDessin, type AnimPlume, type Caractere } from "@/components/plume-dessin";
+import { COULEURS_CORPS, EPAISSEURS, type Look } from "@/components/garde-robe";
+import { BAS, CHAPEAUX2, CHAUSSURES, HAUTS, LUNETTES, OBJETS, TEINTES, type Piece, type Tenue } from "@/components/vestiaire";
+import { CATEGORIES, CATEGORIE_PAGES, MAX_BONUS, choisirCompagnon, cleVoix, garderCompagnons, garderVoix, lireCompagnons, lireVoix, nouveauCompagnon, type Compagnon, type Expression } from "@/lib/compagnons";
+import { PRESENCES, choisirPresence } from "@/lib/plume";
+import { REACTIONS } from "@/data/guide";
+import { aller as naviguer } from "@/lib/routeur";
+
+// Les rayons du vestiaire : chaque morceau se choisit à part (et certains changent de couleur).
+const RAYONS: { cle: keyof Omit<Tenue, "couleurs">; titre: string; liste: Piece[]; couleur?: keyof Tenue["couleurs"]; cadre: string }[] = [
+  { cle: "haut", titre: "Le haut", liste: HAUTS, couleur: "haut", cadre: "25 95 150 110" },
+  { cle: "bas", titre: "Le bas", liste: BAS, couleur: "bas", cadre: "25 130 150 90" },
+  { cle: "chapeau", titre: "Sur la tête", liste: CHAPEAUX2, couleur: "chapeau", cadre: "20 -40 160 130" },
+  { cle: "lunettes", titre: "Les lunettes", liste: LUNETTES, cadre: "28 45 144 90" },
+  { cle: "chaussures", titre: "Les chaussures", liste: CHAUSSURES, couleur: "chaussures", cadre: "60 165 100 60" },
+  { cle: "objet", titre: "Dans la main", liste: OBJETS, couleur: "objet", cadre: "130 50 110 130" },
+];
+
+const NUM: Record<string, Caractere> = { discrete: 1, presente: 2, etudiante: 3, passionnee: 4 };
+const ANIMS: AnimPlume[] = ["coucou", "parle", "bravo", "jeu", "peur", "etourdie", "fachee", "bataille"];
+
+// Ce que dirait le personnage si on ne change rien (pour montrer l'exemple dans chaque case).
+const DEFAUTS: Partial<Record<Expression, string>> = {
+  coucou: "(un petit coucou de la main)",
+  menu: "(il ouvre son menu sans parler)",
+  bonne: REACTIONS.bonne[0],
+  mauvaise: REACTIONS.mauvaise[0],
+  paquet: REACTIONS.paquet[0],
+  debut: "Merci à la princesse Leonie : grâce à elle, on peut jouer à ce jeu ! Et merci au Concepteur.",
+  tour: "À moi de jouer !",
+  trouve: "Trouvé !",
+  rate: "Oh non, je me suis trompé !",
+  fache: "Hé ! Je préfère quand on me pose doucement.",
+  secoue: "Ouh là ! Tout bouge !",
+  peur: "J'ai un peu peur de cet animal…",
+};
+
+export function AtelierPage({ params }: { params: URLSearchParams }) {
+  const id = params.get("id");
+  const [c, setC] = useState<Compagnon>(() => lireCompagnons().find((x) => x.id === id) ?? nouveauCompagnon());
+  const [anim, setAnim] = useState<AnimPlume>("coucou");
+  const [onglet, setOnglet] = useState<"look" | "caractere" | "interactions">("look");
+  const existe = lireCompagnons().some((x) => x.id === c.id);
+  const plein = !existe && lireCompagnons().length >= MAX_BONUS;
+
+  // L'aperçu bouge tout seul : il montre ses gestes un par un.
+  useEffect(() => {
+    let i = 0;
+    const t = window.setInterval(() => setAnim(ANIMS[i++ % ANIMS.length]), 1800);
+    return () => window.clearInterval(t);
+  }, []);
+
+  const look = (l: Partial<Look>) => setC((x) => ({ ...x, look: { ...x.look, ...l } }));
+  function enregistrer(choisir = false) {
+    const l = lireCompagnons();
+    const nom = c.nom.trim() || "Mon compagnon";
+    const pret = { ...c, nom };
+    garderCompagnons(existe ? l.map((x) => (x.id === c.id ? pret : x)) : [...l, pret]);
+    if (choisir) {
+      choisirCompagnon(pret.id);
+      choisirPresence(pret.caractere);
+    }
+    naviguer("/options");
+  }
+  function supprimer() {
+    garderCompagnons(lireCompagnons().filter((x) => x.id !== c.id));
+    choisirCompagnon(null);
+    [...CATEGORIES, CATEGORIE_PAGES].flatMap((k) => k.moments).forEach((m) => garderVoix(cleVoix(c.id, m.id), null).catch(() => {}));
+    naviguer("/options");
+  }
+
+  if (plein) {
+    return (
+      <main className="mx-auto max-w-xl px-4 pt-4">
+        <Entete siVide="/options" />
+        <Titre sous={`Tu as déjà ${MAX_BONUS} personnages bonus.`}>L'atelier</Titre>
+        <p className="carte-nuit mt-4 rounded-3xl px-4 py-4">Pour en créer un nouveau, modifie ou supprime d'abord un de tes personnages bonus (dans Réglages, « Le caractère de Plume »).</p>
+      </main>
+    );
+  }
+
+  return (
+    <main className="mx-auto max-w-xl px-4 pt-4 pb-10">
+      <Entete siVide="/options" />
+      <Titre sous="Un personnage bonus qui fait tout comme Plume, avec son nom, son look et ses paroles.">L'atelier des personnages</Titre>
+
+      {/* L'aperçu, toujours visible en haut */}
+      <div className="sticky top-0 z-10 -mx-4 bg-gradient-to-b from-[#170c30] via-[#170c30]/95 to-transparent px-4 pb-4 pt-2">
+        <div className="mx-auto flex max-w-sm items-center gap-3">
+          <span className="halo-jeu grid size-28 shrink-0 place-items-center rounded-full bg-[#2a1844]">
+            <PlumeDessin anim={anim} caractere={NUM[c.caractere]} look={c.look} lit={anim === "parle"} className="size-24" />
+          </span>
+          <div className="min-w-0">
+            <p className="titre-jeu truncate font-display text-3xl">{c.nom.trim() || "Ton personnage"}</p>
+            <p className="text-sm texte-doux">{c.age.trim() ? `${c.age.trim()} ans` : "Âge : à choisir"}{c.createur.trim() ? ` · créé par ${c.createur.trim()}` : ""}</p>
+            <p className="text-xs texte-doux">{PRESENCES.find((p) => p.id === c.caractere)?.nom}</p>
+          </div>
+        </div>
+      </div>
+
+      <section className="verre-jeu mt-1 space-y-2 rounded-[1.6rem] px-4 py-4">
+        <Champ label="Son nom" valeur={c.nom} max={16} onChange={(v) => setC({ ...c, nom: v })} exemple="Pompon" />
+        <div className="grid grid-cols-2 gap-2">
+          <Champ label="Son âge" valeur={c.age} max={4} onChange={(v) => setC({ ...c, age: v.replace(/[^\d]/g, "") })} exemple="7" numerique />
+          <Champ label="Créé par" valeur={c.createur} max={16} onChange={(v) => setC({ ...c, createur: v })} exemple="Papa" />
+        </div>
+      </section>
+
+      <div role="tablist" className="mt-4 grid grid-cols-3 gap-1 rounded-full bg-[#2a1844] p-1 ring-1 ring-[#e8c98a]/40">
+        {([["look", "Son look"], ["caractere", "Son caractère"], ["interactions", "Interactions"]] as const).map(([k, l]) => (
+          <button key={k} type="button" role="tab" aria-selected={onglet === k} onClick={() => setOnglet(k)} className={`min-h-10 rounded-full text-sm font-extrabold ${onglet === k ? "bg-[#f3d48a] text-[#2a1650]" : "text-[#f3d48a]"}`}>{l}</button>
+        ))}
+      </div>
+
+      {onglet === "look" ? (
+        <div className="mt-3 space-y-4">
+          <Rangee titre="Sa couleur">
+            {COULEURS_CORPS.map((k) => (
+              <button key={k.id} type="button" aria-label={k.nom} aria-pressed={c.look.couleur === k.id} onClick={() => look({ couleur: k.id })} className={`size-11 shrink-0 rounded-full transition-transform ${c.look.couleur === k.id ? "scale-110 ring-4 ring-[#f3d48a]" : "ring-2 ring-white/20"}`} style={{ background: `radial-gradient(circle at 35% 30%, ${k.clair}, ${k.fonce})` }} />
+            ))}
+          </Rangee>
+          <Rangee titre="Son épaisseur">
+            {EPAISSEURS.map((e) => (
+              <Pastille key={e.id} actif={c.look.epaisseur === e.id} onClick={() => look({ epaisseur: e.id })}>
+                <PlumeDessin caractere={NUM[c.caractere]} look={{ ...c.look, epaisseur: e.id }} className="mx-auto size-14" />
+                <span className="block text-[11px]">{e.nom}</span>
+              </Pastille>
+            ))}
+          </Rangee>
+          <p className="px-1 text-sm texte-doux">Choisis chaque morceau comme tu veux : on peut tout mélanger. Touche une couleur pour changer celle du vêtement.</p>
+          {RAYONS.map((r) => (
+            <details key={r.cle} open={r.cle === "haut"} className="verre-jeu rounded-[1.6rem] px-3 py-3">
+              <summary className="flex cursor-pointer list-none items-center justify-between">
+                <span className="font-display text-xl text-[#f3d48a]">{r.titre}</span>
+                <span className="text-xs font-bold texte-doux">{r.liste.find((x) => x.id === c.look[r.cle])?.nom} ▾</span>
+              </summary>
+              {(["filles", "garcons", "tous"] as const).map((pour) => {
+                const pieces = r.liste.filter((x) => x.pour === pour);
+                return pieces.length ? (
+                  <div key={pour} className="mt-2">
+                    <p className="px-1 text-xs font-black texte-doux">{pour === "filles" ? "Plutôt pour les filles" : pour === "garcons" ? "Plutôt pour les garçons" : "Pour tout le monde"}</p>
+                    <div className="mt-1 flex gap-2 overflow-x-auto pb-1 pt-1">
+                      {pieces.map((h) => (
+                        <Pastille key={h.id} actif={c.look[r.cle] === h.id} onClick={() => look({ [r.cle]: h.id } as Partial<Look>)}>
+                          <PlumeDessin caractere={NUM[c.caractere]} look={{ ...c.look, [r.cle]: h.id }} cadre={r.cadre} className="mx-auto size-14" />
+                          <span className="block text-[11px]">{h.nom}</span>
+                        </Pastille>
+                      ))}
+                    </div>
+                  </div>
+                ) : null;
+              })}
+              {r.couleur ? (
+                <div className="mt-2">
+                  <p className="px-1 text-xs font-black texte-doux">Sa couleur</p>
+                  <div className="mt-1 flex gap-1.5 overflow-x-auto pb-1">
+                    <button type="button" onClick={() => look({ couleurs: { ...c.look.couleurs, [r.couleur!]: undefined } })} className={`h-9 shrink-0 rounded-full px-3 text-xs font-extrabold ${!c.look.couleurs[r.couleur] ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>D'origine</button>
+                    {TEINTES.map((t) => (
+                      <button key={t.id} type="button" aria-label={t.nom} aria-pressed={c.look.couleurs[r.couleur!] === t.id} onClick={() => look({ couleurs: { ...c.look.couleurs, [r.couleur!]: t.id } })} className={`size-9 shrink-0 rounded-full ${c.look.couleurs[r.couleur!] === t.id ? "ring-4 ring-[#f3d48a]" : "ring-2 ring-white/20"}`} style={{ background: t.c }} />
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </details>
+          ))}
+        </div>
+      ) : onglet === "caractere" ? (
+        <div className="mt-3 space-y-2">
+          <p className="px-1 text-sm texte-doux">Le caractère décide combien il parle et bouge, comme pour Plume. Il garde ses mains, ses chaussures et ses yeux de ce caractère.</p>
+          {PRESENCES.filter((p) => p.id !== "repos").map((p) => (
+            <button key={p.id} type="button" aria-pressed={c.caractere === p.id} onClick={() => setC({ ...c, caractere: p.id as Compagnon["caractere"] })} className={`flex w-full items-center gap-3 rounded-[1.4rem] px-3 py-2.5 text-left ${c.caractere === p.id ? "bg-gradient-to-b from-[#fff0b8] to-[#f3c35a] text-[#2a1650]" : "verre-jeu text-white"}`}>
+              <PlumeDessin caractere={NUM[p.id]} look={c.look} className="size-14 shrink-0" />
+              <span><span className="block font-extrabold">{p.nom}</span><span className="block text-xs opacity-80">{p.explique.replace(/^[^.]*\.\s*/, "")}</span></span>
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-3 space-y-4">
+          <p className="px-1 text-sm texte-doux">Pour chaque moment, ton personnage dit ce que dirait Plume avec son caractère. Tu peux écrire ta propre phrase, et l'enregistrer avec ta voix : c'est elle qu'on entendra.</p>
+          {[...CATEGORIES, CATEGORIE_PAGES].map((k) => (
+            <details key={k.id} open={k.id === "toucher"} className="verre-jeu rounded-[1.6rem] px-3 py-3">
+              <summary className="cursor-pointer list-none">
+                <p className="flex items-center justify-between font-display text-xl text-[#f3d48a]"><span>{k.nom}</span><span className="text-sm">{k.moments.length} ▾</span></p>
+                <p className="text-xs texte-doux">{k.explique}</p>
+              </summary>
+              <ul className="mt-2 space-y-3">
+                {k.moments.map((m) => (
+                  <li key={m.id} className="rounded-2xl bg-white/5 px-3 py-2.5">
+                    <p className="font-extrabold">{m.nom}</p>
+                    <p className="text-xs texte-doux">{m.quand}</p>
+                    <input value={c.phrases[m.id] ?? ""} maxLength={120} onChange={(e) => setC({ ...c, phrases: { ...c.phrases, [m.id]: e.target.value } })} placeholder={`Sinon : « ${(DEFAUTS[m.id as keyof typeof DEFAUTS] ?? m.quand).slice(0, 70)}${(DEFAUTS[m.id as keyof typeof DEFAUTS] ?? m.quand).length > 70 ? "…" : ""} »`} className="mt-1.5 w-full rounded-xl bg-white/10 px-3 py-2 text-sm text-white outline-none placeholder:text-white/45" />
+                    <Enregistreur cle={cleVoix(c.id, m.id)} />
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-6 space-y-2">
+        <button type="button" onClick={() => enregistrer(true)} className="bouton-jeu w-full rounded-full py-3.5 font-display text-xl">Enregistrer et le choisir ➜</button>
+        <button type="button" onClick={() => enregistrer(false)} className="verre-jeu w-full rounded-full py-3 font-extrabold text-white">Enregistrer sans le choisir</button>
+        {existe ? <button type="button" onClick={supprimer} className="w-full rounded-full py-3 font-extrabold text-[#ff9b9b]">Supprimer ce personnage</button> : null}
+      </div>
+    </main>
+  );
+}
+
+function Champ({ label, valeur, onChange, max, exemple, numerique = false }: { label: string; valeur: string; onChange: (v: string) => void; max: number; exemple: string; numerique?: boolean }) {
+  return (
+    <label className="block">
+      <span className="px-1 text-xs font-black text-[#f3d48a]">{label}</span>
+      <input value={valeur} maxLength={max} inputMode={numerique ? "numeric" : undefined} onChange={(e) => onChange(e.target.value)} placeholder={exemple} className="mt-0.5 w-full rounded-full bg-white/10 px-4 py-2.5 text-lg font-extrabold text-white outline-none placeholder:text-white/35" />
+    </label>
+  );
+}
+
+function Rangee({ titre, children }: { titre: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <p className="px-1 text-sm font-black text-[#f3d48a]">{titre}</p>
+      <div className="mt-1.5 flex gap-2 overflow-x-auto pb-1 pt-1">{children}</div>
+    </div>
+  );
+}
+
+function Pastille({ actif, onClick, children }: { actif: boolean; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <button type="button" aria-pressed={actif} onClick={onClick} className={`w-[5.2rem] shrink-0 rounded-2xl px-1 py-1.5 text-center font-extrabold leading-tight ${actif ? "bg-gradient-to-b from-[#fff0b8] to-[#f3c35a] text-[#2a1650] shadow-[0_0_16px_rgba(243,195,90,.5)]" : "verre-jeu text-white"}`}>
+      {children}
+    </button>
+  );
+}
+
+/** Enregistrer une phrase avec le micro (10 secondes au plus), l'écouter, ou l'effacer. */
+function Enregistreur({ cle }: { cle: string }) {
+  const [son, setSon] = useState<Blob | null>(null);
+  const [etat, setEtat] = useState<"" | "enregistre" | "erreur">("");
+  const rec = useRef<MediaRecorder | null>(null);
+  useEffect(() => {
+    lireVoix(cle).then(setSon);
+  }, [cle]);
+  async function demarrer() {
+    try {
+      const flux = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const r = new MediaRecorder(flux);
+      const morceaux: Blob[] = [];
+      r.ondataavailable = (e) => e.data.size && morceaux.push(e.data);
+      r.onstop = async () => {
+        flux.getTracks().forEach((t) => t.stop());
+        const b = new Blob(morceaux, { type: r.mimeType || "audio/webm" });
+        await garderVoix(cle, b);
+        setSon(b);
+        setEtat("");
+      };
+      rec.current = r;
+      r.start();
+      setEtat("enregistre");
+      window.setTimeout(() => r.state === "recording" && r.stop(), 10000);
+    } catch {
+      setEtat("erreur");
+    }
+  }
+  function ecouter() {
+    if (!son) return;
+    const url = URL.createObjectURL(son);
+    const a = new Audio(url);
+    a.onended = () => URL.revokeObjectURL(url);
+    a.play().catch(() => {});
+  }
+  return (
+    <div className="mt-2 flex flex-wrap items-center gap-2">
+      {etat === "enregistre" ? (
+        <button type="button" onClick={() => rec.current?.stop()} className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-[#e2453c] px-3 text-sm font-extrabold text-white animate-pulse"><LuSquare className="size-4" /> J'ai fini</button>
+      ) : (
+        <button type="button" onClick={demarrer} className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white/12 px-3 text-sm font-extrabold text-white ring-1 ring-white/25"><LuMic className="size-4" /> {son ? "Réenregistrer" : "Enregistrer ma voix"}</button>
+      )}
+      {son ? (
+        <>
+          <button type="button" onClick={ecouter} className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-[#5fe07a]/20 px-3 text-sm font-extrabold text-[#b9ffc4]"><LuPlay className="size-4" /> Écouter</button>
+          <button type="button" aria-label="Effacer l'enregistrement" onClick={() => { garderVoix(cle, null); setSon(null); }} className="grid size-9 place-items-center rounded-full bg-white/10 text-white/80"><LuTrash2 className="size-4" /></button>
+        </>
+      ) : null}
+      {etat === "erreur" ? <p className="w-full text-xs text-[#ffb3b3]">Le micro n'est pas disponible. Sur le téléphone, il faut accepter l'accès au micro (il faut la nouvelle version de l'application, installée depuis le lien).</p> : null}
+    </div>
+  );
+}

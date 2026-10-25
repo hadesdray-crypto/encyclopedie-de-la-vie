@@ -4,7 +4,8 @@ import { LuCircleHelp, LuMinus, LuPlus, LuX } from "react-icons/lu";
 import type { Explication } from "@/data/guide";
 import { COULEURS, NOMS_EQUIPES, garderJoueurs, type Joueur } from "@/lib/partie";
 import { ouvrirRegles, plumeDit, plumePeutProposer } from "@/lib/plume";
-import { FORCES, PLUME_JOUEUSE, garderForce, lireForce, plumeJoueuseDit, type Force } from "@/lib/plume-joueuse";
+import { FORCES, garderForce, joueuseCompagnon, lireForce, plumeJoueuseDit, type Force } from "@/lib/plume-joueuse";
+import { nomCompagnon } from "@/lib/compagnons";
 import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
 
@@ -47,7 +48,7 @@ export function Preparation({
           {joueurs.map((j, i) => (
             <li key={i} className="verre-jeu flex items-center gap-2 rounded-full px-2 py-1.5 text-white">
               <span className="grid size-9 shrink-0 place-items-center rounded-full font-black text-white" style={{ background: j.couleur }}>{j.plume ? "🦉" : (j.nom[0] ?? "?").toUpperCase()}</span>
-              {j.plume ? <span className="min-w-0 flex-1 text-lg font-extrabold">Plume <span className="text-xs font-bold text-white/70">· {FORCES.find((f) => f.id === force)?.nom}</span></span> : <input
+              {j.plume ? <span className="min-w-0 flex-1 text-lg font-extrabold">{j.nom} <span className="text-xs font-bold text-white/70">· {FORCES.find((f) => f.id === force)?.nom}</span></span> : <input
                 value={j.nom}
                 onChange={(e) => changer(joueurs.map((x, k) => (k === i ? { ...x, nom: e.target.value.slice(0, 14) } : x)))}
                 aria-label={`Prénom du joueur ${i + 1}`}
@@ -67,13 +68,13 @@ export function Preparation({
           ))}
         </ul>
         {avecPlume && !plumeIci && joueurs.length < 4 ? (
-          <button type="button" onClick={() => changer([...joueurs, { ...PLUME_JOUEUSE, equipe: (joueurs.length % 2) as 0 | 1 }])} className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#8a5cf0] to-[#c27af0] py-2.5 font-extrabold text-white shadow-[0_0_20px_rgba(160,110,255,.45)]">
-            🦉 Jouer avec Plume
+          <button type="button" onClick={() => changer([...joueurs, { ...joueuseCompagnon(), equipe: (joueurs.length % 2) as 0 | 1 }])} className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#8a5cf0] to-[#c27af0] py-2.5 font-extrabold text-white shadow-[0_0_20px_rgba(160,110,255,.45)]">
+            🦉 Jouer avec {nomCompagnon()}
           </button>
         ) : null}
         {avecPlume && plumeIci ? (
           <div className="verre-jeu mt-2 rounded-[1.4rem] px-3 py-2.5">
-            <p className="text-sm font-black text-[#f3d48a]">La force de Plume</p>
+            <p className="text-sm font-black text-[#f3d48a]">La force de {nomCompagnon()}</p>
             <div className="mt-1.5 grid grid-cols-3 gap-1.5">
               {FORCES.map((f) => <Choix key={f.id} actif={force === f.id} onClick={() => { setForce(f.id); garderForce(f.id); }}>{f.nom}</Choix>)}
             </div>

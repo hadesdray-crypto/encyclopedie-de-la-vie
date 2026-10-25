@@ -5,6 +5,9 @@
  * Chaque caractère a sa tenue complète : un vêtement, quelque chose sur la tête,
  * des yeux qui lui ressemblent, et une paire de lunettes seulement quand elle lit.
  */
+import { EPAISSEURS, couleurCorps, normaliser, type Look } from "@/components/garde-robe";
+import { Bas, Chapeau2, Chaussure, Haut, Lunettes2, Objet } from "@/components/vestiaire";
+
 /** Les situations : chacune a ses gestes (lire, avoir peur, jouer à la bataille, encourager, fêter une victoire). */
 export type AnimPlume = "rien" | "coucou" | "parle" | "ailes" | "peur" | "bataille" | "jeu" | "bravo" | "vole" | "triste" | "etourdie" | "fachee";
 
@@ -17,42 +20,61 @@ export function PlumeDessin({
   caractere = 0,
   lit = false,
   miroir = false,
+  look: lookBrut,
+  cadre,
 }: {
+  /** Pour une vignette : on ne montre qu'une partie (la tête, les pieds…), en zoomant. */
+  cadre?: string;
   anim?: AnimPlume;
   className?: string;
   caractere?: Caractere;
   lit?: boolean;
   /** Plume est à gauche de l'écran : sa main à outil passe de l'autre côté, vers le texte. */
   miroir?: boolean;
+  /** Un compagnon créé dans l'atelier : sa couleur, son épaisseur et ses vêtements. */
+  look?: Look;
 }) {
+  const look = lookBrut ? normaliser(lookBrut) : undefined;
+  const c = look ? couleurCorps(look.couleur) : null;
+  const rx = look ? (EPAISSEURS.find((e) => e.id === look.epaisseur)?.rx ?? 70) : 70;
+  const dx = rx - 70; // les ailes et les oreilles s'écartent quand il est plus rond
+  const gid = look ? `-${look.couleur}` : "";
   return (
-    <svg viewBox="0 0 200 200" className={`plume-svg plume-${anim} plume-c${caractere} ${lit ? "plume-lit" : ""} ${className}`} aria-hidden="true" style={{ overflow: "visible" }}>
+    <svg viewBox={cadre ?? "0 0 200 200"} className={`plume-svg plume-${anim} plume-c${caractere} ${lit ? "plume-lit" : ""} ${className}`} aria-hidden="true" style={{ overflow: cadre ? "hidden" : "visible" }}>
       <defs>
-        <radialGradient id="pl-corps" cx="45%" cy="35%" r="70%">
-          <stop offset="0" stopColor="#c9a4ff" />
-          <stop offset="1" stopColor="#7a4fd0" />
+        <radialGradient id={`pl-corps${gid}`} cx="45%" cy="35%" r="70%">
+          <stop offset="0" stopColor={c?.clair ?? "#c9a4ff"} />
+          <stop offset="1" stopColor={c?.fonce ?? "#7a4fd0"} />
         </radialGradient>
         <radialGradient id="pl-ventre" cx="50%" cy="40%" r="60%">
           <stop offset="0" stopColor="#fff6e6" />
           <stop offset="1" stopColor="#f3d9b8" />
         </radialGradient>
       </defs>
-      <g className="pl-aile-g">
-        <path d="M34 108 q-22 30 6 56 q10-30 6-56 Z" fill="#6a3fc0" />
+      <g transform={dx ? `translate(${-dx} 0)` : undefined}>
+        <g className="pl-aile-g">
+          <path d="M34 108 q-22 30 6 56 q10-30 6-56 Z" fill={c?.aile ?? "#6a3fc0"} />
+        </g>
       </g>
-      <g className="pl-aile-d">
-        <path d="M166 108 q22 30 -6 56 q-10-30 -6-56 Z" fill="#6a3fc0" />
+      <g transform={dx ? `translate(${dx} 0)` : undefined}>
+        <g className="pl-aile-d">
+          <path d="M166 108 q22 30 -6 56 q-10-30 -6-56 Z" fill={c?.aile ?? "#6a3fc0"} />
+        </g>
       </g>
       <g className="pl-tete">
-        <path d="M48 62 L40 22 L78 48 Z" fill="#7a4fd0" />
-        <path d="M152 62 L160 22 L122 48 Z" fill="#7a4fd0" />
-        <path d="M50 55 L46 32 L68 48 Z" fill="#f3a0e0" />
-        <path d="M150 55 L154 32 L132 48 Z" fill="#f3a0e0" />
-        <ellipse cx="100" cy="112" rx="70" ry="74" fill="url(#pl-corps)" />
-        <ellipse cx="100" cy="140" rx="42" ry="42" fill="url(#pl-ventre)" />
+        <g transform={dx ? `translate(${-dx * 0.6} 0)` : undefined}>
+          <path d="M48 62 L40 22 L78 48 Z" fill={c?.fonce ?? "#7a4fd0"} />
+          <path d="M50 55 L46 32 L68 48 Z" fill={c?.oreille ?? "#f3a0e0"} />
+        </g>
+        <g transform={dx ? `translate(${dx * 0.6} 0)` : undefined}>
+          <path d="M152 62 L160 22 L122 48 Z" fill={c?.fonce ?? "#7a4fd0"} />
+          <path d="M150 55 L154 32 L132 48 Z" fill={c?.oreille ?? "#f3a0e0"} />
+        </g>
+        <ellipse cx="100" cy="112" rx={rx} ry="74" fill={`url(#pl-corps${gid})`} />
+        <ellipse cx="100" cy="140" rx={42 + dx * 0.5} ry="42" fill="url(#pl-ventre)" />
         <path d="M84 128 q8 6 16 0 q8 6 16 0 M86 146 q7 5 14 0 q7 5 14 0" stroke="#e2bf8f" strokeWidth="3" fill="none" strokeLinecap="round" />
 
-        <Vetement caractere={caractere} />
+        {look ? <><Bas t={look} /><Haut t={look} /></> : <Vetement caractere={caractere} />}
         <Yeux caractere={caractere} />
 
         <ellipse cx="50" cy="118" rx="10" ry="6" fill="#ff9fcf" opacity=".75" />
@@ -72,14 +94,16 @@ export function PlumeDessin({
           <path d="M130 22 l2 -5 l2 5 l5 1 l-4 3 l1 5 l-4 -2 l-4 2 l1 -5 l-4 -3 Z" fill="#fff6b0" />
           <path d="M100 8 l2 -5 l2 5 l5 1 l-4 3 l1 5 l-4 -2 l-4 2 l1 -5 l-4 -3 Z" fill="#ff9fcf" />
         </g>
-        <Chapeau caractere={caractere} lit={lit} />
-        {lit ? <Lunettes caractere={caractere} /> : null}
-        {caractere === 0 ? <path d="M82 184 q-4 8 4 8 q4-4 8 0 q2-6 -4-10 Z M118 184 q4 8 -4 8 q-4-4 -8 0 q-2-6 4-10 Z" fill="#f3b54a" /> : null}
+        {look ? <Chapeau2 t={look} /> : <Chapeau caractere={caractere} lit={lit} />}
+        {look && look.lunettes !== "aucune" ? <Lunettes2 t={look} /> : lit ? <Lunettes caractere={caractere} /> : null}
+        {caractere === 0 && !look ? <path d="M82 184 q-4 8 4 8 q4-4 8 0 q2-6 -4-10 Z M118 184 q4 8 -4 8 q-4-4 -8 0 q-2-6 4-10 Z" fill="#f3b54a" /> : null}
       </g>
       {caractere !== 0 ? (
         <g className="pl-membres" transform={miroir ? "matrix(-1 0 0 1 200 0)" : undefined}>
-          <Chaussures caractere={caractere} />
-          <MainOutil caractere={caractere} />
+          {look && look.chaussures !== "aucune" ? <ChaussuresPerso look={look} /> : <Chaussures caractere={caractere} />}
+          {look && look.objet !== "aucun" ? (
+            <g className="pl-objet"><Objet t={look} /><Main caractere={caractere} x={178} y={152} /></g>
+          ) : <MainOutil caractere={caractere} />}
           {/* Bataille : les deux poings levés, « en garde ! » (pour rire) */}
           <g className="pl-main pl-main-boxe">
             <g className="pl-poing-g"><Main caractere={caractere} x={34} y={140} /></g>
@@ -417,6 +441,16 @@ function Chaussures({ caractere }: { caractere: Caractere }) {
     <g className="pl-pieds">
       {forme("g")}
       {forme("d")}
+    </g>
+  );
+}
+
+/** Les chaussures choisies dans le vestiaire (elles bougent comme les autres : la droite tape du pied). */
+function ChaussuresPerso({ look }: { look: Look }) {
+  return (
+    <g className="pl-pieds">
+      <g transform="matrix(-1 0 0 1 200 0)"><g className="pl-pied-g"><Chaussure t={look} /></g></g>
+      <g className="pl-pied-d"><Chaussure t={look} /></g>
     </g>
   );
 }

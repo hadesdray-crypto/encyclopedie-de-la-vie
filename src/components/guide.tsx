@@ -22,10 +22,12 @@ import {
   presentationFaite,
   reglesEnCours,
   ecranEnCours,
+  parler,
   plumeDit,
   usePlume,
 } from "@/lib/plume";
 import { dire, taire, useParle } from "@/lib/parole";
+import { choisirCompagnon, cleVoix, compagnonExprime, lireVoix, useCompagnon, useCompagnons, type Expression } from "@/lib/compagnons";
 import { aller } from "@/lib/routeur";
 import { motDuLexique, type MotLexique } from "@/data/lexique";
 
@@ -87,6 +89,8 @@ function limiterBas(bas: number) {
 
 export function Plume({ chemin, params }: { chemin: string; params: URLSearchParams }) {
   const { ouvert, contenu, reaction, proposition, presence, coucou, peur, geste } = usePlume();
+  const perso = useCompagnon();
+  const bonus = useCompagnons();
   const parle = useParle();
   const [pos, setPos] = useState(lirePosition);
   const [glisse, setGlisse] = useState<{ x: number; y: number } | null>(null);
@@ -219,7 +223,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
             const [a1, p1, a2, p2] = REACTIONS[presenceActuelle()] ?? REACTIONS.presente;
             plumePropose(null);
             setAnim(a1);
-            plumeDit(p1, 2400);
+            parler("secoue", p1, 2400);
             navigator.vibrate?.(20);
             window.setTimeout(() => {
               if (a2 && p2) { setAnim(a2); plumeDit(p2, 2600); window.setTimeout(() => setAnim("rien"), 2600); }
@@ -316,7 +320,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       window.setTimeout(() => {
         if (presence === "repos") return setAnim("rien");
         setAnim("fachee");
-        plumeDit(FACHE[presence] ?? "Hé !", 2600);
+        parler("fache", FACHE[presence] ?? "Hé !", 2600);
         window.setTimeout(() => setAnim("rien"), 2600);
       }, 2400);
     };
@@ -405,13 +409,18 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       if (ouvert) {
         taire();
         ouvrirPlume(false);
-      } else ouvrirPlume(true, "page");
+      } else {
+        ouvrirPlume(true, "page");
+        compagnonExprime("menu");
+      }
       return;
     }
     dernierToucher.current = t;
     toucherSimple.current = window.setTimeout(() => {
       if (ouvert) return;
       setAnim("coucou");
+      const perso = compagnonExprime("coucou");
+      if (perso) plumeDit(perso, 2500);
       window.setTimeout(() => setAnim("rien"), 1600);
     }, 400);
   }
@@ -453,7 +462,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
             </>
           ) : null}
           <span className="block size-full transition-transform duration-200" style={vol ? { transform: `rotate(${vol.r}deg)` } : glisse ? { transform: "scale(1.22) translateY(-4px)" } : undefined}>
-            <PlumeDessin anim={["peur", "vole", "triste", "etourdie", "bravo", "fachee", "coucou"].includes(anim) ? anim : parle ? "parle" : ouvert ? "ailes" : animJeu ?? anim} caractere={ouvert && contenu === "presentation" ? 3 : CARACTERE[presence] ?? 0} lit={parle && !["peur", "vole", "triste", "etourdie", "fachee"].includes(anim)} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
+            <PlumeDessin anim={["peur", "vole", "triste", "etourdie", "bravo", "fachee", "coucou"].includes(anim) ? anim : parle ? "parle" : ouvert ? "ailes" : animJeu ?? anim} caractere={ouvert && contenu === "presentation" && !perso ? 3 : CARACTERE[presence] ?? 0} look={perso?.look} lit={parle && !["peur", "vole", "triste", "etourdie", "fachee"].includes(anim)} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
           </span>
         </button>
 
@@ -503,10 +512,12 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
 
 /** La petite bulle de Plume, posée à côté d'elle. Elle se referme quand on touche ailleurs. */
 function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParams; pos: Position }) {
+  const perso = useCompagnon();
+  const bonus = useCompagnons();
   const { contenu, presence } = usePlume();
   const parle = useParle();
   const ref = useRef<HTMLDivElement>(null);
-  const explicationPage = explicationPour(chemin, params);
+  const explicationPage = ecranEnCours() ?? explicationPour(chemin, params);
   const jeu = chemin === "/jouer" ? params.get("jeu") : null;
   const [bravo, setBravo] = useState(false);
   const { fete } = usePlume();
@@ -525,7 +536,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   const defMot = motChoisi ? motDuLexique(motChoisi) : undefined;
   // Présentation : après le résumé, on peut choisir un sujet à expliquer en détail.
   const [sujet, setSujet] = useState<string | null>(null);
-  const explication =
+  const explicationBrute =
     contenu === "mots"
       ? { id: "mots", titre: "Les mots de cette page", etapes: [defMot ? `${defMot.mot} : ${defMot.definition}` : mots.length ? "Touche un mot, je te l'explique." : "Il n'y a pas de mot compliqué sur cette page."] }
       : contenu === "presentation" ? (sujet ? SUJETS.find((x) => x.id === sujet) ?? PRESENTATION : PRESENTATION) : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
@@ -549,6 +560,10 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
     }, 300);
   }
 
+  // Un personnage bonus explique avec son nom à lui, et avec son propre texte s'il en a écrit un pour cette page.
+  const avecNom = (t: string) => (perso ? t.replace(/\bPlume\b/g, perso.nom) : t);
+  const textePerso = perso && contenu === "page" ? perso.phrases[`page:${explicationBrute.id}` as Expression]?.trim() : undefined;
+  const explication = perso ? { ...explicationBrute, titre: avecNom(explicationBrute.titre), etapes: textePerso ? [textePerso] : explicationBrute.etapes.map(avecNom) } : explicationBrute;
   const texte = explication.etapes[etape] ?? explication.etapes[0];
   const derniere = etape >= explication.etapes.length - 1;
   const voix = voixPossible();
@@ -623,7 +638,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
     <div
       ref={ref}
       role="dialog"
-      aria-label={`Plume : ${contenu === "presence" ? "comment je reste" : explication.titre}`}
+      aria-label={`${perso?.nom ?? "Plume"} : ${contenu === "presence" ? "comment je reste" : explication.titre}`}
       className={`arrivee fixed z-50 w-[min(20rem,calc(100vw-1.25rem))] rounded-3xl border-2 border-[#c9a4ff] bg-[#fff8ea] px-3.5 pb-3 pt-2.5 text-[#2a1c14] shadow-[0_16px_36px_rgba(0,0,0,.55)] ${haut ? "" : gauche ? "rounded-bl-md" : "rounded-br-md"}`}
       style={style}
     >
@@ -642,16 +657,26 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
                 type="button"
                 aria-pressed={presence === p.id}
                 onClick={() => {
+                  choisirCompagnon(null);
                   choisirPresence(p.id);
                   if (voix && p.id !== "repos") dire(p.explique);
                 }}
-                className={`w-full rounded-2xl px-3 py-2 text-left ${presence === p.id ? "bg-[#6a3fc0] text-white" : "bg-[#efe3ff] text-[#2a1c14]"}`}
+                className={`w-full rounded-2xl px-3 py-2 text-left ${presence === p.id && !perso ? "bg-[#6a3fc0] text-white" : "bg-[#efe3ff] text-[#2a1c14]"}`}
               >
                 <span className="block font-extrabold leading-tight">{p.nom}</span>
                 <span className="block text-xs leading-snug">{p.explique}</span>
               </button>
             </li>
           ))}
+          {bonus.map((c) => (
+            <li key={c.id}>
+              <button type="button" aria-pressed={perso?.id === c.id} onClick={() => { choisirCompagnon(c.id); choisirPresence(c.caractere); }} className={`flex w-full items-center gap-2 rounded-2xl px-3 py-2 text-left ${perso?.id === c.id ? "bg-[#6a3fc0] text-white" : "bg-[#efe3ff] text-[#2a1c14]"}`}>
+                <PlumeDessin caractere={CARACTERE[c.caractere]} look={c.look} className="size-10 shrink-0" />
+                <span><span className="block font-extrabold leading-tight">Bonus · {c.nom}</span><span className="block text-xs leading-snug">{c.createur ? `Créé par ${c.createur}` : "Personnage bonus"}</span></span>
+              </button>
+            </li>
+          ))}
+          {bonus.length < 4 ? <li><a href="#/atelier" className="block w-full rounded-2xl bg-gradient-to-b from-[#ff6b5a] to-[#d2302a] px-3 py-2 text-center text-sm font-extrabold text-white">＋ {bonus.length ? "Encore un personnage bonus" : "Créer un personnage bonus"}</a></li> : null}
         </ul>
       ) : (
         <>
@@ -743,7 +768,16 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
                 setLecture(false);
               } else {
                 setLecture(true);
-                dire(contenu === "presence" ? PRESENCES.map((p) => `${p.nom}. ${p.explique}`).join(" ") : texte);
+                // Sa propre voix enregistrée pour cette page ? On la fait entendre à la place de la voix de synthèse.
+                if (perso && contenu === "page") {
+                  lireVoix(cleVoix(perso.id, `page:${explicationBrute.id}`)).then((son) => {
+                    if (!son) return dire(texte);
+                    const url = URL.createObjectURL(son);
+                    const a = new Audio(url);
+                    a.onended = () => { URL.revokeObjectURL(url); setLecture(false); };
+                    a.play().catch(() => dire(texte));
+                  });
+                } else dire(contenu === "presence" ? PRESENCES.map((p) => `${p.nom}. ${p.explique}`).join(" ") : texte);
               }
             }}
           />

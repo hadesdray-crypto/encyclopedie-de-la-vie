@@ -751,3 +751,8 @@ li:nth-child(3) > .choix-jeu { animation-delay: .14s; }
 .barre-poids { animation: barre-poids .9s cubic-bezier(.2,.9,.3,1) both; transform-origin: left; }
 @keyframes barre-poids { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .verre-jeu { background: rgba(255,255,255,.09); backdrop-filter: blur(6px); box-shadow: inset 0 0 0 1px rgba(255,255,255,.16); }
+/* L'objet que tient un personnage bonus : visible, sauf pendant les gestes qui ont besoin des mains. */
+.plume-svg .pl-objet { transition: opacity .3s; animation: objet-balance 3.2s ease-in-out infinite; transform-origin: 178px 152px; transform-box: view-box; }
+@keyframes objet-balance { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-6deg); } }
+.plume-peur .pl-objet, .plume-bataille .pl-objet, .plume-jeu .pl-objet, .plume-bravo .pl-objet, .plume-vole .pl-objet, .plume-triste .pl-objet, .plume-etourdie .pl-objet, .plume-fachee .pl-objet { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .plume-svg .pl-objet { animation: none; } }
