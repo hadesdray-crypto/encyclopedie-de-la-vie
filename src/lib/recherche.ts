@@ -1,6 +1,7 @@
 // Le grand moteur de recherche : tous les animaux, les chiens et les chats.
 // Il cherche pendant qu'on écrit, sans se soucier des accents, et il pardonne les fautes de frappe.
 import { ESPECES, FAMILLES, GROUPES, ORDRES, plier, type Espece } from "@/data/catalogue";
+import { connu } from "@/lib/connu";
 import { CHATS, CHIENS, nomCourt, type Race } from "@/pages/compagnons";
 import { aUnePhoto } from "@/components/portrait";
 import pays from "@/data/pays.json";
@@ -55,7 +56,8 @@ function depuisEspece(e: Espece): Resultat {
       groupe: GROUPE_DE_ORDRE.get(e.ordre),
       regime: e.regime,
       menace: MENACES.has(e.statut ?? ""),
-      connu: (e.langue === "fr" ? 2 : 0) + (aUnePhoto(e.id) ? 1 : 0),
+      // Bien documenté (nom français, photo) et connu (visites Wikipédia) : les animaux que Leonie reconnaît d'abord.
+      connu: (e.langue === "fr" ? 2 : 0) + (aUnePhoto(e.id) ? 1 : 0) + Math.min(6, Math.log10(1 + connu(e.id))),
     },
     `${e.latin} ${e.nomAnglais ?? ""}`,
   );

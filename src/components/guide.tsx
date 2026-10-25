@@ -21,6 +21,7 @@ import {
   plumePropose,
   presentationFaite,
   reglesEnCours,
+  ecranEnCours,
   plumeDit,
   usePlume,
 } from "@/lib/plume";
@@ -97,7 +98,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
   const traces = useRef<{ x: number; y: number; t: number }[]>([]);
   const [vol, setVol] = useState<{ x: number; y: number; r: number } | null>(null);
   const premier = useRef(true);
-  const explicationPage = explicationPour(chemin, params);
+  const explicationPage = ecranEnCours() ?? explicationPour(chemin, params);
   const jeu = chemin === "/jouer" ? params.get("jeu") : null;
   const [bravo, setBravo] = useState(false);
   const { fete } = usePlume();

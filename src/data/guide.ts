@@ -13,7 +13,7 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
       "C'est ta page à toi, Leonie !",
       "La grande lune, au milieu, c'est le début de tout. Les bulles autour t'emmènent vers les bactéries, les plantes, les champignons ou les animaux.",
       "Jouer ouvre les jeux et le défi du jour. Mes cartes, c'est ta collection d'animaux.",
-      "L'Aventure, c'est la carte du monde des animaux que des scientifiques suivent par GPS.",
+      "La Carte, c'est la Terre entière : touche un pays pour voir ses animaux, ou regarde les vrais voyages d'animaux suivis par GPS.",
       "Les petits boutons ouvrent les mammifères, les fossiles, la frise du temps et les vrais mots.",
       "Touche ton image, en haut à droite, pour voir ton carnet. La petite roue, c'est les Options.",
     ],
@@ -52,7 +52,7 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
   },
   {
     id: "voyageurs",
-    titre: "L'Aventure",
+    titre: "La carte du monde",
     test: (c) => c.startsWith("/voyageurs"),
     etapes: [
       "Voici la Terre ! Fais-la tourner avec ton doigt. Écarte deux doigts pour zoomer, ou utilise les boutons plus et moins.",
@@ -300,10 +300,10 @@ export const SUJETS: (Explication & { bouton: string })[] = [
     ],
   },
   {
-    id: "sujet-aventure", bouton: "L'Aventure", titre: "L'Aventure",
+    id: "sujet-aventure", bouton: "La Carte", titre: "La carte du monde",
     etapes: [
       "Des scientifiques posent parfois un collier GPS à un animal pour suivre ses voyages.",
-      "L'Aventure ouvre le globe : fais tourner la Terre avec ton doigt, et touche un trajet pour savoir qui a voyagé, d'où il est parti et jusqu'où il est allé.",
+      "La Carte ouvre le globe : fais tourner la Terre avec ton doigt, et touche un trajet pour savoir qui a voyagé, d'où il est parti et jusqu'où il est allé.",
       "Chaque couleur est une famille d'animaux : bleu pour la mer, vert pour les herbivores, doré pour les oiseaux, rouge pour les prédateurs. D'autres voyageurs arriveront plus tard.",
     ],
   },

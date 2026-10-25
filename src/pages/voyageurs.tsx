@@ -12,8 +12,9 @@ import { Entete, Titre } from "@/components/entete";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import monde from "@/data/monde.json";
 import donnees from "@/data/voyageurs.json";
-import { plumeDit } from "@/lib/plume";
+import { definirEcran, plumeDit } from "@/lib/plume";
 import { useInternet } from "@/lib/internet";
+import { connuLatin } from "@/lib/connu";
 
 type Voyageur = {
   latin: string; nom: string | null; fiche: string | null; groupe: "marin" | "herbivore" | "oiseau" | "predateur" | "autre";
@@ -25,7 +26,7 @@ const LIENS_ETUDES = liensEtudes as Record<string, { page: string; doi: string }
 // Un trajet « complet » : on connaît son départ et son arrivée. Ce sont eux qu'on montre d'abord.
 /** Les voyages GPS d'une espèce (les complets d'abord). */
 export function voyagesDe(id: string, latin: string) {
-  return VOYAGEURS.filter((v) => v.fiche === id || v.latin === latin).sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || (b.km ?? 0) - (a.km ?? 0));
+  return VOYAGEURS.filter((v) => v.fiche === id || v.latin === latin).sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || connuLatin(b.latin) - connuLatin(a.latin) || (b.km ?? 0) - (a.km ?? 0));
 }
 const estComplet = (v: Voyageur) => !(v as { partiel?: boolean }).partiel && v.complet !== false && !!v.arrivee;
 const PAYS = (monde as { pays: Record<string, string> }).pays;
@@ -85,7 +86,7 @@ export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean
   const classes = useMemo(() => {
     const rang = new Map<number, number>();
     (Object.keys(GROUPES_VOYAGE) as G[]).forEach((g) =>
-      VOYAGEURS.filter((v) => v.groupe === g).sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || (b.km ?? 0) - (a.km ?? 0)).forEach((v, k) => rang.set(v.i, k)),
+      VOYAGEURS.filter((v) => v.groupe === g).sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || connuLatin(b.latin) - connuLatin(a.latin) || (b.km ?? 0) - (a.km ?? 0)).forEach((v, k) => rang.set(v.i, k)),
     );
     return rang;
   }, []);
@@ -102,7 +103,7 @@ export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean
   const resultats = useMemo(() => {
     const t = sansAccent(q.trim());
     if (t.length < 2) return [];
-    return VOYAGEURS.filter((v) => sansAccent(`${nomDe(v)} ${v.latin}`).includes(t)).sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || (b.km ?? 0) - (a.km ?? 0)).slice(0, 20);
+    return VOYAGEURS.filter((v) => sansAccent(`${nomDe(v)} ${v.latin}`).includes(t)).sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || connuLatin(b.latin) - connuLatin(a.latin) || (b.km ?? 0) - (a.km ?? 0)).slice(0, 20);
   }, [q]);
   const { permis } = useInternet();
   const groupesPresents = (Object.keys(GROUPES_VOYAGE) as G[]).filter((g) => VOYAGEURS.some((v) => v.groupe === g));
@@ -252,6 +253,17 @@ export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean
   }
 
   const v = choisi !== null ? VOYAGEURS[choisi] : null;
+  // Plume peut raconter le voyage affiché.
+  useEffect(() => {
+    if (!v) return definirEcran(null);
+    definirEcran({ id: `voyage-${v.i}`, titre: nomDe(v), etapes: [
+      `Voici le vrai voyage d'un animal : ${nomDe(v)}, que les scientifiques appellent « ${v.individu} ».`,
+      v.depart ? `Il est parti le ${date(v.depart.date)}${estComplet(v) && v.arrivee ? `, et le dernier point GPS date du ${date(v.arrivee.date)}` : ""}.` : "La date de départ n'est pas connue.",
+      v.km ? `En additionnant tous ses points GPS, il a parcouru ${v.km.toLocaleString("fr-FR")} kilomètres.` : "La distance n'est pas connue.",
+      "Dans la petite fenêtre, le point vert est le départ et le point rouge l'arrivée. Touche « Rejouer » pour revoir son voyage.",
+    ] });
+  }, [choisi]);
+  useEffect(() => () => definirEcran(null), []);
   // La transformation : déplacement, zoom autour du point (0,0), puis rotation autour du centre de la carte.
   const transformation = `rotate(${vue.r} 180 90) translate(${vue.x} ${vue.y}) scale(${vue.s})`;
 
@@ -421,8 +433,8 @@ const ESPECES_VOYAGE = (() => {
     par.get(v.latin)!.push(v);
   }
   return [...par.values()]
-    .map((vs) => vs.sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || (b.km ?? 0) - (a.km ?? 0)))
-    .sort((a, b) => Number(estComplet(b[0])) - Number(estComplet(a[0])) || Number(!!b[0].nom) - Number(!!a[0].nom) || b.length - a.length || nomDe(a[0]).localeCompare(nomDe(b[0]), "fr"));
+    .map((vs) => vs.sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || connuLatin(b.latin) - connuLatin(a.latin) || (b.km ?? 0) - (a.km ?? 0)))
+    .sort((a, b) => Number(estComplet(b[0])) - Number(estComplet(a[0])) || Number(!!b[0].nom) - Number(!!a[0].nom) || connuLatin(b[0].latin) - connuLatin(a[0].latin) || b.length - a.length || nomDe(a[0]).localeCompare(nomDe(b[0]), "fr"));
 })();
 
 function TousLesVoyageurs({ choisi, onChoisir }: { choisi: number | null; onChoisir: (i: number) => void }) {

@@ -1,4 +1,5 @@
 import brut from "@/data/mammiferes.json";
+import { connu, parConnu } from "@/lib/connu";
 import nomsFr from "@/data/noms-fr.json";
 import nomsTraduits from "@/data/noms-traduits.json";
 
@@ -101,9 +102,12 @@ for (const espece of ESPECES) {
   if (liste) liste.push(espece);
   else parFamille.set(espece.famille, [espece]);
 }
+// Dans chaque famille : du plus connu au moins connu.
 for (const liste of parFamille.values()) {
-  liste.sort((a, b) => a.nom.localeCompare(b.nom, "fr"));
+  liste.sort(parConnu);
 }
+// Une famille est d'autant plus connue que ses animaux le sont.
+const CONNU_FAMILLE = new Map([...parFamille].map(([f, l]) => [f, l.reduce((s, e) => s + connu(e.id), 0)]));
 
 export function especesDe(famille: string) {
   return parFamille.get(famille) ?? [];
@@ -112,7 +116,7 @@ export function especesDe(famille: string) {
 export function famillesDe(ordre: string) {
   return Object.entries(FAMILLES)
     .filter(([, famille]) => famille.ordre === ordre)
-    .sort((a, b) => a[1].nom.localeCompare(b[1].nom, "fr"));
+    .sort((a, b) => (CONNU_FAMILLE.get(b[0]) ?? 0) - (CONNU_FAMILLE.get(a[0]) ?? 0) || a[1].nom.localeCompare(b[1].nom, "fr"));
 }
 
 const INDEX = ESPECES.map((espece) => ({
