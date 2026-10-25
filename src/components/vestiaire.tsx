@@ -25,6 +25,7 @@ export const HAUTS: Piece[] = [
   { id: "fleurs", nom: "Blouse à fleurs", pour: "filles" }, { id: "gilet", nom: "Gilet d'écolière", pour: "filles" }, { id: "cuisine", nom: "Tablier de cuisine", pour: "filles" },
   { id: "foot", nom: "Maillot de foot", pour: "garcons" }, { id: "pompier", nom: "Veste de pompier", pour: "garcons" },
   { id: "medecin", nom: "Blouse de médecin", pour: "garcons" }, { id: "cravate", nom: "Chemise et cravate", pour: "garcons" }, { id: "chevalier", nom: "Armure de chevalier", pour: "garcons" },
+  { id: "peignoir", nom: "Peignoir blanc", pour: "tous" },
   { id: "echarpe", nom: "Écharpe tricotée", pour: "tous" }, { id: "cape", nom: "Cape de super-héros", pour: "tous" }, { id: "securite", nom: "Gilet de sécurité", pour: "tous" },
 ];
 export const BAS: Piece[] = [
@@ -83,6 +84,7 @@ export function Haut({ t }: { t: Tenue }): ReactNode {
     case "medecin": return <g><path d="M40 122 Q44 180 90 192 L100 152 L110 192 Q156 180 160 122 Q140 148 114 150 L100 192 L86 150 Q60 148 40 122 Z" fill="#fbfbff" stroke="#b9b4d8" strokeWidth="2.5" strokeLinejoin="round" /><path d="M76 146 Q70 172 86 176 Q100 178 98 164" stroke={c} strokeWidth="3.5" fill="none" /><circle cx="98" cy="162" r="4" fill="#8a8aa8" /><path d="M124 162 h12 M130 156 v12" stroke={c} strokeWidth="4" strokeLinecap="round" /></g>;
     case "cravate": return <g><path d="M66 136 L100 150 L134 136 L128 156 L100 160 L72 156 Z" fill="#ffffff" stroke="#c9c4e0" strokeWidth="2" /><path d="M94 150 L106 150 L110 160 L104 192 L100 198 L96 192 L90 160 Z" fill={c} stroke={f} strokeWidth="2" strokeLinejoin="round" /></g>;
     case "chevalier": return <g><path d="M46 132 Q100 156 154 132 L156 172 Q130 192 100 192 Q70 192 44 172 Z" fill="#c8cbd8" stroke="#6a6f88" strokeWidth="2.5" /><path d="M100 148 L100 190 M60 150 Q100 170 140 150" stroke="#8a8fa8" strokeWidth="2.5" fill="none" /><path d="M88 158 L112 158 L112 172 Q100 182 88 172 Z" fill={c} stroke={f} strokeWidth="2" /></g>;
+    case "peignoir": return <g><path d="M36 120 Q40 186 100 196 Q160 186 164 120 Q140 150 100 152 Q60 150 36 120 Z" fill="#ffffff" stroke="#d0cce0" strokeWidth="2.5" /><path d="M100 152 L84 196 M100 152 L116 196" stroke="#d0cce0" strokeWidth="2.5" /><path d="M56 168 Q100 180 144 168" stroke="#e8e4f4" strokeWidth="6" fill="none" strokeLinecap="round" /></g>;
     case "echarpe": return <g><path d="M44 136 Q100 162 156 136 L156 152 Q100 180 44 152 Z" fill={c} stroke={f} strokeWidth="2" /><path d="M124 152 L134 194 L152 190 L140 150 Z" fill={c} stroke={f} strokeWidth="2" /></g>;
     case "cape": return <g><path d="M48 128 Q100 150 152 128 L150 140 Q100 162 50 140 Z" fill={c} stroke={f} strokeWidth="2.5" /><circle cx="100" cy="166" r="14" fill="#f3d48a" stroke="#b8862e" strokeWidth="2.5" /><path d="M100 156 l3 6 l7 1 l-5 5 l1 7 l-6 -3 l-6 3 l1 -7 l-5 -5 l7 -1 Z" fill={c} /></g>;
     case "securite": return <g><path d="M48 132 L84 148 L84 192 Q60 188 44 170 Z M152 132 L116 148 L116 192 Q140 188 156 170 Z" fill="#d6ff3a" stroke="#8aa01a" strokeWidth="2.5" strokeLinejoin="round" /><path d="M46 162 L84 170 M154 162 L116 170" stroke="#e8e8f0" strokeWidth="5" strokeLinecap="round" /></g>;

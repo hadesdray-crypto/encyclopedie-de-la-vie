@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { LuMic, LuPlay, LuSquare, LuTrash2 } from "react-icons/lu";
 import { Entete, Titre } from "@/components/entete";
+import { Cabine } from "@/components/cabine";
+import { definirEcran } from "@/lib/plume";
 import { PlumeDessin, type AnimPlume, type Caractere } from "@/components/plume-dessin";
 import { COULEURS_CORPS, EPAISSEURS, type Look } from "@/components/garde-robe";
 import { BAS, CHAPEAUX2, CHAUSSURES, HAUTS, LUNETTES, OBJETS, TEINTES, type Piece, type Tenue } from "@/components/vestiaire";
@@ -48,6 +50,17 @@ export function AtelierPage({ params }: { params: URLSearchParams }) {
   const existe = lireCompagnons().some((x) => x.id === c.id);
   const plein = !existe && lireCompagnons().length >= MAX_BONUS;
 
+  // Plume explique toujours où on est dans l'atelier.
+  useEffect(() => {
+    const etapes = onglet === "look"
+      ? ["Bienvenue dans la cabine d'essayage ! Ton personnage arrive en peignoir et entre dans la cabine.", "En bas, choisis un rayon : le haut, le bas, la tête, les lunettes, les pieds, la main, ou son corps (sa couleur et son épaisseur).", "Touche un vêtement pour le lui donner, puis une couleur si tu veux. La cabine bouge : il se change derrière les volets !", "Quand tu as fini, touche « Ouvrir la cabine » pour voir la surprise. Ensuite, tu peux zoomer sur sa tête ou voir tout son corps."]
+      : onglet === "caractere"
+        ? ["Choisis son caractère, comme pour moi : discret, présent, étudiant ou passionné.", "Le caractère décide s'il parle souvent ou pas, et quels gestes il fait."]
+        : ["Ici, ses paroles. Elles sont rangées par moments : quand on le touche, les réponses, les jeux, les mouvements, et chaque page.", "Écris sa phrase, ou touche « Enregistrer ma voix » : c'est ta voix qu'on entendra à ce moment-là.", "Si tu ne changes rien, il dit ce que je dirais avec son caractère."];
+    definirEcran({ id: `atelier-${onglet}`, titre: "L'atelier des personnages", etapes });
+    return () => definirEcran(null);
+  }, [onglet]);
+
   // L'aperçu bouge tout seul : il montre ses gestes un par un.
   useEffect(() => {
     let i = 0;
@@ -90,7 +103,7 @@ export function AtelierPage({ params }: { params: URLSearchParams }) {
       <Titre sous="Un personnage bonus qui fait tout comme Plume, avec son nom, son look et ses paroles.">L'atelier des personnages</Titre>
 
       {/* L'aperçu, toujours visible en haut */}
-      <div className="sticky top-0 z-10 -mx-4 bg-gradient-to-b from-[#170c30] via-[#170c30]/95 to-transparent px-4 pb-4 pt-2">
+      <div className={`${onglet === "look" ? "hidden" : ""} sticky top-0 z-10 -mx-4 bg-gradient-to-b from-[#170c30] via-[#170c30]/95 to-transparent px-4 pb-4 pt-2`}>
         <div className="mx-auto flex max-w-sm items-center gap-3">
           <span className="halo-jeu grid size-28 shrink-0 place-items-center rounded-full bg-[#2a1844]">
             <PlumeDessin anim={anim} caractere={NUM[c.caractere]} look={c.look} lit={anim === "parle"} className="size-24" />
@@ -112,62 +125,14 @@ export function AtelierPage({ params }: { params: URLSearchParams }) {
       </section>
 
       <div role="tablist" className="mt-4 grid grid-cols-3 gap-1 rounded-full bg-[#2a1844] p-1 ring-1 ring-[#e8c98a]/40">
-        {([["look", "Son look"], ["caractere", "Son caractère"], ["interactions", "Interactions"]] as const).map(([k, l]) => (
+        {([["look", "👗 Sa tenue"], ["caractere", "💜 Son caractère"], ["interactions", "🎙️ Ses paroles"]] as const).map(([k, l]) => (
           <button key={k} type="button" role="tab" aria-selected={onglet === k} onClick={() => setOnglet(k)} className={`min-h-10 rounded-full text-sm font-extrabold ${onglet === k ? "bg-[#f3d48a] text-[#2a1650]" : "text-[#f3d48a]"}`}>{l}</button>
         ))}
       </div>
 
       {onglet === "look" ? (
-        <div className="mt-3 space-y-4">
-          <Rangee titre="Sa couleur">
-            {COULEURS_CORPS.map((k) => (
-              <button key={k.id} type="button" aria-label={k.nom} aria-pressed={c.look.couleur === k.id} onClick={() => look({ couleur: k.id })} className={`size-11 shrink-0 rounded-full transition-transform ${c.look.couleur === k.id ? "scale-110 ring-4 ring-[#f3d48a]" : "ring-2 ring-white/20"}`} style={{ background: `radial-gradient(circle at 35% 30%, ${k.clair}, ${k.fonce})` }} />
-            ))}
-          </Rangee>
-          <Rangee titre="Son épaisseur">
-            {EPAISSEURS.map((e) => (
-              <Pastille key={e.id} actif={c.look.epaisseur === e.id} onClick={() => look({ epaisseur: e.id })}>
-                <PlumeDessin caractere={NUM[c.caractere]} look={{ ...c.look, epaisseur: e.id }} className="mx-auto size-14" />
-                <span className="block text-[11px]">{e.nom}</span>
-              </Pastille>
-            ))}
-          </Rangee>
-          <p className="px-1 text-sm texte-doux">Choisis chaque morceau comme tu veux : on peut tout mélanger. Touche une couleur pour changer celle du vêtement.</p>
-          {RAYONS.map((r) => (
-            <details key={r.cle} open={r.cle === "haut"} className="verre-jeu rounded-[1.6rem] px-3 py-3">
-              <summary className="flex cursor-pointer list-none items-center justify-between">
-                <span className="font-display text-xl text-[#f3d48a]">{r.titre}</span>
-                <span className="text-xs font-bold texte-doux">{r.liste.find((x) => x.id === c.look[r.cle])?.nom} ▾</span>
-              </summary>
-              {(["filles", "garcons", "tous"] as const).map((pour) => {
-                const pieces = r.liste.filter((x) => x.pour === pour);
-                return pieces.length ? (
-                  <div key={pour} className="mt-2">
-                    <p className="px-1 text-xs font-black texte-doux">{pour === "filles" ? "Plutôt pour les filles" : pour === "garcons" ? "Plutôt pour les garçons" : "Pour tout le monde"}</p>
-                    <div className="mt-1 flex gap-2 overflow-x-auto pb-1 pt-1">
-                      {pieces.map((h) => (
-                        <Pastille key={h.id} actif={c.look[r.cle] === h.id} onClick={() => look({ [r.cle]: h.id } as Partial<Look>)}>
-                          <PlumeDessin caractere={NUM[c.caractere]} look={{ ...c.look, [r.cle]: h.id }} cadre={r.cadre} className="mx-auto size-14" />
-                          <span className="block text-[11px]">{h.nom}</span>
-                        </Pastille>
-                      ))}
-                    </div>
-                  </div>
-                ) : null;
-              })}
-              {r.couleur ? (
-                <div className="mt-2">
-                  <p className="px-1 text-xs font-black texte-doux">Sa couleur</p>
-                  <div className="mt-1 flex gap-1.5 overflow-x-auto pb-1">
-                    <button type="button" onClick={() => look({ couleurs: { ...c.look.couleurs, [r.couleur!]: undefined } })} className={`h-9 shrink-0 rounded-full px-3 text-xs font-extrabold ${!c.look.couleurs[r.couleur] ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>D'origine</button>
-                    {TEINTES.map((t) => (
-                      <button key={t.id} type="button" aria-label={t.nom} aria-pressed={c.look.couleurs[r.couleur!] === t.id} onClick={() => look({ couleurs: { ...c.look.couleurs, [r.couleur!]: t.id } })} className={`size-9 shrink-0 rounded-full ${c.look.couleurs[r.couleur!] === t.id ? "ring-4 ring-[#f3d48a]" : "ring-2 ring-white/20"}`} style={{ background: t.c }} />
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-            </details>
-          ))}
+        <div className="mt-3">
+          <Cabine look={c.look} setLook={(l) => setC((x) => ({ ...x, look: l }))} caractere={NUM[c.caractere]} nouveau={!existe} />
         </div>
       ) : onglet === "caractere" ? (
         <div className="mt-3 space-y-2">

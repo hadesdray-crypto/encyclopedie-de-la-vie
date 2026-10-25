@@ -756,3 +756,22 @@ li:nth-child(3) > .choix-jeu { animation-delay: .14s; }
 @keyframes objet-balance { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-6deg); } }
 .plume-peur .pl-objet, .plume-bataille .pl-objet, .plume-jeu .pl-objet, .plume-bravo .pl-objet, .plume-vole .pl-objet, .plume-triste .pl-objet, .plume-etourdie .pl-objet, .plume-fachee .pl-objet { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .plume-svg .pl-objet { animation: none; } }
+
+/* ---------- La cabine d'essayage ---------- */
+.scene-cabine { background: radial-gradient(ellipse at 50% 20%, #5a3a9a 0%, #2a1650 55%, #170c30 100%); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), 0 14px 30px rgba(0,0,0,.45); }
+.cabine-fond { background: linear-gradient(180deg, #fff3d6, #f0d8a8); box-shadow: inset 0 0 0 6px #d9a54a, inset 0 0 0 9px #7a4a1c, 0 10px 20px rgba(0,0,0,.45); }
+.cabine-fronton { background: linear-gradient(180deg, #fff0b8, #e2ad52); box-shadow: 0 0 0 2px #7a4a1c, 0 4px 8px rgba(0,0,0,.4); white-space: nowrap; }
+.volet { position: absolute; top: 9px; bottom: 0; width: calc(50% - 9px); transform: scaleX(0); transition: transform .38s cubic-bezier(.5,0,.3,1.2);
+  background: repeating-linear-gradient(90deg, #c94f90 0 9px, #e06aa8 9px 15px, #a83e78 15px 18px); box-shadow: inset 0 -6px 10px rgba(0,0,0,.25); }
+.volet-g { left: 9px; transform-origin: left; border-top-left-radius: 1.8rem; }
+.volet-d { right: 9px; transform-origin: right; border-top-right-radius: 1.8rem; }
+.volet-ferme { transform: scaleX(1); }
+.cabine-tremble { animation: cabine-tremble .45s ease; }
+@keyframes cabine-tremble { 0%,100% { transform: none; } 20% { transform: rotate(-2deg); } 40% { transform: rotate(2deg) translateY(-2px); } 60% { transform: rotate(-1deg); } 80% { transform: rotate(1deg); } }
+.perso-arrive { animation: perso-arrive 2.2s cubic-bezier(.3,.7,.4,1) both; }
+@keyframes perso-arrive { 0% { transform: translateX(-190%) translateY(0); } 15% { transform: translateX(-160%) translateY(-10px); } 30% { transform: translateX(-130%) translateY(0); } 45% { transform: translateX(-100%) translateY(-10px); } 60% { transform: translateX(-75%) translateY(0); } 75% { transform: translateX(-55%) translateY(-8px); } 100% { transform: translateX(-50%) translateY(0); } }
+.vetement-vole { animation: vetement-vole .7s cubic-bezier(.3,.7,.4,1) both; }
+@keyframes vetement-vole { from { transform: translate(-50%, 140px) scale(1.4); opacity: 1; } to { transform: translate(-50%, 0) scale(.4); opacity: 0; } }
+.confetti-tombe { position: absolute; top: -10px; width: .5rem; height: .8rem; border-radius: 2px; animation: confetti-tombe 1.6s ease-in both; }
+@keyframes confetti-tombe { from { transform: translateY(0) rotate(0); opacity: 1; } to { transform: translateY(320px) rotate(540deg); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .perso-arrive, .cabine-tremble, .vetement-vole, .confetti-tombe { animation: none; } .volet { transition: none; } }
