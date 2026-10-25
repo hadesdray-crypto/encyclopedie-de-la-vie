@@ -3,7 +3,17 @@ import { LuVolume2 as Volume2, LuVolumeX as VolumeX } from "react-icons/lu";
 import { tauxVoix } from "@/lib/reglages";
 import { appeler, moduleDisponible } from "@/lib/natif";
 import { dire, taire, useParle } from "@/lib/parole";
-import { debutLecture } from "@/lib/plume";
+import { debutLecture, presence } from "@/lib/plume";
+
+// Chaque caractère de Plume a sa voix : hauteur (pitch) et vitesse, multipliées par la vitesse choisie dans les Options.
+const VOIX: Record<string, { hauteur: number; vitesse: number }> = {
+  discrete: { hauteur: 0.95, vitesse: 0.9 }, // douce et calme
+  presente: { hauteur: 1.15, vitesse: 1 }, // claire et gaie
+  etudiante: { hauteur: 1.05, vitesse: 0.95 }, // posée, comme une maîtresse
+  passionnee: { hauteur: 1.35, vitesse: 1.15 }, // aiguë et pressée, la savante folle
+  repos: { hauteur: 1.1, vitesse: 1 },
+};
+const voixDePlume = () => VOIX[presence()] ?? VOIX.presente;
 
 function voixFrancaise() {
   return window.speechSynthesis
@@ -29,11 +39,11 @@ function attendreVoix() {
 // Dans l'application Android, la voix passe par le moteur de lecture du téléphone
 // (module TextToSpeech), qui marche sans Internet. Dans un navigateur : speechSynthesis.
 const TTS = "TextToSpeech";
-type TTSNatif = { speak: (o: { text: string; lang: string; rate: number }) => Promise<void>; stop: () => Promise<void> };
+type TTSNatif = { speak: (o: { text: string; lang: string; rate: number; pitch: number }) => Promise<void>; stop: () => Promise<void> };
 function voixNative(): TTSNatif | undefined {
   if (!moduleDisponible(TTS)) return undefined;
   return {
-    speak: (o) => appeler<void>(TTS, "speak", { ...o, pitch: 1.1, volume: 1, category: "playback" }),
+    speak: (o) => appeler<void>(TTS, "speak", { ...o, volume: 1, category: "playback" }),
     stop: () => appeler<void>(TTS, "stop"),
   };
 }
@@ -55,7 +65,7 @@ export async function lire(texte: string, onFin: () => void) {
     try {
       await native.stop();
       if (moi !== jeton) return;
-      await native.speak({ text: texte, lang: "fr-FR", rate: tauxVoix() });
+      await native.speak({ text: texte, lang: "fr-FR", rate: tauxVoix() * voixDePlume().vitesse, pitch: voixDePlume().hauteur });
     } catch {
       /* pas de voix française installée */
     }
@@ -86,7 +96,8 @@ export async function lire(texte: string, onFin: () => void) {
     const phrase = new SpeechSynthesisUtterance(morceaux[index]);
     index += 1;
     phrase.lang = "fr-FR";
-    phrase.rate = tauxVoix();
+    phrase.rate = tauxVoix() * voixDePlume().vitesse;
+    phrase.pitch = voixDePlume().hauteur;
     if (voix) phrase.voice = voix;
     phrase.onend = suite;
     phrase.onerror = () => fini();
