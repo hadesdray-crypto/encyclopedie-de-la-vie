@@ -26,6 +26,7 @@ import { useIndice } from "@/lib/indice";
 import { TablesMultiplication } from "@/pages/tables";
 import { Bataille, LePlusRapide, MemoryPlusieurs, MimeAnimal, SeptFamilles, REGLES_BATAILLE, REGLES_FAMILLES, REGLES_MEMORY, REGLES_MIME, REGLES_RAPIDE } from "@/pages/jeux-plusieurs";
 import { definirEcran } from "@/lib/plume";
+import { CarteChoix, Consigne, Resultat, Versus, etatDe } from "@/components/jeu-ui";
 import type { Explication } from "@/data/guide";
 
 function melanger<T>(l: T[], rnd: () => number = Math.random) {
@@ -150,30 +151,25 @@ function ModeJeu({ titre, jeu, children }: { titre: string; jeu: string; childre
   );
 }
 
+const EMOJI_REGIME: Record<string, string> = { carnivore: "🥩", piscivore: "🐟", insectivore: "🐜", invertivore: "🦑", herbivore: "🌿", folivore: "🍃", frugivore: "🍎", nectarivore: "🌸", omnivore: "🍽️" };
+
 function JeuRegime() {
   const [q, setQ] = useState(questionRegime);
   const [rep, setRep] = useState<RegimeId | null>(null);
   const effaces = useIndice(q.e.id, q.choix, q.bon, rep !== null);
+  const choisir = (id: RegimeId) => { if (rep) return; setRep(id); noterReponse(id === q.bon); if (id === q.bon) sons.bonne(); else sons.mauvaise(); };
   return (
-    <section className="mt-5">
-      <a href={`#/mammiferes/e-${q.e.id}`} className="medaillon-or mx-auto block size-36 overflow-hidden"><Portrait id={q.e.id} /></a>
-      <p className="titre-or mt-4 text-center text-3xl">{q.e.nom}</p>
-      <p className="text-center">Il mange surtout…</p>
-      <ul className="mt-4 space-y-3">
-        {q.choix.map((id) => {
-          const juste = rep !== null && id === q.bon;
-          const faux = rep === id && id !== q.bon;
-          return (
-            <li key={id}>
-              <button type="button" disabled={!rep && effaces.has(id)} onClick={() => { if (!rep) { setRep(id); noterReponse(id === q.bon); if (id === q.bon) sons.bonne(); else sons.mauvaise(); } }} className={`w-full rounded-2xl px-4 py-4 text-left text-[#2a1c14] transition-opacity ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"} ${!rep && effaces.has(id) ? "opacity-25" : ""}`}>
-                <span className="block font-display text-2xl">{REGIMES[id].nom}</span>
-                <span className="block text-sm">{REGIMES[id].explique}</span>
-              </button>
-            </li>
-          );
-        })}
+    <section className="mt-4">
+      <a href={`#/mammiferes/e-${q.e.id}`} className="medaillon-or apparait mx-auto block size-40 overflow-hidden"><Portrait id={q.e.id} /></a>
+      <Consigne sous="Il mange surtout…">{q.e.nom}</Consigne>
+      <ul className="mt-4 grid grid-cols-3 gap-2.5">
+        {q.choix.map((id) => (
+          <li key={id}>
+            <CarteChoix emoji={EMOJI_REGIME[id]} nom={REGIMES[id].nom} detail={rep ? REGIMES[id].explique : undefined} etat={etatDe(id, rep, q.bon, effaces)} onClick={() => choisir(id)} taille="petite" />
+          </li>
+        ))}
       </ul>
-      {rep ? <button type="button" onClick={() => { setQ(questionRegime()); setRep(null); }} className="bouton-bois au-dessus-barre mt-4 w-full rounded-2xl py-4 font-display text-2xl">Une autre</button> : null}
+      {rep ? <Resultat juste={rep === q.bon} texte={`${q.e.nom} : ${REGIMES[q.bon].nom.toLowerCase()}. ${REGIMES[q.bon].explique}`} suite={() => { setQ(questionRegime()); setRep(null); }} /> : null}
     </section>
   );
 }
@@ -181,28 +177,17 @@ function JeuRegime() {
 function JeuTemps() {
   const [q, setQ] = useState(questionTemps);
   const [rep, setRep] = useState<string | null>(null);
+  const choisir = (id: string) => { if (rep) return; setRep(id); noterReponse(id === q.bon); if (id === q.bon) sons.bonne(); else sons.mauvaise(); };
   return (
-    <section className="mt-5">
-      <p className="text-center text-lg">Touche celui qui est apparu en premier sur Terre.</p>
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        {[q.a, q.b].map((e) => {
-          const juste = rep && e.id === q.bon;
-          const faux = rep === e.id && e.id !== q.bon;
-          return (
-            <button key={e.id} type="button" onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon); if (e.id === q.bon) sons.bonne(); else sons.mauvaise(); } }} className={`flex flex-col items-center rounded-3xl px-2 py-4 text-[#2a1c14] ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"}`}>
-              <span className="medaillon block size-24 overflow-hidden"><Vignette image={e.image} icone={e.icone} /></span>
-              <span className="mt-2 font-display text-xl leading-tight">{e.nom}</span>
-              {rep ? <span className="mt-1 text-sm">{e.quand}</span> : null}
-            </button>
-          );
-        })}
+    <section className="mt-2">
+      <Consigne sous="Dans la longue histoire de la vie">Qui est apparu en premier ?</Consigne>
+      <div className="relative mt-5 grid grid-cols-2 gap-4">
+        {[q.a, q.b].map((e) => (
+          <CarteChoix key={e.id} image={<Vignette image={e.image} icone={e.icone} />} nom={e.nom} revele={e.quand} etat={etatDe(e.id, rep, q.bon)} onClick={() => choisir(e.id)} taille="grande" />
+        ))}
+        <Versus />
       </div>
-      {rep ? (
-        <>
-          <p className="mt-4 text-center text-lg font-extrabold">{rep === q.bon ? "Bravo !" : `Non : c'est « ${ETAPES[q.bon].nom} » qui est arrivé avant.`}</p>
-          <button type="button" onClick={() => { setQ(questionTemps()); setRep(null); }} className="bouton-bois au-dessus-barre mt-4 w-full rounded-2xl py-4 font-display text-2xl">Une autre</button>
-        </>
-      ) : null}
+      {rep ? <Resultat juste={rep === q.bon} texte={rep === q.bon ? `« ${ETAPES[q.bon].nom} » est bien arrivé avant.` : `C'est « ${ETAPES[q.bon].nom} » qui est arrivé avant.`} suite={() => { setQ(questionTemps()); setRep(null); }} /> : null}
     </section>
   );
 }
@@ -337,26 +322,30 @@ function questionPoids() {
 function JeuPoids() {
   const [q, setQ] = useState(questionPoids);
   const [rep, setRep] = useState<string | null>(null);
+  const choisir = (id: string) => { if (rep) return; setRep(id); noterReponse(id === q.bon); if (id === q.bon) sons.bonne(); else sons.mauvaise(); };
+  const ga = grammesDe(q.a.masse) ?? 0, gb = grammesDe(q.b.masse) ?? 0;
   return (
-    <section className="mt-5">
-      <p className="text-center text-lg">Touche l'animal le plus lourd, quand il est adulte.</p>
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        {[q.a, q.b].map((e) => {
-          const juste = rep && e.id === q.bon;
-          const faux = rep === e.id && e.id !== q.bon;
-          return (
-            <button key={e.id} type="button" onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon); if (e.id === q.bon) sons.bonne(); else sons.mauvaise(); } }} className={`flex flex-col items-center rounded-3xl px-2 py-4 text-[#2a1c14] ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"}`}>
-              <span className="medaillon block size-28 overflow-hidden"><Portrait id={e.id} /></span>
-              <span className="mt-2 font-display text-xl leading-tight">{e.nom}</span>
-              {rep ? <span className="mt-1 text-sm font-extrabold">{e.masse}</span> : null}
-            </button>
-          );
-        })}
+    <section className="mt-2">
+      <Consigne sous="Quand il est adulte">Lequel est le plus lourd ?</Consigne>
+      <div className="relative mt-5 grid grid-cols-2 gap-4">
+        {[q.a, q.b].map((e) => (
+          <CarteChoix key={e.id} image={<Portrait id={e.id} />} nom={e.nom} revele={e.masse} etat={etatDe(e.id, rep, q.bon)} onClick={() => choisir(e.id)} taille="grande" />
+        ))}
+        <Versus />
       </div>
       {rep ? (
         <>
-          <p className="mt-4 text-center text-lg font-extrabold">{rep === q.bon ? "Bravo !" : "Raté, regarde les poids !"}</p>
-          <button type="button" onClick={() => { setQ(questionPoids()); setRep(null); }} className="bouton-bois au-dessus-barre mt-4 w-full rounded-2xl py-4 font-display text-2xl">Une autre</button>
+          {/* La balance : chaque barre montre le poids de l'animal (le plus lourd prend toute la place). */}
+          <div className="apparait mt-4 space-y-1.5 rounded-2xl bg-white/5 px-3 py-3">
+            {[{ e: q.a, g: ga }, { e: q.b, g: gb }].map(({ e, g }) => (
+              <div key={e.id}>
+                <p className="flex justify-between text-xs font-extrabold"><span>{e.nom}</span><span>{e.masse}</span></p>
+                <div className="mt-0.5 h-3 overflow-hidden rounded-full bg-white/10"><div className="barre-poids h-full rounded-full bg-gradient-to-r from-[#f3c35a] to-[#ff8a3d]" style={{ width: `${Math.max(2, (100 * g) / Math.max(ga, gb))}%` }} /></div>
+              </div>
+            ))}
+            <p className="pt-1 text-center text-xs texte-doux">{Math.max(ga, gb) / Math.max(1, Math.min(ga, gb)) >= 10 ? `Le plus lourd pèse plus de ${Math.floor(Math.max(ga, gb) / Math.max(1, Math.min(ga, gb)))} fois plus !` : `Le plus lourd pèse environ ${Math.round(Math.max(ga, gb) / Math.max(1, Math.min(ga, gb)))} fois plus.`}</p>
+          </div>
+          <Resultat juste={rep === q.bon} suite={() => { setQ(questionPoids()); setRep(null); }} />
         </>
       ) : null}
     </section>
@@ -380,31 +369,19 @@ function JeuCarte() {
   const [q, setQ] = useState(questionCarte);
   const [rep, setRep] = useState<string | null>(null);
   const effaces = useIndice(q.bon.id, q.choix.map((e) => e.id), q.bon.id, rep !== null);
+  const choisir = (id: string) => { if (rep) return; setRep(id); noterReponse(id === q.bon.id); if (id === q.bon.id) sons.bonne(); else sons.mauvaise(); };
   return (
-    <section className="mt-5">
-      <p className="text-center text-lg">Les pays en or montrent où vit un animal. Lequel ?</p>
-      <div className="mt-3"><CarteMonde pays={q.bon.pays!} /></div>
-      <ul className="mt-4 grid grid-cols-3 gap-2">
-        {q.choix.map((e) => {
-          const juste = rep && e.id === q.bon.id;
-          const faux = rep === e.id && e.id !== q.bon.id;
-          return (
-            <li key={e.id}>
-              <button type="button" disabled={!rep && effaces.has(e.id)} onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon.id); if (e.id === q.bon.id) sons.bonne(); else sons.mauvaise(); } }} className={`flex h-full w-full flex-col items-center rounded-3xl px-1 py-3 text-[#2a1c14] transition-opacity ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"} ${!rep && effaces.has(e.id) ? "opacity-25" : ""}`}>
-                <span className="medaillon block size-20 overflow-hidden"><Portrait id={e.id} /></span>
-                <span className="mt-2 text-sm font-extrabold leading-tight">{e.nom}</span>
-              </button>
-            </li>
-          );
-        })}
+    <section className="mt-2">
+      <Consigne sous="Les pays en or montrent où il vit">Qui vit ici ?</Consigne>
+      <div className="cadre-laiton mt-4 rounded-[14px] p-[6px]"><div className="overflow-hidden rounded-[8px]"><CarteMonde pays={q.bon.pays!} /></div></div>
+      <ul className="mt-4 grid grid-cols-3 gap-2.5">
+        {q.choix.map((e) => (
+          <li key={e.id}>
+            <CarteChoix image={<Portrait id={e.id} />} nom={e.nom} etat={etatDe(e.id, rep, q.bon.id, effaces)} onClick={() => choisir(e.id)} taille="petite" />
+          </li>
+        ))}
       </ul>
-      {rep ? (
-        <>
-          <p className="mt-4 text-center text-lg font-extrabold">{rep === q.bon.id ? "Bravo !" : `C'était ${q.bon.nom}.`}</p>
-          <p className="text-center text-sm">{q.bon.ou}</p>
-          <button type="button" onClick={() => { setQ(questionCarte()); setRep(null); }} className="bouton-bois au-dessus-barre mt-4 w-full rounded-2xl py-4 font-display text-2xl">Une autre</button>
-        </>
-      ) : null}
+      {rep ? <Resultat juste={rep === q.bon.id} texte={`${rep === q.bon.id ? "" : `C'était ${q.bon.nom}. `}${q.bon.ou}`} suite={() => { setQ(questionCarte()); setRep(null); }} /> : null}
     </section>
   );
 }
@@ -436,30 +413,21 @@ function QuestionCri() {
   const [q, setQ] = useState(() => questionCri());
   const [rep, setRep] = useState<string | null>(null);
   const effaces = useIndice(q.bon.id, q.choix.map((e) => e.id), q.bon.id, rep !== null);
+  const choisir = (id: string) => { if (rep) return; setRep(id); noterReponse(id === q.bon.id); if (id === q.bon.id) sons.bonne(); else sons.mauvaise(); };
   return (
-    <section className="mt-5 text-center">
-      <p className="text-lg">Écoute bien. Quel animal fait ce bruit ?</p>
-      <audio key={q.bon.id} controls preload="auto" src={`s/${q.bon.id}.webm`} className="mx-auto mt-3 w-full max-w-sm" />
-      <ul className="mt-4 grid grid-cols-3 gap-2">
-        {q.choix.map((e) => {
-          const juste = rep && e.id === q.bon.id;
-          const faux = rep === e.id && e.id !== q.bon.id;
-          return (
-            <li key={e.id}>
-              <button type="button" disabled={!rep && effaces.has(e.id)} onClick={() => { if (!rep) { setRep(e.id); noterReponse(e.id === q.bon.id); if (e.id === q.bon.id) sons.bonne(); else sons.mauvaise(); } }} className={`flex h-full w-full flex-col items-center rounded-3xl px-1 py-3 text-[#2a1c14] transition-opacity ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"} ${!rep && effaces.has(e.id) ? "opacity-25" : ""}`}>
-                <span className="medaillon block size-20 overflow-hidden"><Portrait id={e.id} /></span>
-                <span className="mt-2 text-sm font-extrabold leading-tight">{e.nom}</span>
-              </button>
-            </li>
-          );
-        })}
+    <section className="mt-2">
+      <Consigne sous="Un vrai enregistrement, fait dans la nature">Qui fait ce bruit ?</Consigne>
+      <div className="lecteur-cri mx-auto mt-4 max-w-sm rounded-full p-1.5">
+        <audio key={q.bon.id} controls preload="auto" src={`s/${q.bon.id}.webm`} className="w-full" />
+      </div>
+      <ul className="mt-4 grid grid-cols-3 gap-2.5">
+        {q.choix.map((e) => (
+          <li key={e.id}>
+            <CarteChoix image={<Portrait id={e.id} />} nom={e.nom} etat={etatDe(e.id, rep, q.bon.id, effaces)} onClick={() => choisir(e.id)} taille="petite" />
+          </li>
+        ))}
       </ul>
-      {rep ? (
-        <>
-          <p className="mt-4 text-lg font-extrabold">{rep === q.bon.id ? "Bravo !" : `C'était ${q.bon.nom}.`}</p>
-          <button type="button" onClick={() => { setQ(questionCri()); setRep(null); }} className="bouton-bois au-dessus-barre mt-4 w-full rounded-2xl py-4 font-display text-2xl">Un autre cri</button>
-        </>
-      ) : null}
+      {rep ? <Resultat juste={rep === q.bon.id} texte={rep === q.bon.id ? undefined : `C'était ${q.bon.nom}.`} suite={() => { setQ(questionCri()); setRep(null); }} libelle="Un autre cri" /> : null}
     </section>
   );
 }
@@ -576,36 +544,23 @@ function DefiDuJour() {
         <SerieFlamme n={n} petite />
         <p className="font-extrabold text-[#f0d090]">Question {i + 1} sur 5</p>
       </div>
-      <p className="titre-or mt-3 text-center text-2xl">{q.consigne}</p>
-      {q.audio ? <audio key={q.audio} controls preload="auto" src={`s/${q.audio}.webm`} className="mx-auto mt-3 w-full max-w-sm" /> : null}
-      {q.carte ? <div className="mt-3"><CarteMonde pays={q.carte} /></div> : null}
-      {"portrait" in q ? <span className="medaillon-or mx-auto mt-3 block size-28 overflow-hidden"><Portrait id={(q as { portrait: string }).portrait} /></span> : null}
-      <ul className={`mt-4 grid gap-2 ${q.choix.length === 2 ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-3"}`}>
+      <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/10"><div className="h-full rounded-full bg-gradient-to-r from-[#f3c35a] to-[#ff8a3d] transition-[width] duration-500" style={{ width: `${(100 * (i + (rep ? 1 : 0))) / questions.length}%` }} /></div>
+      <Consigne>{q.consigne}</Consigne>
+      {q.audio ? <div className="lecteur-cri mx-auto mt-4 max-w-sm rounded-full p-1.5"><audio key={q.audio} controls preload="auto" src={`s/${q.audio}.webm`} className="w-full" /></div> : null}
+      {q.carte ? <div className="cadre-laiton mt-4 rounded-[14px] p-[6px]"><div className="overflow-hidden rounded-[8px]"><CarteMonde pays={q.carte} /></div></div> : null}
+      {"portrait" in q ? <span className="medaillon-or mx-auto mt-3 block size-32 overflow-hidden"><Portrait id={(q as { portrait: string }).portrait} /></span> : null}
+      <ul key={i} className={`relative mt-4 grid gap-3 ${q.choix.length === 2 ? "grid-cols-2" : "grid-cols-3"}`}>
         {q.choix.map((c) => {
-          const juste = rep && c.id === q.bon;
-          const faux = rep === c.id && c.id !== q.bon;
           const animal = PAR_ID.get(c.id);
           return (
             <li key={c.id}>
-              <button type="button" disabled={!rep && effaces.has(c.id)} onClick={() => choisir(c.id)} className={`flex h-full w-full items-center gap-3 rounded-3xl px-3 py-3 text-left text-[#2a1c14] transition-opacity ${juste ? "bg-[#d9f0c8]" : faux ? "bg-[#f3c7c7]" : "bg-card"} ${q.choix.length === 2 ? "flex-col text-center" : ""} ${!rep && effaces.has(c.id) ? "opacity-25" : ""}`}>
-                {animal ? <span className="medaillon block size-16 shrink-0 overflow-hidden"><Portrait id={animal.id} /></span> : null}
-                <span>
-                  <span className="block font-display text-xl leading-tight">{c.nom}</span>
-                  {c.detail && (rep || !animal) ? <span className="block text-sm">{c.detail}</span> : null}
-                </span>
-              </button>
+              <CarteChoix image={animal ? <Portrait id={animal.id} /> : undefined} emoji={animal ? undefined : EMOJI_REGIME[c.id]} nom={c.nom} detail={!animal && rep ? c.detail : undefined} revele={animal && q.choix.length === 2 ? c.detail : undefined} etat={etatDe(c.id, rep, q.bon, effaces)} onClick={() => choisir(c.id)} taille={q.choix.length === 2 ? "grande" : "petite"} />
             </li>
           );
         })}
+        {q.choix.length === 2 ? <Versus /> : null}
       </ul>
-      {rep ? (
-        <>
-          <p className="mt-3 text-center font-extrabold">{rep === q.bon ? "Bravo !" : "Pas tout à fait."} {q.apres}</p>
-          <button type="button" onClick={suivante} className="bouton-bois mt-4 w-full rounded-2xl py-4 font-display text-2xl">
-            {i + 1 >= questions.length ? "Voir mon résultat" : "Question suivante"}
-          </button>
-        </>
-      ) : null}
+      {rep ? <Resultat juste={rep === q.bon} texte={q.apres} suite={suivante} libelle={i + 1 >= questions.length ? "Voir mon résultat" : "Question suivante"} /> : null}
     </section>
   );
 }
