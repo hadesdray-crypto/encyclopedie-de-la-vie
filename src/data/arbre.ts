@@ -1,3 +1,4 @@
+import imagesEvolution from "@/data/images-evolution.json";
 /**
  * L'arbre de la vie, qui sert aussi de guide de l'évolution.
  *
@@ -773,6 +774,11 @@ const E: Etape[] = [
     suite: [],
   },
 ];
+
+// Images réalistes (Wikimedia Commons, licences libres) : elles remplacent les dessins.
+export type ImageEvo = { src: string; sorte: "photo" | "reconstitution" | "modele"; auteur: string; licence: string; page: string };
+export const IMAGES_EVO = imagesEvolution as unknown as Record<string, ImageEvo>;
+for (const e of E) if (IMAGES_EVO[e.id]) e.image = IMAGES_EVO[e.id].src;
 
 export const ETAPES: Record<string, Etape> = Object.fromEntries(E.map((e) => [e.id, e]));
 

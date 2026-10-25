@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { LuChevronRight, LuCircleHelp, LuFlaskConical, LuScale, LuSearch, LuSparkles } from "react-icons/lu";
-import { ETAPES, SAVOIR, cheminVers, parentDe, type Etape, type Savoir } from "@/data/arbre";
+import { ETAPES, IMAGES_EVO, SAVOIR, cheminVers, parentDe, type Etape, type Savoir } from "@/data/arbre";
 import { Entete } from "@/components/entete";
 import { Vignette } from "@/components/icone";
 import { Texte } from "@/components/mot";
@@ -90,7 +90,15 @@ export function ArbrePage({ id }: { id?: string }) {
         })}
       </div>
 
-      <h1 className="titre-or mt-6 text-center text-4xl leading-none text-balance">{etape.nom}</h1>
+      {IMAGES_EVO[etape.id] ? (
+        <p className="mt-3 text-center text-[11px] texte-doux">
+          <span className="mr-1 rounded-full bg-[#3a2266] px-2 py-0.5 font-extrabold text-[#f3d48a]">
+            {IMAGES_EVO[etape.id].sorte === "photo" ? "Vraie photo" : IMAGES_EVO[etape.id].sorte === "reconstitution" ? "Reconstitution d'après les fossiles" : "Modèle scientifique"}
+          </span>
+          {IMAGES_EVO[etape.id].auteur} · {IMAGES_EVO[etape.id].licence}
+        </p>
+      ) : null}
+      <h1 className="titre-or mt-4 text-center text-4xl leading-none text-balance">{etape.nom}</h1>
       {etape.quand ? <p className="mt-2 text-center font-extrabold text-[#f0d090]">{etape.quand}</p> : null}
       <div className="mt-3 flex justify-center">
         <Badge savoir={etape.savoir} />

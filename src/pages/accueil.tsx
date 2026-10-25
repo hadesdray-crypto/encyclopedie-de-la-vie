@@ -21,12 +21,12 @@ const CarteAventure = lazy(() => import("@/components/carte-aventure"));
 type Medaillon = { vers: string; image: string; label: string; x: number; y: number };
 
 const BRANCHES: Medaillon[] = [
-  { vers: "/arbre/reptiles", image: "theme/tortue.webp", label: "Reptiles", x: 50, y: 13 },
-  { vers: "/arbre/bacteries", image: "theme/bacteries.webp", label: "Bactéries", x: 83, y: 31.5 },
-  { vers: "/arbre/archees", image: "theme/archees.webp", label: "Archées", x: 83, y: 68.5 },
-  { vers: "/arbre/animaux", image: "theme/animaux.webp", label: "Animaux", x: 50, y: 87 },
-  { vers: "/arbre/champignons", image: "theme/champignons.webp", label: "Champignons", x: 17, y: 68.5 },
-  { vers: "/arbre/plantes", image: "theme/plantes.webp", label: "Plantes", x: 17, y: 31.5 },
+  { vers: "/arbre/reptiles", image: "evo/accueil-reptiles.webp", label: "Reptiles", x: 50, y: 13 },
+  { vers: "/arbre/bacteries", image: "evo/bacteries.webp", label: "Bactéries", x: 83, y: 31.5 },
+  { vers: "/arbre/archees", image: "evo/archees.webp", label: "Archées", x: 83, y: 68.5 },
+  { vers: "/arbre/animaux", image: "evo/animaux.webp", label: "Animaux", x: 50, y: 87 },
+  { vers: "/arbre/champignons", image: "evo/champignons.webp", label: "Champignons", x: 17, y: 68.5 },
+  { vers: "/arbre/plantes", image: "evo/plantes.webp", label: "Plantes", x: 17, y: 31.5 },
 ];
 
 const PETITS: { vers: string; label: string; icone: ComponentType<{ className?: string }>; fond: string }[] = [
@@ -118,7 +118,7 @@ export function Accueil() {
           className="absolute left-1/2 top-1/2 w-[32%] -translate-x-1/2 -translate-y-1/2"
         >
           <span className="medaillon-or glow block aspect-square w-full overflow-hidden">
-            <img src="theme/lune.webp" alt="" className="size-full scale-110 object-cover" />
+            <img src="evo/accueil-commencer.webp" alt="" className="size-full scale-110 object-cover" />
           </span>
           <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[linear-gradient(180deg,#f3d48a,#d6a531)] px-3 py-0.5 font-display text-sm text-[#2a1650]">
             Commencer
