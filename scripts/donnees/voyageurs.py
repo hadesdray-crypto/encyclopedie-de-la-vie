@@ -72,6 +72,14 @@ def dist(a, b):
     x = math.sin((p2 - p1) / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
     return 6371 * 2 * math.asin(min(1, math.sqrt(x)))
 
+from datetime import datetime
+def heures(t1, t2):
+    try:
+        f = lambda t: datetime.strptime(t[:19], "%Y-%m-%d %H:%M:%S")
+        return (f(t2) - f(t1)).total_seconds() / 3600
+    except Exception:
+        return None
+
 def lire_csv(url):
     """Lit tout le fichier en continu. Pour chaque animal : le vrai premier et le vrai dernier point (avec date et heure),
     la distance sur TOUS les points, et des points espacés pour dessiner le trajet."""
@@ -87,6 +95,7 @@ def lire_csv(url):
         ilat, ilon = col.get("location-lat"), col.get("location-long")
         iind, itax, its = col.get("individual-local-identifier"), col.get("individual-taxon-canonical-name"), col.get("timestamp")
         ivis, iout = col.get("visible"), col.get("manually-marked-outlier")
+        isens = col.get("sensor-type")
         if None in (ilat, ilon, iind): return {}, False
         for ligne in rd:
             lu += sum(len(x) for x in ligne) + len(ligne)
@@ -96,6 +105,8 @@ def lire_csv(url):
             try:
                 if ivis is not None and ligne[ivis].lower() == "false": continue
                 if iout is not None and ligne[iout].lower() == "true": continue
+                # Seulement le vrai GPS (les capteurs à la lumière ou Argos se trompent de dizaines ou centaines de km).
+                if isens is None or ligne[isens].strip().lower() != "gps": continue
                 lat, lon = float(ligne[ilat]), float(ligne[ilon])
             except (ValueError, IndexError):
                 continue
@@ -103,7 +114,17 @@ def lire_csv(url):
             t = ligne[its] if its is not None else ""
             a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
                                              "premier": [lat, lon, t], "dernier": None})
-            if a["dernier"]: a["km"] += dist(a["dernier"], (lat, lon))
+            if a["dernier"]:
+                d = dist(a["dernier"], (lat, lon))
+                h = heures(a["dernier"][2], t)
+                # Un point impossible (plus de 150 km/h, ou un saut de plus de 300 km sans heure) est écarté.
+                if (h is not None and h > 0 and d / h > 150) or (h is None and d > 300) or (h is not None and h <= 0 and d > 1):
+                    continue
+                # Les tout petits écarts (moins de 30 m) sont le « tremblement » du GPS : on ne les compte pas.
+                if d < 0.03:
+                    a["dernier"][2] = t
+                    continue
+                a["km"] += d
             a["dernier"] = [lat, lon, t]
             a["n"] += 1
             if (a["n"] - 1) % a["pas"]: continue
