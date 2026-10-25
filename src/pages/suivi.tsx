@@ -2,7 +2,9 @@ import { useState } from "react";
 import { LuCheck, LuChevronRight, LuWifi } from "react-icons/lu";
 import { PAR_ID } from "@/data/catalogue";
 import monde from "@/data/monde.json";
+import trajets from "@/data/trajets.json";
 import { useInternet } from "@/lib/internet";
+import { appeler, moduleDisponible } from "@/lib/natif";
 import { Entete, Titre } from "@/components/entete";
 import { Portrait } from "@/components/portrait";
 import CarteAventure, { etudeDe, garderTraces, lireTraces, voyageurs, COULEURS, type Etude, type Trace } from "@/components/carte-aventure";
@@ -73,17 +75,25 @@ export function SuiviPage({ id }: { id?: string }) {
 }
 
 function Trajets({ etude }: { etude: Etude }) {
-  const { permis, connecte } = useInternet();
-  const [traces, setTraces] = useState<Trace[] | null>(() => lireTraces(etude.etude));
+  const { permis } = useInternet();
+  const [traces, setTraces] = useState<Trace[] | null>(() => lireTraces(etude.etude) ?? ((trajets as Record<string, Trace[]>)[String(etude.etude)]?.length ? (trajets as Record<string, Trace[]>)[String(etude.etude)] : null));
   const [etat, setEtat] = useState("");
 
   async function charger() {
     setEtat("Chargement…");
     try {
       const url = `https://www.movebank.org/movebank/service/public/json?study_id=${etude.etude}&sensor_type=${etude.capteur}&max_events_per_individual=40`;
-      const r = await fetch(url);
-      if (!r.ok) throw new Error(String(r.status));
-      const texte = await r.text();
+      // Dans l'application : on passe par le téléphone (pas de blocage du navigateur). Sinon : fetch.
+      let texte: string;
+      if (moduleDisponible("CapacitorHttp")) {
+        const r = await appeler<{ status: number; data: unknown }>("CapacitorHttp", "request", { url, method: "GET", responseType: "text", connectTimeout: 20000, readTimeout: 30000 });
+        if (r.status >= 400) throw new Error(String(r.status));
+        texte = typeof r.data === "string" ? r.data : JSON.stringify(r.data);
+      } else {
+        const r = await fetch(url);
+        if (!r.ok) throw new Error(String(r.status));
+        texte = await r.text();
+      }
       const brut = JSON.parse(texte) as { individuals?: { individual_local_identifier?: string; locations?: { location_lat: number; location_long: number }[] }[] };
       const t: Trace[] = (brut.individuals ?? []).slice(0, 6).map((i) => ({
         individu: i.individual_local_identifier || "Animal",
@@ -93,7 +103,7 @@ function Trajets({ etude }: { etude: Etude }) {
       setTraces(t);
       setEtat(`Téléchargé : ${Math.max(1, Math.round(texte.length / 1024))} Ko. Gardé sur l'appareil (${Math.max(1, Math.round(taille / 1024))} Ko).`);
     } catch {
-      setEtat("Movebank n'a pas répondu, ou ne permet pas ce téléchargement depuis le navigateur. Rien n'a été inventé.");
+      setEtat("Movebank n'a pas répondu (pas de connexion, ou l'étude demande une autorisation). Rien n'a été inventé : réessaie plus tard.");
     }
   }
 
@@ -103,7 +113,7 @@ function Trajets({ etude }: { etude: Etude }) {
       <div className="carte-nuit rounded-3xl px-4 py-4 text-sm">
         <p className="font-extrabold text-[#f3d48a]">A besoin d'une connexion</p>
         <p className="mt-1">On charge seulement quelques points par animal (40 au plus, pour 6 animaux) : en général quelques dizaines de Ko. Une étude complète peut peser des centaines de Mo : elle n'est jamais téléchargée.</p>
-        {!permis ? <p className="mt-2">Un adulte peut allumer cette option dans Options, « Pour les grandes personnes ».</p> : !connecte ? <p className="mt-2">L'appareil n'a pas de connexion en ce moment.</p> : (
+        {!permis ? <p className="mt-2">Un adulte peut allumer cette option dans Options, « Pour les grandes personnes ».</p> : (
           <button type="button" onClick={charger} className="bouton-bois mt-3 rounded-full px-4 py-2 font-extrabold">Charger quelques points</button>
         )}
         {etat ? <p className="mt-2">{etat}</p> : null}

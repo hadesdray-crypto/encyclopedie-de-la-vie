@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Le suivi GPS réparé",
+    "points": [
+      "Les trajets des lions de Tsavo et des kinkajous sont maintenant rangés dans l'application : ils s'affichent même sans Internet.",
+      "Plus de faux message « pas de connexion »."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Une voix pour chaque caractère",
     "points": [
       "La Discrète parle doucement, la Présente gaiement, l'Étudiante posément, et la Passionnée très vite, d'une voix aiguë !"
