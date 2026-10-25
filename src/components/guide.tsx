@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as PE } from "react";
 import { LuBookOpen, LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
 import { ASTUCES, PRESENTATION, SUJETS, explicationPour } from "@/data/guide";
-import { voixPossible } from "@/components/voix";
+import { voixDePresentation, voixPossible } from "@/components/voix";
 import { sons } from "@/lib/sons";
 import { PlumeDessin, type AnimPlume, type Caractere } from "@/components/plume-dessin";
 import {
@@ -530,6 +530,8 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
       : contenu === "presentation" ? (sujet ? SUJETS.find((x) => x.id === sujet) ?? PRESENTATION : PRESENTATION) : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
   const [etape, setEtape] = useState(0);
   const [lecture, setLecture] = useState(false);
+  const contenuRef = useRef(contenu);
+  contenuRef.current = contenu;
 
   useEffect(() => {
     setEtape(0);
@@ -542,7 +544,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
     fermer();
     window.setTimeout(() => {
       plumeDit(phrase, 5000);
-      if (voixPossible() && plumeParleSeule()) dire(phrase);
+      if (voixPossible()) dire(phrase);
     }, 300);
   }
 
@@ -550,14 +552,43 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   const derniere = etape >= explication.etapes.length - 1;
   const voix = voixPossible();
 
-  // Plume lit si on le lui a demandé (bouton Écouter, ou « toujours avec moi »).
+  // Plume lit si on le lui a demandé (bouton Écouter, ou « toujours avec moi »). La présentation a sa propre lecture.
   useEffect(() => {
+    if (contenu === "presentation") return;
     if (contenu !== "presence" && !(contenu === "mots" && motChoisi) && voix && (plumeParleSeule() || lecture)) dire(texte);
   }, [texte, contenu]);
+
+  // La présentation se déroule toute seule : Plume lit chaque bulle d'une voix normale, puis passe à la suivante,
+  // jusqu'à la fin du résumé (ou du sujet choisi). Ensuite seulement, on choisit.
+  useEffect(() => {
+    if (contenu !== "presentation") return;
+    let fini = false;
+    const suivante = () => {
+      if (fini) return;
+      if (!derniere) setEtape((n) => n + 1);
+    };
+    let minuteur = 0;
+    // Chaque bulle reste au moins le temps de la lire, même si la voix du téléphone s'arrête trop tôt.
+    const minimum = Math.max(3500, texte.length * 55);
+    const debut = Date.now();
+    if (voix) {
+      voixDePresentation(true);
+      dire(texte, () => {
+        minuteur = window.setTimeout(suivante, Math.max(450, minimum - (Date.now() - debut)));
+      });
+    } else minuteur = window.setTimeout(suivante, minimum);
+    return () => {
+      fini = true;
+      window.clearTimeout(minuteur);
+    };
+  }, [texte, contenu, sujet]);
+  useEffect(() => () => voixDePresentation(false), []);
 
   // Toucher ailleurs referme la bulle (la page reste utilisable).
   useEffect(() => {
     const dehors = (e: PointerEvent) => {
+      // Pendant la présentation, toucher ailleurs ne la coupe pas.
+      if (contenuRef.current === "presentation") return;
       const cible = e.target as Node;
       if (ref.current?.contains(cible)) return;
       if ((cible as HTMLElement).closest?.('[aria-label^="Plume."]')) return;
@@ -571,6 +602,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   }, []);
 
   function fermer() {
+    voixDePresentation(false);
     taire();
     ouvrirPlume(false);
   }

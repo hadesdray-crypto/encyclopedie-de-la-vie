@@ -14,7 +14,12 @@ const VOIX: Record<string, { hauteur: number; vitesse: number }> = {
   passionnee: { hauteur: 1.2, vitesse: 1.07 }, // plus aiguë et un peu pressée
   repos: { hauteur: 1.05, vitesse: 1 },
 };
-const voixDePlume = () => VOIX[presence()] ?? VOIX.presente;
+// Pendant la présentation, une voix normale et une vitesse normale, quel que soit le caractère choisi.
+let voixNormale = false;
+export function voixDePresentation(oui: boolean) {
+  voixNormale = oui;
+}
+const voixDePlume = () => (voixNormale ? { hauteur: 1.05, vitesse: 1 } : VOIX[presence()] ?? VOIX.presente);
 
 function voixFrancaise() {
   return window.speechSynthesis

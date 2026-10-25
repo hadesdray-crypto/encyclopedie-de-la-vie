@@ -70,7 +70,7 @@ function textePage() {
     `Comment Plume reste avec toi. En ce moment : ${PRESENCES.find((p) => p.id === presenceActuelle())?.nom}.`,
     ...PRESENCES.map((p) => `${p.nom} : ${p.explique}`),
     ...PLUME.map(texteInterrupteur),
-    "Le bouton « Plume se présente encore » lui fait refaire sa présentation.",
+    "Tout en haut, les présentations : pour un nouvel utilisateur, ou juste Plume qui se présente.",
     ...SONS.map(texteInterrupteur),
     ...ECRAN.map(texteInterrupteur),
     "Tout en bas, il y a la version de l'application, et un coin pour les grandes personnes.",
@@ -96,6 +96,8 @@ export function OptionsPage() {
         </button>
       ) : null}
 
+      <Presentations />
+
       <Groupe icone={LuVolume2} titre="La voix">
         {voix ? <ChoixVitesse /> : <p className="px-1 py-2 text-sm">La voix n'est pas disponible sur cet appareil.</p>}
         {voix ? VOIX.map((r) => <Ligne key={r.id} r={r} />) : null}
@@ -106,17 +108,7 @@ export function OptionsPage() {
         {PLUME.map((r) => (
           <Ligne key={r.id} r={r} />
         ))}
-        <div className="py-2">
-          <button
-            type="button"
-            onClick={() => ouvrirPlume(true, "presentation")}
-            className="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[#6a3fc0] px-4 font-extrabold text-white"
-          >
-            <LuSparkles className="size-5" aria-hidden="true" />
-            Plume se présente encore
-          </button>
-          <p className="mt-1 text-center text-xs">Elle redit tout depuis le début : qui elle est, et comment marche l'application.</p>
-        </div>
+
       </Groupe>
 
       <ChoixDex />
@@ -138,7 +130,6 @@ export function OptionsPage() {
         L'application
       </h2>
       <Application />
-      <PremiereFois />
 
       <h2 className="mt-7 flex items-center justify-center gap-2 font-display text-2xl text-[#f3d48a]">
         <LuShieldCheck className="size-6" aria-hidden="true" />
@@ -172,22 +163,31 @@ function ChoixDex() {
   );
 }
 
-/** Relancer l'application comme la toute première fois (sans rien effacer de ce que Leonie a gagné). */
-function PremiereFois() {
+/** Les deux présentations, au même endroit. */
+function Presentations() {
   const [sur, setSur] = useState(false);
   return (
-    <div className="mt-3 rounded-3xl bg-card px-4 py-3 text-[#2a1c14]">
-      <p className="font-extrabold">Comme la première fois</p>
-      <p className="mt-1 text-sm">Plume se présente de nouveau et réexplique chaque page, comme pour quelqu'un qui découvre l'application. Les cartes, les progrès et les réglages sont gardés.</p>
-      {sur ? (
-        <div className="mt-2 flex gap-2">
-          <button type="button" onClick={() => revivrePremiereFois()} className="bouton-bois flex-1 rounded-full py-2.5 font-extrabold">Oui, on recommence</button>
-          <button type="button" onClick={() => setSur(false)} className="rounded-full px-4 py-2.5 font-extrabold underline">Non</button>
+    <section className="mt-6">
+      <h2 className="flex items-center gap-2 px-1 font-display text-2xl text-[#f3d48a]">
+        <LuSparkles className="size-6" aria-hidden="true" />
+        Les présentations
+      </h2>
+      <div className="mt-2 space-y-3 rounded-3xl bg-card px-4 py-4 text-[#2a1c14]">
+        <div>
+          <button type="button" onClick={() => (sur ? revivrePremiereFois() : setSur(true))} className="w-full rounded-full bg-[#6a3fc0] py-3 font-extrabold text-white">
+            {sur ? "Oui, on recommence comme la première fois" : "Présentation pour un nouvel utilisateur"}
+          </button>
+          <p className="mt-1 text-center text-xs">Comme la toute première fois : Plume présente toute l'application et comment lui parler, puis réexplique chaque page. Les cartes, les progrès et les réglages sont gardés.</p>
+          {sur ? <button type="button" onClick={() => setSur(false)} className="mx-auto mt-1 block text-sm font-extrabold underline">Non, annuler</button> : null}
         </div>
-      ) : (
-        <button type="button" onClick={() => setSur(true)} className="mt-2 w-full rounded-full bg-[#6a3fc0] py-2.5 font-extrabold text-white">Revivre la première utilisation</button>
-      )}
-    </div>
+        <div>
+          <button type="button" onClick={() => ouvrirPlume(true, "presentation")} className="w-full rounded-full bg-[#efe3ff] py-3 font-extrabold text-[#4a2a8a]">
+            Plume se présente
+          </button>
+          <p className="mt-1 text-center text-xs">Plume redit sa présentation tout de suite, toute seule, puis propose les explications en détail.</p>
+        </div>
+      </div>
+    </section>
   );
 }
 
