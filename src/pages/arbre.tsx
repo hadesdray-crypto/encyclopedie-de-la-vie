@@ -93,7 +93,7 @@ export function ArbrePage({ id }: { id?: string }) {
       {IMAGES_EVO[etape.id] ? (
         <p className="mt-3 text-center text-[11px] texte-doux">
           <span className="mr-1 rounded-full bg-[#3a2266] px-2 py-0.5 font-extrabold text-[#f3d48a]">
-            {IMAGES_EVO[etape.id].sorte === "photo" ? "Vraie photo" : IMAGES_EVO[etape.id].sorte === "reconstitution" ? "Reconstitution d'après les fossiles" : "Modèle scientifique"}
+            {IMAGES_EVO[etape.id].sorte === "photo" ? "Vraie photo" : IMAGES_EVO[etape.id].sorte === "fossile" ? "Vrai fossile" : IMAGES_EVO[etape.id].sorte === "reconstitution" ? "Reconstitution d'après les fossiles" : "Modèle scientifique"}
           </span>
           {IMAGES_EVO[etape.id].auteur} · {IMAGES_EVO[etape.id].licence}
         </p>

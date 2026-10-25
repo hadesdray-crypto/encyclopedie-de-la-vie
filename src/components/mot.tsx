@@ -10,6 +10,7 @@ export function Mot({ id, children }: { id: string; children?: ReactNode }) {
     <span className="inline">
       <button
         type="button"
+        data-mot={id}
         onClick={() => setOuvert((etat) => !etat)}
         className="font-extrabold text-rose-deep underline decoration-dotted underline-offset-4"
       >

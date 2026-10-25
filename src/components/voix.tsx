@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LuVolume2 as Volume2, LuVolumeX as VolumeX } from "react-icons/lu";
 import { tauxVoix } from "@/lib/reglages";
 import { appeler, moduleDisponible } from "@/lib/natif";
+import { dire, taire, useParle } from "@/lib/parole";
 
 function voixFrancaise() {
   return window.speechSynthesis
@@ -101,24 +102,29 @@ export function stopper() {
 }
 
 export function Ecouter({ texte, gros = false }: { texte: string; gros?: boolean }) {
-  const [enCours, setEnCours] = useState(false);
+  // La même voix que Plume : quand ce bouton lit, Plume s'anime (c'est elle qui parle).
+  const [moi, setMoi] = useState(false);
+  const parle = useParle();
+  const enCours = moi && parle;
 
   const possible = voixPossible();
   useEffect(() => {
     if (!possible) return;
     if ("speechSynthesis" in window) window.speechSynthesis.getVoices();
-    return () => stopper();
   }, [possible]);
+  useEffect(() => () => {
+    if (moi) taire();
+  }, [moi]);
   if (!possible) return null;
 
   function basculer() {
     if (enCours) {
-      stopper();
-      setEnCours(false);
+      taire();
+      setMoi(false);
       return;
     }
-    lire(texte, () => setEnCours(false));
-    setEnCours(true);
+    setMoi(true);
+    dire(texte, () => setMoi(false));
   }
 
   const Icone = enCours ? VolumeX : Volume2;

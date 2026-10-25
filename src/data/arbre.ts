@@ -776,7 +776,7 @@ const E: Etape[] = [
 ];
 
 // Images réalistes (Wikimedia Commons, licences libres) : elles remplacent les dessins.
-export type ImageEvo = { src: string; sorte: "photo" | "reconstitution" | "modele"; auteur: string; licence: string; page: string };
+export type ImageEvo = { src: string; sorte: "photo" | "reconstitution" | "modele" | "fossile"; auteur: string; licence: string; page: string };
 export const IMAGES_EVO = imagesEvolution as unknown as Record<string, ImageEvo>;
 for (const e of E) if (IMAGES_EVO[e.id]) e.image = IMAGES_EVO[e.id].src;
 

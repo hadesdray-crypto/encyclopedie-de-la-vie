@@ -479,3 +479,8 @@ body[data-face-a-face] .plume-racine, body[data-face-a-face] [role="dialog"][ari
 /* Mode jeu : pas de barre du bas, pas de Plume flottante (elle est dans le bandeau du jeu). */
 body[data-jeu] nav[aria-label="Salles"], body[data-jeu] .plume-racine { display: none; }
 body[data-jeu] { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem); }
+
+/* Plume parle : une onde autour d'elle */
+.onde-plume { animation: onde-plume 1.2s ease-out infinite; }
+@keyframes onde-plume { 0% { transform: scale(0.9); opacity: 0.9; } 100% { transform: scale(1.35); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .onde-plume { animation: none; } }

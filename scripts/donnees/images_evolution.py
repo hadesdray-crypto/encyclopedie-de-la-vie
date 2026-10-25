@@ -2,7 +2,7 @@
 """Images réalistes pour l'arbre de la vie et l'accueil.
 Pour chaque étape, on prend l'image principale d'un article de Wikipédia en français,
 seulement si sa licence est libre (CC0, domaine public, CC BY, CC BY-SA), avec l'auteur.
-« photo » = vraie photo ou vue au microscope ; « reconstitution » = image faite d'après les fossiles ou les connaissances.
+« photo » = vraie photo ou vue au microscope ; « reconstitution » = image faite d'après les fossiles ou les connaissances ; « fossile » = vrai fossile ou squelette.
 Sortie : public/evo/<id>.webp et src/data/images-evolution.json
 """
 import json, re, time, urllib.parse, urllib.request
@@ -21,20 +21,20 @@ ETAPES = {
     "cyanobacteries": (["Stromatolithe", "Cyanobacteria"], "photo"), "bacteries-ventre": (["Escherichia coli"], "photo"),
     "bacteries-sol": (["Streptomyces"], "photo"), "bacteries-maladies": (["Salmonella"], "photo"), "archees": (["Archaea", "Halobacterium"], "photo"),
     "archees-chaleur": (["Grand Prismatic Spring"], "photo"), "archees-methane": (["Methanosarcina", "Méthanogène"], "photo"),
-    "asgard": (["Fumeur noir", "Source hydrothermale"], "photo"), "eucaryotes": (["Amoeba proteus", "Amibe"], "photo"),
+    "asgard": (["Fumeur noir", "Source hydrothermale"], "photo"), "eucaryotes": (["Euglena", "Volvox"], "photo"),
     "autres-eucaryotes": (["Paramécie", "Amibe"], "photo"), "plantes": (["Chêne pédonculé"], "photo"), "mousses": (["Bryophyta", "Mousse (plante)"], "photo"),
     "fougeres": (["Fougère", "Polypodiophyta"], "photo"), "coniferes": (["Pinophyta", "Conifère"], "photo"), "fleurs": (["Coquelicot", "Papaver rhoeas"], "photo"),
     "champignons": (["Amanita muscaria", "Fungi"], "photo"), "animaux": (["Tigre"], "photo"), "eponges": (["Porifera", "Éponge"], "photo"),
     "meduses": (["Aurelia aurita"], "photo"), "vers": (["Lombric commun", "Lumbricus terrestris"], "photo"), "mollusques": (["Nautilus pompilius", "Nautile"], "photo"),
-    "pattes": (["Coccinelle à sept points"], "photo"), "insectes": (["Machaon", "Papilio machaon"], "photo"), "araignees": (["Épeire diadème", "Araneus diadematus"], "photo"),
-    "crustaces": (["Homard européen", "Crabe"], "photo"), "mille-pattes": (["Myriapoda"], "photo"), "echinodermes": (["Asterias rubens", "Étoile de mer"], "photo"),
+    "pattes": (["Coccinelle à sept points"], "photo"), "insectes": (["Machaon", "Papilio machaon"], "photo"), "araignees": (["Salticidae", "Araignée sauteuse"], "photo"),
+    "crustaces": (["Homard européen", "Crabe"], "photo"), "mille-pattes": (["Glomeris marginata", "Iule"], "photo"), "echinodermes": (["Asterias rubens", "Étoile de mer"], "photo"),
     "vertebres": (["Amphiprion ocellaris", "Poisson-clown"], "photo"), "sans-machoires": (["Agnatha"], "reconstitution"), "requins": (["Grand requin blanc"], "photo"),
     "nageoires-rayonnees": (["Poisson rouge", "Carassius auratus"], "photo"), "nageoires-charnues": (["Cœlacanthe", "Latimeria chalumnae"], "photo"),
-    "hors": (["Tiktaalik"], "reconstitution"), "amphibiens": (["Rainette verte", "Grenouille"], "photo"), "oeuf": (["Hylonomus"], "reconstitution"),
+    "hors": (["Tiktaalik"], "fossile"), "amphibiens": (["Rainette verte", "Grenouille"], "photo"), "oeuf": (["Hylonomus"], "reconstitution"),
     "reptiles": (["Iguane vert", "Iguana iguana"], "photo"), "tortues": (["Tortue verte", "Chelonia mydas"], "photo"), "lezards": (["Lézard vert occidental", "Caméléon"], "photo"),
-    "crocodiles": (["Crocodile du Nil"], "photo"), "dinosaures": (["Tyrannosaurus", "Triceratops"], "reconstitution"), "oiseaux": (["Rouge-gorge familier"], "photo"),
-    "mammiferes": (["Renard roux"], "photo"), "monotremes": (["Ornithorynque"], "photo"), "marsupiaux": (["Kangourou roux", "Koala"], "photo"),
-    "placentaires": (["Éléphant de savane d'Afrique"], "photo"),
+    "crocodiles": (["Crocodile du Nil"], "photo"), "dinosaures": (["Tyrannosaurus", "Triceratops"], "fossile"), "oiseaux": (["Rouge-gorge familier"], "photo"),
+    "mammiferes": (["Renard roux"], "photo"), "monotremes": (["Ornithorynque"], "photo"), "marsupiaux": (["Koala"], "photo"),
+    "placentaires": (["Éléphant d'Asie", "Hippopotame"], "photo"),
     # Les médaillons de l'accueil
     "accueil-commencer": (["Terre"], "photo"), "accueil-reptiles": (["Caméléon panthère", "Tortue verte"], "photo"),
 }

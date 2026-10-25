@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as PE } from "react";
-import { LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
+import { LuBookOpen, LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
 import { ASTUCES, PRESENTATION, explicationPour } from "@/data/guide";
 import { voixPossible } from "@/components/voix";
 import { PlumeDessin, type AnimPlume } from "@/components/plume-dessin";
@@ -20,6 +20,13 @@ import {
 } from "@/lib/plume";
 import { dire, taire, useParle } from "@/lib/parole";
 import { aller } from "@/lib/routeur";
+import { motDuLexique, type MotLexique } from "@/data/lexique";
+
+/** Les mots de scientifique visibles sur la page (ceux en pointillés). */
+function motsDeLaPage(): MotLexique[] {
+  const ids = [...new Set([...document.querySelectorAll<HTMLElement>("main [data-mot]")].map((b) => b.dataset.mot!))];
+  return ids.map((id) => motDuLexique(id)).filter((m): m is MotLexique => !!m).slice(0, 14);
+}
 
 /*
  * Plume, la petite chouette de Leonie.
@@ -143,7 +150,11 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       return;
     }
     // Un simple toucher : ouvrir ou fermer la bulle.
-    if (ouvert) {
+    // Si elle parle, un toucher l'arrête et ouvre sa bulle.
+    if (parle) {
+      taire();
+      ouvrirPlume(true, motsDeLaPage().length ? "mots" : "page");
+    } else if (ouvert) {
       taire();
       ouvrirPlume(false);
     } else ouvrirPlume(true, "page");
@@ -174,6 +185,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
           className={`block size-full touch-none select-none ${glisse || ouvert || parle ? "" : "plume-flotte"}`}
         >
           <span className="absolute inset-1 -z-10 rounded-full bg-[radial-gradient(circle,rgba(180,140,255,.45),transparent_70%)]" />
+          {parle ? <span className="onde-plume pointer-events-none absolute -inset-1 -z-10 rounded-full border-2 border-[#c9a4ff]" /> : null}
           <PlumeDessin anim={parle ? "parle" : ouvert ? "ailes" : anim} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
         </button>
 
@@ -220,8 +232,14 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   const explicationPage = explicationPour(chemin, params);
   const astuces = ASTUCES[explicationPage.id] ?? ASTUCES.accueil;
   const [astuce, setAstuce] = useState(() => Math.floor(Math.random() * astuces.length));
+  const mots = contenu === "mots" ? motsDeLaPage() : [];
+  const [motChoisi, setMotChoisi] = useState<string | null>(null);
+  useEffect(() => setMotChoisi(null), [contenu]);
+  const defMot = motChoisi ? motDuLexique(motChoisi) : undefined;
   const explication =
-    contenu === "presentation" ? PRESENTATION : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
+    contenu === "mots"
+      ? { id: "mots", titre: "Les mots de cette page", etapes: [defMot ? `${defMot.mot} : ${defMot.definition}` : mots.length ? "Touche un mot, je te l'explique." : "Il n'y a pas de mot compliqué sur cette page."] }
+      : contenu === "presentation" ? PRESENTATION : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
   const [etape, setEtape] = useState(0);
   const [lecture, setLecture] = useState(false);
 
@@ -233,7 +251,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
 
   // Plume lit si on le lui a demandé (bouton Écouter, ou « toujours avec moi »).
   useEffect(() => {
-    if (contenu !== "presence" && voix && (plumeParleSeule() || lecture)) dire(texte);
+    if (contenu !== "presence" && !(contenu === "mots" && motChoisi) && voix && (plumeParleSeule() || lecture)) dire(texte);
   }, [texte, contenu]);
 
   // Toucher ailleurs referme la bulle (la page reste utilisable).
@@ -310,9 +328,26 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
               ))}
             </p>
           ) : null}
-          <p key={`${contenu}-${etape}`} className="arrivee mt-1.5 text-[1.05rem] leading-snug">
+          <p key={`${contenu}-${etape}-${motChoisi}`} className="arrivee mt-1.5 text-[1.05rem] leading-snug">
             {texte}
           </p>
+          {contenu === "mots" && mots.length ? (
+            <div className="mt-2 flex max-h-28 flex-wrap gap-1.5 overflow-y-auto">
+              {mots.map((m) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => {
+                    setMotChoisi(m.id);
+                    if (voix) dire(`${m.mot}. ${m.definition}`);
+                  }}
+                  className={`rounded-full px-2.5 py-1 text-sm font-extrabold ${motChoisi === m.id ? "bg-[#6a3fc0] text-white" : "bg-[#efe3ff] text-[#4a2a8a]"}`}
+                >
+                  {m.mot}
+                </button>
+              ))}
+            </div>
+          ) : null}
           {explication.etapes.length > 1 ? (
             <div className="mt-2 flex items-center gap-1.5">
               {etape > 0 ? (
@@ -358,6 +393,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
           />
         ) : null}
         <Rond icone={LuCircleHelp} label="Aide" actif={contenu === "page"} onClick={() => ouvrirPlume(true, "page")} />
+        <Rond icone={LuBookOpen} label="Mots" actif={contenu === "mots"} onClick={() => ouvrirPlume(true, "mots")} />
         <Rond
           icone={LuLightbulb}
           label="Astuce"
