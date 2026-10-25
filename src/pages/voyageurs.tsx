@@ -2,7 +2,8 @@
 // sur la carte du monde sombre. Bleu : animaux marins. Vert : herbivores. Doré : oiseaux. Rouge : prédateurs.
 // On zoome et on fait tourner la carte avec deux doigts ; on la déplace avec un doigt ; on touche un trajet pour tout savoir.
 import { useEffect, useMemo, useRef, useState, type PointerEvent as PE } from "react";
-import { LuMinus, LuPlus, LuRotateCcw, LuSearch, LuX } from "react-icons/lu";
+import { LuEarth, LuMap, LuMinus, LuPlus, LuRotateCcw, LuSearch, LuX } from "react-icons/lu";
+import { Globe, cadrer } from "@/components/globe";
 import { Entete, Titre } from "@/components/entete";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import monde from "@/data/monde.json";
@@ -77,6 +78,8 @@ export function VoyageursPage() {
   const visibles = VOYAGEURS.filter((v) => (filtres[v.groupe as G] ?? true) && ((classes.get(v.i) ?? 0) < limite || v.i === choisi));
   const animation = useRef(0);
   const [rejoue, setRejoue] = useState(0);
+  const [globe, setGlobe] = useState(true);
+  const [vers, setVers] = useState<{ lon: number; lat: number; zoom: number; n: number } | null>(null);
   const resultats = useMemo(() => {
     const t = sansAccent(q.trim());
     if (t.length < 2) return [];
@@ -205,6 +208,11 @@ export function VoyageursPage() {
     setChoisi(i);
     setCherche(false);
     setRejoue((n) => n + 1);
+    if (globe) {
+      const c = cadrer(VOYAGEURS[i].points);
+      setVers((v) => ({ ...c, n: (v?.n ?? 0) + 1 }));
+      return;
+    }
     if (!centrer) return;
     const pts = VOYAGEURS[i].points;
     const xs = pts.map((p) => p[1] + 180), ys = pts.map((p) => 90 - p[0]);
@@ -252,6 +260,9 @@ export function VoyageursPage() {
 
       {/* La carte */}
       <div className="relative mt-2 overflow-hidden rounded-3xl border-2 border-[#e8c98a]/60 bg-[#0b1230] shadow-[0_10px_22px_rgba(0,0,0,.45)]">
+        {globe ? (
+          <Globe traces={visibles.map((t) => ({ i: t.i, couleur: GROUPES_VOYAGE[t.groupe as G].couleur, points: t.points }))} choisi={choisi} vers={vers} onChoisir={(i) => montrer(i)} />
+        ) : (
         <svg
           ref={boite}
           viewBox={`0 ${90 - haut / 2} 360 ${haut}`}
@@ -265,8 +276,8 @@ export function VoyageursPage() {
           aria-label="Carte du monde des trajets"
         >
           <g transform={transformation}>
-            <rect x="-720" y="-540" width="1800" height="1260" fill="#0b1230" />
-            {Object.entries(PAYS).map(([c, d]) => <path key={c} d={d} fill="#1e2b55" stroke="#0b1230" strokeWidth={0.3 / vue.s} />)}
+            <rect x="-720" y="-540" width="1800" height="1260" fill="#14214a" />
+            {Object.entries(PAYS).map(([c, d]) => <path key={c} d={d} fill="#3b4a7a" stroke="#0f1838" strokeWidth={0.3 / vue.s} />)}
             {visibles.map((t) =>
               lignes[t.i].map((pts, k) => (
                 <g key={`${t.i}-${k}`} onClick={() => bouge.current < 4 && montrer(t.i, false)} style={{ cursor: "pointer" }}>
@@ -300,7 +311,13 @@ export function VoyageursPage() {
             )}
           </g>
         </svg>
-        <div className="absolute right-2 top-2 flex flex-col gap-1.5">
+        )}
+        <div className="absolute left-2 top-2">
+          <button type="button" aria-label={globe ? "Voir la carte à plat" : "Voir le globe"} onClick={() => setGlobe((g) => !g)} className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-black/50 px-3 text-sm font-extrabold text-white backdrop-blur">
+            {globe ? <><LuMap className="size-4" /> À plat</> : <><LuEarth className="size-4" /> Globe</>}
+          </button>
+        </div>
+        <div className={`absolute right-2 top-2 flex flex-col gap-1.5 ${globe ? "hidden" : ""}`}>
           <button type="button" aria-label="Zoomer" onClick={() => zoom(1.5)} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuPlus className="size-5" /></button>
           <button type="button" aria-label="Dézoomer" onClick={() => zoom(1 / 1.5)} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuMinus className="size-5" /></button>
           <button type="button" aria-label="Revenir à toute la carte" onClick={() => { allerVers(departVue()); setChoisi(null); }} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuRotateCcw className="size-5" /></button>
