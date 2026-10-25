@@ -655,3 +655,15 @@ body[data-dex][data-jeu] .dex-bas, body[data-dex][data-jeu] .dex-haut, body[data
 .dex-rond { background: radial-gradient(circle at 40% 30%, #ffe27a, #d6a531); color: #4a1a0e; }
 .dex-croix { border-radius: .8rem; }
 @media (prefers-reduced-motion: reduce) { .dex-allumee { animation: none; } }
+
+/* Fâchée après un lancer : sourcils froncés, vapeur, et elle tape du pied. */
+.plume-svg .pl-fache { opacity: 0; }
+.plume-fachee .pl-fache { opacity: 1; }
+.plume-fachee .pl-main { opacity: 0 !important; animation: none !important; }
+.plume-fachee .pl-vapeur { transform-box: view-box; animation: vapeur 0.9s ease-out infinite; }
+.plume-fachee .pl-vapeur-2 { animation-delay: 0.45s; }
+@keyframes vapeur { 0% { transform: translateY(0); opacity: .9; } 100% { transform: translateY(-22px); opacity: 0; } }
+.plume-fachee .pl-pied-d { animation: pied-tape 0.32s ease-in-out infinite !important; }
+.plume-fachee .pl-tete { transform-origin: 100px 190px; transform-box: view-box; animation: tete-non 0.5s ease-in-out infinite; }
+@keyframes tete-non { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@media (prefers-reduced-motion: reduce) { .plume-fachee .pl-vapeur, .plume-fachee .pl-tete { animation: none !important; } }
