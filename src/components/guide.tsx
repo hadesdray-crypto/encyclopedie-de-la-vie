@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as P
 import { LuBookOpen, LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
 import { ASTUCES, PRESENTATION, explicationPour } from "@/data/guide";
 import { voixPossible } from "@/components/voix";
-import { PlumeDessin, type AnimPlume, type Tenue } from "@/components/plume-dessin";
+import { PlumeDessin, type AnimPlume, type Caractere } from "@/components/plume-dessin";
 import {
   PRESENCES,
   choisirPresence,
@@ -26,15 +26,8 @@ import { dire, taire, useParle } from "@/lib/parole";
 import { aller } from "@/lib/routeur";
 import { motDuLexique, type MotLexique } from "@/data/lexique";
 
-/** La tenue de Plume selon ce qu'elle fait : elle lit → lunettes et chapeau d'étudiant. */
-function tenueDe(chemin: string, parle: boolean): Tenue {
-  if (!plumeCostumee()) return "aucune";
-  if (plumePassionnee()) return parle ? "savante-lit" : "savante";
-  if (parle) return "lecture";
-  if (chemin.startsWith("/aventure") || chemin.startsWith("/suivi")) return "exploratrice";
-  if (chemin.startsWith("/compagnons")) return "carnet";
-  return "aucune";
-}
+/** La tenue de Plume : celle de son caractère (1 à 4). Les lunettes seulement quand elle lit. */
+const CARACTERE: Record<string, Caractere> = { discrete: 1, presente: 2, etudiante: 3, passionnee: 4, repos: 0 };
 
 /** Le titre de la page (pour le tableau noir de Plume). */
 function titrePage() {
@@ -263,7 +256,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
             </>
           ) : null}
           <span className="block size-full transition-transform duration-300" style={{ transform: parle ? "rotate(-8deg) translateY(2px)" : "none" }}>
-            <PlumeDessin anim={parle ? "parle" : ouvert ? "ailes" : anim} tenue={tenueDe(chemin, parle)} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
+            <PlumeDessin anim={parle ? "parle" : ouvert ? "ailes" : anim} caractere={CARACTERE[presence] ?? 0} lit={parle} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
           </span>
         </button>
 
