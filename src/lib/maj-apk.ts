@@ -58,10 +58,15 @@ export function useMajApk() {
 
 export async function verifierApk() {
   if (!EST_APK || etat.phase === "telechargement" || etat.phase === "pret") return;
-  if (!navigator.onLine) return publier({ verification: "hors-ligne" });
+  // On n'écoute pas « navigator.onLine » : sur certains téléphones, il dit « pas de connexion »
+  // alors qu'Internet marche. On essaie vraiment, et on attend au plus 15 secondes.
   publier({ verification: "en-cours" });
   try {
-    const r = await fetch(API, { cache: "no-store" });
+    const arret = new AbortController();
+    const minuteur = window.setTimeout(() => arret.abort(), 15000);
+    const r = await fetch(API, { cache: "no-store", signal: arret.signal });
+    window.clearTimeout(minuteur);
+    if (!r.ok) throw new Error(String(r.status));
     const rel = await r.json();
     const n = Number(String(rel.tag_name || "").replace(/\D/g, ""));
     const zip = (rel.assets ?? []).find((a: { name: string }) => a.name === "web.zip");
@@ -69,7 +74,7 @@ export async function verifierApk() {
     if (n > VERSION_APK) publier({ nouvelle: n, taille, phase: etat.phase === "termine" ? "termine" : "propose", verification: "" });
     else publier({ verification: "a-jour" });
   } catch {
-    publier({ verification: "erreur" });
+    publier({ verification: navigator.onLine ? "erreur" : "hors-ligne" });
   }
 }
 
@@ -130,4 +135,9 @@ export function demarrerMajApk() {
   }
   verifierApk();
   window.addEventListener("online", () => verifierApk());
+  // On regarde aussi quand on revient dans l'application, et toutes les 30 minutes.
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") verifierApk();
+  });
+  window.setInterval(() => verifierApk(), 30 * 60 * 1000);
 }

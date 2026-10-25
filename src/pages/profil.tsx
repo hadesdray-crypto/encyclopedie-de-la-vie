@@ -3,7 +3,7 @@ import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
 import { AVATARS, avatar, choisirAvatar } from "@/lib/reglages";
 import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireScore, lireVues } from "@/lib/carnet";
-import { EST_APK, VERSION_APK, useMajApk, verifierApk, lancerMajApk } from "@/lib/maj-apk";
+import { EST_APK, VERSION_APK, useMajApk, verifierApk, lancerMajApk, telechargerApk } from "@/lib/maj-apk";
 import { VERSION_APP, accepterMiseAJour, relancerHorsLigne, useHorsLigne, verifierMiseAJour } from "@/lib/hors-ligne";
 import { permettreInternet, useInternet } from "@/lib/internet";
 import { Portrait } from "@/components/portrait";
@@ -175,6 +175,11 @@ function VersionApk() {
           <p className="mt-1 text-xs">
             {m.verification === "en-cours" ? "Recherche…" : m.verification === "a-jour" ? "C'est la dernière version." : m.verification === "hors-ligne" ? "Pas de connexion : on regardera plus tard." : m.verification === "erreur" ? "Impossible de vérifier pour l'instant." : ""}
           </p>
+          {m.verification === "erreur" || m.verification === "hors-ligne" ? (
+            <button type="button" onClick={telechargerApk} className="mt-2 rounded-full bg-[#f3d48a] px-4 py-2 font-extrabold text-[#2a1c14]">
+              Installer la dernière version complète
+            </button>
+          ) : null}
         </>
       )}
     </section>

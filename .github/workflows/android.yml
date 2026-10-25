@@ -41,6 +41,9 @@ jobs:
           python android-ressources/remplacer.py
           sed -i "s/versionCode [0-9]*/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"1.${{ github.run_number }}\"/" android/app/build.gradle
           npx cap sync android
+          # Permission « état du réseau » : pour que le téléphone dise bien si Internet marche.
+          grep -q ACCESS_NETWORK_STATE android/app/src/main/AndroidManifest.xml || sed -i 's#<uses-permission android:name="android.permission.INTERNET" />#<uses-permission android:name="android.permission.INTERNET" />\n    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />#' android/app/src/main/AndroidManifest.xml
+          grep -n "uses-permission" android/app/src/main/AndroidManifest.xml
           echo "Modules du téléphone inclus :"; cat android/app/src/main/assets/capacitor.plugins.json
           # Sécurité : on s'arrête si la voix ou la mise à jour manquent.
           grep -q TextToSpeech android/app/src/main/assets/capacitor.plugins.json
