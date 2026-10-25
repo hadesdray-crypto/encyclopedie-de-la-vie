@@ -25,3 +25,16 @@ export const NOMS_PAYS: Record<string, string> = {
   TZA: "Tanzanie", UGA: "Ouganda", UKR: "Ukraine", URY: "Uruguay", USA: "États-Unis", UZB: "Ouzbékistan", VEN: "Venezuela", VNM: "Viêt Nam",
   VUT: "Vanuatu", YEM: "Yémen", ZAF: "Afrique du Sud", ZMB: "Zambie", ZWE: "Zimbabwe",
 };
+
+// Petits pays et îles : trop petits pour le globe, mais on écrit leur nom dans les listes.
+Object.assign(NOMS_PAYS, {
+  ABW: "Aruba", AIA: "Anguilla", ASM: "Samoa américaines", ATG: "Antigua-et-Barbuda", BHR: "Bahreïn", BLM: "Saint-Barthélemy", BMU: "Bermudes",
+  BRB: "Barbade", BVT: "Île Bouvet", CCK: "Îles Cocos", COK: "Îles Cook", COM: "Comores", CPV: "Cap-Vert", CUW: "Curaçao", CXR: "Île Christmas",
+  CYM: "Îles Caïmans", DMA: "Dominique", FRO: "Îles Féroé", FSM: "Micronésie", GLP: "Guadeloupe", GRD: "Grenade", GUF: "Guyane",
+  GUM: "Guam", KIR: "Kiribati", KNA: "Saint-Christophe-et-Niévès", LCA: "Sainte-Lucie", LIE: "Liechtenstein", MDV: "Maldives", MHL: "Îles Marshall",
+  MLT: "Malte", MNP: "Îles Mariannes du Nord", MSR: "Montserrat", MTQ: "Martinique", MUS: "Maurice", MYT: "Mayotte", NFK: "Île Norfolk",
+  NIU: "Niue", NRU: "Nauru", PCN: "Îles Pitcairn", PLW: "Palaos", PYF: "Polynésie française", REU: "La Réunion", SGP: "Singapour",
+  SGS: "Géorgie du Sud", SHN: "Sainte-Hélène", SSD: "Soudan du Sud", STP: "Sao Tomé-et-Principe", SXM: "Saint-Martin", SYC: "Seychelles",
+  TCA: "Îles Turques-et-Caïques", TKL: "Tokelau", TON: "Tonga", TUV: "Tuvalu", VCT: "Saint-Vincent-et-les-Grenadines", VGB: "Îles Vierges britanniques",
+  VIR: "Îles Vierges des États-Unis", WLF: "Wallis-et-Futuna", WSM: "Samoa",
+});
