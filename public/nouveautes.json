@@ -1,6 +1,17 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Sons et cartes vérifiés",
+    "points": [
+      "17 sons retirés : 15 étaient presque muets, et deux chauves-souris différentes avaient le même fichier.",
+      "Tous les sons ont maintenant le même volume.",
+      "« Devine qui crie » ne propose plus de chauves-souris : leurs cris se ressemblent trop.",
+      "Les petites îles (Galápagos, Canaries, Açores, Andaman…) ont un point doré sur la carte.",
+      "Les animaux domestiques ont leur carte, et des noms de pays sont traduits en français."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Le temps d'écran et un nouveau menu des jeux",
     "points": [
       "Dans le Coin des parents : un temps d'écran par jour (45 minutes au départ). Plume prévient 10 minutes avant, puis propose d'aller dehors.",
