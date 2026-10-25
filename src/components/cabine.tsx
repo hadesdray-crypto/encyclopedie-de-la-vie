@@ -9,13 +9,13 @@ import { plumeDit, plumePropose } from "@/lib/plume";
 import { sons } from "@/lib/sons";
 
 type Cle = keyof Omit<Tenue, "couleurs">;
-const RAYONS: { cle: Cle | "corps"; titre: string; icone: string; liste?: Piece[]; couleur?: keyof Tenue["couleurs"]; cadre?: string; dessin?: (t: Tenue) => ReactNode }[] = [
-  { cle: "haut", titre: "Torse", icone: "👚", liste: HAUTS, couleur: "haut", cadre: "22 96 156 116", dessin: (t) => <><Mannequin /><Haut t={t} /></> },
-  { cle: "bas", titre: "Bas", icone: "👖", liste: BAS, couleur: "bas", cadre: "26 128 148 90", dessin: (t) => <><Mannequin /><Bas t={t} /></> },
-  { cle: "chapeau", titre: "Tête", icone: "🎩", liste: CHAPEAUX2, couleur: "chapeau", cadre: "20 -40 160 108", dessin: (t) => <Chapeau2 t={t} /> },
-  { cle: "lunettes", titre: "Lunettes", icone: "👓", liste: LUNETTES, cadre: "26 52 148 80", dessin: (t) => <Lunettes2 t={t} /> },
-  { cle: "chaussures", titre: "Pieds", icone: "👟", liste: CHAUSSURES, couleur: "chaussures", cadre: "100 178 50 40", dessin: (t) => <Chaussure t={t} /> },
-  { cle: "objet", titre: "Main", icone: "🎸", liste: OBJETS, couleur: "objet", cadre: "150 64 80 106", dessin: (t) => <Objet t={t} /> },
+const RAYONS: { cle: Cle | "corps"; titre: string; icone: string; liste?: Piece[]; couleur?: keyof Tenue["couleurs"]; cadre?: string; vue?: string; dessin?: (t: Tenue) => ReactNode }[] = [
+  { cle: "haut", titre: "Torse", icone: "👚", liste: HAUTS, couleur: "haut", vue: "20 92 160 128", cadre: "22 96 156 116", dessin: (t) => <><Mannequin /><Haut t={t} /></> },
+  { cle: "bas", titre: "Bas", icone: "👖", liste: BAS, couleur: "bas", vue: "24 124 152 100", cadre: "26 128 148 90", dessin: (t) => <><Mannequin /><Bas t={t} /></> },
+  { cle: "chapeau", titre: "Tête", icone: "🎩", liste: CHAPEAUX2, couleur: "chapeau", vue: "10 -40 180 150", cadre: "20 -40 160 108", dessin: (t) => <Chapeau2 t={t} /> },
+  { cle: "lunettes", titre: "Lunettes", icone: "👓", liste: LUNETTES, vue: "20 40 160 110", cadre: "26 52 148 80", dessin: (t) => <Lunettes2 t={t} /> },
+  { cle: "chaussures", titre: "Pieds", icone: "👟", liste: CHAUSSURES, couleur: "chaussures", vue: "50 160 100 66", cadre: "100 178 50 40", dessin: (t) => <Chaussure t={t} /> },
+  { cle: "objet", titre: "Main", icone: "🎸", liste: OBJETS, couleur: "objet", vue: "110 50 130 140", cadre: "150 64 80 106", dessin: (t) => <Objet t={t} /> },
   { cle: "corps", titre: "Corps", icone: "🦉" },
 ];
 
@@ -176,7 +176,7 @@ export function Cabine({ look, setLook, caractere, nouveau }: { look: Look; setL
                         <button key={p.id} type="button" onClick={() => choisir(r.cle as Cle, p.id)} className={`tuile-vetement relative rounded-2xl px-1 pb-2 pt-1.5 text-center text-[11px] font-extrabold leading-tight ${actif ? "tuile-choisie" : ""}`}>
                           {actif ? <span className="absolute right-1 top-1 grid size-5 place-items-center rounded-full bg-[#3fbf5f] text-[11px] text-white">✓</span> : null}
                           <span className="mx-auto grid size-16 place-items-center rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.22),transparent_70%)]">
-                            {vide ? <span className="text-2xl opacity-60">✕</span> : <svg viewBox={r.cadre} className="size-[3.9rem] drop-shadow-[0_3px_4px_rgba(0,0,0,.35)]" aria-hidden="true">{r.dessin!({ ...look, [r.cle]: p.id } as Tenue)}</svg>}
+                            {vide ? <span className="text-2xl opacity-60">✕</span> : <PlumeDessin caractere={caractere} look={{ ...look, [r.cle]: p.id } as Look} cadre={r.vue} className="size-[3.9rem] drop-shadow-[0_3px_4px_rgba(0,0,0,.35)]" />}
                           </span>
                           <span className="mt-1 block">{p.nom}</span>
                         </button>
