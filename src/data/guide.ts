@@ -47,7 +47,7 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     etapes: [
       "Écris le résultat de chaque multiplication. Quand c'est juste, la ligne devient verte.",
       "Les chiffres en haut choisissent la table. Une étoile veut dire que la table est finie.",
-      "Quand les neuf tables sont faites, tu gagnes le Plumedex : un cadre rouge et or, avec des boutons pour parcourir toutes les fiches. Et les paquets de cartes illimités !",
+      "Quand les neuf tables sont faites, tu gagnes le Plumedex : un cadre rouge et or, avec des boutons pour parcourir toutes les fiches.",
     ],
   },
   {
@@ -125,7 +125,7 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
       "Ensuite, touche chaque carte pour la retourner. La plus belle arrive toujours en dernier.",
       "Les étoiles montrent la rareté : une étoile, l'animal vit dans beaucoup de pays. Cinq étoiles, il est très rare.",
       "Parfois, une onzième carte arrive en plus. Quelle chance !",
-      "Pour gagner un paquet : lis trois nouvelles fiches, donne cinq bonnes réponses, ou réussis un jeu de mémoire.",
+      "Chaque jour, un paquet de 5, 10 ou 15 cartes t'est offert. Pour en gagner d'autres : lis cinq nouvelles fiches, donne huit bonnes réponses, ou réussis un jeu de mémoire.",
       "En bas, les albums rangent toutes les espèces. Celles que tu n'as pas encore sont en gris.",
     ],
   },
@@ -164,7 +164,7 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     test: (c) => c.startsWith("/jouer"),
     etapes: [
       "Choisis un jeu avec les boutons en haut.",
-      "Chaque bonne réponse compte. Cinq bonnes réponses te font gagner un paquet de cartes.",
+      "Chaque bonne réponse compte. Huit bonnes réponses te font gagner un paquet de cartes.",
       "Après ta réponse, regarde bien : tu apprends quelque chose à chaque fois.",
     ],
   },
@@ -342,7 +342,7 @@ export const ASTUCES: Record<string, string[]> = {
   fiche: ["Les mots en pointillés sont des mots de scientifique : touche-les pour l'explication.", "Le bouton « Écouter » lit toute la fiche."],
   famille: ["Touche un animal pour ouvrir sa fiche. Chaque nouvelle fiche t'aide à gagner un paquet."],
   mammiferes: ["Écris le nom d'un animal à côté de la loupe pour le trouver vite."],
-  cartes: ["Lis trois nouvelles fiches pour gagner un paquet.", "La plus belle carte arrive toujours en dernier !"],
+  cartes: ["Un paquet t'attend chaque jour, et tu en gagnes d'autres en lisant cinq nouvelles fiches.", "La plus belle carte arrive toujours en dernier !"],
   memoire: ["Commence par retourner les cartes dans l'ordre, et retiens bien où sont les animaux."],
   defi: ["Si tu hésites longtemps, je peux t'aider avec un indice."],
   cri: ["Tu peux réécouter le cri autant de fois que tu veux."],

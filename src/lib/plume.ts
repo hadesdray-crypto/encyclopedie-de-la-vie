@@ -203,6 +203,22 @@ export function parler(e: Expression, defaut: string, duree = 3000) {
   plumeDit(perso ?? defaut, duree);
 }
 
+/**
+ * Les paliers : quand la même chose se répète (on la secoue, on la lance, elle perd), elle s'énerve de plus en plus.
+ * Chaque fois compte un palier de plus ; si on la laisse tranquille assez longtemps, elle se calme (on repart de 0).
+ */
+const paliers = new Map<string, { n: number; t: number }>();
+export function palier(cle: string, calmeApres = 90000) {
+  const maintenant = Date.now();
+  const p = paliers.get(cle);
+  const n = p && maintenant - p.t < calmeApres ? p.n + 1 : 0;
+  paliers.set(cle, { n, t: maintenant });
+  return n;
+}
+export function calmer(cle: string) {
+  paliers.delete(cle);
+}
+
 /** Plume dit une petite phrase dans sa bulle, quelques secondes (même si les réactions sont éteintes). */
 export function plumeDit(texte: string, duree = 3000) {
   if (etat.presence === "repos") return;

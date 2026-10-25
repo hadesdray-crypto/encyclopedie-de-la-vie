@@ -1,7 +1,7 @@
 // Plume joueuse : elle peut prendre une place autour de la table (Mémory, Bataille, Le plus rapide).
 // Sa force se règle (débutante, moyenne, championne) et elle parle selon son caractère.
 import type { Joueur } from "@/lib/partie";
-import { parler, plumeDit, presence } from "@/lib/plume";
+import { calmer, palier, parler, plumeDit, presence } from "@/lib/plume";
 import { compagnonExprime, nomCompagnon, type Expression } from "@/lib/compagnons";
 import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
@@ -66,13 +66,38 @@ const PHRASES: Record<string, Record<Moment, string[]>> = {
     perd: ["Bravo ! Tu es une championne !", "Tu m'as battue ! Quelle partie !"],
   },
 };
+// Quand elle rate plusieurs fois de suite : les caractères « cool » restent bons joueurs,
+// les autres deviennent de plus en plus mauvais joueurs (pour rire, et toujours gentiment à la fin).
+const RATE_PALIERS: Record<string, string[]> = {
+  discrete: ["Oups…", "Tant pis, ce n'est qu'un jeu.", "Tu joues vraiment bien !", "Bravo à toi, moi j'apprends encore."],
+  etudiante: ["Hypothèse fausse. Je note.", "Hmm… ma stratégie n'est pas la bonne.", "Je dois revoir ma méthode !", "Tu es plus forte que moi : bien joué !"],
+  presente: ["Raté ! À toi de jouer !", "Oh non, encore raté !", "Pfff… ce n'est pas juste !", "Bon, d'accord… tu es trop forte ! On fait la revanche ?"],
+  passionnee: ["Nooon ! Mes plumes tremblent !", "ENCORE RATÉ ?! C'est pas possible !", "Ce jeu est ensorcelé, je le savais !", "Je ne joue plus ! … Bon si, je rejoue. Mais je vais gagner !"],
+};
+// Quand elle réussit plusieurs fois de suite, la passionnée et la présente se vantent un peu (pour rire).
+const BIEN_PALIERS: Record<string, string[]> = {
+  presente: ["Trouvé !", "Encore moi !", "Hihi, je suis en forme aujourd'hui !"],
+  passionnee: ["OUIII ! Fantastique !", "Et de deux ! Je suis une championne !", "Imbattable ! La plus grande chouette du monde !"],
+};
 const EXPR: Partial<Record<Moment, Expression>> = { tour: "tour", bien: "trouve", rate: "rate" };
 export function plumeJoueuseDit(m: Moment) {
-  const p = PHRASES[presence()] ?? PHRASES.presente;
-  const l = p[m];
+  const car = presence();
+  const p = PHRASES[car] ?? PHRASES.presente;
+  let l = p[m];
+  let texte = l[Math.floor(Math.random() * l.length)];
+  if (m === "rate") {
+    calmer("partie-bien");
+    const r = RATE_PALIERS[car] ?? RATE_PALIERS.presente;
+    texte = r[Math.min(r.length - 1, palier("partie-rate", 10 * 60000))];
+  } else if (m === "bien") {
+    calmer("partie-rate");
+    const b = BIEN_PALIERS[car];
+    const n = palier("partie-bien", 10 * 60000);
+    if (b) texte = b[Math.min(b.length - 1, n)];
+  }
   const e = EXPR[m];
-  if (e) return parler(e, l[Math.floor(Math.random() * l.length)], 2600);
-  plumeDit(l[Math.floor(Math.random() * l.length)], 2600);
+  if (e) return parler(e, texte, 2800);
+  plumeDit(texte, 2800);
 }
 
 // Avant de jouer, Plume remercie toujours la princesse Leonie (c'est grâce à elle qu'on peut jouer)
@@ -81,6 +106,8 @@ let enJeu = false;
 export const plumeEnJeu = () => enJeu;
 export function plumeOuvrePartie(joueurs: Joueur[]) {
   enJeu = joueurs.some((j) => j.plume);
+  calmer("partie-rate");
+  calmer("partie-bien");
   if (!enJeu) return;
   const leonieJoue = joueurs.some((j) => !j.plume && j.nom.trim().toLocaleLowerCase("fr").startsWith("l") && j.nom.trim().toLocaleLowerCase("fr").replace("é", "e").startsWith("leonie"));
   const phrases = leonieJoue

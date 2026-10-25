@@ -95,7 +95,7 @@ const JEUX: { id: Jeu; nom: string; sous: string; niveau: 1 | 2 | 3; joueurs: st
 ];
 
 // Les règles de chaque jeu : quand on touche Plume (ou « Aide ») pendant un jeu, elle explique exactement celui-là.
-const PAQUET = "Chaque bonne réponse compte : cinq bonnes réponses te font gagner un paquet de cartes.";
+const PAQUET = "Chaque bonne réponse compte : huit bonnes réponses te font gagner un paquet de cartes.";
 const REGLES_SOLO: Partial<Record<Jeu, Explication>> = {
   poids: { id: "regles-poids", titre: "Le plus lourd ?", etapes: ["Deux animaux sont face à face.", "Touche celui qui pèse le plus lourd quand il est adulte.", "Après ta réponse, je te montre le vrai poids de chacun.", PAQUET] },
   carte: { id: "regles-carte", titre: "Qui vit ici ?", etapes: ["Sur la carte, les pays en or montrent où vit un animal.", "Regarde bien où ils sont, puis touche l'animal qui vit là.", "Après ta réponse, je te dis où il vit vraiment.", PAQUET] },

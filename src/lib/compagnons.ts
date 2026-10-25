@@ -49,8 +49,13 @@ export type Compagnon = {
   createur: string;
   look: Look;
   caractere: Exclude<Presence, "repos">;
-  phrases: Partial<Record<Expression, string>>;
+  /** Pour chaque moment : jusqu'à 5 versions (un texte et, si on veut, sa voix). Une est choisie au hasard. */
+  paroles: Partial<Record<Expression, Variante[]>>;
+  /** Ancien format (une seule phrase par moment) : lu une fois, puis rangé dans « paroles ». */
+  phrases?: Partial<Record<Expression, string>>;
 };
+export type Variante = { texte: string; voix?: boolean };
+export const MAX_VERSIONS = 5;
 
 const CLE = "leonie-compagnons";
 const CLE_ACTIF = "leonie-compagnon-actif";
@@ -60,7 +65,7 @@ const prevenir = () => abonnes.forEach((f) => f());
 export function lireCompagnons(): Compagnon[] {
   try {
     const l = JSON.parse(localStorage.getItem(CLE) || "[]");
-    return Array.isArray(l) ? l.slice(0, MAX_BONUS).map((c: Compagnon) => ({ ...c, look: normaliser(c.look) })) : [];
+    return Array.isArray(l) ? l.slice(0, MAX_BONUS).map((c: Compagnon) => ({ ...c, look: normaliser(c.look), paroles: c.paroles ?? Object.fromEntries(Object.entries(c.phrases ?? {}).filter(([, t]) => t?.trim()).map(([e, t]) => [e, [{ texte: t as string, voix: true }]])) })) : [];
   } catch {
     return [];
   }
@@ -147,22 +152,46 @@ export async function lireVoix(cle: string): Promise<Blob | null> {
     return null;
   }
 }
-export const cleVoix = (compagnon: string, e: Expression) => `${compagnon}:${e}`;
+/** La clé d'un enregistrement : le personnage, le moment, et le numéro de la version. */
+export const cleVoix = (compagnon: string, e: Expression, i = 0) => `${compagnon}:${e}:${i}`;
+/** Lire la voix d'une version (la toute première version a peut-être été enregistrée avec l'ancien nom). */
+export async function lireVoixVersion(compagnon: string, e: Expression, i: number) {
+  return (await lireVoix(cleVoix(compagnon, e, i))) ?? (i === 0 ? await lireVoix(`${compagnon}:${e}`) : null);
+}
+
+// La dernière version dite, pour ne pas répéter deux fois de suite la même.
+const derniere = new Map<string, number>();
+/** Choisir une version au hasard parmi celles qui ont un texte ou une voix. */
+export function choisirVersion(c: Compagnon, e: Expression): { i: number; texte: string } | null {
+  const l = (c.paroles[e] ?? []).map((v, i) => ({ v, i })).filter(({ v }) => v.texte.trim() || v.voix);
+  if (!l.length) return null;
+  const k = `${c.id}:${e}`;
+  const choix = l.length > 1 ? l.filter(({ i }) => i !== derniere.get(k)) : l;
+  const { v, i } = choix[Math.floor(Math.random() * choix.length)];
+  derniere.set(k, i);
+  return { i, texte: v.texte.trim() };
+}
 
 let enCours: HTMLAudioElement | null = null;
-/** Le compagnon choisi dit son expression : son enregistrement s'il en a un. Renvoie sa phrase (ou null). */
+/** Le compagnon choisi dit son expression : une de ses versions, au hasard. La bulle montre exactement ce qu'il dit. */
 export function compagnonExprime(e: Expression): string | null {
   const c = compagnonActif();
   if (!c) return null;
-  lireVoix(cleVoix(c.id, e)).then((son) => {
-    if (!son) return;
+  const v = choisirVersion(c, e);
+  if (!v) return null;
+  jouerVersion(c.id, e, v.i);
+  return v.texte || "🎙️ …";
+}
+export function jouerVersion(compagnon: string, e: Expression, i: number, fin?: () => void) {
+  return lireVoixVersion(compagnon, e, i).then((son) => {
+    if (!son) return false;
     enCours?.pause();
     const url = URL.createObjectURL(son);
     enCours = new Audio(url);
-    enCours.onended = () => URL.revokeObjectURL(url);
+    enCours.onended = () => { URL.revokeObjectURL(url); fin?.(); };
     enCours.play().catch(() => {});
+    return true;
   });
-  return c.phrases[e]?.trim() || null;
 }
 
 export function nouveauCompagnon(): Compagnon {
@@ -173,6 +202,6 @@ export function nouveauCompagnon(): Compagnon {
     createur: "",
     look: { couleur: "bleu", epaisseur: 2, haut: "foot", bas: "shortfoot", chapeau: "casquette", lunettes: "aucune", chaussures: "baskets", objet: "ballon", couleurs: {} },
     caractere: "presente",
-    phrases: {},
+    paroles: {},
   };
 }

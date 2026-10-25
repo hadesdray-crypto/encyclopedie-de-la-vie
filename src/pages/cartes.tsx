@@ -5,10 +5,10 @@ import { lireVues, voirAnimal } from "@/lib/carnet";
 import { ALBUMS, ouvrirPaquet, type Tirage } from "@/lib/paquets";
 import { activerSons, sons, sonsActifs } from "@/lib/sons";
 import { plumeReagit } from "@/lib/plume";
-import { REGLES, paquetsDisponibles, paquetsIllimites, utiliserPaquet } from "@/lib/recompenses";
+import { REGLES, paquetDuJour, paquetsDisponibles, paquetsIllimites, prendrePaquetDuJour, utiliserPaquet } from "@/lib/recompenses";
 import { Entete } from "@/components/entete";
 import { Portrait } from "@/components/portrait";
-import { CarteRecto, CarteVerso, niveauDe } from "@/components/carte-animal";
+import { Carte3D, CarteRecto, CarteVerso, niveauDe } from "@/components/carte-animal";
 
 type Etape = "pret" | "tremble" | "dechire" | "revele" | "fini";
 
@@ -43,25 +43,38 @@ export function CartesPage() {
   }
 
   const [reserve, setReserve] = useState(paquetsDisponibles);
-  const illimite = paquetsIllimites();
+  const [duJour, setDuJour] = useState(paquetDuJour);
+  const [taille, setTaille] = useState<number | null>(null);
+  const [lueur, setLueur] = useState("#a77bff"); // la couleur de la meilleure carte du paquet (comme dans les jeux de foot)
+  const illimite = false;
+  void paquetsIllimites;
 
   function ouvrir() {
     if (etape !== "pret") return;
-    if (!utiliserPaquet()) return;
+    // D'abord le paquet du jour (5, 10 ou 15 cartes, au hasard), puis les paquets gagnés (10 cartes).
+    let n = prendrePaquetDuJour();
+    if (n) setDuJour(false);
+    else if (utiliserPaquet()) n = 10;
+    else return;
+    setTaille(n);
     setReserve(paquetsDisponibles());
     const avant = new Set(lireVues());
     setDeja(avant);
-    const paquet = ouvrirPaquet(famille, avant);
+    const paquet = ouvrirPaquet(famille, avant, n);
+    const meilleur = Math.max(...paquet.cartes.map((c) => (c.chance ? 2 : niveauDe(c.rarete).rang)));
+    setLueur(["#d9a273", "#e8edf6", "#f3c35a", "#a77bff", "#ff7ab6"][meilleur] ?? "#a77bff");
     setCartes(ordre(paquet.cartes));
     setIndex(0);
     setFace(false);
     setEtape("tremble");
     sons.trembler();
+    plus_tard(() => sons.trembler(), 450);
+    plus_tard(() => sons.brillant(), 900);
     plus_tard(() => {
       setEtape("dechire");
       sons.dechirer();
-    }, 650);
-    plus_tard(() => setEtape("revele"), 1350);
+    }, 1300);
+    plus_tard(() => setEtape("revele"), 2200);
   }
 
   function toucherCarte() {
@@ -136,12 +149,15 @@ export function CartesPage() {
             </select>
           </label>
           <p className="mt-4 text-center font-display text-2xl text-[#f3d48a]">
-            {illimite ? "Paquets illimités" : `${reserve} paquet${reserve > 1 ? "s" : ""} à ouvrir`}
+            {duJour ? "🎁 Le paquet du jour t'attend !" : `${reserve} paquet${reserve > 1 ? "s" : ""} à ouvrir`}
           </p>
-          {illimite || reserve > 0 ? (
-            <button type="button" onClick={ouvrir} className="mx-auto mt-3 block w-52" aria-label="Ouvrir le paquet">
-              <Paquet />
-              <span className="mt-4 block text-center font-display text-xl text-[#f3d48a]">Touche le paquet pour l'ouvrir</span>
+          {duJour ? <p className="text-center text-sm texte-doux">5, 10 ou 15 cartes : surprise ! {reserve ? `Et encore ${reserve} paquet${reserve > 1 ? "s" : ""} gagné${reserve > 1 ? "s" : ""} en explorant.` : ""}</p> : null}
+          {duJour || reserve > 0 ? (
+            <button type="button" onClick={ouvrir} className="scene-paquet mx-auto mt-3 block w-full max-w-sm" aria-label="Ouvrir le paquet">
+              <span className="faisceaux" />
+              <span className="lueur-sol" />
+              <span className="paquet-3d absolute left-1/2 top-8 block w-48 -ml-24"><Paquet duJour={duJour} /></span>
+              <span className="absolute inset-x-0 bottom-4 block text-center font-display text-xl text-[#f3d48a] [text-shadow:0_2px_6px_#000]">Touche le paquet pour l'ouvrir</span>
             </button>
           ) : (
             <div className="carte-nuit mx-auto mt-3 max-w-sm rounded-3xl px-4 py-4 text-center">
@@ -161,25 +177,32 @@ export function CartesPage() {
       ) : null}
 
       {etape === "tremble" || etape === "dechire" ? (
-        <div className="relative mx-auto mt-10 w-52">
-          <div className={etape === "tremble" ? "tremble" : ""}>
-            <Paquet ouvert={etape === "dechire"} />
+        <div className="scene-paquet charge mx-auto mt-6 w-full max-w-sm" style={{ ["--lueur" as string]: lueur }}>
+          <span className="faisceaux" />
+          <span className="lueur-sol" />
+          <div className={`absolute left-1/2 top-8 w-48 -ml-24 ${etape === "tremble" ? "paquet-charge" : ""}`}>
+            <Paquet ouvert={etape === "dechire"} duJour={false} taille={taille} />
           </div>
-          {etape === "dechire" ? <span className="eclat pointer-events-none absolute left-1/2 top-1/3 -ml-16 -mt-16 size-32 rounded-full bg-[radial-gradient(circle,#fff6c9,rgba(255,220,120,.6)_40%,transparent_70%)]" /> : null}
+          {etape === "dechire" ? <span className="eclat pointer-events-none absolute left-1/2 top-1/3 -ml-24 -mt-24 size-48 rounded-full" style={{ background: `radial-gradient(circle, #fff, ${lueur} 40%, transparent 70%)` }} /> : null}
+          {etape === "dechire" ? <span className="flash-blanc pointer-events-none absolute inset-0 bg-white" /> : null}
+          {taille ? <p className="absolute inset-x-0 bottom-4 text-center font-display text-2xl text-white [text-shadow:0_2px_8px_#000]">{taille} cartes !</p> : null}
         </div>
       ) : null}
 
       {etape === "revele" && carte ? (
         <section className="mt-6 text-center">
           <p className="font-extrabold text-[#f0d090]">Carte {index + 1} sur {cartes.length}</p>
-          <div className="relative mx-auto mt-4 w-56">
+          <div className="relative mx-auto mt-4 w-60" style={{ ["--lueur" as string]: lueur }}>
             {brille ? <span className="rayons pointer-events-none absolute -inset-16" /> : null}
-            <button key={index} type="button" onClick={toucherCarte} className={`retournable arrivee relative block aspect-[5/7] w-full ${face ? "retourne" : ""}`}>
-              <span className="retournable-interieur block">
-                <span className="face block"><CarteVerso /></span>
-                <span className="face face-recto block"><CarteRecto espece={carte.espece} rarete={carte.rarete} special={carte.special} chance={carte.chance} /></span>
-              </span>
-            </button>
+            {face ? <span className="pointer-events-none absolute -inset-6 rounded-full opacity-70 blur-2xl" style={{ background: `radial-gradient(circle, ${["#d9a273", "#e8edf6", "#f3c35a", "#a77bff", "#ff7ab6"][carte.chance ? 2 : niveauDe(carte.rarete).rang]}, transparent 70%)` }} /> : null}
+            <Carte3D key={index} className="carte-sort">
+              <button type="button" onClick={toucherCarte} className={`retournable relative block aspect-[5/7] w-full ${face ? "retourne" : ""}`}>
+                <span className="retournable-interieur block">
+                  <span className="face block"><CarteVerso /></span>
+                  <span className="face face-recto block"><CarteRecto espece={carte.espece} rarete={carte.rarete} special={carte.special} chance={carte.chance} /></span>
+                </span>
+              </button>
+            </Carte3D>
           </div>
           {face && carte.chance ? <p className="titre-or mt-5 text-3xl">Wah, la chance !</p> : null}
           {face && !deja.has(carte.espece.id) ? <p className="mt-3 inline-block rounded-full bg-[#f3d48a] px-3 py-1 text-sm font-extrabold text-[#2a1c14]">Nouvelle carte !</p> : null}
@@ -245,13 +268,13 @@ export function CartesPage() {
   );
 }
 
-function Paquet({ ouvert = false }: { ouvert?: boolean }) {
+function Paquet({ ouvert = false, duJour = false, taille = null }: { ouvert?: boolean; duJour?: boolean; taille?: number | null }) {
   return (
     <span className="paquet relative block aspect-[5/7] w-full overflow-hidden rounded-3xl">
       <span className={`absolute inset-x-0 top-0 h-[16%] border-b-2 border-dashed border-[#e8c98a] bg-[#2a1650] ${ouvert ? "rabat-part" : ""}`} />
-      <img src="theme/lune.webp" alt="" className="absolute left-1/2 top-[30%] size-24 -translate-x-1/2 rounded-full shadow-[0_0_25px_rgba(160,110,255,.9)]" />
-      <span className="titre-or absolute inset-x-0 bottom-[16%] text-center text-2xl">Paquet</span>
-      <span className="absolute inset-x-0 bottom-[8%] text-center text-sm font-extrabold text-[#f6edd8]">10 cartes… ou 11 ?</span>
+      <img src="theme/lune.webp" alt="" className="absolute left-1/2 top-[28%] size-24 -translate-x-1/2 rounded-full shadow-[0_0_25px_rgba(160,110,255,.9)]" />
+      <span className="titre-or absolute inset-x-0 bottom-[17%] text-center text-2xl">{duJour ? "Paquet du jour" : "Paquet"}</span>
+      <span className="absolute inset-x-0 bottom-[8%] text-center text-sm font-extrabold text-[#f6edd8]">{taille ? `${taille} cartes` : duJour ? "5, 10 ou 15 cartes ?" : "10 cartes… ou 11 ?"}</span>
     </span>
   );
 }

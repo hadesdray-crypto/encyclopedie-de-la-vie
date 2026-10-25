@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LuFlame } from "react-icons/lu";
-import { paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
+import { paquetDuJour, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { defiFait } from "@/lib/defis";
 import { direBoutons } from "@/lib/reglages";
 import { dire } from "@/lib/parole";
@@ -18,7 +18,7 @@ const SALLES: Salle[] = [
 
 /** Les petites pastilles : paquets à ouvrir, défi du jour qui attend. Elles se mettent à jour toutes seules. */
 function usePastilles() {
-  const lire = () => ({ paquets: paquetsIllimites() ? 0 : paquetsDisponibles(), defi: !defiFait() });
+  const lire = () => ({ paquets: (paquetsIllimites() ? 0 : paquetsDisponibles()) + (paquetDuJour() ? 1 : 0), defi: !defiFait() });
   const [p, setP] = useState(lire);
   useEffect(() => {
     const maj = () => setP(lire());
@@ -50,7 +50,13 @@ export function Barre({ chemin }: { chemin: string }) {
       className="barre-bas fixed inset-x-0 bottom-0 z-30 mx-auto max-w-xl px-3"
       style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 0.5rem)" }}
     >
-      <ul className="grid h-[4.5rem] grid-cols-5 items-center barre-bois rounded-[1.6rem] px-1 shadow-[0_10px_30px_rgba(0,0,0,.45)] backdrop-blur">
+      <ul className="barre-jeu relative grid h-[4.5rem] grid-cols-5 items-center rounded-[1.8rem] px-1">
+        {/* La bulle dorée qui glisse jusqu'à la salle où l'on est */}
+        {SALLES.findIndex((x) => x.actif(chemin)) >= 0 ? (
+          <span aria-hidden="true" className="bulle-barre pointer-events-none absolute top-1/2 h-14 w-[20%]" style={{ left: `calc(0.25rem + ${SALLES.findIndex((x) => x.actif(chemin))} * (100% - 0.5rem) / 5)` }}>
+            <span className="absolute inset-x-[14%] inset-y-0 rounded-[1.4rem] bg-[radial-gradient(circle_at_50%_30%,rgba(243,212,138,.55),rgba(160,110,255,.28)_60%,transparent_75%)]" />
+          </span>
+        ) : null}
         {SALLES.map((salle) => {
           const actif = salle.actif(chemin);
           const pastille =
@@ -70,24 +76,24 @@ export function Barre({ chemin }: { chemin: string }) {
                 ? ", le défi du jour t'attend"
                 : "";
           return (
-            <li key={salle.vers} className="relative">
-              {actif ? <span className="absolute left-1/2 top-[-0.55rem] h-1 w-8 -translate-x-1/2 rounded-full bg-[#f3d48a] shadow-[0_0_10px_2px_rgba(243,212,138,.7)]" /> : null}
+            <li key={salle.vers} className="relative z-10">
               <a
                 href={`#${salle.vers}`}
                 onClick={() => toucher(salle)}
                 aria-current={actif ? "page" : undefined}
                 aria-label={salle.label + aide}
-                className="flex flex-col items-center gap-1 py-1 font-display text-[13px] font-semibold"
+                className="flex flex-col items-center gap-0.5 py-1 font-display text-[12.5px] font-semibold"
               >
-                <span className={`relative block ${saut === salle.vers ? "saut" : ""}`}>
+                <span className={`icone-barre relative block ${actif ? "icone-active" : ""} ${saut === salle.vers ? "saut" : ""}`}>
                   <img
                     src={salle.icone}
                     alt=""
-                    className={`size-10 rounded-full object-cover transition-transform ${actif ? "scale-110 shadow-[0_0_16px_4px_rgba(160,110,255,.8)] ring-2 ring-[#f3d48a]" : "opacity-85"}`}
+                    className={`size-10 rounded-full object-cover ${actif ? "ring-[3px] ring-[#f3d48a] shadow-[0_0_18px_5px_rgba(243,195,90,.55)]" : "opacity-80 ring-1 ring-white/20"}`}
                   />
+                  {saut === salle.vers ? <span aria-hidden="true" className="etincelles-barre">{[0, 1, 2, 3, 4, 5].map((k) => <i key={k} style={{ ["--a" as string]: `${k * 60}deg` }} />)}</span> : null}
                   {pastille}
                 </span>
-                <span className={actif ? "text-[#f3d48a]" : "text-[#e7d7be]"}>{salle.label}</span>
+                <span className={`transition-colors ${actif ? "text-[#ffe9a8] [text-shadow:0_0_8px_rgba(243,195,90,.7)]" : "text-[#d9c7ff]/80"}`}>{salle.label}</span>
               </a>
             </li>
           );

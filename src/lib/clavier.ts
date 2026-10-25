@@ -5,10 +5,19 @@ const ECRIT = (el: EventTarget | null): el is HTMLInputElement | HTMLTextAreaEle
 
 export function demarrerClavier() {
   let t = 0;
+  // Le vrai clavier rend la zone visible plus petite : sinon (clavier fermé, ou ordinateur), Plume et la barre restent là.
+  const vv = window.visualViewport;
+  const clavierOuvert = () => !vv || vv.height < window.innerHeight * 0.82;
+  const verifier = () => {
+    if (ECRIT(document.activeElement) && clavierOuvert()) document.body.dataset.clavier = "1";
+    else delete document.body.dataset.clavier;
+  };
+  vv?.addEventListener("resize", verifier);
   document.addEventListener("focusin", (e) => {
     if (!ECRIT(e.target)) return;
     window.clearTimeout(t);
     document.body.dataset.clavier = "1";
+    window.setTimeout(verifier, 600);
     const champ = e.target;
     // Seulement pour les recherches (pas pour les calculs des tables, qui restent à leur place).
     if (champ.inputMode === "numeric" || champ.closest("[data-sans-remonter]")) return;
