@@ -82,12 +82,22 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
   const [pos, setPos] = useState(lirePosition);
   const [glisse, setGlisse] = useState<{ x: number; y: number } | null>(null);
   const [anim, setAnim] = useState<AnimPlume>("rien");
-  const depart = useRef<{ x: number; y: number; t: number; long: number; bouge: boolean } | null>(null);
+  const depart = useRef<{ x: number; y: number; t: number; long: number; bouge: boolean; cx: number; cy: number } | null>(null);
   // Les derniers mouvements du doigt : pour savoir si on a lancé Plume (et à quelle vitesse).
   const traces = useRef<{ x: number; y: number; t: number }[]>([]);
   const [vol, setVol] = useState<{ x: number; y: number; r: number } | null>(null);
   const premier = useRef(true);
   const explicationPage = explicationPour(chemin, params);
+  const jeu = chemin === "/jouer" ? params.get("jeu") : null;
+  const [bravo, setBravo] = useState(false);
+  const { fete } = usePlume();
+  useEffect(() => {
+    if (!fete) return;
+    setBravo(true);
+    const t = window.setTimeout(() => setBravo(false), 3200);
+    return () => window.clearTimeout(t);
+  }, [fete]);
+  const animJeu: AnimPlume | null = !jeu || presence === "discrete" || presence === "repos" ? null : bravo ? "bravo" : jeu === "bataille" ? "bataille" : "jeu";
 
   // Première ouverture : Plume se présente. Ensuite, elle ne s'ouvre seule que si on l'a demandé dans les Options.
   useEffect(() => {
@@ -208,7 +218,8 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
         ouvrirPlume(true, "presence");
       }
     }, 600);
-    depart.current = { x: e.clientX, y: e.clientY, t: Date.now(), long, bouge: false };
+    const r = e.currentTarget.getBoundingClientRect();
+    depart.current = { x: e.clientX, y: e.clientY, t: Date.now(), long, bouge: false, cx: e.clientX - (r.left + r.width / 2), cy: e.clientY - (r.top + r.height / 2) };
   }
 
   function deplacement(e: PE<HTMLButtonElement>) {
@@ -294,7 +305,9 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
         const a = tr[0], b = tr[tr.length - 1];
         const dt = Math.max(1, b.t - a.t);
         const vx = ((b.x - a.x) / dt) * 16, vy = ((b.y - a.y) / dt) * 16;
-        if (Math.hypot(vx, vy) > 14 && performance.now() - b.t < 120) {
+        const centre = Math.hypot(d.cx, d.cy) < TAILLE * 0.3;
+        const loin = Math.hypot(b.x - d.x, b.y - d.y) > 90;
+        if (centre && loin && Math.hypot(vx, vy) > 24 && performance.now() - b.t < 90) {
           lancer(b.x, b.y, Math.max(-40, Math.min(40, vx)), Math.max(-40, Math.min(40, vy)));
           return;
         }
@@ -351,7 +364,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
             </>
           ) : null}
           <span className="block size-full" style={vol ? { transform: `rotate(${vol.r}deg)` } : undefined}>
-            <PlumeDessin anim={["peur", "vole", "triste", "etourdie", "bravo"].includes(anim) ? anim : parle ? "parle" : ouvert ? "ailes" : anim} caractere={CARACTERE[presence] ?? 0} lit={parle && !["peur", "vole", "triste", "etourdie"].includes(anim)} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
+            <PlumeDessin anim={["peur", "vole", "triste", "etourdie", "bravo"].includes(anim) ? anim : parle ? "parle" : ouvert ? "ailes" : animJeu ?? anim} caractere={CARACTERE[presence] ?? 0} lit={parle && !["peur", "vole", "triste", "etourdie"].includes(anim)} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
           </span>
         </button>
 
@@ -405,6 +418,16 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   const parle = useParle();
   const ref = useRef<HTMLDivElement>(null);
   const explicationPage = explicationPour(chemin, params);
+  const jeu = chemin === "/jouer" ? params.get("jeu") : null;
+  const [bravo, setBravo] = useState(false);
+  const { fete } = usePlume();
+  useEffect(() => {
+    if (!fete) return;
+    setBravo(true);
+    const t = window.setTimeout(() => setBravo(false), 3200);
+    return () => window.clearTimeout(t);
+  }, [fete]);
+  const animJeu: AnimPlume | null = !jeu || presence === "discrete" || presence === "repos" ? null : bravo ? "bravo" : jeu === "bataille" ? "bataille" : "jeu";
   const astuces = ASTUCES[explicationPage.id] ?? ASTUCES.accueil;
   const [astuce, setAstuce] = useState(() => Math.floor(Math.random() * astuces.length));
   const mots = contenu === "mots" ? motsDeLaPage() : [];

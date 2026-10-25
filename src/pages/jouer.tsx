@@ -88,7 +88,7 @@ const JEUX: { id: Jeu; nom: string; sous: string; niveau: 1 | 2 | 3; joueurs: st
   { id: "carte", nom: "Qui vit ici ?", sous: "Les pays en or sur la carte.", niveau: 2, joueurs: "Seule" },
   { id: "regime", nom: "Qu'est-ce qu'il mange ?", sous: "Viande, plantes, insectes…", niveau: 1, joueurs: "Seule" },
   { id: "temps", nom: "Qui est arrivé en premier ?", sous: "Dans l'histoire de la vie.", niveau: 2, joueurs: "Seule" },
-  { id: "tables", nom: "Les tables magiques", sous: "Toutes les tables de 1 à 9 : paquets illimités !", niveau: 2, joueurs: "Seule" },
+  { id: "tables", nom: "Les tables magiques", sous: "Toutes les tables de 1 à 9 : tu gagnes le Plumedex !", niveau: 2, joueurs: "Seule" },
 ];
 
 export function JouerPage({ params }: { params: URLSearchParams }) {
@@ -118,9 +118,7 @@ function ModeJeu({ titre, jeu, children }: { titre: string; jeu: string; childre
   return (
     <main className="mx-auto max-w-xl px-3 pt-2">
       <header className="sticky top-0 z-30 -mx-3 flex items-center gap-2 bg-[#120c2c]/90 px-3 py-1.5 backdrop-blur">
-        <button type="button" onClick={() => ouvrirPlume(true, "page")} aria-label="Plume : aide" className="size-11 shrink-0">
-          <PlumeDessin className="size-full" caractere={caractere} anim={bravo ? "bravo" : presence === "discrete" || presence === "repos" ? "rien" : jeu === "bataille" ? "bataille" : "jeu"} />
-        </button>
+        <button type="button" onClick={() => ouvrirPlume(true, "page")} className="inline-flex min-h-10 shrink-0 items-center rounded-full bg-[#6a3fc0] px-3 text-sm font-extrabold text-white">Aide</button>
         <p className="min-w-0 flex-1 truncate font-display text-lg text-[#f3d48a]">{titre}</p>
         <button type="button" onClick={() => revenir("/jouer")} className="inline-flex min-h-10 items-center gap-1 rounded-full bg-card px-3.5 text-sm font-extrabold text-[#2a1c14]">
           <LuChevronLeft className="size-5" aria-hidden="true" /> Retour

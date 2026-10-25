@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Le Plumedex",
+    "points": [
+      "Remplis toutes les tables magiques : tu gagnes le Plumedex, un cadre rouge et or autour de l'application.",
+      "Ses boutons : fiche précédente, animal au hasard, fiche suivante, chercher, les animaux, jouer. Chaque fiche a son numéro.",
+      "Plume reste avec toi pendant les jeux, et on ne la lance que d'un geste rapide qui part de son milieu."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "On peut lancer Plume !",
     "points": [
       "Lance Plume d'un geste rapide : la Présente s'envole, la Passionnée fait un looping, l'Étudiante tombe et voit des étoiles, la Discrète tombe et devient toute triste.",

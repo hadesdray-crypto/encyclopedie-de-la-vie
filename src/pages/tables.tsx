@@ -1,7 +1,8 @@
 // Les tables de multiplication de 1 à 9 : quand Leonie les a toutes remplies sans erreur,
 // elle gagne les paquets de cartes illimités (à la place de l'ancienne case « triche »).
 import { useState } from "react";
-import { choisirIllimite, paquetsIllimites } from "@/lib/recompenses";
+import { choisirIllimite } from "@/lib/recompenses";
+import { dexGagne, gagnerDex } from "@/lib/dex";
 import { plumeFete } from "@/lib/plume";
 import { sons } from "@/lib/sons";
 
@@ -29,7 +30,7 @@ export function TablesMultiplication() {
   const [faits, setFaits] = useState(lire);
   const [table, setTable] = useState(() => TABLES.find((t) => FOIS.some((f) => !lire().has(`${t}x${f}`))) ?? 1);
   const [saisies, setSaisies] = useState<Record<string, string>>({});
-  const [gagne, setGagne] = useState(paquetsIllimites);
+  const [gagne, setGagne] = useState(dexGagne);
 
   const repondre = (t: number, f: number, v: string) => {
     const cle = `${t}x${f}`;
@@ -40,8 +41,9 @@ export function TablesMultiplication() {
     ecrire(n);
     sons.brillant();
     if (FOIS.every((x) => n.has(`${t}x${x}`))) plumeFete();
-    if (n.size === TOTAL && !paquetsIllimites()) {
+    if (n.size === TOTAL && !dexGagne()) {
       choisirIllimite(true);
+      gagnerDex();
       setGagne(true);
     }
   };
@@ -50,13 +52,13 @@ export function TablesMultiplication() {
   return (
     <section className="mt-4">
       <div className="rounded-3xl bg-card px-4 py-3 text-[#2a1c14]">
-        <p className="font-extrabold">Remplis toutes les tables de 1 à 9 : tu gagnes les paquets de cartes illimités !</p>
+        <p className="font-extrabold">Remplis toutes les tables de 1 à 9 : tu gagnes le Plumedex et les paquets de cartes illimités !</p>
         <div className="mt-2 h-3 overflow-hidden rounded-full bg-[#e8d9bf]">
           <div className="h-full rounded-full bg-[linear-gradient(90deg,#f3d48a,#d6a531)]" style={{ width: `${(faits.size / TOTAL) * 100}%` }} />
         </div>
         <p className="mt-1 text-sm font-bold">{faits.size} sur {TOTAL}</p>
       </div>
-      {gagne ? <p className="mt-3 rounded-3xl bg-[linear-gradient(160deg,#f3d48a,#d6a531)] px-4 py-3 text-center font-display text-xl text-[#2a1650]">Bravo Leonie ! Toutes les tables sont faites : paquets illimités !</p> : null}
+      {gagne ? <p className="mt-3 rounded-3xl bg-[linear-gradient(160deg,#f3d48a,#d6a531)] px-4 py-3 text-center font-display text-xl text-[#2a1650]">Bravo Leonie ! Tu as gagné le Plumedex et les paquets illimités ! (On peut l'éteindre ou l'allumer dans les Options.)</p> : null}
       <div className="mt-4 grid grid-cols-9 gap-1" role="tablist" aria-label="Choisir une table">
         {TABLES.map((t) => (
           <button key={t} type="button" role="tab" aria-selected={table === t} onClick={() => setTable(t)} className={`relative grid aspect-square place-items-center rounded-xl font-display text-xl ${table === t ? "bg-[#f3d48a] text-[#2a1650]" : "bg-[#2a1844] text-[#f3d48a]"}`}>
