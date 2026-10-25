@@ -22,7 +22,7 @@ function updater() {
   if (!moduleDisponible(UPD)) return undefined;
   return {
     notifyAppReady: () => appeler(UPD, "notifyAppReady"),
-    download: (o: { url: string; version: string }) => appeler<Bundle>(UPD, "download", o),
+    download: (o: { url: string; version: string; checksum: string }) => appeler<Bundle>(UPD, "download", o),
     set: (o: { id: string }) => appeler<void>(UPD, "set", o),
     addListener: (evt: string, f: (e: { percent: number }) => void) => ecouter(UPD, evt, f as (d: never) => void),
   };
@@ -34,9 +34,12 @@ export type EtatMaj = {
   pourcent: number;
   verification: "" | "en-cours" | "a-jour" | "hors-ligne" | "erreur";
   taille: number; // poids du téléchargement, en Mo (0 = inconnu)
+  detail: string; // la raison d'une erreur, pour comprendre ce qui bloque
 };
 
-let etat: EtatMaj = { nouvelle: null, phase: "rien", pourcent: 0, verification: "", taille: 0 };
+let etat: EtatMaj = { nouvelle: null, phase: "rien", pourcent: 0, verification: "", taille: 0, detail: "" };
+// L'empreinte (SHA-256) du paquet : le module de mise à jour la demande pour vérifier que le fichier est intact.
+let empreinte = "";
 let bundle: Bundle | null = null;
 const abonnes = new Set<(e: EtatMaj) => void>();
 function publier(e: Partial<EtatMaj>) {
@@ -71,6 +74,8 @@ export async function verifierApk() {
     const n = Number(String(rel.tag_name || "").replace(/\D/g, ""));
     const zip = (rel.assets ?? []).find((a: { name: string }) => a.name === "web.zip");
     const taille = zip ? Math.round(zip.size / 1048576) : 0;
+    // GitHub donne l'empreinte de chaque fichier (« sha256:… ») ; sinon, elle est écrite dans les notes de la version.
+    empreinte = String(zip?.digest || "").replace(/^sha256:/, "") || (String(rel.body || "").match(/web\.zip sha256 : ([0-9a-f]{64})/)?.[1] ?? "");
     if (n > VERSION_APK) publier({ nouvelle: n, taille, phase: etat.phase === "termine" ? "termine" : "propose", verification: "" });
     else publier({ verification: "a-jour" });
   } catch {
@@ -88,13 +93,14 @@ export async function lancerMajApk() {
     window.location.href = LIEN_APK;
     return;
   }
-  publier({ phase: "telechargement", pourcent: 0 });
+  if (!empreinte) await verifierApk();
+  publier({ phase: "telechargement", pourcent: 0, detail: "" });
   const arreter = await u.addListener("download", (e) => publier({ pourcent: Math.max(0, Math.min(100, Math.round(e.percent))) }));
   try {
-    bundle = await u.download({ url: `${DEPOT}/releases/download/android-${n}/web.zip`, version: String(n) });
+    bundle = await u.download({ url: `${DEPOT}/releases/download/android-${n}/web.zip`, version: String(n), checksum: empreinte.toLowerCase() });
     publier({ phase: "pret", pourcent: 100 });
-  } catch {
-    publier({ phase: "erreur" });
+  } catch (e) {
+    publier({ phase: "erreur", detail: e instanceof Error ? e.message : String(e) });
   } finally {
     arreter();
   }

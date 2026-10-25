@@ -107,6 +107,7 @@ export function MiseAJour() {
           <>
             <p className="titre-or mt-3 text-3xl">Oups !</p>
             <p className="mt-2">Le chargement s'est arrêté, peut-être à cause d'Internet. Ton application n'a pas changé : tout marche comme avant.</p>
+            {apk.detail ? <p className="mt-2 break-words text-xs opacity-60">Raison : {apk.detail}</p> : null}
             <div className="mt-5 grid grid-cols-2 gap-2">
               <button type="button" onClick={() => lancerMajApk()} className="bouton-bois rounded-2xl py-3 font-extrabold">Réessayer</button>
               <button type="button" onClick={() => fermerMaj()} className="rounded-2xl bg-card py-3 font-extrabold">Plus tard</button>

@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "La mise à jour dans l'application réparée",
+    "points": [
+      "Le module de mise à jour demandait l'empreinte du fichier pour vérifier qu'il est intact : l'application la lui donne maintenant.",
+      "Si un téléchargement échoue, la raison s'affiche, pour comprendre tout de suite."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Les gestes de Plume",
     "points": [
       "Plus de cercle qui grossit autour de Plume quand elle lit.",
