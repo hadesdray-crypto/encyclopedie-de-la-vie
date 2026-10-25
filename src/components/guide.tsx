@@ -23,6 +23,7 @@ import {
   reglesEnCours,
   ecranEnCours,
   parler,
+  palier,
   plumeDit,
   usePlume,
 } from "@/lib/plume";
@@ -201,12 +202,13 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
   // On secoue le téléphone : seule Plume réagit, chacune à sa façon (au plus une fois toutes les 8 secondes).
   useEffect(() => {
     let dernier = 0, secousses = 0, debut = 0, prec: { x: number; y: number; z: number } | null = null;
-    const REACTIONS: Record<string, [AnimPlume, string, AnimPlume?, string?]> = {
-      discrete: ["etourdie", "Oh… ça tourne un peu."],
-      presente: ["peur", "Ouh là ! Tout bouge !"],
-      etudiante: ["etourdie", "Un tremblement de terre ? Non… c'est toi qui secoues !"],
-      passionnee: ["bravo", "Wouhou, un manège !", "fachee", "Bon, ça suffit, j'ai la tête qui tourne !"],
-      repos: ["coucou", "Hein ? Je dormais…"],
+    // Plus on la secoue, plus elle s'énerve (4 paliers), chacune à sa façon. Elle se calme si on la laisse tranquille.
+    const REACTIONS: Record<string, [AnimPlume, string][]> = {
+      discrete: [["etourdie", "Oh… ça tourne un peu."], ["etourdie", "Doucement, s'il te plaît…"], ["triste", "Ça me fait tourner la tête… j'aimerais qu'on arrête."], ["triste", "Je vais me reposer un peu, d'accord ?"]],
+      presente: [["peur", "Ouh là ! Tout bouge !"], ["fachee", "Hé ! Arrête un peu de secouer !"], ["fachee", "Ça suffit ! J'ai la tête qui tourne !"], ["triste", "Je boude… Repose le téléphone, et on redevient amis."]],
+      etudiante: [["etourdie", "Un tremblement de terre ? Non… c'est toi qui secoues !"], ["etourdie", "Mon oreille interne n'aime pas ça : c'est elle qui garde l'équilibre."], ["fachee", "Bon. Une chouette étourdie ne peut pas t'aider à apprendre !"], ["triste", "Je fais une pause. Pose le téléphone deux minutes."]],
+      passionnee: [["bravo", "Wouhou, un manège !"], ["etourdie", "Encore ?! Ouh là là, ça tourne !"], ["fachee", "STOP ! Mes plumes vont s'envoler partout !"], ["fachee", "Grrr ! Je suis TRÈS fâchée… Bon, je te pardonne si tu arrêtes !"]],
+      repos: [["coucou", "Hein ? Je dormais…"], ["coucou", "Laisse-moi dormir…"], ["triste", "Zzz… pfff…"], ["triste", "Zzz…"]],
     };
     const mouvement = (ev: DeviceMotionEvent) => {
       const a = ev.accelerationIncludingGravity;
@@ -220,15 +222,13 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
           secousses++;
           if (secousses >= 4 && t - dernier > 8000 && !document.body.hasAttribute("data-face-a-face")) {
             dernier = t; secousses = 0;
-            const [a1, p1, a2, p2] = REACTIONS[presenceActuelle()] ?? REACTIONS.presente;
+            const l = REACTIONS[presenceActuelle()] ?? REACTIONS.presente;
+            const [a1, p1] = l[Math.min(l.length - 1, palier("secoue", 120000))];
             plumePropose(null);
             setAnim(a1);
-            parler("secoue", p1, 2400);
+            parler("secoue", p1, 2800);
             navigator.vibrate?.(20);
-            window.setTimeout(() => {
-              if (a2 && p2) { setAnim(a2); plumeDit(p2, 2600); window.setTimeout(() => setAnim("rien"), 2600); }
-              else setAnim("rien");
-            }, 2400);
+            window.setTimeout(() => setAnim("rien"), 2800);
           }
         }
       }
@@ -304,11 +304,12 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     const maison = lirePosition();
     const cible = { x: maison.x ?? (maison.cote === "gauche" ? 10 : window.innerWidth - TAILLE - 10), y: window.innerHeight - maison.bas - TAILLE };
     // Après chaque lancer, un petit mécontentement : chacune à sa façon.
-    const FACHE: Record<string, string> = {
-      discrete: "Ce n'était pas très gentil…",
-      presente: "Hé ! Je préfère quand on me pose doucement.",
-      etudiante: "Hmpf ! Une chouette, ça se pose délicatement.",
-      passionnee: "Bon… c'était drôle, mais pas trop souvent, hein !",
+    // Plus on la lance, plus elle est mécontente (paliers).
+    const FACHE: Record<string, string[]> = {
+      discrete: ["Ce n'était pas très gentil…", "Encore… ça me fait un peu peur.", "S'il te plaît, pose-moi doucement.", "Je suis triste quand on me lance comme ça…"],
+      presente: ["Hé ! Je préfère quand on me pose doucement.", "Encore ?! Ça devient agaçant !", "Ça suffit ! Je ne suis pas un ballon !", "Je boude. Hmpf !"],
+      etudiante: ["Hmpf ! Une chouette, ça se pose délicatement.", "Deuxième atterrissage forcé. Je note.", "Les chouettes volent très bien toutes seules, merci !", "Je refuse de continuer cette expérience !"],
+      passionnee: ["Bon… c'était drôle, mais pas trop souvent, hein !", "Hé ! Mes plumes ! Mes belles plumes !", "GRRR ! Je vais me fâcher tout rouge !", "Je suis FURIEUSE ! … Bon, d'accord, je te pardonne. Mais c'est la dernière fois !"],
     };
     const fin = (p: Position, apres: AnimPlume, phrase?: string) => {
       setVol(null);
@@ -320,7 +321,8 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       window.setTimeout(() => {
         if (presence === "repos") return setAnim("rien");
         setAnim("fachee");
-        parler("fache", FACHE[presence] ?? "Hé !", 2600);
+        const l = FACHE[presence] ?? FACHE.presente;
+        parler("fache", l[Math.min(l.length - 1, palier("lance", 120000))], 2800);
         window.setTimeout(() => setAnim("rien"), 2600);
       }, 2400);
     };
