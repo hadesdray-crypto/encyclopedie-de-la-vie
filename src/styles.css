@@ -616,3 +616,9 @@ body[data-jeu] { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem)
 @media (prefers-reduced-motion: reduce) {
   .plume-bataille, .plume-bravo, .plume-svg [class^="pl-poing"], .plume-svg [class^="pl-clap"], .plume-svg [class^="pl-bravo"] { animation: none !important; }
 }
+
+/* Écran de repos : les cœurs flottent doucement (sans zoom). */
+.coeur-flotte { animation: coeur-flotte 3s ease-in-out infinite; }
+.coeur-2 { animation-delay: 1.2s; }
+@keyframes coeur-flotte { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-10px) rotate(6deg); } }
+@media (prefers-reduced-motion: reduce) { .coeur-flotte { animation: none; } }

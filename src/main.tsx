@@ -1,3 +1,5 @@
+import { TempsEcran } from "@/components/temps-ecran";
+import { demarrerTempsEcran } from "@/lib/temps-ecran";
 import { StrictMode, Suspense, lazy, type ComponentType } from "react";
 import { createRoot } from "react-dom/client";
 import { Barre } from "@/components/barre";
@@ -80,6 +82,7 @@ function App() {
       <Cadeau />
       <MiseAJour />
       <Plume chemin={chemin} params={params} />
+      <TempsEcran />
     </>
   );
 }
@@ -93,5 +96,6 @@ createRoot(document.getElementById("app")!).render(
 appliquerGrosTexte();
 demarrerHorsLigne();
 demarrerMajApk();
+demarrerTempsEcran();
 demarrerFleche();
 demarrerLectureLongue();
