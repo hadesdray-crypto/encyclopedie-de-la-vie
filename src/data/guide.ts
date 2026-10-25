@@ -52,14 +52,13 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
   },
   {
     id: "voyageurs",
-    titre: "Les grands voyageurs",
+    titre: "L'Aventure",
     test: (c) => c.startsWith("/voyageurs"),
     etapes: [
-      "Chaque trait est le vrai voyage d'un animal, suivi par GPS par des scientifiques.",
-      "Bleu : les animaux de la mer. Vert : les herbivores. Doré : les oiseaux. Rouge : les prédateurs. Touche une couleur pour la cacher ou la montrer.",
-      "Touche un trait pour savoir qui a voyagé, combien de kilomètres, et quand.",
-      "Un doigt déplace la carte. Deux doigts : écarte-les pour zoomer, tourne-les pour faire tourner la carte. La flèche ronde remet tout comme au début.",
-      "La loupe, en haut, cherche un animal.",
+      "Voici la Terre ! Fais-la tourner avec ton doigt. Écarte deux doigts pour zoomer, ou utilise les boutons plus et moins.",
+      "« Où vivent-ils ? » : touche un pays, ou cherche-le avec la loupe. Je te montre tous les mammifères qui y vivent, et tu peux les trier par groupe.",
+      "« Les voyages » : chaque trait est le vrai voyage d'un animal suivi par GPS. Touche un trait pour savoir qui a voyagé, d'où il est parti et jusqu'où il est allé.",
+      "Certains voyages sont tout petits, comme ceux des chats : zoome beaucoup pour bien les voir.",
     ],
   },
   {

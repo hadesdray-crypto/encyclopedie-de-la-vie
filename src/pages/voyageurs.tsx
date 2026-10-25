@@ -58,7 +58,7 @@ const lieu = (p: { lat: number; lon: number }) => `${Math.abs(p.lat).toFixed(4)}
 type Vue = { x: number; y: number; s: number; r: number };
 const DEPART: Vue = { x: 0, y: 0, s: 1, r: 0 };
 
-export function VoyageursPage() {
+export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
   const [vue, setVue] = useState<Vue>(DEPART);
   const [choisi, setChoisi] = useState<number | null>(null);
   const [filtres, setFiltres] = useState<Record<G, boolean>>({ marin: true, herbivore: true, oiseau: true, predateur: true, autre: true });
@@ -231,9 +231,13 @@ export function VoyageursPage() {
   const transformation = `rotate(${vue.r} 180 90) translate(${vue.x} ${vue.y}) scale(${vue.s})`;
 
   return (
-    <main className="mx-auto max-w-xl px-4 pt-4">
-      <Entete siVide="/" />
-      <Titre sous="De vrais trajets, suivis par GPS par des scientifiques.">Les grands voyageurs</Titre>
+    <div className={integre ? "" : "mx-auto max-w-xl px-4 pt-4"}>
+      {integre ? null : (
+        <>
+          <Entete siVide="/" />
+          <Titre sous="De vrais trajets, suivis par GPS par des scientifiques.">Les grands voyageurs</Titre>
+        </>
+      )}
 
       {/* Recherche discrète */}
       <div className="relative mt-3 flex justify-end">
@@ -368,7 +372,7 @@ export function VoyageursPage() {
       <a href="#/aventure" className="mx-auto mt-4 block w-max rounded-full bg-card px-4 py-2 text-sm font-extrabold text-[#2a1c14]">La liste des animaux suivis</a>
       <PlusLoin />
       <p className="mx-auto mt-4 max-w-sm text-center text-[11px] texte-doux">Données : Movebank Data Repository (jeux de données publiés en licence libre). Rien n'est inventé : chaque trait est un vrai suivi GPS.</p>
-    </main>
+    </div>
   );
 }
 
