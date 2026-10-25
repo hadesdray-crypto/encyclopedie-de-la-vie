@@ -12,7 +12,8 @@ import { plumeDit } from "@/lib/plume";
 
 type Voyageur = {
   latin: string; nom: string | null; fiche: string | null; groupe: "marin" | "herbivore" | "oiseau" | "predateur" | "autre";
-  classe?: string | null; individu: string; etude: string; doi: string; licence: string; debut: string; fin: string; km: number; points: [number, number][];
+  classe?: string | null; individu: string; etude: string; doi: string; licence: string; debut: string; fin: string; km: number | null; points: [number, number][];
+  depart?: { lat: number; lon: number; date: string }; arrivee?: { lat: number; lon: number; date: string } | null; complet?: boolean; nbPoints?: number;
 };
 const VOYAGEURS = (donnees as Voyageur[]).map((v, i) => ({ ...v, i }));
 const PAYS = (monde as { pays: Record<string, string> }).pays;
@@ -49,7 +50,9 @@ function parGroupe(zoom: number) {
 
 const nomDe = (v: Voyageur) => v.nom ?? v.latin;
 const sansAccent = (t: string) => t.toLocaleLowerCase("fr").normalize("NFD").replace(/\p{M}/gu, "");
-const date = (d: string) => (d ? new Date(d).toLocaleDateString("fr-FR", { year: "numeric", month: "long" }) : "Non connu");
+const date = (d: string) => (d ? new Date(d.replace(" ", "T")).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) : "Non connue");
+const heure = (d: string) => (d && d.length > 10 ? ` à ${d.slice(11, 16).replace(":", " h ")} (UTC)` : "");
+const lieu = (p: { lat: number; lon: number }) => `${Math.abs(p.lat).toFixed(4)}° ${p.lat >= 0 ? "N" : "S"}, ${Math.abs(p.lon).toFixed(4)}° ${p.lon >= 0 ? "E" : "O"}`;
 
 type Vue = { x: number; y: number; s: number; r: number };
 const DEPART: Vue = { x: 0, y: 0, s: 1, r: 0 };
@@ -70,7 +73,7 @@ export function VoyageursPage() {
   const classes = useMemo(() => {
     const rang = new Map<number, number>();
     (Object.keys(GROUPES_VOYAGE) as G[]).forEach((g) =>
-      VOYAGEURS.filter((v) => v.groupe === g).sort((a, b) => b.km - a.km).forEach((v, k) => rang.set(v.i, k)),
+      VOYAGEURS.filter((v) => v.groupe === g).sort((a, b) => (b.km ?? 0) - (a.km ?? 0)).forEach((v, k) => rang.set(v.i, k)),
     );
     return rang;
   }, []);
@@ -250,7 +253,7 @@ export function VoyageursPage() {
               <li key={r.i}>
                 <button type="button" onClick={() => montrer(r.i)} className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left">
                   <span className="size-3 shrink-0 rounded-full" style={{ background: GROUPES_VOYAGE[r.groupe as G].couleur }} />
-                  <span className="min-w-0 flex-1"><span className="block font-extrabold leading-tight">{nomDe(r)}</span><span className="block text-xs italic">{r.latin} · {r.km.toLocaleString("fr-FR")} km</span></span>
+                  <span className="min-w-0 flex-1"><span className="block font-extrabold leading-tight">{nomDe(r)}</span><span className="block text-xs italic">{r.latin}{r.km ? ` · ${r.km.toLocaleString("fr-FR")} km` : ""}</span></span>
                 </button>
               </li>
             ))}
@@ -348,10 +351,12 @@ export function VoyageursPage() {
             </div>
           </div>
           <dl className="mt-3 grid grid-cols-2 gap-2 text-sm">
-            <div className="rounded-2xl bg-white/5 px-3 py-2"><dt className="text-xs texte-doux">Distance du trajet</dt><dd className="font-display text-xl">{v.km.toLocaleString("fr-FR")} km</dd></div>
-            <div className="rounded-2xl bg-white/5 px-3 py-2"><dt className="text-xs texte-doux">Suivi</dt><dd className="font-bold">{date(v.debut)} → {date(v.fin)}</dd></div>
+            <div className="rounded-2xl bg-white/5 px-3 py-2"><dt className="text-xs texte-doux">Distance du trajet</dt><dd className="font-display text-xl">{v.km !== null && v.km !== undefined ? `${v.km.toLocaleString("fr-FR")} km` : "Non connue"}</dd></div>
+            <div className="rounded-2xl bg-white/5 px-3 py-2"><dt className="text-xs texte-doux">Points GPS</dt><dd className="font-display text-xl">{v.nbPoints ? v.nbPoints.toLocaleString("fr-FR") : "Non connu"}</dd></div>
+            <div className="col-span-2 rounded-2xl bg-white/5 px-3 py-2"><dt className="text-xs texte-doux">Départ</dt><dd className="font-bold">{v.depart ? <>{date(v.depart.date)}{heure(v.depart.date)}<br /><span className="text-xs font-normal">{lieu(v.depart)}</span></> : date(v.debut)}</dd></div>
+            <div className="col-span-2 rounded-2xl bg-white/5 px-3 py-2"><dt className="text-xs texte-doux">Arrivée (dernier point GPS)</dt><dd className="font-bold">{v.arrivee ? <>{date(v.arrivee.date)}{heure(v.arrivee.date)}<br /><span className="text-xs font-normal">{lieu(v.arrivee)}</span></> : v.complet === false ? "Non connue : le fichier du suivi est trop gros pour être lu en entier." : date(v.fin)}</dd></div>
           </dl>
-          <p className="mt-2 text-[11px] texte-doux">Distance mesurée entre les points GPS gardés : le vrai chemin est un peu plus long.</p>
+          <p className="mt-2 text-[11px] texte-doux">Distance additionnée entre tous les vrais points GPS (seulement le GPS ; les points impossibles et le tremblement du GPS sont écartés).</p>
           <p className="mt-2 text-xs">Animal suivi : « {v.individu} ». Étude : {v.etude}. Licence {v.licence}.</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {v.fiche ? <a href={`#/mammiferes/e-${v.fiche}`} className="bouton-bois rounded-full px-4 py-2 text-sm font-extrabold">Voir sa fiche</a> : null}
