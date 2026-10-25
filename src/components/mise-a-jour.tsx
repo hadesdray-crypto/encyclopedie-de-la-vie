@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CLE_MAJ_WEB, accepterMiseAJour, useHorsLigne } from "@/lib/hors-ligne";
-import { EST_APK, fermerMaj, lancerMajApk, redemarrerApk, useMajApk } from "@/lib/maj-apk";
+import { EST_APK, fermerMaj,
+  telechargerApk, lancerMajApk, redemarrerApk, useMajApk } from "@/lib/maj-apk";
 import { useNouveautes } from "@/lib/nouveautes";
 import { sons } from "@/lib/sons";
 import { PlumeDessin } from "@/components/plume-dessin";
@@ -110,6 +111,10 @@ export function MiseAJour() {
               <button type="button" onClick={() => lancerMajApk()} className="bouton-bois rounded-2xl py-3 font-extrabold">Réessayer</button>
               <button type="button" onClick={() => fermerMaj()} className="rounded-2xl bg-card py-3 font-extrabold">Plus tard</button>
             </div>
+            <button type="button" onClick={() => telechargerApk()} className="mt-3 w-full rounded-2xl bg-[#f3d48a] py-3 font-extrabold text-[#2a1c14]">
+              Installer la version complète
+            </button>
+            <p className="mt-1 text-xs">Un grand fichier se télécharge : ouvre-le, puis touche « Mettre à jour ». Tes cartes et tes réglages sont gardés.</p>
           </>
         ) : null}
 
