@@ -13,6 +13,7 @@ import {
   plumeBouge,
   plumeExpliqueSeule,
   plumeParleSeule,
+  plumePeutProposer,
   plumePropose,
   presentationFaite,
   reglesEnCours,
@@ -88,6 +89,31 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       ouvrirPlume(true, "page");
     } else ouvrirPlume(false);
   }, [explicationPage.id]);
+
+  // Une page avec des mots de scientifique : Plume propose (une fois) de les expliquer.
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      if (!plumePeutProposer() || !presentationFaite()) return;
+      const mots = motsDeLaPage();
+      if (mots.length < 2) return;
+      const cle = `leonie-mots-proposes`;
+      let vus: string[] = [];
+      try {
+        vus = JSON.parse(sessionStorage.getItem(cle) || "[]");
+      } catch {
+        /* rien */
+      }
+      if (vus.includes(explicationPage.id)) return;
+      try {
+        sessionStorage.setItem(cle, JSON.stringify([...vus, explicationPage.id]));
+      } catch {
+        /* rien */
+      }
+      plumePropose({ texte: "Il y a des mots de scientifique ici. Je te les explique ?", oui: "Oui", action: () => { plumePropose(null); ouvrirPlume(true, "mots"); } });
+      window.setTimeout(() => plumePropose(null), 7000);
+    }, 3500);
+    return () => window.clearTimeout(t);
+  }, [chemin]);
 
   // Petit coucou de l'aile : quand elle s'ouvre, et rarement de temps en temps.
   useEffect(() => {
