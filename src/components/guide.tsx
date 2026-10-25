@@ -255,6 +255,13 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
         >
           <span className="absolute inset-1 -z-10 rounded-full bg-[radial-gradient(circle,rgba(180,140,255,.45),transparent_70%)]" />
           {parle ? <span className="onde-plume pointer-events-none absolute -inset-1 -z-10 rounded-full border-2 border-[#c9a4ff]" /> : null}
+          {presence === "passionnee" && !ouvert ? (
+            <>
+              <span className="etincelle pointer-events-none absolute -left-2 top-1 text-sm text-[#f3d48a]">✦</span>
+              <span className="etincelle etincelle-2 pointer-events-none absolute -right-1 top-4 text-xs text-[#9fe3ff]">✦</span>
+              <span className="etincelle etincelle-3 pointer-events-none absolute -top-2 left-1/2 text-[10px] text-[#ff9fcf]">✦</span>
+            </>
+          ) : null}
           <span className="block size-full transition-transform duration-300" style={{ transform: parle ? "rotate(-8deg) translateY(2px)" : "none" }}>
             <PlumeDessin anim={parle ? "parle" : ouvert ? "ailes" : anim} tenue={tenueDe(chemin, parle)} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
           </span>
@@ -262,9 +269,10 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
 
         {/* Passionnée : quand elle lit, un petit tableau noir à côté d'elle. */}
         {parle && !ouvert && presence === "passionnee" ? (
-          <span className={`tableau-noir arrivee pointer-events-none absolute bottom-full mb-1 w-40 rounded-lg px-2.5 py-2 text-center ${gauche ? "left-0" : "right-0"}`}>
-            <span className="block font-display text-sm leading-tight">{titrePage()}</span>
-            <span className="mt-1 block text-[10px] opacity-80">Plume explique…</span>
+          <span className={`tableau-noir arrivee pointer-events-none absolute bottom-full mb-2 w-52 rounded-lg px-3 py-2.5 text-center ${gauche ? "left-0" : "right-0"}`}>
+            <span className="craie block text-[11px] tracking-widest opacity-80">★ LEÇON DE PLUME ★</span>
+            <span className="craie mt-1 block font-display text-lg leading-tight">{titrePage()}</span>
+            <span className="craie mt-1 block text-sm tracking-[0.3em] opacity-90">? → ! ✦</span>
           </span>
         ) : null}
 

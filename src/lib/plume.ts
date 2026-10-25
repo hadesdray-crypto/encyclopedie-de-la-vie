@@ -204,7 +204,15 @@ export function ouvrirRegles(r: Explication) {
 
 /** Comment Plume commence une lecture, selon son caractère (toujours vrai : jamais « on en est sûrs » si on ne l'est pas). */
 export function debutLecture() {
-  if (etat.presence === "passionnee") return "Eh oui, Leonie, je vais te dire tout ce que je sais là-dessus ! ";
+  if (etat.presence === "passionnee") {
+    const debuts = [
+      "Eh oui, Leonie ! Je vais te dire tout ce que je sais là-dessus ! ",
+      "Ooooh, Leonie, j'adore ça ! Accroche-toi, j'explique tout ! ",
+      "Par toutes mes plumes, Leonie ! Écoute bien, c'est passionnant ! ",
+      "Leonie, Leonie ! Tu vas adorer ce que je vais te dire ! ",
+    ];
+    return debuts[Math.floor(Math.random() * debuts.length)];
+  }
   if (etat.presence === "etudiante") return "D'après ce que savent les scientifiques… ";
   return "";
 }
