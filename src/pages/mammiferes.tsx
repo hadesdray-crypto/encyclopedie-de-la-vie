@@ -11,6 +11,8 @@ import { Entete, Titre } from "@/components/entete";
 import { Portrait } from "@/components/portrait";
 import { Mot, Texte } from "@/components/mot";
 import { Ecouter } from "@/components/voix";
+import { Videos } from "@/components/videos";
+import { PhotoEntiere } from "@/components/photo-entiere";
 import { CarteMonde, ilesDe } from "@/components/carte-monde";
 import { voirAnimal } from "@/lib/carnet";
 import { LuBaby, LuEar, LuHeartPulse, LuHourglass, LuMapPin, LuSatellite, LuScale, LuShieldCheck, LuTreePine, LuUsers, LuUtensils } from "react-icons/lu";
@@ -20,6 +22,7 @@ import { plumeRegarde } from "@/lib/caractere";
 import { comparerPoids } from "@/lib/poids";
 import wikipedia from "@/data/wikipedia-fr.json";
 import galerie from "@/data/galerie.json";
+import crisVerifies from "@/data/cris-verifies.json";
 import creditsPhotos from "@/data/credits-photos.json";
 import estimations from "@/data/estimations.json";
 
@@ -40,6 +43,7 @@ type Credit = { auteur: string; licence: string; source: string };
 const CREDITS = creditsCris as Record<string, string | Credit>;
 const WIKI = wikipedia as Record<string, { texte: string; titre: string }>;
 const GALERIE = galerie as Record<string, Credit[]>;
+const VERIFIES = new Set(crisVerifies as string[]);
 const CREDITS_PHOTOS = creditsPhotos as Record<string, Credit>;
 
 function credit(c: string | Credit | undefined) {
@@ -193,11 +197,12 @@ function Fiche({ id }: { id: string }) {
       <Entete siVide={`/mammiferes/f-${e.famille}`} />
       <div className={`mx-auto mt-4 grid justify-center gap-4 ${grande?.imageFemelle ? "grid-cols-2" : "grid-cols-1"}`}>
         <figure className="text-center">
-          <span className="medaillon-or mx-auto block size-40 overflow-hidden"><Portrait id={e.id} src={grande?.image} /></span>
+          <PhotoEntiere src={grande?.image ?? `m/${e.id}.webp`} id={e.id} nom={e.nom} className="medaillon-or mx-auto block size-40 overflow-hidden"><Portrait id={e.id} src={grande?.image} /></PhotoEntiere>
+          <p className="mt-1 text-[11px] texte-doux">Touche la photo pour la voir en entier.</p>
           {grande?.imageFemelle ? <figcaption className="mt-2 text-sm">Mâle</figcaption> : null}
         </figure>
         {grande?.imageFemelle ? (
-          <figure className="text-center"><span className="medaillon-or mx-auto block size-40 overflow-hidden"><Portrait id={e.id} src={grande.imageFemelle} /></span><figcaption className="mt-2 text-sm">Femelle</figcaption></figure>
+          <figure className="text-center"><PhotoEntiere src={grande.imageFemelle} id={e.id} nom={e.nom} className="medaillon-or mx-auto block size-40 overflow-hidden"><Portrait id={e.id} src={grande.imageFemelle} /></PhotoEntiere><figcaption className="mt-2 text-sm">Femelle</figcaption></figure>
         ) : null}
       </div>
       <Titre>{e.nom}</Titre>
@@ -221,7 +226,7 @@ function Fiche({ id }: { id: string }) {
         <div className="mt-4 grid grid-cols-2 gap-3">
           {GALERIE[e.id].map((c, i) => (
             <figure key={i}>
-              <img src={`g/${e.id}-${i + 1}.webp`} alt="" loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-[0_8px_18px_rgba(0,0,0,.4)]" />
+              <PhotoEntiere src={`g/${e.id}-${i + 1}.webp`} id={e.id} nom={e.nom} className="block w-full"><img src={`g/${e.id}-${i + 1}.webp`} alt="" loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-[0_8px_18px_rgba(0,0,0,.4)]" /></PhotoEntiere>
               <figcaption className="mt-1 text-[10px] leading-tight texte-doux">{credit(c)}</figcaption>
             </figure>
           ))}
@@ -234,6 +239,7 @@ function Fiche({ id }: { id: string }) {
           <p className="mt-1 text-[11px] texte-doux">Extrait de l'article « {WIKI[e.id].titre} », Wikipédia en français, licence CC BY-SA.</p>
         </section>
       ) : null}
+      <Videos id={e.id} nom={e.nom} latin={e.latin} />
       <dl className="mt-5 space-y-3">
         <Bloc mot="repartition" texte={vie?.ou ?? e.ou}>{e.pays?.length || ilesDe(e.ou).length ? <div className="mt-2"><CarteMonde pays={e.pays ?? []} ou={e.ou} /><p className="mt-1 text-xs">Pays en or, petites îles en point doré : d'après la Mammal Diversity Database.</p></div> : null}</Bloc>
         <Rubrique mot="regime">
@@ -249,7 +255,7 @@ function Fiche({ id }: { id: string }) {
         <BlocValeur mot="longevite" v={valeur("longevite", grande?.vie ?? e.longevite)} />
         <Bloc mot="statut" texte={e.statut ?? "Non évalué."} />
         <Rubrique mot="cri">
-          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.mp3`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p></>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
+          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.mp3`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p>{VERIFIES.has(e.id) ? <p className="mt-1 text-xs font-extrabold">Cri vérifié : enregistrement d'archive scientifique.</p> : <p className="mt-1 text-xs font-extrabold text-[#8d4e1f]">Pas encore vérifié : on entend peut-être d'autres animaux derrière.</p>}</>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
         </Rubrique>
         <Rubrique mot="gps" titre={<span className="font-extrabold">Suivi GPS</span>}>
           <p className="font-extrabold">{etude ? "Une étude GPS publique existe" : "Pas de suivi GPS enregistré"}</p>

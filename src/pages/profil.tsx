@@ -1,8 +1,9 @@
+import { effacerSignalements, photosSignalees } from "@/components/photo-entiere";
 import { LIMITES, choisirLimiteEcran, limiteEcran, useTempsEcran } from "@/lib/temps-ecran";
 import { useState } from "react";
 import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
 import { AVATARS, avatar, choisirAvatar } from "@/lib/reglages";
-import { choisirIllimite, fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
+import { fichesLues, paquetsDisponibles, paquetsIllimites } from "@/lib/recompenses";
 import { lireScore, lireVues } from "@/lib/carnet";
 import { EST_APK, VERSION_APK, useMajApk, verifierApk, lancerMajApk, telechargerApk } from "@/lib/maj-apk";
 import { VERSION_APP, accepterMiseAJour, relancerHorsLigne, useHorsLigne, verifierMiseAJour } from "@/lib/hors-ligne";
@@ -87,12 +88,10 @@ export function CoinParents() {
       <button type="button" onClick={() => setOuvert((o) => !o)} className="w-full text-left font-display text-xl">Coin des parents</button>
       {ouvert ? (
         <div className="mt-2 text-sm">
-          <label className="mb-3 flex items-center gap-2 font-extrabold">
-            <input type="checkbox" defaultChecked={paquetsIllimites()} onChange={(e) => choisirIllimite(e.target.checked)} className="size-5 accent-[#8d4e1f]" />
-            Paquets de cartes illimités (sinon, ils se gagnent en lisant et en jouant)
-          </label>
+          <p className="mb-3 font-extrabold">Paquets de cartes illimités : {paquetsIllimites() ? "gagnés !" : "Leonie les gagne en remplissant toutes les tables de multiplication (Jouer → Les tables magiques)."}</p>
           <TempsParJour />
-          <p>Certaines options ont besoin d'une connexion : les trajets GPS (Movebank). Elles sont éteintes. Rien ne se télécharge tout seul.</p>
+          <PhotosSignalees />
+          <p>Certaines options ont besoin d'une connexion : les trajets GPS (Movebank), les vidéos des animaux et des frères Kratt. Elles sont éteintes. Rien ne se télécharge tout seul.</p>
           {permis ? (
             <button type="button" onClick={() => permettreInternet(false)} className="bouton-bois mt-3 rounded-full px-4 py-2 font-extrabold">Éteindre les options Internet</button>
           ) : (
@@ -125,6 +124,24 @@ function TempsParJour() {
       <p className="mt-1.5 text-xs opacity-80">
         Aujourd'hui : {e.minutes} min dans l'application. Repère des directives canadiennes : au plus 2 heures d'écran de loisir par jour, en comptant tous les écrans.
       </p>
+    </div>
+  );
+}
+
+/** Les photos que Leonie a signalées (« ce n'est pas le bon animal ») : la liste à envoyer pour les remplacer. */
+function PhotosSignalees() {
+  const [liste, setListe] = useState(photosSignalees);
+  const [copie, setCopie] = useState(false);
+  if (!liste.length) return null;
+  const texte = liste.map((s) => `${s.nom} (${s.id}) : ${s.photo}`).join("\n");
+  return (
+    <div className="mb-4">
+      <p className="font-extrabold">Photos signalées : {liste.length}</p>
+      <pre className="mt-1 max-h-32 overflow-auto whitespace-pre-wrap rounded-xl bg-white/60 p-2 text-[11px]">{texte}</pre>
+      <div className="mt-1.5 flex gap-2">
+        <button type="button" onClick={() => { navigator.clipboard?.writeText(texte).then(() => setCopie(true)).catch(() => {}); }} className="bouton-bois rounded-full px-3 py-1.5 text-sm font-extrabold">{copie ? "Copié !" : "Copier la liste"}</button>
+        <button type="button" onClick={() => { effacerSignalements(); setListe([]); }} className="rounded-full px-3 py-1.5 text-sm font-extrabold underline">Effacer</button>
+      </div>
     </div>
   );
 }
