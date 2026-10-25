@@ -6,7 +6,7 @@
  * des yeux qui lui ressemblent, et une paire de lunettes seulement quand elle lit.
  */
 /** Les situations : chacune a ses gestes (lire, avoir peur, jouer à la bataille, encourager, fêter une victoire). */
-export type AnimPlume = "rien" | "coucou" | "parle" | "ailes" | "peur" | "bataille" | "jeu" | "bravo";
+export type AnimPlume = "rien" | "coucou" | "parle" | "ailes" | "peur" | "bataille" | "jeu" | "bravo" | "vole" | "triste" | "etourdie";
 
 /** 0 = tenue de tous les jours (petite couronne) ; 1 à 4 = les caractères. */
 export type Caractere = 0 | 1 | 2 | 3 | 4;
@@ -59,6 +59,13 @@ export function PlumeDessin({
         <ellipse cx="150" cy="118" rx="10" ry="6" fill="#ff9fcf" opacity=".75" />
         <path className="pl-bec" d="M93 112 L107 112 L100 124 Z" fill="#f3b54a" />
 
+        {/* Triste : une petite larme. Étourdie : des étoiles qui tournent. */}
+        <path className="pl-larme" d="M60 112 q-5 9 0 13 q5 -4 0 -13 Z" fill="#9fe3ff" stroke="#4a90c0" strokeWidth="1.5" />
+        <g className="pl-etoiles">
+          <path d="M60 30 l3 -7 l3 7 l7 1 l-5 5 l1 7 l-6 -3 l-6 3 l1 -7 l-5 -5 Z" fill="#f3d48a" />
+          <path d="M130 22 l2 -5 l2 5 l5 1 l-4 3 l1 5 l-4 -2 l-4 2 l1 -5 l-4 -3 Z" fill="#fff6b0" />
+          <path d="M100 8 l2 -5 l2 5 l5 1 l-4 3 l1 5 l-4 -2 l-4 2 l1 -5 l-4 -3 Z" fill="#ff9fcf" />
+        </g>
         <Chapeau caractere={caractere} lit={lit} />
         {lit ? <Lunettes caractere={caractere} /> : null}
         {caractere === 0 ? <path d="M82 184 q-4 8 4 8 q4-4 8 0 q2-6 -4-10 Z M118 184 q4 8 -4 8 q-4-4 -8 0 q-2-6 4-10 Z" fill="#f3b54a" /> : null}

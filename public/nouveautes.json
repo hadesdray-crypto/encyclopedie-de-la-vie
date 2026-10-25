@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "On peut lancer Plume !",
+    "points": [
+      "Lance Plume d'un geste rapide : la Présente s'envole, la Passionnée fait un looping, l'Étudiante tombe et voit des étoiles, la Discrète tombe et devient toute triste.",
+      "Plume fait des gestes devant certains animaux : joie pour les chiens, tristesse pour les espèces disparues, coucou aux chauves-souris."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Un catalogue des animaux en images",
     "points": [
       "Nouvelle porte « Animaux » sur l'accueil : tous les grands groupes, avec de vraies photos.",
