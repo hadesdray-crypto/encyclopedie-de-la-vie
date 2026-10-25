@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Des images réalistes et une Plume plus présente",
+    "points": [
+      "L'arbre de la vie et l'accueil montrent de vraies photos (microscope, nature), de vrais fossiles et des reconstitutions, avec la mention sous chaque image.",
+      "Quand une voix lit un texte, Plume s'anime : c'est elle qui parle. Touche-la pour l'arrêter.",
+      "Nouveau bouton « Mots » dans la bulle de Plume : elle explique les mots de scientifique de la page.",
+      "Le caractère de Plume, en 4 niveaux (Options) : discrète, présente, étudiante (lunettes et chapeau quand elle lit), passionnée (blouse de scientifique, tableau noir, « Eh oui, Leonie ! »)."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Plus de noms en français",
     "points": [
       "Près de 3 900 animaux qui n'avaient qu'un nom anglais ont maintenant un nom traduit en français (c'est écrit sur leur fiche).",

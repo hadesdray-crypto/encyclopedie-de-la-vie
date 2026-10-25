@@ -484,3 +484,10 @@ body[data-jeu] { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem)
 .onde-plume { animation: onde-plume 1.2s ease-out infinite; }
 @keyframes onde-plume { 0% { transform: scale(0.9); opacity: 0.9; } 100% { transform: scale(1.35); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .onde-plume { animation: none; } }
+
+/* Plume passionnée : elle sautille d'impatience */
+.plume-impatiente { animation: impatiente 2.4s ease-in-out infinite; }
+@keyframes impatiente { 0%, 60%, 100% { transform: translateY(0); } 68% { transform: translateY(-9px); } 76% { transform: translateY(0); } 84% { transform: translateY(-5px); } }
+/* Son tableau noir, écrit à la craie */
+.tableau-noir { background: #20372c; color: #f4f1e6; border: 4px solid #8a5a2e; box-shadow: 0 8px 18px rgba(0,0,0,.45); font-family: var(--font-display); }
+@media (prefers-reduced-motion: reduce) { .plume-impatiente { animation: none; } }

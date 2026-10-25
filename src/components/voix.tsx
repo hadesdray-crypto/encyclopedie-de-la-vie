@@ -3,6 +3,7 @@ import { LuVolume2 as Volume2, LuVolumeX as VolumeX } from "react-icons/lu";
 import { tauxVoix } from "@/lib/reglages";
 import { appeler, moduleDisponible } from "@/lib/natif";
 import { dire, taire, useParle } from "@/lib/parole";
+import { debutLecture } from "@/lib/plume";
 
 function voixFrancaise() {
   return window.speechSynthesis
@@ -124,7 +125,7 @@ export function Ecouter({ texte, gros = false }: { texte: string; gros?: boolean
       return;
     }
     setMoi(true);
-    dire(texte, () => setMoi(false));
+    dire(debutLecture() + texte, () => setMoi(false));
   }
 
   const Icone = enCours ? VolumeX : Volume2;
