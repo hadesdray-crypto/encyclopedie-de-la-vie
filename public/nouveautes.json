@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Mises à jour plus fiables",
+    "points": [
+      "L'application vérifie vraiment Internet, au lieu de croire le téléphone qui disait « pas de connexion ».",
+      "Elle regarde s'il y a une mise à jour à l'ouverture, quand on revient dedans, et toutes les 30 minutes.",
+      "Si la vérification échoue, un bouton permet d'installer la dernière version complète."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Les 4 tenues de Plume",
     "points": [
       "Discrète : bonnet et écharpe, yeux tout doux.",
