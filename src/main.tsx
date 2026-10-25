@@ -1,3 +1,4 @@
+import { DexCadre } from "@/components/dex";
 import { TempsEcran } from "@/components/temps-ecran";
 import { demarrerTempsEcran } from "@/lib/temps-ecran";
 import { StrictMode, Suspense, lazy, type ComponentType } from "react";
@@ -87,6 +88,7 @@ function App() {
       <MiseAJour />
       <Plume chemin={chemin} params={params} />
       <TempsEcran />
+      <DexCadre chemin={chemin} />
     </>
   );
 }

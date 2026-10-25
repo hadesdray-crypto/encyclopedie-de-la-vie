@@ -1,3 +1,4 @@
+import { activerDex, useDex } from "@/lib/dex";
 import { useState, type ReactNode } from "react";
 import type { IconType } from "react-icons";
 import { LuFeather, LuMonitorSmartphone, LuMusic, LuShieldCheck, LuSparkles, LuType, LuVolume2 } from "react-icons/lu";
@@ -117,6 +118,8 @@ export function OptionsPage() {
         </div>
       </Groupe>
 
+      <ChoixDex />
+
       <Groupe icone={LuMusic} titre="Les sons">
         {SONS.map((r) => (
           <Ligne key={r.id} r={r} />
@@ -144,6 +147,26 @@ export function OptionsPage() {
         Sources et crédits
       </a>
     </main>
+  );
+}
+
+/** Le Plumedex : visible seulement quand il a été gagné (toutes les tables de multiplication). */
+function ChoixDex() {
+  const { gagne, actif } = useDex();
+  return (
+    <section className="mt-6">
+      <h2 className="flex items-center gap-2 px-1 font-display text-2xl text-[#f3d48a]">Le Plumedex</h2>
+      <div className="mt-2 rounded-3xl bg-card px-4 py-3 text-[#2a1c14]">
+        {gagne ? (
+          <button type="button" onClick={() => activerDex(!actif)} className="flex w-full items-center justify-between gap-3 text-left font-extrabold">
+            <span>Le cadre du Plumedex autour de l'application</span>
+            <span className={`rounded-full px-3 py-1 text-sm ${actif ? "bg-[#b3261e] text-white" : "bg-[#e8d9bf]"}`}>{actif ? "Allumé" : "Éteint"}</span>
+          </button>
+        ) : (
+          <p className="font-bold">Pas encore gagné : il faut remplir toutes les tables de multiplication de 1 à 9 (Jouer → Les tables magiques).</p>
+        )}
+      </div>
+    </section>
   );
 }
 
