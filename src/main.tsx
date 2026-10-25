@@ -7,6 +7,7 @@ import { Barre } from "@/components/barre";
 import { Cadeau } from "@/components/cadeau";
 import { MiseAJour } from "@/components/mise-a-jour";
 import { Plume } from "@/components/guide";
+import { DefsTissus } from "@/components/vestiaire";
 import { appliquerGrosTexte } from "@/lib/reglages";
 import { useChemin } from "@/lib/routeur";
 import { demarrerHorsLigne } from "@/lib/hors-ligne";
@@ -94,6 +95,7 @@ function App() {
       <Barre chemin={chemin} />
       <Cadeau />
       <MiseAJour />
+      <DefsTissus />
       <Plume chemin={chemin} params={params} />
       <TempsEcran />
       <DexCadre chemin={chemin} />
