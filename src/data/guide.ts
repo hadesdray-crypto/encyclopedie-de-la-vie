@@ -41,6 +41,36 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     ],
   },
   {
+    id: "tables",
+    titre: "Les tables magiques",
+    test: (c, p) => c === "/jouer" && p.get("jeu") === "tables",
+    etapes: [
+      "Écris le résultat de chaque multiplication. Quand c'est juste, la ligne devient verte.",
+      "Les chiffres en haut choisissent la table. Une étoile veut dire que la table est finie.",
+      "Quand les neuf tables sont faites, tu gagnes le Plumedex : un cadre rouge et or, avec des boutons pour parcourir toutes les fiches. Et les paquets de cartes illimités !",
+    ],
+  },
+  {
+    id: "animaux",
+    titre: "Les animaux",
+    test: (c) => c.startsWith("/animaux"),
+    etapes: [
+      "Ici, tous les grands groupes d'animaux, avec de vraies photos.",
+      "Les mammifères ont déjà toutes leurs fiches. Les autres groupes arriveront plus tard : pour l'instant, on peut les découvrir dans l'arbre de la vie.",
+      "Les trois petits boutons en haut changent l'affichage : grandes cartes, médaillons ou liste.",
+    ],
+  },
+  {
+    id: "kratt",
+    titre: "Les frères Kratt",
+    test: (c) => c.startsWith("/kratt"),
+    etapes: [
+      "Chris et Martin Kratt sont deux vrais frères qui étudient les animaux.",
+      "Les boutons ouvrent leurs vidéos sur Internet : « Sans pub » d'abord, sans publicité, puis YouTube.",
+      "Il faut qu'un adulte ait allumé Internet dans le Coin des parents.",
+    ],
+  },
+  {
     id: "fiche",
     titre: "La fiche d'un animal",
     test: (c) => c.startsWith("/mammiferes/e-"),
@@ -50,6 +80,8 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
       "La carte montre en doré les pays où il vit.",
       "« Mal connu » veut dire que les scientifiques n'ont pas encore mesuré cela. On n'invente jamais !",
       "Le bouton « Écouter » lit toute la fiche à voix haute.",
+      "Touche la photo pour voir l'animal en entier. Si ce n'est pas le bon animal, dis-le avec le bouton en bas : tu aides à réparer l'application !",
+      "« En vidéo » : le premier bouton montre la vidéo sans publicité, le deuxième l'ouvre sur YouTube. Il faut qu'un adulte ait allumé Internet.",
       "Chaque fiche que tu lis pour la première fois t'aide à gagner un paquet de cartes.",
     ],
   },

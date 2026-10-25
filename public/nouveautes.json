@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Plume explique les nouveautés",
+    "points": [
+      "Un bouton « ? » à côté des vidéos : Plume explique comment elles marchent.",
+      "Plume explique aussi les tables magiques, le catalogue des animaux et les frères Kratt.",
+      "Quand Leonie signale une photo, Plume la remercie… et parle du Concepteur."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Plume se pose où tu veux",
     "points": [
       "Deux touchers sur Plume : son menu. Un seul : elle fait coucou.",

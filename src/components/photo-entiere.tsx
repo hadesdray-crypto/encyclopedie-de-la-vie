@@ -2,6 +2,12 @@
 // Et un bouton pour signaler une photo qui n'est pas le bon animal : la liste va dans le Coin des parents.
 import { useState, type ReactNode } from "react";
 import { LuFlag, LuX } from "react-icons/lu";
+import { plumeDit } from "@/lib/plume";
+import { dire } from "@/lib/parole";
+import { voixPossible } from "@/components/voix";
+
+// Le merci de Plume quand Leonie signale une photo (avec la petite blague du Concepteur).
+const MERCI = "Merci Leonie ! Grâce à toi, l'application que ton papa a créée pour te faire plaisir… oups, pardon : que le Concepteur a créée… va devenir encore meilleure !";
 
 const CLE = "leonie-photos-signalees";
 export type Signalement = { id: string; nom: string; photo: string };
@@ -43,7 +49,7 @@ export function PhotoEntiere({ src, id, nom, children, className = "" }: { src: 
             <img src={src} alt={nom} className="relative size-full object-contain" />
           </div>
           <div className="flex items-center justify-between gap-2 px-4 pb-[calc(env(safe-area-inset-bottom,0px)+1rem)]" onClick={(ev) => ev.stopPropagation()}>
-            <button type="button" onClick={() => { signaler({ id, nom, photo: src }); setFait(true); }} disabled={fait} className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-white/10 px-4 text-sm font-extrabold text-white disabled:opacity-70">
+            <button type="button" onClick={() => { signaler({ id, nom, photo: src }); setFait(true); plumeDit(MERCI, 7000); if (voixPossible()) dire(MERCI); window.setTimeout(() => setOuvert(false), 1500); }} disabled={fait} className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-white/10 px-4 text-sm font-extrabold text-white disabled:opacity-70">
               <LuFlag className="size-4" aria-hidden="true" /> {fait ? "Merci, c'est noté !" : "Ce n'est pas le bon animal"}
             </button>
             <button type="button" onClick={() => setOuvert(false)} aria-label="Fermer" className="grid size-11 place-items-center rounded-full bg-[#f3d48a] text-[#2a1650]">
