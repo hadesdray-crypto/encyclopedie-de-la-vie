@@ -3,6 +3,7 @@
 // Le passage de l'un à l'autre se fait comme un mécanisme : les engrenages tournent et le cadre coulisse.
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { LuChevronDown, LuChevronUp } from "react-icons/lu";
+import { plumeDit } from "@/lib/plume";
 
 function Engrenage({ className = "", sens = 1 }: { className?: string; sens?: 1 | -1 }) {
   const dents = Array.from({ length: 8 }, (_, i) => i * 45);
@@ -28,6 +29,13 @@ export function CadreGlobe({ petit, onBascule, children, dessus }: { petit: bool
   useEffect(() => {
     if (premier.current) { premier.current = false; return; }
     setTourne((n) => n + 1);
+    // La première fois, Plume explique la poignée.
+    try {
+      if (petit && !localStorage.getItem("leonie-bandeau-explique")) {
+        localStorage.setItem("leonie-bandeau-explique", "oui");
+        plumeDit("J'ai mis le globe en bandeau pour que tu voies bien la fiche. Touche « Agrandir » pour le revoir en grand !", 6000);
+      }
+    } catch { /* rien */ }
   }, [petit]);
   return (
     <div className={`${petit ? "sticky top-0" : "relative"} z-20 px-2 pt-1`}>
