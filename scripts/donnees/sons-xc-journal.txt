@@ -1,0 +1,561 @@
+land mammals page 1/9 : 112 espèces candidates
+land mammals page 2/9 : 208 espèces candidates
+land mammals page 3/9 : 259 espèces candidates
+land mammals page 4/9 : 295 espèces candidates
+land mammals page 5/9 : 346 espèces candidates
+land mammals page 6/9 : 358 espèces candidates
+land mammals page 7/9 : 358 espèces candidates
+land mammals page 8/9 : 358 espèces candidates
+land mammals page 9/9 : 358 espèces candidates
+bats page 1/23 : 411 espèces candidates
+bats page 2/23 : 415 espèces candidates
+bats page 3/23 : 420 espèces candidates
+bats page 4/23 : 421 espèces candidates
+bats page 5/23 : 421 espèces candidates
+bats page 6/23 : 422 espèces candidates
+bats page 7/23 : 433 espèces candidates
+bats page 8/23 : 448 espèces candidates
+bats page 9/23 : 449 espèces candidates
+bats page 10/23 : 449 espèces candidates
+bats page 11/23 : 451 espèces candidates
+bats page 12/23 : 456 espèces candidates
+bats page 13/23 : 458 espèces candidates
+bats page 14/23 : 465 espèces candidates
+bats page 15/23 : 465 espèces candidates
+bats page 16/23 : 465 espèces candidates
+bats page 17/23 : 483 espèces candidates
+bats page 18/23 : 511 espèces candidates
+bats page 19/23 : 526 espèces candidates
+bats page 20/23 : 526 espèces candidates
+bats page 21/23 : 526 espèces candidates
+bats page 22/23 : 528 espèces candidates
+bats page 23/23 : 528 espèces candidates
+  ✓ Impala (Aepyceros melampus) — qualité A
+  ✓ Banana Serotine (Afronycteris nanus) — qualité A
+  ✓ Moose (Alces alces) — qualité A
+  ✓ Hurleur aux mains rousses (Alouatta belzebul) — qualité B
+  ✓ Black-and-gold Howler (Alouatta caraya) — qualité A
+  ✓ Brown Howler (Alouatta guariba) — qualité A
+  ✓ Guianan Red Howler (Alouatta macconnelli) — qualité A
+  ✓ Amazon Black Howler (Alouatta nigerrima) — qualité B
+  ✓ Hurleur à manteau (Alouatta palliata) — qualité A
+  ✓ Central American Black Howler (Alouatta pigra) — qualité A
+  ✓ Bolivian Red Howler (Alouatta sara) — qualité A
+  ✓ Colombian Red Howler (Alouatta seniculus) — qualité A
+  ✓ Harris's Antelope Squirrel (Ammospermophilus harrisii) — qualité B
+  ✓ Douroucouli d'Azara (Aotus azarae) — qualité B
+  ✓ Black-headed Night Monkey (Aotus nigriceps) — qualité A
+  ✓ Jamaican Fruit-eating Bat (Artibeus jamaicensis) — qualité A
+  ✓ Great Fruit-eating Bat (Artibeus lituratus) — qualité A
+  ✓ Somalian Trident Roundleaf Bat (Asellia italosomalica) — qualité A
+  ✓ Trident du désert (Asellia tridens) — qualité A
+  ✓ Black Spider Monkey (Ateles chamek) — qualité B
+  ✓ Singe-araignée à tête brune (Ateles fusciceps) — qualité A
+  ✓ Singe-araignée de Geoffroy (Ateles geoffroyi) — qualité B
+  ✓ Singe-araignée à joues blanches (Ateles marginatus) — qualité A
+  ✓ Singe-araignée commun (Ateles paniscus) — qualité A
+  ✓ Barbary Ground Squirrel (Atlantoxerus getulus) — qualité B
+  ✓ Chital (Axis axis) — qualité A
+  ✓ Calamian Deer (Axis calamianensis) — qualité A
+  ✓ Western Barbastelle (Barbastella barbastellus) — qualité A
+  ✓ Cacomistle (Bassariscus sumichrasti) — qualité A
+  ✓ Bison d'Amérique (Bos bison) — qualité B
+  ✓ Domestic Cattle (Bos taurus) — qualité A
+  ✓ Golden-brown Uacari (Cacajao melanocephalus) — qualité B
+  ✓ Blond Titi (Callicebus barbarabrownae) — qualité A
+  ✓ Southern Bahian Titi (Callicebus melanochir) — qualité A
+  ✓ Black-fronted Titi (Callicebus nigrifrons) — qualité A
+  ✓ Masked Titi (Callicebus personatus) — qualité B
+  ✓ Tamarin de Goeldi (Callimico goeldii) — qualité A
+  ✓ Buffy-tufted-ear Marmoset (Callithrix aurita) — qualité A
+  ✓ Ouistiti de Geoffroy (Callithrix geoffroyi) — qualité A
+  ✓ Common Marmoset (Callithrix jacchus) — qualité A
+  ✓ Wied's Marmoset (Callithrix kuhlii) — qualité A
+  ✓ Black-tufted-ear Marmoset (Callithrix penicillata) — qualité A
+  ✓ Northern Gray-bellied Squirrel (Callosciurus caniceps) — qualité A
+  ✓ Pallas's Squirrel (Callosciurus erythraeus) — qualité A
+  ✓ Finlayson's Squirrel (Callosciurus finlaysonii) — qualité A
+  ✓ Inornate Squirrel (Callosciurus inornatus) — qualité A
+  ✓ Plantain Squirrel (Callosciurus notatus) — qualité A
+  ✓ Prevost's Squirrel (Callosciurus prevostii) — qualité B
+  ✓ Irrawaddy Squirrel (Callosciurus pygerythrus) — qualité A
+  ✓ Derby's Woolly Opossum (Caluromys derbianus) — qualité A
+  ✓ Dromadaire (Camelus dromedarius) — qualité B
+  ✓ Chacal doré (Canis aureus) — qualité A
+  ✓ Chien (Canis familiaris) — qualité A
+  ✓ Coyote (Canis latrans) — qualité A
+  ✓ African Golden Wolf (Canis lupaster) — qualité B
+  ✓ Gray Wolf (Canis lupus) — qualité A
+  ✓ Chèvre (Capra hircus) — qualité B
+  ✓ Bouquetin des Alpes (Capra ibex) — qualité B
+  ✓ Bouquetin ibérique (Capra pyrenaica) — qualité A
+  ✓ Chevreuil d'Europe (Capreolus capreolus) — qualité A
+  ✓ Chevreuil d'Asie (Capreolus pygargus) — qualité A
+  ✓ Formosan Serow (Capricornis swinhoei) — qualité A
+  ✓ Chestnut Short-tailed Bat (Carollia castanea) — qualité A
+  ✓ Seba's Short-tailed Bat (Carollia perspicillata) — qualité A
+  écarté (inaudible) Carollia sowelli
+  ✓ Eurasian Beaver (Castor fiber) — qualité A
+  ✓ Brazilian Guinea Pig (Cavia aperea) — qualité A
+  ✓ Ouistiti pygmée (Cebuella pygmaea) — qualité B
+  ✓ White-fronted Capuchin (Cebus albifrons) — qualité B
+  ✓ Ka'apor Capuchin (Cebus kaapori) — qualité B
+  ✓ Weeper Capuchin (Cebus olivaceus) — qualité B
+  écarté (inaudible) Centronycteris centralis
+  écarté (inaudible) Centurio senex
+  ✓ Peters's Duiker (Cephalophorus callipygus) — qualité B
+  ✓ Agile Mangabey (Cercocebus agilis) — qualité A
+  ✓ Sooty Mangabey (Cercocebus atys) — qualité B
+  ✓ Golden-bellied Mangabey (Cercocebus chrysogaster) — qualité B
+  ✓ Red-tailed Monkey (Cercopithecus ascanius) — qualité B
+  ✓ Moustac (Cercopithecus cephus) — qualité A
+  ✓ Cercopithèque diane (Cercopithecus diana) — qualité A
+  ✓ Cercopithèque de Lowe (Cercopithecus lowei) — qualité B
+  ✓ Blue Monkey (Cercopithecus mitis) — qualité A
+  ✓ Mona Monkey (Cercopithecus mona) — qualité A
+  ✓ De Brazza's Monkey (Cercopithecus neglectus) — qualité A
+  ✓ Putty-nosed Monkey (Cercopithecus nictitans) — qualité A
+  ✓ Spot-nosed Monkey (Cercopithecus petaurista) — qualité A
+  ✓ Crowned Monkey (Cercopithecus pogonias) — qualité B
+  ✓ Crab-eating Fox (Cerdocyon thous) — qualité A
+  ✓ Wapiti (Cervus canadensis) — qualité A
+  ✓ Cerf élaphe (Cervus elaphus) — qualité A
+  ✓ Sika Deer (Cervus nippon) — qualité A
+  écarté (inaudible) Chalinolobus tuberculatus
+  ✓ White-chested Titi (Cheracebus lugens) — qualité B
+  écarté (inaudible) Chiroderma villosum
+  ✓ Saki à nez blanc (Chiropotes albinasus) — qualité A
+  ✓ Guianan Bearded Saki (Chiropotes sagulatus) — qualité B
+  ✓ Black Bearded Saki (Chiropotes satanas) — qualité A
+  ✓ Uta Hick's Bearded Saki (Chiropotes utahicki) — qualité B
+  ✓ Vervet Monkey (Chlorocebus pygerythrus) — qualité B
+  ✓ Green Monkey (Chlorocebus sabaeus) — qualité A
+  ✓ Tantalus Monkey (Chlorocebus tantalus) — qualité A
+  ✓ Madagascar Sheath-tailed Bat (Coleura kibomalandy) — qualité B
+  ✓ Guereza (Colobus guereza) — qualité A
+  ✓ King Colobus (Colobus polykomos) — qualité A
+  ✓ Blue Wildebeest (Connochaetes taurinus) — qualité A
+  ✓ Chestnut Sac-winged Bat (Cormura brevirostris) — qualité A
+  écarté (inaudible) Corynorhinus rafinesquii
+  ✓ Greater White-toothed Shrew (Crocidura russula) — qualité A
+  ✓ Hyène tachetée (Crocuta crocuta) — qualité A
+  ✓ Lowland Paca (Cuniculus paca) — qualité B
+  ✓ Chien de prairie du Colorado (Cynomys gunnisoni) — qualité B
+  ✓ Chien de prairie à queue noire (Cynomys ludovicianus) — qualité A
+  ✓ Bolivian Bamboo Rat (Dactylomys boliviensis) — qualité A
+  ✓ Amazon Bamboo Rat (Dactylomys dactylinus) — qualité A
+  ✓ Daim d’Europe (Dama dama) — qualité A
+  ✓ Damalisque à front blanc (Damaliscus pygargus) — qualité A
+  ✓ Azara's Agouti (Dasyprocta azarae) — qualité A
+  ✓ Common Red-rumped Agouti (Dasyprocta leporina) — qualité A
+  ✓ Black-rumped Agouti (Dasyprocta prymnolopha) — qualité B
+  ✓ Southern Long-nosed Armadillo (Dasypus novemcinctus) — qualité A
+  ✓ Daman des arbres (Dendrohyrax arboreus) — qualité A
+  ✓ Western Tree Hyrax (Dendrohyrax dorsalis) — qualité A
+  ✓ Thomas's Fruit-eating Bat (Dermanura watsoni) — qualité A
+  écarté (inaudible) Desmodus rotundus
+  ✓ Collared Peccary (Dicotyles tajacu) — qualité B
+  ✓ Southern Black-eared Opossum (Didelphis aurita) — qualité B
+  ✓ Hairy-legged Vampire Bat (Diphylla ecaudata) — qualité A
+  ✓ Cyclops Roundleaf Bat (Doryrhina cyclops) — qualité A
+  ✓ Orange-bellied Himalayan Squirrel (Dremomys lokriah) — qualité A
+  ✓ Perny's Long-nosed Squirrel (Dremomys pernyi) — qualité A
+  ✓ Asian Red-cheeked Squirrel (Dremomys rufigenis) — qualité A
+  écarté (inaudible) Ectophylla alba
+  ✓ African Straw-colored Fruit Bat (Eidolon helvum) — qualité A
+  ✓ European Garden Dormouse (Eliomys quercinus) — qualité A
+  ✓ Velvety Fruit-eating Bat (Enchisthenes hartii) — qualité A
+  ✓ Gambian Epauletted Fruit Bat (Epomophorus gambianus) — qualité A
+  ✓ Sérotine brune (Eptesicus fuscus) — qualité B
+  ✓ Âne commun (Equus asinus) — qualité A
+  ✓ Cheval (Equus caballus) — qualité B
+  ✓ Plains Zebra (Equus quagga) — qualité A
+  ✓ Porc-épic d'Amérique (Erethizon dorsatum) — qualité A
+  ✓ West European Hedgehog (Erinaceus europaeus) — qualité A
+  ✓ Patas (Erythrocebus patas) — qualité A
+  ✓ Oreillard maculé (Euderma maculatum) — qualité A
+  ✓ Southern Needle-clawed Galago (Euoticus elegantulus) — qualité A
+  ✓ Siberian Chipmunk (Eutamias sibiricus) — qualité A
+  ✓ Chat (Felis catus) — qualité A
+  ✓ European Wildcat (Felis silvestris) — qualité A
+  ✓ Indian Palm Squirrel (Funambulus palmarum) — qualité B
+  ✓ Northern Palm Squirrel (Funambulus pennantii) — qualité A
+  ✓ Lady Burton's Rope Squirrel (Funisciurus isabella) — qualité B
+  ✓ Ribboned Rope Squirrel (Funisciurus lemniscatus) — qualité B
+  ✓ Fire-footed Rope Squirrel (Funisciurus pyrropus) — qualité A
+  ✓ Demidoff's Dwarf Galago (Galagoides demidoff) — qualité B
+  ✓ Thomas's Dwarf Galago (Galagoides thomasi) — qualité A
+  ✓ Lesser Grison (Galictis cuja) — qualité A
+  ✓ Southern Flying Squirrel (Glaucomys volans) — qualité B
+  écarté (inaudible) Glauconycteris poensis
+  ✓ European Fat Dormouse (Glis glis) — qualité A
+  ✓ Commissaris's Long-tongued Bat (Glossophaga commissarisi) — qualité A
+  ✓ Glossophage de Pallas (Glossophaga soricina) — qualité A
+  ✓ Gorille de l'Est (Gorilla beringei) — qualité B
+  ✓ Gorille de l'Ouest (Gorilla gorilla) — qualité A
+  ✓ Gambian Sun Squirrel (Heliosciurus gambianus) — qualité A
+  ✓ Red-legged Sun Squirrel (Heliosciurus rufobrachium) — qualité A
+  ✓ Jaguarondi (Herpailurus yagouaroundi) — qualité A
+  ✓ Egyptian Mongoose (Herpestes ichneumon) — qualité B
+  ✓ Common Hippopotamus (Hippopotamus amphibius) — qualité A
+  ✓ Great Himalayan Roundleaf Bat (Hipposideros armiger) — qualité B
+  ✓ Sundevall's Roundleaf Bat (Hipposideros caffer) — qualité B
+  ✓ Human (Homo sapiens) — qualité B
+  ✓ Skywalker Hoolock Gibbon (Hoolock tianxing) — qualité A
+  ✓ Greater Capybara (Hydrochoerus hydrochaeris) — qualité A
+  écarté (inaudible) Hydropotes inermis
+  ✓ Bornean White-bearded Gibbon (Hylobates albibarbis) — qualité B
+  ✓ Eastern Gray Gibbon (Hylobates funereus) — qualité A
+  ✓ Siamang de Kloss (Hylobates klossii) — qualité A
+  ✓ Gibbon à mains blanches (Hylobates lar) — qualité A
+  ✓ Gibbon de Müller (Hylobates muelleri) — qualité B
+  ✓ Gibbon à bonnet (Hylobates pileatus) — qualité B
+  ✓ Underwood's Long-tongued Bat (Hylonycteris underwoodi) — qualité A
+  ✓ Hammer-headed Fruit Bat (Hypsignathus monstrosus) — qualité A
+  écarté (inaudible) Hypsugo lanzai
+  écarté (inaudible) Hypsugo savii
+  ✓ Allen's Big-eared Bat (Idionycteris phyllotis) — qualité A
+  ✓ Indri (Indri indri) — qualité A
+  ✓ Atlantic Bamboo Rat (Kannabateomys amblyonyx) — qualité A
+  ✓ Waterbuck (Kobus ellipsiprymnus) — qualité B
+  ✓ Malagasy Serotine (Laephotis matroka) — qualité B
+  ✓ Common Plains Viscacha (Lagostomus maximus) — qualité A
+  ✓ Common Woolly Monkey (Lagothrix lagothricha) — qualité A
+  ✓ Lama (animal) (Lama glama) — qualité A
+  ✓ Orange-throated Bat (Lampronycteris brachyotis) — qualité B
+  ✓ Three-striped Ground Squirrel (Lariscus insignis) — qualité A
+  ✓ Mentawai Three-striped Squirrel (Lariscus obscurus) — qualité B
+  ✓ Chauve-souris argentée (Lasionycteris noctivagans) — qualité A
+  ✓ Brandt's Vole (Lasiopodomys brandtii) — qualité A
+  écarté (inaudible) Lasiurus blossevillii
+  ✓ Chauve-souris rousse (Lasiurus borealis) — qualité A
+  ✓ Norway Brown Lemming (Lemmus lemmus) — qualité A
+  ✓ Lémur catta (Lemur catta) — qualité A
+  ✓ Tamarin-lion à face noire (Leontopithecus caissara) — qualité A
+  ✓ Tamarin-lion à tête dorée (Leontopithecus chrysomelas) — qualité A
+  ✓ Tamarin-lion à croupe dorée (Leontopithecus chrysopygus) — qualité A
+  ✓ Tamarin-lion doré (Leontopithecus rosalia) — qualité A
+  ✓ Dark Long-tongued Bat (Lichonycteris obscura) — qualité A
+  écarté (inaudible) Lonchophylla concava
+  ✓ Orange Nectar Bat (Lonchophylla robusta) — qualité A
+  ✓ North American River Otter (Lontra canadensis) — qualité A
+  ✓ Neotropical River Otter (Lontra longicaudis) — qualité A
+  ✓ Mangabey à joues blanches (Lophocebus albigena) — qualité A
+  ✓ Black Crested Mangabey (Lophocebus aterrimus) — qualité A
+  ✓ Pygmy Round-eared Bat (Lophostoma brasiliense) — qualité A
+  ✓ Grand Lophostome (Lophostoma silvicola) — qualité A
+  ✓ Éléphant de forêt d'Afrique (Loxodonta cyclotis) — qualité B
+  ✓ Eurasian Otter (Lutra lutra) — qualité A
+  ✓ Loutre à pelage lisse (Lutra perspicillata) — qualité A
+  écarté (inaudible) Lycalopex culpaeus
+  ✓ Lynx du Canada (Lynx canadensis) — qualité A
+  ✓ Lynx boréal (Lynx lynx) — qualité A
+  ✓ Macaque de Formose (Macaca cyclopis) — qualité A
+  ✓ Long-tailed Macaque (Macaca fascicularis) — qualité A
+  ✓ Japanese Macaque (Macaca fuscata) — qualité B
+  ✓ White-cheeked Macaque (Macaca leucogenys) — qualité A
+  ✓ Macaque rhésus (Macaca mulatta) — qualité A
+  ✓ Southern Pig-tailed Macaque (Macaca nemestrina) — qualité A
+  ✓ Crested Macaque (Macaca nigra) — qualité B
+  ✓ Macaque de Barbarie (Macaca sylvanus) — qualité B
+  ✓ Macaque du Tibet (Macaca thibetana) — qualité A
+  ✓ Commerson's Roundleaf Bat (Macronycteris commersonii) — qualité A
+  ✓ Mandrill (Mandrillus sphinx) — qualité A
+  ✓ Gray Marmot (Marmota baibacina) — qualité A
+  ✓ Bobak Marmot (Marmota bobak) — qualité A
+  ✓ Hoary Marmot (Marmota caligata) — qualité B
+  ✓ Himalayan Marmot (Marmota himalayana) — qualité B
+  ✓ Alpine Marmot (Marmota marmota) — qualité A
+  ✓ Tarbagan Marmot (Marmota sibirica) — qualité B
+  ✓ Yellow-throated Marten (Martes flavigula) — qualité A
+  ✓ Fouine (Martes foina) — qualité A
+  ✓ European Pine Marten (Martes martes) — qualité A
+  ✓ Blaireau européen (Meles meles) — qualité A
+  ✓ Ouistiti argenté (Mico argentatus) — qualité B
+  ✓ Ouistiti à camail (Mico humeralifer) — qualité B
+  ✓ Ouistiti mélanure (Mico melanurus) — qualité A
+  ✓ Hairy Big-eared Bat (Micronycteris hirsuta) — qualité A
+  ✓ Common Big-eared Bat (Micronycteris microtis) — qualité A
+  ✓ Tiny Big-eared Bat (Micronycteris minuta) — qualité A
+  ✓ Amazon Dwarf Squirrel (Microsciurus flaviventer) — qualité B
+  ✓ Western Dwarf Squirrel (Microsciurus mimulus) — qualité A
+  ✓ Singing Vole (Microtus abbreviatus) — qualité A
+  ✓ Taiga Vole (Microtus xanthognathus) — qualité A
+  ✓ Glen's Long-fingered Bat (Miniopterus gleni) — qualité B
+  écarté (inaudible) Miniopterus griveaudi
+  ✓ Major's Long-fingered Bat (Miniopterus majori) — qualité B
+  ✓ Manavil Long-fingered Bat (Miniopterus manavi) — qualité B
+  ✓ Schreibers's Long-fingered Bat (Miniopterus schreibersii) — qualité A
+  écarté (inaudible) Miopithecus ogouensis
+  écarté (inaudible) Molossus alvarezi
+  écarté (inaudible) Molossus molossus
+  ✓ Northern Black Mastiff Bat (Molossus nigricans) — qualité A
+  ✓ Common Black Mastiff Bat (Molossus rufus) — qualité A
+  ✓ Madagascar Free-tailed Bat (Mops atsinanana) — qualité B
+  ✓ Black-and-red Free-tailed Bat (Mops jobimena) — qualité B
+  ✓ Sulawesian Free-tailed Bat (Mops sarasinorum) — qualité A
+  ✓ Petit Molosse de La Réunion (Mormopterus francoismoutoui) — qualité B
+  ✓ Southern Red Muntjac (Muntiacus muntjak) — qualité B
+  ✓ Muntjac de Reeves (Muntiacus reevesi) — qualité A
+  ✓ Northern Red Muntjac (Muntiacus vaginalis) — qualité A
+  ✓ House Mouse (Mus musculus) — qualité A
+  ✓ Siberian Weasel (Mustela sibirica) — qualité B
+  ✓ Ragondin (Myocastor coypus) — qualité A
+  écarté (inaudible) Myotis albescens
+  ✓ Alcathoe Whiskered Myotis (Myotis alcathoe) — qualité A
+  écarté (inaudible) Myotis bechsteinii
+  ✓ Petit Murin (Myotis blythii) — qualité A
+  ✓ Bocage's Myotis (Myotis bocagii) — qualité B
+  ✓ Brandt's Myotis (Myotis brandtii) — qualité A
+  ✓ Long-fingered Myotis (Myotis capaccinii) — qualité A
+  écarté (inaudible) Myotis crypticus
+  ✓ Pond Myotis (Myotis dasycneme) — qualité A
+  ✓ Daubenton's Myotis (Myotis daubentonii) — qualité A
+  écarté (inaudible) Myotis davidii
+  écarté (inaudible) Myotis elegans
+  ✓ Geoffroy's Myotis (Myotis emarginatus) — qualité A
+  ✓ Murin d'Escalera (Myotis escalerai) — qualité B
+  ✓ Malagasy Myotis (Myotis goudotii) — qualité B
+  ✓ Southern Hairy-legged Myotis (Myotis keaysi) — qualité A
+  ✓ Eastern Small-footed Myotis (Myotis leibii) — qualité B
+  ✓ Petite chauve-souris brune (Myotis lucifugus) — qualité B
+  ✓ Greater Myotis (Myotis myotis) — qualité A
+  ✓ Common Whiskered Myotis (Myotis mystacinus) — qualité A
+  écarté (inaudible) Myotis nattereri
+  ✓ Common Black Myotis (Myotis nigricans) — qualité B
+  ✓ Montane Myotis (Myotis oxyotus) — qualité A
+  ✓ Northern Hairy-legged Myotis (Myotis pilosatibialis) — qualité A
+  ✓ Murin du Maghreb (Myotis punicus) — qualité B
+  ✓ Riparian Myotis (Myotis riparius) — qualité A
+  ✓ Chinese Goral (Naemorhedus griseus) — qualité A
+  ✓ Nandinie (Nandinia binotata) — qualité B
+  ✓ South American Coati (Nasua nasua) — qualité A
+  ✓ American Mink (Neogale vison) — qualité A
+  ✓ Tamia amène (Neotamias amoenus) — qualité A
+  ✓ Tamia de Merriam (Neotamias merriami) — qualité A
+  ✓ Least Chipmunk (Neotamias minimus) — qualité B
+  ✓ Tamia de Townsend (Neotamias townsendii) — qualité A
+  ✓ Grand Noctilion (Noctilio leporinus) — qualité A
+  ✓ Northern Yellow-cheeked Crested Gibbon (Nomascus annamensis) — qualité A
+  ✓ Southern Yellow-cheeked Crested Gibbon (Nomascus gabriellae) — qualité A
+  ✓ Bird-like Noctule (Nyctalus aviator) — qualité B
+  ✓ Greater Noctule (Nyctalus lasiopterus) — qualité A
+  ✓ Noctule de Leisler (Nyctalus leisleri) — qualité A
+  ✓ Common Noctule (Nyctalus noctula) — qualité A
+  ✓ Chinese Noctule (Nyctalus plancyi) — qualité A
+  ✓ Large Slit-faced Bat (Nycteris grandis) — qualité A
+  écarté (inaudible) Nycteris thebaica
+  ✓ Pocketed Free-tailed Bat (Nyctinomops femorosaccus) — qualité A
+  ✓ Pika à collier (Ochotona collaris) — qualité A
+  ✓ Pallas's Pika (Ochotona pallasii) — qualité A
+  ✓ American Pika (Ochotona princeps) — qualité A
+  ✓ Cerf de Virginie (Odocoileus virginianus) — qualité A
+  ✓ Garnett's Greater Galago (Otolemur garnettii) — qualité A
+  écarté (inaudible) Otonycteris hemprichii
+  ✓ Common Rock Squirrel (Otospermophilus variegatus) — qualité B
+  ✓ Mouton (Ovis aries) — qualité A
+  ✓ Cerf des pampas (Ozotoceros bezoarticus) — qualité A
+  ✓ Masked Palm Civet (Paguma larvata) — qualité A
+  ✓ Bonobo (Pan paniscus) — qualité A
+  ✓ Chimpanzee (Pan troglodytes) — qualité A
+  ✓ Lion (Panthera leo) — qualité A
+  ✓ Jaguar (Panthera onca) — qualité A
+  ✓ Léopard (Panthera pardus) — qualité A
+  ✓ Panthère des neiges (Panthera uncia) — qualité B
+  ✓ Olive Baboon (Papio anubis) — qualité A
+  ✓ Chacma (Papio ursinus) — qualité A
+  ✓ Northern Palm Civet (Paradoxurus hermaphroditus) — qualité A
+  ✓ Kenya Coast Dwarf Galago (Paragalago cocos) — qualité B
+  ✓ Tanzania Coast Dwarf Galago (Paragalago zanzibaricus) — qualité A
+  ✓ Canyon Bat (Parastrellus hesperus) — qualité A
+  écarté (inaudible) Paratriaenops auritus
+  ✓ Smith's Bush Squirrel (Paraxerus cepapi) — qualité A
+  ✓ Western Sheath-tailed Bat (Paremballonura tiavato) — qualité B
+  ✓ Amami Rabbit (Pentalagus furnessi) — qualité A
+  ✓ Blondin de Cuvier (Perimyotis subflavus) — qualité B
+  ✓ Greater Dog-like Bat (Peropteryx kappleri) — qualité A
+  ✓ Lesser Dog-like Bat (Peropteryx macrotis) — qualité A
+  ✓ Formosan Giant Flying Squirrel (Petaurista grandis) — qualité B
+  ✓ Taiwan Giant Flying Squirrel (Petaurista lena) — qualité A
+  ✓ Yellow-bellied Glider (Petaurus australis) — qualité A
+  ✓ Sugar Glider (Petaurus breviceps) — qualité B
+  ✓ Siberut Flying Squirrel (Petinomys lugens) — qualité B
+  ✓ Koala (Phascolarctos cinereus) — qualité A
+  écarté (inaudible) Philantomba monticola
+  ✓ Pale Spear-nosed Bat (Phyllostomus discolor) — qualité A
+  ✓ Upper Guinea Red Colobus (Piliocolobus badius) — qualité A
+  ✓ Colobe bai à mains noires (Piliocolobus tholloni) — qualité B
+  ✓ Hanak's Pipistrelle (Pipistrellus hanaki) — qualité A
+  ✓ Dusky Pipistrelle (Pipistrellus hesperidus) — qualité B
+  ✓ Kuhl's Pipistrelle (Pipistrellus kuhlii) — qualité A
+  ✓ Tiny Pipistrelle (Pipistrellus nanulus) — qualité B
+  ✓ Pipistrelle de Nathusius (Pipistrellus nathusii) — qualité A
+  ✓ Common Pipistrelle (Pipistrellus pipistrellus) — qualité A
+  ✓ Soprano Pipistrelle (Pipistrellus pygmaeus) — qualité A
+  ✓ Golden-faced Saki (Pithecia chrysocephala) — qualité B
+  ✓ Gray's Bald-faced Saki (Pithecia irrorata) — qualité B
+  ✓ White-faced Saki (Pithecia pithecia) — qualité A
+  ✓ Heller's Broad-nosed Bat (Platyrrhinus helleri) — qualité A
+  ✓ Brown Long-eared Bat (Plecotus auritus) — qualité A
+  ✓ Gray Long-eared Bat (Plecotus austriacus) — qualité B
+  ✓ Mediterranean Long-eared Bat (Plecotus kolombatovici) — qualité A
+  écarté (inaudible) Plecotus macrobullaris
+  ✓ Ashy Titi (Plecturocebus cinerascens) — qualité B
+  ✓ Coppery Titi (Plecturocebus cupreus) — qualité A
+  ✓ White-eared Titi (Plecturocebus donacophilus) — qualité B
+  ✓ Red-bellied Titi (Plecturocebus moloch) — qualité B
+  ✓ San Martín Titi (Plecturocebus oenanthe) — qualité B
+  ✓ Ornate Titi (Plecturocebus ornatus) — qualité B
+  ✓ Toppin's Titi (Plecturocebus toppini) — qualité A
+  ✓ Orang-outan de Bornéo (Pongo pygmaeus) — qualité B
+  ✓ Red River Hog (Potamochoerus porcus) — qualité B
+  ✓ Kinkajou (Potos flavus) — qualité A
+  ✓ Semnopithèque malais (Presbytis femoralis) — qualité A
+  ✓ Semnopithèque de Mentawai (Presbytis potenziani) — qualité B
+  ✓ Semnopithèque du Siam (Presbytis siamensis) — qualité A
+  ✓ Rock Hyrax (Procavia capensis) — qualité A
+  ✓ Crab-eating Raccoon (Procyon cancrivorus) — qualité A
+  ✓ Northern Raccoon (Procyon lotor) — qualité A
+  ✓ Big Crested Mastiff Bat (Promops centralis) — qualité A
+  ✓ Alston's Squirrel (Prosciurillus alstoni) — qualité A
+  ✓ Whitish Dwarf Squirrel (Prosciurillus leucomus) — qualité A
+  ✓ Celebes Dwarf Squirrel (Prosciurillus murinus) — qualité B
+  ✓ Western Ring-tailed Possum (Pseudocheirus occidentalis) — qualité A
+  ✓ Davy's Naked-backed Bat (Pteronotus davyi) — qualité B
+  ✓ Thomas's Naked-backed Bat (Pteronotus fulvus) — qualité B
+  ✓ Big Naked-backed Bat (Pteronotus gymnonotus) — qualité A
+  ✓ Mesoamerican Common Mustached Bat (Pteronotus mesoamericanus) — qualité A
+  ✓ Dobson's Lesser Mustached Bat (Pteronotus psilotis) — qualité B
+  ✓ Sooty Mustached Bat (Pteronotus quadridens) — qualité B
+  ✓ Loutre géante (Pteronura brasiliensis) — qualité A
+  ✓ Spectacled Flying Fox (Pteropus conspicillatus) — qualité B
+  ✓ Indian Flying Fox (Pteropus medius) — qualité B
+  ✓ Greater Mascarene Flying Fox (Pteropus niger) — qualité A
+  ✓ Gray-headed Flying Fox (Pteropus poliocephalus) — qualité A
+  ✓ Malagasy Flying Fox (Pteropus rufus) — qualité A
+  ✓ Caribou (Rangifer tarandus) — qualité A
+  ✓ Brown Rat (Rattus norvegicus) — qualité A
+  ✓ Écureuil géant oriental (Ratufa bicolor) — qualité A
+  ✓ Écureuil géant de Ceylan (Ratufa macroura) — qualité B
+  ✓ Acuminate Horseshoe Bat (Rhinolophus acuminatus) — qualité A
+  ✓ Halcyon Horseshoe Bat (Rhinolophus alcyone) — qualité A
+  ✓ Homfray's Horseshoe Bat (Rhinolophus andamanensis) — qualité B
+  ✓ Blasius's Horseshoe Bat (Rhinolophus blasii) — qualité A
+  ✓ Bornean Horseshoe Bat (Rhinolophus borneensis) — qualité A
+  ✓ Darling's Horseshoe Bat (Rhinolophus darlingi) — qualité B
+  ✓ Mediterranean Horseshoe Bat (Rhinolophus euryale) — qualité A
+  écarté (inaudible) Rhinolophus ferrumequinum
+  ✓ Lesser Horseshoe Bat (Rhinolophus hipposideros) — qualité A
+  ✓ Pearson's Horseshoe Bat (Rhinolophus pearsonii) — qualité B
+  ✓ Okinawa Horseshoe Bat (Rhinolophus pumilus) — qualité B
+  écarté (inaudible) Rhinolophus virgo
+  écarté (inaudible) Rhinopoma cystops
+  ✓ Yucatán Yellow Bat (Rhogeessa aenea) — qualité A
+  écarté (inaudible) Rhogeessa tumida
+  ✓ Great Gerbil (Rhombomys opimus) — qualité B
+  écarté (inaudible) Rhynchonycteris naso
+  ✓ Chamois (Rupicapra rupicapra) — qualité A
+  ✓ Sambar (Rusa unicolor) — qualité A
+  écarté (inaudible) Saccolaimus saccolaimus
+  ✓ Greater Sac-winged Bat (Saccopteryx bilineata) — qualité A
+  écarté (inaudible) Saccopteryx leptura
+  ✓ Pied Bare-faced Tamarin (Saguinus bicolor) — qualité A
+  ✓ Tamarin à selle (Saguinus fuscicollis) — qualité A
+  ✓ Lesson's Saddle-back Tamarin (Saguinus fuscus) — qualité A
+  ✓ Black-chinned Emperor Tamarin (Saguinus imperator) — qualité A
+  ✓ Tamarin labié (Saguinus labiatus) — qualité B
+  ✓ White-footed Tamarin (Saguinus leucopus) — qualité B
+  ✓ Tamarin aux mains rousses (Saguinus midas) — qualité A
+  ✓ Spix's Mustached Tamarin (Saguinus mystax) — qualité A
+  ✓ Black-mantled Tamarin (Saguinus nigricollis) — qualité A
+  ✓ Eastern Black-handed Tamarin (Saguinus ursula) — qualité B
+  ✓ Black-capped Squirrel Monkey (Saimiri boliviensis) — qualité B
+  ✓ Humboldt's Squirrel Monkey (Saimiri cassiquiarensis) — qualité B
+  ✓ Collins's Squirrel Monkey (Saimiri collinsi) — qualité B
+  ✓ Ecuadorian Squirrel Monkey (Saimiri macrodon) — qualité B
+  ✓ Saïmiri commun (Saimiri sciureus) — qualité B
+  ✓ Golden-backed Squirrel Monkey (Saimiri ustus) — qualité B
+  ✓ Brown Capuchin (Sapajus apella) — qualité B
+  ✓ Bearded Capuchin (Sapajus libidinosus) — qualité B
+  ✓ Black-horned Capuchin (Sapajus nigritus) — qualité B
+  ✓ Crested Capuchin (Sapajus robustus) — qualité A
+  ✓ Écureuil pygmée néo-tropical (Sciurillus pusillus) — qualité A
+  ✓ Pere David's Rock Squirrel (Sciurotamias davidianus) — qualité A
+  ✓ Guianan Squirrel (Sciurus aestuans) — qualité A
+  ✓ Caucasian Squirrel (Sciurus anomalus) — qualité A
+  ✓ Écureuil gris (Sciurus carolinensis) — qualité A
+  ✓ Écureuil à queue rouge (Sciurus granatensis) — qualité A
+  ✓ Western Gray Squirrel (Sciurus griseus) — qualité A
+  ✓ Variegated Squirrel (Sciurus variegatoides) — qualité A
+  ✓ Écureuil roux (Sciurus vulgaris) — qualité A
+  écarté (inaudible) Scotophilus kuhlii
+  ✓ White-bellied Yellow Bat (Scotophilus leucogaster) — qualité A
+  ✓ Nut-colored Yellow Bat (Scotophilus nux) — qualité A
+  ✓ Bengal Sacred Langur (Semnopithecus entellus) — qualité A
+  ✓ Semnopithèque blanchâtre (Semnopithecus vetulus) — qualité B
+  ✓ Common Shrew (Sorex araneus) — qualité B
+  ✓ Eurasian Pygmy Shrew (Sorex minutus) — qualité B
+  ✓ Daurian Ground Squirrel (Spermophilus dauricus) — qualité A
+  ✓ Little Yellow-shouldered Bat (Sturnira lilium) — qualité B
+  écarté (inaudible) Sturnira ludovici
+  ✓ Sumatran Mountain Squirrel (Sundasciurus altitudinis) — qualité A
+  ✓ Bornean Mountain Ground Squirrel (Sundasciurus everetti) — qualité B
+  ✓ Fraternal Squirrel (Sundasciurus fraterculus) — qualité A
+  ✓ Busuanga Squirrel (Sundasciurus hoogstraali) — qualité A
+  ✓ Northern Palawan Tree Squirrel (Sundasciurus juvencus) — qualité A
+  ✓ Southern Palawan Tree Squirrel (Sundasciurus steerii) — qualité A
+  ✓ Slender Squirrel (Sundasciurus tenuis) — qualité B
+  ✓ Porc (Sus domesticus) — qualité B
+  ✓ Sanglier (Sus scrofa) — qualité A
+  ✓ Siamang (Symphalangus syndactylus) — qualité A
+  ✓ Buffle d'Afrique (Syncerus caffer) — qualité A
+  ✓ Échidné à nez court (Tachyglossus aculeatus) — qualité B
+  ✓ Brazilian Free-tailed Bat (Tadarida brasiliensis) — qualité A
+  ✓ East Asian Free-tailed Bat (Tadarida insignis) — qualité B
+  ✓ Molosse de Cestoni (Tadarida teniotis) — qualité A
+  ✓ Eastern Chipmunk (Tamias striatus) — qualité A
+  ✓ Douglas's Squirrel (Tamiasciurus douglasii) — qualité A
+  ✓ Fremont's Squirrel (Tamiasciurus fremonti) — qualité A
+  ✓ Écureuil roux (Amérique du Nord) (Tamiasciurus hudsonicus) — qualité A
+  ✓ Maritime Striped Squirrel (Tamiops maritimus) — qualité A
+  ✓ Himalayan Striped Squirrel (Tamiops mcclellandii) — qualité A
+  ✓ Cambodian Striped Squirrel (Tamiops rodolphii) — qualité A
+  ✓ Swinhoe's Striped Squirrel (Tamiops swinhoei) — qualité B
+  ✓ Common Sheath-tailed Bat (Taphozous georgianus) — qualité A
+  ✓ Taphien de Maurice (Taphozous mauritianus) — qualité B
+  ✓ Black-bearded Tomb Bat (Taphozous melanopogon) — qualité A
+  ✓ Lariang Tarsier (Tarsius lariang) — qualité A
+  ✓ Niemitz's Tarsier (Tarsius niemitzi) — qualité A
+  ✓ Peleng Tarsier (Tarsius pelengensis) — qualité B
+  ✓ Great Sangihe Tarsier (Tarsius sangirensis) — qualité B
+  ✓ Gursky's Spectral Tarsier (Tarsius spectrumgurskyae) — qualité A
+  ✓ Pécari à lèvres blanches (Tayassu pecari) — qualité A
+  écarté (inaudible) Thyroptera tricolor
+  ✓ Northern Stripe-headed Round-eared Bat (Tonatia bakeri) — qualité A
+  ✓ Phyllostome à lèvres frangées (Trachops cirrhosus) — qualité A
+  ✓ Germain's Langur (Trachypithecus germaini) — qualité A
+  ✓ White-headed Langur (Trachypithecus leucocephalus) — qualité A
+  ✓ Dusky Langur (Trachypithecus obscurus) — qualité A
+  ✓ Guib harnaché (Tragelaphus scriptus) — qualité A
+  ✓ Sitatunga (Tragelaphus spekii) — qualité A
+  ✓ Rufous Trident Bat (Triaenops menamena) — qualité B
+  ✓ Common Brush-tailed Possum (Trichosurus vulpecula) — qualité A
+  écarté (inaudible) Trinycteris nicefori
+  ✓ Northern Treeshrew (Tupaia belangeri) — qualité A
+  ✓ Palawan Treeshrew (Tupaia palawanensis) — qualité A
+  ✓ Columbian Ground Squirrel (Urocitellus columbianus) — qualité B
+  ✓ Wyoming Ground Squirrel (Urocitellus elegans) — qualité A
+  ✓ Arctic Ground Squirrel (Urocitellus parryii) — qualité A
+  ✓ Northern Gray Fox (Urocyon cinereoargenteus) — qualité B
+  écarté (inaudible) Uroderma bilobatum
+  ✓ Pacific Tent-making Bat (Uroderma convexum) — qualité A
+  ✓ Brown Bear (Ursus arctos) — qualité A
+  ✓ Crab-eating Mongoose (Urva urva) — qualité A
+  ✓ Northern Little Yellow-eared Bat (Vampyressa thyone) — qualité A
+  ✓ Spectral Bat (Vampyrum spectrum) — qualité A
+  ✓ Eurasian Particolored Bat (Vespertilio murinus) — qualité A
+  ✓ Corsac Fox (Vulpes corsac) — qualité A
+  ✓ Arctic Fox (Vulpes lagopus) — qualité B
+  ✓ Red Fox (Vulpes vulpes) — qualité A
+  ✓ Écureuil terrestre à queue ronde (Xerospermophilus tereticaudus) — qualité B
+FIN : 486 cris vérifiés ajoutés (total vérifiés : 486)
