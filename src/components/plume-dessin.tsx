@@ -6,7 +6,7 @@
  * des yeux qui lui ressemblent, et une paire de lunettes seulement quand elle lit.
  */
 /** Les situations : chacune a ses gestes (lire, avoir peur, jouer à la bataille, encourager, fêter une victoire). */
-export type AnimPlume = "rien" | "coucou" | "parle" | "ailes" | "peur" | "bataille" | "jeu" | "bravo" | "vole" | "triste" | "etourdie";
+export type AnimPlume = "rien" | "coucou" | "parle" | "ailes" | "peur" | "bataille" | "jeu" | "bravo" | "vole" | "triste" | "etourdie" | "fachee";
 
 /** 0 = tenue de tous les jours (petite couronne) ; 1 à 4 = les caractères. */
 export type Caractere = 0 | 1 | 2 | 3 | 4;
@@ -61,6 +61,12 @@ export function PlumeDessin({
 
         {/* Triste : une petite larme. Étourdie : des étoiles qui tournent. */}
         <path className="pl-larme" d="M60 112 q-5 9 0 13 q5 -4 0 -13 Z" fill="#9fe3ff" stroke="#4a90c0" strokeWidth="1.5" />
+        {/* Fâchée : sourcils froncés et petits nuages de vapeur. */}
+        <g className="pl-fache">
+          <path d="M50 70 L92 80 M150 70 L108 80" stroke="#2a1650" strokeWidth="7" strokeLinecap="round" />
+          <circle className="pl-vapeur" cx="38" cy="40" r="7" fill="#fff" opacity=".85" />
+          <circle className="pl-vapeur pl-vapeur-2" cx="162" cy="40" r="7" fill="#fff" opacity=".85" />
+        </g>
         <g className="pl-etoiles">
           <path d="M60 30 l3 -7 l3 7 l7 1 l-5 5 l1 7 l-6 -3 l-6 3 l1 -7 l-5 -5 Z" fill="#f3d48a" />
           <path d="M130 22 l2 -5 l2 5 l5 1 l-4 3 l1 5 l-4 -2 l-4 2 l1 -5 l-4 -3 Z" fill="#fff6b0" />

@@ -183,6 +183,46 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     return () => window.clearTimeout(t);
   }, [geste.n]);
 
+  // On secoue le téléphone : seule Plume réagit, chacune à sa façon (au plus une fois toutes les 8 secondes).
+  useEffect(() => {
+    let dernier = 0, secousses = 0, debut = 0, prec: { x: number; y: number; z: number } | null = null;
+    const REACTIONS: Record<string, [AnimPlume, string, AnimPlume?, string?]> = {
+      discrete: ["etourdie", "Oh… ça tourne un peu."],
+      presente: ["peur", "Ouh là ! Tout bouge !"],
+      etudiante: ["etourdie", "Un tremblement de terre ? Non… c'est toi qui secoues !"],
+      passionnee: ["bravo", "Wouhou, un manège !", "fachee", "Bon, ça suffit, j'ai la tête qui tourne !"],
+      repos: ["coucou", "Hein ? Je dormais…"],
+    };
+    const mouvement = (ev: DeviceMotionEvent) => {
+      const a = ev.accelerationIncludingGravity;
+      if (!a || a.x == null || a.y == null || a.z == null) return;
+      const m = { x: a.x, y: a.y, z: a.z };
+      if (prec) {
+        const choc = Math.abs(m.x - prec.x) + Math.abs(m.y - prec.y) + Math.abs(m.z - prec.z);
+        const t = Date.now();
+        if (choc > 28) {
+          if (t - debut > 700) { debut = t; secousses = 0; }
+          secousses++;
+          if (secousses >= 4 && t - dernier > 8000 && !document.body.hasAttribute("data-face-a-face")) {
+            dernier = t; secousses = 0;
+            const [a1, p1, a2, p2] = REACTIONS[presenceActuelle()] ?? REACTIONS.presente;
+            plumePropose(null);
+            setAnim(a1);
+            plumeDit(p1, 2400);
+            navigator.vibrate?.(20);
+            window.setTimeout(() => {
+              if (a2 && p2) { setAnim(a2); plumeDit(p2, 2600); window.setTimeout(() => setAnim("rien"), 2600); }
+              else setAnim("rien");
+            }, 2400);
+          }
+        }
+      }
+      prec = m;
+    };
+    window.addEventListener("devicemotion", mouvement);
+    return () => window.removeEventListener("devicemotion", mouvement);
+  }, []);
+
   // Petit coucou de l'aile : quand elle s'ouvre, et rarement de temps en temps.
   useEffect(() => {
     if (!coucou) return;
@@ -246,13 +286,26 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     setAnim(sorte === "tombe" ? "rien" : "vole");
     const maison = lirePosition();
     const cible = { x: maison.cote === "gauche" ? 10 : window.innerWidth - TAILLE - 10, y: window.innerHeight - maison.bas - TAILLE };
+    // Après chaque lancer, un petit mécontentement : chacune à sa façon.
+    const FACHE: Record<string, string> = {
+      discrete: "Ce n'était pas très gentil…",
+      presente: "Hé ! Je préfère quand on me pose doucement.",
+      etudiante: "Hmpf ! Une chouette, ça se pose délicatement.",
+      passionnee: "Bon… c'était drôle, mais pas trop souvent, hein !",
+    };
     const fin = (p: Position, apres: AnimPlume, phrase?: string) => {
       setVol(null);
+      plumePropose(null);
       setPos(p);
       garderPosition(p);
       setAnim(apres);
-      if (phrase && presence !== "repos") plumeDit(phrase, 3500);
-      window.setTimeout(() => setAnim("rien"), 2600);
+      if (phrase && presence !== "repos") plumeDit(phrase, 2400);
+      window.setTimeout(() => {
+        if (presence === "repos") return setAnim("rien");
+        setAnim("fachee");
+        plumeDit(FACHE[presence] ?? "Hé !", 2600);
+        window.setTimeout(() => setAnim("rien"), 2600);
+      }, 2400);
     };
     const pas = (t: number) => {
       const dt = Math.min(32, t - t0) / 16;
@@ -364,7 +417,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
             </>
           ) : null}
           <span className="block size-full" style={vol ? { transform: `rotate(${vol.r}deg)` } : undefined}>
-            <PlumeDessin anim={["peur", "vole", "triste", "etourdie", "bravo"].includes(anim) ? anim : parle ? "parle" : ouvert ? "ailes" : animJeu ?? anim} caractere={CARACTERE[presence] ?? 0} lit={parle && !["peur", "vole", "triste", "etourdie"].includes(anim)} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
+            <PlumeDessin anim={["peur", "vole", "triste", "etourdie", "bravo", "fachee", "coucou"].includes(anim) ? anim : parle ? "parle" : ouvert ? "ailes" : animJeu ?? anim} caractere={CARACTERE[presence] ?? 0} lit={parle && !["peur", "vole", "triste", "etourdie", "fachee"].includes(anim)} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
           </span>
         </button>
 
