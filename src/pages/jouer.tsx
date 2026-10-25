@@ -160,12 +160,12 @@ function JeuRegime() {
   const choisir = (id: RegimeId) => { if (rep) return; setRep(id); noterReponse(id === q.bon); if (id === q.bon) sons.bonne(); else sons.mauvaise(); };
   return (
     <section className="mt-4">
-      <a href={`#/mammiferes/e-${q.e.id}`} className="medaillon-or apparait mx-auto block size-40 overflow-hidden"><Portrait id={q.e.id} /></a>
+      <a href={`#/mammiferes/e-${q.e.id}`} className="halo-jeu apparait mx-auto mt-2 block size-40 overflow-hidden rounded-full"><Portrait id={q.e.id} /></a>
       <Consigne sous="Il mange surtout…">{q.e.nom}</Consigne>
       <ul className="mt-4 grid grid-cols-3 gap-2.5">
         {q.choix.map((id) => (
           <li key={id}>
-            <CarteChoix emoji={EMOJI_REGIME[id]} nom={REGIMES[id].nom} detail={rep ? REGIMES[id].explique : undefined} etat={etatDe(id, rep, q.bon, effaces)} onClick={() => choisir(id)} taille="petite" />
+            <CarteChoix emoji={EMOJI_REGIME[id]} nom={REGIMES[id].nom} etat={etatDe(id, rep, q.bon, effaces)} onClick={() => choisir(id)} taille="petite" />
           </li>
         ))}
       </ul>
@@ -336,7 +336,7 @@ function JeuPoids() {
       {rep ? (
         <>
           {/* La balance : chaque barre montre le poids de l'animal (le plus lourd prend toute la place). */}
-          <div className="apparait mt-4 space-y-1.5 rounded-2xl bg-white/5 px-3 py-3">
+          <div className="resultat-jeu apparait mt-4 space-y-1.5 rounded-[1.6rem] bg-white/8 px-4 py-3">
             {[{ e: q.a, g: ga }, { e: q.b, g: gb }].map(({ e, g }) => (
               <div key={e.id}>
                 <p className="flex justify-between text-xs font-extrabold"><span>{e.nom}</span><span>{e.masse}</span></p>
@@ -373,7 +373,7 @@ function JeuCarte() {
   return (
     <section className="mt-2">
       <Consigne sous="Les pays en or montrent où il vit">Qui vit ici ?</Consigne>
-      <div className="cadre-laiton mt-4 rounded-[14px] p-[6px]"><div className="overflow-hidden rounded-[8px]"><CarteMonde pays={q.bon.pays!} /></div></div>
+      <div className="carte-jeu mt-4"><CarteMonde pays={q.bon.pays!} /></div>
       <ul className="mt-4 grid grid-cols-3 gap-2.5">
         {q.choix.map((e) => (
           <li key={e.id}>
@@ -547,14 +547,14 @@ function DefiDuJour() {
       <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/10"><div className="h-full rounded-full bg-gradient-to-r from-[#f3c35a] to-[#ff8a3d] transition-[width] duration-500" style={{ width: `${(100 * (i + (rep ? 1 : 0))) / questions.length}%` }} /></div>
       <Consigne>{q.consigne}</Consigne>
       {q.audio ? <div className="lecteur-cri mx-auto mt-4 max-w-sm rounded-full p-1.5"><audio key={q.audio} controls preload="auto" src={`s/${q.audio}.webm`} className="w-full" /></div> : null}
-      {q.carte ? <div className="cadre-laiton mt-4 rounded-[14px] p-[6px]"><div className="overflow-hidden rounded-[8px]"><CarteMonde pays={q.carte} /></div></div> : null}
-      {"portrait" in q ? <span className="medaillon-or mx-auto mt-3 block size-32 overflow-hidden"><Portrait id={(q as { portrait: string }).portrait} /></span> : null}
+      {q.carte ? <div className="carte-jeu mt-4"><CarteMonde pays={q.carte} /></div> : null}
+      {"portrait" in q ? <span className="halo-jeu mx-auto mt-4 block size-32 overflow-hidden rounded-full"><Portrait id={(q as { portrait: string }).portrait} /></span> : null}
       <ul key={i} className={`relative mt-4 grid gap-3 ${q.choix.length === 2 ? "grid-cols-2" : "grid-cols-3"}`}>
         {q.choix.map((c) => {
           const animal = PAR_ID.get(c.id);
           return (
             <li key={c.id}>
-              <CarteChoix image={animal ? <Portrait id={animal.id} /> : undefined} emoji={animal ? undefined : EMOJI_REGIME[c.id]} nom={c.nom} detail={!animal && rep ? c.detail : undefined} revele={animal && q.choix.length === 2 ? c.detail : undefined} etat={etatDe(c.id, rep, q.bon, effaces)} onClick={() => choisir(c.id)} taille={q.choix.length === 2 ? "grande" : "petite"} />
+              <CarteChoix image={animal ? <Portrait id={animal.id} /> : undefined} emoji={animal ? undefined : EMOJI_REGIME[c.id]} nom={c.nom} revele={animal && q.choix.length === 2 ? c.detail : undefined} etat={etatDe(c.id, rep, q.bon, effaces)} onClick={() => choisir(c.id)} taille={q.choix.length === 2 ? "grande" : "petite"} />
             </li>
           );
         })}

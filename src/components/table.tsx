@@ -41,13 +41,13 @@ export function Preparation({
         <p className="px-1 text-sm font-black text-[#f0d090]">Les joueurs ({min === 1 ? "1" : "2"} à 4)</p>
         <ul className="mt-1.5 space-y-2">
           {joueurs.map((j, i) => (
-            <li key={i} className="flex items-center gap-2 rounded-2xl bg-card px-2 py-1.5 text-[#2a1c14]">
+            <li key={i} className="verre-jeu flex items-center gap-2 rounded-full px-2 py-1.5 text-white">
               <span className="grid size-9 shrink-0 place-items-center rounded-full font-black text-white" style={{ background: j.couleur }}>{(j.nom[0] ?? "?").toUpperCase()}</span>
               <input
                 value={j.nom}
                 onChange={(e) => changer(joueurs.map((x, k) => (k === i ? { ...x, nom: e.target.value.slice(0, 14) } : x)))}
                 aria-label={`Prénom du joueur ${i + 1}`}
-                className="min-w-0 flex-1 bg-transparent text-lg font-extrabold outline-none"
+                className="min-w-0 flex-1 bg-transparent text-lg font-extrabold text-white outline-none"
               />
               {mode === "equipes" && joueurs.length > 2 ? (
                 <button type="button" onClick={() => changer(joueurs.map((x, k) => (k === i ? { ...x, equipe: x.equipe ? 0 : 1 } : x)))} className={`rounded-full px-2.5 py-1 text-xs font-black ${j.equipe ? "bg-[#ffe7a8]" : "bg-[#e7d7ff]"}`}>
@@ -55,7 +55,7 @@ export function Preparation({
                 </button>
               ) : null}
               {joueurs.length > min ? (
-                <button type="button" onClick={() => changer(joueurs.filter((_, k) => k !== i))} aria-label={`Enlever ${j.nom}`} className="grid size-8 place-items-center rounded-full bg-[#e7d3b0]">
+                <button type="button" onClick={() => changer(joueurs.filter((_, k) => k !== i))} aria-label={`Enlever ${j.nom}`} className="grid size-8 place-items-center rounded-full bg-white/15 text-white">
                   <LuMinus className="size-4" />
                 </button>
               ) : null}
@@ -66,7 +66,7 @@ export function Preparation({
           <button
             type="button"
             onClick={() => changer([...joueurs, { nom: `Joueur ${joueurs.length + 1}`, couleur: COULEURS[joueurs.length], equipe: (joueurs.length % 2) as 0 | 1 }])}
-            className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-2xl border-2 border-dashed border-[#e8c98a]/60 py-2.5 font-extrabold text-[#f0d090]"
+            className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-full bg-white/8 py-2.5 font-extrabold text-[#f3d48a] ring-1 ring-white/20"
           >
             <LuPlus className="size-5" /> Ajouter un joueur
           </button>
@@ -84,19 +84,19 @@ export function Preparation({
       ) : null}
 
       {joueurs.length >= 2 && !sansFaceAFace ? (
-        <label className="flex items-center gap-3 rounded-2xl bg-card px-3 py-2.5 text-[#2a1c14]">
+        <label className="verre-jeu flex items-center gap-3 rounded-[1.4rem] px-3 py-2.5 text-white">
           <input type="checkbox" checked={faceAFace} onChange={(e) => setFaceAFace(e.target.checked)} className="size-6 accent-[#6a3fc0]" />
           <span>
             <span className="block font-extrabold">Face à face</span>
-            <span className="block text-xs">Le téléphone est posé à plat, chacun a son côté de l'écran. Plus pratique sur une tablette à 4.</span>
+            <span className="block text-xs text-white/75">Le téléphone est posé à plat, chacun a son côté de l'écran. Plus pratique sur une tablette à 4.</span>
           </span>
         </label>
       ) : null}
 
       {children}
 
-      <button type="button" onClick={onJouer} className="w-full rounded-[1.4rem] bg-[linear-gradient(180deg,#ff9f4a,#c2402a)] py-3.5 font-display text-2xl text-white shadow-[0_10px_20px_rgba(0,0,0,.45)]">
-        C'est parti !
+      <button type="button" onClick={onJouer} className="bouton-jeu w-full rounded-full py-3.5 font-display text-2xl">
+        C'est parti ! ➜
       </button>
     </section>
   );
@@ -104,7 +104,7 @@ export function Preparation({
 
 export function Choix({ actif, onClick, children }: { actif: boolean; onClick: () => void; children: ReactNode }) {
   return (
-    <button type="button" aria-pressed={actif} onClick={onClick} className={`min-h-11 rounded-2xl px-2 py-2 text-sm font-extrabold leading-tight ${actif ? "bouton-bois" : "bg-[#f3e2c2] text-[#2a1c14]"}`}>
+    <button type="button" aria-pressed={actif} onClick={onClick} className={`min-h-11 rounded-full px-3 py-2 text-sm font-extrabold leading-tight transition-all ${actif ? "bg-gradient-to-b from-[#fff0b8] to-[#f3c35a] text-[#2a1650] shadow-[0_0_18px_rgba(243,195,90,.5)]" : "verre-jeu text-white"}`}>
       {children}
     </button>
   );
