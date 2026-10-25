@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as PE } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as PE } from "react";
 import { LuBookOpen, LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
 import { ASTUCES, PRESENTATION, SUJETS, explicationPour } from "@/data/guide";
 import { voixDePresentation, voixPossible } from "@/components/voix";
@@ -27,7 +27,7 @@ import {
   usePlume,
 } from "@/lib/plume";
 import { dire, taire, useParle } from "@/lib/parole";
-import { choisirCompagnon, cleVoix, compagnonExprime, lireVoix, useCompagnon, useCompagnons, type Expression } from "@/lib/compagnons";
+import { choisirCompagnon, choisirVersion, compagnonExprime, jouerVersion, useCompagnon, useCompagnons, type Expression } from "@/lib/compagnons";
 import { aller } from "@/lib/routeur";
 import { motDuLexique, type MotLexique } from "@/data/lexique";
 
@@ -562,7 +562,9 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
 
   // Un personnage bonus explique avec son nom à lui, et avec son propre texte s'il en a écrit un pour cette page.
   const avecNom = (t: string) => (perso ? t.replace(/\bPlume\b/g, perso.nom) : t);
-  const textePerso = perso && contenu === "page" ? perso.phrases[`page:${explicationBrute.id}` as Expression]?.trim() : undefined;
+  // Une version de son explication pour cette page (choisie au hasard une fois, quand la page s'ouvre).
+  const versionPage = useMemo(() => (perso && contenu === "page" ? choisirVersion(perso, `page:${explicationBrute.id}` as Expression) : null), [perso?.id, contenu, explicationBrute.id]);
+  const textePerso = versionPage?.texte || undefined;
   const explication = perso ? { ...explicationBrute, titre: avecNom(explicationBrute.titre), etapes: textePerso ? [textePerso] : explicationBrute.etapes.map(avecNom) } : explicationBrute;
   const texte = explication.etapes[etape] ?? explication.etapes[0];
   const derniere = etape >= explication.etapes.length - 1;
@@ -769,14 +771,8 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
               } else {
                 setLecture(true);
                 // Sa propre voix enregistrée pour cette page ? On la fait entendre à la place de la voix de synthèse.
-                if (perso && contenu === "page") {
-                  lireVoix(cleVoix(perso.id, `page:${explicationBrute.id}`)).then((son) => {
-                    if (!son) return dire(texte);
-                    const url = URL.createObjectURL(son);
-                    const a = new Audio(url);
-                    a.onended = () => { URL.revokeObjectURL(url); setLecture(false); };
-                    a.play().catch(() => dire(texte));
-                  });
+                if (perso && contenu === "page" && versionPage) {
+                  jouerVersion(perso.id, `page:${explicationBrute.id}` as Expression, versionPage.i, () => setLecture(false)).then((ok) => { if (!ok) dire(texte); });
                 } else dire(contenu === "presence" ? PRESENCES.map((p) => `${p.nom}. ${p.explique}`).join(" ") : texte);
               }
             }}

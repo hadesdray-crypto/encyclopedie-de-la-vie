@@ -8,7 +8,7 @@ import { definirEcran } from "@/lib/plume";
 import { PlumeDessin, type AnimPlume, type Caractere } from "@/components/plume-dessin";
 import { COULEURS_CORPS, EPAISSEURS, type Look } from "@/components/garde-robe";
 import { BAS, CHAPEAUX2, CHAUSSURES, HAUTS, LUNETTES, OBJETS, TEINTES, type Piece, type Tenue } from "@/components/vestiaire";
-import { CATEGORIES, CATEGORIE_PAGES, MAX_BONUS, choisirCompagnon, cleVoix, garderCompagnons, garderVoix, lireCompagnons, lireVoix, nouveauCompagnon, type Compagnon, type Expression } from "@/lib/compagnons";
+import { CATEGORIES, CATEGORIE_PAGES, MAX_BONUS, MAX_VERSIONS, choisirCompagnon, cleVoix, garderCompagnons, garderVoix, lireCompagnons, lireVoix, lireVoixVersion, nouveauCompagnon, type Compagnon, type Expression, type Variante } from "@/lib/compagnons";
 import { PRESENCES, choisirPresence } from "@/lib/plume";
 import { REACTIONS } from "@/data/guide";
 import { aller as naviguer } from "@/lib/routeur";
@@ -56,7 +56,7 @@ export function AtelierPage({ params }: { params: URLSearchParams }) {
       ? ["Bienvenue dans la cabine d'essayage ! Ton personnage arrive en peignoir et entre dans la cabine.", "En bas, choisis un rayon : le haut, le bas, la tête, les lunettes, les pieds, la main, ou son corps (sa couleur et son épaisseur).", "Touche un vêtement pour le lui donner, puis une couleur si tu veux. La cabine bouge : il se change derrière les volets !", "Quand tu as fini, touche « Ouvrir la cabine » pour voir la surprise. Ensuite, tu peux zoomer sur sa tête ou voir tout son corps."]
       : onglet === "caractere"
         ? ["Choisis son caractère, comme pour moi : discret, présent, étudiant ou passionné.", "Le caractère décide s'il parle souvent ou pas, et quels gestes il fait."]
-        : ["Ici, ses paroles. Elles sont rangées par moments : quand on le touche, les réponses, les jeux, les mouvements, et chaque page.", "Écris sa phrase, ou touche « Enregistrer ma voix » : c'est ta voix qu'on entendra à ce moment-là.", "Si tu ne changes rien, il dit ce que je dirais avec son caractère."];
+        : ["Ici, ses paroles. Elles sont rangées par moments : quand on le touche, les réponses, les jeux, les mouvements, et chaque page.", "Écris sa phrase et touche « Enregistrer ma voix » : c'est ta voix qu'on entendra, et ta phrase qui s'affichera dans sa bulle.", "Tu peux faire jusqu'à 5 versions pour un même moment, avec « Une autre version » : il en choisit une au hasard, pour ne pas toujours dire la même chose.", "Si tu ne changes rien, il dit ce que je dirais avec son caractère."];
     definirEcran({ id: `atelier-${onglet}`, titre: "L'atelier des personnages", etapes });
     return () => definirEcran(null);
   }, [onglet]);
@@ -83,7 +83,10 @@ export function AtelierPage({ params }: { params: URLSearchParams }) {
   function supprimer() {
     garderCompagnons(lireCompagnons().filter((x) => x.id !== c.id));
     choisirCompagnon(null);
-    [...CATEGORIES, CATEGORIE_PAGES].flatMap((k) => k.moments).forEach((m) => garderVoix(cleVoix(c.id, m.id), null).catch(() => {}));
+    [...CATEGORIES, CATEGORIE_PAGES].flatMap((k) => k.moments).forEach((m) => {
+      garderVoix(`${c.id}:${m.id}`, null).catch(() => {});
+      for (let i = 0; i < MAX_VERSIONS; i++) garderVoix(cleVoix(c.id, m.id, i), null).catch(() => {});
+    });
     naviguer("/options");
   }
 
@@ -146,7 +149,7 @@ export function AtelierPage({ params }: { params: URLSearchParams }) {
         </div>
       ) : (
         <div className="mt-3 space-y-4">
-          <p className="px-1 text-sm texte-doux">Pour chaque moment, ton personnage dit ce que dirait Plume avec son caractère. Tu peux écrire ta propre phrase, et l'enregistrer avec ta voix : c'est elle qu'on entendra.</p>
+          <p className="px-1 text-sm texte-doux">Pour chaque moment, ton personnage dit ce que dirait Plume avec son caractère. Tu peux écrire ses phrases et les enregistrer avec ta voix, jusqu'à 5 versions par moment : il en choisit une au hasard, et sa bulle montre toujours ce qu'il dit.</p>
           {[...CATEGORIES, CATEGORIE_PAGES].map((k) => (
             <details key={k.id} open={k.id === "toucher"} className="verre-jeu rounded-[1.6rem] px-3 py-3">
               <summary className="cursor-pointer list-none">
@@ -158,8 +161,7 @@ export function AtelierPage({ params }: { params: URLSearchParams }) {
                   <li key={m.id} className="rounded-2xl bg-white/5 px-3 py-2.5">
                     <p className="font-extrabold">{m.nom}</p>
                     <p className="text-xs texte-doux">{m.quand}</p>
-                    <input value={c.phrases[m.id] ?? ""} maxLength={120} onChange={(e) => setC({ ...c, phrases: { ...c.phrases, [m.id]: e.target.value } })} placeholder={`Sinon : « ${(DEFAUTS[m.id as keyof typeof DEFAUTS] ?? m.quand).slice(0, 70)}${(DEFAUTS[m.id as keyof typeof DEFAUTS] ?? m.quand).length > 70 ? "…" : ""} »`} className="mt-1.5 w-full rounded-xl bg-white/10 px-3 py-2 text-sm text-white outline-none placeholder:text-white/45" />
-                    <Enregistreur cle={cleVoix(c.id, m.id)} />
+                    <Versions c={c} setC={setC} e={m.id} defaut={(DEFAUTS[m.id as keyof typeof DEFAUTS] ?? m.quand)} />
                   </li>
                 ))}
               </ul>
@@ -204,12 +206,49 @@ function Pastille({ actif, onClick, children }: { actif: boolean; onClick: () =>
 }
 
 /** Enregistrer une phrase avec le micro (10 secondes au plus), l'écouter, ou l'effacer. */
-function Enregistreur({ cle }: { cle: string }) {
+/**
+ * Les versions d'un moment : jusqu'à 5 (un texte + sa voix). Le personnage en choisit une au hasard,
+ * et la bulle montre toujours le texte de la version qu'on entend.
+ */
+function Versions({ c, setC, e, defaut }: { c: Compagnon; setC: (c: Compagnon) => void; e: Expression; defaut: string }) {
+  const liste: Variante[] = c.paroles[e]?.length ? c.paroles[e]! : [{ texte: "" }];
+  const changer = (l: Variante[]) => setC({ ...c, paroles: { ...c.paroles, [e]: l } });
+  async function enlever(i: number) {
+    // On décale les enregistrements des versions suivantes, pour que chaque voix reste avec son texte.
+    for (let j = i; j < liste.length - 1; j++) await garderVoix(cleVoix(c.id, e, j), await lireVoixVersion(c.id, e, j + 1));
+    await garderVoix(cleVoix(c.id, e, liste.length - 1), null);
+    if (i === 0) await garderVoix(`${c.id}:${e}`, null);
+    const l = liste.filter((_, k) => k !== i);
+    changer(l.length ? l : [{ texte: "" }]);
+  }
+  const remplies = liste.filter((v) => v.texte.trim() || v.voix).length;
+  return (
+    <div className="mt-1.5 space-y-2">
+      {liste.map((v, i) => (
+        <div key={i} className="rounded-xl bg-white/5 px-2 py-2">
+          <div className="flex items-center gap-1.5">
+            <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#f3d48a] text-xs font-black text-[#2a1650]">{i + 1}</span>
+            <input value={v.texte} maxLength={120} onChange={(ev) => changer(liste.map((x, k) => (k === i ? { ...x, texte: ev.target.value } : x)))} placeholder={i === 0 ? `Sinon : « ${defaut.slice(0, 60)}${defaut.length > 60 ? "…" : ""} »` : "Une autre façon de le dire…"} className="min-w-0 flex-1 rounded-lg bg-white/10 px-2.5 py-1.5 text-sm text-white outline-none placeholder:text-white/45" />
+            {liste.length > 1 || v.texte || v.voix ? <button type="button" aria-label={`Enlever la version ${i + 1}`} onClick={() => enlever(i)} className="grid size-8 shrink-0 place-items-center rounded-full bg-white/10 text-white/80"><LuTrash2 className="size-4" /></button> : null}
+          </div>
+          <Enregistreur cle={cleVoix(c.id, e, i)} ancienne={i === 0 ? `${c.id}:${e}` : undefined} onSon={(oui) => changer(liste.map((x, k) => (k === i ? { ...x, voix: oui } : x)))} />
+          {v.voix && !v.texte.trim() ? <p className="mt-1 text-[11px] text-[#ffd9a0]">Écris aussi ce qu'il dit dans cet enregistrement : c'est ce qui s'affichera dans sa bulle.</p> : null}
+        </div>
+      ))}
+      <div className="flex items-center justify-between gap-2">
+        {liste.length < MAX_VERSIONS ? <button type="button" onClick={() => changer([...liste, { texte: "" }])} className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-extrabold text-[#f3d48a] ring-1 ring-white/20">＋ Une autre version ({liste.length}/{MAX_VERSIONS})</button> : <span />}
+        {remplies > 1 ? <span className="text-[11px] font-bold texte-doux">🎲 Au hasard parmi {remplies} versions</span> : null}
+      </div>
+    </div>
+  );
+}
+
+function Enregistreur({ cle, ancienne, onSon }: { cle: string; ancienne?: string; onSon?: (oui: boolean) => void }) {
   const [son, setSon] = useState<Blob | null>(null);
   const [etat, setEtat] = useState<"" | "enregistre" | "erreur">("");
   const rec = useRef<MediaRecorder | null>(null);
   useEffect(() => {
-    lireVoix(cle).then(setSon);
+    lireVoix(cle).then(async (b) => setSon(b ?? (ancienne ? await lireVoix(ancienne) : null)));
   }, [cle]);
   async function demarrer() {
     try {
@@ -223,6 +262,7 @@ function Enregistreur({ cle }: { cle: string }) {
         await garderVoix(cle, b);
         setSon(b);
         setEtat("");
+        onSon?.(true);
       };
       rec.current = r;
       r.start();
@@ -249,7 +289,7 @@ function Enregistreur({ cle }: { cle: string }) {
       {son ? (
         <>
           <button type="button" onClick={ecouter} className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-[#5fe07a]/20 px-3 text-sm font-extrabold text-[#b9ffc4]"><LuPlay className="size-4" /> Écouter</button>
-          <button type="button" aria-label="Effacer l'enregistrement" onClick={() => { garderVoix(cle, null); setSon(null); }} className="grid size-9 place-items-center rounded-full bg-white/10 text-white/80"><LuTrash2 className="size-4" /></button>
+          <button type="button" aria-label="Effacer l'enregistrement" onClick={() => { garderVoix(cle, null); if (ancienne) garderVoix(ancienne, null); setSon(null); onSon?.(false); }} className="grid size-9 place-items-center rounded-full bg-white/10 text-white/80"><LuTrash2 className="size-4" /></button>
         </>
       ) : null}
       {etat === "erreur" ? <p className="w-full text-xs text-[#ffb3b3]">Le micro n'est pas disponible. Sur le téléphone, il faut accepter l'accès au micro (il faut la nouvelle version de l'application, installée depuis le lien).</p> : null}
