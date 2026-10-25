@@ -8,15 +8,6 @@
   "licence": "CC BY-SA 4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Hadean.png"
  },
- "molecules": {
-  "src": "evo/molecules.webp",
-  "sorte": "modele",
-  "article": "Acide aminé",
-  "fichier": "Alpha-amino-acid-general-2D-stereo.png",
-  "auteur": "Benjah-bmm27",
-  "licence": "Public domain",
-  "page": "https://commons.wikimedia.org/wiki/File:Alpha-amino-acid-general-2D-stereo.png"
- },
  "arn": {
   "src": "evo/arn.webp",
   "sorte": "modele",
@@ -101,20 +92,20 @@
  "asgard": {
   "src": "evo/asgard.webp",
   "sorte": "photo",
-  "article": "Lokiarchaeota",
-  "fichier": "Promethearchaeum_syntrophicum_SEM_Cryo-EM.jpg",
-  "auteur": "Hiroyuki Imachi, Masaru K. Nobu,Nozomi Nakahara,Yuki Morono, Miyuki Ogawara, Yoshihiro Takaki, Yoshinori Takano, Katsuyu",
-  "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Promethearchaeum_syntrophicum_SEM_Cryo-EM.jpg"
+  "article": "Fumeur noir",
+  "fichier": "Blacksmoker_in_Atlantic_Ocean.jpg",
+  "auteur": "P. Rona / OAR/National Undersea Research Program (NURP); NOAA",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Blacksmoker_in_Atlantic_Ocean.jpg"
  },
  "eucaryotes": {
   "src": "evo/eucaryotes.webp",
   "sorte": "photo",
-  "article": "Eukaryota",
-  "fichier": "Eukaryota_diversity_2.jpg",
-  "auteur": "File:Osmia rufa couple (aka).jpg: André Karwath File:Boletus edulis (Tillegem).jpg: Hans Hillewaert File:Volvocales.png:",
-  "licence": "CC BY-SA 2.5",
-  "page": "https://commons.wikimedia.org/wiki/File:Eukaryota_diversity_2.jpg"
+  "article": "Amoeba proteus",
+  "fichier": "Wilson1900Fig3.jpg",
+  "auteur": "Edmund Beecher Wilson (1856–1939)",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Wilson1900Fig3.jpg"
  },
  "autres-eucaryotes": {
   "src": "evo/autres-eucaryotes.webp",
@@ -128,11 +119,11 @@
  "plantes": {
   "src": "evo/plantes.webp",
   "sorte": "photo",
-  "article": "Plantae",
-  "fichier": "Diversity_of_plants_(Streptophyta)_version_2.png",
-  "auteur": "Rkitko",
-  "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Diversity_of_plants_(Streptophyta)_version_2.png"
+  "article": "Chêne pédonculé",
+  "fichier": "Quercus_robur_JPG_(d1).jpg",
+  "auteur": "Jean-Pol GRANDMONT",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Quercus_robur_JPG_(d1).jpg"
  },
  "mousses": {
   "src": "evo/mousses.webp",
@@ -164,11 +155,11 @@
  "fleurs": {
   "src": "evo/fleurs.webp",
   "sorte": "photo",
-  "article": "Angiospermes",
-  "fichier": "Flower_poster_2.jpg",
-  "auteur": "Alvesgaspar",
-  "licence": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Flower_poster_2.jpg"
+  "article": "Coquelicot",
+  "fichier": "Fleur_de_Coquelicot_(Papaver_rhoeas).jpg",
+  "auteur": "JackyM59",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Fleur_de_Coquelicot_(Papaver_rhoeas).jpg"
  },
  "champignons": {
   "src": "evo/champignons.webp",
@@ -182,11 +173,11 @@
  "animaux": {
   "src": "evo/animaux.webp",
   "sorte": "photo",
-  "article": "Animalia",
-  "fichier": "Animal_diversity.jpg",
-  "auteur": "MathKnight",
-  "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Animal_diversity.jpg"
+  "article": "Tigre",
+  "fichier": "Sibirischer_tiger_de_edit02.jpg",
+  "auteur": "S. Taheri, edited by Fir0002",
+  "licence": "CC BY-SA 2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Sibirischer_tiger_de_edit02.jpg"
  },
  "eponges": {
   "src": "evo/eponges.webp",
@@ -200,11 +191,11 @@
  "meduses": {
   "src": "evo/meduses.webp",
   "sorte": "photo",
-  "article": "Cnidaria",
-  "fichier": "Cnidaria.png",
-  "auteur": "Frédéric Ducarme",
-  "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Cnidaria.png"
+  "article": "Aurelia aurita",
+  "fichier": "Moon_jelly_-_adult_(rev2).jpg",
+  "auteur": "Dante Alighieri",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Moon_jelly_-_adult_(rev2).jpg"
  },
  "vers": {
   "src": "evo/vers.webp",
@@ -218,47 +209,47 @@
  "mollusques": {
   "src": "evo/mollusques.webp",
   "sorte": "photo",
-  "article": "Mollusca",
-  "fichier": "Diversité_des_mollusques.png",
-  "auteur": "Acanthopleura gemmata (Blainville, 1825) Natural History Museum Rotterdam Oxyprora parrishi The Pennsylvanian Atlas of A",
-  "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Diversit%C3%A9_des_mollusques.png"
+  "article": "Nautilus pompilius",
+  "fichier": "Nautilus_pompilius.jpg",
+  "auteur": "Auteur inconnu",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Nautilus_pompilius.jpg"
  },
  "pattes": {
   "src": "evo/pattes.webp",
   "sorte": "photo",
-  "article": "Arthropoda",
-  "fichier": "Arthropoda.jpg",
-  "auteur": "Kolihapeltis 01 Pengo.jpg: Peter Halasz Stylonurus BW.jpg: Nobu Tamura SCORPIO MAURUS PALMATUS.jpg: Guy Haimovitch Blue ",
-  "licence": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Arthropoda.jpg"
+  "article": "Coccinelle à sept points",
+  "fichier": "P1170487_Coccinella_septempunctata.jpg",
+  "auteur": "Darius Baužys",
+  "licence": "CC BY 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:P1170487_Coccinella_septempunctata.jpg"
  },
  "insectes": {
   "src": "evo/insectes.webp",
   "sorte": "photo",
-  "article": "Insecte",
-  "fichier": "Insects_collage.jpg",
-  "auteur": "Anax_imperator_qtl2.jpg: Quartl Cetonia-aurata.jpg: Crumps Unidentified_Mantid_Species_(6105939456).jpg: Thomas Brown Py",
-  "licence": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Insects_collage.jpg"
+  "article": "Papilio machaon",
+  "fichier": "Schwalbenschwanz-Duell_Winterthur_Schweiz.jpg",
+  "auteur": "Andreas Schoellhorn",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Schwalbenschwanz-Duell_Winterthur_Schweiz.jpg"
  },
  "araignees": {
   "src": "evo/araignees.webp",
   "sorte": "photo",
-  "article": "Araneae",
-  "fichier": "Spiders_Diversity.jpg",
-  "auteur": "Termininja Marshal Hedin (File:Aptostichus female.jpg) Dr. David Midgley (File:Supunna sp.jpg) James Gathany (File:Black",
-  "licence": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Spiders_Diversity.jpg"
+  "article": "Épeire diadème",
+  "fichier": "Araneus_diadematus_(Gartenkreuzspinne_mit_Wespe).jpg",
+  "auteur": "Jürgen Howaldt",
+  "licence": "CC BY-SA 2.0 de",
+  "page": "https://commons.wikimedia.org/wiki/File:Araneus_diadematus_(Gartenkreuzspinne_mit_Wespe).jpg"
  },
  "crustaces": {
   "src": "evo/crustaces.webp",
   "sorte": "photo",
-  "article": "Crustacea",
-  "fichier": "Crustacea.jpg",
-  "auteur": "Hans Hillewaert",
-  "licence": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Crustacea.jpg"
+  "article": "Homard européen",
+  "fichier": "KreeftbijDenOsse.jpg",
+  "auteur": "Bart Braun",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:KreeftbijDenOsse.jpg"
  },
  "mille-pattes": {
   "src": "evo/mille-pattes.webp",
@@ -272,20 +263,20 @@
  "echinodermes": {
   "src": "evo/echinodermes.webp",
   "sorte": "photo",
-  "article": "Echinodermata",
-  "fichier": "Echinodermata.png",
-  "auteur": "E. M. Grosse",
-  "licence": "Public domain",
-  "page": "https://commons.wikimedia.org/wiki/File:Echinodermata.png"
+  "article": "Asterias rubens",
+  "fichier": "Asterias_rubens.jpg",
+  "auteur": "Hans Hillewaert",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Asterias_rubens.jpg"
  },
  "vertebres": {
   "src": "evo/vertebres.webp",
   "sorte": "photo",
-  "article": "Vertebrata",
-  "fichier": "Vertebrata_002.png",
-  "auteur": "User:Follix User:Jamez42 User:Albert kok User:Tiithunt",
-  "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Vertebrata_002.png"
+  "article": "Amphiprion ocellaris",
+  "fichier": "Amphiprion_ocellaris_(Clown_anemonefish)_in_Heteractis_magnifica_(Sea_anemone).jpg",
+  "auteur": "Nhobgood Nick Hobgood",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Amphiprion_ocellaris_(Clown_anemonefish)_in_Heteractis_magnifica_(Sea_anemone).jpg"
  },
  "sans-machoires": {
   "src": "evo/sans-machoires.webp",
@@ -308,11 +299,11 @@
  "nageoires-rayonnees": {
   "src": "evo/nageoires-rayonnees.webp",
   "sorte": "photo",
-  "article": "Actinopterygii",
-  "fichier": "Actinopterygii-0001.jpg",
-  "auteur": "MathKnight",
-  "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Actinopterygii-0001.jpg"
+  "article": "Poisson rouge",
+  "fichier": "Goldfish3.jpg",
+  "auteur": "No machine-readable author provided. Heptagon assumed (based on copyright claims).",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Goldfish3.jpg"
  },
  "nageoires-charnues": {
   "src": "evo/nageoires-charnues.webp",
@@ -335,11 +326,11 @@
  "amphibiens": {
   "src": "evo/amphibiens.webp",
   "sorte": "photo",
-  "article": "Amphibia",
-  "fichier": "Amphibians.png",
-  "auteur": "Various; see each photo",
+  "article": "Rainette verte",
+  "fichier": "Laubfrosch_Macro.jpg",
+  "auteur": "FelixReimann",
   "licence": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Amphibians.png"
+  "page": "https://commons.wikimedia.org/wiki/File:Laubfrosch_Macro.jpg"
  },
  "oeuf": {
   "src": "evo/oeuf.webp",
@@ -353,29 +344,29 @@
  "reptiles": {
   "src": "evo/reptiles.webp",
   "sorte": "photo",
-  "article": "Reptilia",
-  "fichier": "Reptile003d.jpg",
-  "auteur": "Adolphe Millot",
-  "licence": "Public domain",
-  "page": "https://commons.wikimedia.org/wiki/File:Reptile003d.jpg"
+  "article": "Iguane vert",
+  "fichier": "Iguanidae_head_from_Venezuela.jpg",
+  "auteur": "Wilfredor",
+  "licence": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Iguanidae_head_from_Venezuela.jpg"
  },
  "tortues": {
   "src": "evo/tortues.webp",
   "sorte": "photo",
-  "article": "Testudines",
-  "fichier": "Haeckel_Chelonia.jpg",
-  "auteur": "Ernst Haeckel",
-  "licence": "Public domain",
-  "page": "https://commons.wikimedia.org/wiki/File:Haeckel_Chelonia.jpg"
+  "article": "Tortue verte",
+  "fichier": "Hawaii_turtle_2.JPG",
+  "auteur": "Brocken Inaglory",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hawaii_turtle_2.JPG"
  },
  "lezards": {
   "src": "evo/lezards.webp",
   "sorte": "photo",
-  "article": "Squamata",
-  "fichier": "Squamata-01.jpg",
-  "auteur": "MathKnight",
-  "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Squamata-01.jpg"
+  "article": "Lézard vert occidental",
+  "fichier": "Lacerta_bilineata_masculus_et_femella_+_Podarcis_muralis_(Sarthe).JPG",
+  "auteur": "Benchaum",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lacerta_bilineata_masculus_et_femella_%2B_Podarcis_muralis_(Sarthe).JPG"
  },
  "crocodiles": {
   "src": "evo/crocodiles.webp",
@@ -389,29 +380,29 @@
  "dinosaures": {
   "src": "evo/dinosaures.webp",
   "sorte": "reconstitution",
-  "article": "Dinosauria",
-  "fichier": "Various_dinosaurs_4.jpg",
-  "auteur": "Allie Caulfield (processed by User:MathKnight), Tadek Kurpaski, User:EvaK, User:J. Spencer, User:Domser, User:Captmondo,",
-  "licence": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Various_dinosaurs_4.jpg"
+  "article": "Tyrannosaurus",
+  "fichier": "Sues_skeleton.jpg",
+  "auteur": "Connie Ma from Chicago, United States of America",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Sues_skeleton.jpg"
  },
  "oiseaux": {
   "src": "evo/oiseaux.webp",
   "sorte": "photo",
-  "article": "Aves",
-  "fichier": "Bird_Diversity_2013.png",
-  "auteur": "Concerto",
-  "licence": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Bird_Diversity_2013.png"
+  "article": "Rouge-gorge familier",
+  "fichier": "030_European_robin_in_the_Camargue_Photo_by_Giles_Laurent.jpg",
+  "auteur": "Giles Laurent",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:030_European_robin_in_the_Camargue_Photo_by_Giles_Laurent.jpg"
  },
  "mammiferes": {
   "src": "evo/mammiferes.webp",
   "sorte": "photo",
-  "article": "Mammalia",
-  "fichier": "Mammalia_0.jpg",
-  "auteur": "derivative work: user:The Explaner",
+  "article": "Renard roux",
+  "fichier": "Portrait_of_a_red_fox_in_Rautas_fjällurskog.jpg",
+  "auteur": "ClaudiaTen",
   "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Mammalia_0.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog.jpg"
  },
  "monotremes": {
   "src": "evo/monotremes.webp",
@@ -425,20 +416,11 @@
  "marsupiaux": {
   "src": "evo/marsupiaux.webp",
   "sorte": "photo",
-  "article": "Marsupialia",
-  "fichier": "Marsupialia.jpg",
-  "auteur": "LittleJerry",
-  "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Marsupialia.jpg"
- },
- "placentaires": {
-  "src": "evo/placentaires.webp",
-  "sorte": "photo",
-  "article": "Eutheria",
-  "fichier": "Eomaia.jpg",
-  "auteur": "Zofia Kielan-Jaworowska and Jørn H. Hurum",
-  "licence": "CC BY 2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Eomaia.jpg"
+  "article": "Koala",
+  "fichier": "Koala_climbing_tree.jpg",
+  "auteur": "Diliff",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Koala_climbing_tree.jpg"
  },
  "accueil-commencer": {
   "src": "evo/accueil-commencer.webp",
@@ -452,10 +434,10 @@
  "accueil-reptiles": {
   "src": "evo/accueil-reptiles.webp",
   "sorte": "photo",
-  "article": "Tortue verte",
-  "fichier": "Hawaii_turtle_2.JPG",
-  "auteur": "Brocken Inaglory",
+  "article": "Caméléon panthère",
+  "fichier": "FurciferPardalisMale.JPG",
+  "auteur": "B.navez",
   "licence": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Hawaii_turtle_2.JPG"
+  "page": "https://commons.wikimedia.org/wiki/File:FurciferPardalisMale.JPG"
  }
 }

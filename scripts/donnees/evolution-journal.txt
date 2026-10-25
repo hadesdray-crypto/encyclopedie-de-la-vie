@@ -1,5 +1,5 @@
 terre ← Hadéen · Hadean.png · CC BY-SA 4.0
-molecules ← Acide aminé · Alpha-amino-acid-general-2D-stereo.png · Public domain
+molecules AUCUNE IMAGE
 briques AUCUNE IMAGE
 arn ← Acide ribonucléique · SAM_riboswitch.png · CC BY-SA 3.0
 proteines Protéine licence non libre ou pas une photo : Human_alfa2beta2_hemoglobin.gif
@@ -16,44 +16,46 @@ archees ← Archaea · Halobacteria.jpg · Public domain
 archees-chaleur ← Grand Prismatic Spring · Aerial_image_of_Grand_Prismatic_Spring_(view_from_the_south).jpg · CC BY-SA 4.0
 archees-methane Methanosarcina licence non libre ou pas une photo : Methanosarcina_barkeri_fusaro.gif
 archees-methane AUCUNE IMAGE
-asgard ← Lokiarchaeota · Promethearchaeum_syntrophicum_SEM_Cryo-EM.jpg · CC BY-SA 4.0
-eucaryotes ← Eukaryota · Eukaryota_diversity_2.jpg · CC BY-SA 2.5
+asgard ← Fumeur noir · Blacksmoker_in_Atlantic_Ocean.jpg · Public domain
+eucaryotes ← Amoeba proteus · Wilson1900Fig3.jpg · Public domain
 autres-eucaryotes ← Paramécie · Paramecium.jpg · CC BY-SA 3.0
-plantes ← Plantae · Diversity_of_plants_(Streptophyta)_version_2.png · CC BY-SA 4.0
+plantes ← Chêne pédonculé · Quercus_robur_JPG_(d1).jpg · CC BY-SA 3.0
 mousses ← Bryophyta · Mousse,_Bryophyta.jpg · CC BY-SA 4.0
 fougeres ← Fougère · Dicksonia_antarctica_at_Conservatoire_botanique_national_de_Brest.jpg · CC BY-SA 3.0
 coniferes ← Pinophyta · Araucaria_heterophylla_01.jpg · CC BY-SA 3.0
-fleurs ← Angiospermes · Flower_poster_2.jpg · CC BY-SA 3.0
+fleurs ← Coquelicot · Fleur_de_Coquelicot_(Papaver_rhoeas).jpg · CC BY-SA 4.0
 champignons ← Amanita muscaria · Fliegenpilz_fly_agaric_Amanita_muscaria.JPG · CC BY 3.0
-animaux ← Animalia · Animal_diversity.jpg · CC BY-SA 4.0
+animaux ← Tigre · Sibirischer_tiger_de_edit02.jpg · CC BY-SA 2.5
 eponges ← Porifera · Aplysina_archeri_(Stove-pipe_Sponge-pink_variation).jpg · CC BY-SA 3.0
-meduses ← Cnidaria · Cnidaria.png · CC BY-SA 4.0
+meduses ← Aurelia aurita · Moon_jelly_-_adult_(rev2).jpg · CC BY-SA 3.0
 vers ← Lombric commun · Earthworm_on_earth_-_heart.jpg · CC BY-SA 2.0
-mollusques ← Mollusca · Diversité_des_mollusques.png · CC BY-SA 4.0
-pattes ← Arthropoda · Arthropoda.jpg · CC BY-SA 3.0
-insectes ← Insecte · Insects_collage.jpg · CC BY-SA 3.0
-araignees ← Araneae · Spiders_Diversity.jpg · CC BY-SA 3.0
-crustaces ← Crustacea · Crustacea.jpg · CC BY-SA 3.0
+mollusques ← Nautilus pompilius · Nautilus_pompilius.jpg · Public domain
+pattes ← Coccinelle à sept points · P1170487_Coccinella_septempunctata.jpg · CC BY 3.0
+insectes ← Papilio machaon · Schwalbenschwanz-Duell_Winterthur_Schweiz.jpg · CC BY-SA 4.0
+araignees ← Épeire diadème · Araneus_diadematus_(Gartenkreuzspinne_mit_Wespe).jpg · CC BY-SA 2.0 de
+crustaces ← Homard européen · KreeftbijDenOsse.jpg · Public domain
 mille-pattes ← Myriapoda · Myriapod_collage.png · CC BY-SA 4.0
-echinodermes ← Echinodermata · Echinodermata.png · Public domain
-vertebres ← Vertebrata · Vertebrata_002.png · CC BY-SA 4.0
+echinodermes ← Asterias rubens · Asterias_rubens.jpg · CC BY-SA 4.0
+vertebres ← Amphiprion ocellaris · Amphiprion_ocellaris_(Clown_anemonefish)_in_Heteractis_magnifica_(Sea_anemone).jpg · CC BY-SA 3.0
 sans-machoires ← Agnatha · Jõesilmud2.jpg · CC BY-SA 3.0
 requins ← Grand requin blanc · Great_White_Shark_(14730820387).jpg · CC BY 2.0
-nageoires-rayonnees ← Actinopterygii · Actinopterygii-0001.jpg · CC BY-SA 4.0
+nageoires-rayonnees ← Poisson rouge · Goldfish3.jpg · Public domain
 nageoires-charnues ← Cœlacanthe · Coelacanth_off_Pumula_on_the_KwaZulu-Natal_South_Coast,_South_Africa,_on_22_November_2019.png · CC BY 4.0
 hors ← Tiktaalik · Tiktaalik_roseae_(fish_to_amphibian_transitional_fossil)_(Fram_Formation,_Upper_Devonian;_Ellesmere_Island,_Arctic_Canada)_1_(49755118288).jpg · CC BY 2.0
-amphibiens ← Amphibia · Amphibians.png · CC BY-SA 3.0
+amphibiens ← Rainette verte · Laubfrosch_Macro.jpg · CC BY-SA 3.0
 oeuf ← Hylonomus · Hylonomus_BW.jpg · CC BY 2.5
-reptiles ← Reptilia · Reptile003d.jpg · Public domain
-tortues ← Testudines · Haeckel_Chelonia.jpg · Public domain
-lezards ← Squamata · Squamata-01.jpg · CC BY-SA 4.0
+reptiles ← Iguane vert · Iguanidae_head_from_Venezuela.jpg · CC0
+tortues ← Tortue verte · Hawaii_turtle_2.JPG · CC BY-SA 3.0
+lezards ← Lézard vert occidental · Lacerta_bilineata_masculus_et_femella_+_Podarcis_muralis_(Sarthe).JPG · CC BY-SA 3.0
 crocodiles ← Crocodile du Nil · NileCrocodile.jpg · CC BY-SA 2.0
-dinosaures ← Dinosauria · Various_dinosaurs_4.jpg · CC BY-SA 3.0
-oiseaux ← Aves · Bird_Diversity_2013.png · CC BY-SA 3.0
-mammiferes ← Mammalia · Mammalia_0.jpg · CC BY-SA 4.0
+dinosaures ← Tyrannosaurus · Sues_skeleton.jpg · CC BY-SA 2.0
+oiseaux ← Rouge-gorge familier · 030_European_robin_in_the_Camargue_Photo_by_Giles_Laurent.jpg · CC BY-SA 4.0
+mammiferes ← Renard roux · Portrait_of_a_red_fox_in_Rautas_fjällurskog.jpg · CC BY-SA 4.0
 monotremes ← Ornithorynque · Ornithorhynchus.jpg · CC BY-SA 4.0
-marsupiaux ← Marsupialia · Marsupialia.jpg · CC BY-SA 4.0
-placentaires ← Eutheria · Eomaia.jpg · CC BY 2.0
+marsupiaux Kangourou roux licence non libre ou pas une photo : Red_kangaroo_-_melbourne_zoo.jpg
+marsupiaux ← Koala · Koala_climbing_tree.jpg · CC BY-SA 3.0
+placentaires Éléphant de savane d'Afrique licence non libre ou pas une photo : African_Bush_Elephant.jpg
+placentaires AUCUNE IMAGE
 accueil-commencer ← Terre · The_Blue_Marble_(remastered).jpg · Public domain
-accueil-reptiles ← Tortue verte · Hawaii_turtle_2.JPG · CC BY-SA 3.0
-fini : 51 sur 55
+accueil-reptiles ← Caméléon panthère · FurciferPardalisMale.JPG · CC BY-SA 3.0
+fini : 49 sur 55
