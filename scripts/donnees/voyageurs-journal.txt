@@ -1,2 +1,875 @@
+→ Data from: The small home ranges and large local ecological impacts of pet cats  (3 Mo)
 ✓ Data from: The small home ranges and large local ecological impacts of pet cats  (CC0) : 4 trajets
-✓ Data from: Study "Herring Gulls (Larus Argentatus); Ronconi; Sable Island, Canad (CC0) : 4 trajets
+→ Data from: Study "Herring Gulls (Larus Argentatus); Ronconi; Sable Island, Canad (2 Mo)
+✓ Data from: Study "Herring Gulls (Larus Argentatus); Ronconi; Sable Island, Canad (CC0) : 0 trajets
+→ Data from: Study "Wood stork (Mycteria americana) Southeastern US 2004–2019" (193 Mo)
+✓ Data from: Study "Wood stork (Mycteria americana) Southeastern US 2004–2019" (CC0) : 4 trajets
+→ Data from: Study "NC Wood Stork Tracking" (7 Mo)
+✓ Data from: Study "NC Wood Stork Tracking" (CC0) : 0 trajets
+→ Data from: An integrated approach to modeling grazing pressure in pastoral syste (39 Mo)
+✓ Data from: An integrated approach to modeling grazing pressure in pastoral syste (CC0) : 4 trajets
+→ Data from: Study "LifeTrack White Stork Rheinland-Pfalz" (2015-2023) (8 Mo)
+✓ Data from: Study "LifeTrack White Stork Rheinland-Pfalz" (2015-2023) (CC0) : 0 trajets
+→ Data from: Greater spear nosed bats commute long distances alone, rest together, (51 Mo)
+✓ Data from: Greater spear nosed bats commute long distances alone, rest together, (CC0) : 4 trajets
+→ Data from: Juvenile emperor penguin range calls for extended conservation measur (6 Mo)
+✓ Data from: Juvenile emperor penguin range calls for extended conservation measur (CC0) : 0 trajets
+→ Data from: Only natural local odours allow homeward orientation in homing pigeon (10 Mo)
+✓ Data from: Only natural local odours allow homeward orientation in homing pigeon (CC0) : 4 trajets
+→ Data from: Study "Black-necked crane Bhutan (UWICE-MPIAB)" (129 Mo)
+✓ Data from: Study "Black-necked crane Bhutan (UWICE-MPIAB)" (CC BY) : 4 trajets
+→ Data from: Factors influencing foraging search efficiency: Why do scarce lappet- (121 Mo)
+✓ Data from: Factors influencing foraging search efficiency: Why do scarce lappet- (CC0) : 4 trajets
+→ Data from: Seasonal variation in migration strategies used to cross ecological b (2 Mo)
+✓ Data from: Seasonal variation in migration strategies used to cross ecological b (CC0) : 0 trajets
+→ Data from: Factors influencing foraging search efficiency: Why do scarce lappet- (120 Mo)
+✓ Data from: Factors influencing foraging search efficiency: Why do scarce lappet- (CC0) : 4 trajets
+→ Data from: Acoustic evaluation of behavioral states predicted from GPS tracking: (2 Mo)
+✓ Data from: Acoustic evaluation of behavioral states predicted from GPS tracking: (CC0) : 4 trajets
+→ Data from: Ecological impact of inside/outside house cats around a suburban natu (0 Mo)
+✓ Data from: Ecological impact of inside/outside house cats around a suburban natu (CC0) : 0 trajets
+→ Data from: Migration of red-backed shrikes from the Iberian Peninsula: optimal o (1 Mo)
+✓ Data from: Migration of red-backed shrikes from the Iberian Peninsula: optimal o (CC0) : 0 trajets
+→ Data from: Coexistence of two sympatric predators in a transitional ecosystem un (2 Mo)
+✓ Data from: Coexistence of two sympatric predators in a transitional ecosystem un (CC0) : 4 trajets
+→ Data from: Classification of animal movement behavior through residence in space (17 Mo)
+✓ Data from: Classification of animal movement behavior through residence in space (CC0) : 4 trajets
+→ Data from: Comparison of movement strategies of three populations of white-beard (49 Mo)
+✓ Data from: Comparison of movement strategies of three populations of white-beard (CC0) : 4 trajets
+→ Data from: Tracking post-hibernation behavior and early migration does not revea (0 Mo)
+✓ Data from: Tracking post-hibernation behavior and early migration does not revea (CC0) : 0 trajets
+→ Data from: Tracking domestic ducks: a novel approach for documenting poultry mar (0 Mo)
+✓ Data from: Tracking domestic ducks: a novel approach for documenting poultry mar (CC0) : 4 trajets
+→ Data from: Longer days enable higher diurnal activity for migratory birds [Himal (957 Mo)
+✓ Data from: Longer days enable higher diurnal activity for migratory birds [Himal (CC0) : 0 trajets
+→ Data from: Home range size of domestic cats in Spain (29 Mo)
+✓ Data from: Home range size of domestic cats in Spain (CC0) : 4 trajets
+→ Data from: Study "Leopards, vervets, and baboons in Laikipia, Kenya" [baboons] (37 Mo)
+✓ Data from: Study "Leopards, vervets, and baboons in Laikipia, Kenya" [baboons] (CC BY) : 4 trajets
+→ Data from: Remarkably similar migration patterns between different red-backed sh (7 Mo)
+✓ Data from: Remarkably similar migration patterns between different red-backed sh (CC0) : 0 trajets
+→ Data from: Winter GPS tagging reveals home ranges during the breeding season for (0 Mo)
+✓ Data from: Winter GPS tagging reveals home ranges during the breeding season for (CC0) : 4 trajets
+→ Data from: Repatriating leopards into novel landscapes of a South African provin (0 Mo)
+✓ Data from: Repatriating leopards into novel landscapes of a South African provin (CC0) : 4 trajets
+→ Data from: Scaring waterfowl as a management tool: how much more do geese forage (1 Mo)
+✓ Data from: Scaring waterfowl as a management tool: how much more do geese forage (CC0) : 4 trajets
+→ Data from: Forecasting spring from afar? Timing of migration and predictability  (7 Mo)
+✓ Data from: Forecasting spring from afar? Timing of migration and predictability  (CC0) : 4 trajets
+→ Data from: Ideal Free Distributions of mobile pastoralists within multiple seaso (0 Mo)
+✓ Data from: Ideal Free Distributions of mobile pastoralists within multiple seaso (CC0) : 0 trajets
+→ Data from: Movement patterns of a keystone waterbird species are highly predicta (27 Mo)
+✓ Data from: Movement patterns of a keystone waterbird species are highly predicta (CC0) : 4 trajets
+→ Data from: Consistent long-distance foraging flights across years and seasons at (3 Mo)
+✓ Data from: Consistent long-distance foraging flights across years and seasons at (CC0) : 4 trajets
+→ Data from: Early arrival at breeding grounds: causes, costs and a trade-off with (0 Mo)
+✓ Data from: Early arrival at breeding grounds: causes, costs and a trade-off with (CC0) : 0 trajets
+→ Data from: Wind estimation based on thermal soaring of birds (357 Mo)
+✓ Data from: Wind estimation based on thermal soaring of birds (CC0) : 0 trajets
+→ Data from: Study "LifeTrack White Stork Vorarlberg" (2016-2023) (15 Mo)
+✓ Data from: Study "LifeTrack White Stork Vorarlberg" (2016-2023) (CC0) : 0 trajets
+→ Data from: Abundance, diet and foraging of Galápagos Barn Owls (Tyto furcata pun (3 Mo)
+✓ Data from: Abundance, diet and foraging of Galápagos Barn Owls (Tyto furcata pun (CC0) : 4 trajets
+→ Data from: Study "Herring Gulls (Larus Argentatus); Ronconi; Brier Island, Canad (18 Mo)
+✓ Data from: Study "Herring Gulls (Larus Argentatus); Ronconi; Brier Island, Canad (CC0) : 4 trajets
+→ Data from: Study "GPS tracking of Texas Tortoises in South Texas USA (Guerra et  (17 Mo)
+✓ Data from: Study "GPS tracking of Texas Tortoises in South Texas USA (Guerra et  (CC BY) : 4 trajets
+→ Data from: Post-fledging movements of juvenile common mergansers (Mergus mergans (1 Mo)
+✓ Data from: Post-fledging movements of juvenile common mergansers (Mergus mergans (CC0) : 0 trajets
+→ Data from: GPS-profiling of retrograde navigational impairments associated with  (276 Mo)
+✓ Data from: GPS-profiling of retrograde navigational impairments associated with  (CC0) : 4 trajets
+→ Data from: Strong breeding colony fidelity in northern gannets following high pa (7 Mo)
+✓ Data from: Strong breeding colony fidelity in northern gannets following high pa (CC BY) : 4 trajets
+→ Data from: Spatial ecology of the water opossum Chironectes minimus in Atlantic  (0 Mo)
+✓ Data from: Spatial ecology of the water opossum Chironectes minimus in Atlantic  (CC0) : 0 trajets
+→ Data from: High foraging site fidelity and spatial segregation among individual  (75 Mo)
+✓ Data from: High foraging site fidelity and spatial segregation among individual  (CC0) : 4 trajets
+→ Data from: Study "Bulgaria Sofia - Long term study on migratory movement of Alpi (2 Mo)
+✓ Data from: Study "Bulgaria Sofia - Long term study on migratory movement of Alpi (CC0) : 0 trajets
+→ Data from: Direction matching for sparse movement datasets: determining interact (11 Mo)
+✓ Data from: Direction matching for sparse movement datasets: determining interact (CC0) : 0 trajets
+→ Data from: The small home ranges and large local ecological impacts of pet cats  (54 Mo)
+✓ Data from: The small home ranges and large local ecological impacts of pet cats  (CC0) : 4 trajets
+→ Data from: The spatiotemporal properties of artificial feeding schemes influence (104 Mo)
+✓ Data from: The spatiotemporal properties of artificial feeding schemes influence (CC0) : 4 trajets
+→ Data from: Long-distance range expansion and rapid adjustment of migration in a  (1 Mo)
+✓ Data from: Long-distance range expansion and rapid adjustment of migration in a  (CC0) : 0 trajets
+→ Data from: Study "Common Crane Lithuania GPS, 2015-2016" (138 Mo)
+✓ Data from: Study "Common Crane Lithuania GPS, 2015-2016" (CC BY) : 3 trajets
+→ Data from: Seasonal shifts in tropical insect ephemerality drive bat foraging ef (1 Mo)
+✓ Data from: Seasonal shifts in tropical insect ephemerality drive bat foraging ef (CC0) : 4 trajets
+→ Data from: Moving beyond curve-fitting: using complementary data to assess alter (40 Mo)
+✓ Data from: Moving beyond curve-fitting: using complementary data to assess alter (CC0) : 4 trajets
+→ Data from: Seasonal movements of Gyrfalcons Falco rusticolus include extensive p (1 Mo)
+✓ Data from: Seasonal movements of Gyrfalcons Falco rusticolus include extensive p (CC0) : 0 trajets
+→ Data from: Science update for the South Peace Northern Caribou (Rangifer tarandu (1 Mo)
+✓ Data from: Science update for the South Peace Northern Caribou (Rangifer tarandu (CC0) : 0 trajets
+→ Data from: Common noctules exploit low levels of the aerosphere (1 Mo)
+✓ Data from: Common noctules exploit low levels of the aerosphere (CC0) : 0 trajets
+→ Data from: Concentration of a widespread breeding population in few critically i (7 Mo)
+✓ Data from: Concentration of a widespread breeding population in few critically i (CC0) : 0 trajets
+→ Data from: The Indo-European Flyway: opportunities and constraints reflected by  (0 Mo)
+✓ Data from: The Indo-European Flyway: opportunities and constraints reflected by  (CC0) : 0 trajets
+→ Data from: Study "Bobcat spatial ecology study in the Olympic Peninsula, Washing (4 Mo)
+✓ Data from: Study "Bobcat spatial ecology study in the Olympic Peninsula, Washing (CC0) : 4 trajets
+→ Data from: White-crested Elaenias (Elaenia albiceps chilensis) breeding across P (220 Mo)
+✓ Data from: White-crested Elaenias (Elaenia albiceps chilensis) breeding across P (CC0) : 0 trajets
+→ Data from: Diverse foraging strategies of breeding Swinhoe's Storm-Petrel in the (0 Mo)
+✓ Data from: Diverse foraging strategies of breeding Swinhoe's Storm-Petrel in the (CC0) : 4 trajets
+→ Data from: Australia’s east coast humpback whales: satellite tag derived movemen (8 Mo)
+✓ Data from: Australia’s east coast humpback whales: satellite tag derived movemen (CC0) : 0 trajets
+→ Data from: True navigation in migrating gulls requires intact olfactory nerves (16 Mo)
+✓ Data from: True navigation in migrating gulls requires intact olfactory nerves (CC0) : 4 trajets
+→ Data from: Study "Northern Gannet Breeding Season GPS Data from Cape St. Mary's, (133 Mo)
+✓ Data from: Study "Northern Gannet Breeding Season GPS Data from Cape St. Mary's, (CC0) : 4 trajets
+→ Data from: More grazing, more damage? Assessed yield loss on agricultural grassl (117 Mo)
+✓ Data from: More grazing, more damage? Assessed yield loss on agricultural grassl (CC0) : 4 trajets
+→ Data from: Post-fledging habitat selection of a Purple Heron Ardea purpurea reve (4 Mo)
+✓ Data from: Post-fledging habitat selection of a Purple Heron Ardea purpurea reve (CC0) : 1 trajets
+→ Data from: The characteristic time scale of perceived information for decision-m (684 Mo)
+✓ Data from: The characteristic time scale of perceived information for decision-m (CC0) : 4 trajets
+→ Data from: Wind farm turbines cause functional habitat loss for migratory soarin (13 Mo)
+✓ Data from: Wind farm turbines cause functional habitat loss for migratory soarin (CC0) : 4 trajets
+→ Data from: Study "Marbled Murrelets at Desolation Sound, British Columbia, Canad (0 Mo)
+✓ Data from: Study "Marbled Murrelets at Desolation Sound, British Columbia, Canad (CC0) : 0 trajets
+→ Data from: Thermal soaring in tropicbirds suggests that diverse seabirds may use (10 Mo)
+✓ Data from: Thermal soaring in tropicbirds suggests that diverse seabirds may use (CC0) : 4 trajets
+→ Data from: Wing size but not wing shape is related to migratory behavior in a so (120 Mo)
+✓ Data from: Wing size but not wing shape is related to migratory behavior in a so (CC0) : 4 trajets
+→ Data from: Why do kestrels soar? (96 Mo)
+✓ Data from: Why do kestrels soar? (CC0) : 4 trajets
+→ Data from: Flyway connectivity and exchange primarily driven by moult migration  (247 Mo)
+✓ Data from: Flyway connectivity and exchange primarily driven by moult migration  (CC0) : 4 trajets
+→ Data from: Study "Locations of second-year rufa Red Knots in Florida, 2024" (4 Mo)
+✓ Data from: Study "Locations of second-year rufa Red Knots in Florida, 2024" (CC0) : 0 trajets
+→ Data from: Forecasting spring from afar? Timing of migration and predictability  (2 Mo)
+✓ Data from: Forecasting spring from afar? Timing of migration and predictability  (CC0) : 4 trajets
+→ Data from: Deconstructing the flight paths of hippocampal-lesioned homing pigeon (273 Mo)
+✓ Data from: Deconstructing the flight paths of hippocampal-lesioned homing pigeon (CC0) : 4 trajets
+→ Data from: Autumn migration and wintering site of a wood warbler Phylloscopus si (0 Mo)
+✓ Data from: Autumn migration and wintering site of a wood warbler Phylloscopus si (CC0) : 0 trajets
+→ Data from: Toward reliable population density estimates of partially marked popu (17 Mo)
+✓ Data from: Toward reliable population density estimates of partially marked popu (CC0) : 4 trajets
+→ Data from: Individual tracking reveals long-distance flightpath control in a noc (0 Mo)
+✓ Data from: Individual tracking reveals long-distance flightpath control in a noc (CC0) : 0 trajets
+→ Data from: Study "GPS tracking of eastern whip-poor-will" (0 Mo)
+✓ Data from: Study "GPS tracking of eastern whip-poor-will" (CC0) : 4 trajets
+→ Data from: Sex-specific difference in migration schedule as a precursor of prota (5 Mo)
+✓ Data from: Sex-specific difference in migration schedule as a precursor of prota (CC0) : 0 trajets
+→ Data from: Migration strategy as an indicator of resilience to change in two sho (0 Mo)
+✓ Data from: Migration strategy as an indicator of resilience to change in two sho (CC0) : 0 trajets
+→ Data from: Stink or swim: techniques to meet the challenges for the study and co (0 Mo)
+✓ Data from: Stink or swim: techniques to meet the challenges for the study and co (CC0) : 2 trajets
+→ Data from: Goose parents lead migration V (227 Mo)
+✓ Data from: Goose parents lead migration V (CC0) : 4 trajets
+→ Data from: Migration strategy as an indicator of resilience to change in two sho (0 Mo)
+✓ Data from: Migration strategy as an indicator of resilience to change in two sho (CC0) : 0 trajets
+→ Data from: Seasonal movements of Gyrfalcons Falco rusticolus include extensive p (2 Mo)
+✓ Data from: Seasonal movements of Gyrfalcons Falco rusticolus include extensive p (CC0) : 0 trajets
+→ Data from: Productivity changes in the Mediterranean Sea drive foraging movement (2 Mo)
+✓ Data from: Productivity changes in the Mediterranean Sea drive foraging movement (CC0) : 4 trajets
+→ Data from: Study "Feral horse (Equus ferus caballus), Wyoming/Colorado, USA" (14 Mo)
+✓ Data from: Study "Feral horse (Equus ferus caballus), Wyoming/Colorado, USA" (CC0) : 4 trajets
+→ Data from: Is pre-breeding prospecting behaviour affected by snow cover in the i (0 Mo)
+✓ Data from: Is pre-breeding prospecting behaviour affected by snow cover in the i (CC0) : 0 trajets
+→ Data from: Compensation for wind drift prevails for a shorebird on a long-distan (1 Mo)
+✓ Data from: Compensation for wind drift prevails for a shorebird on a long-distan (CC0) : 4 trajets
+→ Data from: Flexibility of continental navigation and migration in European malla (3 Mo)
+✓ Data from: Flexibility of continental navigation and migration in European malla (CC0) : 4 trajets
+→ Data from: A pilot study on the home range and movement patterns of the Andean F (1 Mo)
+✓ Data from: A pilot study on the home range and movement patterns of the Andean F (CC0) : 1 trajets
+→ Data from: Study "1000 Cranes. Russia. Volga-Ural Interfluve." (5 Mo)
+✓ Data from: Study "1000 Cranes. Russia. Volga-Ural Interfluve." (CC BY) : 4 trajets
+→ Data from: Terrestrial and marine foraging strategies of an opportunistic seabir (12 Mo)
+✓ Data from: Terrestrial and marine foraging strategies of an opportunistic seabir (CC0) : 4 trajets
+→ Data from: Ice cover and partner removal increase movements of invasive mesopred (3 Mo)
+✓ Data from: Ice cover and partner removal increase movements of invasive mesopred (CC BY) : 4 trajets
+→ Data from: Locally adapted migration strategies: Comparing routes and timing of  (1 Mo)
+✓ Data from: Locally adapted migration strategies: Comparing routes and timing of  (CC0) : 0 trajets
+→ Data from: Study "GPS telemetry of Common Cranes, Sweden" (100 Mo)
+✓ Data from: Study "GPS telemetry of Common Cranes, Sweden" (CC BY) : 4 trajets
+→ Data from: How far do Asian forest hornbills disperse seeds? (3 Mo)
+✓ Data from: How far do Asian forest hornbills disperse seeds? (CC0) : 4 trajets
+→ Data from: Tracking the migration of a nocturnal aerial insectivore in the Ameri (276 Mo)
+✓ Data from: Tracking the migration of a nocturnal aerial insectivore in the Ameri (CC0) : 0 trajets
+→ Data from: Fitness, behavioral, and energetic trade-offs of different migratory  (25 Mo)
+✓ Data from: Fitness, behavioral, and energetic trade-offs of different migratory  (CC0) : 0 trajets
+→ Data from: Urbanization and artificial light at night reduce the functional conn (0 Mo)
+✓ Data from: Urbanization and artificial light at night reduce the functional conn (CC0) : 4 trajets
+→ Data from: Home range reduction of Tapirus terrestris raised by the Sarayaku com (0 Mo)
+✓ Data from: Home range reduction of Tapirus terrestris raised by the Sarayaku com (CC0) : 1 trajets
+→ Data from: Study "1000 Cranes. Russia. Taman. Azov." (1 Mo)
+✓ Data from: Study "1000 Cranes. Russia. Taman. Azov." (CC BY) : 4 trajets
+→ Data from: Defensive fruit metabolites obstruct seed dispersal by altering bat b (1 Mo)
+✓ Data from: Defensive fruit metabolites obstruct seed dispersal by altering bat b (CC0) : 0 trajets
+→ Data from: Elliptical Time-Density model to estimate wildlife utilization distri (7 Mo)
+✓ Data from: Elliptical Time-Density model to estimate wildlife utilization distri (CC0) : 2 trajets
+→ Data from: Suite of simple metrics reveals common movement syndromes across vert (20 Mo)
+✓ Data from: Suite of simple metrics reveals common movement syndromes across vert (CC0) : 0 trajets
+→ Data from: Turbulence causes kinematic and behavioural adjustments in a flapping (0 Mo)
+✓ Data from: Turbulence causes kinematic and behavioural adjustments in a flapping (CC0) : 0 trajets
+→ Data from: Breeding and moulting locations and migration patterns of the Atlanti (3 Mo)
+✓ Data from: Breeding and moulting locations and migration patterns of the Atlanti (CC0) : 0 trajets
+→ Data from: Homing pigeons only navigate in air with intact environmental odours: (0 Mo)
+✓ Data from: Homing pigeons only navigate in air with intact environmental odours: (CC0) : 0 trajets
+→ Data from: Human selection of elk behavioural traits in a landscape of fear (150 Mo)
+✓ Data from: Human selection of elk behavioural traits in a landscape of fear (CC BY) : 4 trajets
+→ Data from: Development of the navigational system in homing pigeons: increase in (219 Mo)
+✓ Data from: Development of the navigational system in homing pigeons: increase in (CC0) : 4 trajets
+→ Data from: Study "Movements of the Christmas Island flying fox, Australia" (1 Mo)
+✓ Data from: Study "Movements of the Christmas Island flying fox, Australia" (CC0) : 4 trajets
+→ Data from: Flying on their own wings: young and adult cuckoos respond similarly  (0 Mo)
+✓ Data from: Flying on their own wings: young and adult cuckoos respond similarly  (CC0) : 4 trajets
+→ Data from: Study "Vultures Acopian Center USA GPS" (2003-2021) (109 Mo)
+✓ Data from: Study "Vultures Acopian Center USA GPS" (2003-2021) (CC BY) : 0 trajets
+→ Data from: Migratory routes of red-necked phalaropes Phalaropus lobatus breeding (1 Mo)
+✓ Data from: Migratory routes of red-necked phalaropes Phalaropus lobatus breeding (CC0) : 0 trajets
+→ Data from: Migratory connectivity and population specific migration routes in a  (13 Mo)
+✓ Data from: Migratory connectivity and population specific migration routes in a  (CC0) : 0 trajets
+→ Data from: Evidence for pre-mnemonic, perceptual neglect of environmental featur (11 Mo)
+✓ Data from: Evidence for pre-mnemonic, perceptual neglect of environmental featur (CC0) : 4 trajets
+→ Data from: Study "Herring Gulls (Larus Argentatus); Fifield; Witless Bay, Canada (35 Mo)
+✓ Data from: Study "Herring Gulls (Larus Argentatus); Fifield; Witless Bay, Canada (CC0) : 4 trajets
+→ Data from: Non‐breeding areas and timing of migration in relation to weather of  (181 Mo)
+✓ Data from: Non‐breeding areas and timing of migration in relation to weather of  (CC0) : 0 trajets
+→ Data from: Satellite telemetry reveals strong fidelity to migration routes and w (1 Mo)
+✓ Data from: Satellite telemetry reveals strong fidelity to migration routes and w (CC0) : 0 trajets
+→ Data from: Importance of the hippocampus for the learning of route fidelity in h (383 Mo)
+✓ Data from: Importance of the hippocampus for the learning of route fidelity in h (CC0) : 4 trajets
+→ Data from: Space use and interactions of two introduced mesopredators, European  (20 Mo)
+✓ Data from: Space use and interactions of two introduced mesopredators, European  (CC0) : 4 trajets
+→ Data from: Individual environmental niches in mobile organisms (563 Mo)
+✓ Data from: Individual environmental niches in mobile organisms (CC0) : 3 trajets
+→ Data from: Study "LifeTrack White Stork Sicily" (22 Mo)
+✓ Data from: Study "LifeTrack White Stork Sicily" (CC0) : 4 trajets
+→ Data from: Resource-driven encounters among consumers and implications for the s (0 Mo)
+✓ Data from: Resource-driven encounters among consumers and implications for the s (CC0) : 0 trajets
+→ Data from: Eastern coyote home range, habitat selection and survival in the Alba (0 Mo)
+✓ Data from: Eastern coyote home range, habitat selection and survival in the Alba (CC0) : 0 trajets
+→ Data from: State-switching continuous-time correlated random walks (0 Mo)
+✓ Data from: State-switching continuous-time correlated random walks (CC0) : 1 trajets
+→ Data from: Nonparameteric kernel methods for constructing home ranges and utiliz (4 Mo)
+✓ Data from: Nonparameteric kernel methods for constructing home ranges and utiliz (CC0) : 4 trajets
+→ Data from: Study "Red fox Bylot - Argos tracking" (4 Mo)
+✓ Data from: Study "Red fox Bylot - Argos tracking" (CC0) : 0 trajets
+→ Data from: Airplane tracking documents the fastest flight speeds recorded for ba (0 Mo)
+✓ Data from: Airplane tracking documents the fastest flight speeds recorded for ba (CC0) : 0 trajets
+→ Data from: Long-distance seed dispersal by straw-coloured fruit bats varies by s (1 Mo)
+✓ Data from: Long-distance seed dispersal by straw-coloured fruit bats varies by s (CC0) : 4 trajets
+→ Data from: Thieving rodents as substitute dispersers of megafaunal seeds (0 Mo)
+✓ Data from: Thieving rodents as substitute dispersers of megafaunal seeds (CC0) : 0 trajets
+→ Data from: Underestimated scale of songbird offshore migration across the south- (0 Mo)
+✓ Data from: Underestimated scale of songbird offshore migration across the south- (CC0) : 0 trajets
+→ Data from: Flyway connectivity and exchange primarily driven by moult migration  (27 Mo)
+✓ Data from: Flyway connectivity and exchange primarily driven by moult migration  (CC0) : 4 trajets
+→ Data from: Study "LifeTrack White Stork Kosova" (66 Mo)
+✓ Data from: Study "LifeTrack White Stork Kosova" (CC0) : 4 trajets
+→ Data from: Migratory movements of Atlantic puffins Fratercula arctica naumanni f (1 Mo)
+✓ Data from: Migratory movements of Atlantic puffins Fratercula arctica naumanni f (CC0) : 0 trajets
+→ Data from: Latitudinal cline in the ratio of foraging dichotomy in the North Pac (6 Mo)
+✓ Data from: Latitudinal cline in the ratio of foraging dichotomy in the North Pac (CC0) : 0 trajets
+→ Data from: The small home ranges and large local ecological impacts of pet cats  (140 Mo)
+✓ Data from: The small home ranges and large local ecological impacts of pet cats  (CC0) : 4 trajets
+→ Data from: Study "Pronghorn (Antilocapra americana), Wyoming/Colorado, USA" (17 Mo)
+✗ Data from: Study "Pronghorn (Antilocapra americana), Wyoming/Colorado, USA" : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Evaluation of micro-GPS receivers for tracking small-bodied mammals (0 Mo)
+✓ Data from: Evaluation of micro-GPS receivers for tracking small-bodied mammals (CC0) : 0 trajets
+→ Data from: Study "Sperm whales Gulf of Mexico 2011-2013 - Argos data" (1 Mo)
+✓ Data from: Study "Sperm whales Gulf of Mexico 2011-2013 - Argos data" (CC0) : 0 trajets
+→ Data from: Great flexibility in autumn movement patterns of European Gadwalls (A (1 Mo)
+✓ Data from: Great flexibility in autumn movement patterns of European Gadwalls (A (CC0) : 4 trajets
+→ Data from: Satellite tracking a wide‐ranging endangered vulture species to targe (0 Mo)
+✓ Data from: Satellite tracking a wide‐ranging endangered vulture species to targe (CC0) : 0 trajets
+→ Data from: Flexible flight response to challenging wind conditions in a commutin (1 Mo)
+✓ Data from: Flexible flight response to challenging wind conditions in a commutin (CC0) : 4 trajets
+→ Data from: Foraging habitat choice of white-tailed tropicbirds revealed by fine- (1 Mo)
+✓ Data from: Foraging habitat choice of white-tailed tropicbirds revealed by fine- (CC0) : 4 trajets
+→ Data from: Paternal transmission of migration knowledge in a long-distance bird  (71 Mo)
+✓ Data from: Paternal transmission of migration knowledge in a long-distance bird  (CC0) : 4 trajets
+→ Data from: First three-dimensional tracks of bat migration reveal large amounts  (0 Mo)
+✓ Data from: First three-dimensional tracks of bat migration reveal large amounts  (CC0) : 4 trajets
+→ Data from: As the duck flies: estimating the dispersal of low-pathogenic avian i (128 Mo)
+✓ Data from: As the duck flies: estimating the dispersal of low-pathogenic avian i (CC0) : 4 trajets
+→ Data from: Migration routes and strategies of Grey Plovers (Pluvialis squatarola (3 Mo)
+✓ Data from: Migration routes and strategies of Grey Plovers (Pluvialis squatarola (CC0) : 0 trajets
+→ Data from: Migratory patterns and connectivity of two North American grassland b (4 Mo)
+✓ Data from: Migratory patterns and connectivity of two North American grassland b (CC0) : 0 trajets
+→ Data from: Study "Herring Gulls (Larus Argentatus); Gilchrist; East Bay Island,  (9 Mo)
+✓ Data from: Study "Herring Gulls (Larus Argentatus); Gilchrist; East Bay Island,  (CC0) : 0 trajets
+→ Data from: Habitat selection by a predator of rodent pests is resilient to wildf (7 Mo)
+✓ Data from: Habitat selection by a predator of rodent pests is resilient to wildf (CC0) : 4 trajets
+→ Data from: Shearwaters know the direction and distance home but fail to encode i (120 Mo)
+✓ Data from: Shearwaters know the direction and distance home but fail to encode i (CC0) : 1 trajets
+→ Data from: Flexible characterization of animal movement pattern using net square (2 Mo)
+✓ Data from: Flexible characterization of animal movement pattern using net square (CC0) : 0 trajets
+→ Data from: Kiawah and Seabrook islands are a critical site for the rufa Red Knot (53 Mo)
+✓ Data from: Kiawah and Seabrook islands are a critical site for the rufa Red Knot (CC0) : 0 trajets
+→ Data from: Intra-African movements of the African Cuckoo Cuculus gularis as reve (4 Mo)
+✓ Data from: Intra-African movements of the African Cuckoo Cuculus gularis as reve (CC0) : 0 trajets
+→ Data from: Home range use and movement patterns of non-native feral goats in a t (8 Mo)
+✓ Data from: Home range use and movement patterns of non-native feral goats in a t (CC0) : 4 trajets
+→ Data from: Prolonged stopover duration characterises migration strategy and cons (0 Mo)
+✓ Data from: Prolonged stopover duration characterises migration strategy and cons (CC0) : 0 trajets
+→ Data from: Forecasting spring from afar? Timing of migration and predictability  (7 Mo)
+✓ Data from: Forecasting spring from afar? Timing of migration and predictability  (CC0) : 4 trajets
+→ Data from: Determining fine-scale migratory connectivity and habitat selection f (0 Mo)
+✓ Data from: Determining fine-scale migratory connectivity and habitat selection f (CC0) : 4 trajets
+→ Data from: Satellite telemetry tracks flyways of Asian Openbill storks in relati (2 Mo)
+✓ Data from: Satellite telemetry tracks flyways of Asian Openbill storks in relati (CC0) : 0 trajets
+→ Data from: When Siberia came to The Netherlands: the response of continental bla (5 Mo)
+✓ Data from: When Siberia came to The Netherlands: the response of continental bla (CC0) : 0 trajets
+→ Data from: A novel approach to quantifying the spatiotemporal behavior of instru (24 Mo)
+✓ Data from: A novel approach to quantifying the spatiotemporal behavior of instru (CC0) : 4 trajets
+→ Data from: Study "King Eider Alaska (UAF / USGS)" (7 Mo)
+✓ Data from: Study "King Eider Alaska (UAF / USGS)" (CC0) : 0 trajets
+→ Data from: Satellite telemetry of Blue-throated Macaws in Barba Azul Nature Rese (0 Mo)
+✓ Data from: Satellite telemetry of Blue-throated Macaws in Barba Azul Nature Rese (CC0) : 0 trajets
+→ Data from: Breeding latitude predicts timing but not rate of spring migration in (2 Mo)
+✓ Data from: Breeding latitude predicts timing but not rate of spring migration in (CC0) : 0 trajets
+→ Data from: Study "Blue and fin whales Southern California 2014-2015 - Argos data (1 Mo)
+✓ Data from: Study "Blue and fin whales Southern California 2014-2015 - Argos data (CC0) : 0 trajets
+→ Data from: Sperm whale dive behavior characteristics derived from intermediate-d (1 Mo)
+✓ Data from: Sperm whale dive behavior characteristics derived from intermediate-d (CC0) : 4 trajets
+→ Data from: Migration patterns of upland sandpipers in the western hemisphere (0 Mo)
+✓ Data from: Migration patterns of upland sandpipers in the western hemisphere (CC0) : 4 trajets
+→ Data from: Cozy in the city: the morphology and spatial ecology of copperheads i (0 Mo)
+✓ Data from: Cozy in the city: the morphology and spatial ecology of copperheads i (CC0) : 0 trajets
+→ Data from: Pastoralist refugee crisis tests the resilience of open property regi (0 Mo)
+✓ Data from: Pastoralist refugee crisis tests the resilience of open property regi (CC0) : 0 trajets
+→ Data from: Study "Switzerland Solothurn - Long term study on migratory movement  (1 Mo)
+✓ Data from: Study "Switzerland Solothurn - Long term study on migratory movement  (CC0) : 0 trajets
+→ Data from: Pre-laying movements of Yelkouan Shearwaters (Puffinus yelkouan) in t (2 Mo)
+✓ Data from: Pre-laying movements of Yelkouan Shearwaters (Puffinus yelkouan) in t (CC0) : 4 trajets
+→ Data from: Study "Long-tailed Jaeger - PTT - Canadian Arctic" (0 Mo)
+✓ Data from: Study "Long-tailed Jaeger - PTT - Canadian Arctic" (CC0) : 0 trajets
+→ Data from: Effects of multiple targeted repelling measures on the behaviour of i (35 Mo)
+✓ Data from: Effects of multiple targeted repelling measures on the behaviour of i (CC0) : 4 trajets
+→ Data from: Animal behavior, cost-based corridor models, and real corridors (8 Mo)
+✓ Data from: Animal behavior, cost-based corridor models, and real corridors (CC0) : 4 trajets
+→ Data from: Changes in behaviour drive inter‐annual variability in the at‐sea dis (52 Mo)
+✓ Data from: Changes in behaviour drive inter‐annual variability in the at‐sea dis (CC0) : 4 trajets
+→ Data from: Behavioural traits of individual homing pigeons, Columba livia f. dom (1480 Mo)
+✓ Data from: Behavioural traits of individual homing pigeons, Columba livia f. dom (CC0) : 3 trajets
+→ Data from: Jaguar movement database—a GPS-based movement dataset of an apex pred (9 Mo)
+✓ Data from: Jaguar movement database—a GPS-based movement dataset of an apex pred (CC0) : 4 trajets
+→ Data from: Anosmia impairs homing orientation but not foraging behaviour in free (11 Mo)
+✓ Data from: Anosmia impairs homing orientation but not foraging behaviour in free (CC0) : 4 trajets
+→ Data from: Study "American Herring Gulls - GPS - Lobster Bay, Southwest Nova Sco (68 Mo)
+✗ Data from: Study "American Herring Gulls - GPS - Lobster Bay, Southwest Nova Sco : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Weak migratory connectivity, loop migration and multiple non-breeding (4 Mo)
+✓ Data from: Weak migratory connectivity, loop migration and multiple non-breeding (CC0) : 0 trajets
+→ Data from: New York State bald eagle report 2010 (15 Mo)
+✓ Data from: New York State bald eagle report 2010 (CC0) : 4 trajets
+→ Data from: Pre-laying movements of Yelkouan Shearwaters (Puffinus yelkouan) in t (2 Mo)
+✓ Data from: Pre-laying movements of Yelkouan Shearwaters (Puffinus yelkouan) in t (CC0) : 4 trajets
+→ Data from: Study "Satellite Tracking of Oceanic Loggerhead Turtles in the Medite (1 Mo)
+✓ Data from: Study "Satellite Tracking of Oceanic Loggerhead Turtles in the Medite (CC0) : 0 trajets
+→ Data from: Fall migration routes, timing, and wintering sites of North American  (23 Mo)
+✓ Data from: Fall migration routes, timing, and wintering sites of North American  (CC0) : 0 trajets
+→ Data from: Timing is critical: consequences of asynchronous migration for the pe (12 Mo)
+✓ Data from: Timing is critical: consequences of asynchronous migration for the pe (CC0) : 1 trajets
+→ Data from: Study "Cassin's Auklet at Triangle Island, northeast Pacific (1999-20 (0 Mo)
+✓ Data from: Study "Cassin's Auklet at Triangle Island, northeast Pacific (1999-20 (CC0) : 0 trajets
+→ Data from: Study "Red fox Herschel - Argos tracking" (3 Mo)
+✓ Data from: Study "Red fox Herschel - Argos tracking" (CC0) : 0 trajets
+→ Data from: The movements of a recently urbanized wading bird reveal changes in s (22 Mo)
+✓ Data from: The movements of a recently urbanized wading bird reveal changes in s (CC0) : 1 trajets
+→ Data from: Migration strategies of the Baltic Dunlin: rapid jump migration in th (11 Mo)
+✓ Data from: Migration strategies of the Baltic Dunlin: rapid jump migration in th (CC0) : 0 trajets
+→ Data from: Migratory patterns and connectivity of two North American grassland b (0 Mo)
+✓ Data from: Migratory patterns and connectivity of two North American grassland b (CC0) : 4 trajets
+→ Data from: Flight behaviour of Red Kites within their breeding area in relation  (128 Mo)
+✓ Data from: Flight behaviour of Red Kites within their breeding area in relation  (CC0) : 1 trajets
+→ Data from: Non-breeding ecology of a Neotropical-Nearctic migrant, the Common Ni (0 Mo)
+✓ Data from: Non-breeding ecology of a Neotropical-Nearctic migrant, the Common Ni (CC0) : 3 trajets
+→ Data from: Study "Arctic fox Herschel - Argos tracking" (5 Mo)
+✓ Data from: Study "Arctic fox Herschel - Argos tracking" (CC0) : 0 trajets
+→ Data from: The owl gull: exclusively nocturnal foraging by the Swallow-tailed Gu (3 Mo)
+✗ Data from: The owl gull: exclusively nocturnal foraging by the Swallow-tailed Gu : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Consistent long-distance foraging flights across years and seasons at (6 Mo)
+✓ Data from: Consistent long-distance foraging flights across years and seasons at (CC0) : 4 trajets
+→ Data from: Age-dependent response to anthropogenic habitat during migration of a (111 Mo)
+✓ Data from: Age-dependent response to anthropogenic habitat during migration of a (CC0) : 1 trajets
+→ Data from: A periodic Markov model to formalise animal migration on a network [w (1 Mo)
+✓ Data from: A periodic Markov model to formalise animal migration on a network [w (CC0) : 0 trajets
+→ Data from: Migration triggers in a large herbivore: Galápagos giant tortoises n (436 Mo)
+✓ Data from: Migration triggers in a large herbivore: Galápagos giant tortoises n (CC0) : 1 trajets
+→ Data from: Foraging and roosting behaviour of the fringe-lipped bat, Trachops ci (0 Mo)
+✓ Data from: Foraging and roosting behaviour of the fringe-lipped bat, Trachops ci (CC0) : 0 trajets
+→ Data from: The social organization of the kinkajou Potos flavus (Procyonidae) (1 Mo)
+✓ Data from: The social organization of the kinkajou Potos flavus (Procyonidae) (CC0) : 0 trajets
+→ Data from: Study "Full annual cycle tracking of Far Eastern Curlew (Numenius mad (5 Mo)
+✓ Data from: Study "Full annual cycle tracking of Far Eastern Curlew (Numenius mad (CC0) : 0 trajets
+→ Data from: Study "Switzerland Luzern - Long term study on migratory movement of  (1 Mo)
+✓ Data from: Study "Switzerland Luzern - Long term study on migratory movement of  (CC0) : 0 trajets
+→ Data from: The effect of feeding time on dispersal of Virola seeds by toucans de (0 Mo)
+✓ Data from: The effect of feeding time on dispersal of Virola seeds by toucans de (CC0) : 0 trajets
+→ Data from: Longer days enable higher diurnal activity for migratory birds [rough (46 Mo)
+✓ Data from: Longer days enable higher diurnal activity for migratory birds [rough (CC0) : 1 trajets
+→ Data from: Condition-dependent foraging strategies in a coastal seabird: evidenc (10 Mo)
+✓ Data from: Condition-dependent foraging strategies in a coastal seabird: evidenc (CC0) : 1 trajets
+→ Data from: Hierarchical multi-grain models improve descriptions of species’ envi (30 Mo)
+✓ Data from: Hierarchical multi-grain models improve descriptions of species’ envi (CC0) : 1 trajets
+→ Data from: Study "Switzerland Lenzburg - Long term study on migratory movement o (3 Mo)
+✓ Data from: Study "Switzerland Lenzburg - Long term study on migratory movement o (CC0) : 0 trajets
+→ Data from: Foraging and mating behaviors of Hypsignathus monstrosus at the bat-h (9 Mo)
+✓ Data from: Foraging and mating behaviors of Hypsignathus monstrosus at the bat-h (CC0) : 2 trajets
+→ Data from: Spatial and temporal characteristics of pastoral mobility in the Far  (17 Mo)
+✓ Data from: Spatial and temporal characteristics of pastoral mobility in the Far  (CC0) : 3 trajets
+→ Data from: Fat, weather, and date affect migratory songbirds’ departure decision (0 Mo)
+✓ Data from: Fat, weather, and date affect migratory songbirds’ departure decision (CC0) : 0 trajets
+→ Data from: Wild goose chase: geese flee high and far, and with aftereffects from (53 Mo)
+✓ Data from: Wild goose chase: geese flee high and far, and with aftereffects from (CC0) : 3 trajets
+→ Data from: Study "Sperm whales Gulf of Mexico 2011-2013 - FastLoc GPS data" (1 Mo)
+✓ Data from: Study "Sperm whales Gulf of Mexico 2011-2013 - FastLoc GPS data" (CC0) : 4 trajets
+→ Data from: Ecological opportunity leads to the emergence of an alternative behav (1 Mo)
+✓ Data from: Ecological opportunity leads to the emergence of an alternative behav (CC0) : 0 trajets
+→ Data from: Study "Milvus_milvus_Soaring_over_Adriatic_sea" (26 Mo)
+✓ Data from: Study "Milvus_milvus_Soaring_over_Adriatic_sea" (CC0) : 3 trajets
+→ Data from: Movement seasonality in a desert-dwelling bat revealed by miniature G (0 Mo)
+✓ Data from: Movement seasonality in a desert-dwelling bat revealed by miniature G (CC0) : 4 trajets
+→ Data from: Study "Switzerland Baden - Long term study on migratory movement of A (4 Mo)
+✓ Data from: Study "Switzerland Baden - Long term study on migratory movement of A (CC0) : 0 trajets
+→ Data from: Migrating curlews on schedule: departure and arrival patterns of a lo (159 Mo)
+✓ Data from: Migrating curlews on schedule: departure and arrival patterns of a lo (CC0) : 1 trajets
+→ Data from: Study "MPIAB Argos white stork tracking (1991-2017)" (13 Mo)
+✗ Data from: Study "MPIAB Argos white stork tracking (1991-2017)" : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Landscape-dependent time versus energy optimisations in pelicans migr (78 Mo)
+✓ Data from: Landscape-dependent time versus energy optimisations in pelicans migr (CC0) : 0 trajets
+→ Data from: Study "HawkWatch International Golden Eagles" (0 Mo)
+✓ Data from: Study "HawkWatch International Golden Eagles" (CC0) : 2 trajets
+→ Data from: Large-range movements of neotropical orchid bees observed via radio t (0 Mo)
+✓ Data from: Large-range movements of neotropical orchid bees observed via radio t (CC0) : 0 trajets
+→ Data from: Effects of agricultural practices on foraging habitats of a seabird s (10 Mo)
+✓ Data from: Effects of agricultural practices on foraging habitats of a seabird s (CC0) : 1 trajets
+→ Data from: Two subspecies of a songbird migrant optimise departure from a coasta (0 Mo)
+✓ Data from: Two subspecies of a songbird migrant optimise departure from a coasta (CC0) : 0 trajets
+→ Data from: Study "Barn Swallow Hirundidae GPS data from Boulder County, CO, USA" (0 Mo)
+✓ Data from: Study "Barn Swallow Hirundidae GPS data from Boulder County, CO, USA" (CC0) : 4 trajets
+→ Data from: A note on the reestablishment of the cheetah population in the Pilane (0 Mo)
+✓ Data from: A note on the reestablishment of the cheetah population in the Pilane (CC0) : 1 trajets
+→ Data from: Geolocators reveal variation and sex-specific differences in the migr (0 Mo)
+✓ Data from: Geolocators reveal variation and sex-specific differences in the migr (CC0) : 0 trajets
+→ Data from: The Environmental-Data Automated Track Annotation (Env-DATA) System:  (5 Mo)
+✓ Data from: The Environmental-Data Automated Track Annotation (Env-DATA) System:  (CC0) : 1 trajets
+→ Data from: The homing pigeons’ olfactory map is affected by geographical barrier (43 Mo)
+✓ Data from: The homing pigeons’ olfactory map is affected by geographical barrier (CC0) : 1 trajets
+→ Data from: Monthly variations in feeding and activity patterns of the mangabey,  (0 Mo)
+✓ Data from: Monthly variations in feeding and activity patterns of the mangabey,  (CC0) : 0 trajets
+→ Data from: First evidence of diverging migration and overwintering strategies in (0 Mo)
+✓ Data from: First evidence of diverging migration and overwintering strategies in (CC0) : 0 trajets
+→ Data from: Foraging behaviour and fuel accumulation of capital breeders during s (2 Mo)
+✓ Data from: Foraging behaviour and fuel accumulation of capital breeders during s (CC0) : 0 trajets
+→ Data from: Partial migration in the Mediterranean storm petrel Hydrobates pelagi (1 Mo)
+✓ Data from: Partial migration in the Mediterranean storm petrel Hydrobates pelagi (CC0) : 0 trajets
+→ Data from: Less is more: on-board lossy compression of accelerometer data increa (4 Mo)
+✓ Data from: Less is more: on-board lossy compression of accelerometer data increa (CC0) : 0 trajets
+→ Data from: Circadian rhythms enable efficient resource selection in a human-modi (4 Mo)
+✗ Data from: Circadian rhythms enable efficient resource selection in a human-modi : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Environmental drivers of variability in the movement ecology of turke (58 Mo)
+✓ Data from: Environmental drivers of variability in the movement ecology of turke (CC0) : 1 trajets
+→ Data from: Longer days enable higher diurnal activity for migratory birds [great (58 Mo)
+✓ Data from: Longer days enable higher diurnal activity for migratory birds [great (CC0) : 1 trajets
+→ Data from: Fine-scale tracking of ambient temperature and movement reveals shutt (44 Mo)
+✓ Data from: Fine-scale tracking of ambient temperature and movement reveals shutt (CC0) : 1 trajets
+→ Data from: Behavioural estimation of blue whale movements in the Northeast Pacif (4 Mo)
+✓ Data from: Behavioural estimation of blue whale movements in the Northeast Pacif (CC0) : 0 trajets
+→ Data from: Identifying volatile organic compounds used for olfactory navigation  (0 Mo)
+✓ Data from: Identifying volatile organic compounds used for olfactory navigation  (CC0) : 0 trajets
+→ Data from: Migratory connectivity at high latitudes: Sabine’s gulls (Xema sabini (1 Mo)
+✓ Data from: Migratory connectivity at high latitudes: Sabine’s gulls (Xema sabini (CC0) : 0 trajets
+→ Data from: Scales of blue and fin whale feeding behavior off California, USA, wi (0 Mo)
+✓ Data from: Scales of blue and fin whale feeding behavior off California, USA, wi (CC0) : 0 trajets
+→ Data from: Summer precipitation predicts spatial distributions of semiaquatic ma (0 Mo)
+✓ Data from: Summer precipitation predicts spatial distributions of semiaquatic ma (CC0) : 0 trajets
+→ Data from: Seasonal movements of Gyrfalcons Falco rusticolus include extensive p (2 Mo)
+✓ Data from: Seasonal movements of Gyrfalcons Falco rusticolus include extensive p (CC0) : 0 trajets
+→ Data from: Wolf ecology and caribou-primary prey-wolf spatial relationships in l (2 Mo)
+✓ Data from: Wolf ecology and caribou-primary prey-wolf spatial relationships in l (CC0) : 1 trajets
+→ Data from: Fin whale movements in the Gulf of California, Mexico, from satellite (0 Mo)
+✓ Data from: Fin whale movements in the Gulf of California, Mexico, from satellite (CC0) : 0 trajets
+→ Data from: Deployment details for satellite tags deployed on Antarctic blue whal (0 Mo)
+✓ Data from: Deployment details for satellite tags deployed on Antarctic blue whal (CC0) : 0 trajets
+→ Data from: Migratory timing, rate, routes and wintering areas of white-crested e (2 Mo)
+✓ Data from: Migratory timing, rate, routes and wintering areas of white-crested e (CC0) : 0 trajets
+→ Data from: Study "Migration routes of the Common Kestrel passing through Guiyang (0 Mo)
+✓ Data from: Study "Migration routes of the Common Kestrel passing through Guiyang (CC0) : 0 trajets
+→ Data from: Influence of sea ice concentration, sex, and chick age on foraging fl (81 Mo)
+✓ Data from: Influence of sea ice concentration, sex, and chick age on foraging fl (CC0) : 1 trajets
+→ Data from: Full-year tracking suggests endogenous control of migration timing in (1 Mo)
+✓ Data from: Full-year tracking suggests endogenous control of migration timing in (CC0) : 0 trajets
+→ Data from: Multi-scale movement syndromes for comparative analyses of animal mov (135 Mo)
+✓ Data from: Multi-scale movement syndromes for comparative analyses of animal mov (CC0) : 1 trajets
+→ Data from: The small home ranges and large local ecological impacts of pet cats  (92 Mo)
+✓ Data from: The small home ranges and large local ecological impacts of pet cats  (CC0) : 1 trajets
+→ Data from: Moulting sites of Latvian whooper swan Cygnus cygnus cygnets fitted w (3 Mo)
+✓ Data from: Moulting sites of Latvian whooper swan Cygnus cygnus cygnets fitted w (CC0) : 0 trajets
+→ Data from: Multidimensional differentiation in foraging resource use during bree (73 Mo)
+✓ Data from: Multidimensional differentiation in foraging resource use during bree (CC0) : 4 trajets
+→ Data from: Feeling the heat: elevated temperature affects male display activity  (0 Mo)
+✓ Data from: Feeling the heat: elevated temperature affects male display activity  (CC0) : 0 trajets
+→ Data from: In search of greener pastures: using satellite images to predict the  (16 Mo)
+✓ Data from: In search of greener pastures: using satellite images to predict the  (CC0) : 4 trajets
+→ Data from: Study "Herring Gulls (Larus Argentatus); Clark; Massachussets, United (2 Mo)
+✓ Data from: Study "Herring Gulls (Larus Argentatus); Clark; Massachussets, United (CC0) : 4 trajets
+→ Data from: Scouts vs usurpers: alternative foraging strategies facilitate coexis (35 Mo)
+✓ Data from: Scouts vs usurpers: alternative foraging strategies facilitate coexis (CC0) : 4 trajets
+→ Data from: At-sea distribution and prey selection of Antarctic petrels and comme (2 Mo)
+✓ Data from: At-sea distribution and prey selection of Antarctic petrels and comme (CC0) : 0 trajets
+→ Data from: Birds of three worlds: moult migration to high Arctic expands a borea (153 Mo)
+✓ Data from: Birds of three worlds: moult migration to high Arctic expands a borea (CC0) : 1 trajets
+→ Data from: Overall dynamic body acceleration in straw-colored fruit bats increas (4 Mo)
+✗ Data from: Overall dynamic body acceleration in straw-colored fruit bats increas : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Influence of density-dependent competition on foraging and migratory  (32 Mo)
+✓ Data from: Influence of density-dependent competition on foraging and migratory  (CC0) : 1 trajets
+→ Data from: Pigeon navigation: exposure to environmental odours prior to release  (25 Mo)
+✓ Data from: Pigeon navigation: exposure to environmental odours prior to release  (CC0) : 1 trajets
+→ Data from: Loop-migration and non-breeding locations of British breeding Wood Wa (1 Mo)
+✓ Data from: Loop-migration and non-breeding locations of British breeding Wood Wa (CC0) : 0 trajets
+→ Data from: Olfaction and topography, but not magnetic cues, control navigation i (0 Mo)
+✓ Data from: Olfaction and topography, but not magnetic cues, control navigation i (CC0) : 0 trajets
+→ Data from: Homing pigeons only navigate in air with intact environmental odours: (0 Mo)
+✓ Data from: Homing pigeons only navigate in air with intact environmental odours: (CC0) : 0 trajets
+→ Data from: Study "Reindeer movement in East Iceland" (3 Mo)
+✓ Data from: Study "Reindeer movement in East Iceland" (CC0) : 4 trajets
+→ Data from: Study "1000 Cranes. Southern Kazakhstan." (1 Mo)
+✓ Data from: Study "1000 Cranes. Southern Kazakhstan." (CC BY) : 2 trajets
+→ Data from: Ontogenetic shifts from social to experiential learning drive avian m (0 Mo)
+✓ Data from: Ontogenetic shifts from social to experiential learning drive avian m (CC0) : 4 trajets
+→ Data from: The effect of feeding time on dispersal of Virola seeds by toucans de (1 Mo)
+✗ Data from: The effect of feeding time on dispersal of Virola seeds by toucans de : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Back to the wild: Post-translocation GPS monitoring of a rehabilitate (0 Mo)
+✓ Data from: Back to the wild: Post-translocation GPS monitoring of a rehabilitate (CC0) : 1 trajets
+→ Data from: Study "Red Knot geolocator tracking New Zealand 2013" (0 Mo)
+✓ Data from: Study "Red Knot geolocator tracking New Zealand 2013" (CC BY) : 0 trajets
+→ Data from: First records of complete annual cycles in water rails Rallus aquatic (0 Mo)
+✓ Data from: First records of complete annual cycles in water rails Rallus aquatic (CC0) : 0 trajets
+→ Data from: Study "Arctic fox Bylot - Argos tracking" (143 Mo)
+✓ Data from: Study "Arctic fox Bylot - Argos tracking" (CC0) : 0 trajets
+→ Data from: Simulating the transmission of foot-and-mouth disease among mobile he (4 Mo)
+✓ Data from: Simulating the transmission of foot-and-mouth disease among mobile he (CC0) : 2 trajets
+→ Data from: Individual variation in migratory path and behavior among Eastern Lar (1 Mo)
+✓ Data from: Individual variation in migratory path and behavior among Eastern Lar (CC0) : 0 trajets
+→ Data from: Study "Marbled Murrelets at Clayoquot Sound, British Columbia, Canada (0 Mo)
+✓ Data from: Study "Marbled Murrelets at Clayoquot Sound, British Columbia, Canada (CC0) : 0 trajets
+→ Data from: Locally adapted migration strategies: Comparing routes and timing of  (3 Mo)
+✓ Data from: Locally adapted migration strategies: Comparing routes and timing of  (CC0) : 0 trajets
+→ Data from: Commuting fruit bats beneficially modulate their flight in relation t (0 Mo)
+✓ Data from: Commuting fruit bats beneficially modulate their flight in relation t (CC0) : 4 trajets
+→ Data from: Study "Ya Ha Tinda elk project, Banff National Park, 2001-2020 (femal (290 Mo)
+✓ Data from: Study "Ya Ha Tinda elk project, Banff National Park, 2001-2020 (femal (CC0) : 4 trajets
+→ Data from: Invasive wild pig movement and space use in a mixed-use forest landsc (3 Mo)
+✓ Data from: Invasive wild pig movement and space use in a mixed-use forest landsc (CC0) : 4 trajets
+→ Data from: Ámbito de hogar y actividad circadiana del ocelote (Leopardus pardali (0 Mo)
+✓ Data from: Ámbito de hogar y actividad circadiana del ocelote (Leopardus pardali (CC0) : 0 trajets
+→ Data from: Study "Green turtles (Chelonia Mydas); Hays; Chagos Archipelago, West (1 Mo)
+✓ Data from: Study "Green turtles (Chelonia Mydas); Hays; Chagos Archipelago, West (CC0) : 0 trajets
+→ Data from: Remote estimation of overwintering home ranges in an elusive migrator (0 Mo)
+✓ Data from: Remote estimation of overwintering home ranges in an elusive migrator (CC0) : 4 trajets
+→ Data from: Black kites of different age and sex show similar avoidance responses (57 Mo)
+✗ Data from: Black kites of different age and sex show similar avoidance responses : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Study "Lowland tapirs, Tapirus terrestris, in Southern Brazil" (2 Mo)
+✓ Data from: Study "Lowland tapirs, Tapirus terrestris, in Southern Brazil" (CC0) : 0 trajets
+→ Data from: Pteropus lylei primarily forages in residential areas in Kandal, Camb (3 Mo)
+✓ Data from: Pteropus lylei primarily forages in residential areas in Kandal, Camb (CC0) : 4 trajets
+→ Data from: Study "Eurasian teal, Giunchi, Italy" (16 Mo)
+✓ Data from: Study "Eurasian teal, Giunchi, Italy" (CC0) : 0 trajets
+→ Data from: Study "Movement patterns of seed dispersing spotted nutcrackers (Nuci (2 Mo)
+✓ Data from: Study "Movement patterns of seed dispersing spotted nutcrackers (Nuci (CC0) : 4 trajets
+→ Data from: Miniaturized GPS tags identify non-breeding territories of a small br (0 Mo)
+✓ Data from: Miniaturized GPS tags identify non-breeding territories of a small br (CC0) : 4 trajets
+→ Data from: Can one animal represent an entire herd? Modeling pastoral mobility u (14 Mo)
+✗ Data from: Can one animal represent an entire herd? Modeling pastoral mobility u : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: East with the night—longitudinal migration of the Orinoco Goose betwe (0 Mo)
+✓ Data from: East with the night—longitudinal migration of the Orinoco Goose betwe (CC0) : 0 trajets
+→ Data from: Study "1000 Cranes. Ukraine." (0 Mo)
+✓ Data from: Study "1000 Cranes. Ukraine." (CC BY) : 4 trajets
+→ Data from: Are movements of day- and night-time passerine migrants as different  (0 Mo)
+✓ Data from: Are movements of day- and night-time passerine migrants as different  (CC0) : 0 trajets
+→ Data from: Study "GPS tracking of bobcats and coyotes in northern Washington" (24 Mo)
+✗ Data from: Study "GPS tracking of bobcats and coyotes in northern Washington" : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Temporal and contextual consistency of leadership in homing pigeon fl (49 Mo)
+✓ Data from: Temporal and contextual consistency of leadership in homing pigeon fl (CC0) : 1 trajets
+→ Data from: Influence of visual perception on movement decisions by an ungulate p (7 Mo)
+✗ Data from: Influence of visual perception on movement decisions by an ungulate p : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Modelling landscape connectivity for greater horseshoe bat using an e (0 Mo)
+✓ Data from: Modelling landscape connectivity for greater horseshoe bat using an e (CC0) : 0 trajets
+→ Data from: Study "1000 Cranes. Russia. Common Crane." (2 Mo)
+✓ Data from: Study "1000 Cranes. Russia. Common Crane." (CC BY) : 2 trajets
+→ Data from: Study "Spain Tarragona - Long term study on migratory movement of Alp (1 Mo)
+✓ Data from: Study "Spain Tarragona - Long term study on migratory movement of Alp (CC0) : 0 trajets
+→ Data from: Pigeons remember visual landmarks after one release and rely upon the (432 Mo)
+✓ Data from: Pigeons remember visual landmarks after one release and rely upon the (CC0) : 1 trajets
+→ Data from: Prey capture and selection throughout the breeding season in a deep-d (0 Mo)
+✓ Data from: Prey capture and selection throughout the breeding season in a deep-d (CC0) : 0 trajets
+→ Data from: Stink or swim: techniques to meet the challenges for the study and co (0 Mo)
+✓ Data from: Stink or swim: techniques to meet the challenges for the study and co (CC0) : 2 trajets
+→ Data from: Study "Bar-tailed Godwit geolocator tracking New Zealand 2013-2014" (0 Mo)
+✓ Data from: Study "Bar-tailed Godwit geolocator tracking New Zealand 2013-2014" (CC BY) : 0 trajets
+→ Data from: Study "Turkey Pirasali - Long term study on migratory movement of Alp (4 Mo)
+✓ Data from: Study "Turkey Pirasali - Long term study on migratory movement of Alp (CC0) : 0 trajets
+→ Data from: Study "Bobcat habitat connectivity study in central California" (159 Mo)
+✓ Data from: Study "Bobcat habitat connectivity study in central California" (CC0) : 1 trajets
+→ Data from: Study "Siberian rubythroat tracking from Qinghai, China" (0 Mo)
+✓ Data from: Study "Siberian rubythroat tracking from Qinghai, China" (CC0) : 4 trajets
+→ Data from: Movements of neotropical understory passerines affected by anthropoge (1 Mo)
+✓ Data from: Movements of neotropical understory passerines affected by anthropoge (CC0) : 0 trajets
+→ Data from: Trans-Andean and divergent migration of Black Skimmers (Rynchops nige (1 Mo)
+✓ Data from: Trans-Andean and divergent migration of Black Skimmers (Rynchops nige (CC0) : 0 trajets
+→ Data from: Tracking the migration of red-necked stint (Calidris ruficollis) reve (0 Mo)
+✓ Data from: Tracking the migration of red-necked stint (Calidris ruficollis) reve (CC0) : 0 trajets
+→ Data from: European free-tailed bats use topography and nocturnal updrafts to fl (2 Mo)
+✓ Data from: European free-tailed bats use topography and nocturnal updrafts to fl (CC0) : 1 trajets
+→ Data from: Study "Satellite tracking of black-capped petrels, 2019" (0 Mo)
+✓ Data from: Study "Satellite tracking of black-capped petrels, 2019" (CC0) : 0 trajets
+→ Data from: Study "Herring Gulls (Larus Argentatus); Ronconi; Kent Island, Canada (2 Mo)
+✓ Data from: Study "Herring Gulls (Larus Argentatus); Ronconi; Kent Island, Canada (CC0) : 0 trajets
+→ Data from: Study "Arctic hare Alert - Argos tracking" (12 Mo)
+✓ Data from: Study "Arctic hare Alert - Argos tracking" (CC0) : 0 trajets
+→ Data from: The history and range expansion of peregrine falcons in the Thule are (1 Mo)
+✓ Data from: The history and range expansion of peregrine falcons in the Thule are (CC0) : 0 trajets
+→ Data from: Vultures respond to challenges of near-ground thermal soaring by vary (52 Mo)
+✓ Data from: Vultures respond to challenges of near-ground thermal soaring by vary (CC0) : 1 trajets
+→ Data from: Spring foraging movements of an urban population of grey-headed flyin (31 Mo)
+✗ Data from: Spring foraging movements of an urban population of grey-headed flyin : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Correcting for missing and irregular data in home-range estimation (0 Mo)
+✓ Data from: Correcting for missing and irregular data in home-range estimation (CC0) : 1 trajets
+→ Data from: Northwest range shifts and shorter wintering period of an Arctic seab (8 Mo)
+✓ Data from: Northwest range shifts and shorter wintering period of an Arctic seab (CC0) : 0 trajets
+→ Data from: Spatial ecology of copperhead snakes (Agkistrodon contortrix) in resp (0 Mo)
+✓ Data from: Spatial ecology of copperhead snakes (Agkistrodon contortrix) in resp (CC0) : 0 trajets
+→ Data from: Allometric and temporal scaling of movement characteristics in Galapa (1 Mo)
+✓ Data from: Allometric and temporal scaling of movement characteristics in Galapa (CC0) : 0 trajets
+→ Data from: Spatiotemporally variable snow properties drive habitat use of an Arc (1 Mo)
+✓ Data from: Spatiotemporally variable snow properties drive habitat use of an Arc (CC0) : 1 trajets
+→ Data from: Uncovering behavioural states from animal activity and site fidelity  (42 Mo)
+✓ Data from: Uncovering behavioural states from animal activity and site fidelity  (CC0) : 1 trajets
+→ Data from: Study "Hebblewhite Alberta-BC Wolves" (26 Mo)
+✓ Data from: Study "Hebblewhite Alberta-BC Wolves" (CC BY) : 1 trajets
+→ Data from: Space use by Swainson's hawk (Buteo swainsoni) in the Natomas Basin,  (4 Mo)
+✓ Data from: Space use by Swainson's hawk (Buteo swainsoni) in the Natomas Basin,  (CC0) : 1 trajets
+→ Data from: Residency and use of an important nursery habitat, Raja Ampat’s Wayag (0 Mo)
+✓ Data from: Residency and use of an important nursery habitat, Raja Ampat’s Wayag (CC0) : 4 trajets
+→ Data from: Migration phenology and patterns of American woodcock in central Nort (0 Mo)
+✓ Data from: Migration phenology and patterns of American woodcock in central Nort (CC0) : 4 trajets
+→ Data from: Study "Marbled Murrelet satellite tracking data from British Columbia (0 Mo)
+✓ Data from: Study "Marbled Murrelet satellite tracking data from British Columbia (CC0) : 0 trajets
+→ Data from: Study "Caracal movement ecology study in Cape Town, South Africa" (10 Mo)
+✓ Data from: Study "Caracal movement ecology study in Cape Town, South Africa" (CC0) : 4 trajets
+→ Data from: Study "1000 Cranes. Russia. Transbaikalia." (6 Mo)
+✓ Data from: Study "1000 Cranes. Russia. Transbaikalia." (CC BY) : 4 trajets
+→ Data from: Locally adapted migration strategies: Comparing routes and timing of  (1 Mo)
+✓ Data from: Locally adapted migration strategies: Comparing routes and timing of  (CC0) : 0 trajets
+→ Data from: Delayed response and biosonar perception explain movement coordinatio (20 Mo)
+✓ Data from: Delayed response and biosonar perception explain movement coordinatio (CC0) : 0 trajets
+→ Data from: The gateway to Africa: what determines sea crossing performance of a  (0 Mo)
+✓ Data from: The gateway to Africa: what determines sea crossing performance of a  (CC0) : 0 trajets
+→ Data from: High accuracy tracking reveals how small conservation areas can prote (23 Mo)
+✓ Data from: High accuracy tracking reveals how small conservation areas can prote (CC0) : 4 trajets
+→ Data from: Dynamic body acceleration increases by 20% during flight ontogeny of  (98 Mo)
+✓ Data from: Dynamic body acceleration increases by 20% during flight ontogeny of  (CC0) : 2 trajets
+→ Data from: Towards a new understanding of migration timing: slower spring than a (0 Mo)
+✓ Data from: Towards a new understanding of migration timing: slower spring than a (CC0) : 0 trajets
+→ Data from: Study "Switzerland Lausanne - Long term study on migratory movement o (0 Mo)
+✓ Data from: Study "Switzerland Lausanne - Long term study on migratory movement o (CC0) : 0 trajets
+→ Data from: Re-colonization by common eiders (Somateria mollissima) in the Aleuti (0 Mo)
+✓ Data from: Re-colonization by common eiders (Somateria mollissima) in the Aleuti (CC0) : 0 trajets
+→ Data from: Automated telemetry reveals age specific differences in flight durati (0 Mo)
+✓ Data from: Automated telemetry reveals age specific differences in flight durati (CC0) : 0 trajets
+→ Data from: Study "Switzerland Biel - Long term study on migratory movement of Al (1 Mo)
+✓ Data from: Study "Switzerland Biel - Long term study on migratory movement of Al (CC0) : 0 trajets
+→ Data from: Bats surf storm fronts during spring migration (1 Mo)
+✓ Data from: Bats surf storm fronts during spring migration (CC BY) : 0 trajets
+→ Data from: Study "Audubon Canyon Ranch egret telemetry project" (426 Mo)
+✓ Data from: Study "Audubon Canyon Ranch egret telemetry project" (CC0) : 1 trajets
+→ Data from: Study "Red Fox (Vulpes vulpes) in UK wet grasslands" (32 Mo)
+✓ Data from: Study "Red Fox (Vulpes vulpes) in UK wet grasslands" (CC0) : 1 trajets
+→ Data from: Study "Eurasian wigeon (Mareca penelope) Netherlands Lithuania 2018-2 (454 Mo)
+✓ Data from: Study "Eurasian wigeon (Mareca penelope) Netherlands Lithuania 2018-2 (CC0) : 2 trajets
+→ Data from: Seasonal movements of Gyrfalcons Falco rusticolus include extensive p (0 Mo)
+✓ Data from: Seasonal movements of Gyrfalcons Falco rusticolus include extensive p (CC0) : 0 trajets
+→ Data from: Study "1000 Cranes. Russia. Altai." (1 Mo)
+✓ Data from: Study "1000 Cranes. Russia. Altai." (CC BY) : 2 trajets
+→ Data from: At-sea distribution of spectacled eiders: a 120-year-old mystery reso (1 Mo)
+✓ Data from: At-sea distribution of spectacled eiders: a 120-year-old mystery reso (CC0) : 0 trajets
+→ Data from: A multi-scale test of the forage maturation hypothesis in a partially (2 Mo)
+✓ Data from: A multi-scale test of the forage maturation hypothesis in a partially (CC0) : 0 trajets
+→ Data from: Fine-scale assessment of home ranges and activity patterns for reside (461 Mo)
+✓ Data from: Fine-scale assessment of home ranges and activity patterns for reside (CC0) : 1 trajets
+→ Data from: Study "Long-tailed Jaeger - GLS - Canadian Arctic" (4 Mo)
+✓ Data from: Study "Long-tailed Jaeger - GLS - Canadian Arctic" (CC0) : 0 trajets
+→ Data from: Trans-equatorial migration links oceanic frontal habitats across the  (2 Mo)
+✓ Data from: Trans-equatorial migration links oceanic frontal habitats across the  (CC0) : 0 trajets
+→ Data from: The secret life of oilbirds: new insights into the movement ecology o (0 Mo)
+✓ Data from: The secret life of oilbirds: new insights into the movement ecology o (CC0) : 0 trajets
+→ Data from: Study "Fishing cat (Prionairulus viverrinus) study in Khao Sam Roi Yo (17 Mo)
+✓ Data from: Study "Fishing cat (Prionairulus viverrinus) study in Khao Sam Roi Yo (CC0) : 1 trajets
+→ Data from: Case Report: Long-distance overwater migration of the Northern Booboo (0 Mo)
+✓ Data from: Case Report: Long-distance overwater migration of the Northern Booboo (CC BY) : 1 trajets
+→ Data from: Study "Carnivore movements near Black Rock Forest New York" [part] (33 Mo)
+✓ Data from: Study "Carnivore movements near Black Rock Forest New York" [part] (CC BY) : 1 trajets
+→ Data from: Study "Spatial ecology of plains spotted skunks in a Texas coastal pr (1 Mo)
+✓ Data from: Study "Spatial ecology of plains spotted skunks in a Texas coastal pr (CC0) : 4 trajets
+→ Data from: Study "Wyoming Bighorn Mountain Moose" [part] (8 Mo)
+✓ Data from: Study "Wyoming Bighorn Mountain Moose" [part] (CC0) : 1 trajets
+→ Data from: Study "GPS tracking of white-tailed deer in western Virginia" (92 Mo)
+✓ Data from: Study "GPS tracking of white-tailed deer in western Virginia" (CC0) : 1 trajets
+→ Data from: Study "GPS tracking of wild turkeys in the southeastern US" (128 Mo)
+✗ Data from: Study "GPS tracking of wild turkeys in the southeastern US" : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Data from: Study "GPS tracking of American Goshawks--Nevada Department of Wildli (3 Mo)
+✓ Data from: Study "GPS tracking of American Goshawks--Nevada Department of Wildli (CC0) : 1 trajets
+→ Data from: Study "Vultures tagged in the southeastern United States" [part] (249 Mo)
+✓ Data from: Study "Vultures tagged in the southeastern United States" [part] (CC0) : 1 trajets
+→ Data from: Study "LifeTrack Bald Eagle" (36 Mo)
+✗ Data from: Study "LifeTrack Bald Eagle" : IndexError list index out of range
+Traceback (most recent call last):
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 167, in main
+    par, coupe = lire_csv(fichiers[0][1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/encyclopedie-de-la-vie/encyclopedie-de-la-vie/scripts/donnees/voyageurs.py", line 118, in lire_csv
+    a = par.setdefault(ligne[iind], {"taxon": ligne[itax] if itax is not None else "", "pts": [], "pas": 1, "n": 0, "km": 0.0,
+                       ~~~~~^^^^^^
+IndexError: list index out of range
+→ Study "GPS tracking of cougars in Utah by UDWR (2019-2020)" (8 Mo)
+✓ Study "GPS tracking of cougars in Utah by UDWR (2019-2020)" (CC0) : 1 trajets
+→ Data from: Study "UCSB Urban Raccoon Project" [part] (3 Mo)
+✓ Data from: Study "UCSB Urban Raccoon Project" [part] (CC BY) : 1 trajets
+→ Data from: Study "GPS tracking of wild pigs in southern Florida (2019-2021)" (12 Mo)
+✓ Data from: Study "GPS tracking of wild pigs in southern Florida (2019-2021)" (CC0) : 1 trajets
+→ Data from: Study "Wild Pig/Boar GPS Study on Rangeland-Sus scrofa-Oklahoma" [par (9 Mo)
+✓ Data from: Study "Wild Pig/Boar GPS Study on Rangeland-Sus scrofa-Oklahoma" [par (CC0) : 2 trajets
+→ Data from: Study "Wolves, Stahler, Yellowstone National Park" [part] (4 Mo)
+✓ Data from: Study "Wolves, Stahler, Yellowstone National Park" [part] (CC0) : 1 trajets
+→ Data from: Dispersive migration of breeding Juan Fernández Petrels Pterodroma ex (2 Mo)
+✓ Data from: Dispersive migration of breeding Juan Fernández Petrels Pterodroma ex (CC0) : 0 trajets
+→ Data from: Migratory and breeding behaviour of Water Rails Rallus aquaticus in e (1 Mo)
+✓ Data from: Migratory and breeding behaviour of Water Rails Rallus aquaticus in e (CC BY) : 0 trajets
+→ Data from: Translocate or manage onsite? Similar welfare outcomes for koalas dur (35 Mo)
+✓ Data from: Translocate or manage onsite? Similar welfare outcomes for koalas dur (CC BY) : 1 trajets
+→ Data from: Study "Wyoming Sublette Mule Deer (2018-2020)" (134 Mo)
+✓ Data from: Study "Wyoming Sublette Mule Deer (2018-2020)" (CC0) : 1 trajets
+→ Data from: Study "American black bear movement ecology in Connecticut" (24 Mo)
+✓ Data from: Study "American black bear movement ecology in Connecticut" (CC BY) : 1 trajets
+→ Data from: Study "Golden Eagle Nevada" (49 Mo)
+✓ Data from: Study "Golden Eagle Nevada" (CC0) : 1 trajets
+→ Data from: Migratory, molting, and overwintering strategies of sagebrush-associa (8 Mo)
+✓ Data from: Migratory, molting, and overwintering strategies of sagebrush-associa (CC0) : 0 trajets
+→ Data from: Oceanic navigation in Cory’s shearwaters—evidence for a crucial role  (51 Mo)
+✓ Data from: Oceanic navigation in Cory’s shearwaters—evidence for a crucial role  (CC0) : 1 trajets
+→ Data from: Space and resource use by American crow (Corvus brachyrhynchos) in an (25 Mo)
+✓ Data from: Space and resource use by American crow (Corvus brachyrhynchos) in an (CC BY) : 2 trajets
+→ Data from: Annual-cycle movement patterns of Eastern Brown Pelicans from the nor (4 Mo)
+✓ Data from: Annual-cycle movement patterns of Eastern Brown Pelicans from the nor (CC0) : 1 trajets
+→ Data from: Study "Brown Pelican_South Atlantic Bight" [part] (1 Mo)
+✓ Data from: Study "Brown Pelican_South Atlantic Bight" [part] (CC0) : 3 trajets
+→ Data from: Study "Multi-Scale Spatial and Movement Ecology of Gray Hawks in a Fr (239 Mo)
+✓ Data from: Study "Multi-Scale Spatial and Movement Ecology of Gray Hawks in a Fr (CC0) : 1 trajets
+→ Data from: Where do livestock guardian dogs go? Movement patterns of free-rangin (47 Mo)
+✓ Data from: Where do livestock guardian dogs go? Movement patterns of free-rangin (CC0) : 1 trajets
+→ Data from: Movement of long-tailed ducks marked on the Yukon-Kuskokwim Delta, Al (0 Mo)
+✓ Data from: Movement of long-tailed ducks marked on the Yukon-Kuskokwim Delta, Al (CC0) : 0 trajets
+FIN : 587 trajets, 132 espèces
