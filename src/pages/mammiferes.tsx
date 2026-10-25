@@ -208,7 +208,7 @@ function Fiche({ id }: { id: string }) {
       <Titre>{e.nom}</Titre>
       <p className="text-center italic texte-doux">{e.latin}</p>
       <p className="text-center text-sm"><Mot id="nom-scientifique" /></p>
-      {e.langue === "trad" ? <p className="mx-auto mt-1 max-w-sm text-center text-sm texte-doux">Nom traduit de l'anglais (« {e.nomAnglais} »). Cet animal n'a pas encore de nom français officiel.</p> : e.langue !== "fr" ? <p className="mt-1 text-center text-sm texte-doux">Nom anglais : le nom français est en cours.</p> : null}
+      {e.langue === "trad" ? <p className="mx-auto mt-1 max-w-sm text-center text-sm texte-doux">Pas encore de nom français officiel : nom traduit de l'anglais (« {e.nomAnglais} ») par Claude, l'IA qui a fabriqué l'application.</p> : e.langue !== "fr" ? <p className="mt-1 text-center text-sm texte-doux">Nom anglais : le nom français est en cours.</p> : null}
       <p className="mt-2 text-center text-sm font-extrabold text-[#f0d090]"><a href={`#/mammiferes/f-${e.famille}`} className="underline">{FAMILLES[e.famille]?.nom}</a> · <a href={`#/mammiferes/o-${e.ordre}`} className="underline">{ordreDe(e.ordre)?.nom}</a></p>
       <div className="mt-3 flex justify-center">
         <Ecouter gros texte={[e.nom, grande?.phrase, `Répartition. ${vie?.ou ?? e.ou}`, regime ? `Régime. ${regime.nom}. ${regime.explique}` : "Régime. Mal connu.", `Portée. ${vie?.bebes ?? e.portee ?? "Mal connu."}`, `Gestation. ${vie?.gestation ?? e.gestation ?? "Mal connu."}`, `Longévité. ${grande?.vie ?? e.longevite ?? "Mal connu."}`, `Statut. ${e.statut ?? "Non évalué."}`].filter(Boolean).join(" ")} />
