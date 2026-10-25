@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Une présentation plus claire",
+    "points": [
+      "Plume résume d'abord toute l'application, et comment lui parler.",
+      "Ensuite, des boutons pour tout expliquer en détail : l'arbre de la vie, les animaux, jouer, l'Aventure, Plume elle-même, les réglages.",
+      "Ou bien « C'est bon, je vais explorer ! », et Plume dit : c'est parti !"
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Revivre la première fois",
     "points": [
       "Dans les Options : un bouton pour relancer l'application comme la toute première fois. Plume se présente de nouveau et réexplique chaque page. Rien de ce que Leonie a gagné n'est effacé."
