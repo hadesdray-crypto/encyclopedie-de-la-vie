@@ -7,11 +7,12 @@ import { debutLecture, presence } from "@/lib/plume";
 
 // Chaque caractère de Plume a sa voix : hauteur (pitch) et vitesse, multipliées par la vitesse choisie dans les Options.
 const VOIX: Record<string, { hauteur: number; vitesse: number }> = {
-  discrete: { hauteur: 0.95, vitesse: 0.9 }, // douce et calme
-  presente: { hauteur: 1.15, vitesse: 1 }, // claire et gaie
-  etudiante: { hauteur: 1.05, vitesse: 0.95 }, // posée, comme une maîtresse
-  passionnee: { hauteur: 1.35, vitesse: 1.15 }, // aiguë et pressée, la savante folle
-  repos: { hauteur: 1.1, vitesse: 1 },
+  // Des écarts doux : chaque voix reste très claire et bien audible.
+  discrete: { hauteur: 0.97, vitesse: 0.93 }, // douce et calme
+  presente: { hauteur: 1.1, vitesse: 1 }, // claire et gaie
+  etudiante: { hauteur: 1.02, vitesse: 0.95 }, // posée, comme une maîtresse
+  passionnee: { hauteur: 1.2, vitesse: 1.07 }, // plus aiguë et un peu pressée
+  repos: { hauteur: 1.05, vitesse: 1 },
 };
 const voixDePlume = () => VOIX[presence()] ?? VOIX.presente;
 
