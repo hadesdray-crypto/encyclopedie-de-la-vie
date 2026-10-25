@@ -10,13 +10,13 @@ import { sons } from "@/lib/sons";
 
 type Cle = keyof Omit<Tenue, "couleurs">;
 const RAYONS: { cle: Cle | "corps"; titre: string; icone: string; liste?: Piece[]; couleur?: keyof Tenue["couleurs"]; cadre?: string; dessin?: (t: Tenue) => ReactNode }[] = [
-  { cle: "corps", titre: "Corps", icone: "🦉" },
-  { cle: "haut", titre: "Haut", icone: "👕", liste: HAUTS, couleur: "haut", cadre: "30 108 140 98", dessin: (t) => <Haut t={t} /> },
-  { cle: "bas", titre: "Bas", icone: "👖", liste: BAS, couleur: "bas", cadre: "30 148 140 66", dessin: (t) => <Bas t={t} /> },
+  { cle: "haut", titre: "Torse", icone: "👚", liste: HAUTS, couleur: "haut", cadre: "22 96 156 116", dessin: (t) => <><Mannequin /><Haut t={t} /></> },
+  { cle: "bas", titre: "Bas", icone: "👖", liste: BAS, couleur: "bas", cadre: "26 128 148 90", dessin: (t) => <><Mannequin /><Bas t={t} /></> },
   { cle: "chapeau", titre: "Tête", icone: "🎩", liste: CHAPEAUX2, couleur: "chapeau", cadre: "20 -40 160 108", dessin: (t) => <Chapeau2 t={t} /> },
   { cle: "lunettes", titre: "Lunettes", icone: "👓", liste: LUNETTES, cadre: "26 52 148 80", dessin: (t) => <Lunettes2 t={t} /> },
   { cle: "chaussures", titre: "Pieds", icone: "👟", liste: CHAUSSURES, couleur: "chaussures", cadre: "100 178 50 40", dessin: (t) => <Chaussure t={t} /> },
   { cle: "objet", titre: "Main", icone: "🎸", liste: OBJETS, couleur: "objet", cadre: "150 64 80 106", dessin: (t) => <Objet t={t} /> },
+  { cle: "corps", titre: "Corps", icone: "🦉" },
 ];
 
 const CLE_SURPRISES = "leonie-cabine-surprises";
@@ -131,15 +131,16 @@ export function Cabine({ look, setLook, caractere, nouveau }: { look: Look; setL
       ) : null}
 
       {/* Les rayons du vestiaire : une étagère en bois avec une icône par rayon */}
-      <div className="etagere mt-4 flex gap-1 overflow-x-auto rounded-[1.4rem] px-2 py-2">
+      <div className="etagere mt-4 grid grid-cols-7 gap-0.5 rounded-[1.4rem] px-1.5 py-2">
         {RAYONS.map((x) => (
-          <button key={x.cle} type="button" onClick={() => setRayon(x.cle)} aria-pressed={rayon === x.cle} className={`flex w-[3.9rem] shrink-0 flex-col items-center rounded-2xl py-1.5 text-[11px] font-extrabold transition-all ${rayon === x.cle ? "bg-gradient-to-b from-[#fff0b8] to-[#f3c35a] text-[#2a1650] shadow-[0_0_14px_rgba(243,195,90,.6)] -translate-y-0.5" : "text-[#fff3d6]"}`}>
+          <button key={x.cle} type="button" onClick={() => setRayon(x.cle)} aria-pressed={rayon === x.cle} className={`flex flex-col items-center rounded-2xl py-1.5 text-[10.5px] font-extrabold transition-all ${rayon === x.cle ? "bg-gradient-to-b from-[#fff0b8] to-[#f3c35a] text-[#2a1650] shadow-[0_0_14px_rgba(243,195,90,.6)] -translate-y-0.5" : "text-[#fff3d6]"}`}>
             <span className="text-2xl leading-none drop-shadow" aria-hidden="true">{x.icone}</span>
             {x.titre}
           </button>
         ))}
       </div>
       <div className="mt-2 rounded-[1.6rem] bg-[#1d1336]/80 px-3 py-3 ring-1 ring-white/12">
+        <p className="mb-2 font-display text-xl text-[#f3d48a]">{r.icone} {r.cle === "haut" ? "Le torse : chemise, robe, pull, maillot…" : r.cle === "bas" ? "Le bas : jupe, pantalon, short, tutu…" : r.cle === "chapeau" ? "Sur la tête" : r.cle === "lunettes" ? "Les lunettes" : r.cle === "chaussures" ? "Les chaussures" : r.cle === "objet" ? "Dans la main" : "Son corps"}</p>
         {r.cle === "corps" ? (
           <>
             <p className="text-sm font-black text-[#f3d48a]">Sa couleur</p>
@@ -203,6 +204,11 @@ export function Cabine({ look, setLook, caractere, nouveau }: { look: Look; setL
       </label>
     </div>
   );
+}
+
+/** Un petit mannequin tout simple derrière les vêtements, pour voir comment ils se portent. */
+function Mannequin() {
+  return <g opacity=".22"><ellipse cx="100" cy="112" rx="70" ry="74" fill="#fff" /><ellipse cx="100" cy="140" rx="42" ry="42" fill="#fff" /></g>;
 }
 
 /** Le décor de la salle : papier peint, portant à vêtements à gauche, miroir à ampoules à droite, parquet et tapis. */
