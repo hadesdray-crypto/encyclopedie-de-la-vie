@@ -17,7 +17,7 @@ import { Portrait, aUnePhoto } from "@/components/portrait";
 import { Vignette } from "@/components/icone";
 import { PAR_ID } from "@/data/catalogue";
 import crisConnus from "@/data/cris.json";
-import { LuChevronLeft, LuFlame } from "react-icons/lu";
+import { LuChevronLeft, LuFlame, LuGalleryVertical, LuLayoutGrid, LuList, LuUser, LuUsers } from "react-icons/lu";
 import { useModeJeu } from "@/lib/mode-jeu";
 import { revenir } from "@/lib/routeur";
 import { PlumeDessin } from "@/components/plume-dessin";
@@ -55,6 +55,25 @@ function questionTemps() {
 
 type Jeu = "defi" | "regime" | "temps" | "memoire" | "bataille" | "rapide" | "mime" | "familles" | "poids" | "carte" | "cri";
 
+// Chaque jeu a son animal (une vraie photo) et ses couleurs.
+const LOOK: Record<Jeu, { latin: string; fond: string }> = {
+  defi: { latin: "Panthera leo", fond: "linear-gradient(160deg,#ffb347,#c2402a)" },
+  memoire: { latin: "Elephas maximus", fond: "linear-gradient(160deg,#a57bf0,#4a2a8a)" },
+  bataille: { latin: "Ceratotherium simum", fond: "linear-gradient(160deg,#ff7a6b,#8a1f3a)" },
+  rapide: { latin: "Acinonyx jubatus", fond: "linear-gradient(160deg,#ffd84a,#c27a1a)" },
+  mime: { latin: "Pan troglodytes", fond: "linear-gradient(160deg,#7fd6a8,#2f7d6d)" },
+  familles: { latin: "Suricata suricatta", fond: "linear-gradient(160deg,#f0b860,#8d4e1f)" },
+  cri: { latin: "Canis lupus", fond: "linear-gradient(160deg,#7fb2ff,#2a3f8a)" },
+  poids: { latin: "Loxodonta africana", fond: "linear-gradient(160deg,#c9b8a0,#6b5a3a)" },
+  carte: { latin: "Phascolarctos cinereus", fond: "linear-gradient(160deg,#5fc2b0,#1f5f7a)" },
+  regime: { latin: "Ailuropoda melanoleuca", fond: "linear-gradient(160deg,#9be07a,#3f8a2a)" },
+  temps: { latin: "Tachyglossus aculeatus", fond: "linear-gradient(160deg,#f07aa8,#6a2a8a)" },
+};
+function photoDuJeu(j: Jeu) {
+  const e = ESPECES.find((x) => x.latin === LOOK[j].latin);
+  return e && aUnePhoto(e.id) ? e.id : null;
+}
+
 const JEUX: { id: Jeu; nom: string; sous: string; niveau: 1 | 2 | 3; joueurs: string }[] = [
   { id: "defi", nom: "Le défi du jour", sous: "Cinq questions, chaque jour.", niveau: 1, joueurs: "Seule" },
   { id: "memoire", nom: "Mémory", sous: "Retrouve les paires d'animaux.", niveau: 1, joueurs: "1 à 4" },
@@ -72,30 +91,7 @@ const JEUX: { id: Jeu; nom: string; sous: string; niveau: 1 | 2 | 3; joueurs: st
 export function JouerPage({ params }: { params: URLSearchParams }) {
   const jeu = params.get("jeu") as Jeu | null;
   const choisi = JEUX.find((j) => j.id === jeu);
-  if (!choisi) {
-    return (
-      <main className="mx-auto max-w-xl px-4 pt-4">
-        <Entete siVide="/" />
-        <Titre sous="Touche un jeu pour commencer.">Jouer</Titre>
-        <ul className="mt-4 space-y-2">
-          {JEUX.map((j) => (
-            <li key={j.id}>
-              <a href={`#/jouer?jeu=${j.id}`} className="flex items-center gap-3 rounded-3xl bg-card px-4 py-3 text-[#2a1c14]">
-                <span className="min-w-0 flex-1">
-                  <span className="block font-display text-xl leading-tight">{j.nom}</span>
-                  <span className="block text-sm">{j.sous}</span>
-                </span>
-                <span className="shrink-0 text-right text-xs font-black">
-                  <span className="block text-[#d6a531]">{"★".repeat(j.niveau)}<span className="text-[#cdb89a]">{"★".repeat(3 - j.niveau)}</span></span>
-                  <span className="block">{j.joueurs}</span>
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </main>
-    );
-  }
+  if (!choisi) return <MenuJeux />;
   return (
     <ModeJeu titre={choisi.nom} jeu={jeu}>
       {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <MemoryPlusieurs /> : jeu === "bataille" ? <Bataille /> : jeu === "rapide" ? <LePlusRapide /> : jeu === "mime" ? <MimeAnimal /> : jeu === "familles" ? <SeptFamilles /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
@@ -596,5 +592,120 @@ function SerieFlamme({ n, petite = false }: { n: number; petite?: boolean }) {
       <LuFlame className={petite ? "size-4" : "size-6"} aria-hidden="true" />
       {n} jour{n > 1 ? "s" : ""} d'affilée
     </span>
+  );
+}
+
+/* ---------- Le menu des jeux : trois façons de les afficher ---------- */
+type Affichage = "cartes" | "medaillons" | "liste";
+const CLE_AFFICHAGE = "leonie-jeux-affichage";
+function lireAffichage(): Affichage {
+  try {
+    const v = localStorage.getItem(CLE_AFFICHAGE);
+    return v === "medaillons" || v === "liste" ? v : "cartes";
+  } catch {
+    return "cartes";
+  }
+}
+
+function Etoiles({ n, clair = false }: { n: number; clair?: boolean }) {
+  return (
+    <span aria-label={`Niveau ${n} sur 3`} className="tracking-tight">
+      <span className="text-[#f3d48a]">{"★".repeat(n)}</span>
+      <span className={clair ? "text-white/35" : "text-[#cdb89a]"}>{"★".repeat(3 - n)}</span>
+    </span>
+  );
+}
+function Joueurs({ t }: { t: string }) {
+  const seule = t === "Seule";
+  return (
+    <span className="inline-flex items-center gap-1">
+      {seule ? <LuUser className="size-3.5" aria-hidden="true" /> : <LuUsers className="size-3.5" aria-hidden="true" />}
+      {seule ? "Seule" : `${t} joueurs`}
+    </span>
+  );
+}
+function Photo({ j }: { j: Jeu }) {
+  const id = photoDuJeu(j);
+  return id ? <Portrait id={id} /> : <span className="block size-full" style={{ background: LOOK[j].fond }} />;
+}
+
+function MenuJeux() {
+  const [aff, setAff] = useState<Affichage>(lireAffichage);
+  const choisir = (a: Affichage) => {
+    setAff(a);
+    try {
+      localStorage.setItem(CLE_AFFICHAGE, a);
+    } catch {
+      /* rien */
+    }
+  };
+  const MODES: { id: Affichage; label: string; icone: typeof LuList }[] = [
+    { id: "cartes", label: "Grandes cartes", icone: LuGalleryVertical },
+    { id: "medaillons", label: "Médaillons", icone: LuLayoutGrid },
+    { id: "liste", label: "Liste", icone: LuList },
+  ];
+  return (
+    <main className="mx-auto max-w-xl px-4 pt-4">
+      <Entete siVide="/" />
+      <div className="flex items-end justify-between gap-2">
+        <Titre sous="Touche un jeu pour commencer.">Jouer</Titre>
+        <div role="radiogroup" aria-label="Affichage des jeux" className="mb-1 flex shrink-0 gap-1 rounded-full bg-[#2a1844] p-1 ring-1 ring-[#e8c98a]/40">
+          {MODES.map(({ id, label, icone: I }) => (
+            <button key={id} type="button" role="radio" aria-checked={aff === id} aria-label={label} onClick={() => choisir(id)} className={`grid size-9 place-items-center rounded-full ${aff === id ? "bg-[#f3d48a] text-[#2a1650]" : "text-[#f3d48a]"}`}>
+              <I className="size-5" aria-hidden="true" />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {aff === "cartes" ? (
+        <ul className="mt-4 grid grid-cols-2 gap-3">
+          {JEUX.map((j, i) => (
+            <li key={j.id} className={i === 0 ? "col-span-2" : ""}>
+              <a href={`#/jouer?jeu=${j.id}`} className={`carte-jeu relative block overflow-hidden rounded-[1.4rem] border-2 border-[#e8c98a]/80 shadow-[0_10px_22px_rgba(0,0,0,.45)] ${i === 0 ? "h-44" : "h-52"}`} style={{ background: LOOK[j.id].fond }}>
+                <span className="absolute inset-0 [&_img]:size-full [&_img]:object-cover"><Photo j={j.id} /></span>
+                <span className="absolute inset-0 bg-[linear-gradient(180deg,transparent_30%,rgba(18,10,40,.92)_85%)]" />
+                <span className="absolute left-2 top-2 rounded-full bg-black/45 px-2 py-0.5 text-xs font-black backdrop-blur-sm"><Etoiles n={j.niveau} clair /></span>
+                <span className="absolute inset-x-0 bottom-0 px-3 pb-2.5 text-white">
+                  <span className={`block font-display leading-tight [text-shadow:0_2px_6px_#000] ${i === 0 ? "text-2xl" : "text-lg"}`}>{j.nom}</span>
+                  <span className="mt-0.5 block text-xs font-bold leading-snug text-white/85">{j.sous}</span>
+                  <span className="mt-1.5 inline-flex rounded-full bg-[#f3d48a] px-2 py-0.5 text-[11px] font-black text-[#2a1650]"><Joueurs t={j.joueurs} /></span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : aff === "medaillons" ? (
+        <ul className="mt-5 grid grid-cols-3 gap-x-2 gap-y-5">
+          {JEUX.map((j) => (
+            <li key={j.id} className="text-center">
+              <a href={`#/jouer?jeu=${j.id}`} className="block">
+                <span className="medaillon-or relative mx-auto block aspect-square w-[88%] overflow-hidden [&_img]:size-full [&_img]:object-cover"><Photo j={j.id} /></span>
+                <span className="mt-1.5 block font-display text-[15px] leading-tight text-[#f3d48a]">{j.nom}</span>
+                <span className="block text-[11px] font-black text-[#e7d7ff]"><Etoiles n={j.niveau} clair /> · <Joueurs t={j.joueurs} /></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul className="mt-4 space-y-2">
+          {JEUX.map((j) => (
+            <li key={j.id}>
+              <a href={`#/jouer?jeu=${j.id}`} className="flex items-center gap-3 rounded-3xl bg-card px-3 py-2.5 text-[#2a1c14]">
+                <span className="medaillon-or block size-14 shrink-0 overflow-hidden [&_img]:size-full [&_img]:object-cover"><Photo j={j.id} /></span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-display text-lg leading-tight">{j.nom}</span>
+                  <span className="block text-sm leading-snug">{j.sous}</span>
+                </span>
+                <span className="shrink-0 text-right text-xs font-black">
+                  <span className="block"><Etoiles n={j.niveau} /></span>
+                  <span className="block"><Joueurs t={j.joueurs} /></span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
   );
 }
