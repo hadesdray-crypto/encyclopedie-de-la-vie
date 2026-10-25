@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as PE } from "react";
-import { LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
+import { LuBookOpen, LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
 import { ASTUCES, PRESENTATION, explicationPour } from "@/data/guide";
 import { voixPossible } from "@/components/voix";
-import { PlumeDessin, type AnimPlume } from "@/components/plume-dessin";
+import { PlumeDessin, type AnimPlume, type Tenue } from "@/components/plume-dessin";
 import {
   PRESENCES,
   choisirPresence,
@@ -12,7 +12,11 @@ import {
   ouvrirPlume,
   plumeBouge,
   plumeExpliqueSeule,
+  plumeCostumee,
   plumeParleSeule,
+  plumePassionnee,
+  plumePeutProposer,
+  presence as presenceActuelle,
   plumePropose,
   presentationFaite,
   reglesEnCours,
@@ -20,6 +24,28 @@ import {
 } from "@/lib/plume";
 import { dire, taire, useParle } from "@/lib/parole";
 import { aller } from "@/lib/routeur";
+import { motDuLexique, type MotLexique } from "@/data/lexique";
+
+/** La tenue de Plume selon ce qu'elle fait : elle lit → lunettes et chapeau d'étudiant. */
+function tenueDe(chemin: string, parle: boolean): Tenue {
+  if (!plumeCostumee()) return "aucune";
+  if (plumePassionnee()) return parle ? "savante-lit" : "savante";
+  if (parle) return "lecture";
+  if (chemin.startsWith("/aventure") || chemin.startsWith("/suivi")) return "exploratrice";
+  if (chemin.startsWith("/compagnons")) return "carnet";
+  return "aucune";
+}
+
+/** Le titre de la page (pour le tableau noir de Plume). */
+function titrePage() {
+  return (document.querySelector("main h1")?.textContent ?? "").trim().slice(0, 40) || "Je t'explique !";
+}
+
+/** Les mots de scientifique visibles sur la page (ceux en pointillés). */
+function motsDeLaPage(): MotLexique[] {
+  const ids = [...new Set([...document.querySelectorAll<HTMLElement>("main [data-mot]")].map((b) => b.dataset.mot!))];
+  return ids.map((id) => motDuLexique(id)).filter((m): m is MotLexique => !!m).slice(0, 14);
+}
 
 /*
  * Plume, la petite chouette de Leonie.
@@ -82,6 +108,56 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     } else ouvrirPlume(false);
   }, [explicationPage.id]);
 
+  // Une page avec des mots de scientifique : Plume propose (une fois) de les expliquer.
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      if (!plumePeutProposer() || !presentationFaite()) return;
+      const mots = motsDeLaPage();
+      if (mots.length < 2) return;
+      const cle = `leonie-mots-proposes`;
+      let vus: string[] = [];
+      try {
+        vus = JSON.parse(sessionStorage.getItem(cle) || "[]");
+      } catch {
+        /* rien */
+      }
+      if (vus.includes(explicationPage.id)) return;
+      try {
+        sessionStorage.setItem(cle, JSON.stringify([...vus, explicationPage.id]));
+      } catch {
+        /* rien */
+      }
+      plumePropose({ texte: "Il y a des mots de scientifique ici. Je te les explique ?", oui: "Oui", action: () => { plumePropose(null); ouvrirPlume(true, "mots"); } });
+      window.setTimeout(() => plumePropose(null), 7000);
+    }, 3500);
+    return () => window.clearTimeout(t);
+  }, [chemin]);
+
+  // Passionnée : sur une page à lire, elle propose (une fois) de la lire, avec enthousiasme.
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      if (!plumePassionnee() || !plumePeutProposer() || !voixPossible()) return;
+      const bouton = [...document.querySelectorAll<HTMLButtonElement>("main button")].find((b) => b.textContent?.trim() === "Écouter");
+      if (!bouton) return;
+      const cle = "leonie-lecture-proposee";
+      let vus: string[] = [];
+      try {
+        vus = JSON.parse(sessionStorage.getItem(cle) || "[]");
+      } catch {
+        /* rien */
+      }
+      if (vus.includes(chemin)) return;
+      try {
+        sessionStorage.setItem(cle, JSON.stringify([...vus, chemin]));
+      } catch {
+        /* rien */
+      }
+      plumePropose({ texte: "Oh, je peux te lire tout ça ? J'adore expliquer !", oui: "Oui, lis !", action: () => { plumePropose(null); bouton.click(); } });
+      window.setTimeout(() => plumePropose(null), 8000);
+    }, 1800);
+    return () => window.clearTimeout(t);
+  }, [chemin, presence]);
+
   // Petit coucou de l'aile : quand elle s'ouvre, et rarement de temps en temps.
   useEffect(() => {
     if (!coucou) return;
@@ -91,7 +167,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
   }, [coucou]);
   useEffect(() => {
     const t = window.setInterval(() => {
-      if (document.visibilityState === "visible" && plumeBouge() && Math.random() < 0.25) {
+      if (document.visibilityState === "visible" && plumeBouge() && presenceActuelle() !== "discrete" && Math.random() < (plumePassionnee() ? 0.7 : 0.25)) {
         setAnim("coucou");
         window.setTimeout(() => setAnim("rien"), 1600);
       }
@@ -143,7 +219,11 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       return;
     }
     // Un simple toucher : ouvrir ou fermer la bulle.
-    if (ouvert) {
+    // Si elle parle, un toucher l'arrête et ouvre sa bulle.
+    if (parle) {
+      taire();
+      ouvrirPlume(true, motsDeLaPage().length ? "mots" : "page");
+    } else if (ouvert) {
       taire();
       ouvrirPlume(false);
     } else ouvrirPlume(true, "page");
@@ -171,11 +251,30 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
           onContextMenu={(e) => e.preventDefault()}
           aria-label="Plume. Touche pour de l'aide, appuie longtemps pour la régler."
           aria-expanded={ouvert}
-          className={`block size-full touch-none select-none ${glisse || ouvert || parle ? "" : "plume-flotte"}`}
+          className={`block size-full touch-none select-none ${glisse || ouvert || parle ? "" : presence === "passionnee" ? "plume-impatiente" : presence === "discrete" ? "" : "plume-flotte"}`}
         >
           <span className="absolute inset-1 -z-10 rounded-full bg-[radial-gradient(circle,rgba(180,140,255,.45),transparent_70%)]" />
-          <PlumeDessin anim={parle ? "parle" : ouvert ? "ailes" : anim} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
+          {parle ? <span className="onde-plume pointer-events-none absolute -inset-1 -z-10 rounded-full border-2 border-[#c9a4ff]" /> : null}
+          {presence === "passionnee" && !ouvert ? (
+            <>
+              <span className="etincelle pointer-events-none absolute -left-2 top-1 text-sm text-[#f3d48a]">✦</span>
+              <span className="etincelle etincelle-2 pointer-events-none absolute -right-1 top-4 text-xs text-[#9fe3ff]">✦</span>
+              <span className="etincelle etincelle-3 pointer-events-none absolute -top-2 left-1/2 text-[10px] text-[#ff9fcf]">✦</span>
+            </>
+          ) : null}
+          <span className="block size-full transition-transform duration-300" style={{ transform: parle ? "rotate(-8deg) translateY(2px)" : "none" }}>
+            <PlumeDessin anim={parle ? "parle" : ouvert ? "ailes" : anim} tenue={tenueDe(chemin, parle)} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
+          </span>
         </button>
+
+        {/* Passionnée : quand elle lit, un petit tableau noir à côté d'elle. */}
+        {parle && !ouvert && presence === "passionnee" ? (
+          <span className={`tableau-noir arrivee pointer-events-none absolute bottom-full mb-2 w-52 rounded-lg px-3 py-2.5 text-center ${gauche ? "left-0" : "right-0"}`}>
+            <span className="craie block text-[11px] tracking-widest opacity-80">★ LEÇON DE PLUME ★</span>
+            <span className="craie mt-1 block font-display text-lg leading-tight">{titrePage()}</span>
+            <span className="craie mt-1 block text-sm tracking-[0.3em] opacity-90">? → ! ✦</span>
+          </span>
+        ) : null}
 
         {/* Quand Plume parle, bulle fermée : un petit bouton Pause à côté d'elle. */}
         {parle && !ouvert ? (
@@ -192,7 +291,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
         ) : null}
 
         {/* Une proposition d'aide : on peut dire oui, ou l'ignorer. */}
-        {proposition && !ouvert ? (
+        {proposition && !ouvert && !parle ? (
           <div role="status" className={`arrivee absolute bottom-2 w-max max-w-[min(15rem,70vw)] rounded-2xl bg-[#fff8ea] px-3 py-2 text-[#4a2a8a] shadow-[0_6px_18px_rgba(0,0,0,.45)] ${cote}`}>
             <p className="text-sm font-extrabold leading-snug">{proposition.texte}</p>
             <div className="mt-1.5 flex gap-1.5">
@@ -220,8 +319,14 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   const explicationPage = explicationPour(chemin, params);
   const astuces = ASTUCES[explicationPage.id] ?? ASTUCES.accueil;
   const [astuce, setAstuce] = useState(() => Math.floor(Math.random() * astuces.length));
+  const mots = contenu === "mots" ? motsDeLaPage() : [];
+  const [motChoisi, setMotChoisi] = useState<string | null>(null);
+  useEffect(() => setMotChoisi(null), [contenu]);
+  const defMot = motChoisi ? motDuLexique(motChoisi) : undefined;
   const explication =
-    contenu === "presentation" ? PRESENTATION : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
+    contenu === "mots"
+      ? { id: "mots", titre: "Les mots de cette page", etapes: [defMot ? `${defMot.mot} : ${defMot.definition}` : mots.length ? "Touche un mot, je te l'explique." : "Il n'y a pas de mot compliqué sur cette page."] }
+      : contenu === "presentation" ? PRESENTATION : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
   const [etape, setEtape] = useState(0);
   const [lecture, setLecture] = useState(false);
 
@@ -233,7 +338,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
 
   // Plume lit si on le lui a demandé (bouton Écouter, ou « toujours avec moi »).
   useEffect(() => {
-    if (contenu !== "presence" && voix && (plumeParleSeule() || lecture)) dire(texte);
+    if (contenu !== "presence" && !(contenu === "mots" && motChoisi) && voix && (plumeParleSeule() || lecture)) dire(texte);
   }, [texte, contenu]);
 
   // Toucher ailleurs referme la bulle (la page reste utilisable).
@@ -310,9 +415,26 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
               ))}
             </p>
           ) : null}
-          <p key={`${contenu}-${etape}`} className="arrivee mt-1.5 text-[1.05rem] leading-snug">
+          <p key={`${contenu}-${etape}-${motChoisi}`} className="arrivee mt-1.5 text-[1.05rem] leading-snug">
             {texte}
           </p>
+          {contenu === "mots" && mots.length ? (
+            <div className="mt-2 flex max-h-28 flex-wrap gap-1.5 overflow-y-auto">
+              {mots.map((m) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => {
+                    setMotChoisi(m.id);
+                    if (voix) dire(`${m.mot}. ${m.definition}`);
+                  }}
+                  className={`rounded-full px-2.5 py-1 text-sm font-extrabold ${motChoisi === m.id ? "bg-[#6a3fc0] text-white" : "bg-[#efe3ff] text-[#4a2a8a]"}`}
+                >
+                  {m.mot}
+                </button>
+              ))}
+            </div>
+          ) : null}
           {explication.etapes.length > 1 ? (
             <div className="mt-2 flex items-center gap-1.5">
               {etape > 0 ? (
@@ -358,6 +480,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
           />
         ) : null}
         <Rond icone={LuCircleHelp} label="Aide" actif={contenu === "page"} onClick={() => ouvrirPlume(true, "page")} />
+        <Rond icone={LuBookOpen} label="Mots" actif={contenu === "mots"} onClick={() => ouvrirPlume(true, "mots")} />
         <Rond
           icone={LuLightbulb}
           label="Astuce"

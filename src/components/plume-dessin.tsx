@@ -4,7 +4,10 @@
  */
 export type AnimPlume = "rien" | "coucou" | "parle" | "ailes";
 
-export function PlumeDessin({ anim = "rien", className = "" }: { anim?: AnimPlume; className?: string }) {
+/** Les tenues de Plume : des accessoires légers, qui suivent ses mouvements. */
+export type Tenue = "aucune" | "lecture" | "exploratrice" | "carnet" | "savante" | "savante-lit";
+
+export function PlumeDessin({ anim = "rien", className = "", tenue = "aucune" }: { anim?: AnimPlume; className?: string; tenue?: Tenue }) {
   return (
     <svg viewBox="0 0 200 200" className={`plume-svg plume-${anim} ${className}`} aria-hidden="true">
       <defs>
@@ -46,8 +49,68 @@ export function PlumeDessin({ anim = "rien", className = "" }: { anim?: AnimPlum
         <ellipse cx="50" cy="118" rx="10" ry="6" fill="#ff9fcf" opacity=".75" />
         <ellipse cx="150" cy="118" rx="10" ry="6" fill="#ff9fcf" opacity=".75" />
         <path className="pl-bec" d="M93 112 L107 112 L100 124 Z" fill="#f3b54a" />
-        <path d="M80 44 L86 26 L94 38 L100 22 L106 38 L114 26 L120 44 Z" fill="#f3d48a" stroke="#c9963a" strokeWidth="2" strokeLinejoin="round" />
-        <circle cx="100" cy="22" r="4" fill="#ff9fcf" />
+        {tenue === "lecture" || tenue === "exploratrice" || tenue === "savante" || tenue === "savante-lit" ? null : (
+          <>
+            <path d="M80 44 L86 26 L94 38 L100 22 L106 38 L114 26 L120 44 Z" fill="#f3d48a" stroke="#c9963a" strokeWidth="2" strokeLinejoin="round" />
+            <circle cx="100" cy="22" r="4" fill="#ff9fcf" />
+          </>
+        )}
+        {tenue === "lecture" ? (
+          <g>
+            {/* Lunettes rondes */}
+            <circle cx="72" cy="93" r="27" fill="none" stroke="#3a2a1a" strokeWidth="4" />
+            <circle cx="128" cy="93" r="27" fill="none" stroke="#3a2a1a" strokeWidth="4" />
+            <path d="M99 90 q1 -5 2 0" stroke="#3a2a1a" strokeWidth="4" fill="none" />
+            {/* Chapeau d'étudiant, avec son pompon */}
+            <path d="M76 36 L76 50 Q100 60 124 50 L124 36 Z" fill="#2a1c3a" />
+            <path d="M54 32 L100 12 L146 32 L100 52 Z" fill="#3a2a5a" stroke="#1d1238" strokeWidth="2" strokeLinejoin="round" />
+            <circle cx="100" cy="32" r="3.5" fill="#f3d48a" />
+            <path d="M100 32 L136 40 L138 58" stroke="#f3d48a" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            <path d="M134 56 L142 56 L140 66 L136 66 Z" fill="#f3d48a" />
+          </g>
+        ) : null}
+        {tenue === "exploratrice" ? (
+          <g>
+            {/* Chapeau d'exploratrice */}
+            <ellipse cx="100" cy="44" rx="52" ry="9" fill="#b8925a" stroke="#8a6a3a" strokeWidth="2" />
+            <path d="M68 44 Q70 14 100 14 Q130 14 132 44 Z" fill="#d9b87a" stroke="#8a6a3a" strokeWidth="2" />
+            <path d="M69 37 Q100 44 131 37 L131 43 Q100 50 69 43 Z" fill="#6a3fc0" />
+          </g>
+        ) : null}
+        {tenue === "savante" || tenue === "savante-lit" ? (
+          <g>
+            {/* Plumes ébouriffées de savante folle, et ses grosses lunettes de laboratoire sur le front */}
+            <path d="M70 40 L62 14 L78 30 L80 6 L92 28 L100 2 L108 28 L120 6 L122 30 L138 14 L130 40 Z" fill="#f4f1ff" stroke="#c9c4e0" strokeWidth="2" strokeLinejoin="round" />
+            <path d="M58 54 Q100 40 142 54" stroke="#4a2a8a" strokeWidth="5" fill="none" />
+            <circle cx="82" cy="50" r="11" fill="#9fe3ff" fillOpacity=".75" stroke="#4a2a8a" strokeWidth="4" />
+            <circle cx="118" cy="50" r="11" fill="#9fe3ff" fillOpacity=".75" stroke="#4a2a8a" strokeWidth="4" />
+            <circle cx="79" cy="47" r="3" fill="#fff" />
+            <circle cx="115" cy="47" r="3" fill="#fff" />
+            {/* Sa fiole qui fait des bulles */}
+            <g className="pl-fiole">
+              <path d="M160 120 L160 134 L150 156 Q148 162 154 162 L178 162 Q184 162 182 156 L172 134 L172 120 Z" fill="#e8fff4" fillOpacity=".85" stroke="#5a7a6a" strokeWidth="2" />
+              <path d="M153 150 Q166 146 179 150 L182 156 Q184 162 178 162 L154 162 Q148 162 150 156 Z" fill="#7be08a" />
+              <circle className="pl-bulle1" cx="163" cy="146" r="3" fill="#b9ffc4" />
+              <circle className="pl-bulle2" cx="170" cy="150" r="2.5" fill="#b9ffc4" />
+            </g>
+            {/* La blouse blanche de scientifique (un peu folle) */}
+            <path d="M58 132 Q62 176 92 186 L100 150 L108 186 Q138 176 142 132 Q128 150 112 150 L100 186 L88 150 Q72 150 58 132 Z" fill="#fbfbff" stroke="#c9c4e0" strokeWidth="2" strokeLinejoin="round" />
+            <path d="M88 150 L100 166 L112 150" fill="none" stroke="#c9c4e0" strokeWidth="2" />
+            <rect x="114" y="160" width="12" height="9" rx="2" fill="#e7e3f5" stroke="#c9c4e0" />
+            <path d="M117 160 L117 154 M121 160 L121 152" stroke="#6a3fc0" strokeWidth="2" strokeLinecap="round" />
+            {tenue === "savante-lit" ? (
+              <>
+                <circle cx="72" cy="93" r="27" fill="none" stroke="#3a2a1a" strokeWidth="4" />
+                <circle cx="128" cy="93" r="27" fill="none" stroke="#3a2a1a" strokeWidth="4" />
+                <path d="M99 90 q1 -5 2 0" stroke="#3a2a1a" strokeWidth="4" fill="none" />
+              </>
+            ) : null}
+          </g>
+        ) : null}
+        {tenue === "carnet" ? (
+          /* Un petit nœud rouge, pour son carnet des chiens et des chats */
+          <path d="M100 160 L80 150 L80 170 Z M100 160 L120 150 L120 170 Z" fill="#e2453c" stroke="#a82a24" strokeWidth="2" strokeLinejoin="round" />
+        ) : null}
         <path d="M82 184 q-4 8 4 8 q4-4 8 0 q2-6 -4-10 Z M118 184 q4 8 -4 8 q-4-4 -8 0 q-2-6 4-10 Z" fill="#f3b54a" />
       </g>
     </svg>

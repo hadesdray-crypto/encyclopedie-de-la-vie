@@ -1,0 +1,29 @@
+name: Images de l évolution
+
+on:
+  push:
+    branches: [evolution]
+    paths: [scripts/donnees/images_evolution.py]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  evolution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Collecter
+        run: python scripts/donnees/images_evolution.py 2>&1 | tee scripts/donnees/evolution-journal.txt
+      - name: Enregistrer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
+          git add -A src/data public scripts/donnees/evolution-journal.txt
+          git diff --cached --quiet || (git commit -q -m "Données : images de l'évolution" && git pull -q --rebase origin evolution && git push -q origin HEAD:evolution)

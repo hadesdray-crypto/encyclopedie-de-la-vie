@@ -479,3 +479,36 @@ body[data-face-a-face] .plume-racine, body[data-face-a-face] [role="dialog"][ari
 /* Mode jeu : pas de barre du bas, pas de Plume flottante (elle est dans le bandeau du jeu). */
 body[data-jeu] nav[aria-label="Salles"], body[data-jeu] .plume-racine { display: none; }
 body[data-jeu] { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem); }
+
+/* Plume parle : une onde autour d'elle */
+.onde-plume { animation: onde-plume 1.2s ease-out infinite; }
+@keyframes onde-plume { 0% { transform: scale(0.9); opacity: 0.9; } 100% { transform: scale(1.35); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .onde-plume { animation: none; } }
+
+/* Plume passionnée : elle sautille d'impatience */
+.plume-impatiente { animation: impatiente 2.4s ease-in-out infinite; }
+@keyframes impatiente { 0%, 60%, 100% { transform: translateY(0); } 68% { transform: translateY(-9px); } 76% { transform: translateY(0); } 84% { transform: translateY(-5px); } }
+/* Son tableau noir, écrit à la craie */
+.tableau-noir { background: #20372c; color: #f4f1e6; border: 4px solid #8a5a2e; box-shadow: 0 8px 18px rgba(0,0,0,.45); font-family: var(--font-display); }
+@media (prefers-reduced-motion: reduce) { .plume-impatiente { animation: none; } }
+
+/* Plume passionnée, encore plus excentrique */
+.plume-impatiente { animation: impatiente-folle 2s ease-in-out infinite; }
+@keyframes impatiente-folle {
+  0%, 50%, 100% { transform: translateY(0) rotate(0); }
+  58% { transform: translateY(-14px) rotate(-8deg); }
+  66% { transform: translateY(0) rotate(6deg); }
+  74% { transform: translateY(-8px) rotate(-4deg); }
+  82% { transform: translateY(0) rotate(3deg); }
+  90% { transform: translateY(0) rotate(0); }
+}
+.etincelle { animation: etincelle 1.6s ease-in-out infinite; }
+.etincelle-2 { animation-delay: 0.5s; }
+.etincelle-3 { animation-delay: 1s; }
+@keyframes etincelle { 0%, 100% { opacity: 0; transform: scale(0.5) rotate(0); } 50% { opacity: 1; transform: scale(1.3) rotate(90deg); } }
+.craie { color: #f4f1e6; text-shadow: 0 0 2px rgba(255,255,255,.6); }
+.tableau-noir { background: repeating-linear-gradient(-12deg, #20372c 0 14px, #223a2f 14px 28px); }
+.pl-bulle1 { animation: bulle 1.4s ease-in infinite; }
+.pl-bulle2 { animation: bulle 1.4s ease-in 0.7s infinite; }
+@keyframes bulle { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-26px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .etincelle, .pl-bulle1, .pl-bulle2 { animation: none; } }

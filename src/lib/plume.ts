@@ -7,26 +7,39 @@ const CLE_PARLE = "leonie-plume-parle";
 const CLE_REACTIONS = "leonie-plume-reactions";
 
 export type Proposition = { texte: string; oui: string; action: () => void };
-type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation" | "presence" | "astuce" | "regles"; coucou: number; proposition: Proposition | null; presence: Presence };
+type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation" | "presence" | "astuce" | "regles" | "mots"; coucou: number; proposition: Proposition | null; presence: Presence };
 
 // ---- Combien Plume est présente ----
 // discrete : elle ne parle que si on la touche. presente : elle propose parfois une aide (réglage de départ).
-// toujours : elle lit tout à voix haute toute seule. repos : elle se cache (on la rappelle dans Options).
-export type Presence = "discrete" | "presente" | "toujours" | "repos";
+// Le caractère de Plume, en 4 niveaux (plus « se repose ») :
+// 1 discrète : elle cligne des yeux, c'est tout, jusqu'à ce qu'on la touche.
+// 2 présente : elle propose parfois un indice ou une explication.
+// 3 étudiante : comme présente, avec ses tenues (lunettes et chapeau quand elle lit…).
+// 4 passionnée : à fond ! Elle propose tout le temps de lire ou d'expliquer, et lit devant son tableau noir.
+export type Presence = "discrete" | "presente" | "etudiante" | "passionnee" | "repos";
 export const PRESENCES: { id: Presence; nom: string; explique: string }[] = [
-  { id: "discrete", nom: "Discrète", explique: "Je reste dans mon coin. Je parle seulement si tu me touches." },
-  { id: "presente", nom: "Présente", explique: "De temps en temps, je te propose un indice ou une petite phrase." },
-  { id: "toujours", nom: "Toujours avec moi", explique: "Je lis tout à voix haute, toute seule." },
+  { id: "discrete", nom: "1 · Discrète", explique: "Je cligne des yeux, c'est tout. Je parle seulement si tu me touches." },
+  { id: "presente", nom: "2 · Présente", explique: "De temps en temps, je te propose un indice ou l'explication d'un mot." },
+  { id: "etudiante", nom: "3 · Étudiante", explique: "Pareil, avec mes tenues : lunettes et chapeau d'étudiant quand je lis !" },
+  { id: "passionnee", nom: "4 · Passionnée", explique: "Je suis à fond ! Je te propose tout le temps de lire et d'expliquer, devant mon tableau." },
   { id: "repos", nom: "Plume se repose", explique: "Je me cache. Pour me rappeler, va dans les Options." },
 ];
 const CLE_PRESENCE = "leonie-plume-presence";
 function lirePresence(): Presence {
   try {
     const v = localStorage.getItem(CLE_PRESENCE);
-    return v === "discrete" || v === "toujours" || v === "repos" ? v : "presente";
+    if (v === "toujours") return "passionnee"; // ancien réglage
+    return v === "discrete" || v === "etudiante" || v === "passionnee" || v === "repos" ? v : "presente";
   } catch {
     return "presente";
   }
+}
+/** Plume porte ses tenues (niveaux 3 et 4). */
+export function plumeCostumee() {
+  return etat.presence === "etudiante" || etat.presence === "passionnee";
+}
+export function plumePassionnee() {
+  return etat.presence === "passionnee";
 }
 
 let etat: Etat = { ouvert: false, reaction: null, contenu: "page", coucou: 0, proposition: null, presence: lirePresence() };
@@ -66,7 +79,7 @@ export function choisirPresence(p: Presence) {
 }
 /** Plume peut-elle proposer quelque chose d'elle-même ? */
 export function plumePeutProposer() {
-  return (etat.presence === "presente" || etat.presence === "toujours") && !etat.ouvert;
+  return (etat.presence === "presente" || etat.presence === "etudiante" || etat.presence === "passionnee") && !etat.ouvert;
 }
 
 /** Plume propose une aide (par exemple un indice). Leonie peut dire oui, ou ignorer. */
@@ -114,7 +127,8 @@ function ecrireReglage(cle: string, oui: boolean) {
 }
 
 /** Plume lit toute seule ses explications à voix haute. */
-export const plumeParleSeule = () => etat.presence === "toujours";
+// Plume lit toute seule à voix haute (réglage de la voix, dans les Options).
+export const plumeParleSeule = () => lireReglage(CLE_PARLE, false);
 export const choisirPlumeParle = (oui: boolean) => ecrireReglage(CLE_PARLE, oui);
 /** Plume fait des petits commentaires pendant les jeux. */
 export const reactionsActives = () => lireReglage(CLE_REACTIONS, true);
@@ -186,4 +200,19 @@ export function reglesEnCours() {
 export function ouvrirRegles(r: Explication) {
   reglesActuelles = r;
   ouvrirPlume(true, "regles");
+}
+
+/** Comment Plume commence une lecture, selon son caractère (toujours vrai : jamais « on en est sûrs » si on ne l'est pas). */
+export function debutLecture() {
+  if (etat.presence === "passionnee") {
+    const debuts = [
+      "Eh oui, Leonie ! Je vais te dire tout ce que je sais là-dessus ! ",
+      "Ooooh, Leonie, j'adore ça ! Accroche-toi, j'explique tout ! ",
+      "Par toutes mes plumes, Leonie ! Écoute bien, c'est passionnant ! ",
+      "Leonie, Leonie ! Tu vas adorer ce que je vais te dire ! ",
+    ];
+    return debuts[Math.floor(Math.random() * debuts.length)];
+  }
+  if (etat.presence === "etudiante") return "D'après ce que savent les scientifiques… ";
+  return "";
 }

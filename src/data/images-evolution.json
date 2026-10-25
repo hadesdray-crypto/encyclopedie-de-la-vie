@@ -1,0 +1,452 @@
+{
+ "terre": {
+  "src": "evo/terre.webp",
+  "sorte": "reconstitution",
+  "article": "Hadéen",
+  "fichier": "Hadean.png",
+  "auteur": "Tim Bertelink",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hadean.png"
+ },
+ "arn": {
+  "src": "evo/arn.webp",
+  "sorte": "modele",
+  "article": "Acide ribonucléique",
+  "fichier": "SAM_riboswitch.png",
+  "auteur": "Fdardel",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:SAM_riboswitch.png"
+ },
+ "luca": {
+  "src": "evo/luca.webp",
+  "sorte": "photo",
+  "article": "Source hydrothermale",
+  "fichier": "Blacksmoker_in_Atlantic_Ocean.jpg",
+  "auteur": "P. Rona / OAR/National Undersea Research Program (NURP); NOAA",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Blacksmoker_in_Atlantic_Ocean.jpg"
+ },
+ "bacteries": {
+  "src": "evo/bacteries.webp",
+  "sorte": "photo",
+  "article": "Bactérie",
+  "fichier": "Deinococcus_radiodurans.jpg",
+  "auteur": "Credit: TEM of D. radiodurans acquired in the laboratory of Michael Daly, Uniformed Services University, Bethesda, MD, U",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Deinococcus_radiodurans.jpg"
+ },
+ "cyanobacteries": {
+  "src": "evo/cyanobacteries.webp",
+  "sorte": "photo",
+  "article": "Stromatolithe",
+  "fichier": "Stromatolites.jpg",
+  "auteur": "P. Carrara, NPS",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Stromatolites.jpg"
+ },
+ "bacteries-ventre": {
+  "src": "evo/bacteries-ventre.webp",
+  "sorte": "photo",
+  "article": "Escherichia coli",
+  "fichier": "E._coli_Bacteria_(7316101966).jpg",
+  "auteur": "NIAID",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:E._coli_Bacteria_(7316101966).jpg"
+ },
+ "bacteries-sol": {
+  "src": "evo/bacteries-sol.webp",
+  "sorte": "photo",
+  "article": "Streptomyces",
+  "fichier": "Streptomyces_sp_01.png",
+  "auteur": "Auteur inconnu",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Streptomyces_sp_01.png"
+ },
+ "bacteries-maladies": {
+  "src": "evo/bacteries-maladies.webp",
+  "sorte": "photo",
+  "article": "Salmonella",
+  "fichier": "SalmonellaNIAID.jpg",
+  "auteur": "Auteur inconnu",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:SalmonellaNIAID.jpg"
+ },
+ "archees": {
+  "src": "evo/archees.webp",
+  "sorte": "photo",
+  "article": "Archaea",
+  "fichier": "Halobacteria.jpg",
+  "auteur": "NASA",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Halobacteria.jpg"
+ },
+ "archees-chaleur": {
+  "src": "evo/archees-chaleur.webp",
+  "sorte": "photo",
+  "article": "Grand Prismatic Spring",
+  "fichier": "Aerial_image_of_Grand_Prismatic_Spring_(view_from_the_south).jpg",
+  "auteur": "Carsten Steger",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_Grand_Prismatic_Spring_(view_from_the_south).jpg"
+ },
+ "asgard": {
+  "src": "evo/asgard.webp",
+  "sorte": "photo",
+  "article": "Fumeur noir",
+  "fichier": "Blacksmoker_in_Atlantic_Ocean.jpg",
+  "auteur": "P. Rona / OAR/National Undersea Research Program (NURP); NOAA",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Blacksmoker_in_Atlantic_Ocean.jpg"
+ },
+ "eucaryotes": {
+  "src": "evo/eucaryotes.webp",
+  "sorte": "photo",
+  "article": "Volvox",
+  "fichier": "Alga_volvox.png",
+  "auteur": "Auteur inconnu",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Alga_volvox.png"
+ },
+ "autres-eucaryotes": {
+  "src": "evo/autres-eucaryotes.webp",
+  "sorte": "photo",
+  "article": "Paramécie",
+  "fichier": "Paramecium.jpg",
+  "auteur": "Barfooz at the English Wikipedia.",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Paramecium.jpg"
+ },
+ "plantes": {
+  "src": "evo/plantes.webp",
+  "sorte": "photo",
+  "article": "Chêne pédonculé",
+  "fichier": "Quercus_robur_JPG_(d1).jpg",
+  "auteur": "Jean-Pol GRANDMONT",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Quercus_robur_JPG_(d1).jpg"
+ },
+ "mousses": {
+  "src": "evo/mousses.webp",
+  "sorte": "photo",
+  "article": "Bryophyta",
+  "fichier": "Mousse,_Bryophyta.jpg",
+  "auteur": "Clovis Z",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mousse,_Bryophyta.jpg"
+ },
+ "fougeres": {
+  "src": "evo/fougeres.webp",
+  "sorte": "photo",
+  "article": "Fougère",
+  "fichier": "Dicksonia_antarctica_at_Conservatoire_botanique_national_de_Brest.jpg",
+  "auteur": "This illustration was made by Citron You must credit this : Citron / CC-BY-SA-3.0",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dicksonia_antarctica_at_Conservatoire_botanique_national_de_Brest.jpg"
+ },
+ "coniferes": {
+  "src": "evo/coniferes.webp",
+  "sorte": "photo",
+  "article": "Pinophyta",
+  "fichier": "Araucaria_heterophylla_01.jpg",
+  "auteur": "No machine-readable author provided. Dlanglois assumed (based on copyright claims).",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Araucaria_heterophylla_01.jpg"
+ },
+ "fleurs": {
+  "src": "evo/fleurs.webp",
+  "sorte": "photo",
+  "article": "Coquelicot",
+  "fichier": "Fleur_de_Coquelicot_(Papaver_rhoeas).jpg",
+  "auteur": "JackyM59",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Fleur_de_Coquelicot_(Papaver_rhoeas).jpg"
+ },
+ "champignons": {
+  "src": "evo/champignons.webp",
+  "sorte": "photo",
+  "article": "Amanita muscaria",
+  "fichier": "Fliegenpilz_fly_agaric_Amanita_muscaria.JPG",
+  "auteur": "Holger Krisp",
+  "licence": "CC BY 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Fliegenpilz_fly_agaric_Amanita_muscaria.JPG"
+ },
+ "animaux": {
+  "src": "evo/animaux.webp",
+  "sorte": "photo",
+  "article": "Tigre",
+  "fichier": "Sibirischer_tiger_de_edit02.jpg",
+  "auteur": "S. Taheri, edited by Fir0002",
+  "licence": "CC BY-SA 2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Sibirischer_tiger_de_edit02.jpg"
+ },
+ "eponges": {
+  "src": "evo/eponges.webp",
+  "sorte": "photo",
+  "article": "Porifera",
+  "fichier": "Aplysina_archeri_(Stove-pipe_Sponge-pink_variation).jpg",
+  "auteur": "Nhobgood (talk) Nick Hobgood",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Aplysina_archeri_(Stove-pipe_Sponge-pink_variation).jpg"
+ },
+ "meduses": {
+  "src": "evo/meduses.webp",
+  "sorte": "photo",
+  "article": "Aurelia aurita",
+  "fichier": "Moon_jelly_-_adult_(rev2).jpg",
+  "auteur": "Dante Alighieri",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Moon_jelly_-_adult_(rev2).jpg"
+ },
+ "vers": {
+  "src": "evo/vers.webp",
+  "sorte": "photo",
+  "article": "Lombric commun",
+  "fichier": "Earthworm_on_earth_-_heart.jpg",
+  "auteur": "pfly",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Earthworm_on_earth_-_heart.jpg"
+ },
+ "mollusques": {
+  "src": "evo/mollusques.webp",
+  "sorte": "photo",
+  "article": "Nautilus pompilius",
+  "fichier": "Nautilus_pompilius.jpg",
+  "auteur": "Auteur inconnu",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Nautilus_pompilius.jpg"
+ },
+ "pattes": {
+  "src": "evo/pattes.webp",
+  "sorte": "photo",
+  "article": "Coccinelle à sept points",
+  "fichier": "P1170487_Coccinella_septempunctata.jpg",
+  "auteur": "Darius Baužys",
+  "licence": "CC BY 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:P1170487_Coccinella_septempunctata.jpg"
+ },
+ "insectes": {
+  "src": "evo/insectes.webp",
+  "sorte": "photo",
+  "article": "Papilio machaon",
+  "fichier": "Schwalbenschwanz-Duell_Winterthur_Schweiz.jpg",
+  "auteur": "Andreas Schoellhorn",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Schwalbenschwanz-Duell_Winterthur_Schweiz.jpg"
+ },
+ "araignees": {
+  "src": "evo/araignees.webp",
+  "sorte": "photo",
+  "article": "Salticidae",
+  "fichier": "Flickr_-_Lukjonis_-_Male_Jumping_spider_-_Evarcha_arcuata_(Set_of_pictures).jpg",
+  "auteur": "Lukas Jonaitis from Vilnius, Lithuania",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Flickr_-_Lukjonis_-_Male_Jumping_spider_-_Evarcha_arcuata_(Set_of_pictures).jpg"
+ },
+ "crustaces": {
+  "src": "evo/crustaces.webp",
+  "sorte": "photo",
+  "article": "Homard européen",
+  "fichier": "KreeftbijDenOsse.jpg",
+  "auteur": "Bart Braun",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:KreeftbijDenOsse.jpg"
+ },
+ "mille-pattes": {
+  "src": "evo/mille-pattes.webp",
+  "sorte": "photo",
+  "article": "Glomeris marginata",
+  "fichier": "Glomeris-marginata-13-04-2008-077.jpg",
+  "auteur": "Botaurus stellaris",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Glomeris-marginata-13-04-2008-077.jpg"
+ },
+ "echinodermes": {
+  "src": "evo/echinodermes.webp",
+  "sorte": "photo",
+  "article": "Asterias rubens",
+  "fichier": "Asterias_rubens.jpg",
+  "auteur": "Hans Hillewaert",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Asterias_rubens.jpg"
+ },
+ "vertebres": {
+  "src": "evo/vertebres.webp",
+  "sorte": "photo",
+  "article": "Amphiprion ocellaris",
+  "fichier": "Amphiprion_ocellaris_(Clown_anemonefish)_in_Heteractis_magnifica_(Sea_anemone).jpg",
+  "auteur": "Nhobgood Nick Hobgood",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Amphiprion_ocellaris_(Clown_anemonefish)_in_Heteractis_magnifica_(Sea_anemone).jpg"
+ },
+ "sans-machoires": {
+  "src": "evo/sans-machoires.webp",
+  "sorte": "reconstitution",
+  "article": "Agnatha",
+  "fichier": "Jõesilmud2.jpg",
+  "auteur": "Tiit Hunt",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:J%C3%B5esilmud2.jpg"
+ },
+ "requins": {
+  "src": "evo/requins.webp",
+  "sorte": "photo",
+  "article": "Grand requin blanc",
+  "fichier": "Great_White_Shark_(14730820387).jpg",
+  "auteur": "Elias Levy",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Great_White_Shark_(14730820387).jpg"
+ },
+ "nageoires-rayonnees": {
+  "src": "evo/nageoires-rayonnees.webp",
+  "sorte": "photo",
+  "article": "Poisson rouge",
+  "fichier": "Goldfish3.jpg",
+  "auteur": "No machine-readable author provided. Heptagon assumed (based on copyright claims).",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Goldfish3.jpg"
+ },
+ "nageoires-charnues": {
+  "src": "evo/nageoires-charnues.webp",
+  "sorte": "photo",
+  "article": "Cœlacanthe",
+  "fichier": "Coelacanth_off_Pumula_on_the_KwaZulu-Natal_South_Coast,_South_Africa,_on_22_November_2019.png",
+  "auteur": "Bruce A.S. Henderson",
+  "licence": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Coelacanth_off_Pumula_on_the_KwaZulu-Natal_South_Coast,_South_Africa,_on_22_November_2019.png"
+ },
+ "hors": {
+  "src": "evo/hors.webp",
+  "sorte": "fossile",
+  "article": "Tiktaalik",
+  "fichier": "Tiktaalik_roseae_(fish_to_amphibian_transitional_fossil)_(Fram_Formation,_Upper_Devonian;_Ellesmere_Island,_Arctic_Canada)_1_(49755118288).jpg",
+  "auteur": "James St. John",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tiktaalik_roseae_(fish_to_amphibian_transitional_fossil)_(Fram_Formation,_Upper_Devonian;_Ellesmere_Island,_Arctic_Canada)_1_(49755118288).jpg"
+ },
+ "amphibiens": {
+  "src": "evo/amphibiens.webp",
+  "sorte": "photo",
+  "article": "Rainette verte",
+  "fichier": "Laubfrosch_Macro.jpg",
+  "auteur": "FelixReimann",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Laubfrosch_Macro.jpg"
+ },
+ "oeuf": {
+  "src": "evo/oeuf.webp",
+  "sorte": "reconstitution",
+  "article": "Hylonomus",
+  "fichier": "Hylonomus_BW.jpg",
+  "auteur": "Nobu Tamura (http://spinops.blogspot.com)",
+  "licence": "CC BY 2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Hylonomus_BW.jpg"
+ },
+ "reptiles": {
+  "src": "evo/reptiles.webp",
+  "sorte": "photo",
+  "article": "Iguane vert",
+  "fichier": "Iguanidae_head_from_Venezuela.jpg",
+  "auteur": "Wilfredor",
+  "licence": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Iguanidae_head_from_Venezuela.jpg"
+ },
+ "tortues": {
+  "src": "evo/tortues.webp",
+  "sorte": "photo",
+  "article": "Tortue verte",
+  "fichier": "Hawaii_turtle_2.JPG",
+  "auteur": "Brocken Inaglory",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hawaii_turtle_2.JPG"
+ },
+ "lezards": {
+  "src": "evo/lezards.webp",
+  "sorte": "photo",
+  "article": "Lézard vert occidental",
+  "fichier": "Lacerta_bilineata_masculus_et_femella_+_Podarcis_muralis_(Sarthe).JPG",
+  "auteur": "Benchaum",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lacerta_bilineata_masculus_et_femella_%2B_Podarcis_muralis_(Sarthe).JPG"
+ },
+ "crocodiles": {
+  "src": "evo/crocodiles.webp",
+  "sorte": "photo",
+  "article": "Crocodile du Nil",
+  "fichier": "NileCrocodile.jpg",
+  "auteur": "Dewet",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:NileCrocodile.jpg"
+ },
+ "dinosaures": {
+  "src": "evo/dinosaures.webp",
+  "sorte": "fossile",
+  "article": "Tyrannosaurus",
+  "fichier": "Sues_skeleton.jpg",
+  "auteur": "Connie Ma from Chicago, United States of America",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Sues_skeleton.jpg"
+ },
+ "oiseaux": {
+  "src": "evo/oiseaux.webp",
+  "sorte": "photo",
+  "article": "Rouge-gorge familier",
+  "fichier": "030_European_robin_in_the_Camargue_Photo_by_Giles_Laurent.jpg",
+  "auteur": "Giles Laurent",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:030_European_robin_in_the_Camargue_Photo_by_Giles_Laurent.jpg"
+ },
+ "mammiferes": {
+  "src": "evo/mammiferes.webp",
+  "sorte": "photo",
+  "article": "Renard roux",
+  "fichier": "Portrait_of_a_red_fox_in_Rautas_fjällurskog.jpg",
+  "auteur": "ClaudiaTen",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog.jpg"
+ },
+ "monotremes": {
+  "src": "evo/monotremes.webp",
+  "sorte": "photo",
+  "article": "Ornithorynque",
+  "fichier": "Ornithorhynchus.jpg",
+  "auteur": "Dr. Philip Bethge",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ornithorhynchus.jpg"
+ },
+ "marsupiaux": {
+  "src": "evo/marsupiaux.webp",
+  "sorte": "photo",
+  "article": "Koala",
+  "fichier": "Koala_climbing_tree.jpg",
+  "auteur": "Diliff",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Koala_climbing_tree.jpg"
+ },
+ "placentaires": {
+  "src": "evo/placentaires.webp",
+  "sorte": "photo",
+  "article": "Hippopotame",
+  "fichier": "Hippo_pod_edit.jpg",
+  "auteur": "Paul Maritz",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hippo_pod_edit.jpg"
+ },
+ "accueil-commencer": {
+  "src": "evo/accueil-commencer.webp",
+  "sorte": "photo",
+  "article": "Terre",
+  "fichier": "The_Blue_Marble_(remastered).jpg",
+  "auteur": "NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Blue_Marble_(remastered).jpg"
+ },
+ "accueil-reptiles": {
+  "src": "evo/accueil-reptiles.webp",
+  "sorte": "photo",
+  "article": "Caméléon panthère",
+  "fichier": "FurciferPardalisMale.JPG",
+  "auteur": "B.navez",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:FurciferPardalisMale.JPG"
+ }
+}

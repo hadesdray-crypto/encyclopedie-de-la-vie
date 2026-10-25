@@ -10,7 +10,9 @@ import {
   choisirPlumeExplique,
   choisirReactions,
   PRESENCES,
+  choisirPlumeParle,
   choisirPresence,
+  plumeParleSeule,
   ouvrirPlume,
   usePlume,
   plumeBouge,
@@ -30,6 +32,7 @@ import { presence as presenceActuelle } from "@/lib/plume";
 type Interrupteur = { id: string; titre: string; explication: string; lire: () => boolean; choisir: (oui: boolean) => void };
 
 const VOIX: Interrupteur[] = [
+  { id: "seule", titre: "Plume lit toute seule", explication: "Quand Plume explique quelque chose, elle le lit aussi à voix haute, sans qu'on appuie.", lire: plumeParleSeule, choisir: choisirPlumeParle },
   { id: "longue", titre: "Appuyer longtemps pour écouter", explication: "Appuie longtemps sur un texte, et Plume te le lit à voix haute.", lire: lectureLongue, choisir: choisirLectureLongue },
   { id: "boutons", titre: "Dire le nom des boutons", explication: "Quand tu touches un bouton de la barre du bas, Plume dit son nom.", lire: direBoutons, choisir: choisirDireBoutons },
 ];
@@ -231,7 +234,7 @@ function ChoixPresence() {
       <div className="flex items-center gap-2">
         <BoutonEcouter texte={() => `Comment Plume reste avec toi. ${PRESENCES.map((p) => `${p.nom} : ${p.explique}`).join(" ")}`} label="Comment Plume reste avec toi" />
         <div className="flex-1">
-          <p className="font-extrabold leading-tight">Comment Plume reste avec toi</p>
+          <p className="font-extrabold leading-tight">Le caractère de Plume</p>
           <p className="text-xs leading-snug">Tu peux aussi appuyer longtemps sur Plume.</p>
         </div>
       </div>
