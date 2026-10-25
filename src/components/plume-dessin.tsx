@@ -5,7 +5,8 @@
  * Chaque caractère a sa tenue complète : un vêtement, quelque chose sur la tête,
  * des yeux qui lui ressemblent, et une paire de lunettes seulement quand elle lit.
  */
-export type AnimPlume = "rien" | "coucou" | "parle" | "ailes";
+/** Les situations : chacune a ses gestes (lire, avoir peur, jouer à la bataille, encourager, fêter une victoire). */
+export type AnimPlume = "rien" | "coucou" | "parle" | "ailes" | "peur" | "bataille" | "jeu" | "bravo";
 
 /** 0 = tenue de tous les jours (petite couronne) ; 1 à 4 = les caractères. */
 export type Caractere = 0 | 1 | 2 | 3 | 4;
@@ -15,14 +16,17 @@ export function PlumeDessin({
   className = "",
   caractere = 0,
   lit = false,
+  miroir = false,
 }: {
   anim?: AnimPlume;
   className?: string;
   caractere?: Caractere;
   lit?: boolean;
+  /** Plume est à gauche de l'écran : sa main à outil passe de l'autre côté, vers le texte. */
+  miroir?: boolean;
 }) {
   return (
-    <svg viewBox="0 0 200 200" className={`plume-svg plume-${anim} ${className}`} aria-hidden="true" style={{ overflow: "visible" }}>
+    <svg viewBox="0 0 200 200" className={`plume-svg plume-${anim} plume-c${caractere} ${lit ? "plume-lit" : ""} ${className}`} aria-hidden="true" style={{ overflow: "visible" }}>
       <defs>
         <radialGradient id="pl-corps" cx="45%" cy="35%" r="70%">
           <stop offset="0" stopColor="#c9a4ff" />
@@ -57,8 +61,33 @@ export function PlumeDessin({
 
         <Chapeau caractere={caractere} lit={lit} />
         {lit ? <Lunettes caractere={caractere} /> : null}
-        <path d="M82 184 q-4 8 4 8 q4-4 8 0 q2-6 -4-10 Z M118 184 q4 8 -4 8 q-4-4 -8 0 q-2-6 4-10 Z" fill="#f3b54a" />
+        {caractere === 0 ? <path d="M82 184 q-4 8 4 8 q4-4 8 0 q2-6 -4-10 Z M118 184 q4 8 -4 8 q-4-4 -8 0 q-2-6 4-10 Z" fill="#f3b54a" /> : null}
       </g>
+      {caractere !== 0 ? (
+        <g className="pl-membres" transform={miroir ? "matrix(-1 0 0 1 200 0)" : undefined}>
+          <Chaussures caractere={caractere} />
+          <MainOutil caractere={caractere} />
+          {/* Bataille : les deux poings levés, « en garde ! » (pour rire) */}
+          <g className="pl-main pl-main-boxe">
+            <g className="pl-poing-g"><Main caractere={caractere} x={34} y={140} /></g>
+            <g className="pl-poing-d"><Main caractere={caractere} x={166} y={140} /></g>
+          </g>
+          {/* Pendant les jeux : elle applaudit et encourage */}
+          <g className="pl-main pl-main-applaudit">
+            <g className="pl-clap-g"><Main caractere={caractere} x={28} y={150} /></g>
+            <g className="pl-clap-d"><Main caractere={caractere} x={172} y={150} /></g>
+          </g>
+          {/* Victoire : les bras en l'air ! */}
+          <g className="pl-main pl-main-bravo">
+            <g className="pl-bravo-g"><Main caractere={caractere} x={14} y={40} /></g>
+            <g className="pl-bravo-d"><Main caractere={caractere} x={186} y={40} /></g>
+          </g>
+          <g className="pl-mains-peur">
+            <Main caractere={caractere} x={72} y={94} r={24} />
+            <Main caractere={caractere} x={128} y={94} r={24} />
+          </g>
+        </g>
+      ) : null}
     </svg>
   );
 }
@@ -240,6 +269,141 @@ function Lunettes({ caractere }: { caractere: Caractere }) {
       {forme}
       <path d="M98 90 q2 -6 4 0" stroke={couleur} strokeWidth="5" fill="none" />
       <path d="M46 90 L34 84 M154 90 L166 84" stroke={couleur} strokeWidth="4" strokeLinecap="round" />
+    </g>
+  );
+}
+
+/* ---------- Les mains et les chaussures flottantes (comme Rayman : elles ne touchent pas le corps) ---------- */
+
+const GANT: Record<number, [string, string]> = {
+  1: ["#7fc8b8", "#4f9a8a"], // moufle tricotée
+  2: ["#ff9fcf", "#d24f8a"], // gant rose
+  3: ["#ffffff", "#9d97c0"], // gant blanc
+  4: ["#ffd84a", "#b8901a"], // gant de labo jaune
+};
+
+/** Une petite main ronde, posée en (x, y). */
+function Main({ caractere, x, y, r = 15 }: { caractere: Caractere; x: number; y: number; r?: number }) {
+  const [fond, trait] = GANT[caractere] ?? GANT[3];
+  const k = r / 11;
+  return (
+    <g>
+      <circle cx={x} cy={y} r={r} fill={fond} stroke={trait} strokeWidth="2.5" />
+      <ellipse cx={x + 8 * k} cy={y - 6 * k} rx={5 * k} ry={4 * k} fill={fond} stroke={trait} strokeWidth="2.5" />
+      <path d={`M${x - 5 * k} ${y - 4 * k} v${7 * k} M${x} ${y - 5 * k} v${8 * k}`} stroke={trait} strokeWidth="2" strokeLinecap="round" />
+    </g>
+  );
+}
+
+/** La main qui tient l'outil de chaque caractère. Elle flotte du côté du texte. */
+function MainOutil({ caractere }: { caractere: Caractere }) {
+  if (caractere === 1) {
+    // Discrète : quand elle lit, sa moufle remonte doucement ses lunettes.
+    return (
+      <g className="pl-main pl-main-lunettes">
+        <Main caractere={1} x={30} y={96} />
+      </g>
+    );
+  }
+  if (caractere === 2) {
+    return (
+      <>
+        {/* Elle fait coucou de temps en temps */}
+        <g className="pl-main pl-main-coucou">
+          <Main caractere={2} x={14} y={92} />
+        </g>
+        {/* Quand elle lit : un petit livre ouvert, dont elle tourne les pages */}
+        <g className="pl-main pl-main-livre">
+          <path d="M-14 128 L10 124 L10 156 L-14 160 Z" fill="#fff8ea" stroke="#d24f8a" strokeWidth="2.5" strokeLinejoin="round" />
+          <path d="M10 124 L34 128 L34 160 L10 156 Z" fill="#ffe3f0" stroke="#d24f8a" strokeWidth="2.5" strokeLinejoin="round" />
+          <path d="M-9 134 l14 -2 M-9 141 l14 -2 M-9 148 l14 -2 M15 132 l14 2 M15 139 l14 2" stroke="#e8a0c4" strokeWidth="2" strokeLinecap="round" />
+          <path className="pl-page" d="M10 124 L30 127 L30 158 L10 156 Z" fill="#fff" stroke="#d24f8a" strokeWidth="2" strokeLinejoin="round" />
+          <Main caractere={2} x={22} y={164} />
+        </g>
+      </>
+    );
+  }
+  if (caractere === 3) {
+    return (
+      <>
+        {/* Elle réfléchit : petits coups de crayon sur le menton */}
+        <g className="pl-main pl-main-crayon">
+          <path d="M22 132 L46 104" stroke="#f3b54a" strokeWidth="6" strokeLinecap="round" />
+          <path d="M46 104 L52 97" stroke="#2a1c14" strokeWidth="4" strokeLinecap="round" />
+          <path d="M20 134 L24 130" stroke="#ff9fcf" strokeWidth="7" strokeLinecap="round" />
+          <Main caractere={3} x={22} y={136} />
+        </g>
+        {/* Quand elle lit : la baguette levée vers le texte */}
+        <g className="pl-main pl-main-baguette">
+          <path d="M18 112 L-34 40" stroke="#8a5a2e" strokeWidth="5" strokeLinecap="round" />
+          <circle cx="-34" cy="40" r="5" fill="#e2453c" />
+          <Main caractere={3} x={18} y={114} />
+        </g>
+      </>
+    );
+  }
+  return (
+    <>
+      {/* Passionnée : elle inspecte tout à la loupe */}
+      <g className="pl-main pl-main-loupe">
+        <circle cx="0" cy="96" r="15" fill="#9fe3ff" fillOpacity=".45" stroke="#4a2a8a" strokeWidth="5" />
+        <circle cx="-5" cy="91" r="4" fill="#fff" fillOpacity=".9" />
+        <path d="M10 108 L22 124" stroke="#8a5a2e" strokeWidth="7" strokeLinecap="round" />
+        <Main caractere={4} x={22} y={126} />
+      </g>
+      {/* Quand elle lit : la craie qui gribouille vers son tableau */}
+      <g className="pl-main pl-main-craie">
+        <path d="M14 100 L-2 78" stroke="#f4f1e6" strokeWidth="7" strokeLinecap="round" />
+        <Main caractere={4} x={16} y={104} />
+      </g>
+    </>
+  );
+}
+
+/** Les chaussures, posées sous Plume sans la toucher. La droite tape du pied. */
+function Chaussures({ caractere }: { caractere: Caractere }) {
+  const forme = (cote: "g" | "d") => {
+    const chaussure =
+      caractere === 1 ? (
+        // Chaussons tout doux, avec un pompon
+        <>
+          <path d="M106 210 Q104 196 116 196 Q132 196 138 203 Q142 210 134 211 Z" fill="#7fc8b8" stroke="#4f9a8a" strokeWidth="2.5" />
+          <circle cx="128" cy="198" r="5" fill="#f4f1ff" stroke="#c9c4e0" strokeWidth="1.5" />
+        </>
+      ) : caractere === 2 ? (
+        // Ballerines roses avec un petit nœud
+        <>
+          <path d="M106 209 Q106 199 118 199 Q134 199 140 206 Q140 211 132 211 L110 211 Z" fill="#ff7fb6" stroke="#d24f8a" strokeWidth="2.5" />
+          <path d="M126 200 l-6 -5 v9 Z M126 200 l6 -5 v9 Z" fill="#fff" stroke="#d24f8a" strokeWidth="1.5" strokeLinejoin="round" />
+        </>
+      ) : caractere === 3 ? (
+        // Souliers vernis d'écolière
+        <>
+          <path d="M106 210 L106 198 Q112 194 120 198 Q136 199 140 205 Q141 211 134 211 Z" fill="#2a1c3a" stroke="#120a20" strokeWidth="2" />
+          <path d="M110 200 L122 200" stroke="#f3d48a" strokeWidth="3" strokeLinecap="round" />
+          <ellipse cx="132" cy="203" rx="4" ry="2" fill="#fff" fillOpacity=".6" />
+        </>
+      ) : (
+        // Grosses baskets rouges de savante folle
+        <>
+          <path d="M104 212 L104 194 Q112 188 122 194 Q140 196 146 204 L146 212 Z" fill="#e2453c" stroke="#8a1f1a" strokeWidth="2.5" strokeLinejoin="round" />
+          <path d="M102 212 L148 212 L148 216 L102 216 Z" fill="#fff" stroke="#b9b4d8" strokeWidth="1.5" />
+          <path d="M112 196 l8 6 M118 194 l8 6" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M120 198 q6 -12 14 -6" stroke="#fff" strokeWidth="2" fill="none" />
+        </>
+      );
+    return cote === "d" ? (
+      <g className="pl-pied-d">{chaussure}</g>
+    ) : (
+      <g transform="matrix(-1 0 0 1 200 0)">
+        <g className="pl-pied-g">{chaussure}</g>
+      </g>
+    );
+  };
+  return (
+    <g className="pl-pieds">
+      {forme("g")}
+      {forme("d")}
     </g>
   );
 }

@@ -1,3 +1,4 @@
+import { plumeFete } from "@/lib/plume";
 import { useEffect, type CSSProperties, type ReactNode } from "react";
 import { LuCircleHelp, LuMinus, LuPlus, LuX } from "react-icons/lu";
 import type { Explication } from "@/data/guide";
@@ -214,6 +215,7 @@ function FaceAFace({ joueurs, actif, zone, centre, onQuitter }: { joueurs: Joueu
 
 /** Le gagnant (ou l'équipe gagnante) à partir des points de chacun. */
 export function vainqueur(joueurs: Joueur[], points: number[], mode: Mode) {
+  plumeFete();
   if (mode === "equipes" && joueurs.length >= 3) {
     const t = [0, 0];
     joueurs.forEach((j, i) => (t[j.equipe] += points[i]));

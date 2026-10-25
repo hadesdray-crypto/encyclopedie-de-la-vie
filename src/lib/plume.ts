@@ -7,7 +7,7 @@ const CLE_PARLE = "leonie-plume-parle";
 const CLE_REACTIONS = "leonie-plume-reactions";
 
 export type Proposition = { texte: string; oui: string; action: () => void };
-type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation" | "presence" | "astuce" | "regles" | "mots"; coucou: number; proposition: Proposition | null; presence: Presence };
+type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation" | "presence" | "astuce" | "regles" | "mots"; coucou: number; peur: number; fete: number; proposition: Proposition | null; presence: Presence };
 
 // ---- Combien Plume est présente ----
 // discrete : elle ne parle que si on la touche. presente : elle propose parfois une aide (réglage de départ).
@@ -42,7 +42,7 @@ export function plumePassionnee() {
   return etat.presence === "passionnee";
 }
 
-let etat: Etat = { ouvert: false, reaction: null, contenu: "page", coucou: 0, proposition: null, presence: lirePresence() };
+let etat: Etat = { ouvert: false, reaction: null, contenu: "page", coucou: 0, peur: 0, fete: 0, proposition: null, presence: lirePresence() };
 const abonnes = new Set<(e: Etat) => void>();
 let minuteur = 0;
 
@@ -85,6 +85,20 @@ export function plumePeutProposer() {
 /** Plume propose une aide (par exemple un indice). Leonie peut dire oui, ou ignorer. */
 export function plumePropose(p: Proposition | null) {
   publier({ proposition: p });
+}
+
+/** Plume a un peu peur : elle se cache les yeux, tremble et pousse un petit « Hou ! ». */
+export function plumeAPeur(texte: string, duree = 4000) {
+  plumeDit(texte, duree);
+  publier({ peur: etat.peur + 1 });
+}
+
+/** Fin d'une partie : Plume lève les bras et saute de joie (une fois, même si on l'appelle souvent). */
+let derniereFete = 0;
+export function plumeFete() {
+  if (Date.now() - derniereFete < 20000) return;
+  derniereFete = Date.now();
+  window.setTimeout(() => publier({ fete: etat.fete + 1 }), 0);
 }
 
 /** Plume fait un petit coucou avec son aile. */
