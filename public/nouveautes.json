@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Revivre la première fois",
+    "points": [
+      "Dans les Options : un bouton pour relancer l'application comme la toute première fois. Plume se présente de nouveau et réexplique chaque page. Rien de ce que Leonie a gagné n'est effacé."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Le suivi GPS réparé",
     "points": [
       "Les trajets des lions de Tsavo et des kinkajous sont maintenant rangés dans l'application : ils s'affichent même sans Internet.",

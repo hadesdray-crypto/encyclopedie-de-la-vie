@@ -235,3 +235,18 @@ export function debutLecture() {
   if (etat.presence === "etudiante") return "D'après ce que savent les scientifiques… ";
   return "";
 }
+
+/**
+ * Revivre la première utilisation : Plume se présente de nouveau et réexplique chaque page,
+ * comme pour quelqu'un qui découvre l'application. Les cartes, les progrès et les réglages ne sont PAS effacés.
+ */
+export function revivrePremiereFois() {
+  try {
+    [CLE_PRESENTEE, CLE_VUS, "leonie-plume-position", "leonie-installer-masque"].forEach((k) => localStorage.removeItem(k));
+    ["leonie-mots-proposes", "leonie-lecture-proposee"].forEach((k) => sessionStorage.removeItem(k));
+  } catch {
+    /* rien */
+  }
+  window.location.hash = "#/";
+  window.location.reload();
+}
