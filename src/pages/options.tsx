@@ -2,6 +2,7 @@ import { useState, type ReactNode } from "react";
 import type { IconType } from "react-icons";
 import { LuFeather, LuMonitorSmartphone, LuMusic, LuShieldCheck, LuSparkles, LuType, LuVolume2 } from "react-icons/lu";
 import { Entete, Titre } from "@/components/entete";
+import { PlumeDessin } from "@/components/plume-dessin";
 import { voixPossible } from "@/components/voix";
 import { Application, CoinParents } from "@/pages/profil";
 import { dire, taire, useParle } from "@/lib/parole";
@@ -238,7 +239,7 @@ function ChoixPresence() {
           <p className="text-xs leading-snug">Tu peux aussi appuyer longtemps sur Plume.</p>
         </div>
       </div>
-      <div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Comment Plume reste avec toi">
+      <div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Le caractère de Plume">
         {PRESENCES.map((p) => (
           <button
             key={p.id}
@@ -251,6 +252,12 @@ function ChoixPresence() {
             }}
             className={`rounded-2xl px-3 py-2 text-left ${presence === p.id ? "bouton-bois" : "bg-[#f3e2c2]"}`}
           >
+            {p.id !== "repos" ? (
+              <span className="mb-1 flex justify-center gap-1">
+                <PlumeDessin caractere={({ discrete: 1, presente: 2, etudiante: 3, passionnee: 4 } as const)[p.id as "discrete"]} className="size-16" />
+                <PlumeDessin caractere={({ discrete: 1, presente: 2, etudiante: 3, passionnee: 4 } as const)[p.id as "discrete"]} lit className="size-16" />
+              </span>
+            ) : null}
             <span className="block font-extrabold leading-tight">{p.nom}</span>
             <span className="block text-[11px] leading-snug">{p.explique}</span>
           </button>

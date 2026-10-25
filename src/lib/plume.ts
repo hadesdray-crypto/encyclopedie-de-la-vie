@@ -18,10 +18,10 @@ type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "prese
 // 4 passionnée : à fond ! Elle propose tout le temps de lire ou d'expliquer, et lit devant son tableau noir.
 export type Presence = "discrete" | "presente" | "etudiante" | "passionnee" | "repos";
 export const PRESENCES: { id: Presence; nom: string; explique: string }[] = [
-  { id: "discrete", nom: "1 · Discrète", explique: "Je cligne des yeux, c'est tout. Je parle seulement si tu me touches." },
-  { id: "presente", nom: "2 · Présente", explique: "De temps en temps, je te propose un indice ou l'explication d'un mot." },
-  { id: "etudiante", nom: "3 · Étudiante", explique: "Pareil, avec mes tenues : lunettes et chapeau d'étudiant quand je lis !" },
-  { id: "passionnee", nom: "4 · Passionnée", explique: "Je suis à fond ! Je te propose tout le temps de lire et d'expliquer, devant mon tableau." },
+  { id: "discrete", nom: "1 · Discrète", explique: "Bonnet et écharpe, yeux tout doux. Je cligne des yeux, c'est tout, sauf si tu me touches." },
+  { id: "presente", nom: "2 · Présente", explique: "Grand nœud et foulard à pois. De temps en temps, je te propose un indice ou un mot." },
+  { id: "etudiante", nom: "3 · Étudiante", explique: "Chapeau d'étudiant, col et cravate. Je commence par « D'après ce que savent les scientifiques… »." },
+  { id: "passionnee", nom: "4 · Passionnée", explique: "Blouse de savante folle ! Je te propose tout le temps de lire, devant mon tableau noir." },
   { id: "repos", nom: "Plume se repose", explique: "Je me cache. Pour me rappeler, va dans les Options." },
 ];
 const CLE_PRESENCE = "leonie-plume-presence";
@@ -36,7 +36,7 @@ function lirePresence(): Presence {
 }
 /** Plume porte ses tenues (niveaux 3 et 4). */
 export function plumeCostumee() {
-  return etat.presence === "etudiante" || etat.presence === "passionnee";
+  return etat.presence !== "repos";
 }
 export function plumePassionnee() {
   return etat.presence === "passionnee";
