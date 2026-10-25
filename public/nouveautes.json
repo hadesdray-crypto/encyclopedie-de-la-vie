@@ -1,6 +1,17 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Les gestes de Plume",
+    "points": [
+      "Plus de cercle qui grossit autour de Plume quand elle lit.",
+      "Chaque caractère a ses mains et ses chaussures flottantes, et ses propres gestes.",
+      "Quand elle lit : la Discrète remonte ses lunettes, la Présente tourne les pages de son livre, l'Étudiante montre le texte avec sa baguette, la Passionnée gribouille à la craie.",
+      "Dans les jeux : en garde pour la bataille, elle applaudit pour les autres, et saute de joie à la fin.",
+      "La martre, la fouine et le renard lui font un peu peur : « Hou ! », elle se cache les yeux."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Mises à jour plus fiables",
     "points": [
       "L'application vérifie vraiment Internet, au lieu de croire le téléphone qui disait « pas de connexion ».",

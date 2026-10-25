@@ -70,6 +70,11 @@ function souffle(debut: number, duree: number, de: number, vers: number, volume 
 }
 
 export const sons = {
+  /** Le petit « Hou ! » de Plume quand elle a peur : deux notes douces qui descendent. */
+  hou() {
+    note(700, 0, 0.14, "sine", 0.1);
+    note(520, 0.16, 0.3, "sine", 0.1);
+  },
   trembler() {
     for (let i = 0; i < 6; i++) note(90 + i * 6, i * 0.09, 0.08, "triangle", 0.12);
   },

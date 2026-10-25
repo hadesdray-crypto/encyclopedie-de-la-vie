@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as P
 import { LuBookOpen, LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
 import { ASTUCES, PRESENTATION, explicationPour } from "@/data/guide";
 import { voixPossible } from "@/components/voix";
+import { sons } from "@/lib/sons";
 import { PlumeDessin, type AnimPlume, type Caractere } from "@/components/plume-dessin";
 import {
   PRESENCES,
@@ -75,7 +76,7 @@ function limiterBas(bas: number) {
 }
 
 export function Plume({ chemin, params }: { chemin: string; params: URLSearchParams }) {
-  const { ouvert, contenu, reaction, proposition, presence, coucou } = usePlume();
+  const { ouvert, contenu, reaction, proposition, presence, coucou, peur } = usePlume();
   const parle = useParle();
   const [pos, setPos] = useState(lirePosition);
   const [glisse, setGlisse] = useState<{ x: number; y: number } | null>(null);
@@ -150,6 +151,15 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     }, 1800);
     return () => window.clearTimeout(t);
   }, [chemin, presence]);
+
+  // La peur : elle se cache les yeux et tremble, avec un petit « Hou ! ».
+  useEffect(() => {
+    if (!peur) return;
+    sons.hou();
+    setAnim("peur");
+    const t = window.setTimeout(() => setAnim("rien"), 2200);
+    return () => window.clearTimeout(t);
+  }, [peur]);
 
   // Petit coucou de l'aile : quand elle s'ouvre, et rarement de temps en temps.
   useEffect(() => {
@@ -247,7 +257,6 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
           className={`block size-full touch-none select-none ${glisse || ouvert || parle ? "" : presence === "passionnee" ? "plume-impatiente" : presence === "discrete" ? "" : "plume-flotte"}`}
         >
           <span className="absolute inset-1 -z-10 rounded-full bg-[radial-gradient(circle,rgba(180,140,255,.45),transparent_70%)]" />
-          {parle ? <span className="onde-plume pointer-events-none absolute -inset-1 -z-10 rounded-full border-2 border-[#c9a4ff]" /> : null}
           {presence === "passionnee" && !ouvert ? (
             <>
               <span className="etincelle pointer-events-none absolute -left-2 top-1 text-sm text-[#f3d48a]">✦</span>
@@ -255,8 +264,8 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
               <span className="etincelle etincelle-3 pointer-events-none absolute -top-2 left-1/2 text-[10px] text-[#ff9fcf]">✦</span>
             </>
           ) : null}
-          <span className="block size-full transition-transform duration-300" style={{ transform: parle ? "rotate(-8deg) translateY(2px)" : "none" }}>
-            <PlumeDessin anim={parle ? "parle" : ouvert ? "ailes" : anim} caractere={CARACTERE[presence] ?? 0} lit={parle} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
+          <span className="block size-full">
+            <PlumeDessin anim={anim === "peur" ? "peur" : parle ? "parle" : ouvert ? "ailes" : anim} caractere={CARACTERE[presence] ?? 0} lit={parle && anim !== "peur"} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
           </span>
         </button>
 

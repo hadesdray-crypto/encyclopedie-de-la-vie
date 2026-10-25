@@ -21,7 +21,7 @@ import { LuChevronLeft, LuFlame } from "react-icons/lu";
 import { useModeJeu } from "@/lib/mode-jeu";
 import { revenir } from "@/lib/routeur";
 import { PlumeDessin } from "@/components/plume-dessin";
-import { ouvrirPlume } from "@/lib/plume";
+import { ouvrirPlume, usePlume } from "@/lib/plume";
 import { useIndice } from "@/lib/indice";
 import { Bataille, LePlusRapide, MemoryPlusieurs, MimeAnimal, SeptFamilles } from "@/pages/jeux-plusieurs";
 
@@ -97,20 +97,30 @@ export function JouerPage({ params }: { params: URLSearchParams }) {
     );
   }
   return (
-    <ModeJeu titre={choisi.nom}>
+    <ModeJeu titre={choisi.nom} jeu={jeu}>
       {jeu === "defi" ? <DefiDuJour /> : jeu === "cri" ? <JeuCri /> : jeu === "memoire" ? <MemoryPlusieurs /> : jeu === "bataille" ? <Bataille /> : jeu === "rapide" ? <LePlusRapide /> : jeu === "mime" ? <MimeAnimal /> : jeu === "familles" ? <SeptFamilles /> : jeu === "poids" ? <JeuPoids /> : jeu === "carte" ? <JeuCarte /> : jeu === "regime" ? <JeuRegime /> : <JeuTemps />}
     </ModeJeu>
   );
 }
 
 /** Le jeu prend tout l'écran : seulement un petit bandeau en haut, avec Plume et Retour. */
-function ModeJeu({ titre, children }: { titre: string; children: React.ReactNode }) {
+function ModeJeu({ titre, jeu, children }: { titre: string; jeu: string; children: React.ReactNode }) {
   useModeJeu();
+  // Plume fait les gestes du jeu : en garde pour la bataille, elle applaudit pour les autres, et saute de joie à la fin.
+  const { presence, fete } = usePlume();
+  const [bravo, setBravo] = useState(false);
+  useEffect(() => {
+    if (!fete) return;
+    setBravo(true);
+    const t = window.setTimeout(() => setBravo(false), 3200);
+    return () => window.clearTimeout(t);
+  }, [fete]);
+  const caractere = ({ discrete: 1, presente: 2, etudiante: 3, passionnee: 4, repos: 0 } as const)[presence] ?? 0;
   return (
     <main className="mx-auto max-w-xl px-3 pt-2">
       <header className="sticky top-0 z-30 -mx-3 flex items-center gap-2 bg-[#120c2c]/90 px-3 py-1.5 backdrop-blur">
         <button type="button" onClick={() => ouvrirPlume(true, "page")} aria-label="Plume : aide" className="size-11 shrink-0">
-          <PlumeDessin className="size-full" />
+          <PlumeDessin className="size-full" caractere={caractere} anim={bravo ? "bravo" : presence === "discrete" || presence === "repos" ? "rien" : jeu === "bataille" ? "bataille" : "jeu"} />
         </button>
         <p className="min-w-0 flex-1 truncate font-display text-lg text-[#f3d48a]">{titre}</p>
         <button type="button" onClick={() => revenir("/jouer")} className="inline-flex min-h-10 items-center gap-1 rounded-full bg-card px-3.5 text-sm font-extrabold text-[#2a1c14]">
