@@ -46,11 +46,11 @@ function motsDeLaPage(): MotLexique[] {
  * Plume, la petite chouette de Leonie.
  * Elle flotte dans un coin de l'écran, au-dessus de la barre du bas. On peut la déplacer avec le doigt.
  * - On la touche : une petite bulle s'ouvre à côté d'elle (la page reste visible et utilisable).
- * - On appuie longtemps : on choisit si elle est discrète, présente, toujours là, ou au repos.
+ * - Deux touchers : son menu. Appui long : on la prend et on la pose où on veut. Geste rapide : on la lance.
  * Elle ne s'ouvre jamais toute seule, sauf la toute première fois pour se présenter.
  */
 
-type Position = { cote: "gauche" | "droite"; bas: number };
+type Position = { cote: "gauche" | "droite"; bas: number; x?: number };
 const CLE_POSITION = "leonie-plume-position";
 const TAILLE = 62;
 
@@ -72,6 +72,14 @@ function garderPosition(p: Position) {
   }
 }
 
+function limiterX(x: number) {
+  return Math.max(4, Math.min(window.innerWidth - TAILLE - 4, x));
+}
+/** La place choisie : là où on a posé Plume, exactement. */
+function placeA(cx: number, cy: number): Position {
+  return { cote: cx < window.innerWidth / 2 ? "gauche" : "droite", bas: limiterBas(window.innerHeight - cy - TAILLE / 2), x: limiterX(cx - TAILLE / 2) };
+}
+
 function limiterBas(bas: number) {
   return Math.max(92, Math.min(window.innerHeight - TAILLE - 70, bas));
 }
@@ -82,7 +90,9 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
   const [pos, setPos] = useState(lirePosition);
   const [glisse, setGlisse] = useState<{ x: number; y: number } | null>(null);
   const [anim, setAnim] = useState<AnimPlume>("rien");
-  const depart = useRef<{ x: number; y: number; t: number; long: number; bouge: boolean; cx: number; cy: number } | null>(null);
+  const depart = useRef<{ x: number; y: number; t: number; long: number; bouge: boolean; prise: boolean; cx: number; cy: number } | null>(null);
+  const dernierToucher = useRef(0);
+  const toucherSimple = useRef(0);
   // Les derniers mouvements du doigt : pour savoir si on a lancé Plume (et à quelle vitesse).
   const traces = useRef<{ x: number; y: number; t: number }[]>([]);
   const [vol, setVol] = useState<{ x: number; y: number; r: number } | null>(null);
@@ -241,7 +251,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
   }, []);
 
   useEffect(() => {
-    const replacer = () => setPos((p) => ({ ...p, bas: limiterBas(p.bas) }));
+    const replacer = () => setPos((p) => ({ ...p, bas: limiterBas(p.bas), x: p.x === undefined ? undefined : limiterX(p.x) }));
     window.addEventListener("resize", replacer);
     return () => window.removeEventListener("resize", replacer);
   }, []);
@@ -251,15 +261,17 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
 
   function appui(e: PE<HTMLButtonElement>) {
     e.currentTarget.setPointerCapture(e.pointerId);
+    // Appui long : on prend Plume, et on la pose où on veut.
     const long = window.setTimeout(() => {
-      if (depart.current && !depart.current.bouge) {
-        depart.current = null;
+      const d = depart.current;
+      if (d && !d.bouge) {
+        d.prise = true;
         navigator.vibrate?.(15);
-        ouvrirPlume(true, "presence");
+        setGlisse({ x: d.x, y: d.y });
       }
-    }, 600);
+    }, 450);
     const r = e.currentTarget.getBoundingClientRect();
-    depart.current = { x: e.clientX, y: e.clientY, t: Date.now(), long, bouge: false, cx: e.clientX - (r.left + r.width / 2), cy: e.clientY - (r.top + r.height / 2) };
+    depart.current = { x: e.clientX, y: e.clientY, t: Date.now(), long, bouge: false, prise: false, cx: e.clientX - (r.left + r.width / 2), cy: e.clientY - (r.top + r.height / 2) };
   }
 
   function deplacement(e: PE<HTMLButtonElement>) {
@@ -270,7 +282,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       window.clearTimeout(d.long);
     }
     if (d.bouge) {
-      setGlisse({ x: e.clientX, y: e.clientY });
+      if (d.prise) setGlisse({ x: e.clientX, y: e.clientY });
       traces.current = [...traces.current.slice(-5), { x: e.clientX, y: e.clientY, t: performance.now() }];
     }
   }
@@ -285,7 +297,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     setGlisse(null);
     setAnim(sorte === "tombe" ? "rien" : "vole");
     const maison = lirePosition();
-    const cible = { x: maison.cote === "gauche" ? 10 : window.innerWidth - TAILLE - 10, y: window.innerHeight - maison.bas - TAILLE };
+    const cible = { x: maison.x ?? (maison.cote === "gauche" ? 10 : window.innerWidth - TAILLE - 10), y: window.innerHeight - maison.bas - TAILLE };
     // Après chaque lancer, un petit mécontentement : chacune à sa façon.
     const FACHE: Record<string, string> = {
       discrete: "Ce n'était pas très gentil…",
@@ -321,7 +333,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
           py = sol;
           if (Math.abs(vy) > 4) { vy = -vy * 0.4; vx *= 0.7; navigator.vibrate?.(10); }
           else {
-            const p: Position = { cote: px + TAILLE / 2 < window.innerWidth / 2 ? "gauche" : "droite", bas: limiterBas(window.innerHeight - sol - TAILLE) };
+            const p: Position = { ...placeA(px + TAILLE / 2, sol + TAILLE / 2) };
             if (presence === "discrete") fin(p, "triste", "Oh… doucement, s'il te plaît.");
             else if (presence === "etudiante") fin(p, "etourdie", "Aïe ! Tout ce qui tombe va de plus en plus vite : c'est la gravité.");
             else fin(p, "rien");
@@ -365,21 +377,42 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
           return;
         }
       }
-      const p: Position = { cote: e.clientX < window.innerWidth / 2 ? "gauche" : "droite", bas: limiterBas(window.innerHeight - e.clientY - TAILLE / 2) };
-      setPos(p);
-      garderPosition(p);
+      // Posée là où on l'a lâchée (seulement si on l'avait prise par un appui long).
+      if (d.prise) {
+        const p = placeA(e.clientX, e.clientY);
+        setPos(p);
+        garderPosition(p);
+      }
       setGlisse(null);
       return;
     }
-    // Un simple toucher : ouvrir ou fermer la bulle.
+    if (d.prise) {
+      setGlisse(null);
+      return;
+    }
     // Si elle parle, un toucher l'arrête et ouvre sa bulle.
     if (parle) {
       taire();
       ouvrirPlume(true, motsDeLaPage().length ? "mots" : "page");
-    } else if (ouvert) {
-      taire();
-      ouvrirPlume(false);
-    } else ouvrirPlume(true, "page");
+      return;
+    }
+    // Deux touchers rapides : ouvrir (ou fermer) son menu. Un seul toucher : un petit coucou.
+    const t = Date.now();
+    if (t - dernierToucher.current < 380) {
+      dernierToucher.current = 0;
+      window.clearTimeout(toucherSimple.current);
+      if (ouvert) {
+        taire();
+        ouvrirPlume(false);
+      } else ouvrirPlume(true, "page");
+      return;
+    }
+    dernierToucher.current = t;
+    toucherSimple.current = window.setTimeout(() => {
+      if (ouvert) return;
+      setAnim("coucou");
+      window.setTimeout(() => setAnim("rien"), 1600);
+    }, 400);
   }
 
   const gauche = pos.cote === "gauche";
@@ -387,6 +420,8 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     ? { left: vol.x, top: vol.y, width: TAILLE, height: TAILLE }
     : glisse
     ? { left: glisse.x - TAILLE / 2, top: glisse.y - TAILLE / 2, width: TAILLE, height: TAILLE }
+    : pos.x !== undefined
+    ? { left: limiterX(pos.x), bottom: `calc(env(safe-area-inset-bottom, 0px) + ${pos.bas}px)`, width: TAILLE, height: TAILLE }
     : { [gauche ? "left" : "right"]: 10, bottom: `calc(env(safe-area-inset-bottom, 0px) + ${pos.bas}px)`, width: TAILLE, height: TAILLE };
   const cote = gauche ? "left-full ml-1.5 rounded-bl-sm" : "right-full mr-1.5 rounded-br-sm";
 
@@ -404,7 +439,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
             setGlisse(null);
           }}
           onContextMenu={(e) => e.preventDefault()}
-          aria-label="Plume. Touche pour de l'aide, appuie longtemps pour la régler."
+          aria-label="Plume. Touche deux fois pour son menu, appuie longtemps pour la déplacer."
           aria-expanded={ouvert}
           className={`block size-full touch-none select-none ${glisse || ouvert || parle ? "" : presence === "passionnee" ? "plume-impatiente" : presence === "discrete" ? "" : "plume-flotte"}`}
         >
@@ -416,7 +451,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
               <span className="etincelle etincelle-3 pointer-events-none absolute -top-2 left-1/2 text-[10px] text-[#ff9fcf]">✦</span>
             </>
           ) : null}
-          <span className="block size-full" style={vol ? { transform: `rotate(${vol.r}deg)` } : undefined}>
+          <span className="block size-full transition-transform duration-200" style={vol ? { transform: `rotate(${vol.r}deg)` } : glisse ? { transform: "scale(1.22) translateY(-4px)" } : undefined}>
             <PlumeDessin anim={["peur", "vole", "triste", "etourdie", "bravo", "fachee", "coucou"].includes(anim) ? anim : parle ? "parle" : ouvert ? "ailes" : animJeu ?? anim} caractere={CARACTERE[presence] ?? 0} lit={parle && !["peur", "vole", "triste", "etourdie", "fachee"].includes(anim)} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
           </span>
         </button>

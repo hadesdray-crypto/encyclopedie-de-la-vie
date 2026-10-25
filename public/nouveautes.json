@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Plume se pose où tu veux",
+    "points": [
+      "Deux touchers sur Plume : son menu. Un seul : elle fait coucou.",
+      "Appui long : elle grandit un peu, et tu peux la poser exactement où tu veux, sur toutes les pages.",
+      "Un geste rapide qui part de son milieu : tu la lances."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Plume n'aime pas trop être lancée ni secouée",
     "points": [
       "Après un lancer, chaque caractère montre son mécontentement : sourcils froncés, petite vapeur, pied qui tape.",
