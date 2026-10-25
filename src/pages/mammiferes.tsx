@@ -11,7 +11,7 @@ import { Entete, Titre } from "@/components/entete";
 import { Portrait } from "@/components/portrait";
 import { Mot, Texte } from "@/components/mot";
 import { Ecouter } from "@/components/voix";
-import { CarteMonde } from "@/components/carte-monde";
+import { CarteMonde, ilesDe } from "@/components/carte-monde";
 import { voirAnimal } from "@/lib/carnet";
 import { LuBaby, LuEar, LuHeartPulse, LuHourglass, LuMapPin, LuSatellite, LuScale, LuShieldCheck, LuTreePine, LuUsers, LuUtensils } from "react-icons/lu";
 import type { IconType } from "react-icons";
@@ -235,7 +235,7 @@ function Fiche({ id }: { id: string }) {
         </section>
       ) : null}
       <dl className="mt-5 space-y-3">
-        <Bloc mot="repartition" texte={vie?.ou ?? e.ou}>{e.pays?.length ? <div className="mt-2"><CarteMonde pays={e.pays} /><p className="mt-1 text-xs">Pays en or : d'après la Mammal Diversity Database. Les très petites îles n'apparaissent pas.</p></div> : null}</Bloc>
+        <Bloc mot="repartition" texte={vie?.ou ?? e.ou}>{e.pays?.length || ilesDe(e.ou).length ? <div className="mt-2"><CarteMonde pays={e.pays ?? []} ou={e.ou} /><p className="mt-1 text-xs">Pays en or, petites îles en point doré : d'après la Mammal Diversity Database.</p></div> : null}</Bloc>
         <Rubrique mot="regime">
           <div className="font-display text-2xl">{regime ? (regimeEstime ? `Sans doute ${regime.nom.toLowerCase()}` : regime.nom) : "Mal connu."}</div>
           {regimeEstime ? <NoteEstimation est={regimeEstime} /> : null}
