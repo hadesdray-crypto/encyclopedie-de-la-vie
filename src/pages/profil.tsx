@@ -1,3 +1,4 @@
+import { LIMITES, choisirLimiteEcran, limiteEcran, useTempsEcran } from "@/lib/temps-ecran";
 import { useState } from "react";
 import { ESPECES, FAMILLES, ORDRES, PAR_ID } from "@/data/catalogue";
 import { AVATARS, avatar, choisirAvatar } from "@/lib/reglages";
@@ -90,6 +91,7 @@ export function CoinParents() {
             <input type="checkbox" defaultChecked={paquetsIllimites()} onChange={(e) => choisirIllimite(e.target.checked)} className="size-5 accent-[#8d4e1f]" />
             Paquets de cartes illimités (sinon, ils se gagnent en lisant et en jouant)
           </label>
+          <TempsParJour />
           <p>Certaines options ont besoin d'une connexion : les trajets GPS (Movebank). Elles sont éteintes. Rien ne se télécharge tout seul.</p>
           {permis ? (
             <button type="button" onClick={() => permettreInternet(false)} className="bouton-bois mt-3 rounded-full px-4 py-2 font-extrabold">Éteindre les options Internet</button>
@@ -103,6 +105,27 @@ export function CoinParents() {
         </div>
       ) : null}
     </section>
+  );
+}
+
+/** Le temps d'écran par jour : Plume prévient 10 minutes avant, puis propose d'aller dehors. */
+function TempsParJour() {
+  const [limite, setLimite] = useState(limiteEcran);
+  const e = useTempsEcran();
+  return (
+    <div className="mb-4">
+      <p className="font-extrabold">Temps d'écran par jour</p>
+      <div className="mt-1.5 flex flex-wrap gap-1.5" role="radiogroup" aria-label="Temps d'écran par jour">
+        {LIMITES.map((m) => (
+          <button key={m} type="button" role="radio" aria-checked={limite === m} onClick={() => { choisirLimiteEcran(m); setLimite(m); }} className={`min-h-9 rounded-full px-3 font-extrabold ${limite === m ? "bg-[#8d4e1f] text-white" : "bg-white/60"}`}>
+            {m ? `${m} min` : "Sans limite"}
+          </button>
+        ))}
+      </div>
+      <p className="mt-1.5 text-xs opacity-80">
+        Aujourd'hui : {e.minutes} min dans l'application. Repère des directives canadiennes : au plus 2 heures d'écran de loisir par jour, en comptant tous les écrans.
+      </p>
+    </div>
   );
 }
 

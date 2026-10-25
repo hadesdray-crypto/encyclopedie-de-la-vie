@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Le temps d'écran et un nouveau menu des jeux",
+    "points": [
+      "Dans le Coin des parents : un temps d'écran par jour (45 minutes au départ). Plume prévient 10 minutes avant, puis propose d'aller dehors.",
+      "Une partie commencée peut être finie. Un adulte peut donner du temps en plus.",
+      "Le menu des jeux a de vraies photos d'animaux, et trois affichages : grandes cartes, médaillons ou liste."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "La mise à jour dans l'application réparée",
     "points": [
       "Le module de mise à jour demandait l'empreinte du fichier pour vérifier qu'il est intact : l'application la lui donne maintenant.",
