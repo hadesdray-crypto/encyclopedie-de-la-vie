@@ -1,3 +1,4 @@
+import { revivrePremiereFois } from "@/lib/plume";
 import { activerDex, useDex } from "@/lib/dex";
 import { useState, type ReactNode } from "react";
 import type { IconType } from "react-icons";
@@ -137,6 +138,7 @@ export function OptionsPage() {
         L'application
       </h2>
       <Application />
+      <PremiereFois />
 
       <h2 className="mt-7 flex items-center justify-center gap-2 font-display text-2xl text-[#f3d48a]">
         <LuShieldCheck className="size-6" aria-hidden="true" />
@@ -167,6 +169,25 @@ function ChoixDex() {
         )}
       </div>
     </section>
+  );
+}
+
+/** Relancer l'application comme la toute première fois (sans rien effacer de ce que Leonie a gagné). */
+function PremiereFois() {
+  const [sur, setSur] = useState(false);
+  return (
+    <div className="mt-3 rounded-3xl bg-card px-4 py-3 text-[#2a1c14]">
+      <p className="font-extrabold">Comme la première fois</p>
+      <p className="mt-1 text-sm">Plume se présente de nouveau et réexplique chaque page, comme pour quelqu'un qui découvre l'application. Les cartes, les progrès et les réglages sont gardés.</p>
+      {sur ? (
+        <div className="mt-2 flex gap-2">
+          <button type="button" onClick={() => revivrePremiereFois()} className="bouton-bois flex-1 rounded-full py-2.5 font-extrabold">Oui, on recommence</button>
+          <button type="button" onClick={() => setSur(false)} className="rounded-full px-4 py-2.5 font-extrabold underline">Non</button>
+        </div>
+      ) : (
+        <button type="button" onClick={() => setSur(true)} className="mt-2 w-full rounded-full bg-[#6a3fc0] py-2.5 font-extrabold text-white">Revivre la première utilisation</button>
+      )}
+    </div>
   );
 }
 
