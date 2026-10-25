@@ -1,7 +1,7 @@
 // Le globe : la Terre en 3D, qu'on fait tourner avec un doigt et qu'on zoome avec deux doigts.
 // Tout est dessiné sur l'appareil (sans Internet), à partir des contours des pays de l'application.
 import { useEffect, useRef } from "react";
-import { geoArea, geoGraticule10, geoInterpolate, geoOrthographic, geoPath, type GeoPermissibleObjects } from "d3-geo";
+import { geoArea, geoBounds, geoCentroid, geoContains, geoGraticule10, geoInterpolate, geoOrthographic, geoPath, type GeoPermissibleObjects } from "d3-geo";
 import monde from "@/data/monde.json";
 
 export type TraceGlobe = { i: number; couleur: string; points: [number, number][] };
@@ -9,7 +9,7 @@ export type TraceGlobe = { i: number; couleur: string; points: [number, number][
 // Les contours de l'application sont écrits en (x = longitude + 180, y = 90 − latitude) : on les relit en vraies coordonnées.
 const PAYS: GeoPermissibleObjects = {
   type: "FeatureCollection",
-  features: Object.values((monde as { pays: Record<string, string> }).pays).map((d) => {
+  features: Object.entries((monde as { pays: Record<string, string> }).pays).map(([code, d]) => {
     const anneaux = d.split("Z").filter((x) => x.trim()).map((a) =>
       a.replace(/^M/, "").split("L").map((p) => {
         const [x, y] = p.trim().split(/\s+/).map(Number);
@@ -20,7 +20,7 @@ const PAYS: GeoPermissibleObjects = {
     const fermes = anneaux
       .map((r) => (r.length && (r[0][0] !== r[r.length - 1][0] || r[0][1] !== r[r.length - 1][1]) ? [...r, r[0]] : r))
       .filter((r) => r.length >= 4);
-    return { type: "Feature", properties: {}, geometry: { type: "MultiPolygon", coordinates: fermes.map((r) => {
+    return { type: "Feature", properties: { code }, geometry: { type: "MultiPolygon", coordinates: fermes.map((r) => {
       // Le bon sens de rotation : un pays fait toujours moins d'une demi-Terre.
       const poly = { type: "Polygon" as const, coordinates: [r] };
       return geoArea(poly) > 2 * Math.PI ? [r.slice().reverse()] : [r];
@@ -28,18 +28,21 @@ const PAYS: GeoPermissibleObjects = {
   }),
 } as unknown as GeoPermissibleObjects;
 const GRILLE = geoGraticule10();
+type Pays = { properties: { code: string } };
+const LISTE_PAYS = (PAYS as unknown as { features: Pays[] }).features;
+export const ZOOM_MAX = 3000; // assez pour voir un chat faire le tour de son jardin
 
 type Etat = { lon: number; lat: number; zoom: number };
 
-export function Globe({ traces, choisi, vers, onChoisir }: { traces: TraceGlobe[]; choisi: number | null; vers: { lon: number; lat: number; zoom: number; n: number } | null; onChoisir: (i: number) => void }) {
+export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays }: { traces: TraceGlobe[]; choisi: number | null; vers: { lon: number; lat: number; zoom: number; n: number } | null; onChoisir: (i: number) => void; pays?: string | null; onPays?: (code: string | null) => void }) {
   const toile = useRef<HTMLCanvasElement>(null);
   const etat = useRef<Etat>({ lon: -10, lat: 25, zoom: 1 });
   const elan = useRef({ vlon: 0, vlat: 0 });
   const doigts = useRef(new Map<number, { x: number; y: number }>());
   const avant = useRef<{ e: Etat; d: number; x: number; y: number } | null>(null);
   const bouge = useRef(0);
-  const donnees = useRef({ traces, choisi });
-  donnees.current = { traces, choisi };
+  const donnees = useRef({ traces, choisi, pays });
+  donnees.current = { traces, choisi, pays };
   const anim = useRef<{ de: Etat; a: Etat; t0: number } | null>(null);
 
   // Aller vers un trajet (après une recherche ou un toucher) : le globe tourne doucement jusqu'à lui.
@@ -91,6 +94,9 @@ export function Globe({ traces, choisi, vers, onChoisir }: { traces: TraceGlobe[
       ctx.fillStyle = mer; ctx.beginPath(); chemin({ type: "Sphere" }); ctx.fill();
       ctx.strokeStyle = "rgba(255,255,255,.05)"; ctx.lineWidth = 0.6; ctx.beginPath(); chemin(GRILLE); ctx.stroke();
       ctx.fillStyle = "#3b4a7a"; ctx.strokeStyle = "#0f1838"; ctx.lineWidth = 0.5; ctx.beginPath(); chemin(PAYS); ctx.fill(); ctx.stroke();
+      // Le pays choisi, en or (comme sur la carte des fiches)
+      const choix = donnees.current.pays ? LISTE_PAYS.find((f) => f.properties.code === donnees.current.pays) : undefined;
+      if (choix) { ctx.fillStyle = "#f3c35a"; ctx.beginPath(); chemin(choix as unknown as GeoPermissibleObjects); ctx.fill(); ctx.stroke(); }
       // Les trajets, et la petite lumière qui voyage sur chacun
       const { traces: tr, choisi: ch } = donnees.current;
       for (const v of tr) {
@@ -132,7 +138,20 @@ export function Globe({ traces, choisi, vers, onChoisir }: { traces: TraceGlobe[
     const x = p.reduce((s, a) => s + a.x, 0) / p.length, y = p.reduce((s, a) => s + a.y, 0) / p.length;
     avant.current = { e: { ...etat.current }, d: p.length > 1 ? Math.hypot(p[1].x - p[0].x, p[1].y - p[0].y) : 0, x, y };
   }
+  const zoomer = (f: number) => {
+    anim.current = { de: { ...etat.current }, a: { ...etat.current, zoom: Math.max(0.8, Math.min(ZOOM_MAX, etat.current.zoom * f)) }, t0: performance.now() };
+  };
+  const remettre = () => {
+    anim.current = { de: { ...etat.current }, a: { lon: -10, lat: 25, zoom: 1 }, t0: performance.now() };
+    onPays?.(null);
+  };
   return (
+    <div className="relative">
+    <div className="absolute right-2 top-2 z-10 flex flex-col gap-1.5">
+      <button type="button" aria-label="Zoomer" onClick={() => zoomer(2)} className="grid size-10 place-items-center rounded-full bg-black/55 text-xl font-black text-white backdrop-blur">+</button>
+      <button type="button" aria-label="Dézoomer" onClick={() => zoomer(0.5)} className="grid size-10 place-items-center rounded-full bg-black/55 text-xl font-black text-white backdrop-blur">−</button>
+      <button type="button" aria-label="Revoir toute la Terre" onClick={remettre} className="grid size-10 place-items-center rounded-full bg-black/55 text-lg text-white backdrop-blur">⟲</button>
+    </div>
     <canvas
       ref={toile}
       className="block h-[62vh] min-h-[340px] w-full touch-none select-none"
@@ -156,7 +175,7 @@ export function Globe({ traces, choisi, vers, onChoisir }: { traces: TraceGlobe[
         const rayon = (Math.min(w, h) / 2 - 8) * b.e.zoom;
         const deg = 90 / rayon;
         const st = etat.current;
-        if (p.length > 1 && b.d > 0) st.zoom = Math.max(0.8, Math.min(12, (b.e.zoom * Math.hypot(p[1].x - p[0].x, p[1].y - p[0].y)) / b.d));
+        if (p.length > 1 && b.d > 0) st.zoom = Math.max(0.8, Math.min(ZOOM_MAX, (b.e.zoom * Math.hypot(p[1].x - p[0].x, p[1].y - p[0].y)) / b.d));
         st.lon = b.e.lon + (x - b.x) * deg;
         st.lat = Math.max(-80, Math.min(80, b.e.lat + (y - b.y) * deg));
         const ici = point(e);
@@ -178,11 +197,17 @@ export function Globe({ traces, choisi, vers, onChoisir }: { traces: TraceGlobe[
           const d = Math.hypot(q[0] - x, q[1] - y);
           if (d < dist) { dist = d; meilleur = v.i; }
         }
-        if (meilleur >= 0) onChoisir(meilleur);
+        if (meilleur >= 0) return onChoisir(meilleur);
+        // Sinon : le pays sous le doigt.
+        const lieu = proj.invert?.([x, y]);
+        if (!lieu || !onPays) return;
+        const f = LISTE_PAYS.find((c) => geoContains(c as unknown as GeoPermissibleObjects, lieu));
+        onPays(f ? f.properties.code : null);
       }}
       onPointerCancel={(e) => { doigts.current.delete(e.pointerId); depart(); }}
-      onWheel={(e) => { etat.current.zoom = Math.max(0.8, Math.min(12, etat.current.zoom * (e.deltaY < 0 ? 1.15 : 1 / 1.15))); }}
+      onWheel={(e) => { anim.current = null; etat.current.zoom = Math.max(0.8, Math.min(ZOOM_MAX, etat.current.zoom * (e.deltaY < 0 ? 1.25 : 1 / 1.25))); }}
     />
+    </div>
   );
 }
 
@@ -190,6 +215,16 @@ export function Globe({ traces, choisi, vers, onChoisir }: { traces: TraceGlobe[
 export function cadrer(points: [number, number][]) {
   const la = points.map((p) => p[0]), lo = points.map((p) => p[1]);
   const lat = (Math.max(...la) + Math.min(...la)) / 2, lon = (Math.max(...lo) + Math.min(...lo)) / 2;
-  const etendue = Math.max(Math.max(...la) - Math.min(...la), (Math.max(...lo) - Math.min(...lo)) * Math.cos((lat * Math.PI) / 180), 0.5);
-  return { lat, lon, zoom: Math.max(1, Math.min(12, 60 / etendue)) };
+  const etendue = Math.max(Math.max(...la) - Math.min(...la), (Math.max(...lo) - Math.min(...lo)) * Math.cos((lat * Math.PI) / 180), 0.004);
+  return { lat, lon, zoom: Math.max(1, Math.min(ZOOM_MAX, 60 / etendue)) };
+}
+
+/** Le centre d'un pays et le zoom pour bien le voir. */
+export function cadrerPays(code: string) {
+  const f = LISTE_PAYS.find((c) => c.properties.code === code) as unknown as GeoPermissibleObjects | undefined;
+  if (!f) return null;
+  const [lon, lat] = geoCentroid(f);
+  const [[x0, y0], [x1, y1]] = geoBounds(f);
+  const etendue = Math.max(y1 - y0, ((x1 - x0 + 360) % 360 || 360) * Math.cos((lat * Math.PI) / 180), 1);
+  return { lat, lon, zoom: Math.max(1, Math.min(ZOOM_MAX, 70 / etendue)) };
 }

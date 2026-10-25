@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "L'Aventure : où vivent les animaux",
+    "points": [
+      "L'Aventure s'ouvre sur le globe, avec deux onglets.",
+      "« Où vivent-ils ? » : touche un pays (ou cherche-le) et vois tous les mammifères qui y vivent, triés par groupe.",
+      "« Les voyages » : on peut zoomer beaucoup plus, jusqu'à voir un chat faire le tour de son jardin."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Pour aller plus loin",
     "points": [
       "Sous le globe, un dossier « Pour aller plus loin » : des liens vers Google Earth (éléphants, chimpanzés, vie marine) et vers les cartes des scientifiques. Un adulte allume Internet pour les ouvrir.",
