@@ -4,14 +4,16 @@
 et pour chacun une petite partie de ses points (assez pour dessiner le trajet).
 Rien n'est inventé : la distance est calculée à partir des vrais points.
 Sortie : src/data/voyageurs.json et scripts/donnees/voyageurs-journal.txt"""
-import csv, io, json, math, re, time, urllib.parse, urllib.request
+import csv, io, json, math, re, sys, time, traceback, urllib.parse, urllib.request
+csv.field_size_limit(sys.maxsize)
+DUREE_MAX = 600  # secondes au plus par fichier : au-delà, la fin du suivi est marquée « non connue »
 from pathlib import Path
 
 R = Path(__file__).resolve().parents[2]
 DATA = R / "src/data"
 API = "https://datarepository.movebank.org/server/api"
 UA = {"User-Agent": "EncyclopedieLeonie/1.0 (application educative)", "Accept": "application/json"}
-MAX_OCTETS = 1_500_000_000     # au-delà, le fichier n'est pas lu en entier : la fin du suivi est alors marquée « non connue »
+MAX_OCTETS = 800_000_000     # au-delà, le fichier n'est pas lu en entier : la fin du suivi est alors marquée « non connue »
 MAX_ANIMAUX = 4                # par jeu de données
 MAX_POINTS = 120               # par trajet
 MARINS = {"Balaenidae", "Balaenopteridae", "Delphinidae", "Eschrichtiidae", "Monodontidae", "Phocoenidae", "Physeteridae", "Kogiidae",
@@ -97,9 +99,10 @@ def lire_csv(url):
         ivis, iout = col.get("visible"), col.get("manually-marked-outlier")
         isens = col.get("sensor-type")
         if None in (ilat, ilon, iind): return {}, False
+        t_debut = time.time()
         for ligne in rd:
             lu += sum(len(x) for x in ligne) + len(ligne)
-            if lu > MAX_OCTETS:
+            if lu > MAX_OCTETS or (lu % 1000 < 60 and time.time() - t_debut > DUREE_MAX):
                 coupe = True
                 break
             try:
@@ -159,10 +162,11 @@ def main():
                         fichiers.append((f.get("sizeBytes", 0), f["_links"]["content"]["href"]))
             if not fichiers: continue
             fichiers.sort()
+            j(f"→ {titre[:80]} ({round(fichiers[0][0] / 1e6)} Mo)")
             try:
                 par, coupe = lire_csv(fichiers[0][1])
-            except Exception as e:
-                j(f"✗ {titre[:80]} : {e}"); continue
+            except BaseException as e:
+                j(f"✗ {titre[:80]} : {type(e).__name__} {e}"); traceback.print_exc(file=sys.stdout); continue
             trajets = []
             for ind, a in par.items():
                 if a["n"] < 5 or not a["taxon"]: continue
@@ -192,4 +196,8 @@ def main():
     j(f"FIN : {len(sortie)} trajets, {len({s['latin'] for s in sortie})} espèces")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except BaseException:
+        traceback.print_exc(file=sys.stdout)
+        print("ARRÊT sur erreur (les trajets déjà trouvés sont gardés).", flush=True)
