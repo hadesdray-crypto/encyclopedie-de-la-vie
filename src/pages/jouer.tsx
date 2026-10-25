@@ -418,7 +418,7 @@ function QuestionCri() {
   return (
     <section className="mt-5 text-center">
       <p className="text-lg">Écoute bien. Quel animal fait ce bruit ?</p>
-      <audio key={q.bon.id} controls preload="auto" src={`s/${q.bon.id}.mp3`} className="mx-auto mt-3 w-full max-w-sm" />
+      <audio key={q.bon.id} controls preload="auto" src={`s/${q.bon.id}.webm`} className="mx-auto mt-3 w-full max-w-sm" />
       <ul className="mt-4 grid grid-cols-3 gap-2">
         {q.choix.map((e) => {
           const juste = rep && e.id === q.bon.id;
@@ -556,7 +556,7 @@ function DefiDuJour() {
         <p className="font-extrabold text-[#f0d090]">Question {i + 1} sur 5</p>
       </div>
       <p className="titre-or mt-3 text-center text-2xl">{q.consigne}</p>
-      {q.audio ? <audio key={q.audio} controls preload="auto" src={`s/${q.audio}.mp3`} className="mx-auto mt-3 w-full max-w-sm" /> : null}
+      {q.audio ? <audio key={q.audio} controls preload="auto" src={`s/${q.audio}.webm`} className="mx-auto mt-3 w-full max-w-sm" /> : null}
       {q.carte ? <div className="mt-3"><CarteMonde pays={q.carte} /></div> : null}
       {"portrait" in q ? <span className="medaillon-or mx-auto mt-3 block size-28 overflow-hidden"><Portrait id={(q as { portrait: string }).portrait} /></span> : null}
       <ul className={`mt-4 grid gap-2 ${q.choix.length === 2 ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-3"}`}>

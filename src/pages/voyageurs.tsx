@@ -6,6 +6,8 @@ import { LuEarth, LuMap, LuMinus, LuPlus, LuRotateCcw, LuSearch, LuX } from "rea
 import { Globe, cadrer } from "@/components/globe";
 import { CadreGlobe } from "@/components/cadre-globe";
 import { RecherchePlein } from "@/components/recherche-plein";
+import { Parcours } from "@/components/parcours";
+import liensEtudes from "@/data/voyageurs-liens.json";
 import { Entete, Titre } from "@/components/entete";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import monde from "@/data/monde.json";
@@ -19,6 +21,13 @@ type Voyageur = {
   depart?: { lat: number; lon: number; date: string }; arrivee?: { lat: number; lon: number; date: string } | null; complet?: boolean; nbPoints?: number;
 };
 const VOYAGEURS = (donnees as Voyageur[]).map((v, i) => ({ ...v, i }));
+const LIENS_ETUDES = liensEtudes as Record<string, { page: string; doi: string }>;
+// Un trajet « complet » : on connaît son départ et son arrivée. Ce sont eux qu'on montre d'abord.
+/** Les voyages GPS d'une espèce (les complets d'abord). */
+export function voyagesDe(id: string, latin: string) {
+  return VOYAGEURS.filter((v) => v.fiche === id || v.latin === latin).sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || (b.km ?? 0) - (a.km ?? 0));
+}
+const estComplet = (v: Voyageur) => !(v as { partiel?: boolean }).partiel && v.complet !== false && !!v.arrivee;
 const PAYS = (monde as { pays: Record<string, string> }).pays;
 
 export const GROUPES_VOYAGE = {
@@ -60,7 +69,7 @@ const lieu = (p: { lat: number; lon: number }) => `${Math.abs(p.lat).toFixed(4)}
 type Vue = { x: number; y: number; s: number; r: number };
 const DEPART: Vue = { x: 0, y: 0, s: 1, r: 0 };
 
-export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
+export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean; aMontrer?: number | null } = {}) {
   const [vue, setVue] = useState<Vue>(DEPART);
   const [choisi, setChoisi] = useState<number | null>(null);
   const [filtres, setFiltres] = useState<Record<G, boolean>>({ marin: true, herbivore: true, oiseau: true, predateur: true, autre: true });
@@ -76,7 +85,7 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
   const classes = useMemo(() => {
     const rang = new Map<number, number>();
     (Object.keys(GROUPES_VOYAGE) as G[]).forEach((g) =>
-      VOYAGEURS.filter((v) => v.groupe === g).sort((a, b) => (b.km ?? 0) - (a.km ?? 0)).forEach((v, k) => rang.set(v.i, k)),
+      VOYAGEURS.filter((v) => v.groupe === g).sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || (b.km ?? 0) - (a.km ?? 0)).forEach((v, k) => rang.set(v.i, k)),
     );
     return rang;
   }, []);
@@ -93,9 +102,17 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
   const resultats = useMemo(() => {
     const t = sansAccent(q.trim());
     if (t.length < 2) return [];
-    return VOYAGEURS.filter((v) => sansAccent(`${nomDe(v)} ${v.latin}`).includes(t)).slice(0, 12);
+    return VOYAGEURS.filter((v) => sansAccent(`${nomDe(v)} ${v.latin}`).includes(t)).sort((a, b) => Number(estComplet(b)) - Number(estComplet(a)) || (b.km ?? 0) - (a.km ?? 0)).slice(0, 20);
   }, [q]);
+  const { permis } = useInternet();
   const groupesPresents = (Object.keys(GROUPES_VOYAGE) as G[]).filter((g) => VOYAGEURS.some((v) => v.groupe === g));
+
+  // On arrive depuis la fiche d'un animal : on montre tout de suite son voyage.
+  useEffect(() => {
+    if (aMontrer === null || aMontrer === undefined || !VOYAGEURS[aMontrer]) return;
+    const t = window.setTimeout(() => montrer(aMontrer), 300);
+    return () => window.clearTimeout(t);
+  }, [aMontrer]);
 
   // Plume explique une fois, en arrivant.
   useEffect(() => {
@@ -159,7 +176,7 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
     const p = [...doigts.current.values()];
     const b = avant.current;
     const cx = p.reduce((s, a) => s + a.x, 0) / p.length, cy = p.reduce((s, a) => s + a.y, 0) / p.length;
-    bouge.current += 1;
+    bouge.current += Math.hypot(e.clientX - ancien.x, e.clientY - ancien.y);
     let s = b.vue.s, r = b.vue.r;
     if (p.length > 1 && b.d > 0) {
       const d = Math.hypot(p[1].x - p[0].x, p[1].y - p[0].y);
@@ -216,6 +233,8 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
   /** Choisit un voyageur : la carte glisse vers lui, son trajet se redessine et sa lumière le parcourt. */
   function montrer(i: number, centrer = true) {
     setChoisi(i);
+    // La fiche (avec le parcours) vient se placer juste sous le bandeau.
+    window.setTimeout(() => document.getElementById("fiche-voyageur")?.scrollIntoView({ behavior: "smooth", block: "start" }), 700);
     setCherche(false);
     setRejoue((n) => n + 1);
     if (globe) {
@@ -284,7 +303,7 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
             {Object.entries(PAYS).map(([c, d]) => <path key={c} d={d} fill="#3b4a7a" stroke="#0f1838" strokeWidth={0.3 / vue.s} />)}
             {visibles.map((t) =>
               lignes[t.i].map((pts, k) => (
-                <g key={`${t.i}-${k}`} onClick={() => bouge.current < 4 && montrer(t.i, false)} style={{ cursor: "pointer" }}>
+                <g key={`${t.i}-${k}`} onClick={() => bouge.current < 14 && montrer(t.i, false)} style={{ cursor: "pointer" }}>
                   <polyline points={pts} fill="none" stroke="transparent" strokeWidth={16} vectorEffect="non-scaling-stroke" />
                   <polyline
                     key={t.i === choisi ? `r${rejoue}` : "n"}
@@ -333,19 +352,9 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
       </CadreGlobe>
       <div className={integre ? "px-3" : ""}>
 
-      {/* Légende : touche une couleur pour l'afficher ou la cacher */}
-      <div className="mt-3 flex flex-wrap justify-center gap-1.5">
-        {groupesPresents.map((g) => (
-          <button key={g} type="button" aria-pressed={filtres[g]} onClick={() => setFiltres((f) => ({ ...f, [g]: !f[g] }))} className={`inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 text-sm font-extrabold ${filtres[g] ? "bg-[#2a1844] text-white" : "bg-[#2a1844]/40 text-white/50 line-through"}`}>
-            <span className="h-1.5 w-5 rounded-full" style={{ background: GROUPES_VOYAGE[g].couleur }} /> {GROUPES_VOYAGE[g].label}
-          </button>
-        ))}
-      </div>
-      <p className="mt-2 text-center text-xs texte-doux">{visibles.length} trajets sur {VOYAGEURS.length}{visibles.length < VOYAGEURS.length ? " · zoome pour en voir plus" : ""} · un doigt pour déplacer, deux pour zoomer et tourner.</p>
-
       {/* La fiche du voyageur choisi */}
       {v ? (
-        <section key={v.i} className="carte-nuit apparait relative mt-4 rounded-3xl px-4 py-4">
+        <section key={v.i} id="fiche-voyageur" style={{ scrollMarginTop: "calc(max(190px, 30vh) + 2.5rem)" }} className="carte-nuit apparait relative mt-2 rounded-3xl px-4 py-4">
           <button type="button" aria-label="Fermer" onClick={() => setChoisi(null)} className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-white/10"><LuX className="size-5" /></button>
           <div className="flex items-center gap-3 pr-10">
             {v.fiche && aUnePhoto(v.fiche) ? <span className="medaillon-or block size-16 shrink-0 overflow-hidden"><Portrait id={v.fiche} /></span> : <span className="grid size-16 shrink-0 place-items-center rounded-full text-3xl" style={{ background: GROUPES_VOYAGE[v.groupe as G].couleur + "33" }}>•</span>}
@@ -355,6 +364,8 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
               <p className="mt-0.5 inline-flex items-center gap-1.5 text-xs font-extrabold"><span className="h-1.5 w-4 rounded-full" style={{ background: GROUPES_VOYAGE[v.groupe as G].couleur }} />{GROUPES_VOYAGE[v.groupe as G].label}</p>
             </div>
           </div>
+          <p className={`mt-2 inline-block rounded-full px-3 py-1 text-xs font-extrabold ${estComplet(v) ? "bg-[#4cd964]/20 text-[#9dffb0]" : "bg-white/10 texte-doux"}`}>{estComplet(v) ? "✓ Trajet complet : départ et arrivée connus" : "Trajet partiel : seulement le début est connu"}</p>
+          <Parcours key={v.i} points={v.points} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} arrivee={estComplet(v)} />
           <dl className="mt-3 grid grid-cols-2 gap-2 text-sm">
             <div className="rounded-2xl bg-white/5 px-3 py-2"><dt className="text-xs texte-doux">Distance du trajet</dt><dd className="font-display text-xl">{v.km !== null && v.km !== undefined ? `${v.km.toLocaleString("fr-FR")} km` : "Non connue"}</dd></div>
             <div className="rounded-2xl bg-white/5 px-3 py-2"><dt className="text-xs texte-doux">Points GPS</dt><dd className="font-display text-xl">{v.nbPoints ? v.nbPoints.toLocaleString("fr-FR") : "Non connu"}</dd></div>
@@ -365,10 +376,20 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
           <p className="mt-2 text-xs">Animal suivi : « {v.individu} ». Étude : {v.etude}. Licence {v.licence}.</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {v.fiche ? <a href={`#/mammiferes/e-${v.fiche}`} className="bouton-bois rounded-full px-4 py-2 text-sm font-extrabold">Voir sa fiche</a> : null}
-            {v.doi ? <a href={v.doi} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 px-4 py-2 text-sm font-extrabold">La source scientifique</a> : null}
+            {LIENS_ETUDES[v.etude] && permis ? <a href={LIENS_ETUDES[v.etude].doi || LIENS_ETUDES[v.etude].page} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 px-4 py-2 text-sm font-extrabold">Les vraies données GPS (gratuit)</a> : null}
           </div>
         </section>
       ) : null}
+      {/* Légende : touche une couleur pour l'afficher ou la cacher */}
+      <div className="mt-3 flex flex-wrap justify-center gap-1.5">
+        {groupesPresents.map((g) => (
+          <button key={g} type="button" aria-pressed={filtres[g]} onClick={() => setFiltres((f) => ({ ...f, [g]: !f[g] }))} className={`inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 text-sm font-extrabold ${filtres[g] ? "bg-[#2a1844] text-white" : "bg-[#2a1844]/40 text-white/50 line-through"}`}>
+            <span className="h-1.5 w-5 rounded-full" style={{ background: GROUPES_VOYAGE[g].couleur }} /> {GROUPES_VOYAGE[g].label}
+          </button>
+        ))}
+      </div>
+      <p className="mt-2 text-center text-xs texte-doux">{visibles.length} trajets sur {VOYAGEURS.length}{visibles.length < VOYAGEURS.length ? " · zoome pour en voir plus" : ""} · un doigt pour déplacer, deux pour zoomer et tourner.</p>
+
       <a href="#/aventure" className="mx-auto mt-4 block w-max rounded-full bg-card px-4 py-2 text-sm font-extrabold text-[#2a1c14]">La liste des animaux suivis</a>
       <PlusLoin />
       <p className="mx-auto mt-4 max-w-sm text-center text-[11px] texte-doux">Données : Movebank Data Repository (jeux de données publiés en licence libre). Rien n'est inventé : chaque trait est un vrai suivi GPS.</p>
