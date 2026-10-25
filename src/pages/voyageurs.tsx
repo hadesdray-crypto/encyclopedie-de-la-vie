@@ -35,6 +35,17 @@ function morceaux(points: [number, number][]) {
   return out.filter((m) => m.length > 1).map((m) => m.map(([la, lo]) => `${(lo + 180).toFixed(2)},${(90 - la).toFixed(2)}`).join(" "));
 }
 
+/** Le chemin que suit la petite lumière (le plus long morceau du trajet). */
+function chemin(points: [number, number][]) {
+  const m = morceaux(points).sort((a, b) => b.length - a.length)[0] ?? "";
+  return m ? "M" + m.split(" ").join(" L") : "";
+}
+
+/** Peu de trajets quand on voit tout le monde, de plus en plus en zoomant (les plus longs d'abord). */
+function parGroupe(zoom: number) {
+  return zoom < 1.6 ? 3 : zoom < 3 ? 8 : zoom < 6 ? 20 : Infinity;
+}
+
 const nomDe = (v: Voyageur) => v.nom ?? v.latin;
 const sansAccent = (t: string) => t.toLocaleLowerCase("fr").normalize("NFD").replace(/\p{M}/gu, "");
 const date = (d: string) => (d ? new Date(d).toLocaleDateString("fr-FR", { year: "numeric", month: "long" }) : "Non connu");
@@ -53,8 +64,19 @@ export function VoyageursPage() {
   const avant = useRef<{ vue: Vue; d: number; a: number; cx: number; cy: number } | null>(null);
   const bouge = useRef(0);
 
-  const visibles = VOYAGEURS.filter((v) => filtres[v.groupe as G] ?? true);
   const lignes = useMemo(() => VOYAGEURS.map((v) => morceaux(v.points)), []);
+  const chemins = useMemo(() => VOYAGEURS.map((v) => chemin(v.points)), []);
+  const classes = useMemo(() => {
+    const rang = new Map<number, number>();
+    (Object.keys(GROUPES_VOYAGE) as G[]).forEach((g) =>
+      VOYAGEURS.filter((v) => v.groupe === g).sort((a, b) => b.km - a.km).forEach((v, k) => rang.set(v.i, k)),
+    );
+    return rang;
+  }, []);
+  const limite = parGroupe(vue.s);
+  const visibles = VOYAGEURS.filter((v) => (filtres[v.groupe as G] ?? true) && ((classes.get(v.i) ?? 0) < limite || v.i === choisi));
+  const animation = useRef(0);
+  const [rejoue, setRejoue] = useState(0);
   const resultats = useMemo(() => {
     const t = sansAccent(q.trim());
     if (t.length < 2) return [];
@@ -97,7 +119,7 @@ export function VoyageursPage() {
     if (p.length > 1 && b.d > 0) {
       const d = Math.hypot(p[1].x - p[0].x, p[1].y - p[0].y);
       const a = Math.atan2(p[1].y - p[0].y, p[1].x - p[0].x);
-      const s = Math.max(1, Math.min(40, (b.vue.s * d) / b.d));
+      const s = Math.max(1, Math.min(200, (b.vue.s * d) / b.d));
       setVue({ x: b.vue.x + (cx - b.cx), y: b.vue.y + (cy - b.cy), s, r: b.vue.r + ((a - b.a) * 180) / Math.PI });
     } else setVue({ ...b.vue, x: b.vue.x + (cx - b.cx), y: b.vue.y + (cy - b.cy) });
   }
@@ -106,19 +128,33 @@ export function VoyageursPage() {
     depart();
   }
   function zoom(f: number) {
-    setVue((v) => ({ ...v, s: Math.max(1, Math.min(40, v.s * f)) }));
+    setVue((v) => ({ ...v, s: Math.max(1, Math.min(200, v.s * f)) }));
   }
 
-  /** Centre la carte sur un trajet. */
-  function montrer(i: number) {
+  /** Glisse doucement vers une vue. */
+  function allerVers(cible: Vue) {
+    cancelAnimationFrame(animation.current);
+    const de = vue, t0 = performance.now();
+    const pas = (t: number) => {
+      const k = Math.min(1, (t - t0) / 900), e = 1 - Math.pow(1 - k, 3);
+      setVue({ x: de.x + (cible.x - de.x) * e, y: de.y + (cible.y - de.y) * e, s: de.s + (cible.s - de.s) * e, r: de.r + (cible.r - de.r) * e });
+      if (k < 1) animation.current = requestAnimationFrame(pas);
+    };
+    animation.current = requestAnimationFrame(pas);
+  }
+
+  /** Choisit un voyageur : la carte glisse vers lui, son trajet se redessine et sa lumière le parcourt. */
+  function montrer(i: number, centrer = true) {
     setChoisi(i);
     setCherche(false);
+    setRejoue((n) => n + 1);
+    if (!centrer) return;
     const pts = VOYAGEURS[i].points;
     const xs = pts.map((p) => p[1] + 180), ys = pts.map((p) => 90 - p[0]);
-    const w = Math.max(...xs) - Math.min(...xs) + 6, h = Math.max(...ys) - Math.min(...ys) + 6;
-    const s = Math.max(1, Math.min(30, Math.min(360 / w, 180 / h) * 0.8));
+    const w = Math.max(...xs) - Math.min(...xs) + 0.5, h = Math.max(...ys) - Math.min(...ys) + 0.5;
+    const s = Math.max(1, Math.min(150, Math.min(360 / w, 180 / h) * 0.8));
     const cx = (Math.max(...xs) + Math.min(...xs)) / 2, cy = (Math.max(...ys) + Math.min(...ys)) / 2;
-    setVue({ s, r: 0, x: 180 - cx * s, y: 90 - cy * s });
+    allerVers({ s, r: 0, x: 180 - cx * s, y: 90 - cy * s });
   }
 
   const v = choisi !== null ? VOYAGEURS[choisi] : null;
@@ -176,9 +212,10 @@ export function VoyageursPage() {
             {Object.entries(PAYS).map(([c, d]) => <path key={c} d={d} fill="#1e2b55" stroke="#0b1230" strokeWidth={0.3 / vue.s} />)}
             {visibles.map((t) =>
               lignes[t.i].map((pts, k) => (
-                <g key={`${t.i}-${k}`} onClick={() => bouge.current < 4 && setChoisi(t.i)} style={{ cursor: "pointer" }}>
+                <g key={`${t.i}-${k}`} onClick={() => bouge.current < 4 && montrer(t.i, false)} style={{ cursor: "pointer" }}>
                   <polyline points={pts} fill="none" stroke="transparent" strokeWidth={16} vectorEffect="non-scaling-stroke" />
                   <polyline
+                    key={t.i === choisi ? `r${rejoue}` : "n"}
                     points={pts}
                     pathLength={1}
                     className="trajet"
@@ -193,12 +230,23 @@ export function VoyageursPage() {
                 </g>
               )),
             )}
+            {/* Les petites lumières qui voyagent le long des trajets */}
+            {visibles.map((t) =>
+              chemins[t.i] && (choisi === null || choisi === t.i) ? (
+                <g key={`l${t.i}-${t.i === choisi ? rejoue : 0}`}>
+                  <circle r={(t.i === choisi ? 7 : 4.5) / vue.s} fill={GROUPES_VOYAGE[t.groupe as G].couleur} opacity=".35" />
+                  <circle r={(t.i === choisi ? 3.6 : 2.4) / vue.s} fill={GROUPES_VOYAGE[t.groupe as G].couleur} opacity=".7" />
+                  <circle r={(t.i === choisi ? 1.8 : 1.2) / vue.s} fill="#fff" />
+                  <animateMotion dur={`${t.i === choisi ? 4 : 7 + (t.i % 5)}s`} begin={`${t.i === choisi ? 0.4 : (t.i % 7) * 0.6}s`} repeatCount="indefinite" path={chemins[t.i]} />
+                </g>
+              ) : null,
+            )}
           </g>
         </svg>
         <div className="absolute right-2 top-2 flex flex-col gap-1.5">
           <button type="button" aria-label="Zoomer" onClick={() => zoom(1.5)} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuPlus className="size-5" /></button>
           <button type="button" aria-label="Dézoomer" onClick={() => zoom(1 / 1.5)} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuMinus className="size-5" /></button>
-          <button type="button" aria-label="Revenir à toute la carte" onClick={() => { setVue(DEPART); setChoisi(null); }} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuRotateCcw className="size-5" /></button>
+          <button type="button" aria-label="Revenir à toute la carte" onClick={() => { allerVers(DEPART); setChoisi(null); }} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuRotateCcw className="size-5" /></button>
         </div>
         {!VOYAGEURS.length ? <p className="absolute inset-x-0 bottom-3 text-center text-sm font-bold text-white/80">Les trajets arrivent : la recherche est en cours.</p> : null}
       </div>
@@ -211,7 +259,7 @@ export function VoyageursPage() {
           </button>
         ))}
       </div>
-      <p className="mt-2 text-center text-xs texte-doux">{visibles.length} trajets · un doigt pour déplacer, deux pour zoomer et tourner.</p>
+      <p className="mt-2 text-center text-xs texte-doux">{visibles.length} trajets sur {VOYAGEURS.length}{visibles.length < VOYAGEURS.length ? " · zoome pour en voir plus" : ""} · un doigt pour déplacer, deux pour zoomer et tourner.</p>
 
       {/* La fiche du voyageur choisi */}
       {v ? (
