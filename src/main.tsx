@@ -21,6 +21,7 @@ import { SourcesPage } from "@/pages/sources";
 // Les pages qui utilisent le grand catalogue des mammifères se chargent à la demande.
 const Mammiferes = lazy(() => import("@/pages/mammiferes").then((m) => ({ default: m.MammiferesPage })));
 const Fossiles = lazy(() => import("@/pages/fossiles").then((m) => ({ default: m.FossilesPage })));
+const Kratt = lazy(() => import("@/pages/kratt").then((m) => ({ default: m.KrattPage })));
 const Jouer = lazy(() => import("@/pages/jouer").then((m) => ({ default: m.JouerPage })));
 const Cartes = lazy(() => import("@/pages/cartes").then((m) => ({ default: m.CartesPage })));
 const Profil = lazy(() => import("@/pages/profil").then((m) => ({ default: m.ProfilPage })));
@@ -47,6 +48,7 @@ const ROUTES: [string, Page][] = [
   ["/chercher", Chercher],
   ["/compagnons", Compagnons],
   ["/sources", SourcesPage],
+  ["/kratt", Kratt],
 ];
 
 function Introuvable() {
