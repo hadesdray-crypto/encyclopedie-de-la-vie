@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "503 grands voyageurs",
+    "points": [
+      "503 vrais trajets GPS de 122 espèces : cigognes, grues, vautours, goélands, loups, cerfs, éléphants, cachalots, tortues…",
+      "Tous vérifiés : seulement le vrai GPS, sources scientifiques en licence libre, départ et arrivée exacts.",
+      "Des noms français corrigés (chien viverrin, petit noctilion, cerf mulet…)."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "L'Aventure : où vivent les animaux",
     "points": [
       "L'Aventure s'ouvre sur le globe, avec deux onglets.",
