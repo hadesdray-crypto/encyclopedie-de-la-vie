@@ -34,7 +34,13 @@ export const ZOOM_MAX = 3000; // assez pour voir un chat faire le tour de son ja
 
 type Etat = { lon: number; lat: number; zoom: number };
 
-export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, surligne = [] }: { traces: TraceGlobe[]; choisi: number | null; vers: { lon: number; lat: number; zoom: number; n: number } | null; onChoisir: (i: number) => void; pays?: string | null; onPays?: (code: string | null) => void; surligne?: string[] }) {
+// Des étoiles fixes autour de la Terre (toujours les mêmes, pour qu'elles ne sautent pas).
+const ETOILES = Array.from({ length: 140 }, (_, i) => {
+  const a = Math.sin(i * 12.9898) * 43758.5453, b = Math.sin(i * 78.233) * 12543.123;
+  return { x: a - Math.floor(a), y: b - Math.floor(b), r: 0.4 + ((i * 7) % 10) / 12, v: (i % 5) / 5 };
+});
+
+export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, surligne = [], hauteur = "h-[62vh] min-h-[340px]" }: { traces: TraceGlobe[]; choisi: number | null; vers: { lon: number; lat: number; zoom: number; n: number } | null; onChoisir: (i: number) => void; pays?: string | null; onPays?: (code: string | null) => void; surligne?: string[]; hauteur?: string }) {
   const toile = useRef<HTMLCanvasElement>(null);
   const etat = useRef<Etat>({ lon: -10, lat: 25, zoom: 1 });
   const elan = useRef({ vlon: 0, vlat: 0 });
@@ -44,12 +50,14 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
   const donnees = useRef({ traces, choisi, pays, surligne });
   donnees.current = { traces, choisi, pays, surligne };
   const anim = useRef<{ de: Etat; a: Etat; t0: number } | null>(null);
+  const calme = useRef(performance.now()); // le dernier moment où on a touché le globe
 
   // Aller vers un trajet (après une recherche ou un toucher) : le globe tourne doucement jusqu'à lui.
   useEffect(() => {
     if (!vers) return;
     anim.current = { de: { ...etat.current }, a: { lon: -vers.lon, lat: vers.lat, zoom: vers.zoom }, t0: performance.now() };
     elan.current = { vlon: 0, vlat: 0 };
+    calme.current = performance.now();
   }, [vers?.n]);
 
   useEffect(() => {
@@ -68,7 +76,7 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
     const dessiner = (t: number) => {
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       const w = c.clientWidth, h = c.clientHeight;
-      if (c.width !== w * dpr) { c.width = w * dpr; c.height = h * dpr; }
+      if (c.width !== Math.round(w * dpr) || c.height !== Math.round(h * dpr)) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const e = etat.current;
       if (anim.current) {
@@ -80,30 +88,65 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
       } else if (!doigts.current.size) {
         e.lon += elan.current.vlon; e.lat = Math.max(-80, Math.min(80, e.lat + elan.current.vlat));
         elan.current.vlon *= 0.95; elan.current.vlat *= 0.95;
+        // Au repos, la Terre tourne toute seule, tout doucement (seulement vue de loin, quand rien n'est choisi).
+        const d = donnees.current;
+        if (t - calme.current > 3500 && e.zoom < 1.6 && d.choisi === null && !d.pays && !d.surligne.length) {
+          e.lon += Math.min(1, (t - calme.current - 3500) / 2000) * 0.06;
+        }
       }
       const rayon = (Math.min(w, h) / 2 - 8) * e.zoom;
       const proj = geoOrthographic().scale(rayon).translate([w / 2, h / 2]).rotate([e.lon, -e.lat]).clipAngle(90);
       const chemin = geoPath(proj, ctx);
       ctx.clearRect(0, 0, w, h);
-      // La mer, avec une petite lueur autour de la Terre
-      const halo = ctx.createRadialGradient(w / 2, h / 2, rayon * 0.9, w / 2, h / 2, rayon * 1.12);
-      halo.addColorStop(0, "rgba(90,140,255,.35)"); halo.addColorStop(1, "rgba(90,140,255,0)");
-      ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(w / 2, h / 2, rayon * 1.12, 0, Math.PI * 2); ctx.fill();
-      const mer = ctx.createRadialGradient(w / 2 - rayon * 0.3, h / 2 - rayon * 0.3, rayon * 0.1, w / 2, h / 2, rayon);
-      mer.addColorStop(0, "#1a2a5c"); mer.addColorStop(1, "#14214a");
+      const cx = w / 2, cy = h / 2;
+      // L'espace : un fond bleu nuit et des étoiles qui scintillent doucement.
+      const fond = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(w, h) * 0.75);
+      fond.addColorStop(0, "#101b44"); fond.addColorStop(1, "#05081a");
+      ctx.fillStyle = fond; ctx.fillRect(0, 0, w, h);
+      if (rayon < Math.hypot(w, h) / 2) for (const s of ETOILES) {
+        ctx.globalAlpha = 0.35 + 0.45 * (0.5 + 0.5 * Math.sin(t / 900 + s.v * 6.28));
+        ctx.fillStyle = "#e9eeff"; ctx.beginPath(); ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      // L'atmosphère : une lueur bleue tout autour de la Terre.
+      const halo = ctx.createRadialGradient(cx, cy, rayon * 0.96, cx, cy, rayon * 1.16);
+      halo.addColorStop(0, "rgba(110,170,255,.55)"); halo.addColorStop(0.35, "rgba(80,140,255,.22)"); halo.addColorStop(1, "rgba(80,140,255,0)");
+      ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(cx, cy, rayon * 1.16, 0, Math.PI * 2); ctx.fill();
+      // La mer, éclairée par le soleil en haut à gauche.
+      const lx = cx - rayon * 0.42, ly = cy - rayon * 0.42;
+      const mer = ctx.createRadialGradient(lx, ly, rayon * 0.05, cx, cy, rayon * 1.02);
+      mer.addColorStop(0, "#2f5aa8"); mer.addColorStop(0.55, "#183170"); mer.addColorStop(1, "#0b1640");
       ctx.fillStyle = mer; ctx.beginPath(); chemin({ type: "Sphere" }); ctx.fill();
-      ctx.strokeStyle = "rgba(255,255,255,.05)"; ctx.lineWidth = 0.6; ctx.beginPath(); chemin(GRILLE); ctx.stroke();
-      ctx.fillStyle = "#3b4a7a"; ctx.strokeStyle = "#0f1838"; ctx.lineWidth = 0.5; ctx.beginPath(); chemin(PAYS); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = "rgba(170,200,255,.07)"; ctx.lineWidth = 0.6; ctx.beginPath(); chemin(GRILLE); ctx.stroke();
+      // Les terres, elles aussi éclairées, avec des côtes fines et lumineuses.
+      const terre = ctx.createRadialGradient(lx, ly, rayon * 0.05, cx, cy, rayon);
+      terre.addColorStop(0, "#6a7fc0"); terre.addColorStop(0.6, "#45568f"); terre.addColorStop(1, "#2d3a6a");
+      ctx.fillStyle = terre; ctx.beginPath(); chemin(PAYS); ctx.fill();
+      ctx.strokeStyle = "rgba(190,210,255,.28)"; ctx.lineWidth = 0.6; ctx.stroke();
       // Les pays où vit l'animal cherché, en or (comme sur la carte des fiches)
       if (donnees.current.surligne.length) {
         const set = new Set(donnees.current.surligne);
-        ctx.fillStyle = "#f3c35a"; ctx.beginPath();
+        ctx.save();
+        ctx.shadowColor = "#ffd77a"; ctx.shadowBlur = 8;
+        ctx.fillStyle = "#f3c35a"; ctx.strokeStyle = "rgba(255,243,207,.8)"; ctx.lineWidth = 0.7; ctx.beginPath();
         for (const f of LISTE_PAYS) if (set.has(f.properties.code)) chemin(f as unknown as GeoPermissibleObjects);
         ctx.fill(); ctx.stroke();
+        ctx.restore();
       }
       // Le pays choisi, en or (comme sur la carte des fiches)
       const choix = donnees.current.pays ? LISTE_PAYS.find((f) => f.properties.code === donnees.current.pays) : undefined;
-      if (choix) { ctx.fillStyle = "#f3c35a"; ctx.beginPath(); chemin(choix as unknown as GeoPermissibleObjects); ctx.fill(); ctx.stroke(); }
+      if (choix) {
+        ctx.save();
+        ctx.shadowColor = "#ffd77a"; ctx.shadowBlur = 10 + 8 * (0.5 + 0.5 * Math.sin(t / 380));
+        ctx.fillStyle = "#f3c35a"; ctx.strokeStyle = "#fff3cf"; ctx.lineWidth = 1.2;
+        ctx.beginPath(); chemin(choix as unknown as GeoPermissibleObjects); ctx.fill(); ctx.stroke();
+        ctx.restore();
+      }
+      // Le relief de la sphère : le bord s'assombrit, et un reflet doux près du soleil.
+      const ombre = ctx.createRadialGradient(lx, ly, rayon * 0.2, cx, cy, rayon * 1.01);
+      ombre.addColorStop(0, "rgba(255,255,255,.10)"); ombre.addColorStop(0.45, "rgba(255,255,255,0)"); ombre.addColorStop(0.8, "rgba(3,6,25,.18)"); ombre.addColorStop(1, "rgba(3,6,25,.55)");
+      ctx.fillStyle = ombre; ctx.beginPath(); chemin({ type: "Sphere" }); ctx.fill();
+      ctx.strokeStyle = "rgba(150,195,255,.55)"; ctx.lineWidth = 1.2; ctx.beginPath(); chemin({ type: "Sphere" }); ctx.stroke();
       // Les trajets, et la petite lumière qui voyage sur chacun
       const { traces: tr, choisi: ch } = donnees.current;
       for (const v of tr) {
@@ -147,25 +190,27 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
   }
   const zoomer = (f: number) => {
     anim.current = { de: { ...etat.current }, a: { ...etat.current, zoom: Math.max(0.8, Math.min(ZOOM_MAX, etat.current.zoom * f)) }, t0: performance.now() };
+    calme.current = performance.now();
   };
   const remettre = () => {
     anim.current = { de: { ...etat.current }, a: { lon: -10, lat: 25, zoom: 1 }, t0: performance.now() };
     onPays?.(null);
   };
   return (
-    <div className="relative">
+    <div className="relative h-full">
     <div className="absolute right-2 top-2 z-10 flex flex-col gap-1.5">
-      <button type="button" aria-label="Zoomer" onClick={() => zoomer(2)} className="grid size-10 place-items-center rounded-full bg-black/55 text-xl font-black text-white backdrop-blur">+</button>
-      <button type="button" aria-label="Dézoomer" onClick={() => zoomer(0.5)} className="grid size-10 place-items-center rounded-full bg-black/55 text-xl font-black text-white backdrop-blur">−</button>
-      <button type="button" aria-label="Revoir toute la Terre" onClick={remettre} className="grid size-10 place-items-center rounded-full bg-black/55 text-lg text-white backdrop-blur">⟲</button>
+      <button type="button" aria-label="Zoomer" onClick={() => zoomer(2)} className="grid size-10 place-items-center rounded-full bg-white/10 text-xl font-black text-white ring-1 ring-white/25 backdrop-blur-md">+</button>
+      <button type="button" aria-label="Dézoomer" onClick={() => zoomer(0.5)} className="grid size-10 place-items-center rounded-full bg-white/10 text-xl font-black text-white ring-1 ring-white/25 backdrop-blur-md">−</button>
+      <button type="button" aria-label="Revoir toute la Terre" onClick={remettre} className="grid size-10 place-items-center rounded-full bg-white/10 text-lg text-white ring-1 ring-white/25 backdrop-blur-md">⟲</button>
     </div>
     <canvas
       ref={toile}
-      className="block h-[62vh] min-h-[340px] w-full touch-none select-none"
+      className={`block ${hauteur} w-full touch-none select-none`}
       aria-label="Le globe : fais-le tourner avec le doigt"
       onPointerDown={(e) => {
         e.currentTarget.setPointerCapture(e.pointerId);
         anim.current = null;
+        calme.current = performance.now();
         doigts.current.set(e.pointerId, point(e));
         bouge.current = 0;
         elan.current = { vlon: 0, vlat: 0 };
@@ -179,6 +224,7 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
         const b = avant.current, w = toile.current!.clientWidth, h = toile.current!.clientHeight;
         const x = p.reduce((s, a) => s + a.x, 0) / p.length, y = p.reduce((s, a) => s + a.y, 0) / p.length;
         bouge.current++;
+        calme.current = performance.now();
         const rayon = (Math.min(w, h) / 2 - 8) * b.e.zoom;
         const deg = 90 / rayon;
         const st = etat.current;

@@ -4,6 +4,8 @@
 import { useEffect, useMemo, useRef, useState, type PointerEvent as PE } from "react";
 import { LuEarth, LuMap, LuMinus, LuPlus, LuRotateCcw, LuSearch, LuX } from "react-icons/lu";
 import { Globe, cadrer } from "@/components/globe";
+import { CadreGlobe } from "@/components/cadre-globe";
+import { RecherchePlein } from "@/components/recherche-plein";
 import { Entete, Titre } from "@/components/entete";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import monde from "@/data/monde.json";
@@ -84,6 +86,10 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
   const [rejoue, setRejoue] = useState(0);
   const [globe, setGlobe] = useState(true);
   const [vers, setVers] = useState<{ lon: number; lat: number; zoom: number; n: number } | null>(null);
+  // La fenêtre se met en bandeau quand on regarde un voyageur ; on peut la changer à la main.
+  const [force, setForce] = useState<boolean | null>(null);
+  const petit = force ?? choisi !== null;
+  useEffect(() => setForce(null), [choisi]);
   const resultats = useMemo(() => {
     const t = sansAccent(q.trim());
     if (t.length < 2) return [];
@@ -110,7 +116,7 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
     const ro = new ResizeObserver(maj);
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
+  }, [globe]);
   const sMin = Math.max(1, haut / 180);
   const departVue = (): Vue => ({ s: sMin, r: 0, x: 180 - 180 * sMin, y: 90 - 90 * sMin });
   const premiere = useRef(true);
@@ -239,42 +245,32 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
         </>
       )}
 
-      {/* Recherche discrète */}
-      <div className="relative mt-3 flex justify-end">
-        {cherche ? (
-          <label className="flex w-full items-center gap-2 rounded-full bg-card px-4 py-2.5">
-            <LuSearch className="size-5 text-[#6d5648]" aria-hidden="true" />
-            <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Un animal…" className="w-full bg-transparent outline-none placeholder:text-[#8a7462]" />
-            <button type="button" aria-label="Fermer la recherche" onClick={() => { setCherche(false); setQ(""); }}><LuX className="size-5 text-[#6d5648]" /></button>
-          </label>
-        ) : (
-          <button type="button" aria-label="Chercher un animal" onClick={() => setCherche(true)} className="grid size-10 place-items-center rounded-full bg-[#2a1844] text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
-            <LuSearch className="size-5" />
-          </button>
-        )}
-        {cherche && resultats.length ? (
-          <ul className="absolute inset-x-0 top-full z-20 mt-1 max-h-72 overflow-auto rounded-2xl bg-card p-1 shadow-xl">
-            {resultats.map((r) => (
-              <li key={r.i}>
-                <button type="button" onClick={() => montrer(r.i)} className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left">
-                  <span className="size-3 shrink-0 rounded-full" style={{ background: GROUPES_VOYAGE[r.groupe as G].couleur }} />
-                  <span className="min-w-0 flex-1"><span className="block font-extrabold leading-tight">{nomDe(r)}</span><span className="block text-xs italic">{r.latin}{r.km ? ` · ${r.km.toLocaleString("fr-FR")} km` : ""}</span></span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </div>
+      {cherche ? (
+        <RecherchePlein q={q} setQ={setQ} placeholder="Un animal voyageur…" onFermer={() => { setCherche(false); setQ(""); }} vide={<p className="mt-6 text-center text-sm texte-doux">Aucun voyageur à ce nom.</p>}>
+          {resultats.length ? (
+            <ul className="space-y-1">
+              {resultats.map((r) => (
+                <li key={r.i}>
+                  <button type="button" onClick={() => montrer(r.i)} className="flex w-full items-center gap-3 rounded-2xl bg-white/5 px-3 py-2.5 text-left text-white active:bg-white/10">
+                    <span className="size-3.5 shrink-0 rounded-full" style={{ background: GROUPES_VOYAGE[r.groupe as G].couleur, boxShadow: `0 0 8px ${GROUPES_VOYAGE[r.groupe as G].couleur}` }} />
+                    <span className="min-w-0 flex-1"><span className="block font-extrabold leading-tight">{nomDe(r)}</span><span className="block text-xs italic texte-doux">{r.latin}{r.km ? ` · ${r.km.toLocaleString("fr-FR")} km` : ""}</span></span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </RecherchePlein>
+      ) : null}
 
       {/* La carte */}
-      <div className="relative mt-2 overflow-hidden rounded-3xl border-2 border-[#e8c98a]/60 bg-[#0b1230] shadow-[0_10px_22px_rgba(0,0,0,.45)]">
+      <CadreGlobe petit={petit} onBascule={() => setForce(!petit)}>
         {globe ? (
-          <Globe traces={visibles.map((t) => ({ i: t.i, couleur: GROUPES_VOYAGE[t.groupe as G].couleur, points: t.points }))} choisi={choisi} vers={vers} onChoisir={(i) => montrer(i)} />
+          <Globe traces={visibles.map((t) => ({ i: t.i, couleur: GROUPES_VOYAGE[t.groupe as G].couleur, points: t.points }))} choisi={choisi} vers={vers} onChoisir={(i) => montrer(i)} hauteur="h-full" />
         ) : (
         <svg
           ref={boite}
           viewBox={`0 ${90 - haut / 2} 360 ${haut}`}
-          className="block h-[62vh] min-h-[340px] w-full touch-none select-none"
+          className="block h-full w-full touch-none select-none"
           onPointerDown={appui}
           onPointerMove={deplace}
           onPointerUp={lache}
@@ -321,17 +317,21 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
         </svg>
         )}
         <div className="absolute left-2 top-2">
-          <button type="button" aria-label={globe ? "Voir la carte à plat" : "Voir le globe"} onClick={() => setGlobe((g) => !g)} className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-black/50 px-3 text-sm font-extrabold text-white backdrop-blur">
+          <button type="button" aria-label={globe ? "Voir la carte à plat" : "Voir le globe"} onClick={() => setGlobe((g) => !g)} className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white/12 px-3 text-sm font-extrabold text-white ring-1 ring-white/25 backdrop-blur-md">
             {globe ? <><LuMap className="size-4" /> À plat</> : <><LuEarth className="size-4" /> Globe</>}
           </button>
         </div>
         <div className={`absolute right-2 top-2 flex flex-col gap-1.5 ${globe ? "hidden" : ""}`}>
-          <button type="button" aria-label="Zoomer" onClick={() => zoom(1.5)} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuPlus className="size-5" /></button>
-          <button type="button" aria-label="Dézoomer" onClick={() => zoom(1 / 1.5)} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuMinus className="size-5" /></button>
-          <button type="button" aria-label="Revenir à toute la carte" onClick={() => { allerVers(departVue()); setChoisi(null); }} className="grid size-9 place-items-center rounded-full bg-black/50 text-white backdrop-blur"><LuRotateCcw className="size-5" /></button>
+          <button type="button" aria-label="Zoomer" onClick={() => zoom(1.5)} className="grid size-9 place-items-center rounded-full bg-white/12 text-white ring-1 ring-white/25 backdrop-blur-md"><LuPlus className="size-5" /></button>
+          <button type="button" aria-label="Dézoomer" onClick={() => zoom(1 / 1.5)} className="grid size-9 place-items-center rounded-full bg-white/12 text-white ring-1 ring-white/25 backdrop-blur-md"><LuMinus className="size-5" /></button>
+          <button type="button" aria-label="Revenir à toute la carte" onClick={() => { allerVers(departVue()); setChoisi(null); }} className="grid size-9 place-items-center rounded-full bg-white/12 text-white ring-1 ring-white/25 backdrop-blur-md"><LuRotateCcw className="size-5" /></button>
         </div>
+        <button type="button" onClick={() => setCherche(true)} className="absolute bottom-2 left-2 flex min-h-9 items-center gap-1.5 rounded-full bg-white/12 px-3.5 text-sm font-extrabold text-white ring-1 ring-white/25 backdrop-blur-md">
+          <LuSearch className="size-4" aria-hidden="true" /> Un animal
+        </button>
         {!VOYAGEURS.length ? <p className="absolute inset-x-0 bottom-3 text-center text-sm font-bold text-white/80">Les trajets arrivent : la recherche est en cours.</p> : null}
-      </div>
+      </CadreGlobe>
+      <div className={integre ? "px-3" : ""}>
 
       {/* Légende : touche une couleur pour l'afficher ou la cacher */}
       <div className="mt-3 flex flex-wrap justify-center gap-1.5">
@@ -345,7 +345,7 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
 
       {/* La fiche du voyageur choisi */}
       {v ? (
-        <section className="carte-nuit relative mt-4 rounded-3xl px-4 py-4">
+        <section key={v.i} className="carte-nuit apparait relative mt-4 rounded-3xl px-4 py-4">
           <button type="button" aria-label="Fermer" onClick={() => setChoisi(null)} className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-white/10"><LuX className="size-5" /></button>
           <div className="flex items-center gap-3 pr-10">
             {v.fiche && aUnePhoto(v.fiche) ? <span className="medaillon-or block size-16 shrink-0 overflow-hidden"><Portrait id={v.fiche} /></span> : <span className="grid size-16 shrink-0 place-items-center rounded-full text-3xl" style={{ background: GROUPES_VOYAGE[v.groupe as G].couleur + "33" }}>•</span>}
@@ -372,6 +372,7 @@ export function VoyageursPage({ integre = false }: { integre?: boolean } = {}) {
       <a href="#/aventure" className="mx-auto mt-4 block w-max rounded-full bg-card px-4 py-2 text-sm font-extrabold text-[#2a1c14]">La liste des animaux suivis</a>
       <PlusLoin />
       <p className="mx-auto mt-4 max-w-sm text-center text-[11px] texte-doux">Données : Movebank Data Repository (jeux de données publiés en licence libre). Rien n'est inventé : chaque trait est un vrai suivi GPS.</p>
+      </div>
     </div>
   );
 }

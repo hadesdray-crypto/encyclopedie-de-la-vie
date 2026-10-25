@@ -47,7 +47,7 @@ export function Barre({ chemin }: { chemin: string }) {
   return (
     <nav
       aria-label="Salles"
-      className="fixed inset-x-0 bottom-0 z-30 mx-auto max-w-xl px-3"
+      className="barre-bas fixed inset-x-0 bottom-0 z-30 mx-auto max-w-xl px-3"
       style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 0.5rem)" }}
     >
       <ul className="grid h-[4.5rem] grid-cols-5 items-center barre-bois rounded-[1.6rem] px-1 shadow-[0_10px_30px_rgba(0,0,0,.45)] backdrop-blur">
