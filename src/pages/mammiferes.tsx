@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LuSearch } from "react-icons/lu";
-import { FAMILLES, GROUPES, PAR_ID, especesDe, famillesDe, ordreDe, type Espece } from "@/data/catalogue";
+import { ESPECES, FAMILLES, GROUPES, PAR_ID, especesDe, famillesDe, groupeDeOrdre, ordreDe, type Espece } from "@/data/catalogue";
 import { chercherTout } from "@/lib/recherche";
 import { FICHES } from "@/data/fiches";
 import { REGIMES, VIE } from "@/data/fiches-vie";
@@ -8,10 +8,11 @@ import crisConnus from "@/data/cris.json";
 import creditsCris from "@/data/credits-cris.json";
 import suivi from "@/data/suivi-gps.json";
 import { Entete, Titre } from "@/components/entete";
-import { Portrait } from "@/components/portrait";
+import { Portrait, aUnePhoto } from "@/components/portrait";
 import { Mot, Texte } from "@/components/mot";
 import { Ecouter } from "@/components/voix";
 import { Videos } from "@/components/videos";
+import { ChoixAffichage, Tuiles, useAffichage } from "@/components/tuiles";
 import { PhotoEntiere } from "@/components/photo-entiere";
 import { CarteMonde, ilesDe } from "@/components/carte-monde";
 import { voirAnimal } from "@/lib/carnet";
@@ -62,14 +63,37 @@ export function MammiferesPage({ id, params }: { id?: string; params: URLSearchP
   return <Inconnue />;
 }
 
+// Une vraie photo pour chaque groupe (un animal connu), et pour chaque famille (une espèce de la famille).
+const PHOTO_GROUPE: Record<string, string> = {
+  carnivores: "Panthera tigris", primates: "Gorilla gorilla", rongeurs: "Sciurus vulgaris", chauves: "Pteropus giganteus",
+  sabots: "Giraffa camelopardalis", elephants: "Loxodonta africana", carapaces: "Myrmecophaga tridactyla",
+  marsupiaux: "Phascolarctos cinereus", oeufs: "Tachyglossus aculeatus", petits: "Erinaceus europaeus",
+};
+function especePhoto(liste: Espece[]) {
+  return liste.find((e) => e.langue === "fr" && !e.disparue && aUnePhoto(e.id)) ?? liste.find((e) => aUnePhoto(e.id));
+}
+function photoFamille(code: string) {
+  const e = especePhoto(especesDe(code));
+  return e ? <Portrait id={e.id} /> : <span className="block size-full bg-[#3b2a66]" />;
+}
+function photoLatin(latin: string, repli: Espece[]) {
+  const e = ESPECES.find((x) => x.latin === latin && aUnePhoto(x.id)) ?? especePhoto(repli);
+  return e ? <Portrait id={e.id} /> : <span className="block size-full bg-[#3b2a66]" />;
+}
+const especesDuGroupe = (g: (typeof GROUPES)[number]) => g.ordres.flatMap((o) => famillesDe(o).flatMap(([c]) => especesDe(c)));
+const especesDeOrdre = (o: string) => famillesDe(o).flatMap(([c]) => especesDe(c));
+
 function Index({ groupe }: { groupe: string }) {
   const [texte, setTexte] = useState("");
-  const [ouvert, setOuvert] = useState(groupe || "carnivores");
+  const [aff, choisir] = useAffichage("leonie-mammiferes-affichage");
   const cherche = texte.trim().length >= 2;
+  const g = GROUPES.find((x) => x.id === groupe);
+  if (g) return <Groupe g={g} />;
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
-      <Entete />
-      <Titre sous="Dix groupes pour s'y retrouver. Dedans, les vrais ordres, puis les familles, puis les espèces.">Mammifères</Titre>
+      <Entete siVide="/animaux" />
+      <p className="mt-4 text-center text-sm font-extrabold text-[#f0d090]"><a href="#/animaux" className="underline">Les animaux</a></p>
+      <Titre sous="Dix groupes pour s'y retrouver. Touche un groupe pour l'ouvrir.">Mammifères</Titre>
       <label className="mt-4 flex items-center gap-2 rounded-full bg-card px-4 py-3">
         <LuSearch className="size-5 text-[#6d5648]" aria-hidden="true" />
         <input value={texte} onChange={(e) => setTexte(e.target.value)} placeholder="Un animal, une race, une famille…" className="w-full bg-transparent text-base outline-none placeholder:text-[#8a7462]" />
@@ -82,34 +106,36 @@ function Index({ groupe }: { groupe: string }) {
           <a href={`#/chercher?q=${encodeURIComponent(texte)}`} className="block text-center font-extrabold underline">Chercher aussi par catégorie ou sur la carte</a>
         </div>
       ) : (
-        <ul className="mt-5 space-y-3">
-          {GROUPES.map((g) => {
-            const actif = ouvert === g.id;
-            return (
-              <li key={g.id} className="rounded-3xl bg-card">
-                <button type="button" onClick={() => setOuvert(actif ? "" : g.id)} className="w-full px-4 py-4 text-left" aria-expanded={actif}>
-                  <span className="block font-display text-2xl">{g.nom}</span>
-                  <span className="mt-1 block text-sm">{g.phrase}</span>
-                </button>
-                {actif ? (
-                  <div className="space-y-3 px-3 pb-4">
-                    {g.ordres.map((o) => (
-                      <div key={o}>
-                        <a href={`#/mammiferes/o-${o}`} className="mb-1 block px-1 text-sm font-extrabold text-[#8d4e1f] underline">{ordreDe(o)?.nom}</a>
-                        <ul className="space-y-2">
-                          {famillesDe(o).map(([code, f]) => (
-                            <li key={code}><a href={`#/mammiferes/f-${code}`} className="flex justify-between rounded-2xl bg-[#fff8ea] px-3 py-3 font-extrabold"><span>{f.nom}</span><span className="text-[#8d4e1f]">{f.n}</span></a></li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                ) : null}
-              </li>
-            );
-          })}
-        </ul>
+        <>
+          <ChoixAffichage aff={aff} choisir={choisir} />
+          <Tuiles
+            aff={aff}
+            grande
+            items={GROUPES.map((x) => {
+              const liste = especesDuGroupe(x);
+              return { vers: `/mammiferes?groupe=${x.id}`, titre: x.nom, sous: x.phrase, badge: `${liste.length}`, image: photoLatin(PHOTO_GROUPE[x.id] ?? "", liste) };
+            })}
+          />
+        </>
       )}
+    </main>
+  );
+}
+
+/** Un groupe : ses ordres (s'il y en a plusieurs), ou directement ses familles. */
+function Groupe({ g }: { g: (typeof GROUPES)[number] }) {
+  const [aff, choisir] = useAffichage("leonie-mammiferes-affichage");
+  const items =
+    g.ordres.length > 1
+      ? g.ordres.map((o) => ({ vers: `/mammiferes/o-${o}`, titre: ordreDe(o)?.nom ?? o, sous: ordreDe(o)?.phrase, badge: `${especesDeOrdre(o).length}`, image: especePhoto(especesDeOrdre(o)) ? <Portrait id={especePhoto(especesDeOrdre(o))!.id} /> : <span /> }))
+      : famillesDe(g.ordres[0]).map(([code, f]) => ({ vers: `/mammiferes/f-${code}`, titre: f.nom, sous: code, badge: `${f.n}`, image: photoFamille(code) }));
+  return (
+    <main className="mx-auto max-w-xl px-4 pt-4">
+      <Entete siVide="/mammiferes" />
+      <p className="mt-4 text-center text-sm font-extrabold text-[#f0d090]"><a href="#/animaux" className="underline">Les animaux</a> · <a href="#/mammiferes" className="underline">Mammifères</a></p>
+      <Titre sous={g.phrase}>{g.nom}</Titre>
+      <ChoixAffichage aff={aff} choisir={choisir} />
+      <Tuiles aff={aff} items={items} />
     </main>
   );
 }
@@ -129,17 +155,17 @@ function LigneEspece({ espece }: { espece: Espece }) {
 
 function Ordre({ id }: { id: string }) {
   const ordre = ordreDe(id);
+  const [aff, choisir] = useAffichage("leonie-mammiferes-affichage");
   if (!ordre) return <Inconnue />;
+  const g = groupeDeOrdre(id);
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
-      <Entete siVide="/mammiferes" />
+      <Entete siVide={g ? `/mammiferes?groupe=${g.id}` : "/mammiferes"} />
+      <p className="mt-4 text-center text-sm font-extrabold text-[#f0d090]"><a href="#/mammiferes" className="underline">Mammifères</a>{g ? <> · <a href={`#/mammiferes?groupe=${g.id}`} className="underline">{g.nom}</a></> : null}</p>
       <Titre sous={ordre.phrase}>{ordre.nom}</Titre>
       <p className="text-center text-sm texte-doux">{id}</p>
-      <ul className="mt-5 space-y-3">
-        {famillesDe(id).map(([code, f]) => (
-          <li key={code}><a href={`#/mammiferes/f-${code}`} className="flex items-center justify-between rounded-3xl bg-card px-4 py-4"><span><span className="block font-display text-2xl">{f.nom}</span><span className="text-sm">{code}</span></span><span className="font-extrabold text-[#8d4e1f]">{f.n}</span></a></li>
-        ))}
-      </ul>
+      <ChoixAffichage aff={aff} choisir={choisir} />
+      <Tuiles aff={aff} items={famillesDe(id).map(([code, f]) => ({ vers: `/mammiferes/f-${code}`, titre: f.nom, sous: code, badge: `${f.n}`, image: photoFamille(code) }))} />
     </main>
   );
 }

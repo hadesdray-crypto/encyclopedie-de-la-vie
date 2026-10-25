@@ -30,7 +30,7 @@ const BRANCHES: Medaillon[] = [
 ];
 
 const PETITS: { vers: string; label: string; icone: ComponentType<{ className?: string }>; fond: string }[] = [
-  { vers: "/mammiferes", label: "Mammifères", icone: LuPawPrint, fond: "linear-gradient(160deg,#e2843f,#a84e1c)" },
+  { vers: "/animaux", label: "Animaux", icone: LuPawPrint, fond: "linear-gradient(160deg,#e2843f,#a84e1c)" },
   { vers: "/fossiles", label: "Fossiles", icone: LuBone, fond: "linear-gradient(160deg,#a99067,#6b5a3a)" },
   { vers: "/frise", label: "Frise", icone: LuHourglass, fond: "linear-gradient(160deg,#5fc2b0,#2f7d6d)" },
   { vers: "/lexique", label: "Vrais mots", icone: LuBookOpen, fond: "linear-gradient(160deg,#f07aa8,#b8457a)" },

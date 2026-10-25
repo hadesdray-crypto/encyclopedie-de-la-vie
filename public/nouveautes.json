@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Un catalogue des animaux en images",
+    "points": [
+      "Nouvelle porte « Animaux » sur l'accueil : tous les grands groupes, avec de vraies photos.",
+      "Les mammifères ont toutes leurs fiches ; les autres groupes arriveront plus tard.",
+      "Les mammifères s'ouvrent par groupes, puis familles, avec une photo pour chacun et trois affichages au choix.",
+      "Tous les noms anglais sont traduits en français."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Vidéos, frères Kratt, photos en entier, tables magiques",
     "points": [
       "Chaque fiche a ses liens vidéo : d'abord sans pub (NewPipe ou Invidious), puis YouTube. Un adulte les allume dans le Coin des parents.",
