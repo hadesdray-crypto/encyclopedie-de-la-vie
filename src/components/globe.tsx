@@ -46,7 +46,8 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
   const elan = useRef({ vlon: 0, vlat: 0 });
   const doigts = useRef(new Map<number, { x: number; y: number }>());
   const avant = useRef<{ e: Etat; d: number; x: number; y: number } | null>(null);
-  const bouge = useRef(0);
+  const bouge = useRef(0); // combien le doigt a bougé (en pixels)
+  const tenu = useRef({ t: 0, max: 0 });
   const donnees = useRef({ traces, choisi, pays, surligne });
   donnees.current = { traces, choisi, pays, surligne };
   const anim = useRef<{ de: Etat; a: Etat; t0: number } | null>(null);
@@ -213,6 +214,7 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
         calme.current = performance.now();
         doigts.current.set(e.pointerId, point(e));
         bouge.current = 0;
+        tenu.current = { t: performance.now(), max: doigts.current.size };
         elan.current = { vlon: 0, vlat: 0 };
         depart();
       }}
@@ -223,7 +225,8 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
         const p = [...doigts.current.values()];
         const b = avant.current, w = toile.current!.clientWidth, h = toile.current!.clientHeight;
         const x = p.reduce((s, a) => s + a.x, 0) / p.length, y = p.reduce((s, a) => s + a.y, 0) / p.length;
-        bouge.current++;
+        bouge.current += Math.hypot(point(e).x - avantDoigt.x, point(e).y - avantDoigt.y);
+        tenu.current.max = Math.max(tenu.current.max, doigts.current.size);
         calme.current = performance.now();
         const rayon = (Math.min(w, h) / 2 - 8) * b.e.zoom;
         const deg = 90 / rayon;
@@ -235,7 +238,8 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
         if (p.length === 1) elan.current = { vlon: (ici.x - avantDoigt.x) * deg * 0.5, vlat: (ici.y - avantDoigt.y) * deg * 0.5 };
       }}
       onPointerUp={(e) => {
-        const tape = bouge.current < 4 && doigts.current.size === 1;
+        // Un toucher, même si le doigt a un peu tremblé (comme sur un vrai téléphone).
+        const tape = bouge.current < 14 && tenu.current.max === 1 && performance.now() - tenu.current.t < 700 && doigts.current.size === 1;
         doigts.current.delete(e.pointerId);
         depart();
         if (!tape) return;
@@ -243,7 +247,7 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
         const { x, y } = point(e);
         const w = toile.current!.clientWidth, h = toile.current!.clientHeight, et = etat.current;
         const proj = geoOrthographic().scale((Math.min(w, h) / 2 - 8) * et.zoom).translate([w / 2, h / 2]).rotate([et.lon, -et.lat]).clipAngle(90);
-        let meilleur = -1, dist = 22;
+        let meilleur = -1, dist = 30;
         for (const v of donnees.current.traces) for (const [la, lo] of v.points) {
           const q = proj([lo, la]);
           if (!q) continue;

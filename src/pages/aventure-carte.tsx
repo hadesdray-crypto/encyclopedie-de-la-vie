@@ -11,7 +11,7 @@ import { Portrait, aUnePhoto } from "@/components/portrait";
 import { ESPECES, FAMILLES, GROUPES, groupeDeOrdre, type Espece } from "@/data/catalogue";
 import { NOMS_PAYS } from "@/data/pays-noms";
 import { plumeDit } from "@/lib/plume";
-import { VoyageursPage } from "@/pages/voyageurs";
+import { VoyageursPage, voyagesDe } from "@/pages/voyageurs";
 
 const sansAccent = (t: string) => t.toLocaleLowerCase("fr").normalize("NFD").replace(/\p{M}/gu, "");
 
@@ -32,23 +32,24 @@ function especesDuPays(code: string) {
 
 export function AventureCartePage({ params }: { params: URLSearchParams }) {
   const [onglet, setOnglet] = useState<"pays" | "voyages">(params.get("voyages") ? "voyages" : "pays");
+  const [suivre, setSuivre] = useState<number | null>(null);
   return (
     <main className="mx-auto max-w-xl pt-4">
       <div className="px-4"><Entete siVide="/" /></div>
       <h1 className="sr-only">Aventure</h1>
       <div role="tablist" className="mx-auto mt-2 grid w-[calc(100%-2rem)] max-w-sm grid-cols-2 gap-1 rounded-full bg-[#2a1844] p-1 ring-1 ring-[#e8c98a]/40">
         {([["pays", "Où vivent-ils ?"], ["voyages", "Les voyages"]] as const).map(([id, label]) => (
-          <button key={id} type="button" role="tab" aria-selected={onglet === id} onClick={() => setOnglet(id)} className={`min-h-10 rounded-full text-sm font-extrabold transition-colors ${onglet === id ? "bg-[#f3d48a] text-[#2a1650]" : "text-[#f3d48a]"}`}>
+          <button key={id} type="button" role="tab" aria-selected={onglet === id} onClick={() => { setOnglet(id); setSuivre(null); }} className={`min-h-10 rounded-full text-sm font-extrabold transition-colors ${onglet === id ? "bg-[#f3d48a] text-[#2a1650]" : "text-[#f3d48a]"}`}>
             {label}
           </button>
         ))}
       </div>
-      {onglet === "pays" ? <OuViventIls /> : <div className="mt-2"><VoyageursPage integre /></div>}
+      {onglet === "pays" ? <OuViventIls onVoyage={(i) => { setSuivre(i); setOnglet("voyages"); window.scrollTo({ top: 0 }); }} /> : <div className="mt-2"><VoyageursPage integre aMontrer={suivre} /></div>}
     </main>
   );
 }
 
-function OuViventIls() {
+function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
   const [pays, setPays] = useState<string | null>(null);
   const [vers, setVers] = useState<{ lon: number; lat: number; zoom: number; n: number } | null>(null);
   const [q, setQ] = useState("");
@@ -167,7 +168,17 @@ function OuViventIls() {
             <button type="button" aria-label="Fermer" onClick={() => setAnimal(null)} className="grid size-9 shrink-0 place-items-center rounded-full bg-white/10"><LuX className="size-5" /></button>
           </div>
           <p className="mt-2 text-sm">{animal.pays!.map((c) => NOMS_PAYS[c] ?? c).sort((a, b) => a.localeCompare(b, "fr")).join(", ")}.</p>
-          <a href={`#/mammiferes/e-${animal.id}`} className="bouton-bois mt-3 inline-block rounded-full px-4 py-2 font-extrabold">Voir sa fiche</a>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {(() => {
+              const vs = voyagesDe(animal.id, animal.latin);
+              return vs.length ? (
+                <button type="button" onClick={() => onVoyage(vs[0].i)} className="rounded-full bg-[#f3d48a] px-4 py-2 font-extrabold text-[#2a1650]">
+                  🧭 Voir son voyage GPS{vs.length > 1 ? ` (${vs.length})` : ""}
+                </button>
+              ) : null;
+            })()}
+            <a href={`#/mammiferes/e-${animal.id}`} className="bouton-bois inline-block rounded-full px-4 py-2 font-extrabold">Voir sa fiche</a>
+          </div>
           <p className="mt-2 text-[11px] texte-doux">Touche un pays doré pour voir les autres animaux qui y vivent.</p>
         </section>
       ) : pays ? (

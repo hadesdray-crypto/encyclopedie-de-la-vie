@@ -699,3 +699,5 @@ input, textarea { scroll-margin-top: 12px; }
 .apparait { animation: apparait .45s cubic-bezier(.2,.9,.3,1.15) both; }
 @keyframes apparait { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .apparait { animation: none; } }
+.trajet-lent { stroke-dasharray: 1; stroke-dashoffset: 1; animation: trace 6s linear forwards; }
+@media (prefers-reduced-motion: reduce) { .trajet-lent { animation: none; stroke-dashoffset: 0; } }
