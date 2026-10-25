@@ -452,7 +452,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
             </>
           ) : null}
           <span className="block size-full transition-transform duration-200" style={vol ? { transform: `rotate(${vol.r}deg)` } : glisse ? { transform: "scale(1.22) translateY(-4px)" } : undefined}>
-            <PlumeDessin anim={["peur", "vole", "triste", "etourdie", "bravo", "fachee", "coucou"].includes(anim) ? anim : parle ? "parle" : ouvert ? "ailes" : animJeu ?? anim} caractere={CARACTERE[presence] ?? 0} lit={parle && !["peur", "vole", "triste", "etourdie", "fachee"].includes(anim)} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
+            <PlumeDessin anim={["peur", "vole", "triste", "etourdie", "bravo", "fachee", "coucou"].includes(anim) ? anim : parle ? "parle" : ouvert ? "ailes" : animJeu ?? anim} caractere={ouvert && contenu === "presentation" ? 3 : CARACTERE[presence] ?? 0} lit={parle && !["peur", "vole", "triste", "etourdie", "fachee"].includes(anim)} miroir={gauche} className="size-full drop-shadow-[0_6px_10px_rgba(0,0,0,.5)]" />
           </span>
         </button>
 
@@ -569,7 +569,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
     };
     let minuteur = 0;
     // Chaque bulle reste au moins le temps de la lire, même si la voix du téléphone s'arrête trop tôt.
-    const minimum = Math.max(3500, texte.length * 55);
+    const minimum = Math.max(2500, texte.length * 38);
     const debut = Date.now();
     if (voix) {
       voixDePresentation(true);

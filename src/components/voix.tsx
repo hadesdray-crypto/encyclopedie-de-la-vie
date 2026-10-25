@@ -19,7 +19,7 @@ let voixNormale = false;
 export function voixDePresentation(oui: boolean) {
   voixNormale = oui;
 }
-const voixDePlume = () => (voixNormale ? { hauteur: 1.05, vitesse: 1 } : VOIX[presence()] ?? VOIX.presente);
+const voixDePlume = () => (voixNormale ? { hauteur: 1.02, vitesse: 1.05 } : VOIX[presence()] ?? VOIX.presente);
 
 function voixFrancaise() {
   return window.speechSynthesis
