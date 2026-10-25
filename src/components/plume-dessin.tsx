@@ -5,6 +5,7 @@
  * Chaque caractère a sa tenue complète : un vêtement, quelque chose sur la tête,
  * des yeux qui lui ressemblent, et une paire de lunettes seulement quand elle lit.
  */
+import { useId } from "react";
 import { EPAISSEURS, couleurCorps, normaliser, type Look } from "@/components/garde-robe";
 import { Bas, Chapeau2, Chaussure, Haut, Lunettes2, Objet } from "@/components/vestiaire";
 
@@ -38,7 +39,8 @@ export function PlumeDessin({
   const c = look ? couleurCorps(look.couleur) : null;
   const rx = look ? (EPAISSEURS.find((e) => e.id === look.epaisseur)?.rx ?? 70) : 70;
   const dx = rx - 70; // les ailes et les oreilles s'écartent quand il est plus rond
-  const gid = look ? `-${look.couleur}` : "";
+  // Chaque dessin a ses propres dégradés : sinon, quand un hibou est caché sur la page, les autres perdent leur couleur.
+  const gid = useId().replace(/:/g, "");
   return (
     <svg viewBox={cadre ?? "0 0 200 200"} className={`plume-svg plume-${anim} plume-c${caractere} ${lit ? "plume-lit" : ""} ${className}`} aria-hidden="true" style={{ overflow: cadre ? "hidden" : "visible" }}>
       <defs>
@@ -46,7 +48,7 @@ export function PlumeDessin({
           <stop offset="0" stopColor={c?.clair ?? "#c9a4ff"} />
           <stop offset="1" stopColor={c?.fonce ?? "#7a4fd0"} />
         </radialGradient>
-        <radialGradient id="pl-ventre" cx="50%" cy="40%" r="60%">
+        <radialGradient id={`pl-ventre${gid}`} cx="50%" cy="40%" r="60%">
           <stop offset="0" stopColor="#fff6e6" />
           <stop offset="1" stopColor="#f3d9b8" />
         </radialGradient>
@@ -71,7 +73,7 @@ export function PlumeDessin({
           <path d="M150 55 L154 32 L132 48 Z" fill={c?.oreille ?? "#f3a0e0"} />
         </g>
         <ellipse cx="100" cy="112" rx={rx} ry="74" fill={`url(#pl-corps${gid})`} />
-        <ellipse cx="100" cy="140" rx={42 + dx * 0.5} ry="42" fill="url(#pl-ventre)" />
+        <ellipse cx="100" cy="140" rx={42 + dx * 0.5} ry="42" fill={`url(#pl-ventre${gid})`} />
         <path d="M84 128 q8 6 16 0 q8 6 16 0 M86 146 q7 5 14 0 q7 5 14 0" stroke="#e2bf8f" strokeWidth="3" fill="none" strokeLinecap="round" />
 
         {look ? <><Bas t={look} /><Haut t={look} /></> : <Vetement caractere={caractere} />}
