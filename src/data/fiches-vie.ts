@@ -2,6 +2,7 @@ export type RegimeId =
   | "carnivore"
   | "piscivore"
   | "insectivore"
+  | "invertivore"
   | "herbivore"
   | "folivore"
   | "frugivore"
@@ -30,6 +31,10 @@ export const REGIMES: Record<RegimeId, { nom: string; explique: string }> = {
   insectivore: {
     nom: "Insectivore",
     explique: "Il mange surtout des insectes. Parfois une autre petite bête.",
+  },
+  invertivore: {
+    nom: "Mangeur d'invertébrés",
+    explique: "Il mange surtout des animaux sans squelette. Dans la mer, ce sont par exemple des calmars, des crevettes ou du krill.",
   },
   herbivore: {
     nom: "Herbivore",

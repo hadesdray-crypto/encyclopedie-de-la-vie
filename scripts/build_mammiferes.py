@@ -530,6 +530,11 @@ def main():
                 milieu = MILIEU.get(trait.get("foraging_stratum") or "")
                 if milieu:
                     fiche["milieu"] = milieu
+                # « det_inv » veut dire invertébrés, pas seulement insectes : dans la mer, ce sont des calmars, des crevettes, du krill.
+                if milieu == "Surtout dans la mer." and fiche.get("mange"):
+                    fiche["mange"] = fiche["mange"].replace("insectes et invertébrés", "invertébrés de la mer")
+                    if fiche.get("regime") == "insectivore":
+                        fiche["regime"] = "invertivore"
             especes.append(fiche)
     manquantes = sorted(set(familles) - set(FAMILLES))
     if manquantes:

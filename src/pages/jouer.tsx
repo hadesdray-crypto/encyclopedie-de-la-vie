@@ -24,7 +24,9 @@ import { PlumeDessin } from "@/components/plume-dessin";
 import { ouvrirPlume, usePlume } from "@/lib/plume";
 import { useIndice } from "@/lib/indice";
 import { TablesMultiplication } from "@/pages/tables";
-import { Bataille, LePlusRapide, MemoryPlusieurs, MimeAnimal, SeptFamilles } from "@/pages/jeux-plusieurs";
+import { Bataille, LePlusRapide, MemoryPlusieurs, MimeAnimal, SeptFamilles, REGLES_BATAILLE, REGLES_FAMILLES, REGLES_MEMORY, REGLES_MIME, REGLES_RAPIDE } from "@/pages/jeux-plusieurs";
+import { definirEcran } from "@/lib/plume";
+import type { Explication } from "@/data/guide";
 
 function melanger<T>(l: T[], rnd: () => number = Math.random) {
   const c = [...l];
@@ -91,9 +93,28 @@ const JEUX: { id: Jeu; nom: string; sous: string; niveau: 1 | 2 | 3; joueurs: st
   { id: "tables", nom: "Les tables magiques", sous: "Toutes les tables de 1 à 9 : tu gagnes le Plumedex !", niveau: 2, joueurs: "Seule" },
 ];
 
+// Les règles de chaque jeu : quand on touche Plume (ou « Aide ») pendant un jeu, elle explique exactement celui-là.
+const PAQUET = "Chaque bonne réponse compte : cinq bonnes réponses te font gagner un paquet de cartes.";
+const REGLES_SOLO: Partial<Record<Jeu, Explication>> = {
+  poids: { id: "regles-poids", titre: "Le plus lourd ?", etapes: ["Deux animaux sont face à face.", "Touche celui qui pèse le plus lourd quand il est adulte.", "Après ta réponse, je te montre le vrai poids de chacun.", PAQUET] },
+  carte: { id: "regles-carte", titre: "Qui vit ici ?", etapes: ["Sur la carte, les pays en or montrent où vit un animal.", "Regarde bien où ils sont, puis touche l'animal qui vit là.", "Après ta réponse, je te dis où il vit vraiment.", PAQUET] },
+  regime: { id: "regles-regime", titre: "Qu'est-ce qu'il mange ?", etapes: ["Je te montre un animal.", "Choisis ce qu'il mange surtout : chaque réponse explique le mot (herbivore, carnivore…).", "Touche « Une autre » pour un nouvel animal.", PAQUET] },
+  temps: { id: "regles-temps", titre: "Qui est arrivé en premier ?", etapes: ["Deux êtres vivants de l'histoire de la vie.", "Touche celui qui est apparu en premier sur Terre.", "Après ta réponse, je te dis quand chacun est apparu.", PAQUET] },
+  cri: { id: "regles-cri", titre: "Devine qui crie", etapes: ["Appuie sur le bouton lecture pour écouter le cri. Ce sont de vrais enregistrements faits dans la nature.", "Puis touche l'animal qui fait ce bruit.", PAQUET] },
+  memoire: REGLES_MEMORY, bataille: REGLES_BATAILLE, rapide: REGLES_RAPIDE, mime: REGLES_MIME, familles: REGLES_FAMILLES,
+};
+
 export function JouerPage({ params }: { params: URLSearchParams }) {
   const jeu = params.get("jeu") as Jeu | null;
   const choisi = JEUX.find((j) => j.id === jeu);
+  // Plume explique toujours là où on est : la liste des jeux, ou les règles du jeu ouvert.
+  useEffect(() => {
+    const r = jeu ? REGLES_SOLO[jeu] : undefined;
+    if (r) definirEcran(r);
+    else if (!choisi) definirEcran({ id: "menu-jeux", titre: "Les jeux", etapes: ["Voici tous les jeux. Touche celui qui te fait envie !", ...JEUX.map((j) => `« ${j.nom} » : ${j.sous} ${j.joueurs === "Seule" ? "Tu joues seule." : `Joueurs : ${j.joueurs}.`}`)] });
+    else definirEcran(null);
+    return () => definirEcran(null);
+  }, [jeu]);
   if (!choisi) return <MenuJeux />;
   return (
     <ModeJeu titre={choisi.nom} jeu={jeu}>
