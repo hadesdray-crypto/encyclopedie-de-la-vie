@@ -227,7 +227,7 @@ export const PRESENTATION: Explication = {
     "Pour revenir en arrière, utilise la flèche du téléphone, ou le bouton Retour en haut.",
     "La petite roue, c'est les Options : la voix, les sons, l'écriture plus grosse. Tout y est écrit, et je peux te le lire.",
     "J'aime tous les animaux. Mes préférés, ce sont les chiens… comme toi, Leonie. Et je me méfie un peu du grand-duc : c'est une très grande chouette, qui chasse aussi les petites chouettes comme moi.",
-    "Ensuite, je reste dans mon coin, sans te déranger. Tu peux me déplacer avec ton doigt. Touche-moi si tu as besoin de moi, et appuie longtemps sur moi pour choisir si je suis discrète ou bavarde.",
+    "Ensuite, je reste dans mon coin, sans te déranger. Touche-moi deux fois si tu as besoin de moi. Appuie longtemps sur moi : je grandis un peu, et tu peux me poser où tu veux.",
     "Une astuce : appuie longtemps sur un texte, et je te le lis à voix haute.",
     "Et tout marche même sans Internet. Allez, on y va ? Je suis prête !",
   ],
@@ -252,6 +252,6 @@ export const ASTUCES: Record<string, string[]> = {
   aventure: ["Un trajet chargé une fois reste dans l'application, même sans Internet."],
   suivi: ["Un trajet chargé une fois reste dans l'application, même sans Internet."],
   compagnons: ["Écris le nom d'une race à côté de la loupe pour la trouver vite.", "Le petit cœur rouge, ce sont mes préférés."],
-  options: ["Appuie longtemps sur moi, n'importe où, pour me rendre plus discrète ou plus bavarde."],
+  options: ["Touche-moi deux fois, puis Réglages, pour me rendre plus discrète ou plus bavarde."],
   sources: ["Les scientifiques disent toujours d'où viennent leurs informations."],
 };
