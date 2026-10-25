@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-10-25",
+    "titre": "Pour aller plus loin",
+    "points": [
+      "Sous le globe, un dossier « Pour aller plus loin » : des liens vers Google Earth (éléphants, chimpanzés, vie marine) et vers les cartes des scientifiques. Un adulte allume Internet pour les ouvrir.",
+      "Correction : le globe ne peut plus se figer à l'ouverture."
+    ]
+  },
+  {
+    "date": "2026-10-25",
     "titre": "Le globe des grands voyageurs",
     "points": [
       "Le bouton Aventure ouvre un globe qu'on fait tourner avec le doigt, sans Internet.",
