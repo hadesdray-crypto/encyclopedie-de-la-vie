@@ -4,7 +4,12 @@
 // Les vidéos s'ouvrent sur Internet : un adulte les allume dans le Coin des parents.
 import videos from "@/data/videos.json";
 import { useInternet } from "@/lib/internet";
-import { LuPlay, LuSearch } from "react-icons/lu";
+import { LuCircleHelp, LuPlay, LuSearch } from "react-icons/lu";
+import { plumeDit } from "@/lib/plume";
+import { dire } from "@/lib/parole";
+import { voixPossible } from "@/components/voix";
+
+const EXPLIQUE = "Ces boutons ouvrent une vidéo sur Internet. Le premier, « sans pub », la montre sans publicité. Le deuxième l'ouvre sur YouTube. Un adulte doit d'abord allumer Internet.";
 
 export const SANS_PUB = "https://yewtu.be";
 type Video = { v: string; t: string; c: string };
@@ -25,7 +30,7 @@ export function Videos({ id, nom, latin }: { id: string; nom: string; latin: str
       ];
   return (
     <section className="carte-nuit mt-4 rounded-3xl px-4 py-3">
-      <p className="font-display text-lg text-[#f3d48a]">En vidéo</p>
+      <div className="flex items-center justify-between"><p className="font-display text-lg text-[#f3d48a]">En vidéo</p><button type="button" aria-label="Comment ça marche ?" onClick={() => { plumeDit(EXPLIQUE, 7000); if (voixPossible()) dire(EXPLIQUE); }} className="grid size-9 place-items-center rounded-full bg-white/10 text-[#f3d48a]"><LuCircleHelp className="size-5" aria-hidden="true" /></button></div>
       {v ? <p className="mt-1 text-sm">« {v.t} » — {v.c}</p> : <p className="mt-1 text-sm">Pas encore de vidéo choisie pour cet animal : on peut la chercher.</p>}
       {permis ? (
         <div className="mt-2 grid grid-cols-2 gap-2">
