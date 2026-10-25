@@ -80,7 +80,7 @@ function Yeux({ caractere }: { caractere: Caractere }) {
       <circle cx="120" cy="104" r="3" fill="#fff" />
       {caractere === 1 ? (
         // Paupières à moitié baissées : Plume est calme, tranquille.
-        <path d="M46 86 Q72 94 98 86 L98 70 Q72 62 46 70 Z M102 86 Q128 94 154 86 L154 70 Q128 62 102 70 Z" fill="#9a74e6" /><path d="M46 86 Q72 94 98 86 M102 86 Q128 94 154 86" stroke="#5b3fb0" strokeWidth="3" fill="none" strokeLinecap="round" />
+        <><path d="M46 86 Q72 94 98 86 L98 70 Q72 62 46 70 Z M102 86 Q128 94 154 86 L154 70 Q128 62 102 70 Z" fill="#9a74e6" /><path d="M46 86 Q72 94 98 86 M102 86 Q128 94 154 86" stroke="#5b3fb0" strokeWidth="3" fill="none" strokeLinecap="round" /></>
       ) : null}
       {caractere === 2 ? (
         // Des étoiles qui pétillent dans les yeux.
