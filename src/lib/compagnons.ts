@@ -173,6 +173,51 @@ export function choisirVersion(c: Compagnon, e: Expression): { i: number; texte:
 }
 
 let enCours: HTMLAudioElement | null = null;
+let enCoursWeb: AudioBufferSourceNode | null = null;
+/** La dernière raison pour laquelle un enregistrement n'a pas pu être joué (pour l'afficher à l'écran). */
+export let erreurVoix = "";
+
+function arreterVoix() {
+  enCours?.pause();
+  try { enCoursWeb?.stop(); } catch { /* déjà fini */ }
+  enCoursWeb = null;
+}
+
+/**
+ * Jouer un enregistrement. D'abord par le haut-parleur du téléphone (Web Audio, qui marche aussi sur l'application Android),
+ * sinon par un lecteur audio ordinaire. Dit si ça a marché.
+ */
+export async function jouerSon(son: Blob, fin?: () => void): Promise<boolean> {
+  arreterVoix();
+  erreurVoix = "";
+  const ctx = contexteAudio();
+  if (ctx) {
+    try {
+      const donnees = await son.arrayBuffer();
+      const tampon = await ctx.decodeAudioData(donnees.slice(0));
+      const source = ctx.createBufferSource();
+      source.buffer = tampon;
+      source.connect(ctx.destination);
+      source.onended = () => { if (enCoursWeb === source) enCoursWeb = null; fin?.(); };
+      enCoursWeb = source;
+      source.start();
+      return true;
+    } catch (e) {
+      erreurVoix = `décodage : ${e instanceof Error ? e.message : String(e)}`;
+    }
+  }
+  try {
+    const url = URL.createObjectURL(son);
+    enCours = new Audio(url);
+    enCours.onended = () => { URL.revokeObjectURL(url); fin?.(); };
+    await enCours.play();
+    return true;
+  } catch (e) {
+    erreurVoix = `${erreurVoix ? erreurVoix + " ; " : ""}lecture : ${e instanceof Error ? e.message : String(e)}`;
+    return false;
+  }
+}
+
 /** Le compagnon choisi dit son expression : une de ses versions, au hasard. La bulle montre exactement ce qu'il dit. */
 export function compagnonExprime(e: Expression): string | null {
   const c = compagnonActif();
@@ -185,12 +230,7 @@ export function compagnonExprime(e: Expression): string | null {
 export function jouerVersion(compagnon: string, e: Expression, i: number, fin?: () => void) {
   return lireVoixVersion(compagnon, e, i).then((son) => {
     if (!son) return false;
-    enCours?.pause();
-    const url = URL.createObjectURL(son);
-    enCours = new Audio(url);
-    enCours.onended = () => { URL.revokeObjectURL(url); fin?.(); };
-    enCours.play().catch(() => {});
-    return true;
+    return jouerSon(son, fin);
   });
 }
 

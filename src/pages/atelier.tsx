@@ -8,7 +8,7 @@ import { definirEcran } from "@/lib/plume";
 import { PlumeDessin, type AnimPlume, type Caractere } from "@/components/plume-dessin";
 import { COULEURS_CORPS, EPAISSEURS, type Look } from "@/components/garde-robe";
 import { BAS, CHAPEAUX2, CHAUSSURES, HAUTS, LUNETTES, OBJETS, TEINTES, type Piece, type Tenue } from "@/components/vestiaire";
-import { CATEGORIES, CATEGORIE_PAGES, MAX_BONUS, MAX_VERSIONS, choisirCompagnon, cleVoix, garderCompagnons, garderVoix, lireCompagnons, lireVoix, lireVoixVersion, nouveauCompagnon, type Compagnon, type Expression, type Variante } from "@/lib/compagnons";
+import { CATEGORIES, CATEGORIE_PAGES, MAX_BONUS, MAX_VERSIONS, choisirCompagnon, cleVoix, garderCompagnons, garderVoix, jouerSon, erreurVoix, lireCompagnons, lireVoix, lireVoixVersion, nouveauCompagnon, type Compagnon, type Expression, type Variante } from "@/lib/compagnons";
 import { PRESENCES, choisirPresence } from "@/lib/plume";
 import { REACTIONS } from "@/data/guide";
 import { aller as naviguer } from "@/lib/routeur";
@@ -253,7 +253,9 @@ function Enregistreur({ cle, ancienne, onSon }: { cle: string; ancienne?: string
   async function demarrer() {
     try {
       const flux = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const r = new MediaRecorder(flux);
+      // Le format que ce téléphone sait enregistrer ET relire (webm/opus d'abord, puis mp4, puis ogg).
+      const format = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg;codecs=opus"].find((t) => MediaRecorder.isTypeSupported?.(t));
+      const r = format ? new MediaRecorder(flux, { mimeType: format }) : new MediaRecorder(flux);
       const morceaux: Blob[] = [];
       r.ondataavailable = (e) => e.data.size && morceaux.push(e.data);
       r.onstop = async () => {
@@ -272,12 +274,13 @@ function Enregistreur({ cle, ancienne, onSon }: { cle: string; ancienne?: string
       setEtat("erreur");
     }
   }
-  function ecouter() {
+  const [souci, setSouci] = useState("");
+  async function ecouter() {
     if (!son) return;
-    const url = URL.createObjectURL(son);
-    const a = new Audio(url);
-    a.onended = () => URL.revokeObjectURL(url);
-    a.play().catch(() => {});
+    setSouci("");
+    const ok = await jouerSon(son);
+    if (!ok) setSouci(`${erreurVoix || "inconnue"} · enregistrement de ${(son.size / 1024).toFixed(0)} Ko, type « ${son.type || "?"} »`);
+    else if (son.size < 1500) setSouci("L'enregistrement est presque vide : le micro n'a rien entendu. Réessaie en parlant tout de suite après avoir touché le bouton.");
   }
   return (
     <div className="mt-2 flex flex-wrap items-center gap-2">
@@ -292,6 +295,7 @@ function Enregistreur({ cle, ancienne, onSon }: { cle: string; ancienne?: string
           <button type="button" aria-label="Effacer l'enregistrement" onClick={() => { garderVoix(cle, null); if (ancienne) garderVoix(ancienne, null); setSon(null); onSon?.(false); }} className="grid size-9 place-items-center rounded-full bg-white/10 text-white/80"><LuTrash2 className="size-4" /></button>
         </>
       ) : null}
+      {souci ? <p className="w-full text-xs text-[#ffb3b3]">Je n'arrive pas à jouer cette voix. Raison : {souci}. Dis-le à ton papa, ça m'aidera à réparer.</p> : null}
       {etat === "erreur" ? <p className="w-full text-xs text-[#ffb3b3]">Le micro n'est pas disponible. Sur le téléphone, il faut accepter l'accès au micro (il faut la nouvelle version de l'application, installée depuis le lien).</p> : null}
     </div>
   );

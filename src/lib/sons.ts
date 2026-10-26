@@ -19,6 +19,17 @@ export function activerSons(oui: boolean) {
   }
 }
 
+/** Le haut-parleur du téléphone, même si les petits bruitages sont coupés (la voix d'un personnage doit toujours pouvoir passer). */
+export function contexteAudio() {
+  try {
+    ctx ??= new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+    if (ctx.state === "suspended") void ctx.resume();
+    return ctx;
+  } catch {
+    return null;
+  }
+}
+
 function audio() {
   if (!sonsActifs()) return null;
   try {
