@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import { LuVolume2, LuVolumeX } from "react-icons/lu";
-import { FAMILLES } from "@/data/catalogue";
+import { GROUPES } from "@/data/catalogue";
 import { lireVues, voirAnimal } from "@/lib/carnet";
 import { ALBUMS, ouvrirPaquet, type Tirage } from "@/lib/paquets";
 import { activerSons, sons, sonsActifs } from "@/lib/sons";
@@ -8,9 +8,12 @@ import { plumeReagit } from "@/lib/plume";
 import { REGLES, paquetDuJour, paquetsDisponibles, paquetsIllimites, prendrePaquetDuJour, utiliserPaquet } from "@/lib/recompenses";
 import { Entete } from "@/components/entete";
 import { Portrait } from "@/components/portrait";
-import { Carte3D, CarteRecto, CarteVerso, niveauDe } from "@/components/carte-animal";
+import { CarteRecto, CarteVerso, niveauDe } from "@/components/carte-animal";
+import { PaquetCartes } from "@/components/paquet-cartes";
 
-type Etape = "pret" | "tremble" | "dechire" | "revele" | "fini";
+type Etape = "pret" | "dechire" | "revele" | "fini";
+
+const EMOJI: Record<string, string> = { carnivores: "🦁", primates: "🐒", rongeurs: "🐭", chauves: "🦇", sabots: "🦌", elephants: "🐘", carapaces: "🦔", marsupiaux: "🦘", oeufs: "🥚", petits: "🐹" };
 
 function ordre(cartes: Tirage[]) {
   // Comme dans les paquets de cartes de sport : la meilleure carte arrive en dernier.
@@ -23,10 +26,7 @@ function ordre(cartes: Tirage[]) {
 }
 
 export function CartesPage() {
-  const familles = useMemo(
-    () => Object.entries(FAMILLES).map(([id, f]) => ({ id, nom: f.nom })).sort((a, b) => a.nom.localeCompare(b.nom, "fr")),
-    [],
-  );
+  const groupes = useMemo(() => GROUPES.filter((g) => g.id !== "autres"), []);
   const [famille, setFamille] = useState("toutes");
   const [etape, setEtape] = useState<Etape>("pret");
   const [cartes, setCartes] = useState<Tirage[]>([]);
@@ -45,6 +45,7 @@ export function CartesPage() {
   const [reserve, setReserve] = useState(paquetsDisponibles);
   const [duJour, setDuJour] = useState(paquetDuJour);
   const [taille, setTaille] = useState<number | null>(null);
+  const [etaitJour, setEtaitJour] = useState(false);
   const [lueur, setLueur] = useState("#a77bff"); // la couleur de la meilleure carte du paquet (comme dans les jeux de foot)
   const illimite = false;
   void paquetsIllimites;
@@ -57,6 +58,7 @@ export function CartesPage() {
     else if (utiliserPaquet()) n = 10;
     else return;
     setTaille(n);
+    setEtaitJour(duJour);
     setReserve(paquetsDisponibles());
     const avant = new Set(lireVues());
     setDeja(avant);
@@ -66,15 +68,9 @@ export function CartesPage() {
     setCartes(ordre(paquet.cartes));
     setIndex(0);
     setFace(false);
-    setEtape("tremble");
-    sons.trembler();
-    plus_tard(() => sons.trembler(), 450);
-    plus_tard(() => sons.brillant(), 900);
-    plus_tard(() => {
-      setEtape("dechire");
-      sons.dechirer();
-    }, 1300);
-    plus_tard(() => setEtape("revele"), 2200);
+    setEtape("dechire");
+    plus_tard(() => sons.brillant(), 450);
+    plus_tard(() => setEtape("revele"), 1700);
   }
 
   function toucherCarte() {
@@ -114,6 +110,7 @@ export function CartesPage() {
     setCartes([]);
   }
 
+  const couleurDe = (c: Tirage) => (c.chance ? "#ffd24a" : niveauDe(c.rarete).cadre);
   const carte = cartes[index];
   const brille = carte && face && (carte.chance || niveauDe(carte.rarete).rang >= 2 || carte.special);
   const nombre = lireVues().length;
@@ -139,27 +136,11 @@ export function CartesPage() {
 
       {etape === "pret" ? (
         <>
-          <label className="mt-4 block text-sm font-extrabold text-[#f0d090]">
-            Choisis ton paquet
-            <select value={famille} onChange={(e) => setFamille(e.target.value)} className="mt-1 w-full rounded-2xl bg-card px-3 py-3 text-base text-[#2a1c14]">
-              <option value="toutes">Toutes les familles</option>
-              {familles.map((f) => (
-                <option key={f.id} value={f.id}>{f.nom}</option>
-              ))}
-            </select>
-          </label>
           <p className="mt-4 text-center font-display text-2xl text-[#f3d48a]">
             {duJour ? "🎁 Le paquet du jour t'attend !" : `${reserve} paquet${reserve > 1 ? "s" : ""} à ouvrir`}
           </p>
           {duJour ? <p className="text-center text-sm texte-doux">5, 10 ou 15 cartes : surprise ! {reserve ? `Et encore ${reserve} paquet${reserve > 1 ? "s" : ""} gagné${reserve > 1 ? "s" : ""} en explorant.` : ""}</p> : null}
-          {duJour || reserve > 0 ? (
-            <button type="button" onClick={ouvrir} className="scene-paquet mx-auto mt-3 block w-full max-w-sm" aria-label="Ouvrir le paquet">
-              <span className="faisceaux" />
-              <span className="lueur-sol" />
-              <span className="paquet-3d absolute left-1/2 top-8 block w-48 -ml-24"><Paquet duJour={duJour} /></span>
-              <span className="absolute inset-x-0 bottom-4 block text-center font-display text-xl text-[#f3d48a] [text-shadow:0_2px_6px_#000]">Touche le paquet pour l'ouvrir</span>
-            </button>
-          ) : (
+          {!(duJour || reserve > 0) ? (
             <div className="carte-nuit mx-auto mt-3 max-w-sm rounded-3xl px-4 py-4 text-center">
               <p className="font-extrabold">Pour gagner un nouveau paquet :</p>
               <ul className="mt-2 space-y-1 text-sm">
@@ -172,20 +153,28 @@ export function CartesPage() {
                 <a href="#/jouer" className="bouton-parchemin rounded-2xl py-3 font-extrabold">Jouer</a>
               </div>
             </div>
-          )}
+          ) : null}
         </>
       ) : null}
 
-      {etape === "tremble" || etape === "dechire" ? (
-        <div className="scene-paquet charge mx-auto mt-6 w-full max-w-sm" style={{ ["--lueur" as string]: lueur }}>
-          <span className="faisceaux" />
-          <span className="lueur-sol" />
-          <div className={`absolute left-1/2 top-8 w-48 -ml-24 ${etape === "tremble" ? "paquet-charge" : ""}`}>
-            <Paquet ouvert={etape === "dechire"} duJour={false} taille={taille} />
+      {(etape === "pret" && (duJour || reserve > 0)) || etape === "dechire" ? (
+        <div className="scene-paquet mx-auto mt-4 w-full max-w-sm px-6 pb-4 pt-8" style={{ ["--lueur" as string]: lueur }}>
+          {etape === "dechire" ? <span className="lueur-ouvre pointer-events-none absolute inset-0" style={{ background: `radial-gradient(circle at 50% 38%, ${lueur}, transparent 62%)` }} /> : null}
+          <div className="relative"><PaquetCartes duJour={etape === "dechire" ? etaitJour : duJour} taille={taille} ouvert={etape === "dechire"} onDechire={ouvrir} lueur={lueur} /></div>
+          <p className="relative mt-3 text-center font-display text-xl text-[#f3d48a] [text-shadow:0_2px_8px_#000]">{etape === "dechire" ? `${taille} cartes !` : "Glisse le doigt ou touche le paquet pour le déchirer !"}</p>
+        </div>
+      ) : null}
+
+      {etape === "pret" ? (
+        <div className="mt-4">
+          <p className="mt-4 text-sm font-extrabold text-[#f0d090]">Choisis ton paquet</p>
+          <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Choisis ton paquet">
+            {[{ id: "toutes", nom: "Tous les animaux", emoji: "🌍" }, ...groupes.map((g) => ({ id: `g:${g.id}`, nom: g.nom, emoji: EMOJI[g.id] ?? "🐾" }))].map((c) => (
+              <button key={c.id} type="button" onClick={() => setFamille(c.id)} aria-pressed={famille === c.id} className={`rounded-full px-3 py-2 text-sm font-extrabold ${famille === c.id ? "bg-[#f3d48a] text-[#2a1c14] ring-2 ring-white" : "bg-[#2a1844] text-[#e7d7be]"}`}>
+                <span aria-hidden="true">{c.emoji} </span>{c.nom}
+              </button>
+            ))}
           </div>
-          {etape === "dechire" ? <span className="eclat pointer-events-none absolute left-1/2 top-1/3 -ml-24 -mt-24 size-48 rounded-full" style={{ background: `radial-gradient(circle, #fff, ${lueur} 40%, transparent 70%)` }} /> : null}
-          {etape === "dechire" ? <span className="flash-blanc pointer-events-none absolute inset-0 bg-white" /> : null}
-          {taille ? <p className="absolute inset-x-0 bottom-4 text-center font-display text-2xl text-white [text-shadow:0_2px_8px_#000]">{taille} cartes !</p> : null}
         </div>
       ) : null}
 
@@ -193,18 +182,15 @@ export function CartesPage() {
         <section className="mt-6 text-center">
           <p className="font-extrabold text-[#f0d090]">Carte {index + 1} sur {cartes.length}</p>
           <div className="relative mx-auto mt-4 w-60" style={{ ["--lueur" as string]: lueur }}>
-            {brille ? <span className="rayons pointer-events-none absolute -inset-16" /> : null}
-            {face ? <span className="pointer-events-none absolute -inset-6 rounded-full opacity-70 blur-2xl" style={{ background: `radial-gradient(circle, ${["#d9a273", "#e8edf6", "#f3c35a", "#a77bff", "#ff7ab6"][carte.chance ? 2 : niveauDe(carte.rarete).rang]}, transparent 70%)` }} /> : null}
-            <Carte3D key={index} className="carte-sort">
-              <button type="button" onClick={toucherCarte} className={`retournable relative block aspect-[5/7] w-full ${face ? "retourne" : ""}`}>
-                <span className="retournable-interieur block">
-                  <span className="face block"><CarteVerso /></span>
-                  <span className="face face-recto block"><CarteRecto espece={carte.espece} rarete={carte.rarete} special={carte.special} chance={carte.chance} /></span>
-                </span>
-              </button>
-            </Carte3D>
+            {/* la pile : les cartes qui attendent derrière, à plat */}
+            {index + 2 < cartes.length ? <span className="absolute inset-0 translate-x-3 translate-y-3 rounded-[1.1rem] bg-[#e8c98a]/50" aria-hidden="true" /> : null}
+            {index + 1 < cartes.length ? <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-[1.1rem] bg-[#e8c98a]/80" aria-hidden="true" /> : null}
+            {face && brille ? <span className="absolute -inset-3 rounded-[1.6rem] opacity-60" style={{ background: couleurDe(carte) }} aria-hidden="true" /> : null}
+            <button key={index} type="button" onClick={toucherCarte} className="carte-sort relative block aspect-[5/7] w-full" aria-label={face ? `${carte.espece.nom} : carte suivante` : "Retourner la carte"}>
+              {face ? <span className="carte-ouvre block size-full"><CarteRecto espece={carte.espece} rarete={carte.rarete} special={carte.special} chance={carte.chance} /></span> : <CarteVerso />}
+            </button>
           </div>
-          {face && carte.chance ? <p className="titre-or mt-5 text-3xl">Wah, la chance !</p> : null}
+          {face && carte.chance ? <p className="titre-or mt-5 text-3xl">Wah, la chance !</p> : face ? <p className="mt-4 font-display text-2xl text-[#f3d48a]">{carte.espece.nom}</p> : null}
           {face && !deja.has(carte.espece.id) ? <p className="mt-3 inline-block rounded-full bg-[#f3d48a] px-3 py-1 text-sm font-extrabold text-[#2a1c14]">Nouvelle carte !</p> : null}
           <p className="mt-3 text-sm texte-doux">{face ? "Touche la carte pour la suivante." : "Touche la carte pour la retourner."}</p>
           <button type="button" onClick={toutRetourner} className="mt-4 rounded-full bg-card px-4 py-2 text-sm font-extrabold">Tout retourner</button>

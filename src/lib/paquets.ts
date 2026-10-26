@@ -1,5 +1,6 @@
 import { aUnePhoto } from "@/components/portrait";
-import { ESPECES, type Espece } from "@/data/catalogue";
+import { AUTRES } from "@/data/autres";
+import { ESPECES, GROUPES, type Espece } from "@/data/catalogue";
 
 export const RARETES = ["Pas très répandu", "Assez peu répandu", "Peu répandu", "Très peu répandu"] as const;
 export type Rarete = (typeof RARETES)[number];
@@ -41,6 +42,7 @@ function extremes() {
 const { petits: PLUS_PETITS, forts: PLUS_FORTS } = extremes();
 
 export function rareteDe(espece: Espece): Rarete | "Répandu" | null {
+  if ((espece as { partout?: 1 }).partout) return "Répandu";
   // Nombre de pays où l'espèce vit, d'après la Mammal Diversity Database.
   const trouve = espece.ou.match(/(\d+)\s+pays/);
   const pays = espece.pays?.length || (trouve ? Number(trouve[1]) : 0);
@@ -97,7 +99,9 @@ function marquer(espece: Espece, chance: boolean): Tirage {
 }
 
 export function ouvrirPaquet(famille: string, deja: Set<string>, taille = 10) {
-  const vivants = ESPECES.filter((espece) => !espece.disparue && (famille === "toutes" || espece.famille === famille));
+  // « toutes », « g:<groupe> » (un grand groupe d'animaux) ou le code d'une famille.
+  const groupe = famille.startsWith("g:") ? GROUPES.find((g) => g.id === famille.slice(2)) : undefined;
+  const vivants = ESPECES.filter((espece) => !espece.disparue && (famille === "toutes" || (groupe ? groupe.ordres.includes(espece.ordre) : espece.famille === famille)));
   // On tire d'abord les animaux qui ont un nom français et une photo : c'est plus agréable.
   const jolis = vivants.filter((espece) => espece.langue === "fr" && aUnePhoto(espece.id));
   const base = jolis.length >= 11 ? jolis : vivants;
@@ -105,6 +109,11 @@ export function ouvrirPaquet(famille: string, deja: Set<string>, taille = 10) {
   const pile = neufs.length >= taille ? neufs : base;
   const melange = [...pile].sort(() => Math.random() - 0.5);
   const dix = melange.slice(0, taille).map((espece) => marquer(espece, false));
+  // Une petite surprise : dans un paquet « toutes », il arrive qu'un animal qui n'est pas un mammifère se glisse dedans.
+  if (famille === "toutes" && dix.length > 3 && Math.random() < 0.1) {
+    const a = AUTRES[Math.floor(Math.random() * AUTRES.length)];
+    if (!dix.some((t) => t.espece.id === a.id)) dix[dix.length - 1] = marquer(a, false);
+  }
   const reste = melange.slice(taille);
   const seuil = Math.random() * 0.22;
   const chance = reste.length > 0 && Math.random() < seuil;

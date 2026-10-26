@@ -2,6 +2,7 @@ import brut from "@/data/mammiferes.json";
 import { connu, parConnu } from "@/lib/connu";
 import nomsFr from "@/data/noms-fr.json";
 import nomsTraduits from "@/data/noms-traduits.json";
+import { AUTRES } from "@/data/autres";
 
 export type Espece = {
   id: string;
@@ -35,6 +36,15 @@ const data = brut as {
   familles: Record<string, FamilleInfo>;
   especes: Espece[];
 };
+
+// Les animaux qui ne sont pas des mammifères (le tardigrade, pour commencer) rejoignent le catalogue.
+export const AUTRE_IDS = new Set(AUTRES.map((a) => a.id));
+for (const a of AUTRES) {
+  data.especes.push(a);
+  data.familles[a.famille] = { nom: "Tardigrades", ordre: a.ordre, n: 1 };
+}
+/** Vrai pour un mammifère : les jeux de mammifères n'utilisent pas les autres animaux. */
+export const estMammifere = (e: { id: string }) => !AUTRE_IDS.has(e.id);
 
 export const FAMILLES = data.familles;
 // Noms français trouvés sur Wikidata (scripts/donnees/collecter.py) : ils remplacent les noms anglais.
@@ -86,6 +96,7 @@ export const ORDRES: { id: string; nom: string; phrase: string }[] = [
   { id: "Carnivora", nom: "Carnivores", phrase: "Félins, canidés, ours, phoques, et leurs cousins." },
   { id: "Perissodactyla", nom: "Périssodactyles", phrase: "Chevaux, rhinocéros et tapirs." },
   { id: "Artiodactyla", nom: "Artiodactyles", phrase: "Cerfs, bœufs, hippopotames, et aussi les baleines." },
+  { id: "Tardigrada", nom: "Tardigrades", phrase: "Des animaux minuscules à huit pattes, presque indestructibles en vie ralentie." },
 ];
 
 const ORDRE_PAR_ID = new Map(ORDRES.map((ordre) => [ordre.id, ordre]));
@@ -165,6 +176,7 @@ export const GROUPES: { id: string; nom: string; phrase: string; ordres: string[
   { id: "marsupiaux", nom: "Marsupiaux", phrase: "Kangourous, koalas, opossums. Le petit grandit souvent dans une poche.", ordres: ["Diprotodontia", "Dasyuromorphia", "Didelphimorphia", "Peramelemorphia", "Paucituberculata", "Microbiotheria", "Notoryctemorphia"] },
   { id: "oeufs", nom: "Ils pondent des œufs", phrase: "Ornithorynque et échidnés.", ordres: ["Monotremata"] },
   { id: "petits", nom: "Musaraignes et voisins", phrase: "Musaraignes, taupes, hérissons, toupayes, colugos.", ordres: ["Eulipotyphla", "Scandentia", "Dermoptera"] },
+  { id: "autres", nom: "Autres animaux", phrase: "Pas des mammifères : le tardigrade, minuscule et courageux.", ordres: ["Tardigrada"] },
 ];
 
 export function groupeDeOrdre(ordre: string) {

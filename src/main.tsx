@@ -28,6 +28,7 @@ const Kratt = lazy(() => import("@/pages/kratt").then((m) => ({ default: m.Kratt
 const Animaux = lazy(() => import("@/pages/animaux").then((m) => ({ default: m.AnimauxPage })));
 const Voyageurs = lazy(() => import("@/pages/aventure-carte").then((m) => ({ default: m.AventureCartePage })));
 const Jouer = lazy(() => import("@/pages/jouer").then((m) => ({ default: m.JouerPage })));
+const Evolution = lazy(() => import("@/pages/evolution").then((m) => ({ default: m.EvolutionPage })));
 const Cartes = lazy(() => import("@/pages/cartes").then((m) => ({ default: m.CartesPage })));
 const Profil = lazy(() => import("@/pages/profil").then((m) => ({ default: m.ProfilPage })));
 // L'ancienne liste des animaux suivis est remplacée par « Les voyages » (dans Aventure).
@@ -45,6 +46,7 @@ type Page = ComponentType<{ id?: string; params: URLSearchParams }>;
 const ROUTES: [string, Page][] = [
   ["/arbre", ArbrePage],
   ["/frise", FrisePage],
+  ["/evolution", Evolution],
   ["/mammiferes", Mammiferes],
   ["/fossiles", Fossiles],
   ["/lexique", LexiquePage],
