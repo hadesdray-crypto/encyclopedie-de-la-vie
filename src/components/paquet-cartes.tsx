@@ -62,8 +62,8 @@ export function PaquetCartes({ duJour, taille, ouvert, onDechire, lueur = "#ffd2
   }
   function auto() {
     if (fini.current || ouvert) return;
-    sons.trembler();
-    aller(1, 520, terminer);
+    sons.crac();
+    aller(1, 560, terminer);
   }
 
   function bas(e: React.PointerEvent) {
@@ -72,7 +72,14 @@ export function PaquetCartes({ duJour, taille, ouvert, onDechire, lueur = "#ffd2
     e.currentTarget.setPointerCapture(e.pointerId);
     depart.current = { x: e.clientX, y: e.clientY, bouge: false };
   }
+  function incline(e: React.PointerEvent) {
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+    e.currentTarget.style.setProperty("--px", `${(-y * 16).toFixed(1)}deg`);
+    e.currentTarget.style.setProperty("--py", `${(x * 20).toFixed(1)}deg`);
+  }
   function bouge(e: React.PointerEvent) {
+    incline(e);
     const d = depart.current;
     if (!d || fini.current) return;
     const largeur = e.currentTarget.getBoundingClientRect().width;
@@ -81,7 +88,7 @@ export function PaquetCartes({ duJour, taille, ouvert, onDechire, lueur = "#ffd2
     if (!d.bouge) return;
     const v = Math.min(1, (dx + dy * 0.5) / (largeur * 0.55));
     setP((avant) => {
-      if (v > avant + 0.12) sons.trembler();
+      if (v > avant + 0.07) sons.crac();
       return v;
     });
   }
@@ -157,7 +164,8 @@ export function PaquetCartes({ duJour, taille, ouvert, onDechire, lueur = "#ffd2
         onPointerUp={haut}
         onPointerCancel={() => { depart.current = null; if (!fini.current) aller(0, 200); }}
         onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); auto(); } }}
-        className="select-none outline-offset-4"
+        className="paquet-incline relative select-none outline-offset-4"
+        onPointerLeave={(e) => { e.currentTarget.style.setProperty("--px", "0deg"); e.currentTarget.style.setProperty("--py", "0deg"); }}
       >
         <svg viewBox={`-6 -40 ${L + 12} ${H + 52}`} className={`paquet-svg ${p === 0 && !ouvert ? "paquet-attend" : ""}`} aria-hidden="true">
           <defs>
@@ -195,6 +203,7 @@ export function PaquetCartes({ duJour, taille, ouvert, onDechire, lueur = "#ffd2
             </g>
           ) : null}
         </svg>
+        {!ouvert ? <span className="paquet-brille" aria-hidden="true" /> : null}
       </div>
       {ouvert ? (
         <div className="pointer-events-none absolute left-1/2 top-[20%] size-0" aria-hidden="true">

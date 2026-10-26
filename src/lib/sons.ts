@@ -78,8 +78,25 @@ export const sons = {
   trembler() {
     for (let i = 0; i < 6; i++) note(90 + i * 6, i * 0.09, 0.08, "triangle", 0.12);
   },
+  /** Un vrai bruit de papier qu'on déchire : une série de petits craquements qui s'accélèrent, puis un grand « fffrrt ». */
   dechirer() {
-    souffle(0, 0.45, 600, 4000, 0.35);
+    let t = 0;
+    for (let i = 0; i < 22; i++) {
+      souffle(t, 0.045, 2400 + Math.random() * 3200, 1400 + Math.random() * 900, 0.2 + Math.random() * 0.12);
+      t += 0.034 - i * 0.0006 + Math.random() * 0.012;
+    }
+    souffle(0, 0.7, 900, 5200, 0.22);
+    note(70, 0, 0.25, "triangle", 0.12);
+  },
+  /** Un petit craquement, pendant qu'on tire sur la bande. */
+  crac() {
+    souffle(0, 0.05, 2800 + Math.random() * 1500, 1600, 0.22);
+    souffle(0.03, 0.04, 3600, 1800, 0.14);
+  },
+  /** Un « pop » brillant quand une carte spéciale apparaît. */
+  eclater() {
+    [660, 990, 1320, 1980].forEach((f, i) => note(f, i * 0.045, 0.22, "sine", 0.1));
+    souffle(0, 0.25, 6000, 1500, 0.15);
   },
   retourner() {
     souffle(0, 0.18, 1500, 500, 0.18);
