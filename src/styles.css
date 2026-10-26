@@ -901,3 +901,48 @@ li:nth-child(3) > .choix-jeu { animation-delay: .14s; }
 .cc-arc { background: linear-gradient(115deg, rgba(255,120,180,.3), rgba(255,230,120,.3), rgba(120,255,190,.3), rgba(120,190,255,.3), rgba(190,140,255,.3)); background-size: 300% 300%; mix-blend-mode: color-dodge; opacity: .5; animation: cc-holo 6s linear infinite; }
 .rang-4 { filter: drop-shadow(0 0 2.5cqw rgba(255,140,200,.55)); } .cc-chance { filter: drop-shadow(0 0 3cqw rgba(255,205,60,.75)); }
 @media (prefers-reduced-motion: reduce) { .cc-cadre, .cc-fond-holo, .cc-fenetre-lumiere, .cc-paillettes, .cc-arc { animation: none !important; } }
+.cc-minicarte { flex: none; width: 15cqw; border-radius: 1.4cqw; overflow: hidden; box-shadow: 0 0 0 .45cqw #fff, 0 .4cqw .8cqw rgba(0,0,0,.3); line-height: 0; }
+.cc-minicarte svg { border-radius: 0; }
+.cc-picto { display: grid; place-items: center; width: 6.6cqw; height: 6.6cqw; flex: none; margin: 0 3.2cqw 0 3.2cqw; border-radius: 50%; background: #fff; font-size: 4.2cqw; line-height: 1; box-shadow: 0 0 0 .45cqw var(--accent), 0 .4cqw .8cqw rgba(0,0,0,.3); }
+.cc-rond { display: grid; place-items: center; width: 5cqw; height: 5cqw; margin: 0 auto .3cqw; border-radius: 50%; color: #fff; background: var(--accent); box-shadow: 0 0 0 .35cqw #fff; font-style: normal; }
+.cc-rond svg { width: 3cqw; height: 3cqw; }
+/* Plume explique la carte : la zone dont elle parle s'allume, le reste s'assombrit un peu */
+html[data-plume-zone] .cc [data-zone] { transition: filter .25s, box-shadow .25s; }
+html[data-plume-zone] .cc .cc-corps > :not(.cc-fond):not(.cc-fond-holo) { filter: brightness(.82) saturate(.8); transition: filter .25s; }
+html[data-plume-zone="nom"] .cc [data-zone="nom"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="nom"] .cc .cc-corps > :has([data-zone="nom"]), html[data-plume-zone="nom"] .cc .cc-corps > [data-zone="nom"] { filter: none; }
+html[data-plume-zone="poids"] .cc [data-zone="poids"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="poids"] .cc .cc-corps > :has([data-zone="poids"]), html[data-plume-zone="poids"] .cc .cc-corps > [data-zone="poids"] { filter: none; }
+html[data-plume-zone="milieu"] .cc [data-zone="milieu"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="milieu"] .cc .cc-corps > :has([data-zone="milieu"]), html[data-plume-zone="milieu"] .cc .cc-corps > [data-zone="milieu"] { filter: none; }
+html[data-plume-zone="photo"] .cc [data-zone="photo"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="photo"] .cc .cc-corps > :has([data-zone="photo"]), html[data-plume-zone="photo"] .cc .cc-corps > [data-zone="photo"] { filter: none; }
+html[data-plume-zone="latin"] .cc [data-zone="latin"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="latin"] .cc .cc-corps > :has([data-zone="latin"]), html[data-plume-zone="latin"] .cc .cc-corps > [data-zone="latin"] { filter: none; }
+html[data-plume-zone="vit"] .cc [data-zone="vit"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="vit"] .cc .cc-corps > :has([data-zone="vit"]), html[data-plume-zone="vit"] .cc .cc-corps > [data-zone="vit"] { filter: none; }
+html[data-plume-zone="mange"] .cc [data-zone="mange"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="mange"] .cc .cc-corps > :has([data-zone="mange"]), html[data-plume-zone="mange"] .cc .cc-corps > [data-zone="mange"] { filter: none; }
+html[data-plume-zone="menace"] .cc [data-zone="menace"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="menace"] .cc .cc-corps > :has([data-zone="menace"]), html[data-plume-zone="menace"] .cc .cc-corps > [data-zone="menace"] { filter: none; }
+html[data-plume-zone="petits"] .cc [data-zone="petits"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="petits"] .cc .cc-corps > :has([data-zone="petits"]), html[data-plume-zone="petits"] .cc .cc-corps > [data-zone="petits"] { filter: none; }
+html[data-plume-zone="age"] .cc [data-zone="age"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="age"] .cc .cc-corps > :has([data-zone="age"]), html[data-plume-zone="age"] .cc .cc-corps > [data-zone="age"] { filter: none; }
+html[data-plume-zone="raison"] .cc [data-zone="raison"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="raison"] .cc .cc-corps > :has([data-zone="raison"]), html[data-plume-zone="raison"] .cc .cc-corps > [data-zone="raison"] { filter: none; }
+html[data-plume-zone="rarete"] .cc [data-zone="rarete"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="rarete"] .cc .cc-corps > :has([data-zone="rarete"]), html[data-plume-zone="rarete"] .cc .cc-corps > [data-zone="rarete"] { filter: none; }
+html[data-plume-zone="numero"] .cc [data-zone="numero"] { position: relative; z-index: 3; filter: none !important; box-shadow: 0 0 0 .7cqw #fff, 0 0 0 1.4cqw #ff5fa8, 0 0 5cqw 2cqw rgba(255,95,168,.75); border-radius: 1.6cqw; animation: cc-zone 1s ease-in-out infinite alternate; }
+html[data-plume-zone="numero"] .cc .cc-corps > :has([data-zone="numero"]), html[data-plume-zone="numero"] .cc .cc-corps > [data-zone="numero"] { filter: none; }
+@keyframes cc-zone { from { transform: scale(1); } to { transform: scale(1.04); } }
+html[data-plume-zone="rarete"] .cc .cc-cadre[data-zone] { animation: none; border-radius: 4.8cqw; transform: none; }
+.cc-legende-titre { font-size: 6.4cqw; font-weight: 800; color: #3a2408; padding: 1cqw 0 .6cqw; text-shadow: 0 0 1cqw #fff; }
+.cc-legende { gap: 1cqw; font-size: 3.4cqw; line-height: 1.2; color: #2a1c0c; }
+.cc-legende-ligne { gap: 2cqw; background: rgba(255,255,255,.6); border-radius: 1.8cqw; padding: 1cqw 1.6cqw; }
+.cc-legende-signe { min-width: 9cqw; }
+.cc-legende-pastille { display: block; border-radius: 99px; padding: 1cqw 2.4cqw; font-weight: 900; font-size: 3.8cqw; box-shadow: inset 0 0 0 .3cqw rgba(0,0,0,.12); }
+.cc-legende-metal { display: block; width: 8cqw; height: 8cqw; border-radius: 1.6cqw; background: var(--metal); box-shadow: inset 0 0 0 .4cqw rgba(255,255,255,.6), 0 .4cqw .8cqw rgba(0,0,0,.3); }
+.cc-legende small { font-size: 2.9cqw; opacity: .75; }
+.cc-legende .cc-etoiles svg { width: 3cqw; height: 3cqw; }
+.legendes > .cc { flex: none; width: 74%; max-width: 20rem; scroll-snap-align: center; }

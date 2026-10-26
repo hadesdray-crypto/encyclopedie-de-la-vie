@@ -3,11 +3,12 @@ import { ESPECES } from "@/data/catalogue";
 import { aUnePhoto } from "@/components/portrait";
 import { rareteDe } from "@/lib/paquets";
 import { niveauDe } from "@/components/carte-animal";
-import { CarteCollection, DOS, DosCarte } from "@/components/carte-collection";
+import { CarteCollection, DOS, DosCarte, LegendeCartes } from "@/components/carte-collection";
 
 const choisir = (rang: number, sauf: string[] = []) => ESPECES.find((e) => e.langue === "fr" && aUnePhoto(e.id) && e.masse && e.milieu && niveauDe(rareteDe(e)).rang === rang && !sauf.includes(e.id) && (rang > 0 || e.latin === "Vulpes vulpes"))!;
 export function EssaiCartesPage({ params }: { params: URLSearchParams }) {
   const vue = params.get("vue") ?? "recto";
+  if (vue === "legende") return <main className="legendes flex flex-col items-center gap-4 p-4"><LegendeCartes /></main>;
   if (vue === "dos") return (
     <main className="grid grid-cols-2 gap-4 p-4">{DOS.map((d) => <div key={d.id}><div className="w-full"><DosCarte modele={d.id} /></div><p className="mt-1 text-center font-extrabold">{d.nom}</p></div>)}</main>
   );

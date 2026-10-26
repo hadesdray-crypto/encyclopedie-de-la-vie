@@ -1,4 +1,5 @@
 import { plumeParticularites } from "@/lib/plume-animal";
+import { EMOJI_REGIME } from "@/data/fiches-vie";
 import { useEffect, useState } from "react";
 import type { Espece } from "@/data/catalogue";
 import { lireVues } from "@/lib/carnet";
@@ -171,7 +172,6 @@ function ModeJeu({ titre, jeu, children }: { titre: string; jeu: string; childre
   );
 }
 
-const EMOJI_REGIME: Record<string, string> = { carnivore: "🥩", piscivore: "🐟", insectivore: "🐜", invertivore: "🦑", herbivore: "🌿", folivore: "🍃", frugivore: "🍎", nectarivore: "🌸", omnivore: "🍽️" };
 
 function JeuRegime() {
   const [q, setQ] = useState(questionRegime);

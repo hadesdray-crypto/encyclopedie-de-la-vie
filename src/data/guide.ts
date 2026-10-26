@@ -4,7 +4,8 @@
  */
 import { ETAPES } from "@/data/arbre";
 
-export type Explication = { id: string; titre: string; etapes: string[] };
+/** zones : pour chaque bulle, la partie de l'écran qui s'allume pendant que Plume en parle (data-zone). */
+export type Explication = { id: string; titre: string; etapes: string[]; zones?: (string | null)[] };
 
 const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) => boolean })[] = [
   {

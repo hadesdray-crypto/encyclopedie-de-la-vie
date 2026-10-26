@@ -574,6 +574,14 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   const texte = explication.etapes[etape] ?? explication.etapes[0];
   const derniere = etape >= explication.etapes.length - 1;
   const voix = voixPossible();
+  // Pendant qu'elle explique, la partie de l'écran dont elle parle s'allume (par exemple une zone de la carte).
+  const zone = contenu === "page" && !perso ? explicationBrute.zones?.[etape] ?? null : contenu === "page" && perso && !textePerso ? explicationBrute.zones?.[etape] ?? null : null;
+  useEffect(() => {
+    const html = document.documentElement;
+    if (zone) html.dataset.plumeZone = zone;
+    else delete html.dataset.plumeZone;
+    return () => { delete html.dataset.plumeZone; };
+  }, [zone]);
 
   // Plume lit si on le lui a demandé (bouton Écouter, ou « toujours avec moi »). La présentation a sa propre lecture.
   useEffect(() => {

@@ -2,9 +2,10 @@
 // avec des effets brillants selon la rareté, et plusieurs dos au choix.
 // Toutes les infos viennent du catalogue : rien n'est inventé. Quand on ne sait pas : « Non connu ».
 import { useId } from "react";
-import { LuCircleHelp, LuMapPin, LuMountain, LuSparkles, LuStar, LuTreeDeciduous, LuTrees, LuUtensils, LuWaves, LuWind } from "react-icons/lu";
+import { LuBaby, LuCircleHelp, LuHourglass, LuMountain, LuShield, LuSparkles, LuStar, LuTreeDeciduous, LuTrees, LuUtensils, LuWaves, LuWind } from "react-icons/lu";
 import { FAMILLES, ESPECES, type Espece } from "@/data/catalogue";
-import { REGIMES } from "@/data/fiches-vie";
+import { EMOJI_REGIME, REGIMES } from "@/data/fiches-vie";
+import { CarteMonde } from "@/components/carte-monde";
 import { ETAPES, FRISE } from "@/data/arbre";
 import estimations from "@/data/estimations.json";
 import { Portrait } from "@/components/portrait";
@@ -81,7 +82,39 @@ export function raisonSpeciale(espece: Espece, rarete: string | null, special?: 
   return morceaux.length ? morceaux.join(" · ") : null;
 }
 
-/** Le recto : comme une carte à collectionner. Nom et poids en haut, grande photo, deux talents, trois infos, et pourquoi elle est rare. */
+const NOM_RARETE = ["Commune", "Jolie", "Rare", "Super rare", "Légendaire"];
+const regimeId = (e: Espece) => e.regime ?? EST[e.id]?.regime?.t;
+
+/**
+ * La visite de la carte : ce que Plume dit, morceau par morceau, et le morceau de la carte qui s'allume pendant qu'elle en parle.
+ * Chaque phrase explique à quoi sert la zone, puis ce qu'elle dit pour CET animal (vraies données).
+ */
+export function visiteCarte(espece: Espece, rarete: string | null, special?: string | null, chance?: boolean) {
+  const n = niveauDe(rarete);
+  const m = milieuDe(espece);
+  const p = poids(espece);
+  const r = regimeId(espece);
+  const statut = STATUT[espece.statut ?? ""];
+  const raison = raisonSpeciale(espece, rarete, special, chance);
+  const l: [string, string][] = [
+    ["nom", `En haut, en gros : son nom, ${espece.nom}. Juste au-dessus, en petit : sa famille, ${FAMILLES[espece.famille]?.nom ?? espece.famille}.`],
+    ["poids", p.valeur === "?" ? "Le nombre rouge, c'est son poids. Pour lui, on ne le connaît pas : il y a un point d'interrogation." : `Le nombre rouge, c'est le poids d'un adulte : ${p.estime ? "environ " : ""}${p.valeur} ${p.unite === "kg" ? "kilos" : p.unite === "g" ? "grammes" : p.unite}.${p.estime ? " Le signe ≈ veut dire que c'est une estimation." : ""}`],
+    ["milieu", `Le rond avec un dessin dit où il passe sa vie : ${m.nom.toLowerCase()}. La couleur de la carte change avec : orange pour le sol, vert pour les arbres, bleu ciel pour le vol, bleu pour la mer, violet quand on ne sait pas.`],
+    ["photo", "Au milieu, sa photo : un vrai animal, photographié dans la nature ou dans un parc."],
+    ["latin", `Sur le ruban : son nom scientifique, ${espece.latin}. C'est le même dans toutes les langues du monde.`],
+    ["vit", espece.pays?.length ? `La petite carte du monde montre en or les pays où il vit. Ici : ${ouCourt(espece)}.` : `Il vit : ${ouCourt(espece)}. On ne connaît pas encore la liste exacte de ses pays, alors la petite carte reste sans or.`],
+    ["mange", r ? `Le petit dessin montre ce qu'il mange. ${REGIMES[r as keyof typeof REGIMES]?.nom ?? ""} : ${REGIMES[r as keyof typeof REGIMES]?.explique ?? ""}` : "Ce qu'il mange : on ne le sait pas encore."],
+    ["menace", statut ? `Le bouclier dit s'il est menacé dans la nature. Pour lui : ${statut.court.toLowerCase()}. Vert, c'est bien. Jaune, orange et rouge : il faut le protéger.` : "Le bouclier dit s'il est menacé. Pour lui, on ne sait pas."],
+    ["petits", espece.portee ? `Le biberon : combien de bébés la maman a en même temps, en moyenne. Ici : ${petits(espece).replace("≈ ", "environ ")}.` : "Le biberon : combien de bébés à la fois. Pour lui, on ne sait pas encore."],
+    ["age", espece.longevite ? `Le sablier : l'âge record connu. Le plus vieux a vécu ${age(espece)}.` : "Le sablier : l'âge record. Pour lui, on ne le connaît pas."],
+  ];
+  if (raison) l.push(["raison", `L'encadré doré dit pourquoi la carte est spéciale : ${raison}.`]);
+  l.push(["rarete", `En bas, les étoiles et la couleur du cadre disent la rareté. Argent : commune. Bleu : jolie. Or : rare. Violet : super rare. Arc-en-ciel : légendaire. Celle-ci est ${chance ? "une carte chance, toute en or" : NOM_RARETE[n.rang].toLowerCase()}, avec ${n.etoiles} étoile${n.etoiles > 1 ? "s" : ""}.`]);
+  l.push(["numero", `Tout en bas à droite : son numéro dans la collection, sur ${ESPECES.length} cartes en tout.`]);
+  return { etapes: l.map(([, t]) => t), zones: l.map(([z]) => z) };
+}
+
+/** Le recto : comme une carte à collectionner. Chaque zone porte un nom (data-zone) pour que Plume puisse l'allumer quand elle en parle. */
 export function CarteCollection({ espece, rarete, special, chance }: { espece: Espece; rarete: string | null; special?: string | null; chance?: boolean }) {
   const n = niveauDe(rarete);
   const m = milieuDe(espece);
@@ -90,60 +123,63 @@ export function CarteCollection({ espece, rarete, special, chance }: { espece: E
   const raison = raisonSpeciale(espece, rarete, special, chance);
   const metal = chance ? "or-chance" : METAUX[n.rang];
   const taille = espece.nom.length <= 10 ? 7 : espece.nom.length <= 14 ? 6 : espece.nom.length <= 18 ? 5.2 : 4.6;
+  const r = regimeId(espece);
   return (
     <span className={`cc metal-${metal} rang-${n.rang} ${chance ? "cc-chance" : ""} relative block`} style={{ ["--c1" as string]: m.c1, ["--c2" as string]: m.c2, ["--accent" as string]: m.accent, ["--motif" as string]: m.motif }}>
-      <span className="cc-cadre absolute inset-0" />
+      <span className="cc-cadre absolute inset-0" data-zone="rarete" />
       {n.rang >= 3 || chance ? <span className="cc-grave absolute inset-0" aria-hidden="true" /> : null}
       <span className="cc-corps absolute flex flex-col">
         <span className="cc-fond absolute inset-0" aria-hidden="true" />
         {n.rang >= 2 || chance ? <span className="cc-fond-holo absolute inset-0" aria-hidden="true" /> : null}
 
         <span className="cc-tete relative flex items-end">
-          <span className="min-w-0 flex-1">
+          <span className="min-w-0 flex-1" data-zone="nom">
             <span className="cc-famille block truncate">{FAMILLES[espece.famille]?.nom ?? espece.famille}</span>
             <span className="cc-nom block font-display" style={{ fontSize: `${taille}cqw` }}>{espece.nom}</span>
           </span>
-          <span className="cc-poids flex items-baseline"><small>{p.estime ? "≈" : ""}</small><b>{p.valeur}</b><small>{p.unite}</small></span>
-          <span className="cc-embleme grid place-items-center" title={m.nom}><m.Icone aria-hidden="true" /></span>
+          <span className="cc-poids flex items-baseline" data-zone="poids"><small>{p.estime ? "≈" : ""}</small><b>{p.valeur}</b><small>{p.unite}</small></span>
+          <span className="cc-embleme grid place-items-center" data-zone="milieu" title={m.nom}><m.Icone aria-hidden="true" /></span>
         </span>
 
-        <span className="cc-fenetre relative block">
+        <span className="cc-fenetre relative block" data-zone="photo">
           <Portrait id={espece.id} couvrir />
           <span className="cc-fenetre-lumiere absolute inset-0" aria-hidden="true" />
           {chance ? <span className="cc-badge absolute">★ Chance !</span> : special ? <span className="cc-badge absolute">{special}</span> : null}
           <span className="cc-type absolute flex items-center"><m.Icone aria-hidden="true" />{m.nom}</span>
         </span>
-        <span className="cc-ruban relative block truncate"><i>{espece.latin}</i></span>
+        <span className="cc-ruban relative block truncate" data-zone="latin"><i>{espece.latin}</i></span>
 
         <span className="cc-talents relative flex flex-col">
-          <span className="cc-talent flex items-center">
-            <span className="cc-energie"><LuMapPin aria-hidden="true" /></span>
+          <span className="cc-talent flex items-center" data-zone="vit">
+            <span className="cc-minicarte"><CarteMonde pays={espece.pays ?? []} ou={espece.ou} /></span>
             <span className="cc-talent-nom">Il vit</span>
             <span className="cc-talent-valeur min-w-0 flex-1 truncate">{ouCourt(espece)}</span>
           </span>
-          <span className="cc-talent flex items-center">
-            <span className="cc-energie"><LuUtensils aria-hidden="true" /></span>
+          <span className="cc-talent flex items-center" data-zone="mange">
+            <span className="cc-picto" aria-hidden="true">{r ? EMOJI_REGIME[r] ?? "🍽️" : "❔"}</span>
             <span className="cc-talent-nom">Il mange</span>
             <span className="cc-talent-valeur min-w-0 flex-1 truncate">{mangeCourt(espece)}</span>
           </span>
         </span>
 
         <span className="cc-infos relative grid grid-cols-3">
-          <span><em>Menacé ?</em><b style={{ color: statut.couleur }}>{statut.court}</b></span>
-          <span><em>Petits</em><b>{petits(espece)}</b></span>
-          <span><em>Record d'âge</em><b>{age(espece)}</b></span>
+          <span data-zone="menace"><i className="cc-rond" style={{ background: statut.couleur }}><LuShield aria-hidden="true" /></i><em>Menacé ?</em><b style={{ color: statut.couleur }}>{statut.court}</b></span>
+          <span data-zone="petits"><i className="cc-rond"><LuBaby aria-hidden="true" /></i><em>Bébés</em><b>{petits(espece)}</b></span>
+          <span data-zone="age"><i className="cc-rond"><LuHourglass aria-hidden="true" /></i><em>Record d'âge</em><b>{age(espece)}</b></span>
         </span>
 
         {raison ? (
-          <span className="cc-raison relative flex items-start"><LuSparkles aria-hidden="true" /><span><b>Pourquoi rare ? </b>{raison}</span></span>
+          <span className="cc-raison relative flex items-start" data-zone="raison"><LuSparkles aria-hidden="true" /><span><b>Pourquoi rare ? </b>{raison}</span></span>
         ) : null}
 
         <span className="cc-pied relative flex items-center">
-          <span className="cc-etoiles flex" aria-label={`${n.etoiles} étoiles`}>
-            {Array.from({ length: 5 }, (_, i) => <LuStar key={i} className={i < n.etoiles ? "plein" : ""} aria-hidden="true" />)}
+          <span className="flex items-center" data-zone="rarete">
+            <span className="cc-etoiles flex" aria-label={`${n.etoiles} étoiles`}>
+              {Array.from({ length: 5 }, (_, i) => <LuStar key={i} className={i < n.etoiles ? "plein" : ""} aria-hidden="true" />)}
+            </span>
+            <b className="ml-[1cqw]">{chance ? "Chance" : n.nom}</b>
           </span>
-          <b className="ml-[1cqw]">{chance ? "Chance" : n.nom}</b>
-          <span className="ml-auto">N° {String(NUMERO.get(espece.id) ?? 0).padStart(4, "0")}/{ESPECES.length}</span>
+          <span className="ml-auto" data-zone="numero">N° {String(NUMERO.get(espece.id) ?? 0).padStart(4, "0")}/{ESPECES.length}</span>
         </span>
       </span>
       <span className="cc-effets pointer-events-none absolute inset-0" aria-hidden="true">
@@ -380,5 +416,56 @@ export function DosCarte({ modele = "arbre" }: { modele?: Dos }) {
       {modele === "plume" ? <DosPlume /> : modele === "spirale" ? <DosSpirale /> : modele === "boussole" ? <DosBoussole /> : <DosArbre />}
       <span className="tcg-reflet absolute inset-0" aria-hidden="true" />
     </span>
+  );
+}
+
+// ------------------------------------------------------------------ La légende : des cartes qui expliquent les cartes
+
+function CarteLegende({ titre, children }: { titre: string; children: React.ReactNode }) {
+  return (
+    <span className="cc metal-or relative block" style={{ ["--c1" as string]: "#fffaf0", ["--c2" as string]: "#f3d48a", ["--accent" as string]: "#8a5a10", ["--motif" as string]: MOTIFS.etoiles }}>
+      <span className="cc-cadre absolute inset-0" />
+      <span className="cc-corps absolute flex flex-col">
+        <span className="cc-fond absolute inset-0" aria-hidden="true" />
+        <span className="cc-legende-titre relative block text-center font-display">{titre}</span>
+        <span className="cc-legende relative flex flex-1 flex-col justify-evenly">{children}</span>
+      </span>
+    </span>
+  );
+}
+const Ligne = ({ signe, children }: { signe: React.ReactNode; children: React.ReactNode }) => (
+  <span className="cc-legende-ligne flex items-center"><span className="cc-legende-signe grid shrink-0 place-items-center">{signe}</span><span className="min-w-0 flex-1">{children}</span></span>
+);
+
+/** Trois cartes « mode d'emploi » : les couleurs (milieux), les raretés et tous les petits dessins. */
+export function LegendeCartes() {
+  const milieux = [...Object.values(MILIEUX), SANS_MILIEU];
+  return (
+    <>
+      <CarteLegende titre="Les couleurs : où il vit">
+        {milieux.map((m) => (
+          <Ligne key={m.nom} signe={<span className="cc-embleme grid place-items-center" style={{ ["--accent" as string]: m.accent, width: "7cqw", height: "7cqw" }}><m.Icone aria-hidden="true" /></span>}>
+            <span className="cc-legende-pastille" style={{ background: `linear-gradient(90deg, ${m.c2}, ${m.c1})` }}>{m.nom === "Non connu" ? "On ne sait pas" : m.nom}</span>
+          </Ligne>
+        ))}
+      </CarteLegende>
+      <CarteLegende titre="Les raretés">
+        {(["argent", "acier", "or", "amethyste", "arcenciel", "or-chance"] as const).map((metal, i) => (
+          <Ligne key={metal} signe={<span className={`cc-legende-metal metal-${metal}`} />}>
+            <b>{i === 5 ? "Chance" : NOM_RARETE[i]}</b> {i < 5 ? <span className="cc-etoiles inline-flex align-middle">{Array.from({ length: 5 }, (_, k) => <LuStar key={k} className={k <= i ? "plein" : ""} aria-hidden="true" />)}</span> : "★"}
+            <small className="block">{["Il vit dans plus de 40 pays", "Il vit dans 16 à 40 pays", "Il vit dans 9 à 15 pays", "Il vit dans 6 à 8 pays", "Il vit dans 5 pays ou moins", "Tirée au hasard, très rare"][i]}</small>
+          </Ligne>
+        ))}
+      </CarteLegende>
+      <CarteLegende titre="Les petits dessins">
+        <Ligne signe={<b className="text-[#c0161b]">kg</b>}>Le nombre rouge : son <b>poids</b> d'adulte. ≈ veut dire « environ ».</Ligne>
+        <Ligne signe={<span className="cc-minicarte" style={{ width: "9cqw" }}><CarteMonde pays={["FRA", "ESP", "ITA"]} /></span>}>La petite carte : en or, les <b>pays où il vit</b>.</Ligne>
+        <Ligne signe={<span className="text-[4.4cqw]">🥩🌿🐜</span>}><b>Ce qu'il mange</b> : 🥩 viande · 🐟 poisson · 🐜 insectes · 🦑 bêtes sans os · 🌿 plantes · 🍃 feuilles · 🍎 fruits · 🌾 herbe · 🌸 nectar · 🍽️ un peu de tout</Ligne>
+        <Ligne signe={<i className="cc-rond" style={{ background: "#d9541a", ["--accent" as string]: "#d9541a" }}><LuShield aria-hidden="true" /></i>}><b>Menacé ?</b> Vert : pas menacé. Jaune, orange, rouge : il faut le protéger.</Ligne>
+        <Ligne signe={<i className="cc-rond" style={{ ["--accent" as string]: "#8a5a10" }}><LuBaby aria-hidden="true" /></i>}><b>Bébés</b> : combien à la fois, en moyenne.</Ligne>
+        <Ligne signe={<i className="cc-rond" style={{ ["--accent" as string]: "#8a5a10" }}><LuHourglass aria-hidden="true" /></i>}><b>Record d'âge</b> : le plus vieux connu.</Ligne>
+        <Ligne signe={<LuSparkles className="size-[4.5cqw] text-[#d4880c]" aria-hidden="true" />}>L'encadré doré : <b>pourquoi la carte est rare</b>.</Ligne>
+      </CarteLegende>
+    </>
   );
 }

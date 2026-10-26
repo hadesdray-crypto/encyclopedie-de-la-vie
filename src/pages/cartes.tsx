@@ -4,14 +4,14 @@ import { GROUPES } from "@/data/catalogue";
 import { lireVues, voirAnimal } from "@/lib/carnet";
 import { ALBUMS, ouvrirPaquet, type Tirage } from "@/lib/paquets";
 import { activerSons, sons, sonsActifs } from "@/lib/sons";
-import { definirEcran, plumeDit, plumeReagit } from "@/lib/plume";
-import { plumeCarte, plumeRarete } from "@/lib/plume-animal";
+import { definirEcran, ouvrirPlume, plumeDit, plumeReagit } from "@/lib/plume";
+import { plumeParticularites, plumeRarete } from "@/lib/plume-animal";
 import { explicationPour } from "@/data/guide";
 import { REGLES, paquetDuJour, paquetsDisponibles, paquetsIllimites, prendrePaquetDuJour, utiliserPaquet } from "@/lib/recompenses";
 import { Entete } from "@/components/entete";
 import { Portrait } from "@/components/portrait";
 import { Carte3D, niveauDe } from "@/components/carte-animal";
-import { CarteCollection, DOS, DosCarte, type Dos } from "@/components/carte-collection";
+import { CarteCollection, DOS, DosCarte, LegendeCartes, visiteCarte, type Dos } from "@/components/carte-collection";
 import { PaquetCartes } from "@/components/paquet-cartes";
 
 type Etape = "pret" | "dechire" | "revele" | "fini";
@@ -125,8 +125,16 @@ export function CartesPage() {
   const carteVue = etape === "revele" && face ? cartes[index] : null;
   useEffect(() => {
     if (carteVue) {
-      const general = explicationPour("/cartes", new URLSearchParams()).etapes;
-      definirEcran({ id: `carte-${carteVue.espece.id}`, titre: carteVue.espece.nom, etapes: [...plumeCarte(carteVue.espece, carteVue.special, carteVue.chance), "Touche la carte pour voir la suivante.", ...general.slice(0, 1)] });
+      const { espece, rarete, special, chance } = carteVue;
+      const visite = visiteCarte(espece, rarete, special, chance);
+      const rare = plumeRarete(espece, special, chance);
+      const plus = plumeParticularites(espece).filter((t) => !/pèse|bébé|record|menacé|danger|protéger|disparu|nature/.test(t));
+      definirEcran({
+        id: `carte-${espece.id}`,
+        titre: espece.nom,
+        etapes: [...rare, "Maintenant, je t'explique tout ce qu'il y a sur la carte. Regarde ce qui s'allume !", ...visite.etapes, ...plus, "Touche la carte pour voir la suivante."],
+        zones: [...rare.map(() => "rarete"), null, ...visite.zones, ...plus.map(() => null), null],
+      });
     } else definirEcran(null);
   }, [carteVue]);
   useEffect(() => () => definirEcran(null), []);
@@ -222,6 +230,7 @@ export function CartesPage() {
           </div>
           {face && carte.chance ? <p className="titre-or mt-5 text-3xl">Wah, la chance !</p> : face ? <p className="mt-4 font-display text-2xl text-[#f3d48a]">{carte.espece.nom}</p> : null}
           {face && !deja.has(carte.espece.id) ? <p className="mt-3 inline-block rounded-full bg-[#f3d48a] px-3 py-1 text-sm font-extrabold text-[#2a1c14]">Nouvelle carte !</p> : null}
+          {face ? <button type="button" onClick={() => ouvrirPlume(true, "page")} className="bouton-parchemin mt-3 rounded-full px-4 py-2 font-extrabold">🦉 Plume, explique-moi la carte</button> : null}
           <p className="mt-3 text-sm texte-doux">{face ? "Touche la carte pour la suivante." : "Touche la carte pour la retourner."}</p>
           <button type="button" onClick={toutRetourner} className="mt-4 rounded-full bg-card px-4 py-2 text-sm font-extrabold">Tout retourner</button>
         </section>
@@ -248,6 +257,12 @@ export function CartesPage() {
 
       {etape === "pret" ? (
         <>
+          <h2 className="titre-or mt-10 text-center text-3xl">Comment lire une carte</h2>
+          <p className="mx-auto mt-1 max-w-sm text-center text-sm">Trois cartes qui expliquent tous les dessins. Fais-les glisser.</p>
+          <div className="legendes -mx-4 mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
+            <LegendeCartes />
+          </div>
+
           <h2 className="titre-or mt-10 text-center text-3xl">Le dos de tes cartes</h2>
           <div className="mt-3 grid grid-cols-4 gap-2" role="group" aria-label="Le dos de tes cartes">
             {DOS.map((d) => (
