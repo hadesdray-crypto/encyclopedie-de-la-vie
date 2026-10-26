@@ -1,14 +1,17 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { LuVolume2, LuVolumeX } from "react-icons/lu";
 import { GROUPES } from "@/data/catalogue";
 import { lireVues, voirAnimal } from "@/lib/carnet";
 import { ALBUMS, ouvrirPaquet, type Tirage } from "@/lib/paquets";
 import { activerSons, sons, sonsActifs } from "@/lib/sons";
-import { plumeReagit } from "@/lib/plume";
+import { definirEcran, plumeDit, plumeReagit } from "@/lib/plume";
+import { plumeCarte, plumeRarete } from "@/lib/plume-animal";
+import { explicationPour } from "@/data/guide";
 import { REGLES, paquetDuJour, paquetsDisponibles, paquetsIllimites, prendrePaquetDuJour, utiliserPaquet } from "@/lib/recompenses";
 import { Entete } from "@/components/entete";
 import { Portrait } from "@/components/portrait";
-import { Carte3D, CarteRecto, CarteVerso, niveauDe } from "@/components/carte-animal";
+import { Carte3D, niveauDe } from "@/components/carte-animal";
+import { CarteCollection, DOS, DosCarte, type Dos } from "@/components/carte-collection";
 import { PaquetCartes } from "@/components/paquet-cartes";
 
 type Etape = "pret" | "dechire" | "revele" | "fini";
@@ -37,6 +40,13 @@ export function CartesPage() {
   const [montre, setMontre] = useState(24);
   const [son, setSon] = useState(sonsActifs);
   const minuteurs = useRef<number[]>([]);
+  const [dos, setDos] = useState<Dos>(() => {
+    try { return (localStorage.getItem("leonie-dos-cartes") as Dos) || "arbre"; } catch { return "arbre"; }
+  });
+  function choisirDos(d: Dos) {
+    setDos(d);
+    try { localStorage.setItem("leonie-dos-cartes", d); } catch { /* rien */ }
+  }
 
   function plus_tard(f: () => void, ms: number) {
     minuteurs.current.push(window.setTimeout(f, ms));
@@ -50,6 +60,7 @@ export function CartesPage() {
   const [lueur, setLueur] = useState("#a77bff"); // la couleur de la meilleure carte du paquet (comme dans les jeux de foot)
   const illimite = false;
   void paquetsIllimites;
+  void plumeReagit;
 
   function ouvrir() {
     if (etape !== "pret") return;
@@ -83,13 +94,10 @@ export function CartesPage() {
       sons.retourner();
       voirAnimal(carte.espece.id);
       if (carte.chance || niveauDe(carte.rarete).rang >= 2 || carte.special) plus_tard(() => sons.eclater(), 250);
-      if (carte.chance) {
-        plus_tard(() => sons.fanfare(), 350);
-        plus_tard(() => plumeReagit("chance"), 500);
-      } else if (niveauDe(carte.rarete).rang >= 2 || carte.special) {
-        plus_tard(() => sons.brillant(), 350);
-        if (niveauDe(carte.rarete).rang >= 3) plus_tard(() => plumeReagit("rare"), 500);
-      }
+      if (carte.chance) plus_tard(() => sons.fanfare(), 350);
+      else if (niveauDe(carte.rarete).rang >= 2 || carte.special) plus_tard(() => sons.brillant(), 350);
+      // Plume dit tout de suite pourquoi la carte est spéciale (avec les vraies données).
+      if (carte.chance || carte.special || niveauDe(carte.rarete).rang >= 2) plus_tard(() => plumeDit(plumeRarete(carte.espece, carte.special, carte.chance)[0], 5000), 600);
       return;
     }
     if (index + 1 >= cartes.length) {
@@ -112,6 +120,16 @@ export function CartesPage() {
     setEtape("pret");
     setCartes([]);
   }
+
+  // Quand on touche Plume : elle parle de la carte qu'on regarde (pourquoi elle est rare, ses particularités).
+  const carteVue = etape === "revele" && face ? cartes[index] : null;
+  useEffect(() => {
+    if (carteVue) {
+      const general = explicationPour("/cartes", new URLSearchParams()).etapes;
+      definirEcran({ id: `carte-${carteVue.espece.id}`, titre: carteVue.espece.nom, etapes: [...plumeCarte(carteVue.espece, carteVue.special, carteVue.chance), "Touche la carte pour voir la suivante.", ...general.slice(0, 1)] });
+    } else definirEcran(null);
+  }, [carteVue]);
+  useEffect(() => () => definirEcran(null), []);
 
   const couleurDe = (c: Tirage) => (c.chance ? "#ffd24a" : niveauDe(c.rarete).cadre);
   const carte = cartes[index];
@@ -193,10 +211,10 @@ export function CartesPage() {
             {index + 1 < cartes.length ? <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-[1.1rem] bg-[#e8c98a]/80" aria-hidden="true" /> : null}
             {face && brille ? <span className="absolute -inset-3 rounded-[1.6rem] opacity-60" style={{ background: couleurDe(carte) }} aria-hidden="true" /> : null}
             <Carte3D key={index} className="carte-sort">
-              <button type="button" onClick={toucherCarte} className={`retournable relative block aspect-[5/7] w-full ${face ? "retourne" : ""}`} aria-label={face ? `${carte.espece.nom} : carte suivante` : "Retourner la carte"}>
+              <button type="button" onClick={toucherCarte} className={`retournable relative block aspect-[63/88] w-full ${face ? "retourne" : ""}`} aria-label={face ? `${carte.espece.nom} : carte suivante` : "Retourner la carte"}>
                 <span className="retournable-interieur block">
-                  <span className="face block"><CarteVerso /></span>
-                  <span className="face face-recto block"><CarteRecto espece={carte.espece} rarete={carte.rarete} special={carte.special} chance={carte.chance} /></span>
+                  <span className="face block"><DosCarte modele={dos} /></span>
+                  <span className="face face-recto block"><CarteCollection espece={carte.espece} rarete={carte.rarete} special={carte.special} chance={carte.chance} /></span>
                 </span>
               </button>
             </Carte3D>
@@ -214,8 +232,8 @@ export function CartesPage() {
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {cartes.map((c) => (
               <li key={c.espece.id} className="arrivee relative">
-                <a href={`#/mammiferes/e-${c.espece.id}`} className="block aspect-[5/7]">
-                  <CarteRecto espece={c.espece} rarete={c.rarete} special={c.special} chance={c.chance} />
+                <a href={`#/mammiferes/e-${c.espece.id}`} className="block aspect-[63/88]">
+                  <CarteCollection espece={c.espece} rarete={c.rarete} special={c.special} chance={c.chance} />
                 </a>
                 {!deja.has(c.espece.id) ? <span className="absolute -right-1 -top-2 rounded-full bg-[#f3d48a] px-2 py-0.5 text-[11px] font-extrabold text-[#2a1c14]">Nouvelle</span> : null}
               </li>
@@ -230,6 +248,16 @@ export function CartesPage() {
 
       {etape === "pret" ? (
         <>
+          <h2 className="titre-or mt-10 text-center text-3xl">Le dos de tes cartes</h2>
+          <div className="mt-3 grid grid-cols-4 gap-2" role="group" aria-label="Le dos de tes cartes">
+            {DOS.map((d) => (
+              <button key={d.id} type="button" onClick={() => choisirDos(d.id)} aria-pressed={dos === d.id} className={`rounded-xl p-1 ${dos === d.id ? "bg-[#f3d48a] ring-2 ring-white" : "bg-[#2a1844]"}`}>
+                <DosCarte modele={d.id} />
+                <span className={`mt-1 block text-[11px] font-extrabold leading-tight ${dos === d.id ? "text-[#2a1c14]" : "text-[#e7d7be]"}`}>{d.nom}</span>
+              </button>
+            ))}
+          </div>
+
           <h2 className="titre-or mt-10 text-center text-3xl">Les albums</h2>
           <p className="mx-auto mt-1 max-w-sm text-center text-sm">Toutes les espèces, rangées par rareté. Le nom ouvre la fiche.</p>
           <ul className="mt-3 space-y-2">
