@@ -8,7 +8,7 @@ const CLE_PARLE = "leonie-plume-parle";
 const CLE_REACTIONS = "leonie-plume-reactions";
 
 export type Proposition = { texte: string; oui: string; action: () => void };
-type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation" | "presence" | "astuce" | "regles" | "mots"; coucou: number; peur: number; fete: number; geste: { anim: string; n: number }; proposition: Proposition | null; presence: Presence };
+type Etat = { ouvert: boolean; reaction: string | null; contenu: "page" | "presentation" | "presence" | "astuce" | "regles" | "mots" | "histoire" | "recit"; coucou: number; peur: number; fete: number; geste: { anim: string; n: number }; proposition: Proposition | null; presence: Presence };
 
 // ---- Combien Plume est présente ----
 // discrete : elle ne parle que si on la touche. presente : elle propose parfois une aide (réglage de départ).

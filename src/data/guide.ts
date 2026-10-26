@@ -2,6 +2,8 @@
  * Ce que Plume, la petite chouette, explique sur chaque page.
  * Des phrases courtes, une idée par bulle. On passe à la suivante avec « Suivant ».
  */
+import { ETAPES } from "@/data/arbre";
+
 export type Explication = { id: string; titre: string; etapes: string[] };
 
 const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) => boolean })[] = [
@@ -356,3 +358,42 @@ export const ASTUCES: Record<string, string[]> = {
   options: ["Touche-moi deux fois, puis Réglages, pour me rendre plus discrète ou plus bavarde."],
   sources: ["Les scientifiques disent toujours d'où viennent leurs informations."],
 };
+
+/** L'histoire de la vie, racontée par Plume : drôle, courte, et chaque fait vient de l'arbre de la vie. */
+export const HISTOIRE: Explication = {
+  id: "histoire",
+  titre: "L'histoire de la vie",
+  etapes: [
+    "Hou hou ! Installe-toi bien, Leonie. Je vais te raconter l'histoire la plus longue du monde. Elle dure 4 milliards et demi d'années ! Ne t'inquiète pas, je vais la raconter vite.",
+    "Il était une fois une grosse boule de roche brûlante qui flottait dans le noir. Pas de plage, pas de forêt, pas même une petite souris. C'était la Terre, toute bébé. Et elle était très, très chaude. Aïe, aïe, aïe !",
+    "Un jour, BOUM ! Elle s'est pris un énorme choc avec une autre planète. Les scientifiques pensent que c'est comme ça qu'est née la Lune. Notre veilleuse de nuit est née d'une grosse bêtise cosmique !",
+    "Puis la Terre a refroidi, et l'eau est arrivée. Des mers entières ! On sait qu'il y avait déjà de l'eau il y a plus de 4 milliards d'années, grâce à de minuscules cristaux trouvés en Australie.",
+    "Dans cette grande soupe, tout a commencé. Un chercheur, Stanley Miller, a même fabriqué des briques de la vie dans un ballon en verre, avec de l'eau, des gaz et de faux éclairs !",
+    "Puis sont arrivés les premiers êtres vivants : les bactéries. Elles sont si petites qu'on ne les voit pas, et pourtant elles ont régné seules pendant des milliards d'années. Certaines ont même fabriqué l'oxygène que tu respires en ce moment. Merci, les bactéries !",
+    "Il y a environ 570 millions d'années, les premiers animaux sont apparus dans la mer : des éponges, des méduses, des vers. Et surprise : l'étoile de mer est une plus proche cousine de toi que l'escargot !",
+    "Ensuite sont arrivés les poissons. Les requins ? Ils nageaient déjà avant que les arbres existent !",
+    "Il y a environ 375 millions d'années, un drôle d'animal appelé Tiktaalik est sorti de l'eau. Il avait des écailles et des branchies de poisson, mais aussi des nageoires avec des os de poignet. Il a fait ses premiers pas sur la terre. Flop, flop, flop ! Tu imagines ?",
+    "Sur la terre, les plantes et les insectes l'attendaient déjà. Puis de gigantesques forêts de fougères ont poussé. Une grande partie du charbon vient d'elles !",
+    "Ensuite, place aux stars : les dinosaures ! Ils ont régné pendant plus de 160 millions d'années. Beaucoup avaient des plumes, même le vélociraptor, qui était à peu près de la taille d'une dinde ! Et les oiseaux d'aujourd'hui sont leurs descendants. Quand tu vois un pigeon, dis bonjour à un petit dinosaure !",
+    "Pendant ce temps, de tout petits mammifères se cachaient dans l'ombre, en attendant leur tour. Quand les dinosaures ont disparu, il y a 66 millions d'années, ça a été leur moment : baleines, éléphants, chauves-souris, singes, et même l'ornithorynque, qui pond des œufs !",
+    "Et tout, tout à la fin, il y a environ 300 000 ans… tadaaa ! Nous sommes arrivés. Si toute l'histoire de la Terre tenait dans une seule journée, les humains ne seraient là que depuis les 6 dernières secondes. Six secondes ! Juste le temps de dire « coucou ».",
+    "Mais bien sûr, l'histoire continue. Et maintenant, c'est nous qui l'écrivons. À toi de jouer, Leonie !",
+  ],
+};
+
+const ROUTE_RECIT = ["terre", "molecules", "briques", "adn", "luca", "bacteries", "cyanobacteries", "eucaryotes", "animaux", "vertebres", "hors", "oeuf", "dinosaures", "oiseaux", "mammiferes"];
+
+/** Le grand récit : Plume parcourt l'arbre de la vie elle-même, étape par étape, avec les vrais textes de l'arbre. */
+export function grandRecit(): Explication {
+  const liens = ["Et ensuite…", "Des millions d'années plus tard…", "Un grand pas de plus !", "Alors, écoute bien.", "Et la suite est belle."];
+  const etapes = ROUTE_RECIT.flatMap((id, i) => {
+    const e = ETAPES[id];
+    if (!e) return [];
+    const quand = e.quand ? `${e.quand}. ` : "";
+    const doute = e.savoir === "debat" ? " Les scientifiques n'en sont pas encore sûrs." : e.savoir === "scenario" ? " C'est la meilleure explication qu'on ait, pas une photo du passé." : "";
+    const debut = i === 0 ? "Voici toute l'histoire de la vie, en suivant l'arbre. " : `${liens[i % liens.length]} `;
+    return [`${debut}${e.nom}. ${quand}${e.texte}${doute}`, ...(e.anecdote ? [`Le savais-tu ? ${e.anecdote}`] : [])];
+  });
+  etapes.push("Et voilà ! Mais l'histoire continue. Et maintenant, c'est nous qui l'écrivons.");
+  return { id: "recit", titre: "Le grand récit", etapes };
+}

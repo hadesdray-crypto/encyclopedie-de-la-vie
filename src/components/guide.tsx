@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as PE } from "react";
-import { LuBookOpen, LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuSettings, LuX } from "react-icons/lu";
-import { ASTUCES, PRESENTATION, SUJETS, explicationPour } from "@/data/guide";
+import { LuBookOpen, LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuScrollText, LuSettings, LuX } from "react-icons/lu";
+import { ASTUCES, HISTOIRE, PRESENTATION, SUJETS, explicationPour, grandRecit } from "@/data/guide";
 import { voixDePresentation, voixPossible } from "@/components/voix";
 import { sons } from "@/lib/sons";
 import { PlumeDessin, type AnimPlume, type Caractere } from "@/components/plume-dessin";
@@ -512,6 +512,9 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
   );
 }
 
+const RECIT = grandRecit();
+const EN_RECIT = (c: string) => c === "histoire" || c === "recit";
+
 /** La petite bulle de Plume, posée à côté d'elle. Elle se referme quand on touche ailleurs. */
 function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParams; pos: Position }) {
   const perso = useCompagnon();
@@ -541,7 +544,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   const explicationBrute =
     contenu === "mots"
       ? { id: "mots", titre: "Les mots de cette page", etapes: [defMot ? `${defMot.mot} : ${defMot.definition}` : mots.length ? "Touche un mot, je te l'explique." : "Il n'y a pas de mot compliqué sur cette page."] }
-      : contenu === "presentation" ? (sujet ? SUJETS.find((x) => x.id === sujet) ?? PRESENTATION : PRESENTATION) : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
+      : contenu === "presentation" ? (sujet ? SUJETS.find((x) => x.id === sujet) ?? PRESENTATION : PRESENTATION) : contenu === "histoire" ? HISTOIRE : contenu === "recit" ? RECIT : contenu === "regles" && reglesEnCours() ? reglesEnCours()! : contenu === "astuce" ? { id: "astuce", titre: "Une astuce", etapes: [astuces[astuce % astuces.length]] } : explicationPage;
   const [etape, setEtape] = useState(0);
   const [lecture, setLecture] = useState(false);
   const contenuRef = useRef(contenu);
@@ -574,14 +577,14 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
 
   // Plume lit si on le lui a demandé (bouton Écouter, ou « toujours avec moi »). La présentation a sa propre lecture.
   useEffect(() => {
-    if (contenu === "presentation") return;
+    if (contenu === "presentation" || EN_RECIT(contenu)) return;
     if (contenu !== "presence" && !(contenu === "mots" && motChoisi) && voix && (plumeParleSeule() || lecture)) dire(texte);
   }, [texte, contenu]);
 
   // La présentation se déroule toute seule : Plume lit chaque bulle d'une voix normale, puis passe à la suivante,
   // jusqu'à la fin du résumé (ou du sujet choisi). Ensuite seulement, on choisit.
   useEffect(() => {
-    if (contenu !== "presentation") return;
+    if (contenu !== "presentation" && !EN_RECIT(contenu)) return;
     let fini = false;
     const suivante = () => {
       if (fini) return;
@@ -608,7 +611,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   useEffect(() => {
     const dehors = (e: PointerEvent) => {
       // Pendant la présentation, toucher ailleurs ne la coupe pas.
-      if (contenuRef.current === "presentation") return;
+      if (contenuRef.current === "presentation" || EN_RECIT(contenuRef.current)) return;
       const cible = e.target as Node;
       if (ref.current?.contains(cible)) return;
       if ((cible as HTMLElement).closest?.('[aria-label^="Plume."]')) return;
@@ -691,7 +694,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
               ))}
             </p>
           ) : null}
-          <p key={`${contenu}-${etape}-${motChoisi}`} className="arrivee mt-1.5 text-[1.05rem] leading-snug">
+          <p key={`${contenu}-${etape}-${motChoisi}`} className="arrivee mt-1.5 max-h-[38vh] overflow-y-auto text-[1.05rem] leading-snug">
             {texte}
           </p>
           {contenu === "mots" && mots.length ? (
@@ -751,13 +754,24 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
                 onClick={() => (derniere ? fermer() : setEtape(etape + 1))}
                 className="inline-flex min-h-10 items-center gap-0.5 rounded-full bg-[#f3d48a] px-4 font-extrabold text-[#2a1c14]"
               >
-                {derniere ? (contenu === "presentation" || contenu === "regles" ? "C'est parti !" : "J'ai compris") : "Suivant"}
+                {derniere ? (contenu === "presentation" || contenu === "regles" ? "C'est parti !" : EN_RECIT(contenu) ? "Merci Plume !" : "J'ai compris") : "Suivant"}
                 {derniere ? null : <LuChevronRight className="size-5" />}
               </button>
             </div>
           ) : null}
         </>
       )}
+
+      {contenu !== "presence" && contenu !== "presentation" ? (
+        <div className="mt-2 flex gap-1.5">
+          <button type="button" onClick={() => ouvrirPlume(true, "histoire")} aria-pressed={contenu === "histoire"} className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-2 py-2 text-[13px] font-extrabold leading-tight ${contenu === "histoire" ? "bg-[#6a3fc0] text-white" : "bg-[#f3d48a] text-[#2a1c14]"}`}>
+            <LuScrollText className="size-4 shrink-0" aria-hidden="true" /> L'histoire de la vie
+          </button>
+          <button type="button" onClick={() => ouvrirPlume(true, "recit")} aria-pressed={contenu === "recit"} className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-2 py-2 text-[13px] font-extrabold leading-tight ${contenu === "recit" ? "bg-[#6a3fc0] text-white" : "bg-[#efe3ff] text-[#4a2a8a]"}`}>
+            <LuBookOpen className="size-4 shrink-0" aria-hidden="true" /> Le grand récit
+          </button>
+        </div>
+      ) : null}
 
       {/* Les quatre boutons ronds de Plume */}
       <div className="mt-2.5 flex justify-between border-t border-[#e3d3f5] pt-2">
