@@ -17,6 +17,7 @@ import { demarrerClavier } from "@/lib/clavier";
 import { demarrerLectureLongue } from "@/lib/lecture-longue";
 import { Accueil } from "@/pages/accueil";
 import { ArbrePage } from "@/pages/arbre";
+import { EssaiCartesPage } from "@/pages/essai-cartes";
 import { FrisePage } from "@/pages/frise";
 import { LexiquePage } from "@/pages/lexique";
 import { SourcesPage } from "@/pages/sources";
@@ -52,6 +53,7 @@ const ROUTES: [string, Page][] = [
   ["/lexique", LexiquePage],
   ["/jouer", Jouer],
   ["/cartes", Cartes],
+  ["/essai-cartes", EssaiCartesPage],
   ["/profil", Profil],
   ["/suivi", VersVoyages],
   ["/aventure", VersVoyages],

@@ -843,3 +843,58 @@ li:nth-child(3) > .choix-jeu { animation-delay: .14s; }
 .paquet-brille { position: absolute; inset: 4% 3%; border-radius: 10px; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.5) 46%, transparent 62%); background-size: 260% 100%; mix-blend-mode: overlay; animation: holo 3.4s ease-in-out infinite; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .carte-holo, .carte-arc, .carte-etincelle, .rayons-tournent, .onde, .astre, .flash-ecran, .secoue, .paquet-brille { animation: none; } .carte-etincelle { opacity: .7; transform: scale(.8); } }
 .carte-3d .face { transform-style: preserve-3d; }
+
+/* ---------- Cartes de collection (recto façon carte à collectionner, dos au choix) ---------- */
+.tcg { container-type: inline-size; aspect-ratio: 63 / 88; border-radius: 4.6cqw; color: #22180f; font-family: var(--font-sans); }
+.tcg-cadre { border-radius: 4.6cqw; background: var(--metal); box-shadow: inset 0 0 0 .5cqw rgba(255,255,255,.55), inset 0 0 0 1cqw rgba(0,0,0,.12); }
+.metal-argent { --metal: linear-gradient(135deg,#f4f6fa 0%,#b9c1cd 22%,#eef1f6 45%,#9aa3b2 70%,#e9edf3 100%); }
+.metal-acier { --metal: linear-gradient(135deg,#e6f0ff 0%,#6f9be0 25%,#d8e7ff 48%,#3d6fb6 72%,#cfe3ff 100%); }
+.metal-or { --metal: linear-gradient(135deg,#fff6cf 0%,#e3b04b 22%,#fff1b0 45%,#b07a10 70%,#ffe48a 100%); }
+.metal-amethyste { --metal: linear-gradient(135deg,#fbefff 0%,#a77be6 22%,#f0dcff 45%,#5e2fb0 70%,#e0c8ff 100%); }
+.metal-arcenciel { --metal: linear-gradient(135deg,#ffb3d9,#ffe08a,#b4f5a6,#9fd8ff,#d2b0ff,#ffb3d9); background-size: 200% 200%; }
+.metal-or-chance { --metal: linear-gradient(135deg,#fff8d6 0%,#f0c040 18%,#fff3b8 36%,#c8901a 55%,#fff0a0 75%,#d9a21b 100%); }
+.tcg-texture { border-radius: 4.6cqw; background: repeating-linear-gradient(45deg, rgba(255,255,255,.28) 0 .35cqw, transparent .35cqw 1.6cqw), repeating-linear-gradient(-45deg, rgba(255,255,255,.18) 0 .35cqw, transparent .35cqw 1.6cqw); mix-blend-mode: overlay; }
+.tcg-corps { inset: 3.4cqw; border-radius: 2.6cqw; overflow: hidden; background: radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,.75), transparent 60%), linear-gradient(180deg, var(--c1), var(--c2)); box-shadow: 0 0 0 .5cqw rgba(0,0,0,.18); padding: 2cqw 2.6cqw 1.6cqw; gap: 1.5cqw; }
+.tcg-fond-photo img { width: 100%; height: 100%; object-fit: cover; }
+.tcg-fond-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.05) 30%, rgba(0,0,0,.25)); }
+.tcg-tete { gap: 1.6cqw; }
+.tcg-type { gap: .8cqw; font-size: 3.1cqw; font-weight: 900; color: #fff; background: var(--accent); border-radius: 99px; padding: .6cqw 1.8cqw .6cqw 1.2cqw; white-space: nowrap; box-shadow: inset 0 -.4cqw 0 rgba(0,0,0,.2); }
+.tcg-type svg { width: 3.6cqw; height: 3.6cqw; }
+.tcg-nom { font-weight: 800; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.tcg-poids { gap: .4cqw; color: #b3261e; font-weight: 900; }
+.tcg-poids b { font-size: 7.4cqw; line-height: 1; } .tcg-poids small { font-size: 3.6cqw; }
+.tcg-fenetre { flex: 1 1 0; min-height: 0; border-radius: 1.4cqw; overflow: hidden; background: #fff; border: 1.3cqw solid transparent; border-image: var(--metal) 1; box-shadow: 0 1cqw 2cqw rgba(0,0,0,.25), inset 0 0 2cqw rgba(0,0,0,.25); }
+.tcg-fenetre img { width: 100%; height: 100%; object-fit: cover; }
+.tcg-fenetre-vide { background: transparent; border-color: transparent; border-image: none; box-shadow: none; }
+.tcg-badge { right: 2cqw; top: 2cqw; font-size: 3.6cqw; font-weight: 900; background: #ffd24a; color: #4a2c00; border-radius: 99px; padding: .5cqw 2.2cqw; box-shadow: 0 .6cqw 1.4cqw rgba(0,0,0,.3); }
+.tcg-ruban { font-size: 3.3cqw; font-weight: 800; text-align: center; color: #3a2a12; background: var(--metal); border-radius: 1cqw; padding: .5cqw 2cqw; box-shadow: 0 .4cqw 1cqw rgba(0,0,0,.18); }
+.tcg-raison { font-size: 3.4cqw; line-height: 1.25; font-weight: 700; color: #4a1a2e; background: linear-gradient(90deg,#ffe3f0,#fff4c4); border: .5cqw solid #ff7ab6; border-radius: 1.8cqw; padding: .8cqw 2cqw; }
+.tcg-raison b { color: #c2185b; }
+.tcg-talents { gap: 1cqw; }
+.tcg-talent { gap: 2cqw; font-size: 4cqw; line-height: 1.15; padding: .6cqw 0; border-bottom: .3cqw solid rgba(0,0,0,.12); }
+.tcg-talent b { font-weight: 900; } .tcg-detail { opacity: .75; font-size: 3.3cqw; }
+.tcg-pastille { display: grid; place-items: center; width: 6.4cqw; height: 6.4cqw; flex: none; border-radius: 50%; background: var(--accent); color: #fff; box-shadow: inset 0 -.5cqw 0 rgba(0,0,0,.25), 0 0 0 .5cqw rgba(255,255,255,.7); }
+.tcg-pastille svg { width: 3.8cqw; height: 3.8cqw; }
+.tcg-infos { gap: 1cqw; text-align: center; }
+.tcg-infos > span { display: flex; flex-direction: column; background: rgba(255,255,255,.55); border-radius: 1.4cqw; padding: .6cqw .4cqw; min-width: 0; }
+.tcg-infos em { font-style: normal; font-size: 2.7cqw; font-weight: 800; opacity: .7; display: flex; align-items: center; justify-content: center; gap: .5cqw; white-space: nowrap; }
+.tcg-infos em svg { width: 2.8cqw; height: 2.8cqw; }
+.tcg-infos b { font-size: 3.2cqw; font-weight: 900; line-height: 1.1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tcg-pied { font-size: 2.9cqw; font-weight: 800; opacity: .85; }
+.tcg-etoiles svg { width: 3.4cqw; height: 3.4cqw; color: rgba(0,0,0,.25); } .tcg-etoiles svg.plein { color: #e3a11b; fill: #ffd24a; }
+/* Carte pleine image : les textes passent sur des panneaux de verre */
+.tcg-pleine .tcg-tete, .tcg-pleine .tcg-talents, .tcg-pleine .tcg-infos > span, .tcg-pleine .tcg-pied { background: rgba(255,255,255,.78); backdrop-filter: blur(3px); border-radius: 1.8cqw; }
+.tcg-pleine .tcg-tete { padding: 1cqw 1.6cqw; } .tcg-pleine .tcg-talents { padding: .6cqw 2cqw; } .tcg-pleine .tcg-pied { padding: .6cqw 2cqw; opacity: 1; }
+/* La lumière */
+.tcg-effets { border-radius: 4.6cqw; overflow: hidden; }
+.tcg-reflet { border-radius: inherit; background: radial-gradient(circle at var(--mx, 25%) var(--my, 15%), rgba(255,255,255,.55), transparent 45%); mix-blend-mode: soft-light; }
+.tcg-holo { background: repeating-linear-gradient(115deg, #ff7aa8 0%, #ffd36b 6%, #8ff28a 12%, #6ad8ff 18%, #b88bff 24%, #ff7aa8 30%); background-size: 300% 300%; mix-blend-mode: overlay; opacity: .45; animation: tcg-holo 6s linear infinite; }
+.tcg-holo-tout { opacity: .35; mix-blend-mode: soft-light; }
+.metal-or-chance ~ .tcg-effets .tcg-holo-tout, .tcg.metal-or-chance .tcg-holo-tout { background: repeating-linear-gradient(115deg, #fff1b0 0%, #e3b04b 8%, #fff8e0 16%, #c8901a 24%, #fff1b0 32%); background-size: 300% 300%; }
+@keyframes tcg-holo { 0% { background-position: 0% 0%; } 100% { background-position: 300% 300%; } }
+.tcg-paillettes { background-image: radial-gradient(circle, #fff 0 .35cqw, transparent .7cqw), radial-gradient(circle, #fff6c0 0 .25cqw, transparent .6cqw); background-size: 6cqw 6cqw, 9cqw 9cqw; background-position: 0 0, 3cqw 4cqw; mix-blend-mode: overlay; opacity: .9; -webkit-mask: linear-gradient(115deg, transparent 20%, #000 45%, transparent 70%) 0 0 / 300% 100%; mask: linear-gradient(115deg, transparent 20%, #000 45%, transparent 70%) 0 0 / 300% 100%; animation: tcg-paillettes 4s linear infinite; }
+@keyframes tcg-paillettes { 0% { -webkit-mask-position: 100% 0; mask-position: 100% 0; } 100% { -webkit-mask-position: -200% 0; mask-position: -200% 0; } }
+.tcg-dos { container-type: inline-size; aspect-ratio: 63 / 88; border-radius: 4.6cqw; overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .tcg-holo, .tcg-paillettes { animation: none; } }
+.tcg-fond-photo img { object-fit: cover !important; object-position: 50% 60%; }
+.rang-4 .tcg-fenetre .tcg-holo { opacity: .22; } .tcg-holo-tout { opacity: .18 !important; }
