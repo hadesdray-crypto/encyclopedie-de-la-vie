@@ -7,7 +7,7 @@ import { plumeReagit } from "@/lib/plume";
 import { grammesDe } from "@/lib/poids";
 import { CarteMonde } from "@/components/carte-monde";
 import { CarteVerso } from "@/components/carte-animal";
-import { ESPECES } from "@/data/catalogue";
+import { ESPECES as TOUTES, estMammifere } from "@/data/catalogue";
 import { REGIMES, type RegimeId } from "@/data/fiches-vie";
 import { ETAPES, FRISE } from "@/data/arbre";
 import { noterReponse } from "@/lib/carnet";
@@ -28,6 +28,7 @@ import { Bataille, LePlusRapide, MemoryPlusieurs, MimeAnimal, SeptFamilles, REGL
 import { definirEcran } from "@/lib/plume";
 import { CarteChoix, Consigne, Resultat, Versus, etatDe } from "@/components/jeu-ui";
 import type { Explication } from "@/data/guide";
+const ESPECES = TOUTES.filter(estMammifere);
 
 function melanger<T>(l: T[], rnd: () => number = Math.random) {
   const c = [...l];

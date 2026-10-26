@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import photos from "@/data/photos.json";
 import { PAR_ID } from "@/data/catalogue";
+import { AUTRES } from "@/data/autres";
 
 declare const __PAQUETS__: boolean;
 
-const PRESENTS = new Set(photos as string[]);
+const PRESENTS = new Set([...(photos as string[]), ...AUTRES.map((a) => a.id)]);
 
 export function aUnePhoto(id: string) {
   return PRESENTS.has(id);

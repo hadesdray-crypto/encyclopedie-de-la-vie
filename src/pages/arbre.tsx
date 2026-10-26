@@ -26,6 +26,8 @@ export function ArbrePage({ id }: { id?: string }) {
     <main className="fade-up mx-auto max-w-xl px-4 pt-4">
       <Entete siVide="/" />
 
+      <a href={`#/evolution?ici=e:${etape.id}`} className="bouton-bois mt-3 flex items-center justify-center gap-2 rounded-2xl py-2.5 font-extrabold"><LuSearch className="size-4" aria-hidden="true" /> Voir tout l'arbre et chercher un animal</a>
+
       <ol className="mt-3 flex flex-wrap items-center gap-x-1 gap-y-1 text-xs font-extrabold" aria-label="Le chemin depuis la Terre">
         {chemin.map((pas, i) => (
           <li key={pas} className="flex items-center gap-1">

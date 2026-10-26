@@ -15,6 +15,8 @@ import { ChoixAffichage, Tuiles, useAffichage } from "@/components/tuiles";
 import { PhotoEntiere } from "@/components/photo-entiere";
 import { CarteMonde, ilesDe } from "@/components/carte-monde";
 import { voirAnimal } from "@/lib/carnet";
+import { AUTRES_PAR_ID } from "@/data/autres";
+import { CheminEvolution } from "@/components/chemin-evolution";
 import { LuBaby, LuEar, LuHeartPulse, LuHourglass, LuMapPin, LuSatellite, LuScale, LuShieldCheck, LuTreePine, LuUsers, LuUtensils } from "react-icons/lu";
 import type { IconType } from "react-icons";
 import { lireFiche } from "@/lib/recompenses";
@@ -227,7 +229,8 @@ function Fiche({ id }: { id: string }) {
     }
   }, [e]);
   if (!e) return <Inconnue />;
-  const grande = FICHE_PAR_LATIN.get(e.latin);
+  const autre = AUTRES_PAR_ID.get(e.id);
+  const grande = autre ? undefined : FICHE_PAR_LATIN.get(e.latin);
   const vie = grande ? VIE[grande.id] : undefined;
   const est = ESTIMATIONS[e.id] ?? {};
   const regimeEstime = !e.regime && !vie && est.regime ? est.regime : undefined;
@@ -264,6 +267,8 @@ function Fiche({ id }: { id: string }) {
         </a>
       ) : null}
       {grande ? <p className="mx-auto mt-3 max-w-sm text-center text-lg"><Texte>{grande.phrase}</Texte></p> : null}
+      {autre ? <p className="mx-auto mt-3 max-w-sm text-center text-lg"><Texte>{autre.phrase}</Texte></p> : null}
+      {autre?.dessin ? <p className="mt-1 text-center text-[11px] texte-doux">Dessin original fait pour l'application : ce n'est pas une photo.</p> : null}
       {CREDITS_PHOTOS[e.id] && !grande ? <p className="mt-1 text-center text-[11px] texte-doux">Photo : {credit(CREDITS_PHOTOS[e.id])}</p> : null}
       {GALERIE[e.id]?.length ? (
         <div className="mt-4 grid grid-cols-2 gap-3">
@@ -283,6 +288,17 @@ function Fiche({ id }: { id: string }) {
         </section>
       ) : null}
       <Videos id={e.id} nom={e.nom} latin={e.latin} />
+      {autre ? (
+        <section className="mt-4 space-y-3" aria-label="Ce qu'il faut savoir">
+          {autre.extras.map((x) => (
+            <div key={x.titre} className="carte-nuit rounded-3xl px-4 py-3">
+              <p className="font-display text-xl text-[#f3d48a]">{x.titre}</p>
+              <p className="mt-1 leading-relaxed"><Texte>{x.texte}</Texte></p>
+            </div>
+          ))}
+        </section>
+      ) : null}
+      <CheminEvolution id={e.id} nom={e.nom} />
       <dl className="mt-5 space-y-3">
         <Bloc mot="repartition" texte={vie?.ou ?? e.ou}>{e.pays?.length || ilesDe(e.ou).length ? <div className="mt-2"><CarteMonde pays={e.pays ?? []} ou={e.ou} /><p className="mt-1 text-xs">Pays en or, petites îles en point doré : d'après la Mammal Diversity Database.</p></div> : null}</Bloc>
         <Rubrique mot="regime">
@@ -304,7 +320,7 @@ function Fiche({ id }: { id: string }) {
           <VoyageGps id={e.id} latin={e.latin} />
         </Rubrique>
       </dl>
-      <p className="mx-auto mt-4 max-w-sm text-center text-sm texte-doux">Classement : Mammal Diversity Database. Les chiffres sont des mesures publiées. « Estimé » veut dire calculé d’après les espèces cousines, avec l’écart entre elles en pourcentage. « Mal connu » : ni mesure, ni estimation fiable.</p>
+      <p className="mx-auto mt-4 max-w-sm text-center text-sm texte-doux">{autre ? "Pas un mammifère. Les chiffres viennent de sources publiées (Vikidia, Futura, articles scientifiques) : quand on n'est pas sûr, c'est écrit « mal connu »." : "Classement : Mammal Diversity Database."} Les chiffres sont des mesures publiées. « Estimé » veut dire calculé d’après les espèces cousines, avec l’écart entre elles en pourcentage. « Mal connu » : ni mesure, ni estimation fiable.</p>
     </main>
   );
 }

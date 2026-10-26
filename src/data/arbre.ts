@@ -404,7 +404,7 @@ const E: Etape[] = [
     savoir: "preuve",
     comment:
       "On trouve des fossiles d'animaux à corps mou, comme Dickinsonia, dans des roches d'environ 560 millions d'années. On a même retrouvé dedans des traces de cholestérol, une molécule typique des animaux.",
-    suite: ["eponges", "meduses", "vers", "mollusques", "pattes", "echinodermes", "vertebres"],
+    suite: ["eponges", "meduses", "vers", "mollusques", "pattes", "tardigrades", "echinodermes", "vertebres"],
   },
   {
     id: "eponges",
@@ -467,6 +467,21 @@ const E: Etape[] = [
     savoir: "preuve",
     comment: "On trouve leurs fossiles depuis le Cambrien, comme les trilobites.",
     suite: ["insectes", "araignees", "crustaces", "mille-pattes"],
+  },
+  {
+    id: "tardigrades",
+    nom: "Tardigrades",
+    image: "m/2000001.webp",
+    poids: 1,
+    texte:
+      "Les tardigrades sont de minuscules animaux à huit pattes, qui vivent dans l'eau et dans les mousses. Ce sont des cousins des arthropodes : comme eux, ils grandissent en changeant de peau. Leur grand talent : quand l'eau disparaît, ils se mettent en vie ralentie, et se réveillent quand elle revient.",
+    anecdote: "Des tardigrades ont passé dix jours dans l'espace, en 2007, et beaucoup ont survécu.",
+    savoir: "debat",
+    comment:
+      "On compare leur ADN et leur corps avec ceux des autres animaux. Ils sont tout petits et mous : leurs fossiles sont rares. Les scientifiques ne sont pas tous d'accord sur leur place exacte à côté des arthropodes.",
+    especes: "Plus de 1 000 espèces",
+    catalogue: { vers: "/mammiferes/e-2000001", label: "Voir la fiche du tardigrade" },
+    suite: [],
   },
   {
     id: "insectes",
