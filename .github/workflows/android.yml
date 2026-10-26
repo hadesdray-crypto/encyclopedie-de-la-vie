@@ -64,7 +64,11 @@ jobs:
           $ANDROID_HOME/build-tools/$BT/zipalign -f -p 4 $APK aligne.apk
           # La clé de signature est dans les secrets GitHub (KEYSTORE_BASE64 et KEYSTORE_PASSWORD), plus dans le dépôt.
           test -n "$KEYSTORE_BASE64" && test -n "$KEYSTORE_PASSWORD" || { echo "Secrets KEYSTORE_BASE64 / KEYSTORE_PASSWORD manquants"; exit 1; }
-          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/cle.jks"
+          # Diagnostic sans rien révéler : longueurs et lecture de la clé (affichées dans les annotations de la fabrication).
+          echo "::notice::Secret clé : ${#KEYSTORE_BASE64} caractères (attendu 5752). Mot de passe : ${#KEYSTORE_PASSWORD} caractères (attendu 24)."
+          echo "$KEYSTORE_BASE64" | tr -d '[:space:]' | base64 -d > "$RUNNER_TEMP/cle.jks" || { echo "::error::La clé collée n'est pas du base64 valide"; exit 1; }
+          keytool -list -keystore "$RUNNER_TEMP/cle.jks" -storepass "$KEYSTORE_PASSWORD" > /dev/null 2>&1 || { echo "::error::La clé ne s'ouvre pas avec ce mot de passe"; exit 1; }
+          echo "::notice::La clé s'ouvre correctement."
           $ANDROID_HOME/build-tools/$BT/apksigner sign --ks "$RUNNER_TEMP/cle.jks" --ks-pass env:KEYSTORE_PASSWORD --key-pass env:KEYSTORE_PASSWORD --out encyclopedie-de-la-vie.apk aligne.apk
           rm -f "$RUNNER_TEMP/cle.jks"
           ls -la encyclopedie-de-la-vie.apk
