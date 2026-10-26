@@ -21,6 +21,6 @@ export function EssaiCartesPage({ params }: { params: URLSearchParams }) {
     { e: elephant, r: rareteDe(elephant), s: "Le plus fort", c: params.get("chance") === "1" },
   ];
   return (
-    <main className="grid grid-cols-2 gap-3 p-3">{cartes.map(({ e, r, s, c }) => <div key={e.id} className="w-full"><CarteCollection espece={e} rarete={r} special={s} chance={c} /></div>)}</main>
+    <main className={`grid ${params.get("grand") ? "grid-cols-1 px-8" : "grid-cols-2"} gap-3 p-3`}>{(params.get("grand") ? cartes.slice(3, 5) : cartes).map(({ e, r, s, c }) => <div key={e.id} className="w-full"><CarteCollection espece={e} rarete={r} special={s} chance={c} /></div>)}</main>
   );
 }

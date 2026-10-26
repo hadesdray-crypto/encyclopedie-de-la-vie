@@ -2,7 +2,7 @@
 // avec des effets brillants selon la rareté, et plusieurs dos au choix.
 // Toutes les infos viennent du catalogue : rien n'est inventé. Quand on ne sait pas : « Non connu ».
 import { useId } from "react";
-import { LuBaby, LuCircleHelp, LuHourglass, LuMapPin, LuMountain, LuShieldAlert, LuStar, LuTreeDeciduous, LuTrees, LuUtensils, LuWaves, LuWind } from "react-icons/lu";
+import { LuCircleHelp, LuMapPin, LuMountain, LuSparkles, LuStar, LuTreeDeciduous, LuTrees, LuUtensils, LuWaves, LuWind } from "react-icons/lu";
 import { FAMILLES, ESPECES, type Espece } from "@/data/catalogue";
 import { REGIMES } from "@/data/fiches-vie";
 import { ETAPES, FRISE } from "@/data/arbre";
@@ -14,30 +14,40 @@ import { niveauDe } from "@/components/carte-animal";
 const EST = estimations as Record<string, Record<string, { t: string }>>;
 const NUMERO = new Map(ESPECES.map((e, i) => [e.id, i + 1]));
 
-/** Le « type » de la carte : là où l'animal passe sa vie (donnée du catalogue). Il donne la couleur du fond. */
-const MILIEUX: Record<string, { nom: string; Icone: typeof LuMountain; c1: string; c2: string; accent: string }> = {
-  "Surtout au sol.": { nom: "Au sol", Icone: LuMountain, c1: "#f6ead0", c2: "#dcbf8f", accent: "#8a5a2b" },
-  "Surtout dans les arbres.": { nom: "Dans les arbres", Icone: LuTreeDeciduous, c1: "#e2f4d2", c2: "#a6d58f", accent: "#2f7a3a" },
-  "Surtout en vol.": { nom: "En vol", Icone: LuWind, c1: "#e3efff", c2: "#a9c6f2", accent: "#2d5fa8" },
-  "Au sol et dans les arbres.": { nom: "Sol et arbres", Icone: LuTrees, c1: "#edf3d2", c2: "#bfd897", accent: "#557a2a" },
-  "Surtout dans la mer.": { nom: "Dans la mer", Icone: LuWaves, c1: "#d6f3fa", c2: "#86c9e4", accent: "#126a8a" },
+/** Un petit motif dessiné, répété sur le fond de la carte (montagnes, feuilles, nuages, vagues, étoiles). */
+const motif = (svg: string) => `url("data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'>${svg}</svg>`)}")`;
+const MOTIFS = {
+  sol: motif("<path d='M0 48 L14 28 L22 38 L34 18 L50 48Z' fill='#fff' fill-opacity='.22'/>"),
+  arbres: motif("<g fill='#fff' fill-opacity='.22'><ellipse cx='16' cy='16' rx='10' ry='5' transform='rotate(-35 16 16)'/><ellipse cx='44' cy='42' rx='10' ry='5' transform='rotate(35 44 42)'/></g>"),
+  vol: motif("<g fill='#fff' fill-opacity='.3'><circle cx='14' cy='20' r='7'/><circle cx='24' cy='16' r='9'/><circle cx='34' cy='21' r='6'/><circle cx='44' cy='48' r='4'/><circle cx='51' cy='45' r='5'/></g>"),
+  mer: motif("<path d='M0 20 Q15 10 30 20 T60 20 M0 45 Q15 35 30 45 T60 45' fill='none' stroke='#fff' stroke-opacity='.3' stroke-width='3'/>"),
+  etoiles: motif("<g fill='#fff' fill-opacity='.3'><path d='M15 8 L17 14 L23 15 L17 17 L15 23 L13 17 L7 15 L13 14Z'/><circle cx='44' cy='42' r='2.5'/></g>"),
 };
-const SANS_MILIEU = { nom: "Non connu", Icone: LuCircleHelp, c1: "#f1ecf8", c2: "#d2c7e8", accent: "#5b4a8a" };
+
+/** Le « type » de la carte : là où l'animal passe sa vie (donnée du catalogue). Il donne la couleur et le motif du fond. */
+const MILIEUX: Record<string, { nom: string; Icone: typeof LuMountain; c1: string; c2: string; accent: string; motif: string }> = {
+  "Surtout au sol.": { nom: "Au sol", Icone: LuMountain, c1: "#fff1c4", c2: "#f0a548", accent: "#b8601a", motif: MOTIFS.sol },
+  "Surtout dans les arbres.": { nom: "Dans les arbres", Icone: LuTreeDeciduous, c1: "#e4fbc8", c2: "#5cbf55", accent: "#2b8a3e", motif: MOTIFS.arbres },
+  "Surtout en vol.": { nom: "En vol", Icone: LuWind, c1: "#e6f3ff", c2: "#79aef5", accent: "#2f63c4", motif: MOTIFS.vol },
+  "Au sol et dans les arbres.": { nom: "Sol et arbres", Icone: LuTrees, c1: "#f1fbc4", c2: "#9ccb4a", accent: "#5a8a1e", motif: MOTIFS.arbres },
+  "Surtout dans la mer.": { nom: "Dans la mer", Icone: LuWaves, c1: "#d8f7ff", c2: "#3aa6dd", accent: "#0f6aa8", motif: MOTIFS.mer },
+};
+const SANS_MILIEU = { nom: "Non connu", Icone: LuCircleHelp, c1: "#f2eaff", c2: "#a689e6", accent: "#6a48c0", motif: MOTIFS.etoiles };
 export const milieuDe = (e: Espece) => MILIEUX[e.milieu ?? ""] ?? SANS_MILIEU;
 
 /** Le cadre de chaque rareté : un métal, du plus simple au plus précieux. */
 const METAUX = ["argent", "acier", "or", "amethyste", "arcenciel"] as const;
 
 const STATUT: Record<string, { court: string; couleur: string }> = {
-  "Préoccupation mineure": { court: "Pas menacé", couleur: "#3f9a46" },
-  "Quasi menacé": { court: "Presque menacé", couleur: "#9bb52a" },
-  "Vulnérable": { court: "Vulnérable", couleur: "#e0a21b" },
-  "En danger": { court: "En danger", couleur: "#e06a1b" },
-  "En danger critique": { court: "Très en danger", couleur: "#d23a2e" },
+  "Préoccupation mineure": { court: "Pas menacé", couleur: "#2e8b3a" },
+  "Quasi menacé": { court: "Presque menacé", couleur: "#7a9a10" },
+  "Vulnérable": { court: "Vulnérable", couleur: "#c98a00" },
+  "En danger": { court: "En danger", couleur: "#d9541a" },
+  "En danger critique": { court: "Très en danger", couleur: "#c8261b" },
   "Éteint à l'état sauvage": { court: "Plus dans la nature", couleur: "#6b2a7a" },
   "Éteint": { court: "Disparu", couleur: "#333" },
-  "Données insuffisantes": { court: "Non connu", couleur: "#8a8a9a" },
-  "Non évalué": { court: "Non connu", couleur: "#8a8a9a" },
+  "Données insuffisantes": { court: "Non connu", couleur: "#77708a" },
+  "Non évalué": { court: "Non connu", couleur: "#77708a" },
 };
 
 function poids(e: Espece) {
@@ -54,8 +64,7 @@ function ouCourt(e: Espece) {
 function mangeCourt(e: Espece) {
   const r = e.regime ?? EST[e.id]?.regime?.t;
   const nom = r ? REGIMES[r as keyof typeof REGIMES]?.nom : undefined;
-  const detail = e.mange?.split(",").slice(0, 2).map((s) => s.trim()).join(", ");
-  return { nom: nom ? `${e.regime ? "" : "≈ "}${nom}` : "Non connu", detail: detail ?? "" };
+  return nom ? `${e.regime ? "" : "≈ "}${nom}` : "Non connu";
 }
 const petits = (e: Espece) => (e.portee ? e.portee.replace(/^en moyenne /, "≈ ").replace(/\.(\d)/, ",$1") : "Non connu");
 const age = (e: Espece) => (e.longevite ? e.longevite.replace(/^record connu : (environ )?/, "") : "Non connu");
@@ -63,7 +72,7 @@ const age = (e: Espece) => (e.longevite ? e.longevite.replace(/^record connu : (
 /** Pourquoi cette carte est spéciale : en une phrase courte, avec les vraies données (nombre de pays, poids, menace). */
 export function raisonSpeciale(espece: Espece, rarete: string | null, special?: string | null, chance?: boolean): string | null {
   const morceaux: string[] = [];
-  if (chance) morceaux.push("Carte chance : tirée au hasard, très rare dans un paquet");
+  if (chance) morceaux.push("Carte chance, très rare dans un paquet");
   if (special === "Le plus fort") morceaux.push("Un des 12 mammifères les plus lourds");
   if (special === "Le plus petit") morceaux.push("Un des 12 mammifères les plus légers");
   const pays = espece.pays?.length || Number(espece.ou.match(/(\d+)\s+pays/)?.[1] ?? 0);
@@ -72,75 +81,76 @@ export function raisonSpeciale(espece: Espece, rarete: string | null, special?: 
   return morceaux.length ? morceaux.join(" · ") : null;
 }
 
-/** Le recto : le nom, le poids, la photo, deux talents, trois infos, la rareté et le numéro. */
+/** Le recto : comme une carte à collectionner. Nom et poids en haut, grande photo, deux talents, trois infos, et pourquoi elle est rare. */
 export function CarteCollection({ espece, rarete, special, chance }: { espece: Espece; rarete: string | null; special?: string | null; chance?: boolean }) {
   const n = niveauDe(rarete);
   const m = milieuDe(espece);
   const p = poids(espece);
-  const mange = mangeCourt(espece);
-  const statut = STATUT[espece.statut ?? ""] ?? { court: "Non connu", couleur: "#8a8a9a" };
-  const pleine = false; // carte « pleine image » : la photo remplit toute la carte
+  const statut = STATUT[espece.statut ?? ""] ?? { court: "Non connu", couleur: "#77708a" };
   const raison = raisonSpeciale(espece, rarete, special, chance);
   const metal = chance ? "or-chance" : METAUX[n.rang];
+  const taille = espece.nom.length <= 10 ? 7 : espece.nom.length <= 14 ? 6 : espece.nom.length <= 18 ? 5.2 : 4.6;
   return (
-    <span
-      className={`tcg metal-${metal} rang-${n.rang} ${pleine ? "tcg-pleine" : ""} relative block size-full`}
-      style={{ ["--c1" as string]: m.c1, ["--c2" as string]: m.c2, ["--accent" as string]: m.accent }}
-    >
-      <span className="tcg-cadre absolute inset-0" />
-      {n.rang >= 3 || chance ? <span className="tcg-texture absolute inset-0" aria-hidden="true" /> : null}
-      <span className="tcg-corps absolute flex flex-col">
-        {pleine ? <span className="tcg-fond-photo absolute inset-0"><Portrait id={espece.id} /></span> : null}
-        <span className="tcg-tete relative flex items-center">
-          <span className="tcg-type flex items-center"><m.Icone aria-hidden="true" />{m.nom}</span>
-          <span className="tcg-nom min-w-0 flex-1 font-display" style={{ fontSize: `${espece.nom.length <= 9 ? 7.2 : espece.nom.length <= 13 ? 5.6 : espece.nom.length <= 16 ? 5.2 : espece.nom.length <= 20 ? 5 : 4.4}cqw` }}>{espece.nom}</span>
-          <span className="tcg-poids flex items-baseline">
-            <small>{p.estime ? "≈" : ""}</small>
-            <b>{p.valeur}</b>
-            <small>{p.unite}</small>
+    <span className={`cc metal-${metal} rang-${n.rang} ${chance ? "cc-chance" : ""} relative block`} style={{ ["--c1" as string]: m.c1, ["--c2" as string]: m.c2, ["--accent" as string]: m.accent, ["--motif" as string]: m.motif }}>
+      <span className="cc-cadre absolute inset-0" />
+      {n.rang >= 3 || chance ? <span className="cc-grave absolute inset-0" aria-hidden="true" /> : null}
+      <span className="cc-corps absolute flex flex-col">
+        <span className="cc-fond absolute inset-0" aria-hidden="true" />
+        {n.rang >= 2 || chance ? <span className="cc-fond-holo absolute inset-0" aria-hidden="true" /> : null}
+
+        <span className="cc-tete relative flex items-end">
+          <span className="min-w-0 flex-1">
+            <span className="cc-famille block truncate">{FAMILLES[espece.famille]?.nom ?? espece.famille}</span>
+            <span className="cc-nom block font-display" style={{ fontSize: `${taille}cqw` }}>{espece.nom}</span>
+          </span>
+          <span className="cc-poids flex items-baseline"><small>{p.estime ? "≈" : ""}</small><b>{p.valeur}</b><small>{p.unite}</small></span>
+          <span className="cc-embleme grid place-items-center" title={m.nom}><m.Icone aria-hidden="true" /></span>
+        </span>
+
+        <span className="cc-fenetre relative block">
+          <Portrait id={espece.id} couvrir />
+          <span className="cc-fenetre-lumiere absolute inset-0" aria-hidden="true" />
+          {chance ? <span className="cc-badge absolute">★ Chance !</span> : special ? <span className="cc-badge absolute">{special}</span> : null}
+          <span className="cc-type absolute flex items-center"><m.Icone aria-hidden="true" />{m.nom}</span>
+        </span>
+        <span className="cc-ruban relative block truncate"><i>{espece.latin}</i></span>
+
+        <span className="cc-talents relative flex flex-col">
+          <span className="cc-talent flex items-center">
+            <span className="cc-energie"><LuMapPin aria-hidden="true" /></span>
+            <span className="cc-talent-nom">Il vit</span>
+            <span className="cc-talent-valeur min-w-0 flex-1 truncate">{ouCourt(espece)}</span>
+          </span>
+          <span className="cc-talent flex items-center">
+            <span className="cc-energie"><LuUtensils aria-hidden="true" /></span>
+            <span className="cc-talent-nom">Il mange</span>
+            <span className="cc-talent-valeur min-w-0 flex-1 truncate">{mangeCourt(espece)}</span>
           </span>
         </span>
-        <span className={`tcg-fenetre relative block ${pleine ? "tcg-fenetre-vide" : ""}`}>
-          {pleine ? null : <Portrait id={espece.id} />}
-          {n.rang >= 2 && !pleine ? <span className="tcg-holo absolute inset-0" aria-hidden="true" /> : null}
-          {chance ? <span className="tcg-badge absolute">Chance !</span> : special ? <span className="tcg-badge absolute">{special}</span> : null}
+
+        <span className="cc-infos relative grid grid-cols-3">
+          <span><em>Menacé ?</em><b style={{ color: statut.couleur }}>{statut.court}</b></span>
+          <span><em>Petits</em><b>{petits(espece)}</b></span>
+          <span><em>Record d'âge</em><b>{age(espece)}</b></span>
         </span>
-        <span className="tcg-ruban relative block truncate">
-          {FAMILLES[espece.famille]?.nom ?? espece.famille} · <i>{espece.latin}</i>
-        </span>
-        {raison ? <span className="tcg-raison relative block"><b>✨ Pourquoi rare ?</b> {raison}</span> : null}
-        <span className="tcg-talents relative flex flex-col">
-          <span className="tcg-talent flex items-center">
-            <span className="tcg-pastille"><LuMapPin aria-hidden="true" /></span>
-            <span className="min-w-0 flex-1 truncate"><b>Il vit</b> {ouCourt(espece)}</span>
+
+        {raison ? (
+          <span className="cc-raison relative flex items-start"><LuSparkles aria-hidden="true" /><span><b>Pourquoi rare ? </b>{raison}</span></span>
+        ) : null}
+
+        <span className="cc-pied relative flex items-center">
+          <span className="cc-etoiles flex" aria-label={`${n.etoiles} étoiles`}>
+            {Array.from({ length: 5 }, (_, i) => <LuStar key={i} className={i < n.etoiles ? "plein" : ""} aria-hidden="true" />)}
           </span>
-          <span className="tcg-talent flex items-center">
-            <span className="tcg-pastille"><LuUtensils aria-hidden="true" /></span>
-            <span className="min-w-0 flex-1 truncate"><b>{mange.nom}</b>{mange.detail ? <span className="tcg-detail"> · {mange.detail}</span> : null}</span>
-          </span>
-        </span>
-        <span className="tcg-infos relative grid grid-cols-3">
-          <span><em><LuShieldAlert aria-hidden="true" /> Menacé ?</em><b style={{ color: statut.couleur }}>{statut.court}</b></span>
-          <span><em><LuBaby aria-hidden="true" /> Petits</em><b>{petits(espece)}</b></span>
-          <span><em><LuHourglass aria-hidden="true" /> Record d'âge</em><b>{age(espece)}</b></span>
-        </span>
-        <span className="tcg-pied relative flex items-center">
-          <span className="flex items-center gap-[1cqw]">
-            <span className="tcg-etoiles flex" aria-label={`${n.etoiles} étoiles`}>
-              {Array.from({ length: 5 }, (_, i) => <LuStar key={i} className={i < n.etoiles ? "plein" : ""} aria-hidden="true" />)}
-            </span>
-            <b>{chance ? "Carte chance" : n.nom}</b>
-          </span>
+          <b className="ml-[1cqw]">{chance ? "Chance" : n.nom}</b>
           <span className="ml-auto">N° {String(NUMERO.get(espece.id) ?? 0).padStart(4, "0")}/{ESPECES.length}</span>
         </span>
       </span>
-      {/* Les effets de lumière : reflet qui suit le doigt, paillettes, arc-en-ciel, étincelles */}
-      <span className="tcg-effets pointer-events-none absolute inset-0" aria-hidden="true">
-        {n.rang >= 3 || chance ? <span className="tcg-paillettes absolute inset-0" /> : null}
-        {n.rang >= 4 || chance ? <span className="tcg-holo tcg-holo-tout absolute inset-0" /> : null}
-        {pleine ? <span className="tcg-holo tcg-holo-tout absolute inset-0" /> : null}
-        <span className="tcg-reflet absolute inset-0" />
-        {n.rang >= 3 || chance ? [[10, 14, 0], [88, 22, 0.6], [16, 58, 1.2], [84, 64, 0.3], [52, 8, 0.9]].map(([x, y, d], i) => <i key={i} className="carte-etincelle" style={{ left: `${x}%`, top: `${y}%`, animationDelay: `${d}s` }} />) : null}
+      <span className="cc-effets pointer-events-none absolute inset-0" aria-hidden="true">
+        {n.rang >= 3 || chance ? <span className="cc-paillettes absolute inset-0" /> : null}
+        {n.rang >= 4 || chance ? <span className="cc-arc absolute inset-0" /> : null}
+        <span className="cc-reflet absolute inset-0" />
+        {n.rang >= 3 || chance ? [[8, 12, 0], [92, 20, 0.6], [10, 56, 1.2], [90, 52, 0.3], [50, 4, 0.9]].map(([x, y, d], i) => <i key={i} className="carte-etincelle" style={{ left: `${x}%`, top: `${y}%`, animationDelay: `${d}s` }} />) : null}
       </span>
     </span>
   );
