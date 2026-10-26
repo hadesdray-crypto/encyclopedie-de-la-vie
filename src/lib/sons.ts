@@ -134,3 +134,22 @@ export const sons = {
     [1047, 1319, 1568].forEach((f) => note(f, 0.6, 0.9, "sine", 0.08));
   },
 };
+
+// Sur le téléphone, le haut-parleur ne s'allume que si on l'a réveillé avec un vrai toucher.
+// On le réveille donc dès le premier toucher n'importe où : ensuite, Plume et les personnages bonus peuvent parler.
+if (typeof document !== "undefined") {
+  const reveiller = () => {
+    const c = contexteAudio();
+    if (!c) return;
+    try {
+      const b = c.createBuffer(1, 1, 22050);
+      const s = c.createBufferSource();
+      s.buffer = b;
+      s.connect(c.destination);
+      s.start(0);
+    } catch {
+      /* rien */
+    }
+  };
+  for (const nom of ["pointerdown", "touchend", "click"]) document.addEventListener(nom, reveiller, { passive: true });
+}

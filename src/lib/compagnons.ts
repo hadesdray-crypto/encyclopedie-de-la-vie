@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { normaliser, type Look } from "@/components/garde-robe";
 import type { Presence } from "@/lib/plume";
 import { PAGES_EXPLIQUEES } from "@/data/guide";
+import { contexteAudio } from "@/lib/sons";
 
 export const MAX_BONUS = 4;
 
@@ -191,7 +192,7 @@ export async function jouerSon(son: Blob, fin?: () => void): Promise<boolean> {
   arreterVoix();
   erreurVoix = "";
   const ctx = contexteAudio();
-  if (ctx) {
+  if (ctx && ctx.state === "running") {
     try {
       const donnees = await son.arrayBuffer();
       const tampon = await ctx.decodeAudioData(donnees.slice(0));

@@ -292,6 +292,7 @@ function Enregistreur({ cle, ancienne, onSon }: { cle: string; ancienne?: string
       {son ? (
         <>
           <button type="button" onClick={ecouter} className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-[#5fe07a]/20 px-3 text-sm font-extrabold text-[#b9ffc4]"><LuPlay className="size-4" /> Écouter</button>
+          <button type="button" onClick={() => { setSouci(""); window.setTimeout(async () => { const ok = await jouerSon(son); setSouci(ok ? "" : `${erreurVoix || "inconnue"} (essai sans toucher, comme dans l'application)`); }, 700); }} className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white/10 px-3 text-xs font-extrabold text-white/85">Test comme dans l'appli</button>
           <button type="button" aria-label="Effacer l'enregistrement" onClick={() => { garderVoix(cle, null); if (ancienne) garderVoix(ancienne, null); setSon(null); onSon?.(false); }} className="grid size-9 place-items-center rounded-full bg-white/10 text-white/80"><LuTrash2 className="size-4" /></button>
         </>
       ) : null}
