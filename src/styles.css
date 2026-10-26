@@ -804,3 +804,42 @@ li:nth-child(3) > .choix-jeu { animation-delay: .14s; }
 .lueur-ouvre { animation: lueur-ouvre 1.1s ease-out both; }
 @keyframes lueur-ouvre { from { opacity: 0; } to { opacity: .55; } }
 @media (prefers-reduced-motion: reduce) { .lueur-ouvre { animation: none; opacity: .4; } }
+
+/* ---------- La lumière sur les cartes ---------- */
+.carte-3d { transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .25s ease-out; transform-style: preserve-3d; touch-action: pan-y; filter: drop-shadow(0 14px 14px rgba(0,0,0,.45)); }
+.carte-3d .carte-plate, .carte-3d .carte-plate-interieur { transform-style: preserve-3d; }
+.carte-3d .carte-plate-photo { transform: translateZ(16px); box-shadow: 0 8px 14px rgba(0,0,0,.3); }
+.carte-3d .carte-plate-titre { transform: translateZ(12px); }
+.carte-3d .carte-plate-rang { transform: translateZ(20px); }
+.carte-3d .carte-plate-lignes { transform: translateZ(8px); }
+.carte-effets { border-radius: 7cqw; overflow: hidden; }
+.carte-gloss { background: radial-gradient(circle at var(--mx, 28%) var(--my, 18%), rgba(255,255,255,.6), transparent 46%); mix-blend-mode: soft-light; transition: background .1s; }
+.carte-holo { background: linear-gradient(115deg, transparent 18%, rgba(255,255,255,.6) 36%, rgba(255,150,230,.4) 45%, rgba(120,225,255,.4) 55%, transparent 72%); background-size: 280% 100%; mix-blend-mode: screen; animation: holo 3.2s ease-in-out infinite; }
+@keyframes holo { 0% { background-position: 130% 0; } 100% { background-position: -130% 0; } }
+.carte-arc { background: linear-gradient(135deg, rgba(255,120,180,.35), rgba(255,230,120,.35), rgba(120,255,190,.35), rgba(120,190,255,.35), rgba(190,140,255,.35), rgba(255,120,180,.35)); background-size: 300% 300%; mix-blend-mode: color-dodge; animation: arc 4s linear infinite; }
+@keyframes arc { from { background-position: 0% 50%; } to { background-position: 300% 50%; } }
+.carte-etincelle { position: absolute; width: 5cqw; height: 5cqw; margin: -2.5cqw; background: #fff; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); animation: scintille 1.8s ease-in-out infinite; filter: drop-shadow(0 0 3px #fff); }
+@keyframes scintille { 0%, 100% { transform: scale(0) rotate(0); opacity: 0; } 50% { transform: scale(1) rotate(90deg); opacity: 1; } }
+.carte-chance .carte-plate-interieur { box-shadow: 0 0 0 1.4cqw #ffd24a, 0 0 7cqw 2cqw rgba(255,210,74,.8); }
+.rang-4 .carte-plate-interieur { box-shadow: 0 0 5cqw 1cqw rgba(255,120,180,.7); }
+.rang-3 .carte-plate-interieur { box-shadow: 0 0 4cqw .6cqw rgba(160,110,255,.65); }
+
+/* Retourner la carte pour de vrai, en 3D (le .retournable existe déjà plus haut) */
+.carte-retourne { perspective: 900px; }
+
+/* ---------- Les effets spéciaux quand une carte rare apparaît ---------- */
+.rayons-tournent { background: repeating-conic-gradient(from 0deg, var(--c, #ffd24a) 0 7deg, transparent 7deg 20deg); border-radius: 999px; opacity: .55; animation: tourner 7s linear infinite; -webkit-mask-image: radial-gradient(circle, #000 25%, transparent 68%); mask-image: radial-gradient(circle, #000 25%, transparent 68%); }
+@keyframes tourner { to { transform: rotate(360deg); } }
+.onde { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px; border-radius: 50%; border: 6px solid var(--c, #ffd24a); animation: onde-sort 1s ease-out forwards; }
+@keyframes onde-sort { to { transform: scale(34); opacity: 0; border-width: 1px; } }
+.astre { position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px; background: var(--c, #fff); clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); animation: astre-vole 1.1s cubic-bezier(.2,.8,.3,1) forwards; }
+@keyframes astre-vole { from { transform: translate(0,0) scale(.3) rotate(0); opacity: 1; } to { transform: translate(var(--dx), var(--dy)) scale(1.6) rotate(240deg); opacity: 0; } }
+.flash-ecran { animation: flash-ecran .7s ease-out both; }
+@keyframes flash-ecran { 0% { opacity: 0; } 15% { opacity: .95; } 100% { opacity: 0; } }
+.secoue { animation: secoue .45s ease-in-out; }
+@keyframes secoue { 0%,100% { transform: translate(0,0); } 20% { transform: translate(-6px,3px) rotate(-1deg); } 40% { transform: translate(6px,-3px) rotate(1deg); } 60% { transform: translate(-4px,2px); } 80% { transform: translate(3px,-2px); } }
+.carte-sort { animation: carte-sort .6s cubic-bezier(.2,.9,.3,1.1) both; }
+.paquet-incline { transform: perspective(700px) rotateX(var(--px, 0deg)) rotateY(var(--py, 0deg)); transition: transform .2s ease-out; }
+.paquet-brille { position: absolute; inset: 4% 3%; border-radius: 10px; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.5) 46%, transparent 62%); background-size: 260% 100%; mix-blend-mode: overlay; animation: holo 3.4s ease-in-out infinite; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .carte-holo, .carte-arc, .carte-etincelle, .rayons-tournent, .onde, .astre, .flash-ecran, .secoue, .paquet-brille { animation: none; } .carte-etincelle { opacity: .7; transform: scale(.8); } }
+.carte-3d .face { transform-style: preserve-3d; }

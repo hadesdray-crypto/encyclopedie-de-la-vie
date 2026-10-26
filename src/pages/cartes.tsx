@@ -8,7 +8,7 @@ import { plumeReagit } from "@/lib/plume";
 import { REGLES, paquetDuJour, paquetsDisponibles, paquetsIllimites, prendrePaquetDuJour, utiliserPaquet } from "@/lib/recompenses";
 import { Entete } from "@/components/entete";
 import { Portrait } from "@/components/portrait";
-import { CarteRecto, CarteVerso, niveauDe } from "@/components/carte-animal";
+import { Carte3D, CarteRecto, CarteVerso, niveauDe } from "@/components/carte-animal";
 import { PaquetCartes } from "@/components/paquet-cartes";
 
 type Etape = "pret" | "dechire" | "revele" | "fini";
@@ -46,6 +46,7 @@ export function CartesPage() {
   const [duJour, setDuJour] = useState(paquetDuJour);
   const [taille, setTaille] = useState<number | null>(null);
   const [etaitJour, setEtaitJour] = useState(false);
+  const [rangMax, setRangMax] = useState(0);
   const [lueur, setLueur] = useState("#a77bff"); // la couleur de la meilleure carte du paquet (comme dans les jeux de foot)
   const illimite = false;
   void paquetsIllimites;
@@ -64,6 +65,7 @@ export function CartesPage() {
     setDeja(avant);
     const paquet = ouvrirPaquet(famille, avant, n);
     const meilleur = Math.max(...paquet.cartes.map((c) => (c.chance ? 2 : niveauDe(c.rarete).rang)));
+    setRangMax(meilleur);
     setLueur(["#d9a273", "#e8edf6", "#f3c35a", "#a77bff", "#ff7ab6"][meilleur] ?? "#a77bff");
     setCartes(ordre(paquet.cartes));
     setIndex(0);
@@ -80,6 +82,7 @@ export function CartesPage() {
       setFace(true);
       sons.retourner();
       voirAnimal(carte.espece.id);
+      if (carte.chance || niveauDe(carte.rarete).rang >= 2 || carte.special) plus_tard(() => sons.eclater(), 250);
       if (carte.chance) {
         plus_tard(() => sons.fanfare(), 350);
         plus_tard(() => plumeReagit("chance"), 500);
@@ -158,7 +161,10 @@ export function CartesPage() {
       ) : null}
 
       {(etape === "pret" && (duJour || reserve > 0)) || etape === "dechire" ? (
-        <div className="scene-paquet mx-auto mt-4 w-full max-w-sm px-6 pb-4 pt-8" style={{ ["--lueur" as string]: lueur }}>
+        <div className={`scene-paquet mx-auto mt-4 w-full max-w-sm px-6 pb-4 pt-8 ${etape === "dechire" && rangMax >= 3 ? "secoue" : ""}`} style={{ ["--lueur" as string]: lueur }}>
+          {etape === "dechire" ? <span className="rayons-tournent pointer-events-none absolute left-1/2 top-[40%] size-[130%] -translate-x-1/2 -translate-y-1/2" style={{ ["--c" as string]: lueur }} aria-hidden="true" /> : null}
+          {etape === "dechire" ? <span className="pointer-events-none absolute left-1/2 top-[20%]" style={{ ["--c" as string]: lueur }} aria-hidden="true"><span className="onde" /><span className="onde" style={{ animationDelay: "160ms" }} /></span> : null}
+          {etape === "dechire" && rangMax >= 3 ? <span className="flash-ecran pointer-events-none fixed inset-0 z-50 bg-white" aria-hidden="true" /> : null}
           {etape === "dechire" ? <span className="lueur-ouvre pointer-events-none absolute inset-0" style={{ background: `radial-gradient(circle at 50% 38%, ${lueur}, transparent 62%)` }} /> : null}
           <div className="relative"><PaquetCartes duJour={etape === "dechire" ? etaitJour : duJour} taille={taille} ouvert={etape === "dechire"} onDechire={ouvrir} lueur={lueur} /></div>
           <p className="relative mt-3 text-center font-display text-xl text-[#f3d48a] [text-shadow:0_2px_8px_#000]">{etape === "dechire" ? `${taille} cartes !` : "Glisse le doigt ou touche le paquet pour le déchirer !"}</p>
@@ -181,14 +187,20 @@ export function CartesPage() {
       {etape === "revele" && carte ? (
         <section className="mt-6 text-center">
           <p className="font-extrabold text-[#f0d090]">Carte {index + 1} sur {cartes.length}</p>
-          <div className="relative mx-auto mt-4 w-60" style={{ ["--lueur" as string]: lueur }}>
+          <div className={`relative mx-auto mt-4 w-60 ${face && (carte.chance || niveauDe(carte.rarete).rang >= 3) ? "secoue" : ""}`} style={{ ["--lueur" as string]: lueur }}>
             {/* la pile : les cartes qui attendent derrière, à plat */}
             {index + 2 < cartes.length ? <span className="absolute inset-0 translate-x-3 translate-y-3 rounded-[1.1rem] bg-[#e8c98a]/50" aria-hidden="true" /> : null}
             {index + 1 < cartes.length ? <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-[1.1rem] bg-[#e8c98a]/80" aria-hidden="true" /> : null}
             {face && brille ? <span className="absolute -inset-3 rounded-[1.6rem] opacity-60" style={{ background: couleurDe(carte) }} aria-hidden="true" /> : null}
-            <button key={index} type="button" onClick={toucherCarte} className="carte-sort relative block aspect-[5/7] w-full" aria-label={face ? `${carte.espece.nom} : carte suivante` : "Retourner la carte"}>
-              {face ? <span className="carte-ouvre block size-full"><CarteRecto espece={carte.espece} rarete={carte.rarete} special={carte.special} chance={carte.chance} /></span> : <CarteVerso />}
-            </button>
+            <Carte3D key={index} className="carte-sort">
+              <button type="button" onClick={toucherCarte} className={`retournable relative block aspect-[5/7] w-full ${face ? "retourne" : ""}`} aria-label={face ? `${carte.espece.nom} : carte suivante` : "Retourner la carte"}>
+                <span className="retournable-interieur block">
+                  <span className="face block"><CarteVerso /></span>
+                  <span className="face face-recto block"><CarteRecto espece={carte.espece} rarete={carte.rarete} special={carte.special} chance={carte.chance} /></span>
+                </span>
+              </button>
+            </Carte3D>
+            {face ? <EffetsSpeciaux key={`fx${index}`} carte={carte} /> : null}
           </div>
           {face && carte.chance ? <p className="titre-or mt-5 text-3xl">Wah, la chance !</p> : face ? <p className="mt-4 font-display text-2xl text-[#f3d48a]">{carte.espece.nom}</p> : null}
           {face && !deja.has(carte.espece.id) ? <p className="mt-3 inline-block rounded-full bg-[#f3d48a] px-3 py-1 text-sm font-extrabold text-[#2a1c14]">Nouvelle carte !</p> : null}
@@ -262,5 +274,32 @@ function Paquet({ ouvert = false, duJour = false, taille = null }: { ouvert?: bo
       <span className="titre-or absolute inset-x-0 bottom-[17%] text-center text-2xl">{duJour ? "Paquet du jour" : "Paquet"}</span>
       <span className="absolute inset-x-0 bottom-[8%] text-center text-sm font-extrabold text-[#f6edd8]">{taille ? `${taille} cartes` : duJour ? "5, 10 ou 15 cartes ?" : "10 cartes… ou 11 ?"}</span>
     </span>
+  );
+}
+
+const ASTRES = ["#ffd24a", "#ff7ab6", "#7fe0d2", "#a77bff", "#ffffff"];
+
+/** Les effets spéciaux d'une carte qui n'est pas ordinaire : ondes, étoiles qui jaillissent, rayons, flash. */
+function EffetsSpeciaux({ carte }: { carte: Tirage }) {
+  const rang = carte.chance ? 4 : niveauDe(carte.rarete).rang;
+  const couleur = carte.chance ? "#ffd24a" : niveauDe(carte.rarete).cadre;
+  const fort = rang >= 3;
+  const nb = carte.special && rang < 2 ? 10 : rang >= 4 ? 28 : rang === 3 ? 18 : rang === 2 ? 10 : 0;
+  const astres = useMemo(() => Array.from({ length: nb }, (_, i) => {
+    const a = (i / Math.max(nb, 1)) * Math.PI * 2 + Math.random() * 0.4;
+    const d = 110 + Math.random() * 110;
+    return { dx: Math.round(Math.cos(a) * d), dy: Math.round(Math.sin(a) * d), c: ASTRES[i % ASTRES.length], t: Math.round(Math.random() * 150) };
+  }), [nb]);
+  if (rang < 2 && !carte.special && !carte.chance) return null;
+  const ondes = rang >= 4 ? 3 : fort ? 2 : 1;
+  return (
+    <>
+      {fort ? <span className="rayons-tournent pointer-events-none absolute -inset-20 -z-10" style={{ ["--c" as string]: couleur }} aria-hidden="true" /> : null}
+      <span className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ ["--c" as string]: couleur }}>
+        {Array.from({ length: ondes }, (_, i) => <span key={i} className="onde" style={{ animationDelay: `${i * 140}ms` }} />)}
+        {astres.map((a, i) => <i key={i} className="astre" style={{ ["--dx" as string]: `${a.dx}px`, ["--dy" as string]: `${a.dy}px`, ["--c" as string]: a.c, animationDelay: `${a.t}ms` }} />)}
+      </span>
+      {rang >= 4 ? <span className="flash-ecran pointer-events-none fixed inset-0 z-50 bg-white" aria-hidden="true" /> : null}
+    </>
   );
 }

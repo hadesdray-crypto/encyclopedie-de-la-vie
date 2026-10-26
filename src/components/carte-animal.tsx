@@ -42,6 +42,8 @@ function regimeCourt(e: Espece) {
   return nom ? `${e.regime ? "" : "≈ "}${nom}` : "?";
 }
 
+const ETINCELLES: [number, number, number][] = [[12, 18, 0], [84, 26, 0.5], [22, 52, 1.1], [78, 60, 0.3], [50, 12, 0.8], [88, 82, 1.4], [14, 84, 0.9]];
+
 /** Recto d'une carte à jouer, à plat : cadre de couleur, photo, trois infos et les étoiles de rareté. */
 export function CarteRecto({ espece, rarete, special, chance }: { espece: Espece; rarete: string | null; special?: string | null; chance?: boolean }) {
   const n = niveauDe(rarete);
@@ -52,7 +54,7 @@ export function CarteRecto({ espece, rarete, special, chance }: { espece: Espece
     { Icone: mesure.regle ? LuRuler : LuScale, etiquette: mesure.etiquette, valeur: mesure.valeur },
   ];
   return (
-    <span className="carte-plate relative block size-full" style={{ ["--fond" as string]: n.fond, ["--cadre" as string]: n.cadre, ["--encre" as string]: n.encre }}>
+    <span className={`carte-plate relative block size-full rang-${n.rang} ${chance ? "carte-chance" : ""}`} style={{ ["--fond" as string]: n.fond, ["--cadre" as string]: n.cadre, ["--encre" as string]: n.encre }}>
       <span className={`carte-plate-interieur flex size-full flex-col ${chance ? "carte-plate-chance" : ""}`}>
         <span className="carte-plate-titre block truncate text-center font-display">{espece.nom}</span>
         <span className="carte-plate-photo relative block overflow-hidden">
@@ -76,6 +78,13 @@ export function CarteRecto({ espece, rarete, special, chance }: { espece: Espece
         </span>
         <span className="carte-plate-pied block truncate text-center">{FAMILLES[espece.famille]?.nom}</span>
       </span>
+      {/* La lumière : un reflet qui suit le doigt, un éclat irisé pour les cartes rares, des étincelles pour les très rares */}
+      <span className="carte-effets pointer-events-none absolute inset-0" aria-hidden="true">
+        {n.rang >= 2 || chance ? <span className="carte-holo absolute inset-0" /> : null}
+        {n.rang >= 4 || chance ? <span className="carte-arc absolute inset-0" /> : null}
+        <span className="carte-gloss absolute inset-0" />
+        {n.rang >= 3 || chance || special ? ETINCELLES.map(([x, y, d], i) => <i key={i} className="carte-etincelle" style={{ left: `${x}%`, top: `${y}%`, animationDelay: `${d}s` }} />) : null}
+      </span>
     </span>
   );
 }
@@ -89,4 +98,22 @@ export function CarteVerso() {
       </span>
     </span>
   );
+}
+
+/** Une carte qui s'incline quand on la touche : la lumière glisse dessus et elle a de la profondeur. */
+export function Carte3D({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  function bouger(e: React.PointerEvent<HTMLSpanElement>) {
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+    const el = e.currentTarget;
+    el.style.setProperty("--rx", `${(-y * 20).toFixed(1)}deg`);
+    el.style.setProperty("--ry", `${(x * 24).toFixed(1)}deg`);
+    el.style.setProperty("--mx", `${((x + 0.5) * 100).toFixed(0)}%`);
+    el.style.setProperty("--my", `${((y + 0.5) * 100).toFixed(0)}%`);
+  }
+  function lacher(e: React.PointerEvent<HTMLSpanElement>) {
+    e.currentTarget.style.setProperty("--rx", "0deg");
+    e.currentTarget.style.setProperty("--ry", "0deg");
+  }
+  return <span className={`carte-3d block ${className}`} onPointerMove={bouger} onPointerLeave={lacher} onPointerUp={lacher}>{children}</span>;
 }
