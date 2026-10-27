@@ -1,6 +1,6 @@
 // Un petit globe rond (projection orthographique), tourné vers les pays où vit l'animal, qui sont en or.
 // Il utilise la même carte du monde que le reste de l'application (monde.json).
-import { useMemo } from "react";
+import { useId, useMemo } from "react";
 import monde from "@/data/monde.json";
 
 const PAYS = (monde as { pays: Record<string, string> }).pays;
@@ -62,6 +62,7 @@ function chemin(anneaux: Anneau[], proj: ReturnType<typeof projeter>) {
 
 export function MiniGlobe({ pays, className = "" }: { pays: string[]; className?: string }) {
   const cle = pays.join(",");
+  const u = useId().replace(/:/g, "");
   const { terres, ors } = useMemo(() => {
     const [lon0, lat0] = centre(pays);
     const proj = projeter(lon0, Math.max(-50, Math.min(50, lat0)));
@@ -78,17 +79,17 @@ export function MiniGlobe({ pays, className = "" }: { pays: string[]; className?
   return (
     <svg viewBox="0 0 100 100" className={className} role="img" aria-label="Petit globe : en or, les pays où il vit">
       <defs>
-        <radialGradient id="mg-mer" cx=".38" cy=".32" r=".75"><stop offset="0" stopColor="#5fb4ff" /><stop offset=".7" stopColor="#1d5fb8" /><stop offset="1" stopColor="#0e2f6b" /></radialGradient>
-        <radialGradient id="mg-lumiere" cx=".32" cy=".26" r=".6"><stop offset="0" stopColor="#fff" stopOpacity=".55" /><stop offset="1" stopColor="#fff" stopOpacity="0" /></radialGradient>
-        <clipPath id="mg-rond"><circle cx="50" cy="50" r="46" /></clipPath>
+        <radialGradient id={`mg-mer${u}`} cx=".38" cy=".32" r=".75"><stop offset="0" stopColor="#2a3f7e" /><stop offset=".7" stopColor="#14214a" /><stop offset="1" stopColor="#0a1230" /></radialGradient>
+        <radialGradient id={`mg-lumiere${u}`} cx=".32" cy=".26" r=".6"><stop offset="0" stopColor="#fff" stopOpacity=".35" /><stop offset="1" stopColor="#fff" stopOpacity="0" /></radialGradient>
+        <clipPath id={`mg-rond${u}`}><circle cx="50" cy="50" r="46" /></clipPath>
       </defs>
-      <circle cx="50" cy="50" r="46" fill="url(#mg-mer)" />
-      <g clipPath="url(#mg-rond)">
-        <path d={terres} fill="#9fd37a" stroke="#4f8a3a" strokeWidth=".35" fillRule="evenodd" />
-        <path d={ors} fill="#ffd34a" stroke="#a8700c" strokeWidth=".6" fillRule="evenodd" />
+      <circle cx="50" cy="50" r="46" fill={`url(#mg-mer${u})`} />
+      <g clipPath={`url(#mg-rond${u})`}>
+        <path d={terres} fill="#5a6a9a" stroke="#0f1838" strokeWidth=".35" fillRule="evenodd" />
+        <path d={ors} fill="#f3c35a" stroke="#0f1838" strokeWidth=".5" fillRule="evenodd" />
       </g>
-      <circle cx="50" cy="50" r="46" fill="url(#mg-lumiere)" />
-      <circle cx="50" cy="50" r="46" fill="none" stroke="#fff" strokeWidth="3" />
+      <circle cx="50" cy="50" r="46" fill={`url(#mg-lumiere${u})`} />
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#e8c98a" strokeWidth="3" />
     </svg>
   );
 }

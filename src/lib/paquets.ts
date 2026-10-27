@@ -88,7 +88,7 @@ function construireAlbums(): Album[] {
 
 export const ALBUMS = construireAlbums();
 
-function marquer(espece: Espece, chance: boolean): Tirage {
+export function marquer(espece: Espece, chance: boolean): Tirage {
   const rarete = rareteDe(espece);
   return {
     espece,

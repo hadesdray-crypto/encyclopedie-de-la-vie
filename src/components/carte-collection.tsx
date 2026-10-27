@@ -26,11 +26,12 @@ const MOTIFS = {
 };
 
 /** Le « type » de la carte : là où l'animal passe sa vie (donnée du catalogue). Il donne la couleur et le motif du fond. */
-const MILIEUX: Record<string, { nom: string; Icone: typeof LuMountain; c1: string; c2: string; accent: string; motif: string }> = {
+const MILIEUX: Record<string, { nom: string; Icone: typeof LuMountain; c1: string; c2: string; accent: string; motif: string; aussi?: { Icone: typeof LuMountain; accent: string; nom: string } }> = {
   "Surtout au sol.": { nom: "Au sol", Icone: LuMountain, c1: "#fff1c4", c2: "#f0a548", accent: "#b8601a", motif: MOTIFS.sol },
   "Surtout dans les arbres.": { nom: "Dans les arbres", Icone: LuTreeDeciduous, c1: "#e4fbc8", c2: "#5cbf55", accent: "#2b8a3e", motif: MOTIFS.arbres },
   "Surtout en vol.": { nom: "En vol", Icone: LuWind, c1: "#e6f3ff", c2: "#79aef5", accent: "#2f63c4", motif: MOTIFS.vol },
-  "Au sol et dans les arbres.": { nom: "Sol et arbres", Icone: LuTrees, c1: "#f1fbc4", c2: "#9ccb4a", accent: "#5a8a1e", motif: MOTIFS.arbres },
+  // Deux habitats (donnée « scansorial ») : le sol en premier, les arbres en second médaillon.
+  "Au sol et dans les arbres.": { nom: "Sol et arbres", Icone: LuMountain, c1: "#f1fbc4", c2: "#9ccb4a", accent: "#b8601a", motif: MOTIFS.arbres, aussi: { Icone: LuTreeDeciduous, accent: "#2b8a3e", nom: "dans les arbres" } },
   "Surtout dans la mer.": { nom: "Dans la mer", Icone: LuWaves, c1: "#d8f7ff", c2: "#3aa6dd", accent: "#0f6aa8", motif: MOTIFS.mer },
 };
 const SANS_MILIEU = { nom: "Non connu", Icone: LuCircleHelp, c1: "#f2eaff", c2: "#a689e6", accent: "#6a48c0", motif: MOTIFS.etoiles };
@@ -99,7 +100,7 @@ export function visiteCarte(espece: Espece, rarete: string | null, special?: str
   const l: [string, string][] = [
     ["nom", `En haut, en gros : son nom, ${espece.nom}. Juste au-dessus, en petit : sa famille, ${FAMILLES[espece.famille]?.nom ?? espece.famille}.`],
     ["poids", p.valeur === "?" ? "Le nombre rouge, c'est son poids. Pour lui, on ne le connaît pas : il y a un point d'interrogation." : `Le nombre rouge, c'est le poids d'un adulte : ${p.estime ? "environ " : ""}${p.valeur} ${p.unite === "kg" ? "kilos" : p.unite === "g" ? "grammes" : p.unite}.${p.estime ? " Le signe ≈ veut dire que c'est une estimation." : ""}`],
-    ["milieu", `Le rond avec un dessin dit où il passe sa vie : ${m.nom.toLowerCase()}. La couleur de la carte change avec : orange pour le sol, vert pour les arbres, bleu ciel pour le vol, bleu pour la mer, violet quand on ne sait pas.`],
+    ["milieu", `${m.aussi ? "Les deux ronds avec un dessin disent où il passe sa vie : au sol, et aussi dans les arbres." : `Le rond avec un dessin dit où il passe sa vie : ${m.nom.toLowerCase()}.`} La couleur de la carte change avec : orange pour le sol, vert pour les arbres, bleu ciel pour le vol, bleu pour la mer, violet quand on ne sait pas.`],
     ["photo", "Au milieu, sa photo : un vrai animal, photographié dans la nature ou dans un parc."],
     ["latin", `Sur le ruban : son nom scientifique, ${espece.latin}. C'est le même dans toutes les langues du monde.`],
     ["vit", espece.pays?.length ? `Le petit globe montre en or les pays où il vit. Ici : ${ouCourt(espece)}.` : `Il vit : ${ouCourt(espece)}. On ne connaît pas encore la liste exacte de ses pays, alors le petit globe reste sans or.`],
@@ -138,7 +139,10 @@ export function CarteCollection({ espece, rarete, special, chance }: { espece: E
             <span className="cc-nom block font-display" style={{ fontSize: `${taille}cqw` }}>{espece.nom}</span>
           </span>
           <span className="cc-poids flex items-baseline" data-zone="poids"><small>{p.estime ? "≈" : ""}</small><b>{p.valeur}</b><small>{p.unite}</small></span>
-          <span className="cc-embleme grid place-items-center" data-zone="milieu" title={m.nom}><m.Icone aria-hidden="true" /></span>
+          <span className="flex items-center" data-zone="milieu">
+            <span className="cc-embleme grid place-items-center" title={m.nom}><m.Icone aria-hidden="true" /></span>
+            {m.aussi ? <span className="cc-embleme cc-embleme-aussi grid place-items-center" style={{ ["--accent" as string]: m.aussi.accent }} title={m.aussi.nom}><m.aussi.Icone aria-hidden="true" /></span> : null}
+          </span>
         </span>
 
         <span className="cc-fenetre relative block" data-zone="photo">

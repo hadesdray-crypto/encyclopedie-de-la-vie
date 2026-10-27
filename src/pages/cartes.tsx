@@ -13,6 +13,7 @@ import { Portrait } from "@/components/portrait";
 import { Carte3D, niveauDe } from "@/components/carte-animal";
 import { CarteCollection, DOS, DosCarte, LegendeCartes, visiteCarte, type Dos } from "@/components/carte-collection";
 import { PaquetCartes } from "@/components/paquet-cartes";
+import { Classeur } from "@/components/classeur";
 
 type Etape = "pret" | "dechire" | "revele" | "fini";
 
@@ -163,9 +164,11 @@ export function CartesPage() {
       </div>
       <p className="mt-1 text-center">{nombre} carte{nombre > 1 ? "s" : ""} dans ta collection.</p>
 
+      {etape === "pret" ? <div className="mt-4"><Classeur /></div> : null}
+
       {etape === "pret" ? (
         <>
-          <p className="mt-4 text-center font-display text-2xl text-[#f3d48a]">
+          <p className="mt-6 text-center font-display text-2xl text-[#f3d48a]">
             {duJour ? "🎁 Le paquet du jour t'attend !" : `${reserve} paquet${reserve > 1 ? "s" : ""} à ouvrir`}
           </p>
           {duJour ? <p className="text-center text-sm texte-doux">5, 10 ou 15 cartes : surprise ! {reserve ? `Et encore ${reserve} paquet${reserve > 1 ? "s" : ""} gagné${reserve > 1 ? "s" : ""} en explorant.` : ""}</p> : null}
