@@ -3,7 +3,7 @@ import { TempsEcran } from "@/components/temps-ecran";
 import { demarrerTempsEcran } from "@/lib/temps-ecran";
 import { StrictMode, Suspense, lazy, type ComponentType } from "react";
 import { createRoot } from "react-dom/client";
-import { Barre } from "@/components/barre";
+import { Barre, ouvertureDepuisBarre } from "@/components/barre";
 import { Cadeau } from "@/components/cadeau";
 import { MiseAJour } from "@/components/mise-a-jour";
 import { Plume } from "@/components/guide";
@@ -97,7 +97,8 @@ function App() {
   }
   return (
     <>
-      <Suspense fallback={<Chargement />}>{contenu}</Suspense>
+      <div key={chemin} className={ouvertureDepuisBarre() ? "ouverture-centre" : undefined}><Suspense fallback={<Chargement />}>{contenu}</Suspense></div>
+      {ouvertureDepuisBarre() ? <span key={`a${chemin}`} className="anneau-ouverture pointer-events-none fixed left-1/2 top-[45%] z-20" aria-hidden="true" /> : null}
       <Barre chemin={chemin} />
       <Cadeau />
       <MiseAJour />

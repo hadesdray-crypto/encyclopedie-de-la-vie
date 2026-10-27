@@ -5,15 +5,21 @@ import { defiFait } from "@/lib/defis";
 import { direBoutons } from "@/lib/reglages";
 import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
+import { sons } from "@/lib/sons";
+import { IconeAccueil, IconeArbre, IconeCarte, IconeCartes, IconeJouer, PastillePiece } from "@/components/icones-salles";
 
-type Salle = { vers: string; label: string; dit: string; icone: string; actif: (c: string) => boolean };
+/** Le moment où l'on a appuyé sur un bouton de la barre : la page suivante sortira du centre de l'écran. */
+let appui = 0;
+export const ouvertureDepuisBarre = () => Date.now() - appui < 900;
+
+type Salle = { vers: string; label: string; dit: string; Icone: () => React.ReactElement; actif: (c: string) => boolean };
 
 const SALLES: Salle[] = [
-  { vers: "/", label: "Accueil", dit: "L'accueil", icone: "theme/maison.webp", actif: (c) => c === "/" || c === "" },
-  { vers: "/arbre", label: "Arbre", dit: "L'arbre de la vie", icone: "theme/cristal.webp", actif: (c) => c.startsWith("/arbre") || c.startsWith("/frise") },
-  { vers: "/voyageurs", label: "Carte", dit: "La carte du monde des animaux", icone: "theme/terre.webp", actif: (c) => c.startsWith("/voyageurs") || c.startsWith("/aventure") || c.startsWith("/suivi") },
-  { vers: "/cartes", label: "Cartes", dit: "Mes cartes", icone: "theme/cartes.webp", actif: (c) => c.startsWith("/cartes") },
-  { vers: "/jouer", label: "Jouer", dit: "Les jeux", icone: "theme/etoile.webp", actif: (c) => c.startsWith("/jouer") },
+  { vers: "/", label: "Accueil", dit: "L'accueil", Icone: IconeAccueil, actif: (c) => c === "/" || c === "" },
+  { vers: "/arbre", label: "Arbre", dit: "L'arbre de la vie", Icone: IconeArbre, actif: (c) => c.startsWith("/arbre") || c.startsWith("/frise") },
+  { vers: "/voyageurs", label: "Carte", dit: "La carte du monde des animaux", Icone: IconeCarte, actif: (c) => c.startsWith("/voyageurs") || c.startsWith("/aventure") || c.startsWith("/suivi") },
+  { vers: "/cartes", label: "Cartes", dit: "Mes cartes", Icone: IconeCartes, actif: (c) => c.startsWith("/cartes") },
+  { vers: "/jouer", label: "Jouer", dit: "Les jeux", Icone: IconeJouer, actif: (c) => c.startsWith("/jouer") },
 ];
 
 /** Les petites pastilles : paquets à ouvrir, défi du jour qui attend. Elles se mettent à jour toutes seules. */
@@ -38,7 +44,10 @@ export function Barre({ chemin }: { chemin: string }) {
   const { paquets, defi } = usePastilles();
   const [saut, setSaut] = useState<string | null>(null);
 
+  const [enfonce, setEnfonce] = useState<string | null>(null);
   function toucher(salle: Salle) {
+    appui = Date.now();
+    sons.clic();
     setSaut(salle.vers);
     window.setTimeout(() => setSaut(null), 450);
     if (direBoutons() && voixPossible()) dire(salle.dit);
@@ -61,9 +70,7 @@ export function Barre({ chemin }: { chemin: string }) {
           const actif = salle.actif(chemin);
           const pastille =
             salle.vers === "/cartes" && paquets > 0 ? (
-              <span className="pastille-barre absolute -right-1.5 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-[#e2453c] px-1 text-[11px] font-black text-white ring-2 ring-[#2a1a0e]">
-                {paquets > 9 ? "9+" : paquets}
-              </span>
+              <span className="pastille-barre absolute -right-2 -top-2"><PastillePiece n={paquets} /></span>
             ) : salle.vers === "/jouer" && defi ? (
               <span className="pastille-barre absolute -right-1.5 -top-1 grid size-5 place-items-center rounded-full bg-[#ff9f4a] text-[#3a1300] ring-2 ring-[#2a1a0e]">
                 <LuFlame className="size-3.5" aria-hidden="true" />
@@ -80,16 +87,15 @@ export function Barre({ chemin }: { chemin: string }) {
               <a
                 href={`#${salle.vers}`}
                 onClick={() => toucher(salle)}
+                onPointerDown={() => setEnfonce(salle.vers)}
+                onPointerUp={() => setEnfonce(null)}
+                onPointerLeave={() => setEnfonce(null)}
                 aria-current={actif ? "page" : undefined}
                 aria-label={salle.label + aide}
                 className="flex flex-col items-center gap-0.5 py-1 font-display text-[12.5px] font-semibold"
               >
                 <span className={`icone-barre relative block ${actif ? "icone-active" : ""} ${saut === salle.vers ? "saut" : ""}`}>
-                  <img
-                    src={salle.icone}
-                    alt=""
-                    className={`size-10 rounded-full object-cover ${actif ? "ring-[3px] ring-[#f3d48a] shadow-[0_0_18px_5px_rgba(243,195,90,.55)]" : "opacity-80 ring-1 ring-white/20"}`}
-                  />
+                  <span className={`poussoir block size-11 ${actif ? "poussoir-actif" : ""} ${enfonce === salle.vers ? "poussoir-enfonce" : ""}`}><salle.Icone /></span>
                   {saut === salle.vers ? <span aria-hidden="true" className="etincelles-barre">{[0, 1, 2, 3, 4, 5].map((k) => <i key={k} style={{ ["--a" as string]: `${k * 60}deg` }} />)}</span> : null}
                   {pastille}
                 </span>

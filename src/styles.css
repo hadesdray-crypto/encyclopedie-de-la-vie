@@ -1016,3 +1016,13 @@ html[data-plume-zone="rarete"] .cc .cc-cadre[data-zone] { animation: none; borde
 .carte-rentre { animation: rentre-pochette .38s ease-in both; }
 @keyframes rentre-pochette { to { transform: translateY(40%) scale(.3); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .page-avant, .page-arriere, .carte-sort-pochette, .carte-rentre { animation: none; } }
+/* La barre : de vieux boutons-poussoirs (ils s'enfoncent avec un clic) */
+.poussoir { border-radius: 50%; transition: transform .08s, box-shadow .08s, filter .2s; box-shadow: 0 5px 0 #6b4508, 0 7px 10px rgba(0,0,0,.5); filter: saturate(.85) brightness(.92); }
+.poussoir-actif { filter: none; box-shadow: 0 5px 0 #6b4508, 0 7px 10px rgba(0,0,0,.5), 0 0 18px 5px rgba(243,195,90,.55); }
+.poussoir-enfonce { transform: translateY(4px); box-shadow: 0 1px 0 #6b4508, 0 2px 4px rgba(0,0,0,.5); }
+/* La page sort du centre de l'écran, dans un cercle qui grandit, avec un anneau doré */
+.ouverture-centre { animation: ouverture-centre .6s cubic-bezier(.3,.9,.3,1); }
+@keyframes ouverture-centre { from { clip-path: circle(0% at 50% 45%); opacity: .5; } to { clip-path: circle(140% at 50% 45%); opacity: 1; } }
+.anneau-ouverture { width: 10px; height: 10px; margin: -5px; border-radius: 50%; border: 4px solid #f3d48a; box-shadow: 0 0 20px 6px rgba(243,212,138,.7); animation: anneau-ouverture .65s ease-out forwards; }
+@keyframes anneau-ouverture { to { width: 220vmax; height: 220vmax; margin: -110vmax; opacity: 0; border-width: 1px; } }
+@media (prefers-reduced-motion: reduce) { .ouverture-centre, .anneau-ouverture { animation: none; } .anneau-ouverture { display: none; } }
