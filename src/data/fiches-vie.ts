@@ -63,6 +63,9 @@ export const REGIMES: Record<RegimeId, { nom: string; explique: string }> = {
   },
 };
 
+/** Le petit dessin de chaque régime (jeux, cartes). */
+export const EMOJI_REGIME: Record<string, string> = { carnivore: "🥩", piscivore: "🐟", insectivore: "🐜", invertivore: "🦑", herbivore: "🌿", folivore: "🍃", frugivore: "🍎", graminivore: "🌾", nectarivore: "🌸", omnivore: "🍽️" };
+
 /** Ordres de grandeur publiés. « On le sait mal » quand les mesures manquent. */
 export const VIE: Record<string, VieAnimal> = {
   lion: {

@@ -1,3 +1,6 @@
+import { definirEcran } from "@/lib/plume";
+import { plumeCarte } from "@/lib/plume-animal";
+import { explicationPour } from "@/data/guide";
 import { useEffect, useState } from "react";
 import { LuSearch } from "react-icons/lu";
 import { ESPECES, FAMILLES, GROUPES, PAR_ID, especesDe, famillesDe, groupeDeOrdre, ordreDe, type Espece } from "@/data/catalogue";
@@ -226,7 +229,10 @@ function Fiche({ id }: { id: string }) {
       voirAnimal(e.id);
       lireFiche(e.id);
       plumeRegarde(e);
+      // Quand on touche Plume : d'abord ce qu'il y a de spécial chez cet animal, puis comment marche la fiche.
+      definirEcran({ id: `fiche-${e.id}`, titre: e.nom, etapes: [...plumeCarte(e), ...explicationPour(`/mammiferes/e-${e.id}`, new URLSearchParams()).etapes] });
     }
+    return () => definirEcran(null);
   }, [e]);
   if (!e) return <Inconnue />;
   const autre = AUTRES_PAR_ID.get(e.id);

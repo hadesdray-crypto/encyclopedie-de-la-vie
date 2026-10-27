@@ -1,3 +1,4 @@
+import * as React from "react";
 import { LuMapPin, LuPawPrint, LuRuler, LuScale, LuStar, LuUtensils } from "react-icons/lu";
 import { AUTRES_PAR_ID } from "@/data/autres";
 import { FAMILLES, type Espece } from "@/data/catalogue";
@@ -100,9 +101,14 @@ export function CarteVerso() {
   );
 }
 
-/** Une carte qui s'incline quand on la touche : la lumière glisse dessus et elle a de la profondeur. */
-export function Carte3D({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  function bouger(e: React.PointerEvent<HTMLSpanElement>) {
+/**
+ * Une carte qui s'incline quand on la touche : la lumière glisse dessus et elle a de la profondeur.
+ * Avec « tourne » : on peut la faire tourner en glissant le doigt (on voit son dos), puis elle revient toute seule.
+ */
+export function Carte3D({ children, className = "", tourne = false }: { children: React.ReactNode; className?: string; tourne?: boolean }) {
+  const depart = React.useRef<{ x: number; spin: number } | null>(null);
+  const bouge = React.useRef(false);
+  function incliner(e: React.PointerEvent<HTMLSpanElement>) {
     const r = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
     const el = e.currentTarget;
@@ -111,9 +117,38 @@ export function Carte3D({ children, className = "" }: { children: React.ReactNod
     el.style.setProperty("--mx", `${((x + 0.5) * 100).toFixed(0)}%`);
     el.style.setProperty("--my", `${((y + 0.5) * 100).toFixed(0)}%`);
   }
-  function lacher(e: React.PointerEvent<HTMLSpanElement>) {
-    e.currentTarget.style.setProperty("--rx", "0deg");
-    e.currentTarget.style.setProperty("--ry", "0deg");
+  function bouger(e: React.PointerEvent<HTMLSpanElement>) {
+    if (tourne && depart.current) {
+      const dx = e.clientX - depart.current.x;
+      if (Math.abs(dx) > 8) bouge.current = true;
+      if (bouge.current) {
+        (e.currentTarget.firstElementChild as HTMLElement).style.transition = "none";
+        e.currentTarget.style.setProperty("--spin", `${dx * 1.1}deg`);
+        return;
+      }
+    }
+    incliner(e);
   }
-  return <span className={`carte-3d block ${className}`} onPointerMove={bouger} onPointerLeave={lacher} onPointerUp={lacher}>{children}</span>;
+  function lacher(e: React.PointerEvent<HTMLSpanElement>) {
+    const el = e.currentTarget;
+    el.style.setProperty("--rx", "0deg");
+    el.style.setProperty("--ry", "0deg");
+    if (depart.current && bouge.current) {
+      (el.firstElementChild as HTMLElement).style.transition = "transform .7s cubic-bezier(.2,1.4,.4,1)";
+      el.style.setProperty("--spin", "0deg");
+    }
+    depart.current = null;
+  }
+  return (
+    <span
+      className={`carte-3d block ${className}`}
+      onPointerDown={(e) => { if (tourne) { depart.current = { x: e.clientX, spin: 0 }; bouge.current = false; } }}
+      onPointerMove={bouger}
+      onPointerLeave={lacher}
+      onPointerUp={lacher}
+      onClickCapture={(e) => { if (bouge.current) { e.stopPropagation(); e.preventDefault(); bouge.current = false; } }}
+    >
+      <span className="carte-tourne block">{children}</span>
+    </span>
+  );
 }

@@ -1,3 +1,5 @@
+import { plumeParticularites } from "@/lib/plume-animal";
+import { EMOJI_REGIME } from "@/data/fiches-vie";
 import { useEffect, useState } from "react";
 import type { Espece } from "@/data/catalogue";
 import { lireVues } from "@/lib/carnet";
@@ -106,6 +108,24 @@ const REGLES_SOLO: Partial<Record<Jeu, Explication>> = {
   memoire: REGLES_MEMORY, bataille: REGLES_BATAILLE, rapide: REGLES_RAPIDE, mime: REGLES_MIME, familles: REGLES_FAMILLES,
 };
 
+/**
+ * Pendant un jeu, quand on touche Plume : les règles du jeu, puis (une fois qu'on a répondu, pour ne rien souffler)
+ * ce qu'il y a de spécial chez les animaux qu'on a devant soi.
+ */
+function usePlumeJeu(jeu: Jeu, especes: Espece[], repondu: boolean) {
+  const cle = especes.map((e) => e.id).join(",");
+  useEffect(() => {
+    const r = REGLES_SOLO[jeu];
+    if (!r) return;
+    const animaux = repondu
+      ? especes.flatMap((e) => plumeParticularites(e).slice(0, 2).map((t, i) => (i === 0 ? `${e.nom} : ${t}` : t)))
+      : ["Quand tu auras répondu, touche-moi : je te raconte ces animaux !"];
+    const t = window.setTimeout(() => definirEcran({ id: `${r.id}-${cle}-${repondu ? 1 : 0}`, titre: r.titre, etapes: [...animaux, ...r.etapes] }), 0);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [jeu, cle, repondu]);
+}
+
 export function JouerPage({ params }: { params: URLSearchParams }) {
   const jeu = params.get("jeu") as Jeu | null;
   const choisi = JEUX.find((j) => j.id === jeu);
@@ -152,12 +172,12 @@ function ModeJeu({ titre, jeu, children }: { titre: string; jeu: string; childre
   );
 }
 
-const EMOJI_REGIME: Record<string, string> = { carnivore: "🥩", piscivore: "🐟", insectivore: "🐜", invertivore: "🦑", herbivore: "🌿", folivore: "🍃", frugivore: "🍎", nectarivore: "🌸", omnivore: "🍽️" };
 
 function JeuRegime() {
   const [q, setQ] = useState(questionRegime);
   const [rep, setRep] = useState<RegimeId | null>(null);
   const effaces = useIndice(q.e.id, q.choix, q.bon, rep !== null);
+  usePlumeJeu("regime", [q.e], rep !== null);
   const choisir = (id: RegimeId) => { if (rep) return; setRep(id); noterReponse(id === q.bon); if (id === q.bon) sons.bonne(); else sons.mauvaise(); };
   return (
     <section className="mt-4">
@@ -324,6 +344,7 @@ function JeuPoids() {
   const [q, setQ] = useState(questionPoids);
   const [rep, setRep] = useState<string | null>(null);
   const choisir = (id: string) => { if (rep) return; setRep(id); noterReponse(id === q.bon); if (id === q.bon) sons.bonne(); else sons.mauvaise(); };
+  usePlumeJeu("poids", [q.a, q.b], rep !== null);
   const ga = grammesDe(q.a.masse) ?? 0, gb = grammesDe(q.b.masse) ?? 0;
   return (
     <section className="mt-2">
@@ -370,6 +391,7 @@ function JeuCarte() {
   const [q, setQ] = useState(questionCarte);
   const [rep, setRep] = useState<string | null>(null);
   const effaces = useIndice(q.bon.id, q.choix.map((e) => e.id), q.bon.id, rep !== null);
+  usePlumeJeu("carte", q.choix, rep !== null);
   const choisir = (id: string) => { if (rep) return; setRep(id); noterReponse(id === q.bon.id); if (id === q.bon.id) sons.bonne(); else sons.mauvaise(); };
   return (
     <section className="mt-2">
@@ -414,6 +436,7 @@ function QuestionCri() {
   const [q, setQ] = useState(() => questionCri());
   const [rep, setRep] = useState<string | null>(null);
   const effaces = useIndice(q.bon.id, q.choix.map((e) => e.id), q.bon.id, rep !== null);
+  usePlumeJeu("cri", q.choix, rep !== null);
   const choisir = (id: string) => { if (rep) return; setRep(id); noterReponse(id === q.bon.id); if (id === q.bon.id) sons.bonne(); else sons.mauvaise(); };
   return (
     <section className="mt-2">

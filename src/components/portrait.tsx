@@ -24,7 +24,7 @@ function paquet(famille: string) {
 }
 
 /** Photo de l'espèce. S'il n'y en a pas, le dessin de remplacement. */
-export function Portrait({ id, src }: { id: string; src?: string }) {
+export function Portrait({ id, src, couvrir }: { id: string; src?: string; couvrir?: boolean }) {
   const parPaquet = __PAQUETS__ && !src && PRESENTS.has(id);
   const [image, setImage] = useState<string | null>(null);
   useEffect(() => {
@@ -45,6 +45,7 @@ export function Portrait({ id, src }: { id: string; src?: string }) {
   };
   // L'animal en entier (pas un morceau coupé au milieu) : la photo tient dans le cercle,
   // et le fond est la même photo, floue, pour remplir joliment.
+  if (couvrir) return <img src={chemin} alt="" loading="lazy" decoding="async" className="block size-full object-cover" onError={secours} />;
   return (
     <span className="relative block size-full overflow-hidden">
       <img src={chemin} alt="" aria-hidden="true" loading="lazy" decoding="async" className="absolute inset-0 size-full scale-125 object-cover blur-md brightness-75" onError={secours} />

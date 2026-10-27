@@ -420,6 +420,11 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     dernierToucher.current = t;
     toucherSimple.current = window.setTimeout(() => {
       if (ouvert) return;
+      // Devant une carte : un seul toucher suffit, elle explique tout de suite la carte.
+      if (ecranEnCours()?.id.startsWith("carte-")) {
+        ouvrirPlume(true, "page");
+        return;
+      }
       setAnim("coucou");
       const perso = compagnonExprime("coucou");
       if (perso) plumeDit(perso, 2500);
@@ -574,6 +579,19 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
   const texte = explication.etapes[etape] ?? explication.etapes[0];
   const derniere = etape >= explication.etapes.length - 1;
   const voix = voixPossible();
+  // Pendant qu'elle explique, la partie de l'écran dont elle parle s'allume (par exemple une zone de la carte).
+  const zone = contenu === "page" && !perso ? explicationBrute.zones?.[etape] ?? null : contenu === "page" && perso && !textePerso ? explicationBrute.zones?.[etape] ?? null : null;
+  useEffect(() => {
+    const html = document.documentElement;
+    if (zone) {
+      html.dataset.plumeZone = zone;
+      // La zone doit rester visible au-dessus de la bulle.
+      const el = document.querySelector(`main .cc [data-zone="${zone}"]`);
+      const r = el?.getBoundingClientRect();
+      if (r && (r.top < 70 || r.bottom > window.innerHeight - 280)) window.scrollBy({ top: r.top + r.height / 2 - (window.innerHeight - 280) / 2, behavior: "smooth" });
+    } else delete html.dataset.plumeZone;
+    return () => { delete html.dataset.plumeZone; };
+  }, [zone]);
 
   // Plume lit si on le lui a demandé (bouton Écouter, ou « toujours avec moi »). La présentation a sa propre lecture.
   useEffect(() => {
@@ -635,7 +653,16 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
     [gauche ? "left" : "right"]: 10,
     bottom: `calc(env(safe-area-inset-bottom, 0px) + ${pos.bas + TAILLE + 6}px)`,
   };
-  const haut = pos.bas > window.innerHeight * 0.55;
+  // Quand elle explique une carte zone par zone, la bulle se fait petite, tout en bas, pour qu'on voie la carte.
+  const visite = contenu === "page" && !!explicationBrute.zones;
+  if (visite) {
+    delete style.left;
+    delete style.right;
+    style.left = "50%";
+    style.transform = "translateX(-50%)";
+    style.bottom = "calc(env(safe-area-inset-bottom, 0px) + 8px)";
+  }
+  const haut = !visite && pos.bas > window.innerHeight * 0.55;
   if (haut) {
     delete style.bottom;
     style.top = `calc(${window.innerHeight - pos.bas + 6}px)`;
@@ -762,7 +789,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
         </>
       )}
 
-      {contenu !== "presence" && contenu !== "presentation" ? (
+      {contenu !== "presence" && contenu !== "presentation" && !visite ? (
         <div className="mt-2 flex gap-1.5">
           <button type="button" onClick={() => ouvrirPlume(true, "histoire")} aria-pressed={contenu === "histoire"} className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-2 py-2 text-[13px] font-extrabold leading-tight ${contenu === "histoire" ? "bg-[#6a3fc0] text-white" : "bg-[#f3d48a] text-[#2a1c14]"}`}>
             <LuScrollText className="size-4 shrink-0" aria-hidden="true" /> L'histoire de la vie
@@ -774,7 +801,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
       ) : null}
 
       {/* Les quatre boutons ronds de Plume */}
-      <div className="mt-2.5 flex justify-between border-t border-[#e3d3f5] pt-2">
+      <div className={`mt-2.5 flex justify-between border-t border-[#e3d3f5] pt-2 ${visite ? "hidden" : ""}`}>
         {voix ? (
           <Rond
             icone={parle ? LuPause : LuPlay}

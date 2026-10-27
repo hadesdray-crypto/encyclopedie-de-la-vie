@@ -4,7 +4,8 @@
  */
 import { ETAPES } from "@/data/arbre";
 
-export type Explication = { id: string; titre: string; etapes: string[] };
+/** zones : pour chaque bulle, la partie de l'écran qui s'allume pendant que Plume en parle (data-zone). */
+export type Explication = { id: string; titre: string; etapes: string[]; zones?: (string | null)[] };
 
 const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) => boolean })[] = [
   {
@@ -377,7 +378,9 @@ export const HISTOIRE: Explication = {
     "Ensuite, place aux stars : les dinosaures ! Ils ont régné pendant plus de 160 millions d'années. Beaucoup avaient des plumes, même le vélociraptor, qui était à peu près de la taille d'une dinde ! Et les oiseaux d'aujourd'hui sont leurs descendants. Quand tu vois un pigeon, dis bonjour à un petit dinosaure !",
     "Pendant ce temps, de tout petits mammifères se cachaient dans l'ombre, en attendant leur tour. Quand les dinosaures ont disparu, il y a 66 millions d'années, ça a été leur moment : baleines, éléphants, chauves-souris, singes, et même l'ornithorynque, qui pond des œufs !",
     "Et tout, tout à la fin, il y a environ 300 000 ans… tadaaa ! Nous sommes arrivés. Si toute l'histoire de la Terre tenait dans une seule journée, les humains ne seraient là que depuis les 6 dernières secondes. Six secondes ! Juste le temps de dire « coucou ».",
-    "Mais bien sûr, l'histoire continue. Et maintenant, c'est nous qui l'écrivons. À toi de jouer, Leonie !",
+    "Et alors, me direz-vous, princesse, à quoi tout cela a-t-il servi ? Les bactéries, les poissons, Tiktaalik et ses flop flop, les dinosaures, l'ornithorynque… Permettez à votre humble chouette de vous donner la réponse.",
+    "Tout ça… 4 milliards et demi d'années… pour en arriver à la petite Leonie ! Hou hou. Plume s'incline très, très bas.",
+    "Bon. Les scientifiques disent que l'évolution n'a pas de but, et ils ont raison. Mais une simple chouette au service de la princesse a bien le droit d'avoir son petit avis. Et l'histoire continue : maintenant, c'est toi qui l'écris. À toi de jouer, princesse Leonie !",
   ],
 };
 
@@ -394,6 +397,9 @@ export function grandRecit(): Explication {
     const debut = i === 0 ? "Voici toute l'histoire de la vie, en suivant l'arbre. " : `${liens[i % liens.length]} `;
     return [`${debut}${e.nom}. ${quand}${e.texte}${doute}`, ...(e.anecdote ? [`Le savais-tu ? ${e.anecdote}`] : [])];
   });
-  etapes.push("Et voilà ! Mais l'histoire continue. Et maintenant, c'est nous qui l'écrivons.");
+  etapes.push(
+    "Et puis, il y a environ 300 000 ans, les humains sont arrivés. Et tout au bout de cette très longue histoire… la princesse Leonie !",
+    "Les scientifiques disent que l'évolution n'a pas de but, et ils ont raison. Mais votre humble chouette le dit avec tout son respect : tout ce chemin valait la peine, pour en arriver à la petite Leonie. Maintenant, l'histoire continue avec toi.",
+  );
   return { id: "recit", titre: "Le grand récit", etapes };
 }

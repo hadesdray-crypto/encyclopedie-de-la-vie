@@ -1,8 +1,9 @@
+import { changerInterface, useInterface, type Ouverture, type StyleBoutons } from "@/lib/interface";
 import { revivrePremiereFois } from "@/lib/plume";
 import { activerDex, useDex } from "@/lib/dex";
 import { useState, type ReactNode } from "react";
 import type { IconType } from "react-icons";
-import { LuFeather, LuMonitorSmartphone, LuMusic, LuShieldCheck, LuSparkles, LuType, LuVolume2 } from "react-icons/lu";
+import { LuFeather, LuMonitorSmartphone, LuMusic, LuShieldCheck, LuSparkles, LuType, LuLayoutDashboard, LuVolume2 } from "react-icons/lu";
 import { Entete, Titre } from "@/components/entete";
 import { PlumeDessin } from "@/components/plume-dessin";
 import { voixPossible } from "@/components/voix";
@@ -118,6 +119,10 @@ export function OptionsPage() {
         {SONS.map((r) => (
           <Ligne key={r.id} r={r} />
         ))}
+      </Groupe>
+
+      <Groupe icone={LuLayoutDashboard} titre="L'interface">
+        <ChoixInterface />
       </Groupe>
 
       <Groupe icone={LuType} titre="L'écran">
@@ -342,5 +347,28 @@ function PersonnagesBonus() {
         ) : null}
       </div>
     </div>
+  );
+}
+
+/** Changer l'interface : comment les pages s'ouvrent, le style des boutons du bas, et le bouton à mettre en avant. */
+function ChoixInterface() {
+  const i = useInterface();
+  const Choix = ({ titre, sous, options, valeur, choisir }: { titre: string; sous: string; options: { id: string; nom: string }[]; valeur: string; choisir: (id: string) => void }) => (
+    <div className="py-2.5">
+      <p className="font-extrabold leading-tight">{titre}</p>
+      <p className="text-xs leading-snug">{sous}</p>
+      <div className={`mt-2 grid gap-2 ${options.length === 2 ? "grid-cols-2" : "grid-cols-3"}`} role="group" aria-label={titre}>
+        {options.map((x) => (
+          <button key={x.id} type="button" aria-pressed={valeur === x.id} onClick={() => choisir(x.id)} className={`min-h-11 rounded-2xl px-1 text-sm font-extrabold leading-tight ${valeur === x.id ? "bouton-bois" : "bg-[#f3e2c2]"}`}>{x.nom}</button>
+        ))}
+      </div>
+    </div>
+  );
+  return (
+    <>
+      <Choix titre="Quand une page s'ouvre" sous="Après un bouton du bas : la page monte comme un volet, sort du centre, ou s'affiche tout de suite." options={[{ id: "volet", nom: "Volet du bas" }, { id: "centre", nom: "Du centre" }, { id: "aucune", nom: "Sans animation" }]} valeur={i.ouverture} choisir={(id) => changerInterface({ ouverture: id as Ouverture })} />
+      <Choix titre="Les boutons du bas" sous="De vrais boutons qui s'enfoncent, ou des médailles dessinées." options={[{ id: "3d", nom: "Boutons 3D" }, { id: "medailles", nom: "Médailles" }]} valeur={i.boutons} choisir={(id) => changerInterface({ boutons: id as StyleBoutons })} />
+      <Choix titre="Mettre un bouton en avant" sous="Le bouton choisi est plus gros que les autres." options={[{ id: "", nom: "Aucun" }, { id: "/", nom: "Accueil" }, { id: "/arbre", nom: "Arbre" }, { id: "/voyageurs", nom: "Carte" }, { id: "/cartes", nom: "Cartes" }, { id: "/jouer", nom: "Jouer" }]} valeur={i.vedette ?? ""} choisir={(id) => changerInterface({ vedette: id || null })} />
+    </>
   );
 }
