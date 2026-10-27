@@ -131,6 +131,8 @@ export function OptionsPage() {
         ))}
       </Groupe>
 
+      <a href="#/idees" className="bouton-bois mt-6 flex items-center justify-center gap-2 rounded-2xl py-3.5 font-display text-xl">💡 La boîte à idées</a>
+
       <h2 className="mt-7 flex items-center justify-center gap-2 font-display text-2xl text-[#f3d48a]">
         <LuMonitorSmartphone className="size-6" aria-hidden="true" />
         L'application

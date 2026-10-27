@@ -20,6 +20,7 @@ import { Accueil } from "@/pages/accueil";
 import { ArbrePage } from "@/pages/arbre";
 import { EssaiCartesPage } from "@/pages/essai-cartes";
 import { EssaiBarrePage } from "@/pages/essai-barre";
+import { IdeesPage } from "@/pages/idees";
 import { FrisePage } from "@/pages/frise";
 import { LexiquePage } from "@/pages/lexique";
 import { SourcesPage } from "@/pages/sources";
@@ -61,6 +62,7 @@ const ROUTES: [string, Page][] = [
   ["/suivi", VersVoyages],
   ["/aventure", VersVoyages],
   ["/options", Options],
+  ["/idees", IdeesPage],
   ["/atelier", Atelier],
   ["/chercher", Chercher],
   ["/compagnons", Compagnons],

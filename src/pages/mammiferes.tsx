@@ -1,3 +1,6 @@
+import { MiniGlobe } from "@/components/mini-globe";
+import { habitatsDe, statutDe } from "@/data/pictos";
+import { EMOJI_REGIME } from "@/data/fiches-vie";
 import { definirEcran } from "@/lib/plume";
 import { plumeCarte } from "@/lib/plume-animal";
 import { explicationPour } from "@/data/guide";
@@ -20,7 +23,7 @@ import { CarteMonde, ilesDe } from "@/components/carte-monde";
 import { voirAnimal } from "@/lib/carnet";
 import { AUTRES_PAR_ID } from "@/data/autres";
 import { CheminEvolution } from "@/components/chemin-evolution";
-import { LuBaby, LuEar, LuHeartPulse, LuHourglass, LuMapPin, LuSatellite, LuScale, LuShieldCheck, LuTreePine, LuUsers, LuUtensils } from "react-icons/lu";
+import { LuBaby, LuCalendarHeart, LuShield, LuEar, LuHeartPulse, LuHourglass, LuMapPin, LuSatellite, LuScale, LuShieldCheck, LuTreePine, LuUsers, LuUtensils } from "react-icons/lu";
 import type { IconType } from "react-icons";
 import { lireFiche } from "@/lib/recompenses";
 import { plumeRegarde } from "@/lib/caractere";
@@ -239,6 +242,7 @@ function Fiche({ id }: { id: string }) {
   const grande = autre ? undefined : FICHE_PAR_LATIN.get(e.latin);
   const vie = grande ? VIE[grande.id] : undefined;
   const est = ESTIMATIONS[e.id] ?? {};
+  const habitats = habitatsDe(e);
   const regimeEstime = !e.regime && !vie && est.regime ? est.regime : undefined;
   const regime = e.regime ? REGIMES[e.regime as keyof typeof REGIMES] : vie ? REGIMES[vie.regime] : regimeEstime ? REGIMES[regimeEstime.t as keyof typeof REGIMES] : undefined;
   /** La mesure publiée ; sinon l'estimation (marquée) ; sinon « Mal connu ». */
@@ -306,19 +310,33 @@ function Fiche({ id }: { id: string }) {
       ) : null}
       <CheminEvolution id={e.id} nom={e.nom} />
       <dl className="mt-5 space-y-3">
-        <Bloc mot="repartition" texte={vie?.ou ?? e.ou}>{e.pays?.length || ilesDe(e.ou).length ? <div className="mt-2"><CarteMonde pays={e.pays ?? []} ou={e.ou} /><p className="mt-1 text-xs">Pays en or, petites îles en point doré : d'après la Mammal Diversity Database.</p></div> : null}</Bloc>
-        <Rubrique mot="regime">
+        <Rubrique mot="repartition" picto={<MiniGlobe pays={e.pays ?? []} className="size-11" />}><Texte>{vie?.ou ?? e.ou}</Texte>{e.pays?.length || ilesDe(e.ou).length ? <div className="mt-2"><CarteMonde pays={e.pays ?? []} ou={e.ou} /><p className="mt-1 text-xs">Pays en or, petites îles en point doré : d'après la Mammal Diversity Database.</p></div> : null}</Rubrique>
+        <Rubrique mot="regime" picto={regime ? <span className="grid size-11 place-items-center rounded-full bg-white text-2xl shadow-[0_0_0_3px_#b5562a]">{EMOJI_REGIME[e.regime ?? vie?.regime ?? regimeEstime?.t ?? ""] ?? "🍽️"}</span> : undefined}>
           <div className="font-display text-2xl">{regime ? (regimeEstime ? `Sans doute ${regime.nom.toLowerCase()}` : regime.nom) : "Mal connu."}</div>
           {regimeEstime ? <NoteEstimation est={regimeEstime} /> : null}
           {regime ? <div className="mt-1"><Texte>{regime.explique}</Texte></div> : null}
           {vie?.mange ?? e.mange ? <div className="mt-2"><Mot id="alimentation" /> : <Texte>{(vie?.mange ?? e.mange)!}</Texte></div> : null}
         </Rubrique>
-        <BlocValeur mot="milieu" v={valeur("milieu", e.milieu)} />
+        {e.milieu ? (
+          <Rubrique mot="milieu" picto={<span className="grid size-11 place-items-center rounded-full text-white shadow-[0_0_0_3px_#fff]" style={{ background: habitats.principal.accent }}><habitats.principal.Icone className="size-6" /></span>}>
+            <div className="flex flex-wrap gap-2">
+              {[habitats.principal, ...habitats.autres].map((h, i) => (
+                <span key={h.id} className="inline-flex items-center gap-1.5 rounded-full py-1 pl-1 pr-3 font-extrabold" style={{ background: `linear-gradient(90deg, ${h.c2}, ${h.c1})` }}>
+                  <span className="grid size-7 place-items-center rounded-full text-white" style={{ background: h.accent }}><h.Icone className="size-4" /></span>
+                  {i === 0 ? `Surtout : ${h.nom.toLowerCase()}` : `Aussi : ${h.nom.toLowerCase()}`}
+                </span>
+              ))}
+            </div>
+            <p className="mt-1 text-xs">D'après COMBINE{habitats.autres.length ? " et PHYLACINE" : ""}.</p>
+          </Rubrique>
+        ) : <BlocValeur mot="milieu" v={valeur("milieu", e.milieu)} />}
         <BlocValeur mot="portee" v={valeur("portee", vie?.bebes ?? e.portee)} />
         <BlocValeur mot="gestation" v={valeur("gestation", vie?.gestation ?? e.gestation)} />
         {grande ? (<><Bloc mot="male" texte={grande.male} /><Bloc mot="femelle" texte={grande.femelle} /><Bloc mot="dimorphisme" texte={grande.difference} /></>) : <BlocValeur mot="masse" v={valeur("masse", e.masse)}>{comparerPoids(e.masse ?? est.masse?.t) ? <p className="mt-1 text-sm font-extrabold text-[#8d4e1f]">{comparerPoids(e.masse ?? est.masse?.t)}</p> : null}</BlocValeur>}
         <BlocValeur mot="longevite" v={valeur("longevite", grande?.vie ?? e.longevite)} />
-        <Bloc mot="statut" texte={e.statut ?? "Non évalué."} />
+        <Rubrique mot="statut" picto={<span className="grid size-11 place-items-center rounded-full text-white" style={{ background: statutDe(e.statut).couleur }}><LuShield className="size-6" /></span>}>
+          <span className="font-extrabold" style={{ color: statutDe(e.statut).couleur }}>{statutDe(e.statut).court}</span> <span className="text-sm">({e.statut ?? "Non évalué"})</span>
+        </Rubrique>
         <Rubrique mot="cri">
           {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.webm`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p>{VERIFIES.has(e.id) ? <p className="mt-1 text-xs font-extrabold">Cri vérifié : enregistrement d'archive scientifique.</p> : <p className="mt-1 text-xs font-extrabold text-[#8d4e1f]">Pas encore vérifié : on entend peut-être d'autres animaux derrière.</p>}</>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
         </Rubrique>
@@ -336,19 +354,20 @@ const PICTOS: Record<string, { icone: IconType; couleur: string }> = {
   repartition: { icone: LuMapPin, couleur: "#2f7d6d" },
   regime: { icone: LuUtensils, couleur: "#b5562a" },
   milieu: { icone: LuTreePine, couleur: "#3f7f2f" },
-  portee: { icone: LuBaby, couleur: "#c2457a" },
-  gestation: { icone: LuHourglass, couleur: "#7a4fd0" },
-  masse: { icone: LuScale, couleur: "#8d4e1f" },
+  portee: { icone: LuBaby, couleur: "#8a5a10" },
+  gestation: { icone: LuCalendarHeart, couleur: "#7a4fd0" },
+  masse: { icone: LuScale, couleur: "#c0161b" },
   male: { icone: LuScale, couleur: "#2f5fa8" },
   femelle: { icone: LuScale, couleur: "#c2457a" },
   dimorphisme: { icone: LuUsers, couleur: "#7a4fd0" },
-  longevite: { icone: LuHeartPulse, couleur: "#c23a3a" },
+  longevite: { icone: LuHourglass, couleur: "#8a5a10" },
   statut: { icone: LuShieldCheck, couleur: "#2f7d6d" },
   cri: { icone: LuEar, couleur: "#b5562a" },
   gps: { icone: LuSatellite, couleur: "#2f5fa8" },
 };
 
-function Picto({ mot }: { mot: string }) {
+function Picto({ mot, special }: { mot: string; special?: React.ReactNode }) {
+  if (special) return <span className="grid size-11 shrink-0 place-items-center" aria-hidden="true">{special}</span>;
   const p = PICTOS[mot];
   if (!p) return null;
   const Icone = p.icone;
@@ -360,10 +379,10 @@ function Picto({ mot }: { mot: string }) {
 }
 
 /** Une rubrique de fiche : le pictogramme à gauche, le vrai mot, puis le texte. */
-function Rubrique({ mot, titre, children }: { mot: string; titre?: React.ReactNode; children: React.ReactNode }) {
+function Rubrique({ mot, titre, picto, children }: { mot: string; titre?: React.ReactNode; picto?: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className="flex gap-3 rounded-3xl bg-card px-3 py-3">
-      <Picto mot={mot} />
+      <Picto mot={mot} special={picto} />
       <div className="min-w-0 flex-1">
         <dt className="text-sm">{titre ?? <Mot id={mot} />}</dt>
         <dd className="mt-0.5 leading-relaxed">{children}</dd>

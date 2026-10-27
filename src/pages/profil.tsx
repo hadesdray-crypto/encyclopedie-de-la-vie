@@ -1,3 +1,4 @@
+import { adresseConcepteur, choisirAdresseConcepteur, choisirPhotoFin, effacerPhotoFin, photoFin } from "@/lib/famille";
 import { effacerSignalements, photosSignalees } from "@/components/photo-entiere";
 import { LIMITES, choisirLimiteEcran, limiteEcran, useTempsEcran } from "@/lib/temps-ecran";
 import { useState } from "react";
@@ -90,6 +91,8 @@ export function CoinParents() {
         <div className="mt-2 text-sm">
           <p className="mb-3 font-extrabold">Les paquets de cartes : un paquet de 5, 10 ou 15 cartes chaque jour, et d'autres à gagner en lisant des fiches et en jouant.</p>
           <TempsParJour />
+          <PhotoDeFin />
+          <AdresseConcepteur />
           <PhotosSignalees />
           <p>Certaines options ont besoin d'une connexion : les trajets GPS (Movebank), les vidéos des animaux et des frères Kratt. Elles sont éteintes. Rien ne se télécharge tout seul.</p>
           {permis ? (
@@ -104,6 +107,39 @@ export function CoinParents() {
         </div>
       ) : null}
     </section>
+  );
+}
+
+/** La photo de la fin de l'histoire de la vie : « tout ça pour en arriver à la petite Leonie ». Elle reste sur ce téléphone. */
+function PhotoDeFin() {
+  const [photo, setPhoto] = useState(photoFin);
+  const [erreur, setErreur] = useState("");
+  return (
+    <div className="mb-4">
+      <p className="font-extrabold">Photo de la fin de l'histoire</p>
+      <p className="text-xs opacity-80">À la fin de l'histoire de la vie, Plume montre cette photo. Elle reste seulement sur ce téléphone.</p>
+      <div className="mt-1.5 flex items-center gap-3">
+        {photo ? <img src={photo} alt="Photo de la fin de l'histoire" className="size-16 rounded-2xl object-cover" /> : <span className="grid size-16 place-items-center rounded-2xl bg-white/60 text-xs">Aucune</span>}
+        <label className="bouton-bois cursor-pointer rounded-full px-3 py-1.5 text-sm font-extrabold">
+          {photo ? "Changer" : "Choisir une photo"}
+          <input type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) choisirPhotoFin(f).then((d) => { setPhoto(d); setErreur(""); }).catch(() => setErreur("Cette photo n'a pas pu être gardée.")); }} />
+        </label>
+        {photo ? <button type="button" onClick={() => { effacerPhotoFin(); setPhoto(null); }} className="text-sm font-extrabold underline">Enlever</button> : null}
+      </div>
+      {erreur ? <p className="mt-1 text-xs font-extrabold text-[#b0124f]">{erreur}</p> : null}
+    </div>
+  );
+}
+
+/** L'adresse e-mail du Concepteur : la boîte à idées l'utilise pour lui envoyer les idées qui ont 100 votes. */
+function AdresseConcepteur() {
+  const [a, setA] = useState(adresseConcepteur);
+  return (
+    <div className="mb-4">
+      <p className="font-extrabold">Adresse du Concepteur (boîte à idées)</p>
+      <p className="text-xs opacity-80">Une idée qui a 100 votes peut lui être envoyée. L'adresse reste seulement sur ce téléphone.</p>
+      <input type="email" value={a} onChange={(e) => { setA(e.target.value); choisirAdresseConcepteur(e.target.value); }} placeholder="adresse@exemple.fr" className="mt-1.5 w-full rounded-xl border border-[#a07a45] bg-white px-3 py-2" />
+    </div>
   );
 }
 

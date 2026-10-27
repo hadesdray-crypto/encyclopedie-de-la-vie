@@ -1,3 +1,4 @@
+import { photoFin } from "@/lib/famille";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as PE } from "react";
 import { LuBookOpen, LuChevronLeft, LuChevronRight, LuCircleHelp, LuLightbulb, LuPause, LuPlay, LuScrollText, LuSettings, LuX } from "react-icons/lu";
 import { ASTUCES, HISTOIRE, PRESENTATION, SUJETS, explicationPour, grandRecit } from "@/data/guide";
@@ -721,6 +722,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
               ))}
             </p>
           ) : null}
+          {explicationBrute.photos?.[etape] === "photo-fin" && photoFin() ? <img src={photoFin()!} alt="La princesse Leonie" className="arrivee mx-auto mt-2 max-h-48 rounded-2xl object-cover shadow-[0_0_0_3px_#e3b04b,0_8px_18px_rgba(0,0,0,.35)]" /> : null}
           <p key={`${contenu}-${etape}-${motChoisi}`} className="arrivee mt-1.5 max-h-[38vh] overflow-y-auto text-[1.05rem] leading-snug">
             {texte}
           </p>
