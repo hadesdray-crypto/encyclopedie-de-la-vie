@@ -7,6 +7,26 @@ import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
 import { sons } from "@/lib/sons";
 import { IconeAccueil, IconeArbre, IconeCarte, IconeCartes, IconeJouer, PastillePiece } from "@/components/icones-salles";
+import { LuBookOpen, LuDices, LuGlobe, LuHouse } from "react-icons/lu";
+import { useInterface } from "@/lib/interface";
+
+/** Le petit arbre de la vie en rond, en traits blancs (pour le bouton 3D de l'Arbre). */
+function GlypheArbre(props: { className?: string }) {
+  const branches = Array.from({ length: 9 }, (_, i) => (i / 9) * Math.PI * 2 - Math.PI / 2);
+  return (
+    <svg viewBox="0 0 24 24" className={props.className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+      {branches.map((a, i) => <path key={i} d={`M12 12 L${12 + Math.cos(a) * (i % 2 ? 6 : 9)} ${12 + Math.sin(a) * (i % 2 ? 6 : 9)}`} />)}
+      <circle cx="12" cy="12" r="2.2" fill="currentColor" />
+    </svg>
+  );
+}
+const GLYPHES: Record<string, { Glyphe: (p: { className?: string }) => React.ReactElement; couleur: string }> = {
+  "/": { Glyphe: LuHouse, couleur: "#ff6fa8" },
+  "/arbre": { Glyphe: GlypheArbre, couleur: "#3fae5a" },
+  "/voyageurs": { Glyphe: LuGlobe, couleur: "#3a8fe0" },
+  "/cartes": { Glyphe: LuBookOpen, couleur: "#8a5ad8" },
+  "/jouer": { Glyphe: LuDices, couleur: "#ff9a3a" },
+};
 
 /** Le moment où l'on a appuyé sur un bouton de la barre : la page suivante sortira du centre de l'écran. */
 let appui = 0;
@@ -45,6 +65,7 @@ export function Barre({ chemin }: { chemin: string }) {
   const [saut, setSaut] = useState<string | null>(null);
 
   const [enfonce, setEnfonce] = useState<string | null>(null);
+  const reglage = useInterface();
   function toucher(salle: Salle) {
     appui = Date.now();
     sons.clic();
@@ -95,7 +116,13 @@ export function Barre({ chemin }: { chemin: string }) {
                 className="flex flex-col items-center gap-0.5 py-1 font-display text-[12.5px] font-semibold"
               >
                 <span className={`icone-barre relative block ${actif ? "icone-active" : ""} ${saut === salle.vers ? "saut" : ""}`}>
-                  <span className={`poussoir block size-11 ${actif ? "poussoir-actif" : ""} ${enfonce === salle.vers ? "poussoir-enfonce" : ""}`}><salle.Icone /></span>
+                  {reglage.boutons === "3d" ? (
+                    <span className={`bouton3d ${reglage.vedette === salle.vers ? "bouton3d-vedette" : ""} ${actif ? "bouton3d-actif" : ""} ${enfonce === salle.vers ? "bouton3d-enfonce" : ""}`} style={{ ["--couleur" as string]: GLYPHES[salle.vers].couleur }}>
+                      <span className="bouton3d-chapeau grid place-items-center">{(() => { const G = GLYPHES[salle.vers].Glyphe; return <G className="bouton3d-glyphe" />; })()}</span>
+                    </span>
+                  ) : (
+                    <span className={`poussoir block size-11 ${reglage.vedette === salle.vers ? "bouton3d-vedette" : ""} ${actif ? "poussoir-actif" : ""} ${enfonce === salle.vers ? "poussoir-enfonce" : ""}`}><salle.Icone /></span>
+                  )}
                   {saut === salle.vers ? <span aria-hidden="true" className="etincelles-barre">{[0, 1, 2, 3, 4, 5].map((k) => <i key={k} style={{ ["--a" as string]: `${k * 60}deg` }} />)}</span> : null}
                   {pastille}
                 </span>

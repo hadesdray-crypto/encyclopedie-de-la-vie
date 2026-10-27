@@ -4,6 +4,7 @@ import { demarrerTempsEcran } from "@/lib/temps-ecran";
 import { StrictMode, Suspense, lazy, type ComponentType } from "react";
 import { createRoot } from "react-dom/client";
 import { Barre, ouvertureDepuisBarre } from "@/components/barre";
+import { lireInterface } from "@/lib/interface";
 import { Cadeau } from "@/components/cadeau";
 import { MiseAJour } from "@/components/mise-a-jour";
 import { Plume } from "@/components/guide";
@@ -97,8 +98,8 @@ function App() {
   }
   return (
     <>
-      <div key={chemin} className={ouvertureDepuisBarre() ? "ouverture-centre" : undefined}><Suspense fallback={<Chargement />}>{contenu}</Suspense></div>
-      {ouvertureDepuisBarre() ? <span key={`a${chemin}`} className="anneau-ouverture pointer-events-none fixed left-1/2 top-[45%] z-20" aria-hidden="true" /> : null}
+      <div key={chemin} className={ouvertureDepuisBarre() && lireInterface().ouverture !== "aucune" ? `ouverture-${lireInterface().ouverture}` : undefined}><Suspense fallback={<Chargement />}>{contenu}</Suspense></div>
+      {ouvertureDepuisBarre() && lireInterface().ouverture === "centre" ? <span key={`a${chemin}`} className="anneau-ouverture pointer-events-none fixed left-1/2 top-[45%] z-20" aria-hidden="true" /> : null}
       <Barre chemin={chemin} />
       <Cadeau />
       <MiseAJour />
