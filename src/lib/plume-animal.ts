@@ -4,24 +4,7 @@
 import type { Espece } from "@/data/catalogue";
 import { REGIMES } from "@/data/fiches-vie";
 import { rareteDe } from "@/lib/paquets";
-
-const MILIEU: Record<string, string> = {
-  "Surtout au sol.": "Il passe sa vie surtout au sol.",
-  "Surtout dans les arbres.": "Il passe sa vie surtout dans les arbres : un vrai grimpeur !",
-  "Surtout en vol.": "Il passe une grande partie de sa vie à voler : c'est une chauve-souris !",
-  "Au sol et dans les arbres.": "Il vit à la fois au sol et dans les arbres.",
-  "Surtout dans la mer.": "Il passe sa vie surtout dans la mer.",
-};
-
-const STATUT: Record<string, string> = {
-  "Préoccupation mineure": "Bonne nouvelle : pour l'instant, il n'est pas menacé.",
-  "Quasi menacé": "Il est presque menacé : les scientifiques le surveillent.",
-  "Vulnérable": "Il est vulnérable : il y en a de moins en moins, il faut le protéger.",
-  "En danger": "Attention : il est en danger. Il en reste peu dans la nature.",
-  "En danger critique": "Il est très en danger : il pourrait disparaître si on ne le protège pas.",
-  "Éteint à l'état sauvage": "Il n'en reste plus dans la nature : seulement dans des parcs et des zoos.",
-  "Éteint": "Il a disparu : il n'en existe plus aujourd'hui.",
-};
+import { STATUTS, habitatsDe } from "@/data/pictos";
 
 function nbPays(e: Espece) {
   return e.pays?.length || Number(e.ou.match(/(\d+)\s+pays/)?.[1] ?? 0);
@@ -50,7 +33,8 @@ export function plumeParticularites(e: Espece): string[] {
   const l: string[] = [];
   if (e.disparue) l.push(`${e.nom} a disparu : on le connaît grâce aux scientifiques qui l'ont décrit.`);
   if (e.domestique) l.push("C'est un animal domestique : il vit avec les humains.");
-  if (e.milieu && MILIEU[e.milieu]) l.push(MILIEU[e.milieu]);
+  const h = habitatsDe(e);
+  if (h.principal.id !== "inconnu") l.push(`Il vit surtout ${h.principal.phrase}${h.autres.length ? `, et aussi ${h.autres.map((x) => x.phrase).join(" et ")}` : ""}.${h.principal.id === "vol" ? " C'est une chauve-souris !" : ""}`);
   const regime = e.regime ? REGIMES[e.regime as keyof typeof REGIMES] : undefined;
   if (regime) l.push(`C'est un ${regime.nom.toLowerCase()} : ${regime.explique.charAt(0).toLowerCase()}${regime.explique.slice(1)}`);
   if (e.masse) l.push(`Un adulte pèse ${e.masse}.`);
@@ -60,7 +44,7 @@ export function plumeParticularites(e: Espece): string[] {
   }
   if (e.gestation) l.push(`Le bébé grandit dans le ventre de sa maman pendant ${e.gestation}.`);
   if (e.longevite) l.push(`Le record d'âge connu : ${e.longevite.replace(/^record connu : /, "")}.`);
-  if (e.statut && STATUT[e.statut]) l.push(STATUT[e.statut]);
+  if (STATUTS[e.statut ?? ""]?.phrase) l.push(STATUTS[e.statut!].phrase);
   return l;
 }
 

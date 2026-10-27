@@ -6,6 +6,7 @@ import { LuBaby, LuCircleHelp, LuHourglass, LuMountain, LuShield, LuSparkles, Lu
 import { FAMILLES, ESPECES, type Espece } from "@/data/catalogue";
 import { EMOJI_REGIME, REGIMES } from "@/data/fiches-vie";
 import { MiniGlobe } from "@/components/mini-globe";
+import { HABITATS, MOTIFS, ORDRE_HABITATS, STATUTS, habitatsDe } from "@/data/pictos";
 import { ETAPES, FRISE } from "@/data/arbre";
 import estimations from "@/data/estimations.json";
 import { Portrait } from "@/components/portrait";
@@ -15,42 +16,16 @@ import { niveauDe } from "@/components/carte-animal";
 const EST = estimations as Record<string, Record<string, { t: string }>>;
 const NUMERO = new Map(ESPECES.map((e, i) => [e.id, i + 1]));
 
-/** Un petit motif dessiné, répété sur le fond de la carte (montagnes, feuilles, nuages, vagues, étoiles). */
-const motif = (svg: string) => `url("data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'>${svg}</svg>`)}")`;
-const MOTIFS = {
-  sol: motif("<path d='M0 48 L14 28 L22 38 L34 18 L50 48Z' fill='#fff' fill-opacity='.22'/>"),
-  arbres: motif("<g fill='#fff' fill-opacity='.22'><ellipse cx='16' cy='16' rx='10' ry='5' transform='rotate(-35 16 16)'/><ellipse cx='44' cy='42' rx='10' ry='5' transform='rotate(35 44 42)'/></g>"),
-  vol: motif("<g fill='#fff' fill-opacity='.3'><circle cx='14' cy='20' r='7'/><circle cx='24' cy='16' r='9'/><circle cx='34' cy='21' r='6'/><circle cx='44' cy='48' r='4'/><circle cx='51' cy='45' r='5'/></g>"),
-  mer: motif("<path d='M0 20 Q15 10 30 20 T60 20 M0 45 Q15 35 30 45 T60 45' fill='none' stroke='#fff' stroke-opacity='.3' stroke-width='3'/>"),
-  etoiles: motif("<g fill='#fff' fill-opacity='.3'><path d='M15 8 L17 14 L23 15 L17 17 L15 23 L13 17 L7 15 L13 14Z'/><circle cx='44' cy='42' r='2.5'/></g>"),
+/** Le « type » de la carte : l'habitat principal (couleur, motif, dessin), et les autres habitats en petits médaillons. */
+export const milieuDe = (e: Espece) => {
+  const { principal, autres } = habitatsDe(e);
+  return { ...principal, autres };
 };
-
-/** Le « type » de la carte : là où l'animal passe sa vie (donnée du catalogue). Il donne la couleur et le motif du fond. */
-const MILIEUX: Record<string, { nom: string; Icone: typeof LuMountain; c1: string; c2: string; accent: string; motif: string; aussi?: { Icone: typeof LuMountain; accent: string; nom: string } }> = {
-  "Surtout au sol.": { nom: "Au sol", Icone: LuMountain, c1: "#fff1c4", c2: "#f0a548", accent: "#b8601a", motif: MOTIFS.sol },
-  "Surtout dans les arbres.": { nom: "Dans les arbres", Icone: LuTreeDeciduous, c1: "#e4fbc8", c2: "#5cbf55", accent: "#2b8a3e", motif: MOTIFS.arbres },
-  "Surtout en vol.": { nom: "En vol", Icone: LuWind, c1: "#e6f3ff", c2: "#79aef5", accent: "#2f63c4", motif: MOTIFS.vol },
-  // Deux habitats (donnée « scansorial ») : le sol en premier, les arbres en second médaillon.
-  "Au sol et dans les arbres.": { nom: "Sol et arbres", Icone: LuMountain, c1: "#f1fbc4", c2: "#9ccb4a", accent: "#b8601a", motif: MOTIFS.arbres, aussi: { Icone: LuTreeDeciduous, accent: "#2b8a3e", nom: "dans les arbres" } },
-  "Surtout dans la mer.": { nom: "Dans la mer", Icone: LuWaves, c1: "#d8f7ff", c2: "#3aa6dd", accent: "#0f6aa8", motif: MOTIFS.mer },
-};
-const SANS_MILIEU = { nom: "Non connu", Icone: LuCircleHelp, c1: "#f2eaff", c2: "#a689e6", accent: "#6a48c0", motif: MOTIFS.etoiles };
-export const milieuDe = (e: Espece) => MILIEUX[e.milieu ?? ""] ?? SANS_MILIEU;
 
 /** Le cadre de chaque rareté : un métal, du plus simple au plus précieux. */
 const METAUX = ["argent", "acier", "or", "amethyste", "arcenciel"] as const;
 
-const STATUT: Record<string, { court: string; couleur: string }> = {
-  "Préoccupation mineure": { court: "Pas menacé", couleur: "#2e8b3a" },
-  "Quasi menacé": { court: "Presque menacé", couleur: "#7a9a10" },
-  "Vulnérable": { court: "Vulnérable", couleur: "#c98a00" },
-  "En danger": { court: "En danger", couleur: "#d9541a" },
-  "En danger critique": { court: "Très en danger", couleur: "#c8261b" },
-  "Éteint à l'état sauvage": { court: "Plus dans la nature", couleur: "#6b2a7a" },
-  "Éteint": { court: "Disparu", couleur: "#333" },
-  "Données insuffisantes": { court: "Non connu", couleur: "#77708a" },
-  "Non évalué": { court: "Non connu", couleur: "#77708a" },
-};
+const STATUT = STATUTS;
 
 function poids(e: Espece) {
   const m = e.masse ?? EST[e.id]?.masse?.t;
@@ -100,7 +75,7 @@ export function visiteCarte(espece: Espece, rarete: string | null, special?: str
   const l: [string, string][] = [
     ["nom", `En haut, en gros : son nom, ${espece.nom}. Juste au-dessus, en petit : sa famille, ${FAMILLES[espece.famille]?.nom ?? espece.famille}.`],
     ["poids", p.valeur === "?" ? "Le nombre rouge, c'est son poids. Pour lui, on ne le connaît pas : il y a un point d'interrogation." : `Le nombre rouge, c'est le poids d'un adulte : ${p.estime ? "environ " : ""}${p.valeur} ${p.unite === "kg" ? "kilos" : p.unite === "g" ? "grammes" : p.unite}.${p.estime ? " Le signe ≈ veut dire que c'est une estimation." : ""}`],
-    ["milieu", `${m.aussi ? "Les deux ronds avec un dessin disent où il passe sa vie : au sol, et aussi dans les arbres." : `Le rond avec un dessin dit où il passe sa vie : ${m.nom.toLowerCase()}.`} La couleur de la carte change avec : orange pour le sol, vert pour les arbres, bleu ciel pour le vol, bleu pour la mer, violet quand on ne sait pas.`],
+    ["milieu", `${m.autres.length ? `Les ronds avec un dessin disent où il vit : surtout ${m.phrase}, et aussi ${m.autres.map((h) => h.phrase).join(" et ")}.` : `Le rond avec un dessin dit où il passe sa vie : ${m.phrase}.`} La couleur de la carte vient du premier : orange pour le sol, vert pour les arbres, bleu ciel pour le vol, bleu pour la mer, turquoise pour l'eau douce, violet quand on ne sait pas.`],
     ["photo", "Au milieu, sa photo : un vrai animal, photographié dans la nature ou dans un parc."],
     ["latin", `Sur le ruban : son nom scientifique, ${espece.latin}. C'est le même dans toutes les langues du monde.`],
     ["vit", espece.pays?.length ? `Le petit globe montre en or les pays où il vit. Ici : ${ouCourt(espece)}.` : `Il vit : ${ouCourt(espece)}. On ne connaît pas encore la liste exacte de ses pays, alors le petit globe reste sans or.`],
@@ -141,7 +116,7 @@ export function CarteCollection({ espece, rarete, special, chance }: { espece: E
           <span className="cc-poids flex items-baseline" data-zone="poids"><small>{p.estime ? "≈" : ""}</small><b>{p.valeur}</b><small>{p.unite}</small></span>
           <span className="flex items-center" data-zone="milieu">
             <span className="cc-embleme grid place-items-center" title={m.nom}><m.Icone aria-hidden="true" /></span>
-            {m.aussi ? <span className="cc-embleme cc-embleme-aussi grid place-items-center" style={{ ["--accent" as string]: m.aussi.accent }} title={m.aussi.nom}><m.aussi.Icone aria-hidden="true" /></span> : null}
+            {m.autres.map((h) => <span key={h.id} className="cc-embleme cc-embleme-aussi grid place-items-center" style={{ ["--accent" as string]: h.accent }} title={h.nom}><h.Icone aria-hidden="true" /></span>)}
           </span>
         </span>
 
@@ -472,13 +447,13 @@ const Ligne = ({ signe, children }: { signe: React.ReactNode; children: React.Re
 
 /** Trois cartes « mode d'emploi » : les couleurs (milieux), les raretés et tous les petits dessins. */
 export function LegendeCartes() {
-  const milieux = [...Object.values(MILIEUX), SANS_MILIEU];
+  const milieux = ORDRE_HABITATS.map((h) => HABITATS[h]);
   const RARES = ["argent", "acier", "or", "amethyste", "arcenciel", "or-chance"] as const;
   const PAYS_RARETE = ["plus de 40 pays", "16 à 40 pays", "9 à 15 pays", "6 à 8 pays", "5 pays ou moins", "tirée au hasard"];
   return (
     <>
-      <CarteLegende titre="Les couleurs" sous="La couleur de la carte dit où l'animal passe sa vie">
-        <span className="grid grid-cols-2 gap-[2.4cqw]">
+      <CarteLegende titre="Les habitats" sous="Le dessin et la couleur disent où l'animal vit">
+        <span className="grid grid-cols-2 gap-[2.2cqw]">
           {milieux.map((m) => (
             <span key={m.nom} className="cc-tuile-milieu relative flex flex-col items-center justify-center" style={{ ["--c1" as string]: m.c1, ["--c2" as string]: m.c2, ["--accent" as string]: m.accent, ["--motif" as string]: m.motif }}>
               <span className="cc-embleme grid place-items-center"><m.Icone aria-hidden="true" /></span>

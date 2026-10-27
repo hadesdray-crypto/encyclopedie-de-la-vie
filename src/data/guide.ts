@@ -5,7 +5,7 @@
 import { ETAPES } from "@/data/arbre";
 
 /** zones : pour chaque bulle, la partie de l'écran qui s'allume pendant que Plume en parle (data-zone). */
-export type Explication = { id: string; titre: string; etapes: string[]; zones?: (string | null)[] };
+export type Explication = { id: string; titre: string; etapes: string[]; zones?: (string | null)[]; /** « photo-fin » : la photo choisie par les parents (fin de l'histoire). */ photos?: (string | null)[] };
 
 const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) => boolean })[] = [
   {
@@ -226,6 +226,9 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
       "Ici, tu choisis comment marche ton encyclopédie : la voix, les sons, l'écriture.",
       "Touche le petit haut-parleur à côté d'un réglage, et je te le lis.",
       "Le bouton Oui ou Non allume ou éteint le réglage.",
+      "« L'interface » : tu choisis comment les pages s'ouvrent, le style des boutons du bas, et le bouton à mettre en avant.",
+      "« La boîte à idées » : propose une amélioration. À 100 votes, elle peut partir chez le Concepteur.",
+      "Tout en bas, le coin des parents : la photo de la fin de l'histoire, le temps d'écran, et l'adresse du Concepteur.",
     ],
   },
   {
@@ -384,6 +387,9 @@ export const HISTOIRE: Explication = {
   ],
 };
 
+// La photo de la princesse s'affiche à l'étape « tout ça pour en arriver à la petite Leonie ».
+HISTOIRE.photos = HISTOIRE.etapes.map((t) => (t.includes("pour en arriver à la petite Leonie") ? "photo-fin" : null));
+
 const ROUTE_RECIT = ["terre", "molecules", "briques", "adn", "luca", "bacteries", "cyanobacteries", "eucaryotes", "animaux", "vertebres", "hors", "oeuf", "dinosaures", "oiseaux", "mammiferes"];
 
 /** Le grand récit : Plume parcourt l'arbre de la vie elle-même, étape par étape, avec les vrais textes de l'arbre. */
@@ -401,5 +407,5 @@ export function grandRecit(): Explication {
     "Et puis, il y a environ 300 000 ans, les humains sont arrivés. Et tout au bout de cette très longue histoire… la princesse Leonie !",
     "Les scientifiques disent que l'évolution n'a pas de but, et ils ont raison. Mais votre humble chouette le dit avec tout son respect : tout ce chemin valait la peine, pour en arriver à la petite Leonie. Maintenant, l'histoire continue avec toi.",
   );
-  return { id: "recit", titre: "Le grand récit", etapes };
+  return { id: "recit", titre: "Le grand récit", etapes, photos: etapes.map((t) => (t.includes("la princesse Leonie !") ? "photo-fin" : null)) };
 }
