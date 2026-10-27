@@ -196,6 +196,16 @@ export function CarteCollection({ espece, rarete, special, chance }: { espece: E
   );
 }
 
+/** L'arbre de la vie en rond, seul (pour une icône). */
+export function BranchesArbre({ epais = false }: { epais?: boolean }) {
+  return (
+    <g>
+      <Branches p={ARBRE.racine} chemin={["luca"]} fois={epais ? 2.6 : 1} />
+      <circle cx="315" cy="440" r={epais ? 30 : 16} fill="#fff2c2" />
+    </g>
+  );
+}
+
 // ------------------------------------------------------------------ Les dos
 
 export type Dos = "arbre" | "plume" | "spirale" | "boussole";
@@ -269,7 +279,7 @@ function couleurDe(chemin: string[]) {
   for (const c of chemin) if (COULEUR_BRANCHE[c]) return COULEUR_BRANCHE[c];
   return "#f3d48a";
 }
-function Branches({ p, chemin }: { p: Point; chemin: string[] }) {
+function Branches({ p, chemin, fois = 1 }: { p: Point; chemin: string[]; fois?: number }) {
   const cx = 315, cy = 440;
   const pos = (a: number, r: number) => [cx + Math.cos(a) * r, cy + Math.sin(a) * r];
   return (
@@ -282,11 +292,11 @@ function Branches({ p, chemin }: { p: Point; chemin: string[] }) {
         const [x2, y2] = pos(e.a, e.r);
         const grand = Math.abs(e.a - p.a) > Math.PI ? 1 : 0;
         const sens = e.a > p.a ? 1 : 0;
-        const ep = Math.max(1.4, 4.2 - e.profondeur * 0.28);
+        const ep = Math.max(1.4, 4.2 - e.profondeur * 0.28) * fois;
         return (
           <g key={e.id}>
             <path d={`M${x0} ${y0} A${p.r} ${p.r} 0 ${grand} ${sens} ${x1} ${y1} L${x2} ${y2}`} fill="none" stroke={coul} strokeWidth={ep} strokeLinecap="round" opacity=".95" />
-            {e.enfants.length ? <Branches p={e} chemin={ch} /> : <circle cx={x2} cy={y2} r="6" fill={coul} stroke="#fff6dc" strokeWidth="1.5" />}
+            {e.enfants.length ? <Branches p={e} chemin={ch} fois={fois} /> : <circle cx={x2} cy={y2} r={6 * Math.min(fois, 1.6)} fill={coul} stroke="#fff6dc" strokeWidth="1.5" />}
           </g>
         );
       })}
