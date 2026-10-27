@@ -132,8 +132,8 @@ export function CartesPage() {
       definirEcran({
         id: `carte-${espece.id}`,
         titre: espece.nom,
-        etapes: [...rare, "Maintenant, je t'explique tout ce qu'il y a sur la carte. Regarde ce qui s'allume !", ...visite.etapes, ...plus, "Touche la carte pour voir la suivante."],
-        zones: [...rare.map(() => "rarete"), null, ...visite.zones, ...plus.map(() => null), null],
+        etapes: [...rare, "Maintenant, je t'explique tout ce qu'il y a sur la carte. Regarde ce qui s'allume !", ...visite.etapes, ...plus, "Ici, c'est sa carte à collectionner. L'animal en vrai, avec toutes ses photos et tout ce qu'on sait sur lui, est sur sa fiche : touche « Voir sa fiche ».", "Tu peux faire tourner la carte en glissant le doigt. Touche la carte pour voir la suivante."],
+        zones: [...rare.map(() => "rarete"), null, ...visite.zones, ...plus.map(() => null), "photo", null],
       });
     } else definirEcran(null);
   }, [carteVue]);
@@ -218,7 +218,7 @@ export function CartesPage() {
             {index + 2 < cartes.length ? <span className="absolute inset-0 translate-x-3 translate-y-3 rounded-[1.1rem] bg-[#e8c98a]/50" aria-hidden="true" /> : null}
             {index + 1 < cartes.length ? <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-[1.1rem] bg-[#e8c98a]/80" aria-hidden="true" /> : null}
             {face && brille ? <span className="absolute -inset-3 rounded-[1.6rem] opacity-60" style={{ background: couleurDe(carte) }} aria-hidden="true" /> : null}
-            <Carte3D key={index} className="carte-sort">
+            <Carte3D key={index} className="carte-sort" tourne={face}>
               <button type="button" onClick={toucherCarte} className={`retournable relative block aspect-[63/88] w-full ${face ? "retourne" : ""}`} aria-label={face ? `${carte.espece.nom} : carte suivante` : "Retourner la carte"}>
                 <span className="retournable-interieur block">
                   <span className="face block"><DosCarte modele={dos} /></span>
@@ -230,8 +230,13 @@ export function CartesPage() {
           </div>
           {face && carte.chance ? <p className="titre-or mt-5 text-3xl">Wah, la chance !</p> : face ? <p className="mt-4 font-display text-2xl text-[#f3d48a]">{carte.espece.nom}</p> : null}
           {face && !deja.has(carte.espece.id) ? <p className="mt-3 inline-block rounded-full bg-[#f3d48a] px-3 py-1 text-sm font-extrabold text-[#2a1c14]">Nouvelle carte !</p> : null}
-          {face ? <button type="button" onClick={() => ouvrirPlume(true, "page")} className="bouton-parchemin mt-3 rounded-full px-4 py-2 font-extrabold">🦉 Plume, explique-moi la carte</button> : null}
-          <p className="mt-3 text-sm texte-doux">{face ? "Touche la carte pour la suivante." : "Touche la carte pour la retourner."}</p>
+          {face ? (
+            <div className="mt-3 flex flex-wrap justify-center gap-2">
+              <button type="button" onClick={() => ouvrirPlume(true, "page")} className="bouton-parchemin rounded-full px-4 py-2 font-extrabold">🦉 Plume m'explique la carte</button>
+              <a href={`#/mammiferes/e-${carte.espece.id}`} className="bouton-bois rounded-full px-4 py-2 font-extrabold">🐾 Voir sa fiche</a>
+            </div>
+          ) : null}
+          <p className="mt-3 text-sm texte-doux">{face ? "Touche la carte pour la suivante. Glisse le doigt pour la faire tourner." : "Touche la carte pour la retourner."}</p>
           <button type="button" onClick={toutRetourner} className="mt-4 rounded-full bg-card px-4 py-2 text-sm font-extrabold">Tout retourner</button>
         </section>
       ) : null}

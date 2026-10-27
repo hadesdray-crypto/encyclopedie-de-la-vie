@@ -5,7 +5,7 @@ import { useId } from "react";
 import { LuBaby, LuCircleHelp, LuHourglass, LuMountain, LuShield, LuSparkles, LuStar, LuTreeDeciduous, LuTrees, LuUtensils, LuWaves, LuWind } from "react-icons/lu";
 import { FAMILLES, ESPECES, type Espece } from "@/data/catalogue";
 import { EMOJI_REGIME, REGIMES } from "@/data/fiches-vie";
-import { CarteMonde } from "@/components/carte-monde";
+import { MiniGlobe } from "@/components/mini-globe";
 import { ETAPES, FRISE } from "@/data/arbre";
 import estimations from "@/data/estimations.json";
 import { Portrait } from "@/components/portrait";
@@ -102,7 +102,7 @@ export function visiteCarte(espece: Espece, rarete: string | null, special?: str
     ["milieu", `Le rond avec un dessin dit où il passe sa vie : ${m.nom.toLowerCase()}. La couleur de la carte change avec : orange pour le sol, vert pour les arbres, bleu ciel pour le vol, bleu pour la mer, violet quand on ne sait pas.`],
     ["photo", "Au milieu, sa photo : un vrai animal, photographié dans la nature ou dans un parc."],
     ["latin", `Sur le ruban : son nom scientifique, ${espece.latin}. C'est le même dans toutes les langues du monde.`],
-    ["vit", espece.pays?.length ? `La petite carte du monde montre en or les pays où il vit. Ici : ${ouCourt(espece)}.` : `Il vit : ${ouCourt(espece)}. On ne connaît pas encore la liste exacte de ses pays, alors la petite carte reste sans or.`],
+    ["vit", espece.pays?.length ? `Le petit globe montre en or les pays où il vit. Ici : ${ouCourt(espece)}.` : `Il vit : ${ouCourt(espece)}. On ne connaît pas encore la liste exacte de ses pays, alors le petit globe reste sans or.`],
     ["mange", r ? `Le petit dessin montre ce qu'il mange. ${REGIMES[r as keyof typeof REGIMES]?.nom ?? ""} : ${REGIMES[r as keyof typeof REGIMES]?.explique ?? ""}` : "Ce qu'il mange : on ne le sait pas encore."],
     ["menace", statut ? `Le bouclier dit s'il est menacé dans la nature. Pour lui : ${statut.court.toLowerCase()}. Vert, c'est bien. Jaune, orange et rouge : il faut le protéger.` : "Le bouclier dit s'il est menacé. Pour lui, on ne sait pas."],
     ["petits", espece.portee ? `Le biberon : combien de bébés la maman a en même temps, en moyenne. Ici : ${petits(espece).replace("≈ ", "environ ")}.` : "Le biberon : combien de bébés à la fois. Pour lui, on ne sait pas encore."],
@@ -151,14 +151,18 @@ export function CarteCollection({ espece, rarete, special, chance }: { espece: E
 
         <span className="cc-talents relative flex flex-col">
           <span className="cc-talent flex items-center" data-zone="vit">
-            <span className="cc-minicarte"><CarteMonde pays={espece.pays ?? []} ou={espece.ou} /></span>
             <span className="cc-talent-nom">Il vit</span>
-            <span className="cc-talent-valeur min-w-0 flex-1 truncate">{ouCourt(espece)}</span>
+            <span className="cc-talent-valeur flex min-w-0 flex-1 items-center justify-end gap-[1.6cqw]">
+              <span className="min-w-0 truncate">{ouCourt(espece)}</span>
+              <MiniGlobe pays={espece.pays ?? []} className="cc-globe" />
+            </span>
           </span>
           <span className="cc-talent flex items-center" data-zone="mange">
-            <span className="cc-picto" aria-hidden="true">{r ? EMOJI_REGIME[r] ?? "🍽️" : "❔"}</span>
             <span className="cc-talent-nom">Il mange</span>
-            <span className="cc-talent-valeur min-w-0 flex-1 truncate">{mangeCourt(espece)}</span>
+            <span className="cc-talent-valeur flex min-w-0 flex-1 items-center justify-end gap-[1.6cqw]">
+              <span className="min-w-0 truncate">{mangeCourt(espece)}</span>
+              <span className="cc-picto" aria-hidden="true">{r ? EMOJI_REGIME[r] ?? "🍽️" : "❔"}</span>
+            </span>
           </span>
         </span>
 
@@ -421,15 +425,30 @@ export function DosCarte({ modele = "arbre" }: { modele?: Dos }) {
 
 // ------------------------------------------------------------------ La légende : des cartes qui expliquent les cartes
 
-function CarteLegende({ titre, children }: { titre: string; children: React.ReactNode }) {
+/** Le fond des cartes légende : la nuit, et l'arbre de la vie en rond, tout doux derrière. */
+function FondEvolution() {
   return (
-    <span className="cc metal-or relative block" style={{ ["--c1" as string]: "#fffaf0", ["--c2" as string]: "#f3d48a", ["--accent" as string]: "#8a5a10", ["--motif" as string]: MOTIFS.etoiles }}>
+    <svg viewBox="40 170 550 540" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 size-full" aria-hidden="true">
+      <defs><radialGradient id="leg-nuit" cx=".5" cy=".45" r=".7"><stop offset="0" stopColor="#4a2a86" /><stop offset="1" stopColor="#1a0f3a" /></radialGradient></defs>
+      <rect x="0" y="0" width="630" height="880" fill="url(#leg-nuit)" />
+      <g opacity=".22"><Branches p={ARBRE.racine} chemin={["luca"]} /></g>
+      <circle cx="315" cy="440" r="240" fill="none" stroke="#f3d48a" strokeOpacity=".18" strokeWidth="2" />
+      <Etoiles />
+    </svg>
+  );
+}
+
+function CarteLegende({ titre, sous, children }: { titre: string; sous: string; children: React.ReactNode }) {
+  return (
+    <span className="cc cc-leg metal-or relative block">
       <span className="cc-cadre absolute inset-0" />
       <span className="cc-corps absolute flex flex-col">
-        <span className="cc-fond absolute inset-0" aria-hidden="true" />
+        <FondEvolution />
         <span className="cc-legende-titre relative block text-center font-display">{titre}</span>
+        <span className="cc-legende-sous relative block text-center">{sous}</span>
         <span className="cc-legende relative flex flex-1 flex-col justify-evenly">{children}</span>
       </span>
+      <span className="cc-effets pointer-events-none absolute inset-0" aria-hidden="true"><span className="cc-reflet absolute inset-0" /></span>
     </span>
   );
 }
@@ -440,31 +459,41 @@ const Ligne = ({ signe, children }: { signe: React.ReactNode; children: React.Re
 /** Trois cartes « mode d'emploi » : les couleurs (milieux), les raretés et tous les petits dessins. */
 export function LegendeCartes() {
   const milieux = [...Object.values(MILIEUX), SANS_MILIEU];
+  const RARES = ["argent", "acier", "or", "amethyste", "arcenciel", "or-chance"] as const;
+  const PAYS_RARETE = ["plus de 40 pays", "16 à 40 pays", "9 à 15 pays", "6 à 8 pays", "5 pays ou moins", "tirée au hasard"];
   return (
     <>
-      <CarteLegende titre="Les couleurs : où il vit">
-        {milieux.map((m) => (
-          <Ligne key={m.nom} signe={<span className="cc-embleme grid place-items-center" style={{ ["--accent" as string]: m.accent, width: "7cqw", height: "7cqw" }}><m.Icone aria-hidden="true" /></span>}>
-            <span className="cc-legende-pastille" style={{ background: `linear-gradient(90deg, ${m.c2}, ${m.c1})` }}>{m.nom === "Non connu" ? "On ne sait pas" : m.nom}</span>
-          </Ligne>
-        ))}
+      <CarteLegende titre="Les couleurs" sous="La couleur de la carte dit où l'animal passe sa vie">
+        <span className="grid grid-cols-2 gap-[2.4cqw]">
+          {milieux.map((m) => (
+            <span key={m.nom} className="cc-tuile-milieu relative flex flex-col items-center justify-center" style={{ ["--c1" as string]: m.c1, ["--c2" as string]: m.c2, ["--accent" as string]: m.accent, ["--motif" as string]: m.motif }}>
+              <span className="cc-embleme grid place-items-center"><m.Icone aria-hidden="true" /></span>
+              <b>{m.nom === "Non connu" ? "On ne sait pas" : m.nom}</b>
+            </span>
+          ))}
+        </span>
       </CarteLegende>
-      <CarteLegende titre="Les raretés">
-        {(["argent", "acier", "or", "amethyste", "arcenciel", "or-chance"] as const).map((metal, i) => (
-          <Ligne key={metal} signe={<span className={`cc-legende-metal metal-${metal}`} />}>
-            <b>{i === 5 ? "Chance" : NOM_RARETE[i]}</b> {i < 5 ? <span className="cc-etoiles inline-flex align-middle">{Array.from({ length: 5 }, (_, k) => <LuStar key={k} className={k <= i ? "plein" : ""} aria-hidden="true" />)}</span> : "★"}
-            <small className="block">{["Il vit dans plus de 40 pays", "Il vit dans 16 à 40 pays", "Il vit dans 9 à 15 pays", "Il vit dans 6 à 8 pays", "Il vit dans 5 pays ou moins", "Tirée au hasard, très rare"][i]}</small>
-          </Ligne>
-        ))}
+      <CarteLegende titre="Les raretés" sous="Moins il vit dans de pays, plus sa carte est rare">
+        <span className="grid grid-cols-3 gap-[2.6cqw]">
+          {RARES.map((metal, i) => (
+            <span key={metal} className="flex flex-col items-center text-center">
+              <span className={`cc-mini-carte metal-${metal} ${i >= 3 ? "brille" : ""} relative grid place-items-center`}>
+                <span className="cc-mini-carte-corps grid place-items-center">{i === 5 ? "★" : <span className="cc-etoiles flex flex-col items-center">{Array.from({ length: i + 1 }, (_, k) => <LuStar key={k} className="plein" aria-hidden="true" />)}</span>}</span>
+              </span>
+              <b className="cc-mini-nom">{i === 5 ? "Chance" : NOM_RARETE[i]}</b>
+              <small className="cc-mini-pays">{PAYS_RARETE[i]}</small>
+            </span>
+          ))}
+        </span>
       </CarteLegende>
-      <CarteLegende titre="Les petits dessins">
-        <Ligne signe={<b className="text-[#c0161b]">kg</b>}>Le nombre rouge : son <b>poids</b> d'adulte. ≈ veut dire « environ ».</Ligne>
-        <Ligne signe={<span className="cc-minicarte" style={{ width: "9cqw" }}><CarteMonde pays={["FRA", "ESP", "ITA"]} /></span>}>La petite carte : en or, les <b>pays où il vit</b>.</Ligne>
-        <Ligne signe={<span className="text-[4.4cqw]">🥩🌿🐜</span>}><b>Ce qu'il mange</b> : 🥩 viande · 🐟 poisson · 🐜 insectes · 🦑 bêtes sans os · 🌿 plantes · 🍃 feuilles · 🍎 fruits · 🌾 herbe · 🌸 nectar · 🍽️ un peu de tout</Ligne>
-        <Ligne signe={<i className="cc-rond" style={{ background: "#d9541a", ["--accent" as string]: "#d9541a" }}><LuShield aria-hidden="true" /></i>}><b>Menacé ?</b> Vert : pas menacé. Jaune, orange, rouge : il faut le protéger.</Ligne>
+      <CarteLegende titre="Les petits dessins" sous="Ce que veut dire chaque dessin de la carte">
+        <Ligne signe={<b className="text-[5cqw] text-[#c0161b]">kg</b>}>Le nombre rouge : son <b>poids</b> d'adulte. ≈ veut dire « environ ».</Ligne>
+        <Ligne signe={<MiniGlobe pays={["FRA", "ESP", "ITA"]} className="cc-globe" />}>Le petit globe : en or, les <b>pays où il vit</b>.</Ligne>
+        <Ligne signe={<span className="cc-picto">🌿</span>}><b>Ce qu'il mange</b> : 🥩 viande · 🐟 poisson · 🐜 insectes · 🦑 bêtes sans os · 🌿 plantes · 🍃 feuilles · 🍎 fruits · 🌾 herbe · 🌸 nectar · 🍽️ un peu de tout</Ligne>
+        <Ligne signe={<i className="cc-rond" style={{ background: "#d9541a" }}><LuShield aria-hidden="true" /></i>}><b>Menacé ?</b> Vert : pas menacé. Jaune, orange, rouge : à protéger.</Ligne>
         <Ligne signe={<i className="cc-rond" style={{ ["--accent" as string]: "#8a5a10" }}><LuBaby aria-hidden="true" /></i>}><b>Bébés</b> : combien à la fois, en moyenne.</Ligne>
         <Ligne signe={<i className="cc-rond" style={{ ["--accent" as string]: "#8a5a10" }}><LuHourglass aria-hidden="true" /></i>}><b>Record d'âge</b> : le plus vieux connu.</Ligne>
-        <Ligne signe={<LuSparkles className="size-[4.5cqw] text-[#d4880c]" aria-hidden="true" />}>L'encadré doré : <b>pourquoi la carte est rare</b>.</Ligne>
+        <Ligne signe={<LuSparkles className="size-[5cqw] text-[#ffd24a]" aria-hidden="true" />}>L'encadré doré : <b>pourquoi la carte est rare</b>.</Ligne>
       </CarteLegende>
     </>
   );
