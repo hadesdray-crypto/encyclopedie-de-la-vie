@@ -16,7 +16,7 @@
 
 :root {
   /* Hauteur de la barre du bas. Tout le contenu s'arrête au-dessus. */
-  --barre: 5.25rem;
+  --barre: 5.75rem;
   --bas: calc(var(--barre) + env(safe-area-inset-bottom, 0px));
 }
 
@@ -1027,14 +1027,21 @@ html[data-plume-zone="rarete"] .cc .cc-cadre[data-zone] { animation: none; borde
 @keyframes anneau-ouverture { to { width: 220vmax; height: 220vmax; margin: -110vmax; opacity: 0; border-width: 1px; } }
 @media (prefers-reduced-motion: reduce) { .ouverture-centre, .anneau-ouverture { animation: none; } .anneau-ouverture { display: none; } }
 /* Les boutons 3D de la barre : un capuchon brillant de couleur dans une bague dorée ; il s'enfonce quand on appuie */
-.bouton3d { display: block; width: 3rem; height: 3rem; border-radius: 50%; padding: 4px; background: linear-gradient(160deg, #fff2c2, #e3b04b 40%, #8a5a0c 75%, #e3b04b); box-shadow: 0 3px 6px rgba(0,0,0,.55), inset 0 1px 1px rgba(255,255,255,.7); transition: transform .2s; }
-.bouton3d-chapeau { width: 100%; height: 100%; border-radius: 50%; color: #fff; background: radial-gradient(circle at 38% 28%, rgba(255,255,255,.85) 0 8%, rgba(255,255,255,.25) 22%, transparent 45%), radial-gradient(circle at 50% 60%, var(--couleur), color-mix(in srgb, var(--couleur) 55%, #000) 100%); box-shadow: 0 5px 0 color-mix(in srgb, var(--couleur) 45%, #000), 0 6px 3px rgba(0,0,0,.4), inset 0 -3px 5px rgba(0,0,0,.25); transform: translateY(-4px); transition: transform .07s, box-shadow .07s; filter: saturate(.75) brightness(.9); }
+/* Les boutons-poussoirs : un cylindre de couleur qui sort de sa bague dorée. Sorti au repos, enfoncé quand on appuie,
+   et il reste enfoncé sur la page où l'on est. */
+.bouton3d { display: block; width: 3rem; height: 3.35rem; position: relative; }
+.bouton3d::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3rem; border-radius: 50%; background: radial-gradient(circle at 50% 55%, #120a24 0 58%, transparent 60%), linear-gradient(160deg, #fff2c2, #e3b04b 40%, #8a5a0c 75%, #e3b04b); box-shadow: 0 3px 6px rgba(0,0,0,.55), inset 0 1px 1px rgba(255,255,255,.7); }
+.bouton3d-chapeau { position: absolute; left: 7px; right: 7px; height: calc(3rem - 14px); bottom: 7px; border-radius: 50%; color: #fff;
+  background: radial-gradient(circle at 38% 28%, rgba(255,255,255,.85) 0 7%, rgba(255,255,255,.25) 20%, transparent 42%), radial-gradient(circle at 50% 55%, var(--couleur), color-mix(in srgb, var(--couleur) 60%, #000) 100%);
+  /* le côté du cylindre : une pile de couleur plus sombre */
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--couleur) 70%, #000), 0 2px 0 color-mix(in srgb, var(--couleur) 65%, #000), 0 3px 0 color-mix(in srgb, var(--couleur) 60%, #000), 0 4px 0 color-mix(in srgb, var(--couleur) 55%, #000), 0 5px 0 color-mix(in srgb, var(--couleur) 50%, #000), 0 6px 0 color-mix(in srgb, var(--couleur) 45%, #000), 0 7px 0 color-mix(in srgb, var(--couleur) 40%, #000), 0 8px 0 color-mix(in srgb, var(--couleur) 35%, #000), 0 10px 6px rgba(0,0,0,.5);
+  transform: translateY(-9px); transition: transform .08s, box-shadow .08s, filter .2s; filter: saturate(.8) brightness(.92); }
 .bouton3d-glyphe { width: 52%; height: 52%; filter: drop-shadow(0 1px 1px rgba(0,0,0,.45)); }
-.bouton3d-actif .bouton3d-chapeau { filter: none; box-shadow: 0 5px 0 color-mix(in srgb, var(--couleur) 45%, #000), 0 6px 3px rgba(0,0,0,.4), inset 0 -3px 5px rgba(0,0,0,.25), 0 0 16px 4px color-mix(in srgb, var(--couleur) 70%, transparent); }
-.bouton3d-enfonce .bouton3d-chapeau { transform: translateY(0); box-shadow: 0 1px 0 color-mix(in srgb, var(--couleur) 45%, #000), inset 0 2px 5px rgba(0,0,0,.4); }
+.bouton3d-actif .bouton3d-chapeau, .bouton3d-enfonce .bouton3d-chapeau { transform: translateY(-1px); box-shadow: 0 1px 0 color-mix(in srgb, var(--couleur) 50%, #000), inset 0 2px 5px rgba(0,0,0,.35); }
+.bouton3d-actif .bouton3d-chapeau { filter: none; box-shadow: 0 1px 0 color-mix(in srgb, var(--couleur) 50%, #000), inset 0 2px 5px rgba(0,0,0,.35), 0 0 14px 4px color-mix(in srgb, var(--couleur) 70%, transparent); }
 .bouton3d-vedette { transform: scale(1.18); }
 .icone-barre:has(.bouton3d) { transform: none; }
-.icone-barre.icone-active:has(.bouton3d) { transform: translateY(-6px); }
+.icone-barre.icone-active:has(.bouton3d) { transform: none; }
 /* La page monte du bas de l'écran comme un volet, puis prend tout l'écran */
 .ouverture-volet { animation: ouverture-volet .5s cubic-bezier(.2,.9,.25,1); }
 @keyframes ouverture-volet { from { transform: translateY(100vh); clip-path: inset(0 0 0 0 round 28px 28px 0 0); } 70% { clip-path: inset(0 0 0 0 round 28px 28px 0 0); } to { transform: none; clip-path: inset(0 0 0 0 round 0); } }

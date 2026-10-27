@@ -37,7 +37,7 @@ type Salle = { vers: string; label: string; dit: string; Icone: () => React.Reac
 const SALLES: Salle[] = [
   { vers: "/", label: "Accueil", dit: "L'accueil", Icone: IconeAccueil, actif: (c) => c === "/" || c === "" },
   { vers: "/arbre", label: "Arbre", dit: "L'arbre de la vie", Icone: IconeArbre, actif: (c) => c.startsWith("/arbre") || c.startsWith("/frise") },
-  { vers: "/voyageurs", label: "Carte", dit: "La carte du monde des animaux", Icone: IconeCarte, actif: (c) => c.startsWith("/voyageurs") || c.startsWith("/aventure") || c.startsWith("/suivi") },
+  { vers: "/voyageurs", label: "Globe", dit: "Le globe des animaux", Icone: IconeCarte, actif: (c) => c.startsWith("/voyageurs") || c.startsWith("/aventure") || c.startsWith("/suivi") },
   { vers: "/cartes", label: "Cartes", dit: "Mes cartes", Icone: IconeCartes, actif: (c) => c.startsWith("/cartes") },
   { vers: "/jouer", label: "Jouer", dit: "Les jeux", Icone: IconeJouer, actif: (c) => c.startsWith("/jouer") },
 ];
@@ -80,7 +80,7 @@ export function Barre({ chemin }: { chemin: string }) {
       className="barre-bas fixed inset-x-0 bottom-0 z-30 mx-auto max-w-xl px-3"
       style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 0.5rem)" }}
     >
-      <ul className="barre-jeu relative grid h-[4.5rem] grid-cols-5 items-center rounded-[1.8rem] px-1">
+      <ul className="barre-jeu relative grid h-[5rem] grid-cols-5 items-center rounded-[1.8rem] px-1">
         {/* La bulle dorée qui glisse jusqu'à la salle où l'on est */}
         {SALLES.findIndex((x) => x.actif(chemin)) >= 0 ? (
           <span aria-hidden="true" className="bulle-barre pointer-events-none absolute top-1/2 h-14 w-[20%]" style={{ left: `calc(0.25rem + ${SALLES.findIndex((x) => x.actif(chemin))} * (100% - 0.5rem) / 5)` }}>
