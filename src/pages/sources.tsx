@@ -2,7 +2,8 @@ import { Entete, Titre } from "@/components/entete";
 
 const SOURCES = [
   ["Mammal Diversity Database (MDD)", "Classement des 6 904 mammifères, répartition par pays, statut. Licence CC BY."],
-  ["COMBINE et EltonTraits", "Masses, gestations, portées, longévités et alimentation publiées."],
+  ["COMBINE et EltonTraits", "Masses, gestations, portées, longévités, alimentation et habitat principal publiés."],
+  ["PHYLACINE 1.2 (Faurby et al., 2018)", "Les habitats en plus : eau douce, mer, terre ferme. Seulement les données publiées (« Reported »)."],
   ["Wikipédia et Wikimedia Commons", "Photos des espèces. Les crédits de chaque photo restent à ajouter."],
   ["Natural Earth", "Contours des pays de la carte. Domaine public."],
   ["Commission internationale de stratigraphie (charte 2026)", "Âges des grandes périodes."],
