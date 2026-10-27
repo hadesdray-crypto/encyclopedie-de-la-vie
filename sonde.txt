@@ -1,0 +1,37 @@
+30764579 Code and data to reproduce: Helminth parasite body size scaling with host species size 10.6084/m9.figshare.30764579.v1
+32013111 Filovirus-NPC1 Prediction dataset 10.25390/caryinstitute.32013111.v1
+32002644 Filovirus-NPC1 training data 10.25390/caryinstitute.32002644.v1
+30508895 METADATA Cavity roosting bats are more central hosts in Neotropical bat-bat fly interactions 10.6084/m9.figshare.30508895.v1
+19144283 A dataset on the morphological, life-history and ecological traits of mammals in China 10.6084/m9.figshare.19144283.v1
+13028255 COMBINE: a Coalesced Mammal Database of Intrinsic and extrinsic traits 10.6084/m9.figshare.13028255.v4
+== 30764579
+README.md 2455 https://ndownloader.figshare.com/files/60043850
+analysis.Rmd 56580 https://ndownloader.figshare.com/files/60047441
+AVONET1_BirdLife.csv 2662823 https://ndownloader.figshare.com/files/60043838
+CLC_database_hosts.csv 2035527 https://ndownloader.figshare.com/files/60043841
+CLC_database_lifehistory.csv 2084188 https://ndownloader.figshare.com/files/60043847
+trait_data_imputed.csv 1891897 https://ndownloader.figshare.com/files/60043859
+mamTree.tre 3090277 https://ndownloader.figshare.com/files/60043856
+renv.lock 200605 https://ndownloader.figshare.com/files/60043853
+actinopt_12k_treePL.tre 483035 https://ndownloader.figshare.com/files/64276182
+Nearctic_parasite_tree.tre 3622 https://ndownloader.figshare.com/files/64276185
+== 32013111
+npc1prediction_27Mar2026.csv 950302 https://ndownloader.figshare.com/files/63728706
+== 32002644
+npc1training_27Mar2026.csv 59567 https://ndownloader.figshare.com/files/63702204
+== 30508895
+traits.txt 4411 https://ndownloader.figshare.com/files/59235383
+rare.txt 15020 https://ndownloader.figshare.com/files/59235386
+contingency.txt 52336 https://ndownloader.figshare.com/files/59235389
+script_traits.R 3518 https://ndownloader.figshare.com/files/59235422
+Filtered_sites_species.docx 16108 https://ndownloader.figshare.com/files/59241797
+== 19144283
+A dataset on the morphological, life-history and ecological traits of mammals in China.xlsx 322926 https://ndownloader.figshare.com/files/34026950
+d.zip: HTML document, ASCII text, with very long lines (5837), with no line terminators
+  End-of-central-directory signature not found.  Either this file is not
+  a zipfile, or it constitutes one disk of a multi-part archive.  In the
+  latter case the central directory and zipfile comment will be found on
+  the last disk(s) of this archive.
+unzip:  cannot find zipfile directory in one of d.zip or
+        d.zip.zip, and cannot find d.zip.ZIP, period.
+Archive:  d.zip
