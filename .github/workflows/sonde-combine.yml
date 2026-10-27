@@ -2,14 +2,24 @@ name: Sonde COMBINE
 on:
   push:
     branches: [combine-sonde]
+permissions:
+  contents: write
 jobs:
   sonde:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Chercher COMBINE sur figshare et lire les colonnes
         run: |
+          exec > sonde.txt 2>&1
           curl -s -X POST https://api.figshare.com/v2/articles/search -H 'Content-Type: application/json' -d '{"search_for":"COMBINE coalesced mammal database intrinsic extrinsic traits","page_size":10}' | python3 -c "import sys,json; [print(a['id'], a['title'], a.get('doi')) for a in json.load(sys.stdin)]"
           for id in $(curl -s -X POST https://api.figshare.com/v2/articles/search -H 'Content-Type: application/json' -d '{"search_for":"COMBINE coalesced mammal database","page_size":5}' | python3 -c "import sys,json; print(' '.join(str(a['id']) for a in json.load(sys.stdin)))"); do
             echo "== $id"; curl -s https://api.figshare.com/v2/articles/$id/files | python3 -c "import sys,json; [print(f['name'], f['size'], f['download_url']) for f in json.load(sys.stdin)]"
           done
           curl -sL -o d.zip "https://esajournals.onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1002%2Fecy.3344&file=ecy3344-sup-0001-DataS1.zip" ; file d.zip; unzip -l d.zip | head -20 || true
+          for f in $(unzip -Z1 d.zip 2>/dev/null | grep -i csv); do echo "== $f"; unzip -p d.zip "$f" | head -1; done
+      - name: Garder le résultat
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
+          git add sonde.txt; git commit -qm "Résultat de la sonde" || true; git push -q
