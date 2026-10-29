@@ -7,6 +7,7 @@ import { LuFeather, LuMonitorSmartphone, LuMusic, LuShieldCheck, LuSparkles, LuT
 import { Entete, Titre } from "@/components/entete";
 import { PlumeDessin } from "@/components/plume-dessin";
 import { voixPossible } from "@/components/voix";
+import { ChoixVoixPlume } from "@/components/choix-voix";
 import { Application, CoinParents } from "@/pages/profil";
 import { dire, taire, useParle } from "@/lib/parole";
 import {
@@ -102,6 +103,7 @@ export function OptionsPage() {
 
       <Groupe icone={LuVolume2} titre="La voix">
         {voix ? <ChoixVitesse /> : <p className="px-1 py-2 text-sm">La voix n'est pas disponible sur cet appareil.</p>}
+        {voix ? <ChoixVoixPlume /> : null}
         {voix ? VOIX.map((r) => <Ligne key={r.id} r={r} />) : null}
       </Groupe>
 

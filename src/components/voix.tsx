@@ -4,6 +4,7 @@ import { tauxVoix } from "@/lib/reglages";
 import { appeler, moduleDisponible } from "@/lib/natif";
 import { dire, taire, useParle } from "@/lib/parole";
 import { debutLecture, presence } from "@/lib/plume";
+import { voixPourParler } from "@/lib/choix-voix";
 
 // Chaque caractère de Plume a sa voix : hauteur (pitch) et vitesse, multipliées par la vitesse choisie dans les Options.
 const VOIX: Record<string, { hauteur: number; vitesse: number }> = {
@@ -45,7 +46,7 @@ function attendreVoix() {
 // Dans l'application Android, la voix passe par le moteur de lecture du téléphone
 // (module TextToSpeech), qui marche sans Internet. Dans un navigateur : speechSynthesis.
 const TTS = "TextToSpeech";
-type TTSNatif = { speak: (o: { text: string; lang: string; rate: number; pitch: number }) => Promise<void>; stop: () => Promise<void> };
+type TTSNatif = { speak: (o: { text: string; lang: string; rate: number; pitch: number; voice?: number }) => Promise<void>; stop: () => Promise<void> };
 function voixNative(): TTSNatif | undefined {
   if (!moduleDisponible(TTS)) return undefined;
   return {
@@ -66,12 +67,15 @@ export async function lire(texte: string, onFin: () => void) {
   const fini = () => {
     if (moi === jeton) onFin();
   };
+  // la voix choisie pour ce caractère de Plume (Options, « Choisis la voix de Plume »), s'il y en a une
+  const choix = voixPourParler(presence());
+  const hauteur = choix ? choix.hauteur : voixDePlume().hauteur;
   const native = voixNative();
   if (native) {
     try {
       await native.stop();
       if (moi !== jeton) return;
-      await native.speak({ text: texte, lang: "fr-FR", rate: tauxVoix() * voixDePlume().vitesse, pitch: voixDePlume().hauteur });
+      await native.speak({ text: texte, lang: "fr-FR", rate: tauxVoix() * voixDePlume().vitesse, pitch: hauteur, ...(choix?.moteur === "natif" && choix.index >= 0 ? { voice: choix.index } : {}) });
     } catch {
       /* pas de voix française installée */
     }
@@ -83,7 +87,8 @@ export async function lire(texte: string, onFin: () => void) {
     return;
   }
   window.speechSynthesis.cancel();
-  const voix = await attendreVoix();
+  const voixDuChoix = choix?.moteur === "navigateur" ? window.speechSynthesis.getVoices().find((v) => v.name === choix.nom) : undefined;
+  const voix = voixDuChoix ?? (await attendreVoix());
   const morceaux = texte
     .split(/(?<=[.!?])\s+/)
     .map((morceau) => morceau.trim())
@@ -103,7 +108,7 @@ export async function lire(texte: string, onFin: () => void) {
     index += 1;
     phrase.lang = "fr-FR";
     phrase.rate = tauxVoix() * voixDePlume().vitesse;
-    phrase.pitch = voixDePlume().hauteur;
+    phrase.pitch = hauteur;
     if (voix) phrase.voice = voix;
     phrase.onend = suite;
     phrase.onerror = () => fini();
