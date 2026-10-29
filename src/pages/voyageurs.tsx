@@ -14,6 +14,7 @@ import monde from "@/data/monde.json";
 import donnees from "@/data/voyageurs.json";
 import { definirEcran, plumeDit } from "@/lib/plume";
 import { useInternet } from "@/lib/internet";
+import { VoyageSatellite } from "@/components/voyage-satellite";
 import { connuLatin } from "@/lib/connu";
 
 type Voyageur = {
@@ -73,6 +74,7 @@ const DEPART: Vue = { x: 0, y: 0, s: 1, r: 0 };
 export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean; aMontrer?: number | null } = {}) {
   const [vue, setVue] = useState<Vue>(DEPART);
   const [choisi, setChoisi] = useState<number | null>(null);
+  const [satellite, setSatellite] = useState(false);
   const [filtres, setFiltres] = useState<Record<G, boolean>>({ marin: true, herbivore: true, oiseau: true, predateur: true, autre: true });
   const [q, setQ] = useState("");
   const [cherche, setCherche] = useState(false);
@@ -234,6 +236,7 @@ export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean
   /** Choisit un voyageur : la carte glisse vers lui, son trajet se redessine et sa lumière le parcourt. */
   function montrer(i: number, centrer = true) {
     setChoisi(i);
+    setSatellite(false);
     // La fiche (avec le parcours) vient se placer juste sous le bandeau.
     window.setTimeout(() => document.getElementById("fiche-voyageur")?.scrollIntoView({ behavior: "smooth", block: "start" }), 700);
     setCherche(false);
@@ -378,6 +381,10 @@ export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean
           </div>
           <p className={`mt-2 inline-block rounded-full px-3 py-1 text-xs font-extrabold ${estComplet(v) ? "bg-[#4cd964]/20 text-[#9dffb0]" : "bg-white/10 texte-doux"}`}>{estComplet(v) ? "✓ Trajet complet : départ et arrivée connus" : "Trajet partiel : seulement le début est connu"}</p>
           <Parcours key={v.i} points={v.points} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} arrivee={estComplet(v)} />
+          <button type="button" onClick={() => setSatellite(true)} className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#f3d48a] to-[#e7b75a] py-3.5 text-base font-black text-[#2a1650] shadow-[0_0_18px_rgba(243,212,138,.45)] active:scale-[.98]">
+            🛰️ Voyager avec lui, vu du ciel
+          </button>
+          {satellite ? <VoyageSatellite points={v.points} nom={nomDe(v)} photo={v.fiche && aUnePhoto(v.fiche) ? v.fiche : null} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} complet={estComplet(v)} depart={v.depart?.date ?? v.debut} arrivee={v.arrivee?.date ?? v.fin} onFermer={() => setSatellite(false)} /> : null}
           {(() => {
             const autres = voyagesDe(v.fiche ?? "", v.latin);
             return autres.length > 1 ? (
