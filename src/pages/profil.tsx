@@ -37,7 +37,10 @@ export function ProfilPage() {
           </ul>
         </>
       ) : null}
-      <a href="#/options" className="bouton-bois mt-6 flex items-center justify-center gap-2 rounded-3xl px-4 py-3 font-display text-xl">
+      <a href="#/nid" className="mt-6 flex items-center justify-center gap-2 rounded-3xl bg-gradient-to-r from-[#f3d48a] to-[#e7b75a] px-4 py-3 font-display text-xl text-[#2a1650]">
+        🪺 Le nid de Plume
+      </a>
+      <a href="#/options" className="bouton-bois mt-3 flex items-center justify-center gap-2 rounded-3xl px-4 py-3 font-display text-xl">
         Options et réglages
       </a>
       <a href="#/sources" className="mt-4 block text-center font-extrabold underline">Sources et crédits</a>

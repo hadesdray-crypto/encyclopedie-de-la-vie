@@ -33,3 +33,10 @@ Aucune erreur dans la console. Les points 1 à 3 ci-dessous sont faits.
 - Rareté calculée avec la liste des pays (plus de « répartition mal connue » à tort).
 - Les paquets tirent d'abord les animaux qui ont un nom français et une photo.
 - Photos relues une par une : 317 retirées (cartes de géographie, peaux de musée, animaux qui semblent morts, images vides). Liste : scripts/photos-retirees.txt.
+
+## Mise à jour (29 octobre)
+- Page des pays : « Les stars du pays » d'abord, puis des sections (Sur la terre, Dans les arbres, Dans l'eau, Dans les airs, Les petites bêtes), et une recherche dans le pays. Classement de célébrité : src/lib/connu.ts (liste des stars + estimation), complété chaque mois par le robot « Célébrité des animaux » (.github/workflows/notoriete.yml, scripts/donnees/notoriete.py → src/data/notoriete.json).
+- Voyages GPS : bouton « Voyager avec lui, vu du ciel » (src/components/voyage-satellite.tsx) : images satellite Esri, lecture, recul, avance rapide, caméra qui suit, Plume qui commente, fichier KML pour Google Earth. Seulement si Internet est permis (Coin des parents). L'APK embarque @capacitor/filesystem et @capacitor/share pour partager le fichier.
+- Plume s'appelle toujours Plume : le nom d'un personnage bonus ne remplace plus « Plume » (src/lib/compagnons.ts, nomCompagnon).
+- L'histoire de Plume (src/lib/histoire.ts, src/components/histoire.tsx, page #/nid) : un ami (Leonie choisit son nom), câlins d'amoureux, mal au ventre, un œuf à réchauffer 5 jours (vraies infos sur les chouettes), naissance du bébé (Leonie choisit son nom). L'ami et le bébé restent à côté de Plume. Le braconnier passe au plus une fois par jour : on le touche, il tombe, se relève et repart dégoûté. Coin des parents dans le nid : avancer d'un jour, faire venir le braconnier, l'éteindre, recommencer.
+- Idées pour la suite : le bébé qui grandit et apprend à voler, d'autres visiteurs (un garde forestier qui remercie Leonie).

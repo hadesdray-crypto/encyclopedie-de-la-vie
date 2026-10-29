@@ -8,6 +8,7 @@ import { lireInterface } from "@/lib/interface";
 import { Cadeau } from "@/components/cadeau";
 import { MiseAJour } from "@/components/mise-a-jour";
 import { Plume } from "@/components/guide";
+import { Histoire } from "@/components/histoire";
 import { DefsTissus } from "@/components/vestiaire";
 import { appliquerGrosTexte } from "@/lib/reglages";
 import { useChemin } from "@/lib/routeur";
@@ -34,6 +35,7 @@ const Voyageurs = lazy(() => import("@/pages/aventure-carte").then((m) => ({ def
 const Jouer = lazy(() => import("@/pages/jouer").then((m) => ({ default: m.JouerPage })));
 const Evolution = lazy(() => import("@/pages/evolution").then((m) => ({ default: m.EvolutionPage })));
 const Cartes = lazy(() => import("@/pages/cartes").then((m) => ({ default: m.CartesPage })));
+const Nid = lazy(() => import("@/pages/nid").then((m) => ({ default: m.NidPage })));
 const Profil = lazy(() => import("@/pages/profil").then((m) => ({ default: m.ProfilPage })));
 // L'ancienne liste des animaux suivis est remplacée par « Les voyages » (dans Aventure).
 function VersVoyages() {
@@ -59,6 +61,7 @@ const ROUTES: [string, Page][] = [
   ["/essai-cartes", EssaiCartesPage],
   ["/essai-barre", EssaiBarrePage],
   ["/profil", Profil],
+  ["/nid", Nid],
   ["/suivi", VersVoyages],
   ["/aventure", VersVoyages],
   ["/options", Options],
@@ -107,6 +110,7 @@ function App() {
       <MiseAJour />
       <DefsTissus />
       <Plume chemin={chemin} params={params} />
+      <Histoire />
       <TempsEcran />
       <DexCadre chemin={chemin} />
     </>

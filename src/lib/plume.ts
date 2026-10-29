@@ -1,7 +1,7 @@
 // L'état de Plume : bulle ouverte ou fermée, petites réactions, réglages.
 import { useEffect, useState } from "react";
 import { REACTIONS } from "@/data/guide";
-import { compagnonExprime, nomCompagnon, type Expression } from "@/lib/compagnons";
+import { compagnonExprime, type Expression } from "@/lib/compagnons";
 
 const CLE_VUS = "leonie-guide-vu";
 const CLE_PARLE = "leonie-plume-parle";
@@ -49,7 +49,6 @@ let minuteur = 0;
 
 function publier(e: Partial<Etat>) {
   // Un personnage bonus parle de lui avec son nom à lui.
-  if (typeof e.reaction === "string") { const n = nomCompagnon(); if (n !== "Plume") e = { ...e, reaction: e.reaction.replace(/\bPlume\b/g, n) }; }
   etat = { ...etat, ...e };
   abonnes.forEach((f) => f(etat));
 }

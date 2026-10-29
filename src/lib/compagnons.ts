@@ -119,7 +119,9 @@ export function useCompagnons() {
   return l;
 }
 /** Le nom de celui qui parle : Plume, ou le compagnon bonus choisi. */
-export const nomCompagnon = () => compagnonActif()?.nom || "Plume";
+/** Plume s'appelle toujours Plume, même quand elle porte la tenue ou les phrases d'un personnage bonus.
+ *  (Avant, le nom du personnage bonus remplaçait « Plume » dans les bulles et les jeux.) */
+export const nomCompagnon = () => "Plume";
 
 // ---- Les enregistrements (gardés sur l'appareil, dans IndexedDB) ----
 function base(): Promise<IDBDatabase> {

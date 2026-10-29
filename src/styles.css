@@ -1046,3 +1046,18 @@ html[data-plume-zone="rarete"] .cc .cc-cadre[data-zone] { animation: none; borde
 .ouverture-volet { animation: ouverture-volet .5s cubic-bezier(.2,.9,.25,1); }
 @keyframes ouverture-volet { from { transform: translateY(100vh); clip-path: inset(0 0 0 0 round 28px 28px 0 0); } 70% { clip-path: inset(0 0 0 0 round 28px 28px 0 0); } to { transform: none; clip-path: inset(0 0 0 0 round 0); } }
 @media (prefers-reduced-motion: reduce) { .ouverture-volet { animation: none; } }
+
+/* L'histoire de Plume : l'ami, l'œuf, le bébé, le braconnier */
+.hist-bob { animation: hist-bob 2.6s ease-in-out infinite; }
+@keyframes hist-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.hist-oeuf { transform-origin: 50% 92%; animation: hist-oeuf 3s ease-in-out infinite; }
+@keyframes hist-oeuf { 0%, 70%, 100% { transform: rotate(0); } 76% { transform: rotate(-7deg); } 82% { transform: rotate(6deg); } 88% { transform: rotate(-4deg); } 94% { transform: rotate(2deg); } }
+.hist-coeur { animation: hist-coeur 2.4s ease-out infinite; opacity: 0; }
+@keyframes hist-coeur { 0% { transform: translateY(0) scale(.6); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-60px) scale(1.15); opacity: 0; } }
+.hist-marche { animation: hist-marche .45s ease-in-out infinite; transform-origin: 55px 118px; }
+@keyframes hist-marche { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.hist-etoiles { animation: hist-etoiles 1s linear infinite; }
+@keyframes hist-etoiles { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+.hist-chaleur { animation: hist-chaleur 1.4s ease-out forwards; }
+@keyframes hist-chaleur { 0% { transform: translateY(0) scale(.6); opacity: 0; } 25% { opacity: 1; } 100% { transform: translateY(-50px) scale(1.2); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .hist-bob, .hist-oeuf, .hist-coeur, .hist-marche, .hist-etoiles { animation: none; } }
