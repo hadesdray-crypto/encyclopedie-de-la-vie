@@ -41,3 +41,8 @@ Aucune erreur dans la console. Les points 1 à 3 ci-dessous sont faits.
 - L'histoire de Plume (src/lib/histoire.ts, src/components/histoire.tsx, page #/nid) : un ami (Leonie choisit son nom), câlins d'amoureux, mal au ventre, un œuf à réchauffer 5 jours (vraies infos sur les chouettes), naissance du bébé (Leonie choisit son nom). L'ami et le bébé restent à côté de Plume. Le braconnier passe au plus une fois par jour : on le touche, il tombe, se relève et repart dégoûté. Coin des parents dans le nid : avancer d'un jour, faire venir le braconnier, l'éteindre, recommencer.
 - Idées pour la suite : le bébé qui grandit et apprend à voler, d'autres visiteurs (un garde forestier qui remercie Leonie).
 - Le braconnier façon Bip Bip et Coyote (src/components/braconnier.tsx) : trois scènes (filet qui finit sur sa tête, fusil dont la balle rebondit sur le bouclier du Concepteur, course où il s'écrase contre le bord de l'écran). On peut l'attraper et le lancer : gravité, rebonds, rotation, bobos (pansement, bosse, bandage), étoiles, mots « BOING ! ». Plume gagne toujours. Coin des parents du nid : un bouton par scène.
+
+## 29 octobre — Options simplifiées (menus et sous-menus)
+- `#/options` : d'abord « Choisis ton personnage » (les 4 Plume, repos, bonus, ＋), puis de grosses tuiles de réglages (Voix et sons, Apparence, Présentations, Plumedex, L'application, Grandes personnes…).
+- `#/personnage?id=…` : fiche d'un personnage (gros bouton Choisir) + tuiles Voix / Tenue / Caractère / Paroles (3 niveaux) / Nom / Comportement. Tout s'enregistre tout seul.
+- L'ancien atelier est supprimé (`#/atelier` renvoie vers Options). Fichiers : `pages/options.tsx`, `pages/personnage.tsx`, `components/reglages-ui.tsx`, `components/paroles.tsx`, `lib/personnages.ts`.

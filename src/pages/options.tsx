@@ -1,52 +1,34 @@
 import { changerInterface, useInterface, type Ouverture, type StyleBoutons } from "@/lib/interface";
 import { revivrePremiereFois } from "@/lib/plume";
 import { activerDex, useDex } from "@/lib/dex";
-import { useState, type ReactNode } from "react";
-import type { IconType } from "react-icons";
-import { LuFeather, LuMonitorSmartphone, LuMusic, LuShieldCheck, LuSparkles, LuType, LuLayoutDashboard, LuVolume2 } from "react-icons/lu";
+import { useEffect, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
+import { LuVolume2 } from "react-icons/lu";
 import { Entete, Titre } from "@/components/entete";
 import { PlumeDessin } from "@/components/plume-dessin";
 import { voixPossible } from "@/components/voix";
-import { ChoixVoixPlume } from "@/components/choix-voix";
+import { BoutonEcouter, CartePage, Ligne, TitreSous, Tuile, texteInterrupteur, type Interrupteur } from "@/components/reglages-ui";
 import { Application, CoinParents } from "@/pages/profil";
 import { dire, taire, useParle } from "@/lib/parole";
-import {
-  choisirPlumeBouge,
-  choisirPlumeExplique,
-  choisirReactions,
-  PRESENCES,
-  choisirPlumeParle,
-  choisirPresence,
-  plumeParleSeule,
-  ouvrirPlume,
-  usePlume,
-  plumeBouge,
-  plumeExpliqueSeule,
-  reactionsActives,
-} from "@/lib/plume";
+import { ouvrirPlume, usePlume } from "@/lib/plume";
 import { VITESSES, choisirDireBoutons, choisirGrosTexte, choisirVitesseVoix, direBoutons, grosTexte, vitesseVoix, type Vitesse } from "@/lib/reglages";
 import { activerSons, sonsActifs } from "@/lib/sons";
 import { choisirLectureLongue, lectureLongue } from "@/lib/lecture-longue";
-import { presence as presenceActuelle } from "@/lib/plume";
-import { MAX_BONUS, choisirCompagnon, useCompagnon, useCompagnons } from "@/lib/compagnons";
+import { MAX_BONUS, useCompagnon, useCompagnons } from "@/lib/compagnons";
+import { CARACTERES, NUM, creerBonus } from "@/lib/personnages";
+import { choisirPlumeParle, plumeParleSeule } from "@/lib/plume";
 
 /*
- * Les options : chaque réglage est écrit en phrases simples, et Plume peut le lire à voix haute
- * (le petit haut-parleur à côté de chaque réglage, ou « Écouter toute la page »).
+ * Les options, rangées en menus et sous-menus :
+ *  - en haut, les personnages (on touche un personnage : sa page s'ouvre, avec sa voix, sa tenue, ses paroles…) ;
+ *  - en dessous, quelques grosses tuiles : chacune ouvre un petit écran avec peu de réglages.
+ * Chaque réglage est écrit en phrases simples, et Plume peut le lire à voix haute (le petit haut-parleur).
  */
-
-type Interrupteur = { id: string; titre: string; explication: string; lire: () => boolean; choisir: (oui: boolean) => void };
 
 const VOIX: Interrupteur[] = [
   { id: "seule", titre: "Plume lit toute seule", explication: "Quand Plume explique quelque chose, elle le lit aussi à voix haute, sans qu'on appuie.", lire: plumeParleSeule, choisir: choisirPlumeParle },
   { id: "longue", titre: "Appuyer longtemps pour écouter", explication: "Appuie longtemps sur un texte, et Plume te le lit à voix haute.", lire: lectureLongue, choisir: choisirLectureLongue },
   { id: "boutons", titre: "Dire le nom des boutons", explication: "Quand tu touches un bouton de la barre du bas, Plume dit son nom.", lire: direBoutons, choisir: choisirDireBoutons },
-];
-
-const PLUME: Interrupteur[] = [
-  { id: "explique", titre: "Plume explique chaque nouvelle page", explication: "La première fois que tu ouvres une page, Plume vient t'expliquer. Sinon, elle attend que tu la touches.", lire: plumeExpliqueSeule, choisir: choisirPlumeExplique },
-  { id: "reactions", titre: "Plume te félicite pendant les jeux", explication: "Une petite bulle à côté de Plume quand tu gagnes ou quand tu te trompes.", lire: reactionsActives, choisir: choisirReactions },
-  { id: "bouge", titre: "Plume fait coucou", explication: "De temps en temps, Plume agite son aile pour te dire bonjour.", lire: plumeBouge, choisir: choisirPlumeBouge },
 ];
 
 const SONS: Interrupteur[] = [
@@ -59,130 +41,203 @@ const ECRAN: Interrupteur[] = [
 
 const NOM_VITESSE: Record<Vitesse, string> = { lente: "lente", normale: "normale", rapide: "rapide" };
 
-function texteInterrupteur(r: Interrupteur) {
-  return `${r.titre}. ${r.explication} En ce moment : ${r.lire() ? "oui" : "non"}.`;
+const TEXTE_ACCUEIL = [
+  "Les options.",
+  "En haut, tes personnages : Plume discrète, présente, étudiante ou passionnée, et tes personnages bonus. Touche-en un pour le choisir et régler sa voix.",
+  "En dessous, quelques boutons : la voix et les sons, l'apparence, les présentations, la boîte à idées, l'application, et un coin pour les grandes personnes.",
+].join(" ");
+
+export function OptionsPage({ params }: { params?: URLSearchParams }) {
+  const s = params?.get("s");
+  if (s === "voix") return <SousVoix />;
+  if (s === "apparence") return <SousApparence />;
+  if (s === "presentations") return <SousPresentations />;
+  if (s === "dex") return <SousDex />;
+  if (s === "appli") return <SousAppli />;
+  if (s === "parents") return <SousParents />;
+  return <Accueil creer={!!params?.get("creer")} />;
 }
 
-function textePage() {
-  const morceaux = [
-    "Les options. Ici, tu choisis comment marche ton encyclopédie.",
-    "La voix.",
-    `La vitesse de la voix. En ce moment, elle est ${NOM_VITESSE[vitesseVoix()]}.`,
-    ...VOIX.map(texteInterrupteur),
-    "Plume.",
-    `Comment Plume reste avec toi. En ce moment : ${PRESENCES.find((p) => p.id === presenceActuelle())?.nom}.`,
-    ...PRESENCES.map((p) => `${p.nom} : ${p.explique}`),
-    ...PLUME.map(texteInterrupteur),
-    "Tout en haut, les présentations : pour un nouvel utilisateur, ou juste Plume qui se présente.",
-    ...SONS.map(texteInterrupteur),
-    ...ECRAN.map(texteInterrupteur),
-    "Tout en bas, il y a la version de l'application, et un coin pour les grandes personnes.",
-  ];
-  return morceaux.join(" ");
-}
-
-export function OptionsPage() {
+// ------------------------------------------------------------ l'écran principal
+function Accueil({ creer }: { creer: boolean }) {
   const parle = useParle();
-  const voix = voixPossible();
+  const { gagne } = useDex();
   return (
-    <main className="mx-auto max-w-xl px-4 pt-4">
+    <main className="mx-auto max-w-xl px-4 pb-32 pt-4">
       <Entete siVide="/" />
-      <Titre sous="Ici, tu choisis comment marche ton encyclopédie. Touche le haut-parleur pour que Plume te lise un réglage.">Options</Titre>
-      {voix ? (
-        <button
-          type="button"
-          onClick={() => (parle ? taire() : dire(textePage()))}
-          className="bouton-bois mx-auto mt-4 flex min-h-12 items-center gap-2 rounded-full px-5 font-extrabold"
-        >
-          <LuVolume2 className="size-5" aria-hidden="true" />
-          {parle ? "Arrêter la lecture" : "Écouter toute la page"}
+      <Titre>Options</Titre>
+      {voixPossible() ? (
+        <button type="button" onClick={() => (parle ? taire() : dire(TEXTE_ACCUEIL))} className="mx-auto mt-2 flex min-h-10 items-center gap-2 rounded-full bg-white/10 px-4 text-sm font-extrabold ring-1 ring-white/20">
+          <LuVolume2 className="size-4" aria-hidden="true" />
+          {parle ? "Arrêter" : "Écouter"}
         </button>
       ) : null}
 
-      <Presentations />
+      <ChoixPersonnages ouvrirCreation={creer} />
 
-      <Groupe icone={LuVolume2} titre="La voix">
-        {voix ? <ChoixVitesse /> : <p className="px-1 py-2 text-sm">La voix n'est pas disponible sur cet appareil.</p>}
-        {voix ? <ChoixVoixPlume /> : null}
-        {voix ? VOIX.map((r) => <Ligne key={r.id} r={r} />) : null}
-      </Groupe>
-
-      <Groupe icone={LuFeather} titre="Plume">
-        <ChoixPresence />
-        {PLUME.map((r) => (
-          <Ligne key={r.id} r={r} />
-        ))}
-
-      </Groupe>
-
-      <ChoixDex />
-
-      <Groupe icone={LuMusic} titre="Les sons">
-        {SONS.map((r) => (
-          <Ligne key={r.id} r={r} />
-        ))}
-      </Groupe>
-
-      <Groupe icone={LuLayoutDashboard} titre="L'interface">
-        <ChoixInterface />
-      </Groupe>
-
-      <Groupe icone={LuType} titre="L'écran">
-        {ECRAN.map((r) => (
-          <Ligne key={r.id} r={r} />
-        ))}
-      </Groupe>
-
-      <a href="#/idees" className="bouton-bois mt-6 flex items-center justify-center gap-2 rounded-2xl py-3.5 font-display text-xl">💡 La boîte à idées</a>
-
-      <h2 className="mt-7 flex items-center justify-center gap-2 font-display text-2xl text-[#f3d48a]">
-        <LuMonitorSmartphone className="size-6" aria-hidden="true" />
-        L'application
-      </h2>
-      <Application />
-
-      <h2 className="mt-7 flex items-center justify-center gap-2 font-display text-2xl text-[#f3d48a]">
-        <LuShieldCheck className="size-6" aria-hidden="true" />
-        Pour les grandes personnes
-      </h2>
-      <CoinParents />
-      <a href="#/sources" className="mt-4 block text-center font-extrabold underline">
-        Sources et crédits
-      </a>
+      <h2 className="mt-7 text-center font-display text-xl text-[#f3d48a]">Les réglages</h2>
+      <div className="mt-2 grid grid-cols-2 gap-3">
+        <Tuile href="#/options?s=voix" icone="🔊" titre="Voix et sons" />
+        <Tuile href="#/options?s=apparence" icone="🎨" titre="Apparence" />
+        <Tuile href="#/options?s=presentations" icone="👋" titre="Présentations" />
+        {gagne ? <Tuile href="#/options?s=dex" icone="🏆" titre="Le Plumedex" /> : null}
+        <Tuile href="#/idees" icone="💡" titre="Boîte à idées" />
+        <Tuile href="#/options?s=appli" icone="📱" titre="L'application" />
+        <Tuile href="#/options?s=parents" icone="🛡️" titre="Grandes personnes" />
+        <Tuile href="#/sources" icone="📚" titre="Sources" />
+      </div>
     </main>
   );
 }
 
-/** Le Plumedex : visible seulement quand il a été gagné (toutes les tables de multiplication). */
-function ChoixDex() {
-  const { gagne, actif } = useDex();
+/** Les personnages : les quatre Plume, le repos, et les personnages bonus. Toucher un personnage ouvre sa page. */
+function ChoixPersonnages({ ouvrirCreation }: { ouvrirCreation: boolean }) {
+  const { presence } = usePlume();
+  const actif = useCompagnon();
+  const bonus = useCompagnons();
+  const [creation, setCreation] = useState(ouvrirCreation);
+  const vides = Math.max(0, MAX_BONUS - bonus.length);
+  const plumeActive = (id: string) => !actif && presence === id;
   return (
-    <section className="mt-6">
-      <h2 className="flex items-center gap-2 px-1 font-display text-2xl text-[#f3d48a]">Le Plumedex</h2>
-      <div className="mt-2 rounded-3xl bg-card px-4 py-3 text-[#2a1c14]">
-        {gagne ? (
-          <button type="button" onClick={() => activerDex(!actif)} className="flex w-full items-center justify-between gap-3 text-left font-extrabold">
-            <span>Le cadre du Plumedex autour de l'application</span>
-            <span className={`rounded-full px-3 py-1 text-sm ${actif ? "bg-[#b3261e] text-white" : "bg-[#e8d9bf]"}`}>{actif ? "Allumé" : "Éteint"}</span>
-          </button>
-        ) : (
-          <p className="font-bold">Pas encore gagné : il faut remplir toutes les tables de multiplication de 1 à 9 (Jouer → Les tables magiques).</p>
-        )}
+    <section className="mt-5" aria-label="Mes personnages">
+      <h2 className="text-center font-display text-xl text-[#f3d48a]">Choisis ton personnage</h2>
+
+      <div className="carte-nuit mt-2 rounded-[1.75rem] px-2 py-3">
+        <p className="px-2 text-xs font-extrabold uppercase tracking-wide text-[#f3d48a]/80">Plume</p>
+        <ul className="mt-1 grid grid-cols-4 gap-1">
+          {CARACTERES.map((p) => (
+            <li key={p.id}>
+              <Pastille href={`#/personnage?id=${p.id}`} actif={plumeActive(p.id)} nom={p.court}>
+                <PlumeDessin caractere={p.num} className="size-full" />
+              </Pastille>
+            </li>
+          ))}
+        </ul>
+        <a href="#/personnage?id=repos" className={`mx-2 mt-2 flex min-h-10 items-center justify-center gap-2 rounded-full text-sm font-extrabold ${plumeActive("repos") ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>
+          😴 Plume se repose {plumeActive("repos") ? "✓" : ""}
+        </a>
+
+        <p className="mt-4 px-2 text-xs font-extrabold uppercase tracking-wide text-[#f3d48a]/80">Mes personnages bonus</p>
+        <ul className="mt-1 grid grid-cols-4 gap-1">
+          {bonus.map((c) => (
+            <li key={c.id}>
+              <Pastille href={`#/personnage?id=${c.id}`} actif={actif?.id === c.id} nom={c.nom}>
+                <PlumeDessin caractere={NUM[c.caractere]} look={c.look} className="size-full" />
+              </Pastille>
+            </li>
+          ))}
+          {vides > 0 ? (
+            <li>
+              <button type="button" onClick={() => setCreation(true)} className="flex w-full flex-col items-center px-0.5 py-1 text-center" aria-label="Créer un personnage bonus">
+                <span className="grid size-[4.25rem] place-items-center rounded-full bg-gradient-to-b from-[#ff6b5a] to-[#d2302a] text-4xl font-black leading-none text-white shadow-[0_0_16px_rgba(226,69,60,.45)]">＋</span>
+                <span className="mt-1 text-[11px] font-extrabold leading-tight">{bonus.length ? "Un autre" : "Créer le tien"}</span>
+              </button>
+            </li>
+          ) : null}
+        </ul>
       </div>
+      {creation ? <CreerPersonnage onFermer={() => setCreation(false)} /> : null}
     </section>
   );
 }
 
+function Pastille({ href, actif, nom, children }: { href: string; actif: boolean; nom: string; children: ReactNode }) {
+  return (
+    <a href={href} aria-current={actif ? "true" : undefined} className="flex flex-col items-center px-0.5 py-1 text-center transition-transform active:scale-95">
+      <span className={`relative block size-[4.25rem] rounded-full bg-[#2a1844] p-1 ${actif ? "ring-4 ring-[#f3d48a] shadow-[0_0_18px_rgba(243,212,138,.6)]" : "ring-1 ring-white/20"}`}>
+        {children}
+        {actif ? <span className="absolute -right-1 -top-1 grid size-6 place-items-center rounded-full bg-[#5cc28a] text-sm font-black text-[#0f3320] ring-2 ring-[#26153f]">✓</span> : null}
+      </span>
+      <span className="mt-1 max-w-full truncate text-[11px] font-extrabold leading-tight">{nom}</span>
+    </a>
+  );
+}
+
+/** « Comment il s'appelle ? » : on crée le personnage tout de suite, puis on règle le reste dans sa page. */
+function CreerPersonnage({ onFermer }: { onFermer: () => void }) {
+  const [nom, setNom] = useState("");
+  useEffect(() => {
+    const avant = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => void (document.body.style.overflow = avant);
+  }, []);
+  function creer() {
+    const c = creerBonus(nom);
+    onFermer();
+    window.location.hash = `#/personnage?id=${c.id}`;
+  }
+  return createPortal(
+    <div className="fixed inset-0 z-[150] grid place-items-center bg-black/65 px-4 backdrop-blur-sm" role="dialog" aria-label="Créer un personnage bonus">
+      <div className="carte-nuit apparait w-full max-w-sm rounded-[1.75rem] px-5 pb-5 pt-4 text-center text-white">
+        <PlumeDessin anim="coucou" className="mx-auto h-28 w-28" />
+        <p className="font-display text-2xl text-[#f3d48a]">Un nouveau personnage !</p>
+        <p className="mt-1 text-sm texte-doux">Comment s'appelle-t-il ? Ensuite, tu choisiras sa tenue, sa voix et ses paroles.</p>
+        <input
+          autoFocus
+          value={nom}
+          maxLength={16}
+          onChange={(e) => setNom(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && creer()}
+          placeholder="Pompon"
+          aria-label="Son nom"
+          className="mt-3 w-full rounded-full bg-white/10 px-4 py-3 text-center text-xl font-extrabold text-white outline-none placeholder:text-white/35"
+        />
+        <button type="button" onClick={creer} className="bouton-jeu mt-3 w-full rounded-full py-3.5 font-display text-xl">Créer ➜</button>
+        <button type="button" onClick={onFermer} className="mt-2 w-full rounded-full py-2 text-sm font-extrabold texte-doux">Plus tard</button>
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
+// ------------------------------------------------------------ les sous-menus
+function SousPage({ titre, icone, sous, children }: { titre: string; icone: string; sous?: string; children: ReactNode }) {
+  return (
+    <main className="mx-auto max-w-xl px-4 pb-32 pt-4">
+      <Entete siVide="/options" />
+      <TitreSous icone={icone} sous={sous}>{titre}</TitreSous>
+      {children}
+    </main>
+  );
+}
+
+function SousVoix() {
+  const voix = voixPossible();
+  return (
+    <SousPage titre="Voix et sons" icone="🔊" sous="Choisir la voix de chaque personnage se fait dans sa page.">
+      {voix ? (
+        <CartePage>
+          <ChoixVitesse />
+          {VOIX.map((r) => <Ligne key={r.id} r={r} />)}
+          {SONS.map((r) => <Ligne key={r.id} r={r} />)}
+        </CartePage>
+      ) : (
+        <CartePage>
+          <p className="px-1 py-2 text-sm">La voix n'est pas disponible sur cet appareil.</p>
+          {SONS.map((r) => <Ligne key={r.id} r={r} />)}
+        </CartePage>
+      )}
+    </SousPage>
+  );
+}
+
+function SousApparence() {
+  return (
+    <SousPage titre="Apparence" icone="🎨" sous="Comment l'application s'ouvre et se présente.">
+      <CartePage>
+        <ChoixInterface />
+        {ECRAN.map((r) => <Ligne key={r.id} r={r} />)}
+      </CartePage>
+    </SousPage>
+  );
+}
+
 /** Les deux présentations, au même endroit. */
-function Presentations() {
+function SousPresentations() {
   const [sur, setSur] = useState(false);
   return (
-    <section className="mt-6">
-      <h2 className="flex items-center gap-2 px-1 font-display text-2xl text-[#f3d48a]">
-        <LuSparkles className="size-6" aria-hidden="true" />
-        Les présentations
-      </h2>
-      <div className="mt-2 space-y-3 rounded-3xl bg-card px-4 py-4 text-[#2a1c14]">
+    <SousPage titre="Présentations" icone="👋" sous="Pour retrouver les explications de Plume.">
+      <div className="mt-4 space-y-3 rounded-3xl bg-card px-4 py-4 text-[#2a1c14]">
         <div>
           <button type="button" onClick={() => (sur ? revivrePremiereFois() : setSur(true))} className="w-full rounded-full bg-[#6a3fc0] py-3 font-extrabold text-white">
             {sur ? "Oui, on recommence comme la première fois" : "Présentation pour un nouvel utilisateur"}
@@ -197,59 +252,46 @@ function Presentations() {
           <p className="mt-1 text-center text-xs">Plume redit sa présentation tout de suite, toute seule, puis propose les explications en détail.</p>
         </div>
       </div>
-    </section>
+    </SousPage>
   );
 }
 
-function Groupe({ icone: Icone, titre, children }: { icone: IconType; titre: string; children: ReactNode }) {
+/** Le Plumedex : visible seulement quand il a été gagné (toutes les tables de multiplication). */
+function SousDex() {
+  const { gagne, actif } = useDex();
   return (
-    <section className="mt-6">
-      <h2 className="flex items-center gap-2 px-1 font-display text-2xl text-[#f3d48a]">
-        <Icone className="size-6" aria-hidden="true" />
-        {titre}
-      </h2>
-      <div className="mt-2 divide-y divide-[#a07a45]/30 rounded-3xl bg-card px-3 py-1 text-[#2a1c14]">{children}</div>
-    </section>
-  );
-}
-
-function BoutonEcouter({ texte, label }: { texte: () => string; label: string }) {
-  if (!voixPossible()) return null;
-  return (
-    <button type="button" onClick={() => dire(texte())} aria-label={`Écouter : ${label}`} className="grid size-10 shrink-0 place-items-center rounded-full bg-[#efe3ff] text-[#6a3fc0]">
-      <LuVolume2 className="size-5" aria-hidden="true" />
-    </button>
-  );
-}
-
-function Ligne({ r }: { r: Interrupteur }) {
-  const [oui, setOui] = useState(r.lire);
-  return (
-    <div className="flex items-center gap-2 py-2.5">
-      <BoutonEcouter texte={() => texteInterrupteur(r)} label={r.titre} />
-      <div className="min-w-0 flex-1">
-        <p className="font-extrabold leading-tight">{r.titre}</p>
-        <p className="text-xs leading-snug">{r.explication}</p>
+    <SousPage titre="Le Plumedex" icone="🏆">
+      <div className="mt-4 rounded-3xl bg-card px-4 py-3 text-[#2a1c14]">
+        {gagne ? (
+          <button type="button" onClick={() => activerDex(!actif)} className="flex w-full items-center justify-between gap-3 text-left font-extrabold">
+            <span>Le cadre du Plumedex autour de l'application</span>
+            <span className={`rounded-full px-3 py-1 text-sm ${actif ? "bg-[#b3261e] text-white" : "bg-[#e8d9bf]"}`}>{actif ? "Allumé" : "Éteint"}</span>
+          </button>
+        ) : (
+          <p className="font-bold">Pas encore gagné : il faut remplir toutes les tables de multiplication de 1 à 9 (Jouer → Les tables magiques).</p>
+        )}
       </div>
-      <button
-        type="button"
-        role="switch"
-        aria-checked={oui}
-        aria-label={r.titre}
-        onClick={() => {
-          r.choisir(!oui);
-          setOui(!oui);
-          if (direBoutons() && voixPossible()) dire(oui ? "Non" : "Oui");
-        }}
-        className={`relative h-9 w-[4.6rem] shrink-0 rounded-full text-xs font-black transition-colors ${oui ? "bg-[#4f9a4a] text-white" : "bg-[#cdb89a] text-[#4a3a2a]"}`}
-      >
-        <span className={`absolute top-1 size-7 rounded-full bg-white shadow transition-all ${oui ? "left-[calc(100%-2rem)]" : "left-1"}`} />
-        <span className={`absolute inset-y-0 grid place-items-center ${oui ? "left-2.5" : "right-2.5"}`}>{oui ? "Oui" : "Non"}</span>
-      </button>
-    </div>
+    </SousPage>
   );
 }
 
+function SousAppli() {
+  return (
+    <SousPage titre="L'application" icone="📱">
+      <Application />
+    </SousPage>
+  );
+}
+
+function SousParents() {
+  return (
+    <SousPage titre="Grandes personnes" icone="🛡️">
+      <CoinParents />
+    </SousPage>
+  );
+}
+
+// ------------------------------------------------------------ les réglages détaillés
 function ChoixVitesse() {
   const [v, setV] = useState<Vitesse>(vitesseVoix);
   return (
@@ -282,78 +324,6 @@ function ChoixVitesse() {
   );
 }
 
-function ChoixPresence() {
-  const { presence } = usePlume();
-  const perso = useCompagnon();
-  return (
-    <div className="py-2.5">
-      <div className="flex items-center gap-2">
-        <BoutonEcouter texte={() => `Comment Plume reste avec toi. ${PRESENCES.map((p) => `${p.nom} : ${p.explique}`).join(" ")}`} label="Comment Plume reste avec toi" />
-        <div className="flex-1">
-          <p className="font-extrabold leading-tight">Le caractère de Plume</p>
-          <p className="text-xs leading-snug">Tu peux aussi appuyer longtemps sur Plume.</p>
-        </div>
-      </div>
-      <div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Le caractère de Plume">
-        {PRESENCES.map((p) => (
-          <button
-            key={p.id}
-            type="button"
-            role="radio"
-            aria-checked={presence === p.id && !perso}
-            onClick={() => {
-              choisirCompagnon(null);
-              choisirPresence(p.id);
-              if (voixPossible() && p.id !== "repos") dire(p.explique);
-            }}
-            className={`rounded-2xl px-3 py-2 text-left ${presence === p.id && !perso ? "bouton-bois" : "bg-[#f3e2c2]"}`}
-          >
-            {p.id !== "repos" ? (
-              <span className="mb-1 flex justify-center gap-1">
-                <PlumeDessin caractere={({ discrete: 1, presente: 2, etudiante: 3, passionnee: 4 } as const)[p.id as "discrete"]} className="size-16" />
-                <PlumeDessin caractere={({ discrete: 1, presente: 2, etudiante: 3, passionnee: 4 } as const)[p.id as "discrete"]} lit className="size-16" />
-              </span>
-            ) : null}
-            <span className="block font-extrabold leading-tight">{p.nom}</span>
-            <span className="block text-[11px] leading-snug">{p.explique}</span>
-          </button>
-        ))}
-      </div>
-      <PersonnagesBonus />
-    </div>
-  );
-}
-
-/** Les personnages bonus : à la suite des 4 caractères de Plume. Jusqu'à 4, créés par la famille. */
-function PersonnagesBonus() {
-  const liste = useCompagnons();
-  const actif = useCompagnon();
-  const vides = Math.max(0, MAX_BONUS - liste.length);
-  return (
-    <div className="mt-4">
-      <p className="font-extrabold leading-tight">Les personnages bonus</p>
-      <p className="text-xs leading-snug">Crée jusqu'à {MAX_BONUS} compagnons : ils font tout comme Plume (aider, réagir, jouer), avec leur nom, leur look, leur caractère et tes paroles enregistrées.</p>
-      <div className="mt-2 grid grid-cols-2 gap-2">
-        {liste.map((c) => (
-          <div key={c.id} className={`rounded-2xl px-2 py-2 text-center ${actif?.id === c.id ? "bouton-bois" : "bg-[#f3e2c2]"}`}>
-            <button type="button" onClick={() => { choisirCompagnon(c.id); choisirPresence(c.caractere); }} className="block w-full" aria-pressed={actif?.id === c.id}>
-              <PlumeDessin caractere={({ discrete: 1, presente: 2, etudiante: 3, passionnee: 4 } as const)[c.caractere]} look={c.look} className="mx-auto size-16" />
-              <span className="block font-extrabold leading-tight">{c.nom}</span>
-              <span className="block text-[11px] leading-snug">{c.age ? `${c.age} ans · ` : ""}{c.createur ? `créé par ${c.createur}` : "personnage bonus"}</span>
-            </button>
-            <a href={`#/atelier?id=${c.id}`} className="mt-1 inline-block text-xs font-extrabold underline">Modifier</a>
-          </div>
-        ))}
-        {vides > 0 ? (
-          <a href="#/atelier" className="grid min-h-28 place-items-center rounded-2xl bg-gradient-to-b from-[#ff6b5a] to-[#d2302a] px-2 py-2 text-center font-extrabold text-white shadow-[0_0_18px_rgba(226,69,60,.45)]">
-            <span><span className="block text-4xl leading-none">＋</span>{liste.length ? "Encore un personnage" : "Créer un personnage bonus"}<span className="block text-[11px] font-bold opacity-85">{vides} place{vides > 1 ? "s" : ""} libre{vides > 1 ? "s" : ""}</span></span>
-          </a>
-        ) : null}
-      </div>
-    </div>
-  );
-}
-
 /** Changer l'interface : comment les pages s'ouvrent, le style des boutons du bas, et le bouton à mettre en avant. */
 function ChoixInterface() {
   const i = useInterface();
@@ -376,3 +346,4 @@ function ChoixInterface() {
     </>
   );
 }
+

@@ -711,7 +711,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
               </button>
             </li>
           ))}
-          {bonus.length < 4 ? <li><a href="#/atelier" className="block w-full rounded-2xl bg-gradient-to-b from-[#ff6b5a] to-[#d2302a] px-3 py-2 text-center text-sm font-extrabold text-white">＋ {bonus.length ? "Encore un personnage bonus" : "Créer un personnage bonus"}</a></li> : null}
+          {bonus.length < 4 ? <li><a href="#/options?creer=1" className="block w-full rounded-2xl bg-gradient-to-b from-[#ff6b5a] to-[#d2302a] px-3 py-2 text-center text-sm font-extrabold text-white">＋ {bonus.length ? "Encore un personnage bonus" : "Créer un personnage bonus"}</a></li> : null}
         </ul>
       ) : (
         <>
