@@ -8,14 +8,14 @@ import { CadreGlobe } from "@/components/cadre-globe";
 import { Entete } from "@/components/entete";
 import { Globe, cadrerListe, cadrerPays } from "@/components/globe";
 import { Portrait, aUnePhoto } from "@/components/portrait";
-import { ESPECES, FAMILLES, GROUPES, groupeDeOrdre, type Espece } from "@/data/catalogue";
+import { ESPECES, type Espece } from "@/data/catalogue";
 import { NOMS_PAYS } from "@/data/pays-noms";
 import { plumeDit } from "@/lib/plume";
 import { connu } from "@/lib/connu";
 import { recitPays } from "@/lib/pays-infos";
 import { definirEcran } from "@/lib/plume";
 import { Ecouter } from "@/components/voix";
-import { LuSlidersHorizontal } from "react-icons/lu";
+import { AnimauxDuPays } from "@/components/animaux-pays";
 import { VoyageursPage, voyagesDe } from "@/pages/voyageurs";
 
 const sansAccent = (t: string) => t.toLocaleLowerCase("fr").normalize("NFD").replace(/\p{M}/gu, "");
@@ -67,9 +67,6 @@ function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
   const [vers, setVers] = useState<{ lon: number; lat: number; zoom: number; n: number } | null>(null);
   const [q, setQ] = useState("");
   const [cherche, setCherche] = useState(false);
-  const [groupe, setGroupe] = useState<string | null>(null);
-  const [montre, setMontre] = useState(24);
-  const [trier, setTrier] = useState(false);
   const [animal, setAnimal] = useState<Espece | null>(null);
   const [mode, setMode] = useState<"pays" | "animal">("pays");
   // La fenêtre se met toute seule en bandeau quand une fiche s'affiche ; on peut la changer à la main.
@@ -94,8 +91,6 @@ function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
   const choisir = (code: string | null, centrer = false) => {
     setAnimal(null);
     setPays(code);
-    setGroupe(null);
-    setMontre(24);
     setCherche(false);
     setQ("");
     if (code && centrer) {
@@ -131,8 +126,6 @@ function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
     } else definirEcran(null);
   }, [pays, animal?.id]);
   useEffect(() => () => definirEcran(null), []);
-  const groupesIci = GROUPES.filter((g) => tous.some((e) => g.ordres.includes(e.ordre)));
-  const liste = groupe ? tous.filter((e) => groupeDeOrdre(e.ordre)?.id === groupe) : tous;
 
   const fermerRecherche = () => { setCherche(false); setQ(""); };
   const ligneAnimal = (e: Espece) => (
@@ -212,7 +205,7 @@ function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
               <p className="font-display text-2xl leading-tight text-[#f3d48a]">{NOMS_PAYS[pays] ?? pays}</p>
-              <p className="text-sm font-bold">{tous.length ? `${tous.length} espèces de mammifères y vivent. Les plus connues d'abord.` : "Pas de mammifère noté pour ce pays."}</p>
+              <p className="text-sm font-bold">{tous.length ? `${tous.length} espèces de mammifères y vivent. Les stars d'abord !` : "Pas de mammifère noté pour ce pays."}</p>
             </div>
             <button type="button" aria-label="Fermer" onClick={() => choisir(null)} className="grid size-9 shrink-0 place-items-center rounded-full bg-white/10"><LuX className="size-5" /></button>
           </div>
@@ -227,34 +220,7 @@ function OuViventIls({ onVoyage }: { onVoyage: (i: number) => void }) {
             </details>
           ) : null}
           {recit.length ? <div className="mt-2"><Ecouter texte={recit.join(" ")} /></div> : null}
-          {groupesIci.length > 1 ? (
-            <div className="mt-2">
-              <button type="button" aria-expanded={trier} onClick={() => setTrier((t) => !t)} className={`inline-flex min-h-8 items-center gap-1.5 rounded-full px-3 text-xs font-extrabold ${trier || groupe ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>
-                <LuSlidersHorizontal className="size-3.5" aria-hidden="true" /> {groupe ? GROUPES.find((g) => g.id === groupe)?.nom : "Trier par groupe"} {trier ? "−" : "+"}
-              </button>
-              {trier ? (
-                <div className="apparait mt-2 flex flex-wrap gap-1">
-                  <button type="button" onClick={() => { setGroupe(null); setMontre(24); setTrier(false); }} className={`rounded-full px-2.5 py-1 text-[11px] font-extrabold ${groupe === null ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>Tous</button>
-                  {groupesIci.map((g) => (
-                    <button key={g.id} type="button" onClick={() => { setGroupe(g.id); setMontre(24); setTrier(false); }} className={`rounded-full px-2.5 py-1 text-[11px] font-extrabold ${groupe === g.id ? "bg-[#f3d48a] text-[#2a1650]" : "bg-white/10"}`}>{g.nom}</button>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          ) : null}
-          <ul className="mt-3 grid grid-cols-4 gap-x-1.5 gap-y-2.5">
-            {liste.slice(0, montre).map((e) => (
-              <li key={e.id} className="text-center">
-                <a href={`#/mammiferes/e-${e.id}`} className="block active:scale-95 transition-transform">
-                  <span className="medaillon-or mx-auto block aspect-square w-[92%] overflow-hidden [&_img]:size-full [&_img]:object-cover"><Portrait id={e.id} /></span>
-                  <span className="mt-1 block text-[11px] font-extrabold leading-tight">{e.nom}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-          {montre < liste.length ? (
-            <button type="button" onClick={() => setMontre((n) => n + 24)} className="bouton-bois mt-4 w-full rounded-2xl py-3 font-extrabold">Voir la suite ({liste.length - montre} encore)</button>
-          ) : null}
+          <AnimauxDuPays key={pays} animaux={tous} nomPays={NOMS_PAYS[pays] ?? "ce pays"} />
           <p className="mt-3 text-[11px] texte-doux">Répartition : Mammal Diversity Database. Les petites îles ne sont pas sur le globe : on les trouve sur la fiche de chaque animal.</p>
         </section>
       ) : (

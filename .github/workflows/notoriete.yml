@@ -1,0 +1,44 @@
+name: Célébrité des animaux
+
+# Compte les visites Wikipédia de chaque animal pour montrer d'abord les plus connus.
+# Se lance tout seul quand ce fichier ou le script change, puis une fois par mois.
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/notoriete.yml
+      - scripts/donnees/notoriete.py
+  schedule:
+    - cron: "17 3 2 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: donnees
+  cancel-in-progress: false
+
+jobs:
+  compter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/donnees/notoriete.py
+      - name: Enregistrer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
+          git add src/data/notoriete.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Données : célébrité des animaux (visites Wikipédia)"
+          git pull -q --rebase origin main && git push -q origin HEAD:main
+      - name: Republier le site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
