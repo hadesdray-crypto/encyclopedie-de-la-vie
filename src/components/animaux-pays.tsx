@@ -45,7 +45,7 @@ export function AnimauxDuPays({ animaux, nomPays }: { animaux: Espece[]; nomPays
     () => (t.length < 2 ? [] : animaux.filter((e) => sansAccent(`${e.nom} ${e.latin} ${e.nomAnglais ?? ""}`).includes(t))),
     [animaux, t],
   );
-  const stars = useMemo(() => animaux.filter((e) => !e.domestique && aUnePhoto(e.id)).slice(0, 10), [animaux]);
+  const stars = useMemo(() => animaux.filter((e) => !e.domestique && e.latin !== "Homo sapiens" && aUnePhoto(e.id)).slice(0, 10), [animaux]);
   const parSection = useMemo(() => {
     const m = new Map<Milieu, Espece[]>();
     for (const e of animaux) {

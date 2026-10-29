@@ -31,7 +31,7 @@ function especesDuPays(code: string) {
     }
     // D'abord les animaux sauvages qui ont un nom français et une photo ; les animaux domestiques à la fin.
     // Du plus connu au moins connu (visites Wikipédia) ; les animaux domestiques, présents partout, à la fin.
-    for (const l of INDEX.values()) l.sort((a, b) => Number(!!a.domestique) - Number(!!b.domestique) || connu(b.id) - connu(a.id) || Number(b.langue === "fr") - Number(a.langue === "fr") || Number(aUnePhoto(b.id)) - Number(aUnePhoto(a.id)) || a.nom.localeCompare(b.nom, "fr"));
+    for (const l of INDEX.values()) l.sort((a, b) => Number(!!a.domestique || a.latin === "Homo sapiens") - Number(!!b.domestique || b.latin === "Homo sapiens") || connu(b.id) - connu(a.id) || Number(b.langue === "fr") - Number(a.langue === "fr") || Number(aUnePhoto(b.id)) - Number(aUnePhoto(a.id)) || a.nom.localeCompare(b.nom, "fr"));
   }
   return INDEX.get(code) ?? [];
 }
