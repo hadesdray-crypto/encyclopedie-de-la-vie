@@ -80,7 +80,55 @@ function souffle(debut: number, duree: number, de: number, vers: number, volume 
   src.start(t);
 }
 
+/** Une note qui glisse d'une hauteur à une autre (boing, sifflet…). */
+function glisse(de: number, vers: number, debut: number, duree: number, type: OscillatorType = "sine", volume = 0.15) {
+  const a = audio();
+  if (!a) return;
+  const t = a.currentTime + debut;
+  const o = a.createOscillator();
+  const g = a.createGain();
+  o.type = type;
+  o.frequency.setValueAtTime(de, t);
+  o.frequency.exponentialRampToValueAtTime(vers, t + duree);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(volume, t + 0.015);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + duree);
+  o.connect(g).connect(a.destination);
+  o.start(t);
+  o.stop(t + duree + 0.05);
+}
+
 export const sons = {
+  /** Bruitages de dessin animé, pour le braconnier. */
+  boing() {
+    glisse(140, 520, 0, 0.12, "sine", 0.18);
+    glisse(520, 180, 0.12, 0.28, "sine", 0.14);
+  },
+  bonk() {
+    note(180, 0, 0.12, "square", 0.08);
+    souffle(0, 0.08, 1400, 600, 0.25);
+  },
+  pan() {
+    souffle(0, 0.35, 2600, 200, 0.5);
+    note(60, 0, 0.3, "triangle", 0.25);
+  },
+  bing() {
+    glisse(2400, 3400, 0, 0.35, "triangle", 0.12);
+    note(4200, 0.02, 0.25, "sine", 0.05);
+  },
+  sifflet() {
+    glisse(1800, 500, 0, 0.7, "sine", 0.08);
+  },
+  zoom() {
+    souffle(0, 0.35, 600, 4000, 0.16);
+  },
+  bipbip() {
+    note(1050, 0, 0.09, "square", 0.05);
+    note(1050, 0.16, 0.09, "square", 0.05);
+  },
+  pas() {
+    souffle(0, 0.05, 400, 250, 0.08);
+  },
   /** Le petit « Hou ! » de Plume quand elle a peur : deux notes douces qui descendent. */
   hou() {
     note(700, 0, 0.14, "sine", 0.1);

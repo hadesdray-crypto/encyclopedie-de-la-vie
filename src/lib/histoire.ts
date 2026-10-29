@@ -152,7 +152,7 @@ export function braconnierPossible() {
 export function braconnierEstVenu() {
   publier({ braconnierJour: jourActuel() });
 }
-export function braconnierRenvoye() {
+export function braconnierRenvoye(texte = "Leonie a fait tomber le braconnier. Il est reparti, dégoûté !") {
   publier({ renvoyes: etat.renvoyes + 1 });
-  noter("Leonie a fait tomber le braconnier. Il est reparti, dégoûté !");
+  noter(texte);
 }

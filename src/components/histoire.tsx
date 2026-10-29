@@ -1,13 +1,14 @@
 // L'histoire de Plume à l'écran : les scènes (l'ami arrive, les câlins, l'œuf, le bébé),
 // l'ami et le bébé qui restent à côté de Plume, et le braconnier qu'on fait tomber d'un toucher.
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { PlumeDessin } from "@/components/plume-dessin";
+import { Braconnier } from "@/components/braconnier";
 import type { Look } from "@/components/garde-robe";
 import { dire } from "@/lib/parole";
-import { plumeAPeur, plumeDit, plumeFete, plumeGeste } from "@/lib/plume";
+import { plumeFete } from "@/lib/plume";
 import {
-  NOMS_AMI, NOMS_BEBE, ageBebe, amiPresent, bebePresent, braconnierEstVenu, braconnierPossible, braconnierRenvoye,
+  NOMS_AMI, NOMS_BEBE, ageBebe, amiPresent, bebePresent,
   nommerAmi, nommerBebe, noterOuverture, oeufPresent, sceneEnAttente, sceneVue, useHistoire, type Scene,
 } from "@/lib/histoire";
 
@@ -165,142 +166,5 @@ function FamillePresDePlume() {
       {oeufPresent(h) ? boite(taille * 0.4, <Oeuf className="size-full" />, "o") : null}
       {boite(taille, <PlumeDessin look={LOOK_AMI} anim="rien" miroir={!aDroite} className="hist-bob size-full" />, "a")}
     </a>
-  );
-}
-
-// ------------------------------------------------------------ le braconnier
-type Phase = "rien" | "arrive" | "tombe" | "releve" | "rate" | "part";
-
-function DessinBraconnier({ phase }: { phase: Phase }) {
-  const filetHaut = phase === "arrive";
-  return (
-    <svg viewBox="0 0 120 170" className="size-full overflow-visible" aria-hidden="true">
-      <ellipse cx="55" cy="166" rx="30" ry="4" fill="#000" opacity=".3" />
-      {/* jambes */}
-      <g className={phase === "arrive" || phase === "part" ? "hist-marche" : ""}>
-        <rect x="40" y="118" width="11" height="42" rx="5" fill="#4a3b2a" />
-        <rect x="57" y="118" width="11" height="42" rx="5" fill="#3d3022" />
-        <ellipse cx="44" cy="162" rx="11" ry="5" fill="#222" />
-        <ellipse cx="65" cy="162" rx="11" ry="5" fill="#222" />
-      </g>
-      {/* corps : veste verte */}
-      <rect x="32" y="70" width="46" height="56" rx="16" fill="#4d6b2f" />
-      <rect x="52" y="74" width="5" height="48" fill="#3a5222" />
-      <circle cx="47" cy="88" r="2.5" fill="#c9a24a" />
-      <circle cx="47" cy="102" r="2.5" fill="#c9a24a" />
-      {/* tête */}
-      <circle cx="55" cy="52" r="20" fill="#f1c7a0" />
-      <circle cx="62" cy="48" r="2.6" fill="#2a1c14" />
-      <circle cx="49" cy="48" r="2.6" fill="#2a1c14" />
-      <path d="M44 41 L52 43 M60 43 L68 40" stroke="#3a2a1a" strokeWidth="2.4" strokeLinecap="round" />
-      <path d="M44 60 C49 55 61 55 67 60 C61 63 50 63 44 60 Z" fill="#5a3a22" />
-      <circle cx="56" cy="55" r="3.4" fill="#e3a07a" />
-      {phase === "releve" ? <path d="M48 66 Q55 62 62 66" stroke="#6a2a1a" strokeWidth="2" fill="none" /> : null}
-      {/* chapeau */}
-      <path d="M30 36 L80 36 L76 30 L68 16 L42 16 L34 30 Z" fill="#6b4a2a" />
-      <rect x="26" y="33" width="58" height="6" rx="3" fill="#523720" />
-      {/* bras et filet à papillons */}
-      <g style={{ transformOrigin: "70px 84px", transform: filetHaut ? "rotate(-28deg)" : phase === "rate" ? "rotate(40deg)" : "rotate(10deg)", transition: "transform .35s" }}>
-        <rect x="66" y="78" width="26" height="10" rx="5" fill="#4d6b2f" />
-        <circle cx="93" cy="83" r="6" fill="#f1c7a0" />
-        <rect x="91" y="20" width="4" height="70" rx="2" fill="#8a6a3a" />
-        <ellipse cx="93" cy="14" rx="17" ry="11" fill="none" stroke="#7a5a2a" strokeWidth="3" />
-        <path d="M77 14 Q93 50 109 14" fill="#ffffff" opacity=".55" stroke="#ddd" strokeWidth="1" />
-        <path d="M82 18 L104 18 M85 26 L101 26 M89 34 L97 34" stroke="#ccc" strokeWidth=".8" />
-      </g>
-    </svg>
-  );
-}
-
-function Braconnier() {
-  const [phase, setPhase] = useState<Phase>("rien");
-  const [pos, setPos] = useState({ x: -150, y: 0, duree: 0 });
-  const boite = useRef<HTMLButtonElement>(null);
-  const minuteurs = useRef<number[]>([]);
-  const apres = (ms: number, f: () => void) => minuteurs.current.push(window.setTimeout(f, ms));
-  useEffect(() => () => minuteurs.current.forEach(clearTimeout), []);
-
-  // De temps en temps, s'il peut venir, il arrive.
-  useEffect(() => {
-    const t = window.setInterval(() => {
-      if (phase !== "rien" || document.hidden || !braconnierPossible()) return;
-      if (document.querySelector('[role="dialog"]')) return;
-      if (Math.random() > 0.12) return;
-      lancer();
-    }, 15000);
-    return () => window.clearInterval(t);
-  }, [phase]);
-
-  // Le coin des parents peut le faire venir tout de suite.
-  useEffect(() => {
-    const f = () => phase === "rien" && window.setTimeout(lancer, 1200);
-    window.addEventListener("leonie-braconnier", f);
-    return () => window.removeEventListener("leonie-braconnier", f);
-  }, [phase]);
-
-  function cible() {
-    const b = document.querySelector(".plume-racine")?.getBoundingClientRect();
-    const h = 150;
-    if (b && b.width > 10) return { x: Math.max(8, b.left - 95), y: Math.min(window.innerHeight - h - 90, b.bottom - h) };
-    return { x: window.innerWidth - 220, y: window.innerHeight - h - 120 };
-  }
-  function lancer() {
-    braconnierEstVenu();
-    const c = cible();
-    setPos({ x: -150, y: c.y, duree: 0 });
-    setPhase("arrive");
-    requestAnimationFrame(() => requestAnimationFrame(() => setPos({ x: c.x, y: c.y, duree: 8 })));
-    apres(900, () => plumeAPeur("Au secours ! Un braconnier avec un filet ! Touche-le vite pour le faire tomber !", 6000));
-    apres(8600, () => setPhase((p) => {
-      if (p !== "arrive") return p;
-      plumeGeste("vole");
-      plumeDit("Ouf ! Je me suis envolée juste à temps ! La prochaine fois, touche-le pour le faire tomber.", 5000);
-      apres(1400, partir);
-      return "rate";
-    }));
-  }
-  function partir() {
-    setPhase("part");
-    setPos((p) => ({ ...p, x: -170, duree: 3.2 }));
-    apres(3400, () => setPhase("rien"));
-  }
-  function toucher() {
-    if (phase !== "arrive") return;
-    const b = boite.current?.getBoundingClientRect();
-    setPos((p) => ({ ...p, x: b ? b.left : p.x, duree: 0 }));
-    setPhase("tombe");
-    braconnierRenvoye();
-    apres(1800, () => {
-      setPhase("releve");
-      apres(1500, () => {
-        partir();
-        plumeFete();
-        plumeDit("Merci Leonie, tu m'as sauvée ! Les braconniers attrapent des animaux sauvages, et c'est interdit. Des gardes protègent les animaux dans les parcs.", 7000);
-      });
-    });
-  }
-
-  if (phase === "rien") return null;
-  const rotation = phase === "tombe" ? "rotate(-88deg) translate(-40px, 10px)" : "none";
-  return createPortal(
-    <button
-      ref={boite}
-      type="button"
-      onClick={toucher}
-      aria-label="Le braconnier : touche-le pour le faire tomber"
-      className="fixed z-[60] h-[150px] w-[106px] touch-manipulation"
-      style={{ left: pos.x, top: pos.y, transition: `left ${pos.duree}s linear` }}
-    >
-      <span className="block size-full" style={{ transform: `${phase === "part" ? "scaleX(-1)" : ""} ${rotation}`, transformOrigin: "50% 95%", transition: "transform .35s cubic-bezier(.5,1.8,.6,1)" }}>
-        <DessinBraconnier phase={phase} />
-      </span>
-      {phase === "tombe" ? <span className="hist-etoiles absolute -top-2 left-0 text-2xl">💫</span> : null}
-      {phase === "releve" || phase === "rate" ? (
-        <span className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-2xl bg-white px-3 py-1 text-sm font-black text-[#2a1650] shadow-lg">
-          {phase === "releve" ? "Pfff… raté ! 😤" : "Raté !"}
-        </span>
-      ) : null}
-    </button>,
-    document.body,
   );
 }

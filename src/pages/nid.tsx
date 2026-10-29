@@ -84,12 +84,17 @@ export function NidPage() {
         <button type="button" onClick={() => setParents((o) => !o)} className="w-full text-left text-sm font-extrabold texte-doux">Coin des parents {parents ? "−" : "+"}</button>
         {parents ? (
           <div className="mt-2 space-y-2 text-sm">
-            <p className="texte-doux">L'histoire avance avec les jours où Leonie ouvre l'application (un ami, des câlins, un œuf à réchauffer 5 jours, un bébé). Le braconnier vient au plus une fois par jour, au hasard : on le touche, il tombe et repart.</p>
+            <p className="texte-doux">L'histoire avance avec les jours où Leonie ouvre l'application (un ami, des câlins, un œuf à réchauffer 5 jours, un bébé). Le braconnier vient au plus une fois par jour, au hasard (filet, fusil ou course) : Plume gagne toujours. On peut le toucher ou le lancer avec le doigt : il rebondit, a des bobos, puis s'en va en boitant.</p>
             <label className="flex items-center justify-between gap-3 rounded-2xl bg-white/5 px-3 py-2 font-bold">
               Le braconnier peut venir
               <input type="checkbox" checked={h.braconnier} onChange={(e) => permettreBraconnier(e.target.checked)} className="size-5 accent-[#f3d48a]" />
             </label>
-            <button type="button" onClick={() => { window.location.hash = "#/"; window.dispatchEvent(new Event("leonie-braconnier")); }} className="w-full rounded-2xl bg-white/10 py-2.5 font-extrabold">Faire venir le braconnier (sur l'accueil)</button>
+            <p className="pt-1 font-extrabold">Faire venir le braconnier (sur l'accueil) :</p>
+            <div className="grid grid-cols-3 gap-2">
+              {([["filet", "🦋 Le filet"], ["fusil", "🛡️ Le fusil"], ["course", "💨 La course"]] as const).map(([id, nom]) => (
+                <button key={id} type="button" onClick={() => { window.location.hash = "#/"; window.dispatchEvent(new CustomEvent("leonie-braconnier", { detail: { scenario: id } })); }} className="rounded-2xl bg-white/10 py-2.5 text-xs font-extrabold">{nom}</button>
+              ))}
+            </div>
             <button type="button" onClick={avancerUnJour} className="w-full rounded-2xl bg-white/10 py-2.5 font-extrabold">Faire avancer l'histoire d'un jour</button>
             <button type="button" onClick={() => { if (window.confirm("Recommencer toute l'histoire de Plume depuis le début ?")) recommencerHistoire(); }} className="w-full rounded-2xl bg-white/5 py-2 text-xs font-extrabold texte-doux">Recommencer l'histoire</button>
           </div>
