@@ -40,21 +40,21 @@ export function MiseAJour() {
 
   if (phase === "propose") {
     return (
-      <div role="dialog" aria-label="Nouvelle mise à jour" className="arrivee fixed inset-x-0 z-50 mx-auto w-[min(92%,30rem)] rounded-3xl border-2 border-[#e8c98a] bg-[#24123f] px-4 py-3 shadow-[0_0_30px_rgba(160,110,255,.6)]" style={{ top: "calc(env(safe-area-inset-top, 0px) + 0.75rem)" }}>
+      <div role="dialog" aria-label="Nouvelle mise à jour" className="arrivee fixed inset-x-0 z-50 mx-auto flex max-h-[calc(100dvh-1.5rem)] w-[min(92%,30rem)] flex-col rounded-3xl border-2 border-[#e8c98a] bg-[#24123f] px-4 py-3 shadow-[0_0_30px_rgba(160,110,255,.6)]" style={{ top: "calc(env(safe-area-inset-top, 0px) + 0.75rem)" }}>
         <div className="flex items-center gap-3">
           <img src="theme/plume.svg" alt="" className="size-12 shrink-0" />
           <p className="font-display text-xl text-[#f3d48a]">Nouvelle mise à jour !</p>
         </div>
         {derniere ? (
-          <ul className="mt-2 list-disc space-y-0.5 pl-5 text-sm">
+          <ul className="mt-2 min-h-0 flex-1 list-disc space-y-0.5 overflow-y-auto overscroll-contain pl-5 pr-1 text-sm">
             {derniere.points.map((point) => <li key={point}>{point}</li>)}
           </ul>
         ) : (
           <p className="mt-2 text-sm">Il y a des nouveautés dans l'encyclopédie.</p>
         )}
-        <p className="mt-2 text-xs">Tes cartes, tes points et tes médailles sont gardés.</p>
+        <p className="mt-2 shrink-0 text-xs">Tes cartes, tes points et tes médailles sont gardés.</p>
         {EST_APK && apk.taille ? <p className="mt-2 text-center text-xs font-bold">Téléchargement : environ {apk.taille} Mo. Mieux avec le Wi-Fi.</p> : null}
-        <div className="mt-3 grid grid-cols-2 gap-2">
+        <div className="mt-3 grid shrink-0 grid-cols-2 gap-2">
           <button
             type="button"
             onClick={() => {
@@ -76,7 +76,7 @@ export function MiseAJour() {
   // Les autres étapes prennent tout l'écran : on ne peut pas se tromper.
   return (
     <div className="fixed inset-0 z-[60] grid place-items-center bg-[#0b0820]/90 px-6 backdrop-blur-sm">
-      <div className="arrivee w-full max-w-sm rounded-[2rem] border-2 border-[#e8c98a] bg-[#24123f] px-5 py-6 text-center shadow-[0_0_40px_rgba(160,110,255,.6)]">
+      <div className="arrivee max-h-[94dvh] w-full max-w-sm overflow-y-auto rounded-[2rem] border-2 border-[#e8c98a] bg-[#24123f] px-5 py-6 text-center shadow-[0_0_40px_rgba(160,110,255,.6)]">
         <PlumeDessin anim={phase === "telechargement" ? "parle" : phase === "termine" ? "coucou" : "rien"} className="mx-auto size-24" />
 
         {phase === "telechargement" ? (
@@ -123,7 +123,7 @@ export function MiseAJour() {
           <>
             <p className="titre-or mt-3 text-3xl">Mise à jour terminée !</p>
             {derniere ? (
-              <ul className="mt-3 list-disc space-y-0.5 pl-5 text-left text-sm">
+              <ul className="mt-3 max-h-[45dvh] list-disc space-y-0.5 overflow-y-auto overscroll-contain pl-5 pr-1 text-left text-sm">
                 {derniere.points.map((point) => <li key={point}>{point}</li>)}
               </ul>
             ) : (
