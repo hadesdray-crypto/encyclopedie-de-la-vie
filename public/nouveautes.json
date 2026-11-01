@@ -1,7 +1,16 @@
 [
   {
     "date": "2026-11-01",
-    "titre": "Les prétendants de Plume",
+    "titre": "Le nid vivant et les prétendants",
+    "points": [
+      "Le nid vivant : on lance, on caresse, on gratouille.",
+      "6 prétendants, 3 visites chacun.",
+      "Nouveau braconnier, curseur de l'histoire."
+    ]
+  },
+  {
+    "date": "2026-11-01",
+    "titre": "Les prétendants de Plume (détails)",
     "points": [
       "6 prétendants viennent frapper au nid, un par un : Gaspard, Merlin, Léandre, Pistache, Hector et Basile. Chacun a sa personnalité et son dessin.",
       "Plume te demande conseil : « Oui, il reste » ou « Pas maintenant ». S'il est refusé, il repart triste et revient après les cinq autres, chaque fois avec une autre façon de se présenter. Après trois visites refusées, il ne revient plus (il reste dans la forêt).",
