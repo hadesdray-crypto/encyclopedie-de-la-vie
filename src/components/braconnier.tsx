@@ -17,7 +17,7 @@ import { sons } from "@/lib/sons";
 import { braconnierEstVenu, braconnierPossible, braconnierRenvoye, histoire } from "@/lib/histoire";
 
 export type Scenario = "filet" | "fusil" | "course";
-type Mode = "marche" | "attrape" | "vise" | "attente" | "course" | "tenu" | "vol" | "allonge" | "releve" | "ecrase" | "fuite";
+export type Mode = "marche" | "attrape" | "vise" | "attente" | "course" | "tenu" | "vol" | "allonge" | "releve" | "ecrase" | "fuite";
 type Particule = { id: number; type: "poussiere" | "etincelle" | "fumee" | "mot" | "flash" | "vitesse"; x: number; y: number; fin: number; texte?: string; dx?: number; dy?: number; taille?: number; r?: number };
 type Objet = { id: number; type: "chapeau" | "fusil"; x: number; y: number; vx: number; vy: number; a: number; va: number; pose: number };
 type Acteur = { x: number; y: number; phase: "saute" | "court" | "attend" | "envol" | "retour"; t: number; de: { x: number; y: number }; vers: { x: number; y: number }; anim: AnimPlume; miroir: boolean };
@@ -43,7 +43,7 @@ const hasard = <T,>(l: T[]) => l[Math.floor(Math.random() * l.length)];
 
 // ------------------------------------------------------------ le dessin
 // Les bras partent des épaules et tournent autour d'elles ; chapeau à plume, visage, ceinture et bottes.
-function Dessin({ m, bobos, chapeau, suie, filetTete, arme, vise, etourdi, pas }: {
+export function Dessin({ m, bobos, chapeau, suie, filetTete, arme, vise, etourdi, pas }: {
   m: Mode; bobos: number; chapeau: boolean; suie: boolean; filetTete: boolean; arme: "filet" | "fusil" | null; vise: number; etourdi: boolean; pas: number;
 }) {
   const marche = m === "marche" || m === "fuite" || m === "course";

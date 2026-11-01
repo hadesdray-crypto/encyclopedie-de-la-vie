@@ -5,6 +5,7 @@ import { Entete, Titre } from "@/components/entete";
 import { Compagnon, Couple, Oeuf } from "@/components/histoire";
 import { dire } from "@/lib/parole";
 import { plumeFete } from "@/lib/plume";
+import { NidVivant, useFps } from "@/components/nid-vivant";
 import { PRETENDANTS } from "@/lib/pretendants";
 import {
   MAX_VISITES, refusDe, COUVAGES_POUR_ECLORE, ETAPES_HISTOIRE, ageBebe, allerAEtape, amiPresent, avancerUnJour, bebePresent, couver, dejaCouveAujourdhui, etapeActuelle,
@@ -17,6 +18,8 @@ export function NidPage() {
   const [chaleur, setChaleur] = useState(0);
   const [parents, setParents] = useState(false);
   const [etape, setEtape] = useState(() => etapeActuelle());
+  const [idMale, setIdMale] = useState<string | undefined>(undefined);
+  const fps = useFps();
   const oeuf = oeufPresent(h), bebe = bebePresent(h), ami = amiPresent(h);
   const fait = dejaCouveAujourdhui(h);
 
@@ -82,6 +85,8 @@ export function NidPage() {
         </section>
       ) : null}
 
+      <NidVivant idMale={idMale ?? pretendantAmi(h)?.id ?? "costaud"} parents={parents} onMale={setIdMale} />
+
       <section className="carte-nuit mt-3 rounded-[1.75rem] px-4 pb-4 pt-4">
         <p className="text-center font-display text-xl text-[#f3d48a]">Les amis de la forêt</p>
         <p className="texte-doux mt-1 text-center text-xs">Les hiboux qui sont venus voir Plume. Chacun peut se présenter trois fois.</p>
@@ -116,6 +121,7 @@ export function NidPage() {
                 <button key={id} type="button" onClick={() => { window.location.hash = "#/"; window.dispatchEvent(new CustomEvent("leonie-braconnier", { detail: { scenario: id } })); }} className="rounded-2xl bg-white/10 py-2.5 text-xs font-extrabold">{nom}</button>
               ))}
             </div>
+            <p className="rounded-2xl bg-white/5 px-3 py-2 text-xs font-bold">Fluidité du nid vivant : {fps.fps ? `${fps.fps} images par seconde, ${fps.n} personnages` : "pas encore mesurée"} {fps.fps && fps.fps < 40 ? "· un peu lourd !" : fps.fps ? "· tout va bien" : ""}</p>
             <div className="rounded-2xl bg-white/5 px-3 py-3">
               <p className="font-extrabold">Curseur de l'histoire</p>
               <p className="texte-doux text-xs">Va directement à une étape, en avant ou en arrière. Attention : ça remplace la progression actuelle.</p>
