@@ -2,11 +2,12 @@
 // et un petit coin des parents (braconnier oui ou non, curseur pour avancer l'histoire).
 import { useState } from "react";
 import { Entete, Titre } from "@/components/entete";
-import { Couple, Oeuf } from "@/components/histoire";
+import { Compagnon, Couple, Oeuf } from "@/components/histoire";
 import { dire } from "@/lib/parole";
 import { plumeFete } from "@/lib/plume";
+import { PRETENDANTS } from "@/lib/pretendants";
 import {
-  COUVAGES_POUR_ECLORE, ETAPES_HISTOIRE, ageBebe, allerAEtape, amiPresent, avancerUnJour, bebePresent, couver, dejaCouveAujourdhui, etapeActuelle,
+  MAX_VISITES, refusDe, COUVAGES_POUR_ECLORE, ETAPES_HISTOIRE, ageBebe, allerAEtape, amiPresent, avancerUnJour, bebePresent, couver, dejaCouveAujourdhui, etapeActuelle,
   oeufPresent, permettreBraconnier, pretendantAmi, recommencerHistoire, useHistoire,
 } from "@/lib/histoire";
 
@@ -80,6 +81,25 @@ export function NidPage() {
           </ul>
         </section>
       ) : null}
+
+      <section className="carte-nuit mt-3 rounded-[1.75rem] px-4 pb-4 pt-4">
+        <p className="text-center font-display text-xl text-[#f3d48a]">Les amis de la forêt</p>
+        <p className="texte-doux mt-1 text-center text-xs">Les hiboux qui sont venus voir Plume. Chacun peut se présenter trois fois.</p>
+        <div className="mt-3 grid grid-cols-3 gap-2">
+          {PRETENDANTS.map((p) => {
+            const reste = pretendantAmi(h)?.id === p.id;
+            const n = refusDe(p.id, h);
+            const vu = reste || n > 0;
+            return (
+              <div key={p.id} className="rounded-2xl bg-white/5 px-1 py-2 text-center">
+                <div className={vu ? "" : "opacity-30 grayscale"}><Compagnon p={p} anim="rien" className="mx-auto size-16" /></div>
+                <p className="text-sm font-extrabold">{vu ? p.nom : "?"}</p>
+                <p className="texte-doux text-[11px] leading-tight">{reste ? "Compagnon de Plume" : n >= MAX_VISITES ? "Dans la forêt" : n > 0 ? `${n} visite${n > 1 ? "s" : ""}` : "Pas encore venu"}</p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
       <section className="mt-3 rounded-[1.75rem] bg-white/5 px-4 py-3">
         <button type="button" onClick={() => setParents((o) => !o)} className="w-full text-left text-sm font-extrabold texte-doux">Coin des parents {parents ? "−" : "+"}</button>

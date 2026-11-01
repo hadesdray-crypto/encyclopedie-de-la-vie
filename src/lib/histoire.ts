@@ -23,6 +23,8 @@ export type EtatHistoire = {
   prochainJour?: number;
   /** Combien de fois un prétendant a été refusé. */
   refus: number;
+  /** Combien de fois chaque prétendant a été refusé. À 3, il ne revient plus voir Plume (il reste dans la forêt, et au menu). */
+  refuses?: Record<string, number>;
   /** Le jour (numéro d'ouverture) où le bébé est né. */
   naissance?: number;
   /** Les scènes déjà montrées. */
@@ -95,7 +97,7 @@ export function avancerUnJour() {
   publier({ jours: [...etat.jours, `avance-${Date.now()}`] });
 }
 export function recommencerHistoire() {
-  publier({ ...VIDE, file: [...ORDRE_PRETENDANTS], jours: [aujourdhui()], braconnier: etat.braconnier });
+  publier({ ...VIDE, file: [...ORDRE_PRETENDANTS], refuses: {}, jours: [aujourdhui()], braconnier: etat.braconnier });
 }
 export function permettreBraconnier(oui: boolean) {
   publier({ braconnier: oui });
@@ -115,7 +117,7 @@ export const ageBebe = (e = etat) => (e.naissance === undefined ? 0 : numeroJour
 export function sceneEnAttente(e = etat): Scene | null {
   const n = numeroJour(e);
   const vue = (s: Scene) => e.vues.includes(s);
-  if (!vue("ami")) return n >= (e.prochainJour ?? 2) ? "ami" : null;
+  if (!vue("ami")) return e.file.length > 0 && n >= (e.prochainJour ?? 2) ? "ami" : null;
   if (!e.nomAmi) return "ami";
   const jourAmi = e.journal.find((l) => l.texte.startsWith("Arrivée"))?.jour ?? 2;
   if (!vue("calins")) return n >= jourAmi + 2 ? "calins" : null;
@@ -135,6 +137,12 @@ export function sceneVue(s: Scene) {
 }
 /** Le prétendant qui frappe au nid en ce moment. */
 export const pretendantEnCours = (e = etat): Pretendant => pretendant(e.file[0]) ?? PRETENDANTS[0];
+export const MAX_VISITES = 3;
+/** Le numéro de la visite en cours pour ce prétendant : 0, 1 ou 2. */
+export const visiteEnCours = (e = etat): 0 | 1 | 2 => Math.min(2, e.refuses?.[pretendantEnCours(e).id] ?? 0) as 0 | 1 | 2;
+/** Où en est chacun : combien de visites refusées, et s'il ne revient plus. */
+export const refusDe = (id: string, e = etat) => e.refuses?.[id] ?? 0;
+export const ilRevientPlus = (id: string, e = etat) => refusDe(id, e) >= MAX_VISITES;
 /** Le prétendant qui est resté (ou, pour les anciennes parties, pas de dessin à lui : null). */
 export const pretendantAmi = (e = etat): Pretendant | null => pretendant(e.amiId) ?? null;
 
@@ -148,8 +156,15 @@ export function accepterPretendant() {
 export function refuserPretendant() {
   const p = pretendantEnCours();
   const [premier, ...reste] = etat.file.length ? etat.file : [...ORDRE_PRETENDANTS];
-  publier({ file: [...reste, premier], prochainJour: numeroJour() + 1, refus: etat.refus + 1 });
-  noter(`${p.nom} est reparti, un peu triste.`);
+  const n = refusDe(p.id) + 1;
+  const dernier = n >= MAX_VISITES;
+  publier({
+    file: dernier ? reste : [...reste, premier],
+    prochainJour: numeroJour() + 1,
+    refus: etat.refus + 1,
+    refuses: { ...(etat.refuses ?? {}), [p.id]: n },
+  });
+  noter(dernier ? `${p.nom} est reparti pour de bon, après trois visites. Il vit quelque part dans la forêt.` : `${p.nom} est reparti, un peu triste.`);
 }
 export function nommerBebe(nom: string) {
   publier({ nomBebe: nom, naissance: etat.naissance ?? numeroJour() });
@@ -235,5 +250,7 @@ export function allerAEtape(k: number) {
     nomBebe: bebe ? "Noisette" : undefined,
     naissance: bebe ? 11 : undefined,
     prochainJour: undefined,
+    file: [...ORDRE_PRETENDANTS],
+    refuses: {},
   });
 }

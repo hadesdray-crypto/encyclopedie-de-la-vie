@@ -9,9 +9,9 @@ import { dire } from "@/lib/parole";
 import { plumeFete } from "@/lib/plume";
 import {
   NOMS_BEBE, accepterPretendant, ageBebe, amiPresent, bebePresent, nommerBebe, noterOuverture, oeufPresent,
-  pretendantAmi, pretendantEnCours, refuserPretendant, sceneEnAttente, sceneVue, useHistoire, type Scene,
+  pretendantAmi, pretendantEnCours, refuserPretendant, refusDe, MAX_VISITES, visiteEnCours, sceneEnAttente, sceneVue, useHistoire, type Scene,
 } from "@/lib/histoire";
-import { NON, OUI, type Pretendant } from "@/lib/pretendants";
+import { NON, NON_DEFINITIF, OUI, type Pretendant } from "@/lib/pretendants";
 
 export const LOOK_AMI: Look = { couleur: "bleu", epaisseur: 2, haut: "echarpe", bas: "aucun", chapeau: "aucun", lunettes: "rondes", chaussures: "aucune", objet: "aucun", couleurs: { haut: "rouge" } };
 export const LOOK_BEBE: Look = { couleur: "gris", epaisseur: 3, haut: "aucun", bas: "aucun", chapeau: "aucun", lunettes: "aucune", chaussures: "aucune", objet: "aucun", couleurs: {} };
@@ -65,7 +65,7 @@ export function Couple({ ami = true, amiDe = null, oeuf = false, bebe = false, c
 
 // ------------------------------------------------------------ scènes
 const TEXTES: Record<Scene, (ami: string) => { titre: string; texte: string }> = {
-  ami: () => ({ titre: "Toc, toc !", texte: pretendantEnCours().arrivee }),
+  ami: () => pretendantEnCours().visites[visiteEnCours()],
   calins: (a) => ({ titre: "Psst… un secret !", texte: `Hier soir, quand la tablette dormait, Plume et ${a} s'ennuyaient un peu. Alors ils se sont fait plein de câlins d'amoureux ! Ils sont amoureux, maintenant.` }),
   ventre: (a) => ({ titre: "Aïe, aïe…", texte: `Plume a un peu mal au ventre aujourd'hui. Elle reste bien au chaud dans le nid, et ${a} lui apporte à manger. Qu'est-ce qui va se passer ? Reviens demain !` }),
   oeuf: (a) => ({ titre: "Surprise !!!", texte: `Plume a pondu un œuf ! Chez les chouettes, c'est surtout la maman qui couve, et le papa apporte à manger. ${a} est très fier. Aide Plume : va dans le nid et réchauffe l'œuf une fois par jour.` }),
@@ -93,8 +93,8 @@ function Scenes() {
   }, [enAttente]);
 
   if (reponse) {
-    const texte = reponse.oui ? OUI(reponse.p) : NON(reponse.p);
-    const titre = reponse.oui ? "Il reste !" : "Il s'en va…";
+    const texte = reponse.oui ? OUI(reponse.p) : refusDe(reponse.p.id) >= MAX_VISITES ? NON_DEFINITIF(reponse.p) : NON(reponse.p);
+    const titre = reponse.oui ? "Il reste !" : refusDe(reponse.p.id) >= MAX_VISITES ? "Au revoir…" : "Il s'en va…";
     return createPortal(
       <div className="fixed inset-0 z-[150] grid place-items-center bg-black/60 px-4 backdrop-blur-sm" role="dialog" aria-label={titre}>
         <div className="carte-nuit apparait w-full max-w-sm rounded-[1.75rem] px-5 pb-5 pt-4 text-center text-white">
