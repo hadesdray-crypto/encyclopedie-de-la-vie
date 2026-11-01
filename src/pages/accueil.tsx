@@ -44,7 +44,7 @@ function phraseDuJour(paquets: number, defi: boolean, jours: number) {
   if (paquets > 0) phrases.push(paquets > 1 ? `Tu as ${paquets} paquets de cartes à ouvrir !` : "Tu as un paquet de cartes à ouvrir !");
   if (defi) phrases.push(jours > 0 ? `Le défi du jour t'attend. Ta flamme : ${jours} jour${jours > 1 ? "s" : ""} !` : "Le défi du jour t'attend !");
   if (!defi && jours > 1) phrases.push(`Bravo, ${jours} jours de défi d'affilée !`);
-  if (!phrases.length) phrases.push("Coucou Leonie ! On continue l'aventure ?", "Quel animal on découvre aujourd'hui ?", "Je suis contente de te revoir, Leonie !");
+  if (!phrases.length) phrases.push("Coucou princesse Léonie ! On continue l'aventure ?", "Quel animal on découvre aujourd'hui ?", "Je suis contente de te revoir, princesse Léonie !");
   return phrases[Math.floor(Math.random() * phrases.length)];
 }
 
@@ -76,8 +76,8 @@ export function Accueil() {
         </a>
         <div className="relative text-center">
           <LuCrown className="absolute left-1/2 top-0 size-6 -translate-x-1/2 -translate-y-[85%] text-[#f3d48a] drop-shadow-[0_0_8px_rgba(243,212,138,.7)]" aria-hidden="true" />
-          <p className="font-display text-[13px] tracking-wide text-[#e7d7ff]">L'encyclopédie de la vie de</p>
-          <h1 className="nom-leonie font-display text-[clamp(2.4rem,11vw,3.1rem)] leading-none">Leonie</h1>
+          <p className="font-display text-[13px] tracking-wide text-[#e7d7ff]">L'encyclopédie de la vie de la princesse</p>
+          <h1 className="nom-leonie font-display text-[clamp(2.4rem,11vw,3.1rem)] leading-none">Léonie</h1>
         </div>
         <a href="#/profil" aria-label="Mon carnet" className="medaillon-or block size-13 justify-self-end overflow-hidden">
           <img src={image} alt="" className="size-full object-cover" />

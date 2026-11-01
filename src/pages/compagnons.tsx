@@ -112,7 +112,7 @@ function Accueil() {
       <Titre>Le carnet de Plume</Titre>
       <SignaturePlume>
         <p className="font-display text-lg text-[#6a3fc0]">Mon carnet des chiens et des chats</p>
-        <p className="mt-1">J'aime tous les animaux. Mais les chiens, ce sont mes préférés… comme toi, Leonie. Alors j'ai rassemblé toutes les races que j'ai pu trouver, avec les chats aussi.</p>
+        <p className="mt-1">J'aime tous les animaux. Mais les chiens, ce sont mes préférés… comme toi, princesse Léonie. Alors j'ai rassemblé toutes les races que j'ai pu trouver, avec les chats aussi.</p>
         <p className="mt-1 text-sm italic text-[#6a3fc0]">— Plume</p>
       </SignaturePlume>
       <div className="mt-5 grid grid-cols-2 gap-3">

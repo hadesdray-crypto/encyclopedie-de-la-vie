@@ -563,7 +563,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
 
   /** « C'est bon, je vais explorer » : Plume dit c'est parti, et se range dans son coin. */
   function explorer() {
-    const phrase = "C'est parti ! Je te laisse explorer, Leonie. Touche-moi deux fois si tu as besoin de moi.";
+    const phrase = "C'est parti ! Je te laisse explorer, princesse Léonie. Touche-moi deux fois si tu as besoin de moi.";
     fermer();
     window.setTimeout(() => {
       plumeDit(phrase, 5000);
@@ -722,7 +722,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
               ))}
             </p>
           ) : null}
-          {explicationBrute.photos?.[etape] === "photo-fin" && photoFin() ? <img src={photoFin()!} alt="La princesse Leonie" className="arrivee mx-auto mt-2 max-h-48 rounded-2xl object-cover shadow-[0_0_0_3px_#e3b04b,0_8px_18px_rgba(0,0,0,.35)]" /> : null}
+          {explicationBrute.photos?.[etape] === "photo-fin" && photoFin() ? <img src={photoFin()!} alt="La princesse Léonie" className="arrivee mx-auto mt-2 max-h-48 rounded-2xl object-cover shadow-[0_0_0_3px_#e3b04b,0_8px_18px_rgba(0,0,0,.35)]" /> : null}
           <p key={`${contenu}-${etape}-${motChoisi}`} className="arrivee mt-1.5 max-h-[38vh] overflow-y-auto text-[1.05rem] leading-snug">
             {texte}
           </p>

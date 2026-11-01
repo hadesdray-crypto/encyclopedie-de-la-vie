@@ -56,7 +56,7 @@ export function TablesMultiplication() {
         </div>
         <p className="mt-1 text-sm font-bold">{faits.size} sur {TOTAL}</p>
       </div>
-      {gagne ? <p className="mt-3 rounded-3xl bg-[linear-gradient(160deg,#f3d48a,#d6a531)] px-4 py-3 text-center font-display text-xl text-[#2a1650]">Bravo Leonie ! Tu as gagné le Plumedex !</p> : null}
+      {gagne ? <p className="mt-3 rounded-3xl bg-[linear-gradient(160deg,#f3d48a,#d6a531)] px-4 py-3 text-center font-display text-xl text-[#2a1650]">Bravo princesse Léonie ! Tu as gagné le Plumedex !</p> : null}
       <div className="mt-4 grid grid-cols-9 gap-1" role="tablist" aria-label="Choisir une table">
         {TABLES.map((t) => (
           <button key={t} type="button" role="tab" aria-selected={table === t} onClick={() => setTable(t)} className={`relative grid aspect-square place-items-center rounded-xl font-display text-xl ${table === t ? "bg-[#f3d48a] text-[#2a1650]" : "bg-[#2a1844] text-[#f3d48a]"}`}>

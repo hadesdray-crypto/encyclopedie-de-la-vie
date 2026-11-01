@@ -64,7 +64,7 @@ export function Classeur() {
           <span className="classeur-coutures absolute" aria-hidden="true" />
           {["hg", "hd", "bg", "bd"].map((c) => <span key={c} className={`classeur-coin classeur-coin-${c} absolute`} aria-hidden="true" />)}
           <span className="classeur-blason grid place-items-center" aria-hidden="true"><PlumeDessin className="size-[82%]" /></span>
-          <span className="classeur-titre font-display">Leonie</span>
+          <span className="classeur-titre font-display">Princesse<br />Léonie</span>
           <span className="classeur-sous">Ma collection de cartes</span>
           <span className="classeur-compte">{cartes.length} carte{cartes.length > 1 ? "s" : ""}</span>
         </span>

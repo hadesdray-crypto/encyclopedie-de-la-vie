@@ -7,7 +7,7 @@ import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
 
 // Le merci de Plume quand Leonie signale une photo (avec la petite blague du Concepteur).
-const MERCI = "Merci Leonie ! Grâce à toi, l'application que ton papa a créée pour te faire plaisir… oups, pardon : que le Concepteur a créée… va devenir encore meilleure !";
+const MERCI = "Merci princesse Léonie ! Grâce à toi, l'application que ton papa a créée pour te faire plaisir… oups, pardon : que le Concepteur a créée… va devenir encore meilleure !";
 
 const CLE = "leonie-photos-signalees";
 export type Signalement = { id: string; nom: string; photo: string };

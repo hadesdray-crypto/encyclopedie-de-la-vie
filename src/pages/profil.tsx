@@ -17,7 +17,7 @@ export function ProfilPage() {
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
       <ChoixAvatar />
-      <h1 className="titre-or mt-4 text-center text-4xl">Princesse Leonie</h1>
+      <h1 className="titre-or mt-4 text-center text-4xl">Princesse Léonie</h1>
       <p className="mt-2 text-center">Ton carnet. Il reste sur cet appareil.</p>
       <div className="mt-5 grid grid-cols-2 gap-3">
         <a href="#/cartes" className="rounded-3xl bg-card px-4 py-4"><p className="font-display text-3xl">{vues.length}</p><p>fiches et cartes vues</p></a>

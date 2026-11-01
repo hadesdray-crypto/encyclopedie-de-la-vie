@@ -5,7 +5,7 @@
  * Chaque caractère a sa tenue complète : un vêtement, quelque chose sur la tête,
  * des yeux qui lui ressemblent, et une paire de lunettes seulement quand elle lit.
  */
-import { useId } from "react";
+import { useId, type ReactNode } from "react";
 import { EPAISSEURS, couleurCorps, normaliser, type Look } from "@/components/garde-robe";
 import { Bas, Chapeau2, Chaussure, Haut, Lunettes2, Objet } from "@/components/vestiaire";
 
@@ -23,7 +23,13 @@ export function PlumeDessin({
   miroir = false,
   look: lookBrut,
   cadre,
+  extra,
+  joues = 0.75,
 }: {
+  /** Petits détails dessinés par-dessus (muscles, baies, sourcils…), dans le même repère 200 × 200. */
+  extra?: ReactNode;
+  /** Les joues roses : 0.75 pour Plume, moins pour les messieurs. */
+  joues?: number;
   /** Pour une vignette : on ne montre qu'une partie (la tête, les pieds…), en zoomant. */
   cadre?: string;
   anim?: AnimPlume;
@@ -79,8 +85,8 @@ export function PlumeDessin({
         {look ? <><Bas t={look} /><Haut t={look} /></> : <Vetement caractere={caractere} />}
         <Yeux caractere={caractere} />
 
-        <ellipse cx="50" cy="118" rx="10" ry="6" fill="#ff9fcf" opacity=".75" />
-        <ellipse cx="150" cy="118" rx="10" ry="6" fill="#ff9fcf" opacity=".75" />
+        <ellipse cx="50" cy="118" rx="10" ry="6" fill="#ff9fcf" opacity={joues} />
+        <ellipse cx="150" cy="118" rx="10" ry="6" fill="#ff9fcf" opacity={joues} />
         <path className="pl-bec" d="M93 112 L107 112 L100 124 Z" fill="#f3b54a" />
 
         {/* Triste : une petite larme. Étourdie : des étoiles qui tournent. */}
@@ -127,6 +133,7 @@ export function PlumeDessin({
           </g>
         </g>
       ) : null}
+      {extra ? <g className="pl-extra">{extra}</g> : null}
     </svg>
   );
 }

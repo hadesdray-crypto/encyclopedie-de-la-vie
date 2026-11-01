@@ -20,7 +20,7 @@ export function lireJoueurs(): Joueur[] {
     /* rien */
   }
   return [
-    { nom: "Leonie", couleur: COULEURS[0], equipe: 0 },
+    { nom: "Princesse Léonie", couleur: COULEURS[0], equipe: 0 },
     { nom: "Joueur 2", couleur: COULEURS[1], equipe: 1 },
   ];
 }

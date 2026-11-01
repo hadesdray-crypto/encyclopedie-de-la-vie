@@ -322,7 +322,7 @@ export function kmlDuVoyage(points: Point[], nom: string) {
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
 <Document>
 <name>Le voyage de ${n}</name>
-<description>Vrai trajet GPS (Movebank Data Repository, licence libre). Encyclopédie de la vie, pour la princesse Leonie.</description>
+<description>Vrai trajet GPS (Movebank Data Repository, licence libre). Encyclopédie de la vie, pour la princesse Léonie.</description>
 <Style id="trajet"><LineStyle><color>ff8ad4f3</color><width>5</width></LineStyle></Style>
 <Style id="depart"><IconStyle><color>ff64d94c</color><scale>1.3</scale></IconStyle></Style>
 <Style id="arrivee"><IconStyle><color>ff4d4dff</color><scale>1.3</scale></IconStyle></Style>

@@ -13,7 +13,7 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     titre: "Bienvenue !",
     test: (c) => c === "/" || c === "",
     etapes: [
-      "C'est ta page à toi, Leonie !",
+      "C'est ta page à toi, princesse Léonie !",
       "La grande lune, au milieu, c'est le début de tout. Les bulles autour t'emmènent vers les bactéries, les plantes, les champignons ou les animaux.",
       "Jouer ouvre les jeux et le défi du jour. Mes cartes, c'est ta collection d'animaux.",
       "La Carte, c'est la Terre entière : touche un pays pour voir ses animaux, ou regarde les vrais voyages d'animaux suivis par GPS.",
@@ -268,9 +268,9 @@ export const REACTIONS = {
 /** Le petit discours de Plume : à la première ouverture, puis quand Leonie le demande. */
 export const PRESENTATION: Explication = {
   id: "presentation",
-  titre: "Coucou Leonie !",
+  titre: "Coucou princesse Léonie !",
   etapes: [
-    "Coucou Leonie ! Oh… c'est toi ? Je suis tellement contente que ce soit toi qui t'occupes de moi. Je m'appelle Plume, je suis ta chouette.",
+    "Coucou princesse Léonie ! Oh… c'est toi ? Je suis tellement contente que ce soit toi qui t'occupes de moi. Je m'appelle Plume, je suis ta chouette.",
     "Cette encyclopédie a été faite rien que pour toi. Elle raconte toute l'histoire de la vie, depuis la naissance de la Terre. Et elle marche même sans Internet.",
     "En résumé : tu peux remonter le temps dans l'arbre de la vie, découvrir presque 7 000 mammifères, jouer, collectionner des cartes d'animaux, et suivre de vrais animaux voyageurs.",
     "Et moi, je suis toujours là pour t'aider. Touche-moi deux fois pour ouvrir mon menu. Appuie longtemps pour me déplacer. Mon caractère et ma voix se changent dans mon menu, avec Réglages.",
@@ -368,7 +368,7 @@ export const HISTOIRE: Explication = {
   id: "histoire",
   titre: "L'histoire de la vie",
   etapes: [
-    "Hou hou ! Installe-toi bien, Leonie. Je vais te raconter l'histoire la plus longue du monde. Elle dure 4 milliards et demi d'années ! Ne t'inquiète pas, je vais la raconter vite.",
+    "Hou hou ! Installe-toi bien, princesse Léonie. Je vais te raconter l'histoire la plus longue du monde. Elle dure 4 milliards et demi d'années ! Ne t'inquiète pas, je vais la raconter vite.",
     "Il était une fois une grosse boule de roche brûlante qui flottait dans le noir. Pas de plage, pas de forêt, pas même une petite souris. C'était la Terre, toute bébé. Et elle était très, très chaude. Aïe, aïe, aïe !",
     "Un jour, BOUM ! Elle s'est pris un énorme choc avec une autre planète. Les scientifiques pensent que c'est comme ça qu'est née la Lune. Notre veilleuse de nuit est née d'une grosse bêtise cosmique !",
     "Puis la Terre a refroidi, et l'eau est arrivée. Des mers entières ! On sait qu'il y avait déjà de l'eau il y a plus de 4 milliards d'années, grâce à de minuscules cristaux trouvés en Australie.",
@@ -382,13 +382,13 @@ export const HISTOIRE: Explication = {
     "Pendant ce temps, de tout petits mammifères se cachaient dans l'ombre, en attendant leur tour. Quand les dinosaures ont disparu, il y a 66 millions d'années, ça a été leur moment : baleines, éléphants, chauves-souris, singes, et même l'ornithorynque, qui pond des œufs !",
     "Et tout, tout à la fin, il y a environ 300 000 ans… tadaaa ! Nous sommes arrivés. Si toute l'histoire de la Terre tenait dans une seule journée, les humains ne seraient là que depuis les 6 dernières secondes. Six secondes ! Juste le temps de dire « coucou ».",
     "Et alors, me direz-vous, princesse, à quoi tout cela a-t-il servi ? Les bactéries, les poissons, Tiktaalik et ses flop flop, les dinosaures, l'ornithorynque… Permettez à votre humble chouette de vous donner la réponse.",
-    "Tout ça… 4 milliards et demi d'années… pour en arriver à la petite Leonie ! Hou hou. Plume s'incline très, très bas.",
-    "Bon. Les scientifiques disent que l'évolution n'a pas de but, et ils ont raison. Mais une simple chouette au service de la princesse a bien le droit d'avoir son petit avis. Et l'histoire continue : maintenant, c'est toi qui l'écris. À toi de jouer, princesse Leonie !",
+    "Tout ça… 4 milliards et demi d'années… pour en arriver à la petite princesse Léonie ! Hou hou. Plume s'incline très, très bas.",
+    "Bon. Les scientifiques disent que l'évolution n'a pas de but, et ils ont raison. Mais une simple chouette au service de la princesse a bien le droit d'avoir son petit avis. Et l'histoire continue : maintenant, c'est toi qui l'écris. À toi de jouer, princesse Léonie !",
   ],
 };
 
 // La photo de la princesse s'affiche à l'étape « tout ça pour en arriver à la petite Leonie ».
-HISTOIRE.photos = HISTOIRE.etapes.map((t) => (t.includes("pour en arriver à la petite Leonie") ? "photo-fin" : null));
+HISTOIRE.photos = HISTOIRE.etapes.map((t) => (t.includes("pour en arriver à la petite princesse Léonie") ? "photo-fin" : null));
 
 const ROUTE_RECIT = ["terre", "molecules", "briques", "adn", "luca", "bacteries", "cyanobacteries", "eucaryotes", "animaux", "vertebres", "hors", "oeuf", "dinosaures", "oiseaux", "mammiferes"];
 
@@ -404,8 +404,8 @@ export function grandRecit(): Explication {
     return [`${debut}${e.nom}. ${quand}${e.texte}${doute}`, ...(e.anecdote ? [`Le savais-tu ? ${e.anecdote}`] : [])];
   });
   etapes.push(
-    "Et puis, il y a environ 300 000 ans, les humains sont arrivés. Et tout au bout de cette très longue histoire… la princesse Leonie !",
-    "Les scientifiques disent que l'évolution n'a pas de but, et ils ont raison. Mais votre humble chouette le dit avec tout son respect : tout ce chemin valait la peine, pour en arriver à la petite Leonie. Maintenant, l'histoire continue avec toi.",
+    "Et puis, il y a environ 300 000 ans, les humains sont arrivés. Et tout au bout de cette très longue histoire… la princesse Léonie !",
+    "Les scientifiques disent que l'évolution n'a pas de but, et ils ont raison. Mais votre humble chouette le dit avec tout son respect : tout ce chemin valait la peine, pour en arriver à la petite princesse Léonie. Maintenant, l'histoire continue avec toi.",
   );
-  return { id: "recit", titre: "Le grand récit", etapes, photos: etapes.map((t) => (t.includes("la princesse Leonie !") ? "photo-fin" : null)) };
+  return { id: "recit", titre: "Le grand récit", etapes, photos: etapes.map((t) => (t.includes("la princesse Léonie !") ? "photo-fin" : null)) };
 }

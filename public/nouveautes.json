@@ -1,5 +1,20 @@
 [
   {
+    "date": "2026-11-01",
+    "titre": "Les prétendants de Plume",
+    "points": [
+      "6 prétendants viennent frapper au nid, un par un : Gaspard, Merlin, Léandre, Pistache, Hector et Basile. Chacun a sa personnalité et son dessin.",
+      "Plume te demande conseil : « Oui, il reste » ou « Pas maintenant ». S'il est refusé, il repart triste et revient après les cinq autres, chaque fois avec une autre façon de se présenter. Après trois visites refusées, il ne revient plus (il reste dans la forêt).",
+      "Nouveau dans le nid : « Les amis de la forêt », la liste de tous les hiboux venus voir Plume.",
+      "Le compagnon de Plume est maintenant un peu plus grand qu'elle (avant, on le prenait pour un enfant).",
+      "Le braconnier a un nouveau dessin : bras attachés aux épaules, chapeau à plume, vrai visage, bottes.",
+      "Nouveau : « Le nid vivant » dans le nid ! Plume, son compagnon et le bébé vivent pour de vrai : on peut les attraper et les lancer (même le braconnier), les caresser en dessinant un rond, les gratouiller en zigzag. Ils sont lourds : ils planent en ligne droite vers le bas et galèrent pour monter sur la branche, et le bébé essaie tout le temps de voler.",
+      "Quand le braconnier arrive, chaque compagnon protège à sa façon (Gaspard charge, Merlin lance un fumigène, Léandre chante, Pistache lance des baies, Hector se sacrifie, Basile hésite puis ose). Ils se font parfois prendre dans l'épuisette… et s'échappent !",
+      "Coin des parents (dans le nid) : un curseur pour aller directement à n'importe quelle étape de l'histoire, en avant comme en arrière.",
+      "Le prénom s'écrit maintenant « princesse Léonie » partout (accueil, classeur, phrases de Plume, jeux)."
+    ]
+  },
+  {
     "date": "2026-10-29",
     "titre": "Choisis la voix de Plume",
     "points": [
@@ -81,7 +96,7 @@
     "date": "2026-10-25",
     "titre": "Revivre la première fois",
     "points": [
-      "Dans les Options : un bouton pour relancer l'application comme la toute première fois. Plume se présente de nouveau et réexplique chaque page. Rien de ce que Leonie a gagné n'est effacé."
+      "Dans les Options : un bouton pour relancer l'application comme la toute première fois. Plume se présente de nouveau et réexplique chaque page. Rien de ce que la princesse Léonie a gagné n'est effacé."
     ]
   },
   {
@@ -105,7 +120,7 @@
     "points": [
       "Un bouton « ? » à côté des vidéos : Plume explique comment elles marchent.",
       "Plume explique aussi les tables magiques, le catalogue des animaux et les frères Kratt.",
-      "Quand Leonie signale une photo, Plume la remercie… et parle du Concepteur."
+      "Quand la princesse Léonie signale une photo, Plume la remercie… et parle du Concepteur."
     ]
   },
   {
@@ -229,7 +244,7 @@
       "L'arbre de la vie et l'accueil montrent de vraies photos (microscope, nature), de vrais fossiles et des reconstitutions, avec la mention sous chaque image.",
       "Quand une voix lit un texte, Plume s'anime : c'est elle qui parle. Touche-la pour l'arrêter.",
       "Nouveau bouton « Mots » dans la bulle de Plume : elle explique les mots de scientifique de la page.",
-      "Le caractère de Plume, en 4 niveaux (Options) : discrète, présente, étudiante (lunettes et chapeau quand elle lit), passionnée (blouse de scientifique, tableau noir, « Eh oui, Leonie ! »)."
+      "Le caractère de Plume, en 4 niveaux (Options) : discrète, présente, étudiante (lunettes et chapeau quand elle lit), passionnée (blouse de scientifique, tableau noir, « Eh oui, princesse Léonie ! »)."
     ]
   },
   {
@@ -304,9 +319,9 @@
   },
   {
     "date": "2026-10-24",
-    "titre": "La page de Leonie",
+    "titre": "La page de la princesse Léonie",
     "points": [
-      "Une nouvelle première page, rien que pour Leonie : son nom en grand, et Plume qui lui parle.",
+      "Une nouvelle première page, rien que pour la princesse Léonie : son nom en grand, et Plume qui lui parle.",
       "La flèche du téléphone revient en arrière pas à pas, par le même chemin. À l'accueil, il faut appuyer deux fois pour fermer.",
       "La barre du bas montre les paquets de cartes à ouvrir et le défi du jour qui attend.",
       "Nouvelle salle Aventure : la carte du monde des animaux suivis par GPS.",
@@ -316,9 +331,9 @@
   },
   {
     "date": "2026-10-24",
-    "titre": "Plume, la chouette de Leonie",
+    "titre": "Plume, la chouette de la princesse Léonie",
     "points": [
-      "Plume fait coucou et se présente à Leonie.",
+      "Plume fait coucou et se présente à la princesse Léonie.",
       "Touche Plume : elle ouvre ses ailes, avec lecture, pause, vitesse de la voix et sons des jeux.",
       "Quand Plume parle, un petit bouton Pause est toujours à côté d'elle.",
       "La voix marche dans l'application Android."
