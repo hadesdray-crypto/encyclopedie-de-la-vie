@@ -292,13 +292,13 @@ export function Braconnier() {
     e.actif = false;
     delete document.body.dataset.plumeActeur;
     braconnierRenvoye(
-      e.coups ? "Leonie a fait voler le braconnier. Il est reparti en boitant !"
+      e.coups ? "La princesse Léonie a fait voler le braconnier. Il est reparti en boitant !"
         : e.scenario === "fusil" ? "Le braconnier a tiré, mais le bouclier du Concepteur a protégé Plume !"
         : e.scenario === "course" ? "Le braconnier a couru après Plume… et s'est écrasé contre le bord de l'écran !"
         : "Le braconnier a raté Plume : son filet a fini sur sa tête !",
     );
     plumeFete();
-    plumeDit(e.coups ? "Merci Leonie ! Tu m'as sauvée ! Il ne reviendra pas de sitôt." : "Hi hi ! Il est reparti. Les braconniers attrapent des animaux sauvages, c'est interdit : des gardes protègent les animaux dans les parcs.", 6000);
+    plumeDit(e.coups ? "Merci princesse Léonie ! Tu m'as sauvée ! Il ne reviendra pas de sitôt." : "Hi hi ! Il est reparti. Les braconniers attrapent des animaux sauvages, c'est interdit : des gardes protègent les animaux dans les parcs.", 6000);
     window.setTimeout(() => setImage((n) => n + 1), 50);
   }
 
@@ -715,7 +715,7 @@ export function Braconnier() {
     e.coups += 1;
     if (vy < -700) sons.sifflet();
     dire(hasard(DIT_LANCE), 1.4);
-    if (e.coups === 1) plumeDit(hasard(["Bravo Leonie !", "Wouah, quel lancer !", "Hi hi, il vole !"]), 2500);
+    if (e.coups === 1) plumeDit(hasard(["Bravo princesse Léonie !", "Wouah, quel lancer !", "Hi hi, il vole !"]), 2500);
   }
 
   // ---------------- l'affichage

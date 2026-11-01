@@ -7,10 +7,10 @@ import { catalogueVoix, cleDe, essayerProchaine, garderVoix, useVoixChoisie, typ
 
 const HAUTEUR_DE_BASE: Record<string, number> = { discrete: 0.97, presente: 1.1, etudiante: 1.02, passionnee: 1.2 };
 const PHRASE: Record<string, string> = {
-  discrete: "Bonjour Leonie. C'est moi, Plume, tout doucement.",
-  presente: "Coucou Leonie ! C'est moi, Plume, avec cette voix-là !",
+  discrete: "Bonjour princesse Léonie. C'est moi, Plume, tout doucement.",
+  presente: "Coucou princesse Léonie ! C'est moi, Plume, avec cette voix-là !",
   etudiante: "D'après ce que savent les scientifiques, cette voix me va bien.",
-  passionnee: "Leonie, Leonie ! Écoute ma nouvelle voix, c'est génial !",
+  passionnee: "Princesse Léonie, princesse Léonie ! Écoute ma nouvelle voix, c'est génial !",
 };
 
 /** `qui` : le caractère dont on règle la voix. `nom` : le nom du personnage (un personnage bonus parle en son nom). */

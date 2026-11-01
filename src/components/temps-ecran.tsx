@@ -10,18 +10,18 @@ import { encoreDuTemps, marquerPrevenu, sansLimiteAujourdhui, useTempsEcran } fr
 const CARACTERE: Record<Presence, Caractere> = { discrete: 1, presente: 2, etudiante: 3, passionnee: 4, repos: 0 };
 
 const FIN: Record<Presence, string> = {
-  discrete: "Leonie… on a beaucoup regardé l'écran aujourd'hui. On éteint la tablette, et on va dehors ? À demain.",
-  presente: "Ça fait longtemps qu'on regarde l'écran, Leonie ! On éteint la tablette et on va profiter du monde dehors ? À demain !",
-  etudiante: "D'après ce que savent les scientifiques, jouer dehors fait du bien aux yeux et au corps. On éteint la tablette ? À demain, Leonie !",
-  passionnee: "Eh oui, Leonie ! Le vrai monde est plein d'animaux à découvrir ! On éteint la tablette et on part explorer dehors ? À demain !",
-  repos: "Ça fait longtemps qu'on regarde l'écran, Leonie ! On éteint la tablette et on va profiter du monde dehors ? À demain !",
+  discrete: "Princesse Léonie… on a beaucoup regardé l'écran aujourd'hui. On éteint la tablette, et on va dehors ? À demain.",
+  presente: "Ça fait longtemps qu'on regarde l'écran, princesse Léonie ! On éteint la tablette et on va profiter du monde dehors ? À demain !",
+  etudiante: "D'après ce que savent les scientifiques, jouer dehors fait du bien aux yeux et au corps. On éteint la tablette ? À demain, princesse Léonie !",
+  passionnee: "Eh oui, princesse Léonie ! Le vrai monde est plein d'animaux à découvrir ! On éteint la tablette et on part explorer dehors ? À demain !",
+  repos: "Ça fait longtemps qu'on regarde l'écran, princesse Léonie ! On éteint la tablette et on va profiter du monde dehors ? À demain !",
 };
 const BIENTOT: Record<Presence, string> = {
-  discrete: "Encore un petit moment, Leonie, et on ira dehors.",
-  presente: "Encore un petit moment, Leonie, et on ira dehors !",
-  etudiante: "Encore dix minutes, Leonie, et on ira observer le vrai monde !",
-  passionnee: "Leonie, Leonie ! Encore un petit moment, et on file explorer dehors !",
-  repos: "Encore un petit moment, Leonie, et on ira dehors !",
+  discrete: "Encore un petit moment, princesse Léonie, et on ira dehors.",
+  presente: "Encore un petit moment, princesse Léonie, et on ira dehors !",
+  etudiante: "Encore dix minutes, princesse Léonie, et on ira observer le vrai monde !",
+  passionnee: "Princesse Léonie, princesse Léonie ! Encore un petit moment, et on file explorer dehors !",
+  repos: "Encore un petit moment, princesse Léonie, et on ira dehors !",
 };
 
 function enPartie() {

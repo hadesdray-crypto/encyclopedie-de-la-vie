@@ -27,7 +27,7 @@ export function avisDePlume(e: Espece): string | null {
   // Les chauves-souris sortent la nuit, comme les chouettes.
   if (e.ordre === "Chiroptera" && Math.random() < 0.5) return "Elles sortent la nuit… comme moi !";
   // Ses préférés : les chiens, comme Leonie.
-  if (e.latin === "Canis familiaris") return "Un chien… mes préférés. Comme toi, Leonie.";
+  if (e.latin === "Canis familiaris") return "Un chien… mes préférés. Comme toi, princesse Léonie.";
   // Émerveillée, mais tout bas : des chiffres vrais, tirés de la fiche, et pas souvent.
   if (Math.random() > 0.3) return null;
   const g = grammesDe(e.masse);

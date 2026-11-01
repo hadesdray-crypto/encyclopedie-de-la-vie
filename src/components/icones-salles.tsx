@@ -80,7 +80,7 @@ export function PorteCartes({ className = "" }: { className?: string }) {
         <rect x="8" y="22" width="84" height="16" rx="8" fill="#fff" opacity=".15" />
         <rect x="24" y="40" width="52" height="50" rx="6" fill="#120c2c" stroke={`url(#${id}o)`} strokeWidth="3" />
         <path d="M14 98 H86 L80 110 H20 Z" fill={`url(#${id}o)`} />
-        <text x="50" y="107.5" textAnchor="middle" fontFamily="Fraunces, Georgia, serif" fontWeight="800" fontSize="10" fill="#3a1a7a">Leonie</text>
+        <text x="50" y="107.5" textAnchor="middle" fontFamily="Fraunces, Georgia, serif" fontWeight="800" fontSize="6.4" textLength="62" lengthAdjust="spacingAndGlyphs" fill="#3a1a7a">Princesse Léonie</text>
         {[[14, 30], [86, 30], [14, 92], [86, 92]].map(([x, y]) => <circle key={`${x}${y}`} cx={x} cy={y} r="2.4" fill={`url(#${id}o)`} />)}
       </svg>
       <span className="absolute left-[26%] top-[35%] block w-[48%] overflow-hidden rounded-[4px]" style={{ height: "39%" }}><span className="block w-full -translate-y-[12%]"><DosCarte modele="arbre" /></span></span>

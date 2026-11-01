@@ -265,10 +265,10 @@ export function ouvrirRegles(r: Explication) {
 export function debutLecture() {
   if (etat.presence === "passionnee") {
     const debuts = [
-      "Eh oui, Leonie ! Je vais te dire tout ce que je sais là-dessus ! ",
-      "Ooooh, Leonie, j'adore ça ! Accroche-toi, j'explique tout ! ",
-      "Par toutes mes plumes, Leonie ! Écoute bien, c'est passionnant ! ",
-      "Leonie, Leonie ! Tu vas adorer ce que je vais te dire ! ",
+      "Eh oui, princesse Léonie ! Je vais te dire tout ce que je sais là-dessus ! ",
+      "Ooooh, princesse Léonie, j'adore ça ! Accroche-toi, j'explique tout ! ",
+      "Par toutes mes plumes, princesse Léonie ! Écoute bien, c'est passionnant ! ",
+      "Princesse Léonie, princesse Léonie ! Tu vas adorer ce que je vais te dire ! ",
     ];
     return debuts[Math.floor(Math.random() * debuts.length)];
   }

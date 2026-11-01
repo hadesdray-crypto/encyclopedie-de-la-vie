@@ -112,12 +112,12 @@ export function plumeOuvrePartie(joueurs: Joueur[]) {
   const leonieJoue = joueurs.some((j) => !j.plume && j.nom.trim().toLocaleLowerCase("fr").startsWith("l") && j.nom.trim().toLocaleLowerCase("fr").replace("é", "e").startsWith("leonie"));
   const phrases = leonieJoue
     ? [
-        "Quelle joie de jouer avec toi, princesse Leonie ! Et merci au Concepteur, qui a fabriqué ce jeu pour nous.",
-        "Princesse Leonie, c'est toujours un bonheur de jouer avec toi. Merci au Concepteur pour ce beau jeu !",
+        "Quelle joie de jouer avec toi, princesse Léonie ! Et merci au Concepteur, qui a fabriqué ce jeu pour nous.",
+        "Princesse Léonie, c'est toujours un bonheur de jouer avec toi. Merci au Concepteur pour ce beau jeu !",
       ]
     : [
-        "Merci à la princesse Leonie : grâce à elle, on peut jouer à ce jeu ! Et merci au Concepteur, qui l'a fabriqué.",
-        "Avant de commencer, un grand merci à la princesse Leonie, sans qui ce jeu n'existerait pas, et au Concepteur qui l'a construit !",
+        "Merci à la princesse Léonie : grâce à elle, on peut jouer à ce jeu ! Et merci au Concepteur, qui l'a fabriqué.",
+        "Avant de commencer, un grand merci à la princesse Léonie, sans qui ce jeu n'existerait pas, et au Concepteur qui l'a construit !",
       ];
   const t = phrases[Math.floor(Math.random() * phrases.length)];
   const perso = compagnonExprime("debut");
@@ -128,9 +128,9 @@ export function plumeOuvrePartie(joueurs: Joueur[]) {
 
 // De temps en temps, à la fin d'une partie, un petit mot gentil.
 const GENTILS = [
-  "La princesse Leonie serait fière de cette partie !",
+  "La princesse Léonie serait fière de cette partie !",
   "Le Concepteur a bien fait les choses : quel beau jeu !",
-  "Je garde ce souvenir pour la princesse Leonie.",
+  "Je garde ce souvenir pour la princesse Léonie.",
   "Merci au Concepteur pour ces moments ensemble !",
 ];
 export function plumeMotGentil() {

@@ -17,12 +17,12 @@ export const CATEGORIES: { id: string; nom: string; explique: string; moments: {
     { id: "menu", nom: "Son menu s'ouvre", quand: "On le touche deux fois : il ouvre son menu pour aider." },
   ] },
   { id: "reponses", nom: "Les réponses et les cadeaux", explique: "Ce qu'il dit pendant les défis et les questions.", moments: [
-    { id: "bonne", nom: "Bonne réponse", quand: "Leonie (ou un joueur) a trouvé la bonne réponse." },
+    { id: "bonne", nom: "Bonne réponse", quand: "La princesse Léonie (ou un joueur) a trouvé la bonne réponse." },
     { id: "mauvaise", nom: "Mauvaise réponse", quand: "Ce n'était pas la bonne réponse : il encourage." },
     { id: "paquet", nom: "Un paquet de cartes gagné", quand: "Un nouveau paquet de cartes est gagné." },
   ] },
   { id: "jeux", nom: "Quand il joue avec vous", explique: "Ce qu'il dit quand il est un joueur de la partie.", moments: [
-    { id: "debut", nom: "Le début de la partie", quand: "Avant de jouer, il remercie la princesse Leonie et le Concepteur." },
+    { id: "debut", nom: "Le début de la partie", quand: "Avant de jouer, il remercie la princesse Léonie et le Concepteur." },
     { id: "tour", nom: "C'est son tour", quand: "C'est à lui de jouer." },
     { id: "trouve", nom: "Il réussit", quand: "Il trouve une paire, gagne un duel ou la bonne réponse." },
     { id: "rate", nom: "Il se trompe", quand: "Il rate son coup." },

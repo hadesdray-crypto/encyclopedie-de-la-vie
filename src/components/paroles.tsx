@@ -12,7 +12,7 @@ export const DEFAUTS: Partial<Record<Expression, string>> = {
   bonne: REACTIONS.bonne[0],
   mauvaise: REACTIONS.mauvaise[0],
   paquet: REACTIONS.paquet[0],
-  debut: "Merci à la princesse Leonie : grâce à elle, on peut jouer à ce jeu ! Et merci au Concepteur.",
+  debut: "Merci à la princesse Léonie : grâce à elle, on peut jouer à ce jeu ! Et merci au Concepteur.",
   tour: "À moi de jouer !",
   trouve: "Trouvé !",
   rate: "Oh non, je me suis trompé !",

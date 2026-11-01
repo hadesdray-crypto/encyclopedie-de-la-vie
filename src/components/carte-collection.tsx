@@ -383,7 +383,7 @@ function DosPlume() {
           </g>
         ))}
         <path d="M150 700 L480 700 L455 735 L480 770 L150 770 L175 735 Z" fill="#c43d7a" stroke="url(#dos-or)" strokeWidth="3" />
-        <text x="315" y="746" textAnchor="middle" fontFamily="Fraunces, Georgia, serif" fontSize="28" fontWeight="700" fill="#fff2c2">Collection de Leonie</text>
+        <text x="315" y="746" textAnchor="middle" fontFamily="Fraunces, Georgia, serif" fontSize="28" fontWeight="700" fill="#fff2c2">Collection de la princesse Léonie</text>
         <TexteRond id="pl-haut" r={290} texte="ENCYCLOPÉDIE DE LA VIE" />
         <Etoiles />
       </CadreDos>
