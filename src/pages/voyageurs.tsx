@@ -15,6 +15,7 @@ import donnees from "@/data/voyageurs.json";
 import { definirEcran, plumeDit } from "@/lib/plume";
 import { useInternet } from "@/lib/internet";
 import { VoyageSatellite } from "@/components/voyage-satellite";
+import { VoyageVol } from "@/components/voyage-vol";
 import { connuLatin } from "@/lib/connu";
 
 type Voyageur = {
@@ -75,6 +76,7 @@ export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean
   const [vue, setVue] = useState<Vue>(DEPART);
   const [choisi, setChoisi] = useState<number | null>(null);
   const [satellite, setSatellite] = useState(false);
+  const [vol, setVol] = useState(false);
   const [filtres, setFiltres] = useState<Record<G, boolean>>({ marin: true, herbivore: true, oiseau: true, predateur: true, autre: true });
   const [q, setQ] = useState("");
   const [cherche, setCherche] = useState(false);
@@ -237,6 +239,7 @@ export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean
   function montrer(i: number, centrer = true) {
     setChoisi(i);
     setSatellite(false);
+    setVol(false);
     // La fiche (avec le parcours) vient se placer juste sous le bandeau.
     window.setTimeout(() => document.getElementById("fiche-voyageur")?.scrollIntoView({ behavior: "smooth", block: "start" }), 700);
     setCherche(false);
@@ -384,6 +387,10 @@ export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean
           <button type="button" onClick={() => setSatellite(true)} className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#f3d48a] to-[#e7b75a] py-3.5 text-base font-black text-[#2a1650] shadow-[0_0_18px_rgba(243,212,138,.45)] active:scale-[.98]">
             🛰️ Voyager avec lui, vu du ciel
           </button>
+          <button type="button" onClick={() => setVol(true)} className="mt-2 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#7fd6ff] to-[#4f9be0] py-3.5 text-base font-black text-[#0b2a4a] shadow-[0_0_18px_rgba(127,214,255,.45)] active:scale-[.98]">
+            🦅 Voyager avec ses yeux
+          </button>
+          {vol ? <VoyageVol points={v.points} nom={nomDe(v)} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} groupe={v.groupe} depart={v.depart?.date ?? v.debut} arrivee={v.arrivee?.date ?? v.fin} onFermer={() => setVol(false)} /> : null}
           {satellite ? <VoyageSatellite points={v.points} nom={nomDe(v)} photo={v.fiche && aUnePhoto(v.fiche) ? v.fiche : null} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} complet={estComplet(v)} depart={v.depart?.date ?? v.debut} arrivee={v.arrivee?.date ?? v.fin} onFermer={() => setSatellite(false)} /> : null}
           {(() => {
             const autres = voyagesDe(v.fiche ?? "", v.latin);
