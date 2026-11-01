@@ -1,6 +1,24 @@
 [
   {
     "date": "2026-11-01",
+    "titre": "Voyager avec ses yeux",
+    "points": [
+      "Nouveau : on voyage avec l'animal, avec ses yeux, sur son vrai trajet.",
+      "Le sol défile en vrai, les nuages passent, on monte haut entre deux étapes."
+    ]
+  },
+  {
+    "date": "2026-11-01",
+    "titre": "Voyager avec ses yeux (détails)",
+    "points": [
+      "Dans « Les voyages », touche « 🦅 Voyager avec ses yeux » : la vue est à hauteur de l'animal (plus vue du ciel).",
+      "Le voyage est découpé en étapes : on survole de près chaque étape, puis on monte très haut pour rejoindre la suivante.",
+      "Les images viennent d'Internet (comme « Voyager avec lui ») : il faut que le Wi-Fi soit allumé.",
+      "On peut mettre en pause, passer à l'étape suivante, rejouer."
+    ]
+  },
+  {
+    "date": "2026-11-01",
     "titre": "Le nid vivant et les prétendants",
     "points": [
       "Le nid vivant : on lance, on caresse, on gratouille.",
