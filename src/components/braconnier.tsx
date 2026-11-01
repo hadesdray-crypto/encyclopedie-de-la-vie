@@ -42,65 +42,101 @@ function centrePlume() {
 const hasard = <T,>(l: T[]) => l[Math.floor(Math.random() * l.length)];
 
 // ------------------------------------------------------------ le dessin
+// Les bras partent des épaules et tournent autour d'elles ; chapeau à plume, visage, ceinture et bottes.
 function Dessin({ m, bobos, chapeau, suie, filetTete, arme, vise, etourdi, pas }: {
   m: Mode; bobos: number; chapeau: boolean; suie: boolean; filetTete: boolean; arme: "filet" | "fusil" | null; vise: number; etourdi: boolean; pas: number;
 }) {
   const marche = m === "marche" || m === "fuite" || m === "course";
-  const jambe = marche ? Math.sin(pas) * (m === "course" ? 30 : 18) : m === "vol" || m === "tenu" ? 22 : 0;
+  const enVol = m === "vol" || m === "tenu";
+  const jambe = marche ? Math.sin(pas) * (m === "course" ? 30 : 18) : enVol ? 22 : 0;
   const peau = suie ? "#5b5048" : "#f1c7a0";
-  const brasRot = arme === "fusil" ? vise : m === "attrape" ? 55 : m === "vol" || m === "tenu" ? -70 : arme === "filet" ? -25 : 10;
+  const peauOmbre = suie ? "#4a413a" : "#e3a07a";
+  const brasRot = arme === "fusil" ? vise : m === "attrape" ? 55 : enVol ? -70 : arme === "filet" ? -25 : 10;
+  const brasArriere = enVol ? 60 : marche ? Math.sin(pas) * 25 : 8;
+  const veste = "#5a7d33", vesteOmbre = "#4a6a28", vesteFonce = "#3a5222";
+
   return (
     <svg viewBox="0 0 120 170" className="size-full overflow-visible" aria-hidden="true">
-      <ellipse cx="55" cy="166" rx="30" ry="4" fill="#000" opacity={m === "vol" || m === "tenu" ? 0 : 0.3} />
-      {/* jambes */}
-      <g style={{ transformOrigin: "46px 120px", transform: `rotate(${jambe}deg)` }}>
-        <rect x="40" y="118" width="11" height="42" rx="5" fill="#4a3b2a" />
-        <ellipse cx="45" cy="161" rx="11" ry="5" fill="#222" />
+      <ellipse cx="55" cy="166" rx="31" ry="4.5" fill="#000" opacity={enVol ? 0 : 0.3} />
+
+      {/* le bras de derrière : il part de l'épaule (36, 83) et tourne autour d'elle */}
+      <g style={{ transformOrigin: "36px 83px", transform: `rotate(${brasArriere}deg)` }}>
+        <rect x="29.5" y="78" width="13" height="32" rx="6.5" fill={vesteOmbre} />
+        <rect x="29.5" y="100" width="13" height="5" fill={vesteFonce} />
+        <circle cx="36" cy="111" r="5.5" fill={peau} />
       </g>
-      <g style={{ transformOrigin: "62px 120px", transform: `rotate(${-jambe}deg)` }}>
-        <rect x="57" y="118" width="11" height="42" rx="5" fill="#3d3022" />
-        <ellipse cx="64" cy="161" rx="11" ry="5" fill="#222" />
+
+      {/* jambes et bottes */}
+      <g style={{ transformOrigin: "46px 122px", transform: `rotate(${jambe}deg)` }}>
+        <rect x="40" y="118" width="12" height="36" rx="5" fill="#4a3b2a" />
+        <rect x="39" y="148" width="14" height="13" rx="4" fill="#2b231c" />
+        <path d="M37 160 Q38 155 46 156 L56 158 Q58 166 52 167 L40 167 Q35 166 37 160 Z" fill="#1f1a16" />
+        <rect x="36" y="165" width="22" height="3" rx="1.5" fill="#6b5a46" />
       </g>
-      {/* corps : la veste verte */}
-      <rect x="32" y="70" width="46" height="56" rx="16" fill="#4d6b2f" />
-      <rect x="52" y="74" width="5" height="48" fill="#3a5222" />
-      <circle cx="47" cy="88" r="2.5" fill="#c9a24a" />
-      <circle cx="47" cy="102" r="2.5" fill="#c9a24a" />
-      {/* l'autre bras, en arrière */}
-      <rect x="22" y="80" width="14" height="30" rx="7" fill="#425c27" transform={`rotate(${m === "vol" || m === "tenu" ? 60 : marche ? Math.sin(pas) * 25 : 8} 30 82)`} />
-      {/* tête */}
-      <circle cx="55" cy="52" r="20" fill={peau} />
-      {suie ? <path d="M38 40 Q42 30 47 38 Q50 28 55 37 Q60 27 63 38 Q68 30 72 40" stroke="#3a3a3a" strokeWidth="3" fill="none" /> : null}
+      <g style={{ transformOrigin: "65px 122px", transform: `rotate(${-jambe}deg)` }}>
+        <rect x="59" y="118" width="12" height="36" rx="5" fill="#3d3022" />
+        <rect x="58" y="148" width="14" height="13" rx="4" fill="#2b231c" />
+        <path d="M56 160 Q57 155 65 156 L75 158 Q77 166 71 167 L59 167 Q54 166 56 160 Z" fill="#1f1a16" />
+        <rect x="55" y="165" width="22" height="3" rx="1.5" fill="#6b5a46" />
+      </g>
+
+      {/* le corps : veste verte, chemise, ceinture, poches */}
+      <path d="M33 78 Q33 70 43 70 L67 70 Q77 70 77 78 L79 118 Q79 128 70 128 L40 128 Q31 128 31 118 Z" fill={veste} />
+      <path d="M62 71 L77 78 L79 118 Q79 128 70 128 L62 128 Z" fill={vesteOmbre} opacity=".55" />
+      <path d="M47 70 L55 94 L63 70 Z" fill="#efe4c8" />
+      <path d="M43 70 L55 96 L47 70 Z M67 70 L55 96 L63 70 Z" fill={vesteFonce} />
+      <path d="M55 96 L55 126" stroke={vesteFonce} strokeWidth="2.5" />
+      <circle cx="51" cy="104" r="2" fill="#c9a24a" /><circle cx="51" cy="116" r="2" fill="#c9a24a" />
+      <rect x="36" y="95" width="12" height="10" rx="2.5" fill={vesteOmbre} stroke={vesteFonce} strokeWidth="1.2" />
+      <rect x="62" y="95" width="12" height="10" rx="2.5" fill={vesteOmbre} stroke={vesteFonce} strokeWidth="1.2" />
+      <rect x="31" y="110" width="48" height="7" rx="3" fill="#3a2a18" />
+      <rect x="49" y="109.5" width="12" height="8" rx="2" fill="#d6b24a" stroke="#a88a2a" strokeWidth="1" />
+      {/* la bandoulière de son sac */}
+      <path d="M38 72 L72 114" stroke="#8a5a2e" strokeWidth="4.5" strokeLinecap="round" opacity=".9" />
+
+      {/* le cou et la tête */}
+      <rect x="49" y="60" width="12" height="13" rx="4" fill={peauOmbre} />
+      <circle cx="35" cy="51" r="5" fill={peau} /><circle cx="75" cy="51" r="5" fill={peau} />
+      <circle cx="35" cy="51" r="2.2" fill={peauOmbre} /><circle cx="75" cy="51" r="2.2" fill={peauOmbre} />
+      <ellipse cx="55" cy="48" rx="20.5" ry="21.5" fill={peau} />
+      {suie ? <path d="M38 38 Q42 28 47 36 Q50 26 55 35 Q60 25 63 36 Q68 28 72 38" stroke="#3a3a3a" strokeWidth="3" fill="none" /> : <><ellipse cx="42" cy="56" rx="5" ry="3.2" fill="#ff9a8a" opacity=".28" /><ellipse cx="68" cy="56" rx="5" ry="3.2" fill="#ff9a8a" opacity=".28" /></>}
+
       {etourdi ? (
-        <>
-          <path d="M45 44 l7 7 M52 44 l-7 7 M58 44 l7 7 M65 44 l-7 7" stroke="#2a1c14" strokeWidth="2.2" strokeLinecap="round" />
-        </>
+        <path d="M43 43 l8 8 M51 43 l-8 8 M59 43 l8 8 M67 43 l-8 8" stroke="#2a1c14" strokeWidth="2.4" strokeLinecap="round" />
       ) : (
         <>
-          <circle cx="62" cy="48" r={m === "vol" || m === "tenu" ? 4 : 2.6} fill={suie ? "#fff" : "#2a1c14"} />
-          <circle cx="49" cy="48" r={m === "vol" || m === "tenu" ? 4 : 2.6} fill={suie ? "#fff" : "#2a1c14"} />
-          {suie ? <><circle cx="62" cy="48" r="1.3" fill="#2a1c14" /><circle cx="49" cy="48" r="1.3" fill="#2a1c14" /></> : null}
-          <path d={m === "vise" ? "M43 42 L52 45 M60 45 L69 42" : "M44 41 L52 43 M60 43 L68 40"} stroke="#3a2a1a" strokeWidth="2.4" strokeLinecap="round" />
+          <ellipse cx="48" cy="47" rx={enVol ? 5.6 : 4.6} ry={enVol ? 6.4 : 4.2} fill="#fff" stroke="#3a2a1a" strokeWidth=".8" />
+          <ellipse cx="62" cy="47" rx={enVol ? 5.6 : 4.6} ry={enVol ? 6.4 : 4.2} fill="#fff" stroke="#3a2a1a" strokeWidth=".8" />
+          <circle cx={enVol ? 48 : 49.6} cy="47.5" r={enVol ? 1.8 : 2.5} fill="#2a1c14" />
+          <circle cx={enVol ? 62 : 63.6} cy="47.5" r={enVol ? 1.8 : 2.5} fill="#2a1c14" />
+          <path d={m === "vise" ? "M41 38 L53 44 M57 44 L69 38" : enVol ? "M42 36 L52 38 M58 38 L68 36" : "M42 40 L53 43.5 M57 43.5 L68 39.5"} stroke="#3a2412" strokeWidth="3.2" strokeLinecap="round" />
         </>
       )}
-      <path d="M44 60 C49 55 61 55 67 60 C61 63 50 63 44 60 Z" fill="#5a3a22" />
-      <circle cx="56" cy="55" r="3.4" fill={suie ? "#6b5a52" : "#e3a07a"} />
-      {m === "vol" || m === "tenu" ? <ellipse cx="56" cy="66" rx="4" ry="5" fill="#5a2020" /> : m === "fuite" || etourdi ? <path d="M48 67 Q55 63 62 67" stroke="#6a2a1a" strokeWidth="2" fill="none" /> : null}
-      {/* les bobos */}
+      <ellipse cx="55.5" cy="54" rx="4.2" ry="3.8" fill={peauOmbre} />
+      <path d="M43 61 C47 55 53 57 55 59.5 C57 57 63 55 67 61 C62 66 57 63 55 63 C53 63 48 66 43 61 Z" fill="#5a3a22" />
+      {enVol ? <ellipse cx="55" cy="70" rx="4" ry="5" fill="#5a2020" /> : m === "fuite" || etourdi ? <path d="M48 70 Q55 66 62 70" stroke="#6a2a1a" strokeWidth="2.2" fill="none" strokeLinecap="round" /> : null}
+
       {bobos >= 1 ? <g transform="rotate(-20 40 58)"><rect x="33" y="55" width="14" height="6" rx="2" fill="#f2c28a" /><rect x="38" y="55" width="4" height="6" fill="#e0a86a" /></g> : null}
-      {bobos >= 2 ? <ellipse cx="68" cy="34" rx="7" ry="6" fill="#f5a0a0" stroke="#d07070" strokeWidth="1" /> : null}
-      {bobos >= 3 ? <path d="M35 44 Q55 38 75 44 L75 50 Q55 44 35 50 Z" fill="#ffffff" stroke="#ddd" strokeWidth="1" /> : null}
-      {bobos >= 4 ? <g transform="rotate(25 58 56)"><rect x="52" y="53" width="13" height="5" rx="2" fill="#f2c28a" /></g> : null}
-      {/* chapeau */}
+      {bobos >= 2 ? <ellipse cx="68" cy="33" rx="7" ry="6" fill="#f5a0a0" stroke="#d07070" strokeWidth="1" /> : null}
+      {bobos >= 3 ? <path d="M35 42 Q55 36 75 42 L75 48 Q55 42 35 48 Z" fill="#ffffff" stroke="#ddd" strokeWidth="1" /> : null}
+
+      {/* le chapeau de chasseur, avec sa plume */}
       {chapeau ? (
         <g>
-          <path d="M30 36 L80 36 L76 30 L68 16 L42 16 L34 30 Z" fill="#6b4a2a" />
-          <rect x="26" y="33" width="58" height="6" rx="3" fill="#523720" />
+          <ellipse cx="55" cy="35" rx="29" ry="7" fill="#5a3d22" />
+          <path d="M37 34 Q37 13 55 13 Q73 13 73 34 Q55 40 37 34 Z" fill="#6b4a2a" />
+          <path d="M37 30 Q55 36 73 30 L73 34 Q55 40 37 34 Z" fill="#3b2a18" />
+          <path d="M45 16 Q50 13 56 14" stroke="#8a6a3a" strokeWidth="2" fill="none" strokeLinecap="round" />
+          <path d="M66 28 Q74 12 84 12 Q80 22 70 30 Z" fill="#c9453c" stroke="#8a2a24" strokeWidth="1" />
+          <path d="M67 27 Q76 16 82 13" stroke="#f0b0a0" strokeWidth="1" fill="none" />
         </g>
       ) : (
-        <ellipse cx="55" cy="35" rx="16" ry="6" fill={suie ? "#4a423c" : "#e8b890"} />
+        <g>
+          <ellipse cx="55" cy="33" rx="16" ry="6" fill={suie ? "#4a423c" : "#efc9a2"} />
+          <path d="M49 30 q1 -6 3 -2 M55 28 q1 -7 3 -2 M61 30 q1 -6 3 -2" stroke={suie ? "#2a2420" : "#8a5a2e"} strokeWidth="1.6" fill="none" strokeLinecap="round" />
+        </g>
       )}
-      {/* le filet sur sa propre tête */}
+
       {filetTete ? (
         <g>
           <path d="M28 70 Q55 -2 82 70" fill="#ffffff" opacity=".45" stroke="#7a5a2a" strokeWidth="3" />
@@ -108,10 +144,12 @@ function Dessin({ m, bobos, chapeau, suie, filetTete, arme, vise, etourdi, pas }
           <rect x="80" y="62" width="4" height="60" rx="2" fill="#8a6a3a" transform="rotate(20 82 66)" />
         </g>
       ) : null}
-      {/* le bras qui tient le filet ou le fusil */}
-      <g style={{ transformOrigin: "70px 84px", transform: `rotate(${brasRot}deg)`, transition: m === "vise" || m === "attente" ? "none" : "transform .25s" }}>
-        <rect x="66" y="78" width="26" height="10" rx="5" fill="#4d6b2f" />
-        <circle cx="93" cy="83" r="6" fill={peau} />
+
+      {/* le bras de devant : il part de l'épaule (74, 83) et tient le filet ou le fusil */}
+      <g style={{ transformOrigin: "74px 83px", transform: `rotate(${brasRot}deg)`, transition: m === "vise" || m === "attente" ? "none" : "transform .25s" }}>
+        <rect x="67" y="76.5" width="26" height="13" rx="6.5" fill={veste} />
+        <rect x="83" y="76.5" width="5" height="13" fill={vesteFonce} />
+        <circle cx="93.5" cy="83" r="6.5" fill={peau} />
         {arme === "filet" && !filetTete ? (
           <g>
             <rect x="91" y="20" width="4" height="70" rx="2" fill="#8a6a3a" />
@@ -119,9 +157,20 @@ function Dessin({ m, bobos, chapeau, suie, filetTete, arme, vise, etourdi, pas }
             <path d="M77 14 Q93 50 109 14" fill="#ffffff" opacity=".55" stroke="#ddd" strokeWidth="1" />
           </g>
         ) : null}
-        {arme === "fusil" ? <Fusil x={74} y={78} /> : null}
+        {arme === "fusil" ? (
+          <g transform="translate(74 78)">
+            <path d="M0 2 L22 0 L24 10 L4 14 Z" fill="#7a4a22" />
+            <rect x="20" y="1" width="52" height="5" rx="2" fill="#5b5f66" />
+            <rect x="20" y="6" width="30" height="3" rx="1" fill="#41444a" />
+            <rect x="66" y="-1" width="3" height="3" fill="#41444a" />
+          </g>
+        ) : null}
+        <circle cx="93.5" cy="83" r="6.5" fill={peau} />
       </g>
-      {/* les étoiles qui tournent */}
+      {/* l'épaule : un petit rond de veste qui cache la jointure du bras */}
+      <circle cx="74" cy="83" r="8.5" fill={veste} />
+      <circle cx="74" cy="83" r="8.5" fill={vesteOmbre} opacity=".4" />
+
       {etourdi ? (
         <g className="brac-etoiles" style={{ transformOrigin: "55px 26px" }}>
           {[0, 1, 2, 3].map((k) => (
