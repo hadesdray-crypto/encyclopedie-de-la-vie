@@ -283,7 +283,7 @@ function Fiche({ id }: { id: string }) {
       {autre ? <p className="mx-auto mt-3 max-w-sm text-center text-lg"><Texte>{autre.phrase}</Texte></p> : null}
       {autre?.dessin ? <p className="mt-1 text-center text-[11px] texte-doux">Dessin original fait pour l'application : ce n'est pas une photo.</p> : null}
       {CREDITS_PHOTOS[e.id] && !grande ? <p className="mt-1 text-center text-[11px] texte-doux">Photo : {credit(CREDITS_PHOTOS[e.id])}</p> : null}
-      {!CREDITS_PHOTOS[e.id] && A_PHOTO.has(e.id) && !grande ? <p className="mt-1 text-center text-[10px] texte-doux">Source de la photo non enregistrée.</p> : null}
+      {!CREDITS_PHOTOS[e.id] && A_PHOTO.has(e.id) && !grande ? <p className="mt-1 text-center text-[10px] texte-doux">Source inconnue.</p> : null}
       {GALERIE[e.id]?.length ? (
         <div className="mt-4 grid grid-cols-2 gap-3">
           {GALERIE[e.id].map((c, i) => (
