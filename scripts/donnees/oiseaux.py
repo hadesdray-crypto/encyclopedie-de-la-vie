@@ -55,6 +55,17 @@ def joli(s):
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", s or "")).strip()
 
 
+def norm_licence(l):
+    """GBIF donne une adresse (…/licenses/by-nc-sa/4.0/) : on la transforme en « CC BY-NC-SA 4.0 »."""
+    l = (l or "").strip()
+    m = re.search(r"/licenses/([a-z\-]+)/([0-9.]+)", l)
+    if m:
+        return f"CC {m.group(1).upper()} {m.group(2)}"
+    if "publicdomain/zero" in l or l.lower() in ("cc0", "cc0 1.0"):
+        return "CC0"
+    return l
+
+
 def licence_ok(texte):
     """Licence qui permet la vente : CC0, domaine public, CC BY, CC BY-SA (pas NC, pas ND)."""
     t = (texte or "").lower().replace("-", " ")
@@ -159,7 +170,7 @@ def cris_gbif(cle, maxi=2):
         for m in r.get("media", []):
             if m.get("type") != "Sound" or not m.get("identifier"):
                 continue
-            lic = m.get("license") or r.get("license") or ""
+            lic = norm_licence(m.get("license") or r.get("license") or "")
             if not licence_privee_ok(lic):
                 continue
             texte = " ".join(str(r.get(k, "")) for k in ("behavior", "occurrenceRemarks", "establishmentMeans")).lower() + " " + (m.get("description") or "").lower()
@@ -198,7 +209,7 @@ def main():
     oiseaux, poids = [], {"photos": 0, "cris": 0}
     for k, latin in enumerate(liste_especes(n), 1):
         oid = identifiant(latin)
-        if oid in deja:
+        if oid in deja and deja[oid].get("v") == 2:
             oiseaux.append(deja[oid])
             continue
         try:
@@ -207,7 +218,7 @@ def main():
             if not cle or not txt:
                 print(f"[{k}] {latin} : introuvable, ignoré")
                 continue
-            fiche = {"id": oid, "latin": latin, "nom": nom or txt["nom_wiki"], "intro": txt["intro"][:900], "wiki": txt["page"], "photos": [], "cris": []}
+            fiche = {"v": 2, "id": oid, "latin": latin, "nom": nom or txt["nom_wiki"], "intro": txt["intro"][:900], "wiki": txt["page"], "photos": [], "cris": []}
             groupes = [("", photos_commons(latin, 2)), ("male", photos_commons(latin, 1, f"{latin} (male)")), ("femelle", photos_commons(latin, 1, f"{latin} (female)"))]
             vus = set()
             for sexe, liste in groupes:

@@ -44,7 +44,7 @@ function filtrerCommerce() {
   }
   retirer("s", (id) => cris.has(id));
   const oiseaux = luJson("oiseaux.json").oiseaux;
-  const gardes = new Set(oiseaux.flatMap((o) => [...o.photos, ...o.cris].filter((x) => x.commercial).map((x) => x.src.split("/").pop())));
+  const gardes = new Set(oiseaux.flatMap((o) => [...o.photos, ...o.cris].filter((x) => x.commercial !== false).map((x) => x.src.split("/").pop())));
   retirer("oiseaux", (id, f) => gardes.has(f.split(sep).pop()));
   console.log(`Édition commerce : ${photos.size} photos et ${cris.size} cris de mammifères libres de droits conservés.`);
 }
@@ -60,7 +60,7 @@ const pluginEdition = {
     });
     b.onLoad({ filter: /src[\\/]data[\\/]oiseaux\.json$/ }, (a) => {
       const d = JSON.parse(readFileSync(a.path, "utf8"));
-      d.oiseaux = d.oiseaux.map((o) => ({ ...o, photos: o.photos.filter((x) => x.commercial), cris: o.cris.filter((x) => x.commercial) }));
+      d.oiseaux = d.oiseaux.map((o) => ({ ...o, photos: o.photos.filter((x) => x.commercial !== false), cris: o.cris.filter((x) => x.commercial !== false) }));
       return { contents: JSON.stringify(d), loader: "json" };
     });
   },
