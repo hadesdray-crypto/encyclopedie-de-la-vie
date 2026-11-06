@@ -2,7 +2,7 @@ name: Cris et photos des mammifères
 
 on:
   push:
-    branches: [sons]
+    branches: [sons-mammiferes]
     paths: [scripts/donnees/sons-etape.txt]
   workflow_dispatch:
 
@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: sons
+          ref: sons-mammiferes
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -30,4 +30,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
           git add -A src/data public scripts/donnees/sons-journal.txt
-          git diff --cached --quiet || (git commit -q -m "Données : cris et photos de mammifères" && git pull -q --rebase -X theirs origin sons && git push -q origin HEAD:sons)
+          git diff --cached --quiet || (git commit -q -m "Données : cris et photos de mammifères" && git pull -q --rebase -X theirs origin sons-mammiferes && git push -q origin HEAD:sons-mammiferes)
