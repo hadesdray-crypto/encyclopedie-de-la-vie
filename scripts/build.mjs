@@ -48,6 +48,32 @@ function filtrerCommerce() {
   retirer("oiseaux", (id, f) => gardes.has(f.split(sep).pop()));
   console.log(`Édition commerce : ${photos.size} photos et ${cris.size} cris de mammifères libres de droits conservés.`);
 }
+// Édition commerce : l'appli ne parle plus de Léonie. L'enfant devient « le petit chercheur » (le nom du module existant).
+const REMPLACEMENTS = [
+  ["L'encyclopédie de la vie de la princesse", "L'encyclopédie de la vie"],
+  ["Princesse<br />Léonie", "Petit<br />chercheur"],
+  ["de la petite princesse Léonie", "du petit chercheur"],
+  ["à la petite princesse Léonie", "au petit chercheur"],
+  ["de la princesse Léonie", "du petit chercheur"], ["de la princesse Leonie", "du petit chercheur"],
+  ["à la princesse Léonie", "au petit chercheur"], ["à la princesse Leonie", "au petit chercheur"],
+  ["la petite princesse Léonie", "le petit chercheur"], ["la petite Leonie", "le petit chercheur"],
+  ["la princesse Léonie", "le petit chercheur"], ["la princesse Leonie", "le petit chercheur"],
+  ["au service de la princesse", "au service du petit chercheur"], ["me direz-vous, princesse,", "me direz-vous, petit chercheur,"], ["Merci, princesse !", "Merci, petit chercheur !"],
+  ["princesse Léonie", "petit chercheur"], ["Princesse Léonie", "Petit chercheur"], ["princesse Leonie", "petit chercheur"],
+  ["grâce à elle, on peut jouer", "grâce à lui, on peut jouer"], ["chouette de Leonie", "chouette de l'enfant"], ["comme Leonie", "comme toi"], ["Leonie", "l'enfant"], ["Léonie", "l'enfant"],
+];
+const pluginNeutre = {
+  name: "neutre",
+  setup(b) {
+    if (!COMMERCE) return;
+    b.onLoad({ filter: /src[\\/].*\.tsx?$/ }, (a) => {
+      let t = readFileSync(a.path, "utf8");
+      if (!/L[ée]onie|princesse de la vie/i.test(t)) return null;
+      for (const [x, y] of REMPLACEMENTS) t = t.split(x).join(y);
+      return { contents: t, loader: a.path.endsWith("x") ? "tsx" : "ts", resolveDir: dirname(a.path) };
+    });
+  },
+};
 const pluginEdition = {
   name: "edition",
   setup(b) {
@@ -104,7 +130,7 @@ const OPTIONS = {
   chunkNames: "[name]-[hash]",
   jsx: "automatic",
   loader: { ".json": "json" },
-  plugins: [pluginEdition],
+  plugins: [pluginEdition, pluginNeutre],
   alias: { "@": join(RACINE, "src") },
   target: ["es2020", "safari15"],
   minify: !SERVE,

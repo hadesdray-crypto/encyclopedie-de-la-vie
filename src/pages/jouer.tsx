@@ -650,7 +650,7 @@ function MenuJeux() {
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
       <Entete siVide="/" />
-      <div className="flex items-end justify-between gap-2">
+      <div className="flex flex-wrap items-end justify-between gap-2">
         <Titre sous="Touche un jeu pour commencer.">Jouer</Titre>
         <div role="radiogroup" aria-label="Affichage des jeux" className="mb-1 flex shrink-0 gap-1 rounded-full bg-[#2a1844] p-1 ring-1 ring-[#e8c98a]/40">
           {MODES.map(({ id, label, icone: I }) => (
