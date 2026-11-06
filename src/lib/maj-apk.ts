@@ -8,12 +8,16 @@ import { appeler, ecouter, moduleDisponible } from "@/lib/natif";
 
 declare const __APK__: boolean;
 declare const __APK_VERSION__: number;
+declare const __EDITION__: string;
+// Édition « commerce » : ses mises à jour viennent de ses propres versions (commerce-N), jamais de celles de Léonie (android-N).
+const COMMERCE = __EDITION__ === "commerce";
+const PREFIXE = COMMERCE ? "commerce-" : "android-";
 
 export const EST_APK = __APK__;
 export const VERSION_APK = __APK_VERSION__;
 const DEPOT = "https://github.com/hadesdray-crypto/encyclopedie-de-la-vie";
-const API = "https://api.github.com/repos/hadesdray-crypto/encyclopedie-de-la-vie/releases/latest";
-export const LIEN_APK = `${DEPOT}/releases/latest/download/encyclopedie-de-la-vie.apk`;
+const API = COMMERCE ? "https://api.github.com/repos/hadesdray-crypto/encyclopedie-de-la-vie/releases?per_page=30" : "https://api.github.com/repos/hadesdray-crypto/encyclopedie-de-la-vie/releases/latest";
+export const LIEN_APK = COMMERCE ? `${DEPOT}/releases` : `${DEPOT}/releases/latest/download/encyclopedie-de-la-vie.apk`;
 const CLE_TERMINEE = "leonie-maj-terminee";
 
 type Bundle = { id: string; version: string };
@@ -70,7 +74,9 @@ export async function verifierApk() {
     const r = await fetch(API, { cache: "no-store", signal: arret.signal });
     window.clearTimeout(minuteur);
     if (!r.ok) throw new Error(String(r.status));
-    const rel = await r.json();
+    const brut = await r.json();
+    const rel = COMMERCE ? (brut as { tag_name?: string; draft?: boolean }[]).find((x) => !x.draft && String(x.tag_name || "").startsWith(PREFIXE)) : brut;
+    if (!rel) throw new Error("aucune version");
     const n = Number(String(rel.tag_name || "").replace(/\D/g, ""));
     const zip = (rel.assets ?? []).find((a: { name: string }) => a.name === "web.zip");
     const taille = zip ? Math.round(zip.size / 1048576) : 0;
@@ -97,7 +103,7 @@ export async function lancerMajApk() {
   publier({ phase: "telechargement", pourcent: 0, detail: "" });
   const arreter = await u.addListener("download", (e) => publier({ pourcent: Math.max(0, Math.min(100, Math.round(e.percent))) }));
   try {
-    bundle = await u.download({ url: `${DEPOT}/releases/download/android-${n}/web.zip`, version: String(n), checksum: empreinte.toLowerCase() });
+    bundle = await u.download({ url: `${DEPOT}/releases/download/${PREFIXE}${n}/web.zip`, version: String(n), checksum: empreinte.toLowerCase() });
     publier({ phase: "pret", pourcent: 100 });
   } catch (e) {
     publier({ phase: "erreur", detail: e instanceof Error ? e.message : String(e) });

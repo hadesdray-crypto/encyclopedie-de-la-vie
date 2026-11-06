@@ -1,0 +1,87 @@
+name: Application Android (édition commerce)
+
+on:
+  push:
+    branches: [commerce]
+    paths: ["scripts/commerce-etape.txt"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-commerce
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Construire la page
+        run: |
+          npm install --no-audit --no-fund
+          EDITION=commerce APK_VERSION=${{ github.run_number }} npm run apk
+          rm -f dist/sw.js
+          # Paquet de mise à jour : l'application le télécharge elle-même, sans rien réinstaller.
+          (cd dist && zip -qr ../web.zip .)
+          ls -la web.zip
+      - name: Préparer le projet Android
+        run: |
+          # Édition commerce : une autre application (autre identifiant), installable à côté de celle de Léonie.
+          sed -i 's/"appId": "fr.leonie.encyclopedie"/"appId": "fr.encyclopedie.vie"/' capacitor.config.json
+          grep -q 'fr.encyclopedie.vie' capacitor.config.json
+          npm install --save --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor-community/text-to-speech@6 @capgo/capacitor-updater@7.53.0 @capacitor/app@7 @capacitor/filesystem@7 @capacitor/share@7
+          npx cap add android
+          pip install pillow
+          python android-ressources/remplacer.py
+          sed -i "s/versionCode [0-9]*/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"1.${{ github.run_number }}\"/" android/app/build.gradle
+          npx cap sync android
+          # Permission « état du réseau » : pour que le téléphone dise bien si Internet marche.
+          grep -q ACCESS_NETWORK_STATE android/app/src/main/AndroidManifest.xml || sed -i 's#<uses-permission android:name="android.permission.INTERNET" />#<uses-permission android:name="android.permission.INTERNET" />\n    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />#' android/app/src/main/AndroidManifest.xml
+          # Micro : pour enregistrer la voix des personnages bonus (le téléphone demande l'accord la première fois).
+          grep -q RECORD_AUDIO android/app/src/main/AndroidManifest.xml || sed -i 's#<uses-permission android:name="android.permission.INTERNET" />#<uses-permission android:name="android.permission.INTERNET" />\n    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />#' android/app/src/main/AndroidManifest.xml
+          grep -n "uses-permission" android/app/src/main/AndroidManifest.xml
+          grep -q RECORD_AUDIO android/app/src/main/AndroidManifest.xml
+          echo "Modules du téléphone inclus :"; cat android/app/src/main/assets/capacitor.plugins.json
+          # Sécurité : on s'arrête si la voix ou la mise à jour manquent.
+          grep -q TextToSpeech android/app/src/main/assets/capacitor.plugins.json
+          grep -q CapacitorUpdater android/app/src/main/assets/capacitor.plugins.json
+          grep -q '"App"\|capacitor-app\|AppPlugin' android/app/src/main/assets/capacitor.plugins.json
+      - name: Compiler
+        run: cd android && ./gradlew assembleRelease --no-daemon -q
+      - name: Signer
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: |
+          BT=$(ls $ANDROID_HOME/build-tools | sort -V | tail -1)
+          APK=android/app/build/outputs/apk/release/app-release-unsigned.apk
+          $ANDROID_HOME/build-tools/$BT/zipalign -f -p 4 $APK aligne.apk
+          # La clé de signature est dans les secrets GitHub (KEYSTORE_BASE64 et KEYSTORE_PASSWORD), plus dans le dépôt.
+          test -n "$KEYSTORE_BASE64" && test -n "$KEYSTORE_PASSWORD" || { echo "Secrets KEYSTORE_BASE64 / KEYSTORE_PASSWORD manquants"; exit 1; }
+          # Diagnostic sans rien révéler : longueurs et lecture de la clé (affichées dans les annotations de la fabrication).
+          echo "::notice::Secret clé : ${#KEYSTORE_BASE64} caractères (attendu 5752). Mot de passe : ${#KEYSTORE_PASSWORD} caractères (attendu 24)."
+          echo "$KEYSTORE_BASE64" | tr -d '[:space:]' | base64 -d > "$RUNNER_TEMP/cle.jks" || { echo "::error::La clé collée n'est pas du base64 valide"; exit 1; }
+          keytool -list -keystore "$RUNNER_TEMP/cle.jks" -storepass "$KEYSTORE_PASSWORD" > /dev/null 2>&1 || { echo "::error::La clé ne s'ouvre pas avec ce mot de passe"; exit 1; }
+          echo "::notice::La clé s'ouvre correctement."
+          $ANDROID_HOME/build-tools/$BT/apksigner sign --ks "$RUNNER_TEMP/cle.jks" --ks-pass env:KEYSTORE_PASSWORD --key-pass env:KEYSTORE_PASSWORD --out encyclopedie-de-la-vie-commerce.apk aligne.apk
+          rm -f "$RUNNER_TEMP/cle.jks"
+          ls -la encyclopedie-de-la-vie-commerce.apk
+      - name: Publier
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "commerce-${{ github.run_number }}" encyclopedie-de-la-vie-commerce.apk web.zip \
+            --title "Édition commerce, version 1.${{ github.run_number }}" \
+            --notes "Ouvrir ce fichier sur le téléphone Android et toucher Installer. Tout est dans l'application : elle marche sans Internet. Pour une mise à jour, installer simplement la nouvelle version par-dessus : rien n'est perdu.
+
+          web.zip sha256 : $(sha256sum web.zip | cut -d' ' -f1)" \
+            --latest=false

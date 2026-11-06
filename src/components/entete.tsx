@@ -7,6 +7,8 @@ import { declarerParent, revenir } from "@/lib/routeur";
  * Retour revient pas à pas sur le chemin suivi (comme la flèche du téléphone).
  * siVide : la page où aller si on est arrivé ici directement.
  */
+declare const __EDITION__: string;
+
 export function Entete({ siVide, label = "Retour" }: { siVide?: string; label?: string }) {
   useEffect(() => {
     if (siVide) declarerParent(siVide);
@@ -15,7 +17,7 @@ export function Entete({ siVide, label = "Retour" }: { siVide?: string; label?: 
     <header className="flex items-center justify-between gap-2">
       <div className="flex min-w-0 items-center gap-2">
         <LuCrown className="size-6 shrink-0 text-[#f3d48a]" aria-hidden="true" />
-        <p className="font-display text-base leading-tight text-[#f0d090]">Pour la princesse Léonie</p>
+        <p className="font-display text-base leading-tight text-[#f0d090]">{__EDITION__ === "commerce" ? "Encyclopédie de la vie" : "Pour la princesse Léonie"}</p>
       </div>
       <div className="flex shrink-0 items-center gap-2">
         <a href="#/chercher" aria-label="Chercher un animal" className="grid size-11 place-items-center rounded-full bg-[#2a1844] text-[#f3d48a] ring-1 ring-[#e8c98a]/50">

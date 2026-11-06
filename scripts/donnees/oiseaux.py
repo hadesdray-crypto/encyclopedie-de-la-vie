@@ -7,9 +7,10 @@ Usage :  python scripts/donnees/oiseaux.py [N]     (N = nombre d'espèces pour u
 Sources (rien n'est inventé ; une valeur absente reste « Non connu » dans l'application) :
   - liste : oiseaux-liste.txt (noms latins, les plus connus) + les oiseaux les plus observés en France (GBIF) ;
   - nom français, texte : Wikipédia en français (+ Wikidata pour le nom latin exact) ;
-  - photos : Wikimedia Commons, seulement CC0, domaine public, CC BY et CC BY-SA, toujours avec l'auteur ;
+  - photos : Wikimedia Commons, toutes licences Creative Commons sauf « pas de modification » ; chaque fichier porte « commercial: true/false »
+    (true = CC0, domaine public, CC BY, CC BY-SA : l'édition à vendre ne garde que ceux-là), toujours avec l'auteur ;
     mâle et femelle : seulement s'il existe une catégorie Commons « (male) » / « (female) » ;
-  - cris : GBIF (enregistrements Xeno-canto, iNaturalist…), seulement CC0 et CC BY, 2 cris au maximum par espèce :
+  - cris : GBIF (enregistrements Xeno-canto, iNaturalist…), toutes licences Creative Commons sauf ND (flag « commercial » comme les photos), 2 cris au maximum par espèce :
     le chant / cri nuptial d'abord, puis le cri le plus répandu.
 Les cris et les photos sont compressés (WebM Opus ~24 kbit/s, WebP 640 px) pour garder l'appli légère.
 """
@@ -55,10 +56,17 @@ def joli(s):
 
 
 def licence_ok(texte):
+    """Licence qui permet la vente : CC0, domaine public, CC BY, CC BY-SA (pas NC, pas ND)."""
     t = (texte or "").lower().replace("-", " ")
     if any(re.search(rf"\b{m}\b", t) for m in LICENCES_NON):
         return False
     return any(m in t for m in ("cc0", "public domain", "cc by", "pd "))
+
+
+def licence_privee_ok(texte):
+    """Édition famille : toute licence Creative Commons ou domaine public, sauf « pas de modification » (ND)."""
+    t = (texte or "").lower().replace("-", " ")
+    return bool(re.search(r"\bnd\b", t)) is False and any(m in t for m in ("cc0", "public domain", "cc by", "pd "))
 
 
 def identifiant(latin):
@@ -123,12 +131,12 @@ def photos_commons(recherche, maxi=2, categorie=None):
         i = (p.get("imageinfo") or [{}])[0]
         m = i.get("extmetadata", {})
         lic = (m.get("LicenseShortName") or {}).get("value", "")
-        if not licence_ok(lic) or not i.get("thumburl") or min(i.get("width", 0), i.get("height", 0)) < 500:
+        if not licence_privee_ok(lic) or not i.get("thumburl") or min(i.get("width", 0), i.get("height", 0)) < 500:
             continue
         if re.search(r"(skull|egg|oeuf|map|range|distribution|drawing|illustration|stamp|skeleton)", p["title"], re.I):
             continue
         out.append({"fichier": p["title"].replace("File:", ""), "url": i["thumburl"], "auteur": joli((m.get("Artist") or {}).get("value", ""))[:80] or "Auteur inconnu",
-                    "licence": lic, "page": i.get("descriptionurl", "")})
+                    "licence": lic, "commercial": licence_ok(lic), "page": i.get("descriptionurl", "")})
         if len(out) >= maxi:
             break
     return out
@@ -152,7 +160,7 @@ def cris_gbif(cle, maxi=2):
             if m.get("type") != "Sound" or not m.get("identifier"):
                 continue
             lic = m.get("license") or r.get("license") or ""
-            if not licence_ok(lic):
+            if not licence_privee_ok(lic):
                 continue
             texte = " ".join(str(r.get(k, "")) for k in ("behavior", "occurrenceRemarks", "establishmentMeans")).lower() + " " + (m.get("description") or "").lower()
             chant = bool(re.search(r"song|chant|courtship|nuptial|display|parade|duet", texte))
@@ -163,7 +171,7 @@ def cris_gbif(cle, maxi=2):
         if url in vus:
             continue
         vus.add(url)
-        out.append({"url": url, "licence": lic, "auteur": auteur, "page": f"https://www.gbif.org/occurrence/{occ}", "sorte": sorte})
+        out.append({"url": url, "licence": lic, "auteur": auteur, "commercial": licence_ok(lic), "page": f"https://www.gbif.org/occurrence/{occ}", "sorte": sorte})
         if len(out) >= maxi:
             break
     return out
@@ -209,13 +217,13 @@ def main():
                     vus.add(p["fichier"])
                     nom_f = f"{oid}-{len(fiche['photos'])}.webp"
                     poids["photos"] += enregistrer_photo(p, PHOTOS / nom_f)
-                    fiche["photos"].append({"src": f"oiseaux/p/{nom_f}", "sexe": sexe or None, "auteur": p["auteur"], "licence": p["licence"], "page": p["page"]})
+                    fiche["photos"].append({"src": f"oiseaux/p/{nom_f}", "sexe": sexe or None, "auteur": p["auteur"], "licence": p["licence"], "commercial": p["commercial"], "page": p["page"]})
             for j, c in enumerate(cris_gbif(cle, 2)):
                 nom_c = f"{oid}-{j}.webm"
                 t = enregistrer_cri(c, CRIS / nom_c)
                 if t:
                     poids["cris"] += t
-                    fiche["cris"].append({"src": f"oiseaux/s/{nom_c}", "sorte": c["sorte"], "auteur": c["auteur"], "licence": c["licence"], "page": c["page"]})
+                    fiche["cris"].append({"src": f"oiseaux/s/{nom_c}", "sorte": c["sorte"], "auteur": c["auteur"], "licence": c["licence"], "commercial": c["commercial"], "page": c["page"]})
             oiseaux.append(fiche)
             print(f"[{k}] {latin} ({fiche['nom']}) : {len(fiche['photos'])} photos, {len(fiche['cris'])} cris")
         except Exception as exc:  # noqa: BLE001
