@@ -6,7 +6,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { LuPause, LuPlay, LuSkipForward, LuX } from "react-icons/lu";
+import { geoMercator, geoPath } from "d3-geo";
+import { PAYS } from "@/components/globe";
 import { PlumeDessin } from "@/components/plume-dessin";
+import { CREDIT_RELIEF, imageRelief, tuileRelief } from "@/lib/relief";
 import { useInternet } from "@/lib/internet";
 import { contexteAudio, sonsActifs } from "@/lib/sons";
 
@@ -86,6 +89,72 @@ function mosaique(m: Mosaique | null, z: number, wx0: number, wy0: number, n: nu
   return { z, tx0: tx - demi, ty0: ty - demi, n, c, manque };
 }
 
+// Sans Internet (ou sans l'accord d'un adulte) : le sol est dessiné sur l'appareil à partir des contours des pays,
+// avec le relief réel quand le réseau le permet. Même format que les images satellite : le reste du vol ne change pas.
+function mosaiqueVecto(m: Mosaique | null, z: number, wx0: number, wy0: number, n: number, ready: () => void, force: boolean, marin: boolean): Mosaique {
+  const tx = Math.floor((wx0 * 2 ** z) / TUILE), ty = Math.floor((wy0 * 2 ** z) / TUILE);
+  const demi = Math.floor(n / 2);
+  if (m && !force && m.z === z && m.tx0 === tx - demi && m.ty0 === ty - demi) return m;
+  const c = m?.c ?? document.createElement("canvas");
+  c.width = c.height = n * TUILE;
+  const g = c.getContext("2d")!;
+  const tx0 = tx - demi, ty0 = ty - demi;
+  const tour = 256 * 2 ** z;
+  g.fillStyle = marin ? "#0c3a63" : "#2a5d8c";
+  g.fillRect(0, 0, c.width, c.height);
+  const terre = new Path2D();
+  const chemins: Path2D[] = [];
+  for (const k of [-1, 0, 1]) {
+    const proj = geoMercator().scale(tour / (2 * Math.PI)).translate([tour / 2 - tx0 * TUILE + k * tour, tour / 2 - ty0 * TUILE]);
+    // dessiner dans un Path2D : on passe par un contexte « enregistreur »
+    const p = new Path2D();
+    const rec = { beginPath() {}, moveTo: (x: number, y: number) => p.moveTo(x, y), lineTo: (x: number, y: number) => p.lineTo(x, y), closePath: () => p.closePath(), arc() {}, rect() {}, bezierCurveTo() {}, quadraticCurveTo() {} };
+    geoPath(proj, rec as unknown as CanvasRenderingContext2D)(PAYS);
+    terre.addPath(p);
+    chemins.push(p);
+  }
+  g.fillStyle = marin ? "#1a4a3a" : "#5b7b43";
+  g.fill(terre);
+  // les glaces des pôles (au-delà des cercles polaires)
+  g.save(); g.clip(terre);
+  const sinP = Math.sin((66.5 * Math.PI) / 180);
+  const yCercle = (0.5 - Math.log((1 + sinP) / (1 - sinP)) / (4 * Math.PI)) * tour; // le cercle polaire nord, dans le monde
+  g.fillStyle = "rgba(235,242,248,.85)";
+  g.fillRect(0, -99999, c.width, yCercle - ty0 * TUILE + 99999);
+  g.fillRect(0, tour - yCercle - ty0 * TUILE, c.width, 99999);
+  // un peu de matière : des plaques de prairie, de terre et de feuillage (toujours les mêmes au même endroit),
+  // de 60 m environ pour les petites, 300 m pour les grandes
+  if (!marin) {
+    const mpp = (156543.03 * Math.cos(0.2)) / 2 ** z; // mètres par point (à peu près)
+    const fin = Math.max(3, Math.round(60 / mpp));
+    for (const [pas, force, graine] of [[fin * 5, 1, 1.7], [fin, 0.7, 3.1]] as const) {
+      for (let yy = Math.floor((ty0 * TUILE) / pas) * pas; yy < (ty0 + n) * TUILE; yy += pas) {
+        for (let xx = Math.floor((tx0 * TUILE) / pas) * pas; xx < (tx0 + n) * TUILE; xx += pas) {
+          const hsh = Math.sin(xx * 12.9898 + yy * 78.233 + graine * 17) * 43758.5453;
+          const r = hsh - Math.floor(hsh);
+          g.fillStyle = r < 0.33 ? `rgba(24,52,16,${force * (0.12 + r * 0.55)})` : r < 0.66 ? `rgba(160,138,76,${force * (0.08 + (r - 0.33) * 0.5)})` : `rgba(120,160,72,${force * (0.08 + (r - 0.66) * 0.5)})`;
+          g.fillRect(xx - tx0 * TUILE, yy - ty0 * TUILE, pas, pas);
+        }
+      }
+    }
+  }
+  // le relief réel (ombres et lumières), sur les terres seulement
+  const zr = Math.min(z, 12), f = 2 ** (z - zr), part = TUILE / f;
+  let manque = 0;
+  for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+    const X = tx0 + i, Y = ty0 + j;
+    const t = tuileRelief(zr, Math.floor(X / f), Math.floor(Y / f), ready);
+    if (!t) { manque++; continue; }
+    const sx = (((X % f) + f) % f) * part, sy = (((Y % f) + f) % f) * part;
+    g.drawImage(imageRelief(t), sx, sy, part, part, i * TUILE, j * TUILE, TUILE, TUILE);
+  }
+  g.restore();
+  // les frontières, fines
+  g.strokeStyle = "rgba(255,255,255,.22)"; g.lineWidth = Math.max(0.8, z / 5);
+  for (const p of chemins) g.stroke(p);
+  return { z, tx0, ty0, n, c, manque };
+}
+
 // ------------------------------------------------------------ la fenêtre
 export function VoyageVol(p: Props) {
   const { permis, connecte } = useInternet();
@@ -100,18 +169,7 @@ export function VoyageVol(p: Props) {
   }, []);
   return createPortal(
     <div className="fixed inset-0 z-[200] flex flex-col bg-[#0b0820] text-white" role="dialog" aria-label={`Voler avec ${p.nom}`}>
-      {permis && connecte ? (
-        <Vol {...p} />
-      ) : (
-        <div className="m-auto max-w-sm overflow-y-auto px-6 text-center">
-          <PlumeDessin anim="parle" className="mx-auto h-28 w-28" />
-          <p className="mt-3 font-display text-2xl text-[#f3d48a]">Il faut Internet</p>
-          <p className="mt-2 text-sm leading-relaxed">
-            {permis ? "La tablette n'est pas connectée. Les vraies images viennent d'Internet : reviens quand il y a du réseau." : "Les vraies images satellite viennent d'Internet. Demande à un adulte de l'allumer dans Profil, « Coin des parents »."}
-          </p>
-          <button type="button" onClick={p.onFermer} className="bouton-bois mt-5 rounded-full px-6 py-3 font-extrabold">D'accord</button>
-        </div>
-      )}
+      <Vol {...p} sat={permis && connecte} />
     </div>,
     document.body,
   );
@@ -126,7 +184,7 @@ const BASE: Record<string, { h: number; v: number; verbe: string }> = {
 };
 const VOL_S = 18, TRANSIT_S = 14;
 
-function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer }: Props) {
+function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer, sat }: Props & { sat: boolean }) {
   const b = BASE[groupe] ?? BASE.autre;
   const pts = useMemo(() => deplier(brut), [brut]);
   const { etapes, total } = useMemo(() => {
@@ -163,6 +221,8 @@ function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer }: 
     return { l, fin: t };
   }, [etapes]);
 
+  const satRef = useRef(sat);
+  satRef.current = sat;
   const toile = useRef<HTMLCanvasElement>(null);
   const boite = useRef<HTMLDivElement>(null);
   const roulis = useRef<HTMLDivElement>(null);
@@ -188,7 +248,7 @@ function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer }: 
     ro.observe(bx);
 
     let near: Mosaique | null = null, far: Mosaique | null = null;
-    let sale = true, dernierRebuild = 0;
+    let sale = true, dernierRebuild = 0, utilSat = satRef.current;
     const pret = () => { sale = true; };
 
     // où est la caméra à l'instant t ?
@@ -218,11 +278,17 @@ function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer }: 
       // le ciel
       const ciel = g.createLinearGradient(0, 0, 0, y0 + 2);
       const haut = Math.min(1, c.h / 6000);
-      ciel.addColorStop(0, haut > 0.5 ? "#0f2c66" : "#2b5eb3");
-      ciel.addColorStop(0.7, "#7fb0e4");
-      ciel.addColorStop(1, "#d6e6f3");
+      if (groupe === "marin") {
+        // sous l'eau : la lumière vient d'en haut, l'eau devient sombre et bleue vers le fond
+        ciel.addColorStop(0, "#1b6f9e"); ciel.addColorStop(0.6, "#0f4f7c"); ciel.addColorStop(1, "#0a3a60");
+      } else {
+        ciel.addColorStop(0, haut > 0.5 ? "#0f2c66" : "#2b5eb3");
+        ciel.addColorStop(0.7, "#7fb0e4");
+        ciel.addColorStop(1, "#d6e6f3");
+      }
       g.fillStyle = ciel;
       g.fillRect(0, 0, W, y0 + 2);
+      if (groupe !== "marin") {
       // le soleil et les nuages (ils tournent avec le cap)
       const sx = W / 2 + lerpAngDiff(-2.2, c.th) * f * -1;
       const soleil = g.createRadialGradient(sx, y0 * 0.45, 2, sx, y0 * 0.45, 60);
@@ -235,14 +301,19 @@ function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer }: 
         const y = y0 * (1 - nu.el * 2.2) - (c.h > 3000 ? 0 : 0);
         g.beginPath(); g.ellipse(x, y, nu.w, nu.w * 0.2, 0, 0, Math.PI * 2); g.ellipse(x + nu.w * 0.4, y - 4, nu.w * 0.6, nu.w * 0.17, 0, 0, Math.PI * 2); g.fill();
       }
+      }
       // le sol, ligne par ligne
-      const zn = Math.max(4, Math.min(17, Math.round(Math.log2((M_ZOOM0 * Math.cos((c.lat * Math.PI) / 180)) / (c.h / 40)))));
-      const zf = Math.max(2, zn - 3);
+      // Avec les vraies images, on descend très bas (jusqu'au niveau 17). Sans elles, le sol dessiné sur l'appareil s'arrête au niveau 9 (assez fin pour les contours des pays et le relief).
+      const zn0 = Math.max(4, Math.min(17, Math.round(Math.log2((M_ZOOM0 * Math.cos((c.lat * Math.PI) / 180)) / (c.h / 40)))));
+      const zn = satRef.current ? zn0 : Math.min(zn0, 10);
+      const zf = Math.max(2, Math.min(zn0 - 3, satRef.current ? 17 : 9));
       const camX = c.x, camY = c.y;
+      if (utilSat !== satRef.current) { utilSat = satRef.current; near = far = null; sale = true; }
       const fresh = sale && now - dernierRebuild > 220;
       if (!near || !far || fresh || near.z !== zn || Math.abs(near.tx0 + 2 - Math.floor((camX * 2 ** zn) / TUILE)) > 0 || Math.abs(near.ty0 + 2 - Math.floor((camY * 2 ** zn) / TUILE)) > 0 || far.z !== zf) {
-        near = mosaique(near, zn, camX, camY, 5, pret, fresh);
-        far = mosaique(far, zf, camX, camY, 3, pret, fresh);
+        const mer = groupe === "marin";
+        near = satRef.current ? mosaique(near, zn, camX, camY, 5, pret, fresh) : mosaiqueVecto(near, zn, camX, camY, 5, pret, fresh, mer);
+        far = satRef.current ? mosaique(far, zf, camX, camY, 3, pret, fresh) : mosaiqueVecto(far, zf, camX, camY, 3, pret, fresh, mer);
         if (fresh) { sale = false; dernierRebuild = now; }
         if (near.manque + far.manque > 0 && fresh) sale = true;
       }
@@ -272,10 +343,23 @@ function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer }: 
       g.restore();
       // la brume à l'horizon
       const brume = g.createLinearGradient(0, y0 - 2, 0, y0 + (H - y0) * 0.42);
-      brume.addColorStop(0, "rgba(214,230,243,1)");
-      brume.addColorStop(0.35, "rgba(190,214,236,.7)");
-      brume.addColorStop(1, "rgba(190,214,236,0)");
+      const mer = groupe === "marin";
+      brume.addColorStop(0, mer ? "rgba(14,86,130,1)" : "rgba(214,230,243,1)");
+      brume.addColorStop(0.35, mer ? "rgba(12,76,118,.75)" : "rgba(190,214,236,.7)");
+      brume.addColorStop(1, mer ? "rgba(10,60,100,0)" : "rgba(190,214,236,0)");
       g.fillStyle = brume; g.fillRect(0, y0 - 2, W, (H - y0) * 0.42 + 2);
+      if (mer) {
+        // l'eau teinte le fond, et des bulles montent doucement
+        const eau = g.createLinearGradient(0, y0, 0, H);
+        eau.addColorStop(0, "rgba(8,70,115,.45)"); eau.addColorStop(1, "rgba(4,30,65,.78)");
+        g.fillStyle = eau; g.fillRect(0, y0, W, H - y0);
+        g.fillStyle = "rgba(220,240,255,.45)";
+        for (let k = 0; k < 26; k++) {
+          const bx = ((k * 97) % 100) / 100 * W + Math.sin(now / 900 + k) * 6;
+          const by = H - ((now / (14 + (k % 5) * 4) + k * 131) % (H + 20));
+          g.beginPath(); g.arc(bx, by, 1.5 + (k % 4), 0, Math.PI * 2); g.fill();
+        }
+      }
       // la lumière sur les bords
       const vig = g.createRadialGradient(W / 2, H * 0.55, H * 0.35, W / 2, H * 0.55, H * 0.85);
       vig.addColorStop(0, "rgba(0,0,0,0)"); vig.addColorStop(1, "rgba(5,10,30,.38)");
@@ -344,7 +428,7 @@ function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer }: 
   };
   const rejouer = () => { E.current.t = 0; E.current.joue = true; };
   const bascule = () => { E.current.joue = !E.current.joue; setUi((u) => ({ ...u, joue: E.current.joue })); };
-  const phrase = ui.fini ? `Voyage terminé : ${fmtKm(total)} avec ${nom} !` : ui.alt > 1500 ? "On monte très haut pour rejoindre la prochaine étape…" : `${b.verbe} avec ${nom}, tout près du sol.`;
+  const phrase = ui.fini ? `Voyage terminé : ${fmtKm(total)} avec ${nom} !` : ui.alt > 1500 ? "On monte très haut pour rejoindre la prochaine étape…" : `${b.verbe} avec ${nom}, ${groupe === "marin" ? "dans l'eau" : "tout près du sol"}.`;
 
   return (
     <>
@@ -372,9 +456,10 @@ function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer }: 
           </>
         ) : null}
         <div className="pointer-events-none absolute left-3 top-3 rounded-2xl bg-black/45 px-3 py-1.5 text-xs font-extrabold">
-          Altitude : {fmtH(ui.alt)}
+          {groupe === "marin" ? "Profondeur" : "Altitude"} : {fmtH(ui.alt)}
         </div>
-        {ui.chargement ? <div className="pointer-events-none absolute inset-x-0 top-14 mx-auto w-fit rounded-full bg-black/55 px-3 py-1 text-xs font-bold">Les images arrivent…</div> : null}
+        {!sat ? <div className="pointer-events-none absolute inset-x-0 top-14 mx-auto w-fit max-w-[92%] rounded-full bg-black/55 px-3 py-1 text-center text-xs font-bold">Vue simplifiée : les vraies images arrivent avec Internet.</div> : ui.chargement ? <div className="pointer-events-none absolute inset-x-0 top-14 mx-auto w-fit rounded-full bg-black/55 px-3 py-1 text-xs font-bold">Les images arrivent…</div> : null}
+        {!sat ? <p className="pointer-events-none absolute bottom-[4.2rem] right-2 max-w-[60%] text-right text-[9px] leading-tight text-white/55">{CREDIT_RELIEF}</p> : null}
         <div className="pointer-events-none absolute inset-x-3 bottom-3 flex items-end gap-2">
           <PlumeDessin anim={ui.alt > 1500 ? "peur" : "vole"} className="size-14 shrink-0" />
           <p className="brac-bulle rounded-2xl bg-white px-3 py-1.5 text-sm font-black text-[#2a1650] shadow-lg">{phrase}</p>

@@ -1,13 +1,14 @@
 // Le globe : la Terre en 3D, qu'on fait tourner avec un doigt et qu'on zoome avec deux doigts.
 // Tout est dessiné sur l'appareil (sans Internet), à partir des contours des pays de l'application.
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { geoArea, geoBounds, geoCentroid, geoContains, geoGraticule10, geoInterpolate, geoOrthographic, geoPath, type GeoPermissibleObjects } from "d3-geo";
 import monde from "@/data/monde.json";
+import { CREDIT_RELIEF, relieSurEcran, reliefPossible } from "@/lib/relief";
 
 export type TraceGlobe = { i: number; couleur: string; points: [number, number][] };
 
 // Les contours de l'application sont écrits en (x = longitude + 180, y = 90 − latitude) : on les relit en vraies coordonnées.
-const PAYS: GeoPermissibleObjects = {
+export const PAYS: GeoPermissibleObjects = {
   type: "FeatureCollection",
   features: Object.entries((monde as { pays: Record<string, string> }).pays).map(([code, d]) => {
     const anneaux = d.split("Z").filter((x) => x.trim()).map((a) =>
@@ -52,6 +53,10 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
   donnees.current = { traces, choisi, pays, surligne };
   const anim = useRef<{ de: Etat; a: Etat; t0: number } | null>(null);
   const calme = useRef(performance.now()); // le dernier moment où on a touché le globe
+  // Le relief réel de la Terre : une couche d'ombres douces, ajoutée quand on zoome (seulement avec du réseau).
+  const relief = useRef<{ cle: string; dep: number; pret: boolean; fondu: number; c: HTMLCanvasElement | null }>({ cle: "", dep: 0, pret: false, fondu: 0, c: null });
+  const [reliefVu, setReliefVu] = useState(false);
+  const reliefLu = useRef(false);
 
   // Aller vers un trajet (après une recherche ou un toucher) : le globe tourne doucement jusqu'à lui.
   useEffect(() => {
@@ -124,6 +129,31 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
       terre.addColorStop(0, "#6a7fc0"); terre.addColorStop(0.6, "#45568f"); terre.addColorStop(1, "#2d3a6a");
       ctx.fillStyle = terre; ctx.beginPath(); chemin(PAYS); ctx.fill();
       ctx.strokeStyle = "rgba(190,210,255,.28)"; ctx.lineWidth = 0.6; ctx.stroke();
+      // Le relief réel : seulement quand on est assez près, quand le doigt ne bouge plus, et quand le réseau répond.
+      {
+        const R = relief.current;
+        const veut = e.zoom >= 3 && reliefPossible();
+        if (!veut) { R.fondu = 0; R.pret = false; R.cle = ""; }
+        else {
+          const cle = `${e.lon.toFixed(3)}|${e.lat.toFixed(3)}|${e.zoom.toFixed(3)}|${w}|${h}`;
+          if (cle !== R.cle) { R.cle = cle; R.dep = t; R.pret = false; R.fondu = 0; }
+          else if (!R.pret && t - R.dep > 160 && !doigts.current.size && !anim.current) {
+            R.pret = true;
+            if (!R.c) R.c = document.createElement("canvas");
+            relieSurEcran(R.c.getContext("2d")!, w, h, 2, proj, rayon, () => { R.pret = false; R.dep = 0; });
+          }
+          if (R.pret && R.c) {
+            R.fondu = Math.min(1, R.fondu + 0.12);
+            ctx.save();
+            ctx.beginPath(); chemin(PAYS); ctx.clip();
+            ctx.globalAlpha = R.fondu; ctx.imageSmoothingEnabled = true;
+            ctx.drawImage(R.c, 0, 0, w, h);
+            ctx.restore();
+          }
+        }
+        const vu = R.pret && R.fondu > 0.5;
+        if (vu !== reliefLu.current) { reliefLu.current = vu; setReliefVu(vu); }
+      }
       // Les pays où vit l'animal cherché, en or (comme sur la carte des fiches)
       if (donnees.current.surligne.length) {
         const set = new Set(donnees.current.surligne);
@@ -204,6 +234,7 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
       <button type="button" aria-label="Dézoomer" onClick={() => zoomer(0.5)} className="grid size-10 place-items-center rounded-full bg-white/10 text-xl font-black text-white ring-1 ring-white/25 backdrop-blur-md">−</button>
       <button type="button" aria-label="Revoir toute la Terre" onClick={remettre} className="grid size-10 place-items-center rounded-full bg-white/10 text-lg text-white ring-1 ring-white/25 backdrop-blur-md">⟲</button>
     </div>
+    {reliefVu ? <p className="pointer-events-none absolute bottom-1 right-2 z-10 max-w-[48%] text-right text-[9px] leading-tight text-white/60">{CREDIT_RELIEF}</p> : null}
     <canvas
       ref={toile}
       className={`block ${hauteur} w-full touch-none select-none`}
