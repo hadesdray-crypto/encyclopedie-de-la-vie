@@ -1,293 +1,301 @@
-[1] Strix aluco (Chat-huant) : 2 photos, 0 cris
-[2] Tyto alba (Chouette effraie) : 2 photos, 0 cris
-[3] Bubo bubo (Grand-duc d'europe) : 2 photos, 0 cris
-[4] Bubo scandiacus (Grand-duc harfang) : 2 photos, 0 cris
-[5] Athene noctua (Chevêche d'athéna) : 2 photos, 0 cris
-[6] Aquila chrysaetos (Aigle doré) : 2 photos, 0 cris
-[7] Haliaeetus albicilla (Pygargue à queue blanche) : 2 photos, 0 cris
-[8] Haliaeetus leucocephalus (Pygargue à tête blanche) : 2 photos, 0 cris
-[9] Pandion haliaetus (Aigle pêcheur) : 4 photos, 0 cris
-[10] Falco peregrinus (Faucon pèlerin) : 2 photos, 0 cris
-[11] Falco tinnunculus (Cresserelle) : 4 photos, 0 cris
-[12] Buteo buteo (Buse commune) : 2 photos, 0 cris
-[13] Gyps fulvus (Griffon) : 2 photos, 0 cris
-[14] Gypaetus barbatus (Gypaète barbu) : 2 photos, 0 cris
-[15] Milvus milvus (Milan royal) : 2 photos, 0 cris
-[16] Circus aeruginosus (Busard des roseaux) : 3 photos, 0 cris
-[17] Accipiter gentilis (Autour des palombes) : 2 photos, 0 cris
-[18] Ciconia ciconia (Cigogne blanche) : 2 photos, 0 cris
-[19] Ardea cinerea (Héron cendré) : 2 photos, 0 cris
-[20] Egretta garzetta (Aigrette garzette) : 2 photos, 0 cris
-[21] Phoenicopterus roseus (Flamant rose) : 2 photos, 0 cris
-[22] Grus grus (Grue cendrée) : 2 photos, 0 cris
-[23] Cygnus olor (Cygne muet) : 4 photos, 0 cris
-[24] Cygnus cygnus (Cygne chanteur) : 2 photos, 0 cris
-[25] Anser anser (Oie cendrée) : 2 photos, 0 cris
-[26] Branta canadensis (Bernache du canada) : 2 photos, 0 cris
-[27] Anas platyrhynchos (Canard colvert) : 4 photos, 0 cris
-[28] Aythya fuligula (Fuligule morillon) : 4 photos, 0 cris
-[29] Tadorna tadorna (Tadorne de belon) : 3 photos, 0 cris
-[30] Somateria mollissima (Eider à duvet) : 2 photos, 0 cris
-[31] Fulica atra (Foulque macroule) : 2 photos, 0 cris
-[32] Gallinula chloropus (Gallinule poule-d'eau) : 2 photos, 0 cris
-[33] Larus argentatus (Goéland argenté) : 2 photos, 0 cris
-[34] Larus ridibundus (Mouette rieuse) : 2 photos, 0 cris
-[35] Sterna hirundo (Sterne pierregarin) : 2 photos, 0 cris
-[36] Sterna paradisaea (Sterne arctique) : 2 photos, 0 cris
-[37] Fratercula arctica (Macareux moine) : 2 photos, 0 cris
-[38] Alca torda (Petit pingouin) : 2 photos, 0 cris
-[39] Morus bassanus (Fou de bassan) : 2 photos, 0 cris
-[40] Phalacrocorax carbo (Grand cormoran) : 2 photos, 0 cris
-[41] Pelecanus onocrotalus (Pélican blanc) : 2 photos, 0 cris
-[42] Aptenodytes forsteri (Manchot empereur) : 2 photos, 0 cris
-[43] Aptenodytes patagonicus (Manchot royal) : 2 photos, 0 cris
-[44] Pygoscelis adeliae (Manchot adelie) : 2 photos, 0 cris
-[45] Spheniscus demersus (Manchot du cap) : 2 photos, 0 cris
-[46] Diomedea exulans (Albatros hurleur) : 2 photos, 0 cris
-[47] Fulmarus glacialis (Fulmar boréal) : 2 photos, 0 cris
-[48] Calidris canutus (Bécasseau maubèche) : 2 photos, 0 cris
-[49] Numenius arquata (Courlis cendré) : 2 photos, 0 cris
-[50] Haematopus ostralegus (Huîtrier pie) : 2 photos, 0 cris
-[51] Vanellus vanellus (Vanneau huppé) : 2 photos, 0 cris
-[52] Scolopax rusticola (Bécasse des bois) : 2 photos, 0 cris
-[53] Columba palumbus (Palombe) : 2 photos, 0 cris
-[54] Columba livia (Pigeon biset) : 2 photos, 0 cris
-[55] Streptopelia decaocto (Tourterelle turque) : 2 photos, 0 cris
-[56] Streptopelia turtur (Tourterelle des bois) : 2 photos, 0 cris
-[57] Cuculus canorus (Coucou gris) : 2 photos, 0 cris
-[58] Upupa epops (Huppe d'europe) : 2 photos, 0 cris
-[59] Alcedo atthis (Martin-pêcheur d'europe) : 4 photos, 0 cris
-[60] Merops apiaster (Guêpier d'europe) : 2 photos, 0 cris
-[61] Coracias garrulus (Rollier d'europe) : 2 photos, 0 cris
-[62] Picus viridis (Pic vert) : 4 photos, 0 cris
-[63] Dendrocopos major (Grand épeiche) : 4 photos, 0 cris
-[64] Dryocopus martius (Pic noir) : 3 photos, 0 cris
-[65] Apus apus (Martinet noir) : 2 photos, 0 cris
-[66] Hirundo rustica (Hirondelle de cheminée) : 2 photos, 0 cris
-[67] Delichon urbicum (Hirondelle de fenêtre) : 2 photos, 0 cris
-[68] Riparia riparia (Hirondelle de rivage) : 2 photos, 0 cris
-[69] Alauda arvensis (Alouette des champs) : 2 photos, 0 cris
-[70] Motacilla alba (Bergeronnette grise) : 2 photos, 0 cris
-[71] Troglodytes troglodytes (Troglodyte mignon) : 2 photos, 0 cris
-[72] Erithacus rubecula (Rouge-gorge familier) : 2 photos, 0 cris
-[73] Luscinia megarhynchos (Rossignol commun) : 2 photos, 0 cris
-[74] Phoenicurus ochruros (Rouge-queue noir) : 3 photos, 0 cris
-[75] Turdus merula (Merle noir) : 4 photos, 0 cris
-[76] Turdus philomelos (Grive chanteuse) : 2 photos, 0 cris
-[77] Turdus viscivorus (Grive draine) : 2 photos, 0 cris
-[78] Sylvia atricapilla (Fauvette à tête noire) : 4 photos, 0 cris
-[79] Phylloscopus collybita (Pouillot véloce) : 2 photos, 0 cris
-[80] Regulus regulus (Roitelet de tenerife) : 2 photos, 0 cris
-[81] Parus major (Mésange charbonnière) : 2 photos, 0 cris
-[82] Cyanistes caeruleus (Mésange bleue) : 2 photos, 0 cris
-[83] Sitta europaea (Sittelle d'europe) : 2 photos, 0 cris
-[84] Certhia brachydactyla (Grimpereau brachydactyle) : 2 photos, 0 cris
-[85] Lanius collurio (Pie-grièche écorcheur) : 4 photos, 0 cris
-[86] Oriolus oriolus (Loriot d'europe) : 2 photos, 0 cris
-[87] Garrulus glandarius (Geai des chênes) : 2 photos, 0 cris
-[88] Pica pica (Pie bavarde) : 2 photos, 0 cris
-[89] Pyrrhocorax pyrrhocorax (Corbin crave) : 2 photos, 0 cris
-[90] Corvus corax (Grand corbeau) : 2 photos, 0 cris
-[91] Corvus corone (Corneille noire) : 2 photos, 0 cris
-[92] Corvus frugilegus (Corbeau freux) : 2 photos, 0 cris
-[93] Sturnus vulgaris (Etourneau sansonnet) : 2 photos, 0 cris
-[94] Passer domesticus (Moineau domestique) : 4 photos, 0 cris
-[95] Fringilla coelebs (Pinson des arbres) : 4 photos, 0 cris
-[96] Carduelis carduelis (Chardonneret élégant) : 2 photos, 0 cris
-[97] Chloris chloris (Verdier) : 4 photos, 0 cris
-[98] Pyrrhula pyrrhula (Bouvreuil pivoine) : 4 photos, 0 cris
-[99] Coccothraustes coccothraustes (Grosbec casse-noyaux) : 2 photos, 0 cris
-[100] Emberiza citrinella (Bruant jaune) : 2 photos, 0 cris
-[101] Pavo cristatus (Paon) : 4 photos, 0 cris
-[102] Gallus gallus (Coq bankiva) : 2 photos, 0 cris
-[103] Phasianus colchicus (Faisan commun) : 4 photos, 0 cris
-[104] Perdix perdix (Perdrix grise) : 2 photos, 0 cris
-[105] Tetrao urogallus (Grand tétras) : 2 photos, 0 cris
-[106] Meleagris gallopavo (Dindon sauvage) : 3 photos, 0 cris
-[107] Struthio camelus (Autruche d'afrique) : 4 photos, 0 cris
-[108] Dromaius novaehollandiae (Émeu d'australie) : 2 photos, 0 cris
-[109] Casuarius casuarius (Casoar à casque) : 2 photos, 0 cris
-[110] Rhea americana (Nandou d'amérique) : 2 photos, 0 cris
-[111] Apteryx australis (Kiwi austral) : 2 photos, 0 cris
-[112] Ara macao (Ara macao) : 2 photos, 0 cris
-[113] Ara ararauna (Ara bleu) : 2 photos, 0 cris
-[114] Psittacus erithacus (Gris du gabon) : 2 photos, 0 cris
-[115] Melopsittacus undulatus (Mélopsitte ondulé) : 2 photos, 0 cris
-[116] Cacatua galerita (Cacatoès à huppe jaune) : 2 photos, 0 cris
-[117] Ramphastos toco (Toucan toco) : 2 photos, 0 cris
-[118] Trochilus polytmus (Ariane à tête noire) : 2 photos, 0 cris
-[119] Archilochus colubris (Calypte à gorge rubis) : 4 photos, 0 cris
-[120] Menura novaehollandiae (Ménure superbe) : 2 photos, 0 cris
-[121] Dacelo novaeguineae (Martin-chasseur géant) : 2 photos, 0 cris
-[122] Paradisaea apoda (Paradisier grand-émeraude) : 2 photos, 0 cris
-[123] Chionis albus (Chionis blanc) : 2 photos, 0 cris
-[124] Balaeniceps rex (Baléniceps rois) : 2 photos, 0 cris
-[125] Harpia harpyja (Aigle féroce) : 2 photos, 0 cris
-[126] Sagittarius serpentarius (Messager sagittaire) : 2 photos, 0 cris
-[127] Vultur gryphus (Condor des andes) : 2 photos, 0 cris
-[128] Cathartes aura (Urubu à tête rouge) : 2 photos, 0 cris
-[129] Larus fuscus (Goéland brun) : 2 photos, 0 cris
-[130] Prunella modularis (Accenteur mouchet) : 2 photos, 0 cris
-[131] Chroicocephalus ridibundus (Mouette rieuse) : 2 photos, 0 cris
-[132] Aegithalos caudatus (Mésange à longue queue) : 2 photos, 0 cris
-[133] Milvus migrans (Milan noir) : 2 photos, 0 cris
-[134] Linaria cannabina (Linotte des vignes) : 4 photos, 0 cris
-[135] Ardea alba (Grande aigrette) : 2 photos, 0 cris
-[136] Coloeus monedula (Choucas des tours) : 2 photos, 0 cris
-[137] Podiceps cristatus (Grèbe huppé) : 2 photos, 0 cris
-[138] Serinus serinus (Serin cini) : 2 photos, 0 cris
-[139] Larus michahellis (Gabian) : 2 photos, 0 cris
-[140] Poecile palustris (Mésange nonnette) : 2 photos, 0 cris
-[141] Sylvia communis (Fauvette grisette) : 2 photos, 0 cris
-[142] Saxicola rubicola (Tarier pâtre) : 4 photos, 0 cris
-[143] Emberiza cirlus (Bruant zizi) : 2 photos, 0 cris
-[144] Cettia cetti (Bouscarle de cetti) : 2 photos, 0 cris
-[145] Accipiter nisus (Epervier d'europe) : 4 photos, 0 cris
-[146] Emberiza schoeniclus (Bruant des roseaux) : 4 photos, 0 cris
-[147] Lullula arborea (Alouette lulu) : 2 photos, 0 cris
-[148] Regulus ignicapilla (Roitelet triple-bandeau) : 2 photos, 0 cris
-[149] Periparus ater (Mésange noire) : 2 photos, 0 cris
-[150] Anthus pratensis (Béguinette) : 2 photos, 0 cris
-[151] Tachybaptus ruficollis (Grèbe castagneux) : 2 photos, 0 cris
-[152] Acrocephalus scirpaceus (Rousserolle africaine) : 2 photos, 0 cris
-[153] Lophophanes cristatus (Mésange huppée) : 2 photos, 0 cris
-[154] Anas crecca (Canard sarcelline) : 3 photos, 0 cris
-[155] Emberiza calandra (Bruant proyer) : 2 photos, 0 cris
-[156] Motacilla cinerea (Bergeronnette des ruisseaux) : 2 photos, 0 cris
-[157] Spinus spinus (Tarin des aulnes) : 4 photos, 0 cris
-[158] Motacilla flava (Bergeronnette printanière) : 2 photos, 0 cris
-[159] Hippolais polyglotta (Contrefaisant à ailes courtes) : 2 photos, 0 cris
-[160] Phoenicurus phoenicurus (Rossignol de muraille) : 2 photos, 0 cris
-[161] Phylloscopus trochilus (Pouillot chantre) : 2 photos, 0 cris
-[162] Sylvia melanocephala (Fauvette mélanocéphale) : 2 photos, 0 cris
-[163] Anthus trivialis (Pipit des arbres) : 2 photos, 0 cris
-[164] Aythya ferina (Fuligule milouin) : 2 photos, 0 cris
-[165] Actitis hypoleucos (Chevalier guignette) : 2 photos, 0 cris
-[166] Ichthyaetus melanocephalus (Goéland mélanocéphale) : 2 photos, 0 cris
-[167] Circus cyaneus (Busard saint-martin) : 3 photos, 0 cris
-[168] Turdus pilaris (Grive litorne) : 2 photos, 0 cris
-[169] Spatula clypeata (Canard rouge de rivière) : 4 photos, 0 cris
-[170] Cisticola juncidis (Cisticole des joncs) : 2 photos, 0 cris
-[171] Gallinago gallinago (Bécassine des marais) : 2 photos, 0 cris
-[172] Circaetus gallicus (Aigle jean-le-blanc) : 2 photos, 0 cris
-[173] Sylvia borin (Becfigue) : 2 photos, 0 cris
-[174] Bubulcus ibis (Héron garde-boeufs, pique bœufs) : 2 photos, 0 cris
-[175] Fringilla montifringilla (Pinson des ardennes) : 2 photos, 0 cris
-[176] Mareca strepera (Canard chipeau) : 4 photos, 0 cris
-[177] Oenanthe oenanthe (Motteux cendré) : 3 photos, 0 cris
-[178] Tringa ochropus (Chevalier cul-blanc) : 2 photos, 0 cris
-[179] Himantopus himantopus (Echasse blanche) : 2 photos, 0 cris
-[180] Pernis apivorus (Bondrée apivore) : 2 photos, 0 cris
-[181] Columba oenas (Petit bleu) : 2 photos, 0 cris
-[182] Passer montanus (Moineau friquet) : 2 photos, 0 cris
-[183] Platalea leucorodia (Spatule blanche) : 2 photos, 0 cris
-[184] Turdus iliacus (Grive mauvis) : 2 photos, 0 cris
-[185] Acrocephalus schoenobaenus (Phragmite des joncs) : 2 photos, 0 cris
-[186] Tringa totanus (Chevalier gambette) : 2 photos, 0 cris
-[187] Circus pygargus (Busard cendré) : 3 photos, 0 cris
-[188] Phylloscopus bonelli (Pouillot de bonelli) : 2 photos, 0 cris
-[189] Alectoris rufa (Bartavelle rouge) : 2 photos, 0 cris
-[190] Rallus aquaticus (Râle d'eau) : 2 photos, 0 cris
-[191] Calidris alpina (Bécasseau variable) : 2 photos, 0 cris
-[192] Ficedula hypoleuca (Gobemouche becfigue) : 4 photos, 0 cris
-[193] Falco subbuteo (Faucon hobereau) : 2 photos, 0 cris
-[194] Recurvirostra avosetta (Avocette à nuque noire) : 2 photos, 0 cris
-[195] Dryobates minor (Petit épeiche) : 3 photos, 0 cris
-[196] Ptyonoprogne rupestris (Hirondelle de rochers) : 2 photos, 0 cris
-[197] Coturnix coturnix (Caille des blés) : 2 photos, 0 cris
-[198] Muscicapa striata (Gobe-mouche gris) : 2 photos, 0 cris
-[199] Psittacula krameri (Perruche à collier) : 2 photos, 0 cris
-[200] Anthus spinoletta (Pipit spioncelle) : 2 photos, 0 cris
-[201] Luscinia svecica (Gorge-bleue à miroir) : 2 photos, 0 cris
-[202] Saxicola rubetra (Tarier des prés) : 4 photos, 0 cris
-[203] Mareca penelope (Canard siffleur) : 4 photos, 0 cris
-[204] Dendrocoptes medius (Moyen épeiche) : 2 photos, 0 cris
-[205] Tringa nebularia (Chevalier aboyeur) : 2 photos, 0 cris
-[206] Burhinus oedicnemus (Courlis de terre) : 2 photos, 0 cris
-[207] Charadrius hiaticula (Grand gravelot) : 2 photos, 0 cris
-[208] Cinclus cinclus (Cincle aquatique) : 2 photos, 0 cris
-[209] Thalasseus sandvicensis (Sterne caugek) : 2 photos, 0 cris
-[210] Ardea purpurea (Héron pourpré) : 2 photos, 0 cris
-[211] Larus marinus (Goéland marin) : 2 photos, 0 cris
-[212] Charadrius dubius (Petit gravelot) : 2 photos, 0 cris
-[213] Netta rufina (Brante roussâtre) : 4 photos, 0 cris
-[214] Galerida cristata (Alouette huppée) : 2 photos, 0 cris
-[215] Anas acuta (Canard pilet) : 4 photos, 0 cris
-[216] Pluvialis apricaria (Greater golden-plover) : 2 photos, 0 cris
-[217] Tetrax tetrax (Outarde canepetière) : 2 photos, 0 cris
-[218] Sylvia undata (Fauvette pitchou) : 2 photos, 0 cris
-[219] Podiceps nigricollis (Grèbe à cou noir) : 2 photos, 0 cris
-[220] Pluvialis squatarola (Pluvier argenté) : 2 photos, 0 cris
-[221] Nycticorax nycticorax (Bihoreau gris) : 2 photos, 0 cris
-[222] Jynx torquilla (Torcol) : 2 photos, 0 cris
-[223] Limosa limosa (Barge à queue noire) : 2 photos, 0 cris
-[224] Loxia curvirostra (Bec-croisé des sapins) : 4 photos, 0 cris
-[225] Arenaria interpres (Pluvier des salines) : 2 photos, 0 cris
-[226] Charadrius alexandrinus (Gravelot à collier interrompu) : 2 photos, 0 cris
-[227] Curruca melanocephala (Fauvette mélanocéphale) : 2 photos, 0 cris
-[228] Ciconia nigra (Cigogne noire) : 2 photos, 0 cris
-[229] Calidris pugnax (Bécasseau combattant) : 2 photos, 0 cris
-[230] Spatula querquedula (Canard sarcelle) : 2 photos, 0 cris
-[231] Locustella naevia (Locustelle tachetée) : 2 photos, 0 cris
-[232] Tringa glareola (Chevalier sylvain) : 2 photos, 0 cris
-[233] Anthus campestris (Pipit rousseline) : 2 photos, 0 cris
-[234] Asio otus (Hibou moyen-duc) : 2 photos, 0 cris
-[235] Caprimulgus europaeus (Engoulevent d'europe) : 2 photos, 0 cris
-[236] Larus canus (Goéland cendré) : 2 photos, 0 cris
-[237] Plegadis falcinellus (Ibis falcinelle) : 2 photos, 0 cris
-[238] Sylvia curruca (Fauvette babillarde) : 2 photos, 0 cris
-[239] Mergus merganser (Grand harle) : 2 photos, 0 cris
-[240] Acrocephalus arundinaceus (Rousserolle turdoïde) : 2 photos, 0 cris
-[241] Branta bernicla (Bernache cravant) : 2 photos, 0 cris
-[242] Sylvia cantillans (Fauvette passerinette) : 2 photos, 0 cris
-[243] Saxicola torquatus (Tarier d’afrique) : 2 photos, 0 cris
-[244] Poecile montanus (Mésange boréale) : 2 photos, 0 cris
-[245] Otus scops (Hibou petit-duc) : 2 photos, 0 cris
+[1] Strix aluco (Chat-huant) : 2 photos, 2 cris
+[2] Tyto alba (Chouette effraie) : 2 photos, 2 cris
+[3] Bubo bubo (Grand-duc d'europe) : 2 photos, 2 cris
+[4] Bubo scandiacus (Grand-duc harfang) : 2 photos, 2 cris
+[5] Athene noctua (Chevêche d'athéna) : 2 photos, 2 cris
+[6] Aquila chrysaetos (Aigle doré) : 2 photos, 2 cris
+[7] Haliaeetus albicilla (Pygargue à queue blanche) : 2 photos, 2 cris
+[8] Haliaeetus leucocephalus (Pygargue à tête blanche) : 2 photos, 2 cris
+[9] Pandion haliaetus (Aigle pêcheur) : 4 photos, 2 cris
+[10] Falco peregrinus (Faucon pèlerin) : 2 photos, 2 cris
+[11] Falco tinnunculus (Cresserelle) : 4 photos, 2 cris
+[12] Buteo buteo (Buse commune) : 2 photos, 2 cris
+[13] Gyps fulvus (Griffon) : 2 photos, 2 cris
+[14] Gypaetus barbatus (Gypaète barbu) : 2 photos, 2 cris
+[15] Milvus milvus (Milan royal) : 2 photos, 2 cris
+[16] Circus aeruginosus (Busard des roseaux) : 3 photos, 2 cris
+[17] Accipiter gentilis (Autour des palombes) : 2 photos, 2 cris
+[18] Ciconia ciconia (Cigogne blanche) : 2 photos, 2 cris
+[19] Ardea cinerea (Héron cendré) : 2 photos, 2 cris
+[20] Egretta garzetta (Aigrette garzette) : 2 photos, 2 cris
+[21] Phoenicopterus roseus (Flamant rose) : 2 photos, 2 cris
+[22] Grus grus (Grue cendrée) : 2 photos, 2 cris
+[23] Cygnus olor (Cygne muet) : 4 photos, 2 cris
+[24] Cygnus cygnus (Cygne chanteur) : 2 photos, 2 cris
+[25] Anser anser (Oie cendrée) : 2 photos, 2 cris
+[26] Branta canadensis (Bernache du canada) : 2 photos, 2 cris
+[27] Anas platyrhynchos (Canard colvert) : 4 photos, 2 cris
+[28] Aythya fuligula (Fuligule morillon) : 4 photos, 2 cris
+[29] Tadorna tadorna (Tadorne de belon) : 3 photos, 2 cris
+[30] Somateria mollissima (Eider à duvet) : 2 photos, 2 cris
+[31] Fulica atra (Foulque macroule) : 2 photos, 2 cris
+[32] Gallinula chloropus (Gallinule poule-d'eau) : 2 photos, 2 cris
+[33] Larus argentatus (Goéland argenté) : 2 photos, 2 cris
+[34] Larus ridibundus (Mouette rieuse) : 2 photos, 2 cris
+[35] Sterna hirundo (Sterne pierregarin) : 2 photos, 2 cris
+[36] Sterna paradisaea (Sterne arctique) : 2 photos, 2 cris
+[37] Fratercula arctica (Macareux moine) : 2 photos, 2 cris
+[38] Alca torda (Petit pingouin) : 2 photos, 2 cris
+[39] Morus bassanus (Fou de bassan) : 2 photos, 2 cris
+[40] Phalacrocorax carbo (Grand cormoran) : 2 photos, 2 cris
+[41] Pelecanus onocrotalus (Pélican blanc) : 2 photos, 2 cris
+[42] Aptenodytes forsteri (Manchot empereur) : 2 photos, 2 cris
+[43] Aptenodytes patagonicus (Manchot royal) : 2 photos, 2 cris
+[44] Pygoscelis adeliae (Manchot adelie) : 2 photos, 2 cris
+[45] Spheniscus demersus (Manchot du cap) : 2 photos, 2 cris
+[46] Diomedea exulans (Albatros hurleur) : 2 photos, 2 cris
+[47] Fulmarus glacialis (Fulmar boréal) : 2 photos, 2 cris
+[48] Calidris canutus (Bécasseau maubèche) : 2 photos, 2 cris
+[49] Numenius arquata (Courlis cendré) : 2 photos, 2 cris
+[50] Haematopus ostralegus (Huîtrier pie) : 2 photos, 2 cris
+[51] Vanellus vanellus (Vanneau huppé) : 2 photos, 2 cris
+[52] Scolopax rusticola (Bécasse des bois) : 2 photos, 2 cris
+[53] Columba palumbus (Palombe) : 2 photos, 2 cris
+[54] Columba livia (Pigeon biset) : 2 photos, 2 cris
+[55] Streptopelia decaocto (Tourterelle turque) : 2 photos, 2 cris
+[56] Streptopelia turtur (Tourterelle des bois) : 2 photos, 2 cris
+[57] Cuculus canorus (Coucou gris) : 2 photos, 2 cris
+[58] Upupa epops (Huppe d'europe) : 2 photos, 2 cris
+[59] Alcedo atthis (Martin-pêcheur d'europe) : 4 photos, 2 cris
+[60] Merops apiaster (Guêpier d'europe) : 2 photos, 2 cris
+[61] Coracias garrulus (Rollier d'europe) : 2 photos, 2 cris
+[62] Picus viridis (Pic vert) : 4 photos, 2 cris
+[63] Dendrocopos major (Grand épeiche) : 4 photos, 2 cris
+[64] Dryocopus martius (Pic noir) : 3 photos, 2 cris
+[65] Apus apus (Martinet noir) : 2 photos, 2 cris
+[66] Hirundo rustica (Hirondelle de cheminée) : 2 photos, 2 cris
+[67] Delichon urbicum (Hirondelle de fenêtre) : 2 photos, 2 cris
+[68] Riparia riparia (Hirondelle de rivage) : 2 photos, 2 cris
+[69] Alauda arvensis (Alouette des champs) : 2 photos, 2 cris
+[70] Motacilla alba (Bergeronnette grise) : 2 photos, 2 cris
+[71] Troglodytes troglodytes (Troglodyte mignon) : 2 photos, 2 cris
+[72] Erithacus rubecula (Rouge-gorge familier) : 2 photos, 2 cris
+[73] Luscinia megarhynchos (Rossignol commun) : 2 photos, 2 cris
+[74] Phoenicurus ochruros (Rouge-queue noir) : 3 photos, 2 cris
+[75] Turdus merula (Merle noir) : 4 photos, 2 cris
+[76] Turdus philomelos (Grive chanteuse) : 2 photos, 2 cris
+[77] Turdus viscivorus (Grive draine) : 2 photos, 2 cris
+[78] Sylvia atricapilla (Fauvette à tête noire) : 4 photos, 2 cris
+[79] Phylloscopus collybita (Pouillot véloce) : 2 photos, 2 cris
+[80] Regulus regulus (Roitelet de tenerife) : 2 photos, 2 cris
+[81] Parus major (Mésange charbonnière) : 2 photos, 2 cris
+[82] Cyanistes caeruleus (Mésange bleue) : 2 photos, 2 cris
+[83] Sitta europaea (Sittelle d'europe) : 2 photos, 2 cris
+[84] Certhia brachydactyla (Grimpereau brachydactyle) : 2 photos, 2 cris
+[85] Lanius collurio (Pie-grièche écorcheur) : 4 photos, 2 cris
+[86] Oriolus oriolus (Loriot d'europe) : 2 photos, 2 cris
+[87] Garrulus glandarius (Geai des chênes) : 2 photos, 2 cris
+[88] Pica pica (Pie bavarde) : 2 photos, 2 cris
+[89] Pyrrhocorax pyrrhocorax (Corbin crave) : 2 photos, 2 cris
+[90] Corvus corax (Grand corbeau) : 2 photos, 2 cris
+[91] Corvus corone (Corneille noire) : 2 photos, 2 cris
+[92] Corvus frugilegus (Corbeau freux) : 2 photos, 2 cris
+[93] Sturnus vulgaris (Etourneau sansonnet) : 2 photos, 2 cris
+[94] Passer domesticus (Moineau domestique) : 4 photos, 2 cris
+[95] Fringilla coelebs (Pinson des arbres) : 4 photos, 2 cris
+[96] Carduelis carduelis (Chardonneret élégant) : 2 photos, 2 cris
+[97] Chloris chloris (Verdier) : 4 photos, 2 cris
+[98] Pyrrhula pyrrhula (Bouvreuil pivoine) : 4 photos, 2 cris
+[99] Coccothraustes coccothraustes (Grosbec casse-noyaux) : 2 photos, 2 cris
+[100] Emberiza citrinella (Bruant jaune) : 2 photos, 2 cris
+[101] Pavo cristatus (Paon) : 4 photos, 2 cris
+[102] Gallus gallus (Coq bankiva) : 2 photos, 2 cris
+[103] Phasianus colchicus (Faisan commun) : 4 photos, 2 cris
+[104] Perdix perdix (Perdrix grise) : 2 photos, 2 cris
+[105] Tetrao urogallus (Grand tétras) : 2 photos, 2 cris
+[106] Meleagris gallopavo (Dindon sauvage) : 3 photos, 2 cris
+[107] Struthio camelus (Autruche d'afrique) : 4 photos, 2 cris
+[108] Dromaius novaehollandiae (Émeu d'australie) : 2 photos, 2 cris
+[109] Casuarius casuarius (Casoar à casque) : 2 photos, 2 cris
+[110] Rhea americana (Nandou d'amérique) : 2 photos, 2 cris
+[111] Apteryx australis (Kiwi austral) : 2 photos, 2 cris
+[112] Ara macao (Ara macao) : 2 photos, 2 cris
+[113] Ara ararauna (Ara bleu) : 2 photos, 2 cris
+[114] Psittacus erithacus (Gris du gabon) : 2 photos, 2 cris
+[115] Melopsittacus undulatus (Mélopsitte ondulé) : 2 photos, 2 cris
+[116] Cacatua galerita (Cacatoès à huppe jaune) : 2 photos, 2 cris
+[117] Ramphastos toco (Toucan toco) : 2 photos, 2 cris
+[118] Trochilus polytmus (Ariane à tête noire) : 2 photos, 2 cris
+[119] Archilochus colubris (Calypte à gorge rubis) : 4 photos, 2 cris
+[120] Menura novaehollandiae (Ménure superbe) : 2 photos, 2 cris
+[121] Dacelo novaeguineae (Martin-chasseur géant) : 2 photos, 2 cris
+[122] Paradisaea apoda (Paradisier grand-émeraude) : 2 photos, 2 cris
+[123] Chionis albus (Chionis blanc) : 2 photos, 2 cris
+[124] Balaeniceps rex : erreur HTTP Error 301: The HTTP server returned a redirect error that would lead to an infinite loop.
+The last 30x error message was:
+Moved Permanently
+[125] Harpia harpyja (Aigle féroce) : 2 photos, 2 cris
+[126] Sagittarius serpentarius (Messager sagittaire) : 2 photos, 2 cris
+[127] Vultur gryphus (Condor des andes) : 2 photos, 2 cris
+[128] Cathartes aura (Urubu à tête rouge) : 2 photos, 2 cris
+[129] Larus fuscus (Goéland brun) : 2 photos, 2 cris
+[130] Prunella modularis (Accenteur mouchet) : 2 photos, 2 cris
+[131] Chroicocephalus ridibundus (Mouette rieuse) : 2 photos, 2 cris
+[132] Aegithalos caudatus (Mésange à longue queue) : 2 photos, 2 cris
+[133] Milvus migrans (Milan noir) : 2 photos, 2 cris
+[134] Linaria cannabina (Linotte des vignes) : 4 photos, 2 cris
+[135] Ardea alba (Grande aigrette) : 2 photos, 2 cris[mp3float @ 0x5ea8d636e2c0] Header missing
+[aist#0:0/mp3 @ 0x5ea8d636efc0] [dec:mp3float @ 0x5ea8d637be80] Error submitting packet to decoder: Invalid data found when processing input
+[mp3float @ 0x6412562c97c0] Header missing
+[aist#0:0/mp3 @ 0x6412562c7f00] [dec:mp3float @ 0x6412562d5e80] Error submitting packet to decoder: Invalid data found when processing input
+
+[136] Coloeus monedula (Choucas des tours) : 2 photos, 2 cris
+[137] Podiceps cristatus (Grèbe huppé) : 2 photos, 2 cris
+[138] Serinus serinus (Serin cini) : 2 photos, 2 cris
+[139] Larus michahellis (Gabian) : 2 photos, 2 cris
+[140] Poecile palustris (Mésange nonnette) : 2 photos, 2 cris
+[141] Sylvia communis (Fauvette grisette) : 2 photos, 2 cris
+[142] Saxicola rubicola (Tarier pâtre) : 4 photos, 2 cris
+[143] Emberiza cirlus (Bruant zizi) : 2 photos, 2 cris
+[144] Cettia cetti (Bouscarle de cetti) : 2 photos, 2 cris
+[145] Accipiter nisus (Epervier d'europe) : 4 photos, 2 cris
+[146] Emberiza schoeniclus (Bruant des roseaux) : 4 photos, 2 cris
+[147] Lullula arborea (Alouette lulu) : 2 photos, 2 cris
+[148] Regulus ignicapilla (Roitelet triple-bandeau) : 2 photos, 2 cris
+[149] Periparus ater (Mésange noire) : 2 photos, 2 cris
+[150] Anthus pratensis (Béguinette) : 2 photos, 2 cris
+[151] Tachybaptus ruficollis (Grèbe castagneux) : 2 photos, 2 cris
+[152] Acrocephalus scirpaceus (Rousserolle africaine) : 2 photos, 2 cris
+[153] Lophophanes cristatus (Mésange huppée) : 2 photos, 2 cris
+[154] Anas crecca (Canard sarcelline) : 3 photos, 2 cris
+[155] Emberiza calandra (Bruant proyer) : 2 photos, 2 cris
+[156] Motacilla cinerea (Bergeronnette des ruisseaux) : 2 photos, 2 cris
+[157] Spinus spinus (Tarin des aulnes) : 4 photos, 2 cris
+[158] Motacilla flava (Bergeronnette printanière) : 2 photos, 2 cris
+[159] Hippolais polyglotta (Contrefaisant à ailes courtes) : 2 photos, 2 cris
+[160] Phoenicurus phoenicurus (Rossignol de muraille) : 2 photos, 2 cris
+[161] Phylloscopus trochilus (Pouillot chantre) : 2 photos, 2 cris
+[162] Sylvia melanocephala (Fauvette mélanocéphale) : 2 photos, 2 cris
+[163] Anthus trivialis (Pipit des arbres) : 2 photos, 2 cris
+[164] Aythya ferina (Fuligule milouin) : 2 photos, 2 cris
+[165] Actitis hypoleucos (Chevalier guignette) : 2 photos, 2 cris
+[166] Ichthyaetus melanocephalus (Goéland mélanocéphale) : 2 photos, 2 cris
+[167] Circus cyaneus (Busard saint-martin) : 3 photos, 2 cris
+[168] Turdus pilaris (Grive litorne) : 2 photos, 2 cris
+[169] Spatula clypeata (Canard rouge de rivière) : 4 photos, 2 cris
+[170] Cisticola juncidis (Cisticole des joncs) : 2 photos, 2 cris
+[171] Gallinago gallinago (Bécassine des marais) : 2 photos, 2 cris
+[172] Circaetus gallicus (Aigle jean-le-blanc) : 2 photos, 2 cris
+[173] Sylvia borin (Becfigue) : 2 photos, 2 cris
+[174] Bubulcus ibis (Héron garde-boeufs, pique bœufs) : 2 photos, 2 cris
+[175] Fringilla montifringilla (Pinson des ardennes) : 2 photos, 2 cris
+[176] Mareca strepera (Canard chipeau) : 4 photos, 2 cris
+[177] Oenanthe oenanthe (Motteux cendré) : 3 photos, 2 cris
+[178] Tringa ochropus (Chevalier cul-blanc) : 2 photos, 2 cris
+[179] Himantopus himantopus (Echasse blanche) : 2 photos, 2 cris
+[180] Pernis apivorus (Bondrée apivore) : 2 photos, 2 cris
+[181] Columba oenas (Petit bleu) : 2 photos, 2 cris
+[182] Passer montanus (Moineau friquet) : 2 photos, 2 cris
+[183] Platalea leucorodia (Spatule blanche) : 2 photos, 2 cris
+[184] Turdus iliacus (Grive mauvis) : 2 photos, 2 cris
+[185] Acrocephalus schoenobaenus (Phragmite des joncs) : 2 photos, 2 cris
+[186] Tringa totanus (Chevalier gambette) : 2 photos, 2 cris
+[187] Circus pygargus (Busard cendré) : 3 photos, 2 cris
+[188] Phylloscopus bonelli (Pouillot de bonelli) : 2 photos, 2 cris
+[189] Alectoris rufa (Bartavelle rouge) : 2 photos, 2 cris
+[190] Rallus aquaticus (Râle d'eau) : 2 photos, 2 cris
+[191] Calidris alpina (Bécasseau variable) : 2 photos, 2 cris
+[192] Ficedula hypoleuca (Gobemouche becfigue) : 4 photos, 2 cris
+[193] Falco subbuteo (Faucon hobereau) : 2 photos, 2 cris
+[194] Recurvirostra avosetta (Avocette à nuque noire) : 2 photos, 2 cris
+[195] Dryobates minor (Petit épeiche) : 3 photos, 2 cris
+[196] Ptyonoprogne rupestris (Hirondelle de rochers) : 2 photos, 2 cris
+[197] Coturnix coturnix (Caille des blés) : 2 photos, 2 cris
+[198] Muscicapa striata (Gobe-mouche gris) : 2 photos, 2 cris
+[199] Psittacula krameri (Perruche à collier) : 2 photos, 2 cris
+[200] Anthus spinoletta (Pipit spioncelle) : 2 photos, 2 cris
+[201] Luscinia svecica (Gorge-bleue à miroir) : 2 photos, 2 cris
+[202] Saxicola rubetra (Tarier des prés) : 4 photos, 2 cris
+[203] Mareca penelope (Canard siffleur) : 4 photos, 2 cris
+[204] Dendrocoptes medius (Moyen épeiche) : 2 photos, 2 cris
+[205] Tringa nebularia (Chevalier aboyeur) : 2 photos, 2 cris
+[206] Burhinus oedicnemus (Courlis de terre) : 2 photos, 2 cris
+[207] Charadrius hiaticula (Grand gravelot) : 2 photos, 2 cris
+[208] Cinclus cinclus (Cincle aquatique) : 2 photos, 2 cris
+[209] Thalasseus sandvicensis (Sterne caugek) : 2 photos, 2 cris
+[210] Ardea purpurea (Héron pourpré) : 2 photos, 2 cris
+[211] Larus marinus (Goéland marin) : 2 photos, 2 cris
+[212] Charadrius dubius (Petit gravelot) : 2 photos, 2 cris
+[213] Netta rufina (Brante roussâtre) : 4 photos, 2 cris
+[214] Galerida cristata (Alouette huppée) : 2 photos, 2 cris
+[215] Anas acuta (Canard pilet) : 4 photos, 2 cris
+[216] Pluvialis apricaria (Greater golden-plover) : 2 photos, 2 cris
+[217] Tetrax tetrax (Outarde canepetière) : 2 photos, 2 cris
+[218] Sylvia undata (Fauvette pitchou) : 2 photos, 2 cris
+[219] Podiceps nigricollis (Grèbe à cou noir) : 2 photos, 2 cris
+[220] Pluvialis squatarola (Pluvier argenté) : 2 photos, 2 cris
+[221] Nycticorax nycticorax (Bihoreau gris) : 2 photos, 2 cris
+[222] Jynx torquilla (Torcol) : 2 photos, 2 cris
+[223] Limosa limosa (Barge à queue noire) : 2 photos, 2 cris
+[224] Loxia curvirostra (Bec-croisé des sapins) : 4 photos, 2 cris
+[225] Arenaria interpres (Pluvier des salines) : 2 photos, 2 cris
+[226] Charadrius alexandrinus (Gravelot à collier interrompu) : 2 photos, 2 cris
+[227] Curruca melanocephala (Fauvette mélanocéphale) : 2 photos, 2 cris
+[228] Ciconia nigra (Cigogne noire) : 2 photos, 2 cris
+[229] Calidris pugnax (Bécasseau combattant) : 2 photos, 2 cris
+[230] Spatula querquedula (Canard sarcelle) : 2 photos, 2 cris
+[231] Locustella naevia (Locustelle tachetée) : 2 photos, 2 cris
+[232] Tringa glareola (Chevalier sylvain) : 2 photos, 2 cris
+[233] Anthus campestris (Pipit rousseline) : 2 photos, 2 cris
+[234] Asio otus (Hibou moyen-duc) : 2 photos, 2 cris
+[235] Caprimulgus europaeus (Engoulevent d'europe) : 2 photos, 2 cris
+[236] Larus canus (Goéland cendré) : 2 photos, 2 cris
+[237] Plegadis falcinellus (Ibis falcinelle) : 2 photos, 2 cris
+[238] Sylvia curruca (Fauvette babillarde) : 2 photos, 2 cris
+[239] Mergus merganser (Grand harle) : 2 photos, 2 cris
+[240] Acrocephalus arundinaceus (Rousserolle turdoïde) : 2 photos, 2 cris
+[241] Branta bernicla (Bernache cravant) : 2 photos, 2 cris
+[242] Sylvia cantillans : erreur HTTP Error 301: The HTTP server returned a redirect error that would lead to an infinite loop.
+The last 30x error message was:
+Moved Permanently
+[243] Saxicola torquatus (Tarier d’afrique) : 2 photos, 2 cris
+[244] Poecile montanus (Mésange boréale) : 2 photos, 2 cris
+[245] Otus scops (Hibou petit-duc) : 2 photos, 2 cris
 [246] Phylloscopus sibillatrix : introuvable, ignoré
-[247] Numenius phaeopus (Courlis corlieu) : 2 photos, 0 cris
-[248] Sternula albifrons (Sterne naine) : 2 photos, 0 cris
-[249] Emberiza cia (Bruant fou) : 2 photos, 0 cris
-[250] Tringa erythropus (Chevalier arlequin) : 2 photos, 0 cris
-[251] Tachymarptis melba (Martinet alpin) : 2 photos, 0 cris
-[252] Lanius senator (Pie-grièche rousse) : 2 photos, 0 cris
-[253] Certhia familiaris (Grimpereau des bois) : 2 photos, 0 cris
-[254] Pyrrhocorax graculus (Chocard des alpes) : 2 photos, 0 cris
-[255] Hieraaetus pennatus (Aigle botté) : 2 photos, 0 cris
-[256] Lyrurus tetrix (Coq des bouleaux) : 2 photos, 0 cris
-[257] Calidris alba (Bécasseau sanderling) : 2 photos, 0 cris
-[258] Elanus caeruleus (Elanion blanc) : 2 photos, 0 cris
-[259] Calidris minuta (Bécasseau minute) : 2 photos, 0 cris
-[260] Chlidonias hybrida (Guifette moustac) : 2 photos, 0 cris
-[261] Rissa tridactyla (Mouette tridactyle) : 2 photos, 0 cris
-[262] Remiz pendulinus (Mésange rémiz) : 2 photos, 0 cris
-[263] Uria aalge (Guillemot de troïl) : 2 photos, 0 cris
-[264] Acrocephalus palustris (Rousserolle verderolle) : 2 photos, 0 cris
-[265] Turdus torquatus (Merle à collier) : 2 photos, 0 cris
-[266] Nucifraga caryocatactes (Cassenoix moucheté) : 2 photos, 0 cris
-[267] Chroicocephalus genei (Goéland railleur) : 2 photos, 0 cris
-[268] Alopochen aegyptiaca (Oie d'egypte) : 2 photos, 0 cris
-[269] Phalacrocorax aristotelis (Cormoran huppé) : 2 photos, 0 cris
-[270] Falco columbarius (Faucon des pigeons) : 2 photos, 0 cris
-[271] Panurus biarmicus (Mésange à moustaches) : 2 photos, 0 cris
-[272] Limosa lapponica (Barge rousse) : 2 photos, 0 cris
-[273] Chlidonias niger (Guifette noire) : 2 photos, 0 cris
-[274] Aquila fasciata (Aigle de bonelli) : 2 photos, 0 cris
-[275] Emberiza hortulana (Bruant ortolan) : 2 photos, 0 cris
-[276] Ixobrychus minutus (Blongios nain) : 2 photos, 0 cris
-[277] Lanius excubitor (Pie-grièche grise) : 2 photos, 0 cris
-[278] Bucephala clangula (Garrot à oeil d'or) : 2 photos, 0 cris
-[279] Prunella collaris (Accenteur alpin) : 2 photos, 0 cris
-[280] Parus montanus (Mésange boréale) : 2 photos, 0 cris
-[281] Lanius meridionalis (Pie-grièche méridionale) : 2 photos, 0 cris
-[282] Tichodroma muraria (Grimpereau des murailles) : 2 photos, 0 cris
-[283] Hydrocoloeus minutus (Mouette pygmée) : 2 photos, 0 cris
-[284] Botaurus stellaris (Butor étoilé) : 2 photos, 0 cris
-[285] Lagopus muta (Lagopède alpin) : 2 photos, 0 cris
-[286] Mergus serrator (Harle huppé) : 2 photos, 0 cris
-[287] Carduelis citrinella (Venturon montagnard) : 2 photos, 0 cris
-[288] Gelochelidon nilotica (Sterne hansel) : 2 photos, 0 cris
-[289] Petronia petronia (Moineau soulcie) : 2 photos, 0 cris
-[290] Ardeola ralloides (Crabier chevelu) : 2 photos, 0 cris
-[291] Locustella luscinioides (Locustelle luscinioïde) : 2 photos, 0 cris
-[292] Hydroprogne caspia (Sterne caspienne) : 2 photos, 0 cris
-TERMINÉ : 291 oiseaux, photos 16.1 Mo, cris 0.0 Mo
+[247] Numenius phaeopus (Courlis corlieu) : 2 photos, 2 cris
+[248] Sternula albifrons (Sterne naine) : 2 photos, 2 cris
+[249] Emberiza cia (Bruant fou) : 2 photos, 2 cris
+[250] Tringa erythropus (Chevalier arlequin) : 2 photos, 2 cris
+[251] Tachymarptis melba (Martinet alpin) : 2 photos, 2 cris
+[252] Lanius senator (Pie-grièche rousse) : 2 photos, 2 cris
+[253] Certhia familiaris (Grimpereau des bois) : 2 photos, 2 cris
+[254] Pyrrhocorax graculus (Chocard des alpes) : 2 photos, 2 cris
+[255] Hieraaetus pennatus (Aigle botté) : 2 photos, 2 cris
+[256] Lyrurus tetrix (Coq des bouleaux) : 2 photos, 2 cris
+[257] Calidris alba (Bécasseau sanderling) : 2 photos, 2 cris
+[258] Elanus caeruleus (Elanion blanc) : 2 photos, 2 cris
+[259] Calidris minuta (Bécasseau minute) : 2 photos, 2 cris
+[260] Chlidonias hybrida (Guifette moustac) : 2 photos, 2 cris
+[261] Rissa tridactyla (Mouette tridactyle) : 2 photos, 2 cris
+[262] Remiz pendulinus (Mésange rémiz) : 2 photos, 2 cris
+[263] Uria aalge (Guillemot de troïl) : 2 photos, 2 cris
+[264] Acrocephalus palustris (Rousserolle verderolle) : 2 photos, 2 cris
+[265] Turdus torquatus (Merle à collier) : 2 photos, 2 cris
+[266] Nucifraga caryocatactes (Cassenoix moucheté) : 2 photos, 2 cris
+[267] Chroicocephalus genei (Goéland railleur) : 2 photos, 2 cris
+[268] Alopochen aegyptiaca (Oie d'egypte) : 2 photos, 2 cris
+[269] Phalacrocorax aristotelis (Cormoran huppé) : 2 photos, 2 cris
+[270] Falco columbarius (Faucon des pigeons) : 2 photos, 2 cris
+[271] Panurus biarmicus (Mésange à moustaches) : 2 photos, 2 cris
+[272] Limosa lapponica (Barge rousse) : 2 photos, 2 cris
+[273] Chlidonias niger (Guifette noire) : 2 photos, 2 cris
+[274] Aquila fasciata (Aigle de bonelli) : 2 photos, 2 cris
+[275] Emberiza hortulana (Bruant ortolan) : 2 photos, 2 cris
+[276] Ixobrychus minutus (Blongios nain) : 2 photos, 2 cris
+[277] Lanius excubitor (Pie-grièche grise) : 2 photos, 2 cris
+[278] Bucephala clangula (Garrot à oeil d'or) : 2 photos, 2 cris
+[279] Prunella collaris (Accenteur alpin) : 2 photos, 2 cris
+[280] Parus montanus (Mésange boréale) : 2 photos, 2 cris
+[281] Lanius meridionalis (Pie-grièche méridionale) : 2 photos, 2 cris
+[282] Tichodroma muraria (Grimpereau des murailles) : 2 photos, 2 cris
+[283] Hydrocoloeus minutus (Mouette pygmée) : 2 photos, 2 cris
+[284] Botaurus stellaris (Butor étoilé) : 2 photos, 2 cris
+[285] Lagopus muta (Lagopède alpin) : 2 photos, 2 cris
+[286] Mergus serrator (Harle huppé) : 2 photos, 2 cris
+[287] Carduelis citrinella (Venturon montagnard) : 2 photos, 2 cris
+[288] Gelochelidon nilotica (Sterne hansel) : 2 photos, 2 cris
+[289] Petronia petronia (Moineau soulcie) : 2 photos, 2 cris
+[290] Ardeola ralloides (Crabier chevelu) : 2 photos, 2 cris
+[291] Locustella luscinioides (Locustelle luscinioïde) : 2 photos, 2 cris
+[292] Hydroprogne caspia (Sterne caspienne) : 2 photos, 2 cris
+TERMINÉ : 289 oiseaux, photos 16.0 Mo, cris 18.2 Mo
