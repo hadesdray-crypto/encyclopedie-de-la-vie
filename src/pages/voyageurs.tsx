@@ -72,12 +72,17 @@ const lieu = (p: { lat: number; lon: number }) => `${Math.abs(p.lat).toFixed(4)}
 type Vue = { x: number; y: number; s: number; r: number };
 const DEPART: Vue = { x: 0, y: 0, s: 1, r: 0 };
 
-export function VoyageursPage({ integre = false, aMontrer }: { integre?: boolean; aMontrer?: number | null } = {}) {
+export function VoyageursPage({ integre = false, aMontrer, groupeInitial }: { integre?: boolean; aMontrer?: number | null; groupeInitial?: string | null } = {}) {
   const [vue, setVue] = useState<Vue>(DEPART);
   const [choisi, setChoisi] = useState<number | null>(null);
   const [satellite, setSatellite] = useState(false);
   const [vol, setVol] = useState(false);
-  const [filtres, setFiltres] = useState<Record<G, boolean>>({ marin: true, herbivore: true, oiseau: true, predateur: true, autre: true });
+  const [filtres, setFiltres] = useState<Record<G, boolean>>(() => {
+    const g = groupeInitial as G | null | undefined;
+    const tous = !g || !(g in GROUPES_VOYAGE);
+    const terre = g === "herbivore";
+    return { marin: tous || g === "marin", herbivore: tous || terre, oiseau: tous || g === "oiseau", predateur: tous || terre, autre: tous || terre };
+  });
   const [q, setQ] = useState("");
   const [cherche, setCherche] = useState(false);
   const boite = useRef<SVGSVGElement>(null);

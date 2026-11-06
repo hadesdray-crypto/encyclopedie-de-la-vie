@@ -31,6 +31,9 @@ const Mammiferes = lazy(() => import("@/pages/mammiferes").then((m) => ({ defaul
 const Fossiles = lazy(() => import("@/pages/fossiles").then((m) => ({ default: m.FossilesPage })));
 const Kratt = lazy(() => import("@/pages/kratt").then((m) => ({ default: m.KrattPage })));
 const Animaux = lazy(() => import("@/pages/animaux").then((m) => ({ default: m.AnimauxPage })));
+const Oiseaux = lazy(() => import("@/pages/oiseaux").then((m) => ({ default: m.OiseauxPage })));
+const Domestiques = lazy(() => import("@/pages/domestiques").then((m) => ({ default: m.DomestiquesPage })));
+const Migrations = lazy(() => import("@/pages/migrations").then((m) => ({ default: m.MigrationsPage })));
 const Voyageurs = lazy(() => import("@/pages/aventure-carte").then((m) => ({ default: m.AventureCartePage })));
 const Jouer = lazy(() => import("@/pages/jouer").then((m) => ({ default: m.JouerPage })));
 const Evolution = lazy(() => import("@/pages/evolution").then((m) => ({ default: m.EvolutionPage })));
@@ -79,6 +82,9 @@ const ROUTES: [string, Page][] = [
   ["/kratt", Kratt],
   ["/animaux", Animaux],
   ["/voyageurs", Voyageurs],
+  ["/oiseaux", Oiseaux],
+  ["/domestiques", Domestiques],
+  ["/migrations", Migrations],
 ];
 
 function Introuvable() {

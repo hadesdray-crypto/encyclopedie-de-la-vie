@@ -57,7 +57,7 @@ export function AventureCartePage({ params }: { params: URLSearchParams }) {
           </button>
         ))}
       </div>
-      {onglet === "pays" ? <OuViventIls onVoyage={(i) => { setSuivre(i); setOnglet("voyages"); window.scrollTo({ top: 0 }); }} /> : <div className="mt-2"><VoyageursPage integre aMontrer={suivre} /></div>}
+      {onglet === "pays" ? <OuViventIls onVoyage={(i) => { setSuivre(i); setOnglet("voyages"); window.scrollTo({ top: 0 }); }} /> : <div className="mt-2"><VoyageursPage integre aMontrer={suivre} groupeInitial={params.get("groupe")} /></div>}
     </main>
   );
 }

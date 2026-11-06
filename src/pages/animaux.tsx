@@ -8,7 +8,9 @@ import { IMAGES_EVO } from "@/data/arbre";
 
 const GROUPES: { id: string; titre: string; sous: string; vers?: string }[] = [
   { id: "mammiferes", titre: "Mammifères", sous: "Ils ont des poils et boivent le lait de leur mère.", vers: "/mammiferes" },
-  { id: "oiseaux", titre: "Oiseaux", sous: "Des plumes, un bec, et ils pondent des œufs." },
+  { id: "oiseaux", titre: "Oiseaux", sous: "Des plumes, un bec, et ils pondent des œufs.", vers: "/oiseaux" },
+  { id: "domestiques", titre: "Animaux domestiques", sous: "Chiens, chats, troupeaux et transhumances.", vers: "/domestiques" },
+  { id: "migrations", titre: "Les migrations", sous: "Dans les airs, sur terre et dans la mer.", vers: "/migrations" },
   { id: "reptiles", titre: "Reptiles", sous: "Lézards, serpents, tortues, crocodiles." },
   { id: "amphibiens", titre: "Amphibiens", sous: "Grenouilles, crapauds, salamandres." },
   { id: "nageoires-rayonnees", titre: "Poissons", sous: "La plupart des poissons, des sardines aux poissons-clowns." },
@@ -29,7 +31,7 @@ export function AnimauxPage({ id }: { id?: string }) {
     titre: g.titre,
     sous: g.sous,
     image: IMAGES_EVO[g.id] ? <img src={IMAGES_EVO[g.id].src} alt="" loading="lazy" /> : <span />,
-    badge: g.vers ? `${ESPECES.length} espèces` : "Bientôt",
+    badge: g.id === "mammiferes" ? `${ESPECES.length} espèces` : g.vers ? undefined : "Bientôt",
     eteinte: !g.vers,
   }));
   return (
