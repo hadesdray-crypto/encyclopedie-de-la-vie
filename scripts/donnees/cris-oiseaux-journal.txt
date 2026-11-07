@@ -1,0 +1,714 @@
+1500 espèces visées, budget 25 Mo, clé Xeno-canto : oui
+[1/1500] Strix aluco : 1 cri(s) ['CC0']
+[2/1500] Tyto alba : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[3/1500] Bubo bubo : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-SA 4.0']
+[4/1500] Bubo scandiacus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[5/1500] Athene noctua : 1 cri(s) ['CC0']
+[6/1500] Aquila chrysaetos : 1 cri(s) ['CC BY-SA 4.0']
+[8/1500] Haliaeetus leucocephalus : 1 cri(s) ['CC0']
+[11/1500] Falco tinnunculus : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[12/1500] Buteo buteo : 1 cri(s) ['CC BY 4.0']
+[13/1500] Gyps fulvus : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-NC-SA 4.0']
+[14/1500] Gypaetus barbatus : 1 cri(s) ['CC BY-SA 4.0']
+[15/1500] Milvus milvus : 2 cri(s) ['CC BY 4.0', 'CC0']
+[16/1500] Circus aeruginosus : 1 cri(s) ['CC BY 4.0']
+[17/1500] Accipiter gentilis : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-SA 4.0']
+[18/1500] Ciconia ciconia : 2 cri(s) ['CC BY-SA 4.0', 'CC BY 4.0']
+[19/1500] Ardea cinerea : 1 cri(s) ['CC BY 4.0']
+[20/1500] Egretta garzetta : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[21/1500] Phoenicopterus roseus : 2 cri(s) ['CC BY-SA 3.0', 'CC BY-NC-SA 4.0']
+[22/1500] Grus grus : 1 cri(s) ['CC0']
+[23/1500] Cygnus olor : 1 cri(s) ['CC BY 4.0']
+[25/1500] Anser anser : 1 cri(s) ['CC0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[27/1500] Anas platyrhynchos : 1 cri(s) ['CC0']
+[28/1500] Aythya fuligula : 1 cri(s) ['CC0']
+[29/1500] Tadorna tadorna : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[30/1500] Somateria mollissima : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-NC-SA 4.0']
+[31/1500] Fulica atra : 2 cri(s) ['CC0', 'CC BY 4.0']
+[32/1500] Gallinula chloropus : 1 cri(s) ['CC BY 4.0']
+[33/1500] Larus argentatus : 1 cri(s) ['CC0']
+[35/1500] Sterna hirundo : 2 cri(s) ['CC0', 'CC0']
+[36/1500] Sterna paradisaea : 2 cri(s) ['CC BY', 'CC BY-SA 4.0']
+[37/1500] Fratercula arctica : 2 cri(s) ['CC0', 'CC BY-SA 4.0']
+[38/1500] Alca torda : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-NC-SA 4.0']
+[39/1500] Morus bassanus : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-NC-SA 4.0']
+[41/1500] Pelecanus onocrotalus : 2 cri(s) ['CC BY-SA 4.0', 'CC BY 4.0']
+[42/1500] Aptenodytes forsteri : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[43/1500] Aptenodytes patagonicus : 1 cri(s) ['CC0']
+[44/1500] Pygoscelis adeliae : 2 cri(s) ['CC0', 'CC BY-NC-SA 4.0']
+[45/1500] Spheniscus demersus : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[46/1500] Diomedea exulans : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[47/1500] Fulmarus glacialis : 2 cri(s) ['CC0', 'CC BY 4.0']
+[48/1500] Calidris canutus : 1 cri(s) ['CC BY']
+[49/1500] Numenius arquata : 2 cri(s) ['CC BY 4.0', 'CC0']
+[50/1500] Haematopus ostralegus : 2 cri(s) ['CC BY', 'CC BY']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[51/1500] Vanellus vanellus : 2 cri(s) ['CC BY-SA 4.0', 'CC0']
+[52/1500] Scolopax rusticola : 1 cri(s) ['CC BY-SA 4.0']
+[54/1500] Columba livia : 2 cri(s) ['CC BY-SA 4.0', 'CC0']
+[55/1500] Streptopelia decaocto : 2 cri(s) ['CC0', 'CC BY 4.0']
+[56/1500] Streptopelia turtur : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[57/1500] Cuculus canorus : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-SA 4.0']
+[58/1500] Upupa epops : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[59/1500] Alcedo atthis : 1 cri(s) ['CC BY 4.0']
+[60/1500] Merops apiaster : 2 cri(s) ['CC0', 'CC0']
+[61/1500] Coracias garrulus : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[62/1500] Picus viridis : 1 cri(s) ['CC0']
+[64/1500] Dryocopus martius : 1 cri(s) ['CC BY 4.0']
+[65/1500] Apus apus : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[66/1500] Hirundo rustica : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[67/1500] Delichon urbicum : 2 cri(s) ['CC0', 'CC BY-SA 4.0']
+[68/1500] Riparia riparia : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[70/1500] Motacilla alba : 1 cri(s) ['CC BY-NC-SA 4.0']
+[72/1500] Erithacus rubecula : 1 cri(s) ['CC0']
+[73/1500] Luscinia megarhynchos : 2 cri(s) ['CC0', 'CC0']
+[74/1500] Phoenicurus ochruros : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[76/1500] Turdus philomelos : 2 cri(s) ['CC0', 'CC0']
+[77/1500] Turdus viscivorus : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[78/1500] Sylvia atricapilla : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[79/1500] Phylloscopus collybita : 2 cri(s) ['CC BY 4.0', 'CC0']
+[81/1500] Parus major : 1 cri(s) ['CC BY 4.0']
+[84/1500] Certhia brachydactyla : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[85/1500] Lanius collurio : 2 cri(s) ['CC BY 4.0', 'CC BY']
+[86/1500] Oriolus oriolus : 1 cri(s) ['CC BY 4.0']
+[87/1500] Garrulus glandarius : 1 cri(s) ['CC BY 4.0']
+[89/1500] Pyrrhocorax pyrrhocorax : 1 cri(s) ['CC0']
+[90/1500] Corvus corax : 1 cri(s) ['CC BY 4.0']
+[92/1500] Corvus frugilegus : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[93/1500] Sturnus vulgaris : 1 cri(s) ['CC0']
+[94/1500] Passer domesticus : 1 cri(s) ['CC0']
+[95/1500] Fringilla coelebs : 1 cri(s) ['CC BY-NC-SA 4.0']
+[96/1500] Carduelis carduelis : 1 cri(s) ['CC0']
+[97/1500] Chloris chloris : rien de net (135 candidats)
+[98/1500] Pyrrhula pyrrhula : rien de net (126 candidats)
+[99/1500] Coccothraustes coccothraustes : 1 cri(s) ['CC BY-NC-SA 4.0']
+[100/1500] Emberiza citrinella : 1 cri(s) ['CC BY 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[101/1500] Pavo cristatus : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-SA 4.0']
+[102/1500] Gallus gallus : 2 cri(s) ['CC0', 'CC BY 4.0']
+[103/1500] Phasianus colchicus : 1 cri(s) ['CC BY 4.0']
+[104/1500] Perdix perdix : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[105/1500] Tetrao urogallus : 2 cri(s) ['CC BY 4.0', 'CC BY']
+[106/1500] Meleagris gallopavo : 1 cri(s) ['CC0']
+[107/1500] Struthio camelus : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[108/1500] Dromaius novaehollandiae : 2 cri(s) ['CC BY-SA 3.0', 'CC BY-NC-SA 4.0']
+[109/1500] Casuarius casuarius : 1 cri(s) ['CC BY 4.0']
+[110/1500] Rhea americana : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[111/1500] Apteryx australis : 2 cri(s) ['CC BY-NC 4.0', 'CC BY-NC 4.0']
+[112/1500] Ara macao : 2 cri(s) ['CC BY 4.0', 'CC BY']
+[113/1500] Ara ararauna : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[114/1500] Psittacus erithacus : 2 cri(s) ['CC BY 3.0', 'CC BY-NC-SA 4.0']
+[115/1500] Melopsittacus undulatus : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[116/1500] Cacatua galerita : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[117/1500] Ramphastos toco : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[118/1500] Trochilus polytmus : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[119/1500] Archilochus colubris : rien de net (115 candidats)
+[120/1500] Menura novaehollandiae : 2 cri(s) ['CC BY 4.0', 'CC BY']
+[121/1500] Dacelo novaeguineae : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[122/1500] Paradisaea apoda : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[123/1500] Chionis albus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[124/1500] Harpia harpyja : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[125/1500] Sagittarius serpentarius : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[126/1500] Vultur gryphus : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[127/1500] Cathartes aura : 1 cri(s) ['CC BY-NC-SA 4.0']
+[128/1500] Larus fuscus : 2 cri(s) ['CC0', 'CC BY 4.0']
+[129/1500] Prunella modularis : 1 cri(s) ['CC BY 4.0']
+[131/1500] Aegithalos caudatus : 1 cri(s) ['CC0']
+[132/1500] Milvus migrans : 2 cri(s) ['CC0', 'CC BY 4.0']
+[133/1500] Linaria cannabina : 2 cri(s) ['CC0', 'CC BY 4.0']
+[134/1500] Ardea alba : 2 cri(s) ['CC0', 'CC BY 4.0']
+[135/1500] Coloeus monedula : 1 cri(s) ['CC0']
+[136/1500] Podiceps cristatus : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[137/1500] Serinus serinus : 2 cri(s) ['CC0', 'CC BY-NC-SA 4.0']
+[138/1500] Larus michahellis : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[139/1500] Poecile palustris : rien de net (119 candidats)
+[140/1500] Sylvia communis : 1 cri(s) ['CC BY 4.0']
+[141/1500] Saxicola rubicola : 2 cri(s) ['CC BY 4.0', 'CC0']
+[142/1500] Emberiza cirlus : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[143/1500] Cettia cetti : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[144/1500] Accipiter nisus : 2 cri(s) ['CC0', 'CC BY 4.0']
+[145/1500] Emberiza schoeniclus : 1 cri(s) ['CC BY-SA 4.0']
+[146/1500] Lullula arborea : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[147/1500] Regulus ignicapilla : rien de net (132 candidats)
+[148/1500] Periparus ater : 1 cri(s) ['CC0']
+[149/1500] Anthus pratensis : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[150/1500] Tachybaptus ruficollis : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[151/1500] Acrocephalus scirpaceus : 2 cri(s) ['CC BY 4.0', 'CC0']
+[152/1500] Lophophanes cristatus : 1 cri(s) ['CC BY 4.0']
+[153/1500] Anas crecca : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[154/1500] Emberiza calandra : 2 cri(s) ['CC0', 'CC BY 4.0']
+[155/1500] Motacilla cinerea : rien de net (100 candidats)
+[156/1500] Spinus spinus : 1 cri(s) ['CC BY 4.0']
+[157/1500] Motacilla flava : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[158/1500] Hippolais polyglotta : 2 cri(s) ['CC BY 4.0', 'CC BY']
+[159/1500] Phoenicurus phoenicurus : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[160/1500] Phylloscopus trochilus : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[161/1500] Sylvia melanocephala : 1 cri(s) ['CC BY-NC-SA 4.0']
+[162/1500] Anthus trivialis : 2 cri(s) ['CC0', 'CC BY 4.0']
+[163/1500] Aythya ferina : 2 cri(s) ['CC BY 4.0', 'CC0']
+[164/1500] Actitis hypoleucos : 1 cri(s) ['CC BY-SA 4.0']
+[165/1500] Ichthyaetus melanocephalus : 2 cri(s) ['CC BY 4.0', 'CC BY-SA 4.0']
+[166/1500] Circus cyaneus : 2 cri(s) ['CC0', 'CC BY 4.0']
+[168/1500] Spatula clypeata : 2 cri(s) ['CC0', 'CC BY-NC-SA 4.0']
+[169/1500] Cisticola juncidis : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[170/1500] Gallinago gallinago : 2 cri(s) ['CC0', 'CC BY-NC-SA 4.0']
+[171/1500] Circaetus gallicus : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-SA 4.0']
+[172/1500] Sylvia borin : 2 cri(s) ['CC0', 'CC BY 4.0']
+[173/1500] Bubulcus ibis : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[174/1500] Fringilla montifringilla : 1 cri(s) ['CC BY 4.0']
+[175/1500] Mareca strepera : 1 cri(s) ['CC BY-SA 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[176/1500] Oenanthe oenanthe : 2 cri(s) ['CC0', 'CC BY 4.0']
+[177/1500] Tringa ochropus : 1 cri(s) ['CC BY 4.0']
+[178/1500] Himantopus himantopus : 1 cri(s) ['CC BY 4.0']
+[179/1500] Pernis apivorus : 1 cri(s) ['CC0']
+[181/1500] Passer montanus : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[182/1500] Platalea leucorodia : 1 cri(s) ['CC0']
+[184/1500] Acrocephalus schoenobaenus : 1 cri(s) ['CC BY 4.0']
+[185/1500] Tringa totanus : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-SA 4.0']
+[186/1500] Circus pygargus : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[187/1500] Phylloscopus bonelli : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[188/1500] Alectoris rufa : 1 cri(s) ['CC BY 4.0']
+[189/1500] Rallus aquaticus : 2 cri(s) ['CC0', 'CC BY-SA 4.0']
+[190/1500] Calidris alpina : 1 cri(s) ['CC BY-SA 4.0']
+[191/1500] Ficedula hypoleuca : 2 cri(s) ['CC0', 'CC BY-SA 4.0']
+[192/1500] Falco subbuteo : 2 cri(s) ['CC BY-SA 4.0', 'CC0']
+[193/1500] Recurvirostra avosetta : 2 cri(s) ['CC BY 4.0', 'CC0']
+[194/1500] Dryobates minor : 2 cri(s) ['CC0', 'CC BY 4.0']
+[195/1500] Ptyonoprogne rupestris : 2 cri(s) ['CC BY-SA 4.0', 'CC BY 4.0']
+[196/1500] Coturnix coturnix : 2 cri(s) ['CC0', 'CC BY 4.0']
+[197/1500] Muscicapa striata : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[199/1500] Anthus spinoletta : 2 cri(s) ['CC BY', 'CC BY']
+[200/1500] Luscinia svecica : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[201/1500] Saxicola rubetra : 2 cri(s) ['CC BY-SA 4.0', 'CC BY 4.0']
+[202/1500] Mareca penelope : 1 cri(s) ['CC BY']
+[203/1500] Dendrocoptes medius : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC 4.0']
+[204/1500] Tringa nebularia : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[205/1500] Burhinus oedicnemus : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[206/1500] Charadrius hiaticula : 2 cri(s) ['CC BY-SA 3.0', 'CC BY-SA 4.0']
+[207/1500] Cinclus cinclus : 2 cri(s) ['CC BY 4.0', 'CC BY-SA 4.0']
+[208/1500] Thalasseus sandvicensis : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[209/1500] Ardea purpurea : 2 cri(s) ['CC BY 4.0', 'CC BY']
+[210/1500] Larus marinus : 2 cri(s) ['CC0', 'CC BY 4.0']
+[211/1500] Charadrius dubius : 1 cri(s) ['CC0']
+[212/1500] Netta rufina : 1 cri(s) ['CC BY-NC-SA 4.0']
+[213/1500] Galerida cristata : 2 cri(s) ['CC BY', 'CC BY']
+[214/1500] Anas acuta : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[215/1500] Pluvialis apricaria : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[216/1500] Tetrax tetrax : 1 cri(s) ['CC BY-NC-SA 4.0']
+[217/1500] Sylvia undata : 2 cri(s) ['CC0', 'CC0']
+[218/1500] Podiceps nigricollis : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[219/1500] Pluvialis squatarola : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[220/1500] Nycticorax nycticorax : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[221/1500] Jynx torquilla : 2 cri(s) ['CC BY-SA 4.0', 'CC BY 4.0']
+[222/1500] Limosa limosa : 2 cri(s) ['CC BY-SA 3.0', 'CC BY-SA 3.0']
+[223/1500] Loxia curvirostra : 2 cri(s) ['CC0', 'CC BY 4.0']
+[224/1500] Arenaria interpres : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[225/1500] Charadrius alexandrinus : 1 cri(s) ['CC BY-NC-SA 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[226/1500] Curruca melanocephala : 2 cri(s) ['CC BY-SA 4.0', 'CC BY 4.0']
+[227/1500] Ciconia nigra : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[228/1500] Calidris pugnax : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[229/1500] Spatula querquedula : 1 cri(s) ['CC BY-SA 4.0']
+[230/1500] Locustella naevia : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[231/1500] Tringa glareola : 1 cri(s) ['CC BY-NC-SA 4.0']
+[232/1500] Anthus campestris : 2 cri(s) ['CC0', 'CC BY-NC-SA 4.0']
+[233/1500] Asio otus : 2 cri(s) ['CC BY-SA 4.0', 'CC BY 4.0']
+[234/1500] Caprimulgus europaeus : 1 cri(s) ['CC0']
+[236/1500] Plegadis falcinellus : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[237/1500] Sylvia curruca : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[239/1500] Acrocephalus arundinaceus : 2 cri(s) ['CC0', 'CC BY 4.0']
+[240/1500] Branta bernicla : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[241/1500] Saxicola torquatus : 2 cri(s) ['CC0', 'CC BY-SA 4.0']
+[242/1500] Poecile montanus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[243/1500] Otus scops : 2 cri(s) ['CC0', 'CC BY 4.0']
+[244/1500] Numenius phaeopus : 2 cri(s) ['CC BY-SA 4.0', 'CC0']
+[245/1500] Sternula albifrons : 1 cri(s) ['CC BY-SA 4.0']
+[246/1500] Emberiza cia : 2 cri(s) ['CC BY-SA 4.0', 'CC0']
+[247/1500] Tringa erythropus : 2 cri(s) ['CC BY 4.0', 'CC BY']
+[248/1500] Tachymarptis melba : 1 cri(s) ['CC BY-NC-SA 4.0']
+[249/1500] Lanius senator : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[250/1500] Certhia familiaris : rien de net (140 candidats)
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[251/1500] Pyrrhocorax graculus : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[252/1500] Hieraaetus pennatus : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[253/1500] Lyrurus tetrix : 2 cri(s) ['CC0', 'CC BY-SA 4.0']
+[254/1500] Calidris alba : 1 cri(s) ['CC BY 4.0']
+[255/1500] Elanus caeruleus : 2 cri(s) ['CC0', 'CC BY']
+[256/1500] Calidris minuta : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[257/1500] Chlidonias hybrida : 2 cri(s) ['CC BY', 'CC BY-NC-SA 4.0']
+[258/1500] Rissa tridactyla : 2 cri(s) ['CC BY-SA 4.0', 'CC0']
+[259/1500] Remiz pendulinus : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[260/1500] Uria aalge : 1 cri(s) ['CC BY-NC-SA 4.0']
+[261/1500] Acrocephalus palustris : 2 cri(s) ['CC BY-SA 4.0', 'CC BY 4.0']
+[262/1500] Turdus torquatus : 2 cri(s) ['CC BY', 'CC BY-SA 4.0']
+[263/1500] Nucifraga caryocatactes : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[264/1500] Chroicocephalus genei : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[265/1500] Alopochen aegyptiaca : 1 cri(s) ['CC0']
+[266/1500] Phalacrocorax aristotelis : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[267/1500] Falco columbarius : rien de net (152 candidats)
+[268/1500] Panurus biarmicus : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[269/1500] Limosa lapponica : 1 cri(s) ['CC0']
+[270/1500] Chlidonias niger : 2 cri(s) ['CC0', 'CC BY 4.0']
+[271/1500] Aquila fasciata : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 3.0']
+[272/1500] Emberiza hortulana : 2 cri(s) ['CC BY-SA 4.0', 'CC0']
+[273/1500] Ixobrychus minutus : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[274/1500] Lanius excubitor : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[276/1500] Prunella collaris : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[278/1500] Lanius meridionalis : 2 cri(s) ['CC0', 'CC BY 4.0']
+[279/1500] Tichodroma muraria : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[280/1500] Hydrocoloeus minutus : 2 cri(s) ['CC BY', 'CC BY-NC-SA 4.0']
+[281/1500] Botaurus stellaris : 1 cri(s) ['CC BY-NC-SA 4.0']
+[282/1500] Lagopus muta : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-NC-SA 4.0']
+[284/1500] Carduelis citrinella : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-SA 4.0']
+[285/1500] Gelochelidon nilotica : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-NC-SA 4.0']
+[286/1500] Petronia petronia : 2 cri(s) ['CC0', 'CC0']
+[287/1500] Ardeola ralloides : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[288/1500] Locustella luscinioides : 2 cri(s) ['CC BY', 'CC BY 3.0']
+[289/1500] Hydroprogne caspia : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[290/1500] Sylvia cantillans : 1 cri(s) ['CC BY-SA 4.0']
+[291/1500] Phylloscopus sibillatrix : 1 cri(s) ['CC BY 4.0']
+[292/1500] Alectoris graeca : 2 cri(s) ['CC BY 4.0', 'CC BY-NC-SA 4.0']
+[293/1500] Calidris ferruginea : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[294/1500] Porphyrio porphyrio : 1 cri(s) ['CC BY 4.0']
+[295/1500] Corvus cornix : 2 cri(s) ['CC BY', 'CC BY-SA 4.0']
+[296/1500] Sylvia hortensis : 2 cri(s) ['CC BY 4.0', 'CC BY 4.0']
+[297/1500] Anthus petrosus : 2 cri(s) ['CC BY-SA 4.0', 'CC BY-NC-SA 4.0']
+[298/1500] Monticola solitarius : 2 cri(s) ['CC BY-SA 4.0', 'CC BY 4.0']
+[299/1500] Melanitta nigra : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+[300/1500] Falco naumanni : 2 cri(s) ['CC BY-NC-SA 4.0', 'CC BY-NC-SA 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[301/1500] Neophron percnopterus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[302/1500] Acrocephalus melanopogon : 1 cri(s) ['CC BY 4.0']
+[303/1500] Glaucidium passerinum : 1 cri(s) ['CC BY-NC-SA 4.0']
+[304/1500] Monticola saxatilis : 1 cri(s) ['CC BY-NC-SA 4.0']
+[305/1500] Picus canus : 1 cri(s) ['CC BY 4.0']
+[306/1500] Clamator glandarius : 1 cri(s) ['CC BY 4.0']
+[307/1500] Aegolius funereus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[308/1500] Acanthis flammea : 1 cri(s) ['CC BY-SA 4.0']
+[309/1500] Lymnocryptes minimus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[310/1500] Cygnus atratus : 1 cri(s) ['CC BY 4.0']
+[311/1500] Asio flammeus : 1 cri(s) ['CC0']
+[312/1500] Montifringilla nivalis : 1 cri(s) ['CC BY 4.0']
+[313/1500] Apus pallidus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[314/1500] Gavia stellata : 1 cri(s) ['CC BY-SA 4.0']
+[315/1500] Calonectris diomedea : 1 cri(s) ['CC0']
+[316/1500] Aegypius monachus : rien de net (17 candidats)
+[317/1500] Tetrastes bonasia : 1 cri(s) ['CC BY 4.0']
+[318/1500] Euodice malabarica : 1 cri(s) ['CC BY-NC-SA 4.0']
+[319/1500] Gavia immer : 1 cri(s) ['CC0']
+[320/1500] Puffinus yelkouan : 1 cri(s) ['CC BY-NC-SA 4.0']
+[321/1500] Pterocles alchata : 1 cri(s) ['CC BY-NC-SA 4.0']
+[322/1500] Stercorarius skua : 1 cri(s) ['CC BY-NC-SA 4.0']
+[323/1500] Branta leucopsis : 1 cri(s) ['CC BY-SA 4.0']
+[324/1500] Mergellus albellus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[325/1500] Larus cachinnans : 1 cri(s) ['CC BY-NC-SA 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[326/1500] Passer italiae : 1 cri(s) ['CC BY-SA 4.0']
+[327/1500] Picus sharpei : 1 cri(s) ['CC BY-NC-SA 4.0']
+[328/1500] Calandrella brachydactyla : 1 cri(s) ['CC0']
+[329/1500] Acrocephalus paludicola : 1 cri(s) ['CC0']
+[330/1500] Falco vespertinus : 1 cri(s) ['CC BY 4.0']
+[331/1500] Melanitta fusca : 1 cri(s) ['CC BY-NC-SA 4.0']
+[332/1500] Anser albifrons : 1 cri(s) ['CC BY-SA 4.0']
+[333/1500] Podiceps auritus : 1 cri(s) ['CC BY 4.0']
+[334/1500] Gavia arctica : 1 cri(s) ['CC BY-NC-SA 4.0']
+[335/1500] Aix galericulata : 1 cri(s) ['CC BY-NC-SA 4.0']
+[336/1500] Hippolais icterina : 1 cri(s) ['CC0']
+[337/1500] Crex crex : 1 cri(s) ['CC BY-SA 4.0']
+[338/1500] Aythya marila : 1 cri(s) ['CC BY 4.0']
+[339/1500] Puffinus mauretanicus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[340/1500] Tadorna ferruginea : 1 cri(s) ['CC BY-SA 4.0']
+[341/1500] Aythya nyroca : 1 cri(s) ['CC BY-NC-SA 4.0']
+[342/1500] Threskiornis aethiopicus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[343/1500] Porzana porzana : 1 cri(s) ['CC0']
+[344/1500] Calidris temminckii : 1 cri(s) ['CC BY-NC-SA 4.0']
+[345/1500] Cecropis daurica : 1 cri(s) ['CC BY-SA 4.0']
+[346/1500] Oxyura jamaicensis : 1 cri(s) ['CC BY-NC-SA 4.0']
+[347/1500] Hydrobates pelagicus : 1 cri(s) ['CC BY-SA 4.0']
+[348/1500] Phylloscopus inornatus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[349/1500] Calidris maritima : 1 cri(s) ['CC BY-SA 4.0']
+[350/1500] Stercorarius parasiticus : 1 cri(s) ['CC BY-SA 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[351/1500] Cygnus columbianus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[352/1500] Glareola pratincola : 1 cri(s) ['CC BY-NC-SA 4.0']
+[353/1500] Aquila clanga : 1 cri(s) ['CC BY 4.0']
+[354/1500] Curruca iberiae : 1 cri(s) ['CC BY 4.0']
+[355/1500] Plectrophenax nivalis : 1 cri(s) ['CC BY 4.0']
+[356/1500] Puffinus puffinus : 1 cri(s) ['CC BY-SA 4.0']
+[357/1500] Sturnus unicolor : 1 cri(s) ['CC BY']
+[358/1500] Leiothrix lutea : 1 cri(s) ['CC0']
+[359/1500] Sitta whiteheadi : 1 cri(s) ['CC BY-SA 4.0']
+[360/1500] Melanocorypha calandra : 1 cri(s) ['CC BY-SA 4.0']
+[361/1500] Charadrius morinellus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[362/1500] Sylvia conspicillata : 1 cri(s) ['CC BY-NC-SA 4.0']
+[363/1500] Oenanthe hispanica : 1 cri(s) ['CC BY 4.0']
+[364/1500] Podiceps grisegena : 1 cri(s) ['CC BY 4.0']
+[365/1500] Falco eleonorae : 1 cri(s) ['CC BY-NC-SA 4.0']
+[366/1500] Tringa stagnatilis : 1 cri(s) ['CC BY 4.0']
+[367/1500] Anser indicus : 1 cri(s) ['CC BY-SA 4.0']
+[368/1500] Ficedula albicollis : 1 cri(s) ['CC BY 4.0']
+[369/1500] Dendrocopos leucotos : 1 cri(s) ['CC BY 4.0']
+[370/1500] Carduelis corsicana : 1 cri(s) ['CC BY-NC-SA 4.0']
+[371/1500] Clangula hyemalis : 1 cri(s) ['CC BY 4.0']
+[372/1500] Galerida theklae : 1 cri(s) ['CC0']
+[373/1500] Syrmaticus reevesii : 1 cri(s) ['CC BY-NC-SA 4.0']
+[374/1500] Phalaropus fulicarius : 1 cri(s) ['CC BY-NC-SA 4.0']
+[375/1500] Ichthyaetus audouinii : 1 cri(s) ['CC BY-NC-SA 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[376/1500] Chlidonias leucopterus : 1 cri(s) ['CC BY 4.0']
+[377/1500] Anthus richardi : 1 cri(s) ['CC BY 4.0']
+[378/1500] Puffinus griseus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[379/1500] Sylvia sarda : 1 cri(s) ['CC BY-SA 4.0']
+[380/1500] Bombycilla garrulus : 1 cri(s) ['CC BY 4.0']
+[381/1500] Anser fabalis : 1 cri(s) ['CC BY 4.0']
+[382/1500] Calcarius lapponicus : 1 cri(s) ['CC BY 4.0']
+[383/1500] Stercorarius pomarinus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[384/1500] Anthus cervinus : 1 cri(s) ['CC BY']
+[385/1500] Phalaropus lobatus : 1 cri(s) ['CC BY-SA 4.0']
+[386/1500] Lanius minor : 1 cri(s) ['CC BY-NC-SA 4.0']
+[387/1500] Eremophila alpestris : 1 cri(s) ['CC BY 4.0']
+[388/1500] Aix sponsa : 1 cri(s) ['CC0']
+[389/1500] Phoenicopterus ruber : 1 cri(s) ['CC BY-SA 4.0']
+[390/1500] Xema sabini : 1 cri(s) ['CC BY-NC-SA 4.0']
+[391/1500] Puffinus gravis : 1 cri(s) ['CC BY-NC-SA 4.0']
+[392/1500] Circus macrourus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[393/1500] Porzana parva : 1 cri(s) ['CC BY 4.0']
+[394/1500] Buteo lagopus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[395/1500] Pastor roseus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[396/1500] Cairina moschata : 1 cri(s) ['CC BY-NC-SA 4.0']
+[397/1500] Anser brachyrhynchus : 1 cri(s) ['CC BY 4.0']
+[398/1500] Curruca subalpina : 1 cri(s) ['CC0']
+[399/1500] Calidris falcinellus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[400/1500] Calidris melanotos : 1 cri(s) ['CC BY 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[401/1500] Oceanodroma leucorhoa : 1 cri(s) ['CC BY-SA 4.0']
+[402/1500] Colinus virginianus : 1 cri(s) ['CC0']
+[403/1500] Ficedula parva : 1 cri(s) ['CC BY 4.0']
+[404/1500] Larus hyperboreus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[405/1500] Larus glaucoides : 1 cri(s) ['CC BY-NC-SA 4.0']
+[406/1500] Anser cygnoides : 1 cri(s) ['CC BY 4.0']
+[407/1500] Emberiza pusilla : 1 cri(s) ['CC BY-NC-SA 4.0']
+[408/1500] Phylloscopus proregulus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[409/1500] Aythya collaris : 1 cri(s) ['CC BY 4.0']
+[410/1500] Carpodacus erythrinus : 1 cri(s) ['CC0']
+[411/1500] Picoides tridactylus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[412/1500] Porzana pusilla : 1 cri(s) ['CC BY 4.0']
+[413/1500] Buteo rufinus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[414/1500] Linaria flavirostris : 1 cri(s) ['CC BY-SA 4.0']
+[415/1500] Sterna dougallii : 1 cri(s) ['CC BY-NC-SA 4.0']
+[416/1500] Larus delawarensis : 1 cri(s) ['CC BY 4.0']
+[417/1500] Anser serrirostris : 1 cri(s) ['CC BY-NC-SA 4.0']
+[418/1500] Onychoprion fuscatus : 1 cri(s) ['CC BY 4.0']
+[419/1500] Stercorarius longicaudus : 1 cri(s) ['CC BY-SA 4.0']
+/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/PIL/TiffImagePlugin.py:982: UserWarning: Truncated File Read
+  warnings.warn(str(msg))
+[420/1500] Xenus cinereus : 1 cri(s) ['CC BY-SA 4.0']
+[421/1500] Alle alle : 1 cri(s) ['CC BY-SA 4.0']
+[422/1500] Lagopus lagopus : 1 cri(s) ['CC BY-SA 4.0']
+[423/1500] Phylloscopus ibericus : 1 cri(s) ['CC0']
+[424/1500] Gallinago media : 1 cri(s) ['CC BY-NC-SA 4.0']
+[425/1500] Vanellus gregarius : 1 cri(s) ['CC BY-NC-SA 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[426/1500] Phoeniconaias minor : 1 cri(s) ['CC BY-NC-SA 4.0']
+[427/1500] Sylvia subalpina : rien de net (0 candidats)
+[428/1500] Calidris subruficollis : 1 cri(s) ['CC BY-NC-SA 4.0']
+[429/1500] Aythya affinis : 1 cri(s) ['CC BY-NC-SA 4.0']
+[430/1500] Aquila pomarina : 1 cri(s) ['CC BY 4.0']
+[431/1500] Pelecanus rufescens : rien de net (5 candidats)
+[432/1500] Microcarbo pygmaeus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[433/1500] Nymphicus hollandicus : 1 cri(s) ['CC BY 4.0']
+[434/1500] Oenanthe deserti : 1 cri(s) ['CC BY-NC-SA 4.0']
+[435/1500] Myiopsitta monachus : 1 cri(s) ['CC BY-SA 4.0']
+[436/1500] Oenanthe pleschanka : 1 cri(s) ['CC BY-NC-SA 4.0']
+[437/1500] Anas carolinensis : 1 cri(s) ['CC BY-NC-SA 3.0']
+[438/1500] Anthus hodgsoni : 1 cri(s) ['CC BY-SA 4.0']
+[439/1500] Emberiza melanocephala : 1 cri(s) ['CC BY-SA 4.0']
+[440/1500] Aquila heliaca : 1 cri(s) ['CC BY-NC-SA 4.0']
+[441/1500] Muscicapa tyrrhenica : 1 cri(s) ['CC BY-SA 4.0']
+[442/1500] Callonetta leucophrys : 1 cri(s) ['CC BY 4.0']
+[443/1500] Phoenicopterus chilensis : 1 cri(s) ['CC BY-NC-SA 4.0']
+[444/1500] Sylvia nisoria : 1 cri(s) ['CC BY 4.0']
+[445/1500] Phylloscopus humei : 1 cri(s) ['CC BY']
+[446/1500] Oxyura leucocephala : 1 cri(s) ['CC BY-NC-SA 4.0']
+[447/1500] Emberiza leucocephalos : 1 cri(s) ['CC BY 4.0']
+[448/1500] Somateria spectabilis : 1 cri(s) ['CC BY-NC-SA 4.0']
+[449/1500] Oenanthe isabellina : 1 cri(s) ['CC BY-NC-SA 4.0']
+[450/1500] Branta ruficollis : 1 cri(s) ['CC0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+[451/1500] Anas bahamensis : 1 cri(s) ['CC BY-NC-SA 4.0']
+[452/1500] Phylloscopus fuscatus : 1 cri(s) ['CC0']
+[453/1500] Tarsiger cyanurus : 1 cri(s) ['CC BY 4.0']
+[454/1500] Falco biarmicus : 1 cri(s) ['CC BY-NC-SA 4.0']
+[455/1500] Motacilla citreola : 1 cri(s) ['CC0']
+[456/1500] Marmaronetta angustirostris : 1 cri(s) ['CC BY-NC-SA 4.0']
+[457/1500] Passer hispaniolensis : 1 cri(s) ['CC BY-SA 4.0']
+[458/1500] Glareola nordmanni : 1 cri(s) ['CC BY-NC-SA 4.0']
+[459/1500] Thalasseus elegans : 1 cri(s) ['CC0']
+[460/1500] Cepphus grylle : 1 cri(s) ['CC BY-SA 4.0']
+[461/1500] Puffinus baroli : rien de net (70 candidats)
+[462/1500] Callipepla californica : 1 cri(s) ['CC0']
+[463/1500] Otis tarda : 1 cri(s) ['CC BY-NC-SA 4.0']
+[464/1500] Tringa flavipes : 1 cri(s) ['CC BY-SA']
+[465/1500] Acridotheres tristis : 1 cri(s) ['CC BY-SA 4.0']
+[466/1500] Egretta gularis : 1 cri(s) ['CC BY-NC-SA 4.0']
+[467/1500] Emberiza rustica : 1 cri(s) ['CC BY-NC-SA 4.0']
+[468/1500] Oceanites oceanicus : 1 cri(s) ['CC0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Acrocephalus%20agricola%22%20q%3AA%2 The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Acrocephalus%20agricola%22%20q%3AB%2 The read operation timed out
+[469/1500] Acrocephalus agricola : 1 cri(s) ['CC BY 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Puffinus%20assimilis%22%20q%3AA%20le The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Puffinus%20assimilis%22%20q%3AB%20le The read operation timed out
+[470/1500] Puffinus assimilis : 1 cri(s) ['CC BY-NC-SA 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Iduna%20caligata%22%20q%3AA%20len_gt The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Iduna%20caligata%22%20q%3AB%20len_gt The read operation timed out
+[471/1500] Iduna caligata : 1 cri(s) ['CC BY-SA 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Anser%20erythropus%22%20q%3AA%20len_ The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Anser%20erythropus%22%20q%3AB%20len_ The read operation timed out
+[472/1500] Anser erythropus : 1 cri(s) ['CC BY-NC-SA 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Bulweria%20bulwerii%22%20q%3AA%20len The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Bulweria%20bulwerii%22%20q%3AB%20len The read operation timed out
+[473/1500] Bulweria bulwerii : 1 cri(s) ['CC BY-NC-SA 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Oceanodroma%20castro%22%20q%3AA%20le The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Oceanodroma%20castro%22%20q%3AB%20le The read operation timed out
+[474/1500] Oceanodroma castro : 1 cri(s) ['CC BY-NC-SA 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Pluvialis%20dominica%22%20q%3AA%20le The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Pluvialis%20dominica%22%20q%3AB%20le The read operation timed out
+[475/1500] Pluvialis dominica : 1 cri(s) ['CC BY 4.0']
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmwuk1x.qwahi2dq1wgexmchoegxlcewaf.jx.internal.cloudapp.net>) not allowed
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Acrocephalus%20dumetorum%22%20q%3AA% The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Acrocephalus%20dumetorum%22%20q%3AB% The read operation timed out
+[476/1500] Acrocephalus dumetorum : 1 cri(s) ['CC BY 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Phaethon%20aethereus%22%20q%3AA%20le The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Phaethon%20aethereus%22%20q%3AB%20le The read operation timed out
+[477/1500] Phaethon aethereus : 1 cri(s) ['CC BY-NC-SA 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Pterodroma%20feae%22%20q%3AA%20len_g The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Pterodroma%20feae%22%20q%3AB%20len_g The read operation timed out
+[478/1500] Pterodroma feae : rien de net (3 candidats)
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Bucanetes%20githagineus%22%20q%3AA%2 The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Bucanetes%20githagineus%22%20q%3AB%2 The read operation timed out
+[479/1500] Bucanetes githagineus : 1 cri(s) ['CC BY']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Pelagodroma%20marina%22%20q%3AA%20le The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Pelagodroma%20marina%22%20q%3AB%20le The read operation timed out
+[480/1500] Pelagodroma marina : 1 cri(s) ['CC BY-NC-SA 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Pelecanus%20crispus%22%20q%3AA%20len The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Pelecanus%20crispus%22%20q%3AB%20len The read operation timed out
+[481/1500] Pelecanus crispus : rien de net (1 candidats)
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Sylvia%20ruppeli%22%20q%3AA%20len_gt The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Sylvia%20ruppeli%22%20q%3AB%20len_gt The read operation timed out
+[482/1500] Sylvia ruppeli : 1 cri(s) ['CC BY 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Thalasseus%20bengalensis%22%20q%3AA% The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Thalasseus%20bengalensis%22%20q%3AB% The read operation timed out
+[483/1500] Thalasseus bengalensis : 1 cri(s) ['CC BY-NC-SA 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Streptopelia%20roseogrisea%22%20q%3A The read operation timed out
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Streptopelia%20roseogrisea%22%20q%3A The read operation timed out
+[484/1500] Streptopelia roseogrisea : 1 cri(s) ['CC BY 4.0']
+   réseau : https://xeno-canto.org/api/3/recordings?query=sp%3A%22Chrysolophus%20pictus%22%20q%3AA%20l The read operation timed out
