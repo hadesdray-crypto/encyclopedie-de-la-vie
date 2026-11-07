@@ -3514,5 +3514,3048 @@
 "fiche_app": null,
 "verifie": false,
 "notes_verif": "Ajoutée à la demande de l'utilisateur ; tracé approximatif, deux sources trouvées seulement."
+},
+{
+"id": "libellule-globe-skimmer",
+"type": "route",
+"categorie": "air",
+"nom": "Libellule Globe Skimmer (Inde – Afrique de l'Est)",
+"latin": "Pantala flavescens",
+"points": [
+[
+22.2,
+69.6
+],
+[
+8.0,
+72.0
+],
+[
+4.2,
+73.5
+],
+[
+2.0,
+60.0
+],
+[
+3.0,
+46.0
+],
+[
+-1.0,
+38.0
+]
+],
+"etapes": [
+{
+"nom": "Ouest de l'Inde (Gujarat)",
+"lat": 22.2,
+"lon": 69.6,
+"texte": "Les libellules y naissent dans les mares laissées par la mousson, puis partent en automne."
+},
+{
+"nom": "Maldives",
+"lat": 4.2,
+"lon": 73.5,
+"texte": "Elles passent par ces îles, surtout d'octobre à décembre, au milieu de l'océan."
+},
+{
+"nom": "Océan Indien",
+"lat": 2.0,
+"lon": 60.0,
+"texte": "Elles planent des jours entiers au-dessus de la mer en profitant des vents."
+},
+{
+"nom": "Somalie / Afrique de l'Est",
+"lat": 3.0,
+"lon": 46.0,
+"texte": "Les calculs de vent les font arriver surtout en Somalie et à Oman."
+},
+{
+"nom": "Kenya (intérieur)",
+"lat": -1.0,
+"lon": 38.0,
+"texte": "Elles pourraient pondre là, dans les pluies, avant que leurs descendantes repartent."
+}
+],
+"distance_km": null,
+"periode": "automne (vers l'Afrique, pic aux Maldives d'octobre à décembre) ; printemps (retour supposé, juin–juillet)",
+"pourquoi": "La libellule naît dans des mares temporaires de mousson. En suivant les vents des saisons, elle trouve de nouvelles pluies de l'autre côté de l'océan Indien, donc de nouvelles mares pour ses larves. Le circuit se ferait en plusieurs générations (environ quatre).",
+"chiffre_cle": "Un tour d'environ 16 000 km pour un insecte de 300 mg, avec au moins 430 km d'océan entre l'Inde et les Maldives ; la traversée complète irait de 938 à 2 536 km selon l'endroit.",
+"incertitude": "La traversée de l'océan Indien n'a jamais été observée en direct : c'est une hypothèse bâtie sur des calculs de vent, des isotopes et des observations aux Maldives. Les calculs utilisent les vents de 2019 (une année jugée atypique). Le tracé est schématique.",
+"sources": [
+{
+"titre": "Frontiers in Ecology and Evolution : Indian Ocean migration of Pantala flavescens (modèle)",
+"url": "https://www.frontiersin.org/articles/10.3389/fevo.2021.698128/full"
+},
+{
+"titre": "The Wire Science : Globe skimmer, new study on migration and the ITCZ",
+"url": "https://science.thewire.in/environment/globe-skimmer-new-study-migrations-intertropical-convergence-zone/"
+},
+{
+"titre": "Université d'Exeter (ORE) : notice de l'étude sur la traversée",
+"url": "https://ore.exeter.ac.uk/repository/handle/10871/128538"
+}
+],
+"fiche_app": null,
+"verifie": false,
+"notes_verif": "Les trois pages décrivent le même article scientifique (Frontiers/Exeter) et The Wire ; elles concordent sur Maldives en octobre–décembre et 230–286 h de vol possible, mais toutes disent que la traversée n'est pas confirmée sur le terrain : texte prudent, verifie=false."
+},
+{
+"id": "belle-dame-afrique-arctique",
+"type": "route",
+"categorie": "air",
+"nom": "Belle-dame (Afrique – cercle polaire arctique)",
+"latin": "Vanessa cardui",
+"points": [
+[
+12.0,
+5.0
+],
+[
+22.0,
+5.0
+],
+[
+34.0,
+3.0
+],
+[
+40.0,
+-3.5
+],
+[
+47.0,
+2.0
+],
+[
+52.0,
+-1.0
+],
+[
+60.0,
+10.0
+],
+[
+66.0,
+15.0
+]
+],
+"etapes": [
+{
+"nom": "Bordure sud du Sahara",
+"lat": 12.0,
+"lon": 5.0,
+"texte": "Les chenilles se nourrissent là après les grosses pluies d'hiver."
+},
+{
+"nom": "Maghreb",
+"lat": 34.0,
+"lon": 3.0,
+"texte": "Au printemps, les papillons remontent vers le nord."
+},
+{
+"nom": "Espagne",
+"lat": 40.0,
+"lon": -3.5,
+"texte": "Ils traversent la Méditerranée puis l'Espagne, ou passent par d'autres points du sud de l'Europe."
+},
+{
+"nom": "Angleterre",
+"lat": 52.0,
+"lon": -1.0,
+"texte": "Ils arrivent en Grande-Bretagne surtout en mai–juin, parfois par millions ; le retour d'automne se fait à haute altitude et se voit peu."
+},
+{
+"nom": "Cercle polaire arctique",
+"lat": 66.0,
+"lon": 15.0,
+"texte": "Les descendants vont jusqu'en Scandinavie, avant que les générations suivantes repartent vers le sud."
+}
+],
+"distance_km": 14500,
+"periode": "printemps (vers le nord, surtout mai–juin en Grande-Bretagne) ; automne (retour vers le sud, en altitude)",
+"pourquoi": "La belle-dame suit les plantes dont ses chenilles se nourrissent : elles fleurissent dans le désert après les pluies, puis plus au nord au printemps. Aucun papillon ne fait tout le voyage : il faut jusqu'à six générations, chacune pondant en route.",
+"chiffre_cle": "Environ 14 500 km (9 000 miles) aller-retour, de l'Afrique tropicale au cercle polaire arctique, en jusqu'à six générations ; en 2009 le radar a compté environ 11 millions de papillons arrivés en Angleterre au printemps et 26 millions partis à l'automne.",
+"incertitude": "Le trajet est reconstitué par morceaux (radar, observations, études d'orientation) ; il change beaucoup selon les années, avec de grandes années à « belle-dame » (2009, 2019) et des années calmes. Tracé schématique.",
+"sources": [
+{
+"titre": "Wikipedia : Vanessa cardui (migration)",
+"url": "https://en.wikipedia.org/wiki/Vanessa_cardui"
+},
+{
+"titre": "CU Boulder (A&S magazine) : painted lady",
+"url": "https://www.colorado.edu/asmagazine/node/2568"
+},
+{
+"titre": "North West Nature and History : The Painted Lady, master of migration",
+"url": "https://northwestnatureandhistory.co.uk/2026/07/07/the-painted-lady-master-of-migration/"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois pages concordent : environ 9 000 miles (≈ 14 500 km), jusqu'à six générations, radar 2009 (11 millions entrés, 26 millions partis) ; une page (Wikipedia) donne aussi 14 500 km."
+},
+{
+"id": "rennes-taimyr",
+"type": "route",
+"categorie": "terre",
+"nom": "Rennes sauvages du Taïmyr (Sibérie)",
+"latin": "Rangifer tarandus",
+"points": [
+[
+72.5,
+90.0
+],
+[
+71.0,
+88.0
+],
+[
+69.3,
+88.2
+],
+[
+68.5,
+96.0
+],
+[
+64.5,
+98.0
+]
+],
+"etapes": [
+{
+"nom": "Toundra du Taïmyr (mise bas)",
+"lat": 72.5,
+"lon": 90.0,
+"texte": "Les femelles y ont leurs petits en juin, loin au nord."
+},
+{
+"nom": "Rivière Pyasina",
+"lat": 71.0,
+"lon": 88.0,
+"texte": "Les rennes attendent parfois le dégel pour franchir cette rivière au printemps."
+},
+{
+"nom": "Forêt-toundra près de Norilsk",
+"lat": 69.3,
+"lon": 88.2,
+"texte": "La grande ville industrielle de Norilsk est dans la zone de passage ; un oléoduc a coupé une partie de la route."
+},
+{
+"nom": "Monts Putorana",
+"lat": 68.5,
+"lon": 96.0,
+"texte": "Une partie des rennes passe l'hiver là, en longeant le Ienisseï."
+},
+{
+"nom": "Nord de l'Evenkie",
+"lat": 64.5,
+"lon": 98.0,
+"texte": "Les autres hivernent plus à l'est, jusqu'à 1 000–1 200 km des zones de mise bas."
+}
+],
+"distance_km": 1500,
+"periode": "départ au printemps (mars, arrivée à la toundra en mai) ; mise bas en juin ; retour vers les zones d'hiver à l'automne",
+"pourquoi": "Les rennes passent l'été dans les zones de mise bas au nord, sur la toundra, puis migrent vers le sud pour hiverner dans des régions moins rudes (forêt-toundra, taïga et montagnes). Ils reviennent chaque année aux mêmes endroits, mais ces zones se sont déplacées vers l'est et le nord depuis 2000, ce qui allonge le trajet.",
+"chiffre_cle": "La plus grande harde de rennes du monde : environ 1 million de bêtes en 2000, 600 000 à 700 000 depuis ; migration jusqu'à environ 1 500 km.",
+"incertitude": "La distance varie : 1 000–1 200 km selon un texte, 1 400–1 500 km selon un autre ; elle augmente car les aires d'été et d'hiver se sont déplacées. Les chiffres de population sont des estimations de dates différentes (2006 : 700 000 ; 2016 : 600 000). Tracé schématique.",
+"sources": [
+{
+"titre": "Wikipedia : Reindeer in Russia (harde du Taïmyr)",
+"url": "https://en.wikipedia.org/wiki/Reindeer_in_Russia"
+},
+{
+"titre": "Science News : World's largest reindeer population may fall victim to climate change",
+"url": "https://www.sciencenews.org/blog/wild-things/worlds-largest-reindeer-population-may-fall-victim-climate-change"
+},
+{
+"titre": "Rangifer (septentrio) : Patterns of Taimyr reindeer movements",
+"url": "https://septentrio.uit.no/index.php/rangifer/article/download/2364/2184/8919"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Wikipedia (1 000–1 200 km, 600 000), Science News (1 million puis 600 000, aires déplacées) et Rangifer (jusqu'à 1 500 km, 700 000, deux flux d'automne) concordent sur le principe et l'ordre de grandeur."
+},
+{
+"id": "transhumance-pyrenees",
+"type": "route",
+"categorie": "terre",
+"nom": "Transhumance dans les Pyrénées (vallée – estive)",
+"latin": null,
+"points": [
+[
+42.82,
+1.58
+],
+[
+42.76,
+1.68
+],
+[
+42.69,
+1.77
+]
+],
+"etapes": [
+{
+"nom": "Ferme dans la vallée (Ariège)",
+"lat": 42.82,
+"lon": 1.58,
+"texte": "Fin mai-début juin, le troupeau quitte l'exploitation (dans l'exemple lu, départ le 10 mai)."
+},
+{
+"nom": "Pâturages de mi-pente (1 100–1 500 m)",
+"lat": 42.76,
+"lon": 1.68,
+"texte": "Les vaches y restent environ un mois, le temps que la neige fonde plus haut."
+},
+{
+"nom": "Plateau de Beille, estive (plus de 1 600 m)",
+"lat": 42.69,
+"lon": 1.77,
+"texte": "L'été, elles broutent la haute montagne, jusqu'à fin septembre, puis redescendent à la première grosse neige."
+}
+],
+"distance_km": null,
+"periode": "montée de début juin à fin juin ; estive jusqu'à fin septembre ou début octobre ; descente à l'automne (Pays basque : de début mai à début novembre)",
+"pourquoi": "En été les pâturages de montagne sont plus frais et donnent de l'herbe et de l'eau que la vallée n'offre pas toute l'année. Monter les bêtes libère les prés de la vallée pour faire le foin d'hiver et laisse la vallée et ses bâtiments se reposer ; la montagne, elle, est pâturée.",
+"chiffre_cle": "Dans les Pyrénées, les trajets d'été font en général 20 à 50 km dans chaque vallée ; l'exemple suivi compte 90 vaches gasconnes avec leurs veaux.",
+"incertitude": "Chaque vallée a son calendrier et ses itinéraires, qui dépendent de la neige ; le tracé donné suit un exemple ariégeois (Quié – Plateau de Beille) et ses points sont approximatifs.",
+"sources": [
+{
+"titre": "Ministère de la Culture : Les pratiques et savoir-faire de la transhumance en France (PDF)",
+"url": "https://www.culture.gouv.fr/Media/Medias-creation-rapide/Les-pratiques-et-savoir-faire-de-la-transhumance-en-France.pdf"
+},
+{
+"titre": "Pyrenean Way : Transhumance in the Ariège Pyrenees",
+"url": "https://www.pyreneanway.com/2018/05/transhumance-in-the-ariege-pyrenees/?lang=en"
+},
+{
+"titre": "Labayru : Spring-summer transhumance and transterminance",
+"url": "https://labayru.eus/en/basque-ethnography-at-a-glance/spring-summer-transhumance-and-transterminance"
+},
+{
+"titre": "Ariège Pyrénées : Chemin de la transhumance",
+"url": "https://www.ariegepyrenees.com/preparer/randonner/itinerance-plusieurs-jours/chemin-de-la-transhumance/"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Quatre pages concordent : montée en juin et estive jusqu'à fin septembre (Culture, Pyrenean Way), Pays basque de mai à novembre (Labayru, Culture), 1 100–1 500 m puis plus de 1 600 m (Pyrenean Way)."
+},
+{
+"id": "flamant-rose-mediterranee",
+"type": "route",
+"categorie": "air",
+"nom": "Flamant rose (Camargue – Espagne et Afrique du Nord)",
+"latin": "Phoenicopterus roseus",
+"points": [
+[
+43.5,
+4.6
+],
+[
+39.5,
+-0.3
+],
+[
+35.5,
+-0.5
+]
+],
+"etapes": [
+{
+"nom": "Camargue (Fangassier, Salins d'Aigues-Mortes)",
+"lat": 43.5,
+"lon": 4.6,
+"texte": "Chaque année, des centaines de poussins y sont bagués."
+},
+{
+"nom": "Côte espagnole",
+"lat": 39.5,
+"lon": -0.3,
+"texte": "Environ 29 % des jeunes vont en Espagne, d'après le suivi par bagues."
+},
+{
+"nom": "Afrique du Nord",
+"lat": 35.5,
+"lon": -0.5,
+"texte": "Environ 34 % des jeunes vont en Afrique du Nord ou de l'Ouest ; le reste va en Italie ou reste en France."
+}
+],
+"distance_km": null,
+"periode": "dispersion des jeunes à la fin de l'été et en automne ; hivernage ; retour pour nicher au printemps",
+"pourquoi": "Le flamant n'est ni vraiment migrateur ni sédentaire : il est surtout nomade et parcourt de grandes distances pour trouver des zones de reproduction et de nourriture. Les jeunes gardent ensuite souvent le premier site d'hivernage qu'ils ont choisi. Les perturbations peuvent aussi pousser des adultes à nicher ailleurs (Andalousie, Sardaigne).",
+"chiffre_cle": "Pour les jeunes de Camargue : 18 % restent en France, 29 % vont en Espagne, 18 % en Italie, 34 % en Afrique du Nord et de l'Ouest (moyennes très variables selon les années) ; plus de 300 000 observations dans la base de la Tour du Valat.",
+"incertitude": "Les parts changent beaucoup d'une année à l'autre et les sites exacts ne sont pas donnés dans les pages lues ; les points du tracé sont indicatifs. En Afrique les flamants se déplacent surtout à la recherche des pluies, sans calendrier fixe.",
+"sources": [
+{
+"titre": "Tour du Valat : Les flamants roses en Camargue (PDF)",
+"url": "https://tourduvalat.org/wp-content/uploads/2017/11/SciencesGestion_Les_flamants_roses_en_Camargue_Fr.pdf"
+},
+{
+"titre": "Tour du Valat : Journée internationale du flamant rose 2024",
+"url": "https://tourduvalat.org/actualites/journee-internationale-flamant-rose-2024"
+},
+{
+"titre": "Tour du Valat : 32e baguage des flamants roses en Camargue",
+"url": "https://tourduvalat.org/fr/newsletter/actu_32eme_baguage_des_flamants_roses_en_camargue"
+}
+],
+"fiche_app": "phoenicopterus-roseus",
+"verifie": false,
+"notes_verif": "Les trois pages viennent de la même organisation (Tour du Valat) et ne donnent pas de sites précis ni de dates : verifie=false, texte prudent."
+},
+{
+"id": "cigogne-noire-europe-afrique",
+"type": "route",
+"categorie": "air",
+"nom": "Cigogne noire (Europe centrale – Afrique)",
+"latin": "Ciconia nigra",
+"points": [
+[
+49.8,
+14.5
+],
+[
+46.5,
+2.5
+],
+[
+41.0,
+-3.5
+],
+[
+36.0,
+-5.6
+],
+[
+28.0,
+-8.0
+],
+[
+15.0,
+-10.0
+]
+],
+"etapes": [
+{
+"nom": "Europe centrale (nid)",
+"lat": 49.8,
+"lon": 14.5,
+"texte": "Les jeunes quittent le nid fin juillet, la migration suit après un rassemblement."
+},
+{
+"nom": "Espagne",
+"lat": 41.0,
+"lon": -3.5,
+"texte": "La voie de l'ouest traverse l'Europe de l'Ouest vers le détroit de Gibraltar."
+},
+{
+"nom": "Désert du Sahara (voie ouest)",
+"lat": 25.0,
+"lon": -8.0,
+"texte": "Les oiseaux les plus rapides ont avalé jusqu'à 488 km en un jour au-dessus du Sahara."
+},
+{
+"nom": "Sahel (Mauritanie, Mali…)",
+"lat": 15.0,
+"lon": -10.0,
+"texte": "Les cigognes de la voie ouest hivernent en Afrique de l'Ouest ; celles de la voie est vont jusqu'en Éthiopie."
+}
+],
+"distance_km": 6227,
+"periode": "automne (départ après la reproduction, fin juillet–septembre) ; retour au printemps (nids retrouvés vers mars)",
+"pourquoi": "La cigogne noire passe environ six mois en Europe pour nicher, puis hiverne en Afrique. Elle dépend des vents et des courants d'air chaud pour planer ; elle va plus vite en automne, ce que les chercheurs relient aux vents dominants, et fait plus d'arrêts au printemps pour reprendre des forces.",
+"chiffre_cle": "Pour des oiseaux suivis par satellite depuis la Tchéquie : 6 227 km en moyenne à l'automne (5 667 km par la voie ouest, environ 7 000 km par la voie est), environ 126 km par jour ; certains reviennent chaque année au même site d'hivernage.",
+"incertitude": "Les distances viennent d'une étude de 1995–2001 sur 11 oiseaux ; un autre texte donne « près de 8 000 km » pour l'aller-retour, sans préciser. Les cigognes de Wallonie hivernent de la Mauritanie au Bénin. Le tracé suit la voie ouest et reste schématique.",
+"sources": [
+{
+"titre": "AGRIS : African Odyssey project – satellite tracking of black storks",
+"url": "https://agris.fao.org/search/zh/records/65df59e9b766d82b18016780"
+},
+{
+"titre": "MNHN (Borea) : Six années de suivi satellitaire d'une Cigogne noire (Alauda 2024)",
+"url": "https://borea.mnhn.fr/en/six-ann%C3%A9es-suivi-satellitaire-migrations-pr%C3%A9-post-nuptiales-dune-cigogne-noire-ciconia-nigra"
+},
+{
+"titre": "Natagora (Entre-Sambre-et-Meuse) : Clin d'œil n°6, la Cigogne noire",
+"url": "https://entresambreetmeuse.natagora.be/fileadmin/Natagora_Entre-Sambre-et-Meuse/ClIN_d_OEIL/Clin_d_Oeil_6/CLIN_D_OEIL_06_Cigogne_noire.pdf"
+}
+],
+"fiche_app": "ciconia-nigra",
+"verifie": true,
+"notes_verif": "Trois sources concordent sur la migration vers l'Afrique de l'Ouest (voies ouest/est, fidélité aux sites d'hivernage) ; les chiffres exacts viennent de l'étude African Odyssey (6 227 km) et le chiffre de 8 000 km de Natagora est signalé comme différent."
+},
+{
+"id": "pipistrelle-nathusius-lettonie-espagne",
+"type": "route",
+"categorie": "air",
+"nom": "Pipistrelle de Nathusius (Lettonie – Espagne)",
+"latin": "Pipistrellus nathusii",
+"points": [
+[
+56.17,
+21.03
+],
+[
+54.5,
+18.0
+],
+[
+52.0,
+10.0
+],
+[
+48.5,
+3.0
+],
+[
+45.0,
+-1.0
+],
+[
+42.37,
+-1.6
+]
+],
+"etapes": [
+{
+"nom": "Pape, Lettonie",
+"lat": 56.17,
+"lon": 21.03,
+"texte": "La chauve-souris est baguée là en août 2015."
+},
+{
+"nom": "Europe de l'Ouest (trajet inconnu)",
+"lat": 48.5,
+"lon": 3.0,
+"texte": "On ne sait pas par où elle est passée : le tracé est schématique."
+},
+{
+"nom": "Lagune de Pitillas, Navarre (Espagne)",
+"lat": 42.37,
+"lon": -1.6,
+"texte": "Elle est retrouvée morte en mars 2017, 567 jours après."
+}
+],
+"distance_km": 2224,
+"periode": "mesures en août 2015 (baguage) et mars 2017 (retrouvée) ; migration d'automne vers le sud-ouest et retour au printemps",
+"pourquoi": "Cette chauve-souris quitte ses zones de reproduction du nord-est de l'Europe en automne et migre vers le sud-ouest. Les auteurs pensent que la péninsule Ibérique pourrait être une zone d'hivernage importante, car l'espèce y est vue en automne.",
+"chiffre_cle": "Au moins 2 224 km en ligne droite : le record connu pour une chauve-souris baguée (l'ancien record était 1 905 km, Lettonie – France).",
+"incertitude": "Un seul individu : on ignore où il est allé pendant les 567 jours. La distance réelle est sans doute plus longue, car il suit probablement la côte de la Baltique. D'autres suivis donnent 2 018 km entre Londres et la Russie.",
+"sources": [
+{
+"titre": "De Gruyter : Tiny bat breaks long-distance record on an epic journey across Europe",
+"url": "https://blog.degruyter.com/?p=6972"
+},
+{
+"titre": "Université de Jyväskylä : Transcontinental 2200 km migration of a Nathusius' pipistrelle",
+"url": "https://jyx.jyu.fi/handle/123456789/74500"
+},
+{
+"titre": "Countryside Jobs : « Olympian » bat smashes British record (Londres – Russie, 2 018 km)",
+"url": "https://www.countryside-jobs.com/article/2021-08-06-olympian-bat-smashes-british-record-for-long-distance-migration"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "De Gruyter et Jyväskylä concordent (2 224 km, août 2015 – mars 2017, record) ; Countryside Jobs confirme que l'espèce fait des trajets de plus de 2 000 km (2 018 km Londres – Russie)."
+},
+{
+"id": "transhumance-kirghizistan-jailoo",
+"type": "route",
+"categorie": "terre",
+"nom": "Transhumance au Kirghizistan (vallée – jailoo)",
+"latin": null,
+"points": [
+[
+42.21,
+75.75
+],
+[
+42.3,
+75.5
+],
+[
+41.85,
+75.15
+]
+],
+"etapes": [
+{
+"nom": "Village de la vallée (région de Naryn, indicatif)",
+"lat": 42.21,
+"lon": 75.75,
+"texte": "Les familles partent en juin avec moutons et chèvres."
+},
+{
+"nom": "Vallée boisée intermédiaire",
+"lat": 42.3,
+"lon": 75.5,
+"texte": "Elles y restent environ six semaines, le temps que l'herbe pousse plus haut."
+},
+{
+"nom": "Jailoo du lac Song-Köl (≈ 3 000 m)",
+"lat": 41.85,
+"lon": 75.15,
+"texte": "Elles dressent leurs yourtes chaque été au même endroit, à 3 016 m d'altitude (9 895 pieds)."
+}
+],
+"distance_km": null,
+"periode": "avril (camps proches du village) ; juin (montée) ; juillet à début septembre (jailoo) ; descente de septembre à mi-octobre",
+"pourquoi": "En altitude, l'herbe est riche en été grâce à la pluie et au frais : les bêtes y engraissent, et les pâturages de la vallée peuvent se reposer. C'est aussi la période du lait de jument fermenté (kymyz).",
+"chiffre_cle": "Environ 3,9 millions d'hectares de pâturages d'été reconnus ; les jailoo se trouvent au-dessus de 2 500 m, et il faut de un à six jours à pied ou à cheval pour les atteindre.",
+"incertitude": "Le tracé donné est indicatif : le village de départ de l'exemple (Akkyya) n'est pas localisé précisément dans les textes lus. Les dates varient selon l'altitude et la neige, et selon les sources (mai–juillet ou juin–septembre).",
+"sources": [
+{
+"titre": "Initiative Satoyama : Kyrgyz Republic – Transhumance in the Northern Mountainous Areas",
+"url": "https://satoyamainitiative.org/case_studies/kyrgyz-republic-transhumance-in-the-northern-mountainous-areas/"
+},
+{
+"titre": "Eurasianet : Photo essay – Following Kyrgyzstan's nomads",
+"url": "https://eurasianet.org/photo-essay-following-kyrgyzstans-nomads"
+},
+{
+"titre": "Global Voices : Kyrgyzstan's jailoos are more than mountain meadows",
+"url": "https://globalvoices.org/2016/09/11/kyrgyzstans-jailoos-are-more-than-mountain-meadows-they-are-a-way-of-life/print/"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : montée en été vers les jailoo (juin–juillet), yourtes, bétail (moutons, chèvres), descente en septembre ; altitudes ≥ 2 500 m (Satoyama) et 3 016 m (Eurasianet, Song-Köl)."
+},
+{
+"id": "transhumance-peuls-sahel",
+"type": "route",
+"categorie": "terre",
+"nom": "Transhumance des Peuls dans le Sahel (nord – sud)",
+"latin": null,
+"points": [
+[
+15.5,
+1.0
+],
+[
+14.2,
+1.5
+],
+[
+12.0,
+2.0
+],
+[
+10.0,
+2.5
+]
+],
+"etapes": [
+{
+"nom": "Nord du Sahel (Niger, Mali)",
+"lat": 15.5,
+"lon": 1.0,
+"texte": "Début novembre, quand les pâturages sèchent, les familles partent vers le sud."
+},
+{
+"nom": "Région de Tillabéri (Niger)",
+"lat": 14.2,
+"lon": 1.5,
+"texte": "Les couloirs de passage s'ouvrent après les récoltes (octobre–novembre) ou avant la fermeture des champs (mai–juin)."
+},
+{
+"nom": "Burkina Faso / Nord Bénin",
+"lat": 12.0,
+"lon": 2.0,
+"texte": "Les troupeaux rejoignent des zones plus humides, parfois à l'étranger."
+},
+{
+"nom": "Bénin (nord)",
+"lat": 10.0,
+"lon": 2.5,
+"texte": "L'herbe y est plus abondante : environ 1–3 hectares par bête contre 5–7 au Niger."
+}
+],
+"distance_km": null,
+"periode": "départ vers le sud vers octobre–novembre (le voyage prend un à deux mois) ; retour vers le nord à l'arrivée des premières pluies, en juin",
+"pourquoi": "En saison sèche les rivières tarissent et l'herbe manque dans le nord. Les troupeaux suivent la pluie et l'herbe : ils reviennent quand les pluies reverdissent le nord. Le mouvement protège aussi les pâturages, que le troupeau ne détruit pas en restant au même endroit.",
+"chiffre_cle": "La transhumance concerne 70 à 90 % des bovins et 30 à 40 % des moutons et chèvres du Sahel ; les Peuls forment le plus grand groupe nomade (environ 40 millions de personnes, selon un texte).",
+"incertitude": "Les textes lus ne donnent pas de distance totale ; elle dépend de la région d'origine. Le tracé est schématique. Les conflits, la sécheresse et les routes d'accès bloquées changent les parcours depuis quelques années.",
+"sources": [
+{
+"titre": "We Are Water : Transhumance in the Sahel (Fulani cattle routes)",
+"url": "https://www.wearewater.org/en/?p=19102"
+},
+{
+"titre": "WOCAT : Transhumance routes, Niger",
+"url": "https://qcat.wocat.net/wocat/approaches/view/approaches_2328"
+},
+{
+"titre": "OCDE / Club du Sahel : Transhumance en Afrique de l'Ouest (PDF)",
+"url": "https://search.oecd.org/swac/publications/38402714.pdf"
+},
+{
+"titre": "Middle East Online : Mauritania's nomadic herders seek safe passage",
+"url": "https://middle-east-online.com/en/node/692923"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Quatre sources concordent : mouvement saisonnier nord-sud suivant la pluie (novembre–juin), couloirs transfrontaliers (Niger, Mali, Bénin, Burkina, Mauritanie – Sénégal) ; pas de distance unique donnée."
+},
+{
+"id": "otarie-fourrure-pribilof-californie",
+"type": "route",
+"categorie": "mer",
+"nom": "Otarie à fourrure du Nord (îles Pribilof – Californie)",
+"latin": "Callorhinus ursinus",
+"points": [
+[
+57.1,
+-170.3
+],
+[
+54.5,
+-165.0
+],
+[
+48.0,
+-150.0
+],
+[
+40.0,
+-135.0
+],
+[
+36.0,
+-123.5
+]
+],
+"etapes": [
+{
+"nom": "Îles Pribilof (mer de Béring)",
+"lat": 57.1,
+"lon": -170.3,
+"texte": "Environ la moitié de l'espèce s'y reproduit ; les femelles partent en novembre."
+},
+{
+"nom": "Îles Aléoutiennes",
+"lat": 54.5,
+"lon": -165.0,
+"texte": "Elles passent entre les îles à environ 110 km par jour (70 miles)."
+},
+{
+"nom": "Pacifique Nord, pleine mer",
+"lat": 48.0,
+"lon": -150.0,
+"texte": "Elles traversent l'océan ouvert pendant environ deux mois."
+},
+{
+"nom": "Côte de Californie",
+"lat": 36.0,
+"lon": -123.5,
+"texte": "Elles pêchent là des mois, puis remontent par la côte au printemps."
+}
+],
+"distance_km": 4800,
+"periode": "départ en novembre ; hiver et printemps en mer ; retour aux Pribilof fin juin–début juillet",
+"pourquoi": "Les femelles reviennent chaque été sur les îles Pribilof pour mettre bas et allaiter ; le reste de l'année (plus de 300 jours), elles se nourrissent en mer, au large du Pacifique Nord et de l'Amérique du Nord. Les sources lues ne détaillent pas la cause précise du départ.",
+"chiffre_cle": "Environ 3 000 miles (environ 4 800 km) de l'îles Pribilof à la Californie pour la femelle suivie par satellite ; plus de 300 jours par an en mer.",
+"incertitude": "Le chiffre de 4 800 km vient d'une seule page (NOAA Ocean Today, une femelle équipée) ; les autres pages ne donnent pas de distance. Chaque phoque choisit son trajet ; certains hivernent au centre du Pacifique Nord ou près de San Miguel (Californie) toute l'année.",
+"sources": [
+{
+"titre": "NOAA Ocean Today : Wandering seal (suivi d'une otarie à fourrure)",
+"url": "https://oceantoday.noaa.gov/wanderingseal/"
+},
+{
+"titre": "NOAA Fisheries : Northern fur seal",
+"url": "https://fisheries.noaa.gov/species/northern-fur-seal"
+},
+{
+"titre": "Encyclopedia of Puget Sound : Northern fur seal",
+"url": "https://www.eopugetsound.org/article/northern-fur-seal"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : colonies aux Pribilof, départ des femelles en novembre, hiver au centre du Pacifique Nord ou le long de la côte ouest de l'Amérique du Nord, retour en été."
+},
+{
+"id": "tortue-caouanne-japon-baja",
+"type": "route",
+"categorie": "mer",
+"nom": "Tortue caouanne (Japon – Basse-Californie)",
+"latin": "Caretta caretta",
+"points": [
+[
+33.5,
+135.5
+],
+[
+31.0,
+165.0
+],
+[
+28.0,
+-178.0
+],
+[
+24.5,
+-157.0
+],
+[
+25.0,
+-135.0
+],
+[
+26.0,
+-113.5
+]
+],
+"etapes": [
+{
+"nom": "Plages de ponte du Japon",
+"lat": 33.5,
+"lon": 135.5,
+"texte": "Les tortues naissent sur les plages japonaises, puis se dispersent dans le Pacifique Nord."
+},
+{
+"nom": "Pacifique central (nord d'Hawaï)",
+"lat": 24.5,
+"lon": -157.0,
+"texte": "Une tortue équipée y est passée vers le 1er janvier, en nageant vers l'ouest."
+},
+{
+"nom": "Barrière du Pacifique Est",
+"lat": 25.0,
+"lon": -135.0,
+"texte": "Une zone d'eau froide de 6 000 km ; très peu la franchissent."
+},
+{
+"nom": "Basse-Californie (Mexique)",
+"lat": 26.0,
+"lon": -113.5,
+"texte": "Elles s'y nourrissent de crabes et de homards avant de revenir au Japon."
+}
+],
+"distance_km": 14000,
+"periode": "traversée de plusieurs mois à un an (« Adelita » : 368 jours entre août 1996 et août 1997) ; séjour de 10 à 30 ans avant le retour pondre au Japon",
+"pourquoi": "Les eaux au large de la Basse-Californie sont riches en crabes, plus nourrissantes que l'océan ouvert où il y a surtout des méduses. Les tortues y grandissent, puis retournent pondre au Japon.",
+"chiffre_cle": "Adelita a parcouru plus de 14 000 km à travers le Pacifique (suivi par satellite, 1996–1997) : le premier animal suivi à traverser un bassin océanique ; seules 6 des 231 jeunes suivies ont atteint l'Amérique du Nord.",
+"incertitude": "La route exacte varie selon les tortues : le tracé est schématique. On ignore si elles font un seul aller-retour dans leur vie ou continuent à circuler. La fin du suivi d'Adelita est incertaine (signal perdu près de Sendai).",
+"sources": [
+{
+"titre": "Eos : What happens when six sea turtles go rogue",
+"url": "https://eos.org/articles/what-happens-when-six-sea-turtles-go-rogue"
+},
+{
+"titre": "Turtles.org : Adelita, loggerhead (Baja – Japan)",
+"url": "https://www.turtles.org/azturtle.htm"
+},
+{
+"titre": "Wallace J. Nichols : Adelita, heart of a revolution",
+"url": "https://www.wallacejnichols.org/126/142/oceans-adelita-heart-of-a-revolution.html"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : naissance au Japon, alimentation au large de la Basse-Californie, traversée du Pacifique d'Adelita (plus de 6 000 miles dans un texte, 14 000 km dans un autre, 7 000 miles dans le troisième)."
+},
+{
+"id": "elephants-gourma-mali",
+"type": "route",
+"categorie": "terre",
+"nom": "Éléphants du Gourma (Mali)",
+"latin": "Loxodonta africana",
+"points": [
+[
+15.8,
+-1.3
+],
+[
+16.3,
+-1.9
+],
+[
+16.0,
+-2.4
+],
+[
+15.2,
+-2.4
+],
+[
+14.6,
+-1.8
+],
+[
+14.5,
+-1.0
+],
+[
+15.2,
+-0.8
+],
+[
+15.8,
+-1.3
+]
+],
+"etapes": [
+{
+"nom": "Lac Banzena (saison sèche)",
+"lat": 15.5,
+"lon": -1.7,
+"texte": "Quand les mares sèchent, les éléphants se regroupent autour des derniers points d'eau permanents."
+},
+{
+"nom": "Vers le sud (Burkina Faso)",
+"lat": 14.5,
+"lon": -1.5,
+"texte": "Ils descendent vers le sud avant que les pluies reviennent."
+},
+{
+"nom": "Pâturages du Gourma (saison des pluies)",
+"lat": 16.0,
+"lon": -1.7,
+"texte": "De juin à octobre l'herbe est meilleure : ils y reviennent en tournant dans le sens inverse des aiguilles d'une montre."
+}
+],
+"distance_km": null,
+"periode": "circuit annuel ; saison sèche (8 à 10 mois) autour des derniers lacs ; pluies de fin juin à fin août",
+"pourquoi": "Pendant la saison sèche (8 à 10 mois par an), les éléphants se regroupent autour des derniers points d'eau, comme le lac Banzena ; de juin à octobre, la pluie remplit mares et pâturages et ils tournent en cercle pour en profiter. Leur zone de vie a rétréci depuis les années 1970 à cause de la sécheresse et du pâturage des troupeaux.",
+"chiffre_cle": "Environ 350 à 450 éléphants (344 au minimum comptés en 2007) : les éléphants les plus au nord d'Afrique ; ils font la plus longue migration connue d'un groupe d'éléphants en Afrique.",
+"incertitude": "La longueur du circuit est incertaine : environ 450 km selon une source, environ 700 km selon une autre, et la troisième ne la donne pas. Le tracé est schématique et dessiné dans le cadre géographique donné (14,3°–16,5° N ; 0,55°–2,55° O).",
+"sources": [
+{
+"titre": "Save the Elephants : Worst drought in 26 years threatens desert elephants",
+"url": "https://savetheelephants.org/news/worst-drought-in-26-years-threatens-survival-of-last-desert-elephants-in-west-africa/"
+},
+{
+"titre": "The New Humanitarian : Mali elephants",
+"url": "https://www.thenewhumanitarian.org/node/242913"
+},
+{
+"titre": "Pachyderm : Aerial survey of the Gourma elephants (2007)",
+"url": "https://pachydermjournal.org/index.php/pachyderm/article/download/166/127/374"
+}
+],
+"fiche_app": null,
+"verifie": false,
+"notes_verif": "Deux sources donnent des longueurs différentes (≈ 450 km et ≈ 700 km) et la troisième aucune : chiffre non tranché, verifie=false ; nombre d'éléphants (350–450) et circuit anti-horaire concordent."
+},
+{
+"id": "antilopes-kob-soudan-du-sud",
+"type": "route",
+"categorie": "terre",
+"nom": "Kob à oreilles blanches (Soudan du Sud)",
+"latin": "Kobus megaceros",
+"points": [
+[
+7.0,
+31.8
+],
+[
+6.8,
+32.8
+],
+[
+6.4,
+34.0
+],
+[
+7.5,
+34.4
+]
+],
+"etapes": [
+{
+"nom": "Zones humides du Sudd (rive est du Nil Blanc)",
+"lat": 7.0,
+"lon": 31.8,
+"texte": "Les antilopes passent la saison des crues dans ces marais."
+},
+{
+"nom": "Région du Jonglei",
+"lat": 6.8,
+"lon": 32.8,
+"texte": "Elles avancent vers l'est et le nord quand l'herbe pousse."
+},
+{
+"nom": "Parc national de Boma",
+"lat": 6.4,
+"lon": 34.0,
+"texte": "Elles s'y rassemblent par centaines de milliers."
+},
+{
+"nom": "Gambella (Éthiopie)",
+"lat": 7.5,
+"lon": 34.4,
+"texte": "Une partie traverse la frontière vers le parc de Gambella."
+}
+],
+"distance_km": null,
+"periode": "vers l'est et le nord de janvier à juin ; retour vers Boma et le Sudd de novembre à janvier",
+"pourquoi": "Les pages lues ne détaillent pas la cause. Les chercheurs comparent ces troupeaux à ceux du Serengeti, où les animaux suivent la pluie et l'herbe fraîche ; il est probable qu'ici aussi, ils se déplacent entre les marais du Sudd et les plaines plus à l'est selon les saisons.",
+"chiffre_cle": "Plus d'un million de kobs, tiangs et gazelles comptés en 2007 (plus de 800 000 kobs) ; une étude plus récente évoque environ 6 millions d'antilopes avec une très grande marge d'erreur.",
+"incertitude": "Les chiffres sont des estimations par avion avec une grande marge d'erreur et ne datent pas de la même année (2007 : 1,2–1,3 million ; recensement plus récent : environ 6 millions). Les pages ne donnent pas de distance totale. Le tracé est schématique.",
+"sources": [
+{
+"titre": "ScienceDaily : Massive migration revealed in southern Sudan (2007)",
+"url": "https://www.sciencedaily.com/releases/2007/06/070612130723.htm"
+},
+{
+"titre": "Africa Geographic : World's largest overland mammal migration confirmed in South Sudan",
+"url": "https://africageographic.com/stories/worlds-largest-overland-mammal-migration-confirmed-in-south-sudan/"
+},
+{
+"titre": "WCS : Massive Migration Revealed",
+"url": "https://newsroom.wcs.org/News-Releases/articleType/ArticleView/articleId/5276/Massive-Migration-Revealed.aspx"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : grande migration d'antilopes dans la région Boma – Jonglei – Sudd, avec plus d'un million de bêtes ; calendrier précis (janvier–juin / novembre–janvier) venant d'une seule page."
+},
+{
+"id": "gazelle-mongolie-steppe-est",
+"type": "route",
+"categorie": "terre",
+"nom": "Gazelle de Mongolie (steppe de l'Est)",
+"latin": "Procapra gutturosa",
+"points": [
+[
+48.0,
+114.0
+],
+[
+49.9,
+115.5
+],
+[
+47.5,
+113.8
+],
+[
+45.2,
+113.5
+],
+[
+45.3,
+114.5
+]
+],
+"etapes": [
+{
+"nom": "Site de capture (steppe de l'Est)",
+"lat": 48.0,
+"lon": 114.0,
+"texte": "La gazelle équipée d'un collier GPS part d'ici en octobre 2014."
+},
+{
+"nom": "Près de la frontière russe",
+"lat": 49.9,
+"lon": 115.5,
+"texte": "En novembre 2015 elle franchit deux rivières gelées sur 900 km pour trouver une zone sans neige."
+},
+{
+"nom": "Rivières Ulz et Kherlen",
+"lat": 47.5,
+"lon": 113.8,
+"texte": "Au printemps 2016 elle revient vers le sud en traversant les rivières gonflées."
+},
+{
+"nom": "Clôture de la frontière chinoise",
+"lat": 45.2,
+"lon": 113.5,
+"texte": "En décembre 2016 elle hiverne le long de la clôture, à environ 440 km du site précédent."
+}
+],
+"distance_km": 18000,
+"periode": "suivi d'octobre 2014 à août 2019 ; grands déplacements surtout à l'hiver, quand la neige recouvre l'herbe",
+"pourquoi": "La gazelle cherche des collines sans neige et de l'herbe nouvelle : elle est nomade, c'est-à-dire qu'elle n'a pas de route fixe chaque année, mais suit la nourriture et le temps.",
+"chiffre_cle": "Une gazelle équipée a parcouru plus de 18 000 km en presque cinq ans (environ la moitié du tour de la Terre) ; plus de la moitié de l'espèce vit dans la steppe de l'Est.",
+"incertitude": "Les 18 000 km concernent un seul animal ; l'espèce est dite nomade plutôt que migratrice. Le tracé est schématique, dessiné à partir des repères donnés (rivières Ulz et Kherlen, frontières russe et chinoise).",
+"sources": [
+{
+"titre": "Scientific American : Gazelle traveled distance of nearly half Earth's circumference",
+"url": "https://www.scientificamerican.com/article/gazelle-traveled-distance-of-nearly-half-earths-circumference-in-five-years/"
+},
+{
+"titre": "Senckenberg : Walk of life – gazelle travels more than 18,000 kilometers",
+"url": "https://www.senckenberg.de/en/press-releases/walk-of-life-gazelle-travels-more-than-18000-kilometers/"
+},
+{
+"titre": "Smithsonian (Leimgruber 2001) : zeer et végétation, mouvements entre zones d'hiver et de mise bas",
+"url": "https://repository.si.edu/bitstream/handle/10088/339/Leimgruber2001.pdf"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent sur l'idée d'une gazelle « nomade » qui n'a pas de route saisonnière fixe (SciAm, Senckenberg, Smithsonian) ; chiffre de 18 000 km donné par les deux premières (même étude, Ecology 2022)."
+},
+{
+"id": "sardine-run-afrique-du-sud",
+"type": "route",
+"categorie": "mer",
+"nom": "Sardine Run (Afrique du Sud)",
+"latin": "Sardinops sagax",
+"points": [
+[
+-35.2,
+20.5
+],
+[
+-34.0,
+25.5
+],
+[
+-32.5,
+28.8
+],
+[
+-31.0,
+30.2
+],
+[
+-29.9,
+31.2
+],
+[
+-29.0,
+32.0
+]
+],
+"etapes": [
+{
+"nom": "Banc des Aiguilles (côte sud)",
+"lat": -35.2,
+"lon": 20.5,
+"texte": "Les sardines naissent et vivent dans les eaux froides du Cap."
+},
+{
+"nom": "Côte sauvage (Wild Coast)",
+"lat": -32.5,
+"lon": 28.8,
+"texte": "Une petite partie d'entre elles longe la côte vers l'est."
+},
+{
+"nom": "Côte du KwaZulu-Natal",
+"lat": -29.9,
+"lon": 31.2,
+"texte": "Les bancs arrivent près du rivage en juin–juillet, suivis par requins, dauphins, baleines et oiseaux de mer."
+}
+],
+"distance_km": null,
+"periode": "juin–juillet (hiver austral ; certains textes disent mai–juin, selon la température de l'eau)",
+"pourquoi": "Les sardines suivent une étroite bande d'eau froide qui se forme chaque hiver entre le rivage et le courant chaud des Aiguilles. Les scientifiques pensent à une migration liée à la reproduction, sans en être sûrs.",
+"chiffre_cle": "Un texte compare la course à la sardine, en quantité de poissons, aux migrations de gnous d'Afrique de l'Est ; les bancs attirent requins, baleines à bosse, dauphins, fous du Cap, manchots et otaries du Cap.",
+"incertitude": "La raison exacte est mal comprise (reproduction, vestige de l'ère glaciaire, eau froide ?). Les dates varient selon la température de l'eau et certaines années il n'y a pas de « run ». Tracé schématique.",
+"sources": [
+{
+"titre": "National Geographic : KwaZulu-Natal sardine run",
+"url": "https://www.nationalgeographic.com/animals/article/kwazulu-natal-sardine-run-video-sharks-whales-seals-south-africa"
+},
+{
+"titre": "Dive Magazine : South Africa's sardine run is starting soon",
+"url": "https://divemagazine.com/scuba-diving-travel/red-sea-africa/south-africas-sardine-run-is-starting-soon"
+},
+{
+"titre": "The Citizen (Highway Mail) : The annual sardine run",
+"url": "https://www.citizen.co.za/highway-mail/uncategorized/2016/06/27/the-annual-sardine-run-an-experience-not-to-be-missed/"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : sardines qui remontent la côte est sud-africaine en hiver (mai–juillet), attirant prédateurs ; la cause (reproduction, eau froide) reste incertaine."
+},
+{
+"id": "baleine-bosse-alaska-hawai",
+"type": "route",
+"categorie": "mer",
+"nom": "Baleine à bosse (Alaska – Hawaï)",
+"latin": "Megaptera novaeangliae",
+"points": [
+[
+57.5,
+-135.5
+],
+[
+48.0,
+-142.0
+],
+[
+36.0,
+-150.0
+],
+[
+25.0,
+-155.0
+],
+[
+20.8,
+-156.8
+]
+],
+"etapes": [
+{
+"nom": "Sud-est de l'Alaska",
+"lat": 57.5,
+"lon": -135.5,
+"texte": "L'été, elles mangent du plancton et de petits poissons dans l'eau froide."
+},
+{
+"nom": "Pacifique Nord, pleine mer",
+"lat": 36.0,
+"lon": -150.0,
+"texte": "Elles traversent l'océan en quelques semaines."
+},
+{
+"nom": "Hawaï (Maui)",
+"lat": 20.8,
+"lon": -156.8,
+"texte": "L'hiver, elles s'accouplent et les femelles mettent bas dans l'eau chaude et peu profonde."
+}
+],
+"distance_km": 4830,
+"periode": "départ à la fin de l'automne ; hiver à Hawaï ; retour à l'Alaska au printemps ; été à se nourrir",
+"pourquoi": "En été, l'eau froide d'Alaska est riche en nourriture : les baleines y grossissent et construisent leurs réserves de graisse. En hiver, elles vont dans les eaux chaudes d'Hawaï pour s'accoupler et mettre bas ; elles y vivent sur leurs réserves.",
+"chiffre_cle": "Environ 3 000 miles (4 830 km), parcourus en 36 jours au plus rapide ; Hawaï accueille près de 60 % de la population de l'océan Pacifique Nord.",
+"incertitude": "Toutes ne vont pas à Hawaï : d'autres vont au Mexique ou en Amérique centrale ; une baleine a fait au moins 7 925 km entre le Mexique et les îles Commandeur. Tracé schématique.",
+"sources": [
+{
+"titre": "National Park Service : Humpback whale",
+"url": "https://www.nps.gov/sajh/learn/nature/humpback-whale.htm"
+},
+{
+"titre": "Cascadia Research : Summer feeding areas, winter areas and migration",
+"url": "https://cascadiaresearch.org/project_page/summer/"
+},
+{
+"titre": "Ocean.org : The migration of the North Pacific humpback whale",
+"url": "https://ocean.org/blog/the-migration-of-the-north-pacific-humpback-whale"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : été en Alaska/Colombie-Britannique, hiver à Hawaï, Mexique, Amérique centrale ; 3 000 miles (4 830 km) en NPS ; environ 8 000 km aller-retour (Ocean.org)."
+},
+{
+"id": "puffin-fuligineux-pacifique",
+"type": "route",
+"categorie": "air",
+"nom": "Puffin fuligineux (Nouvelle-Zélande – Pacifique Nord)",
+"latin": "Ardenna grisea",
+"points": [
+[
+-46.8,
+167.6
+],
+[
+-30.0,
+-175.0
+],
+[
+0.0,
+-165.0
+],
+[
+30.0,
+-155.0
+],
+[
+53.0,
+-160.0
+],
+[
+35.0,
+-175.0
+],
+[
+0.0,
+175.0
+],
+[
+-30.0,
+172.0
+],
+[
+-46.8,
+167.6
+]
+],
+"etapes": [
+{
+"nom": "Île Codfish (Whenua Hou) / île Mana, Nouvelle-Zélande",
+"lat": -46.8,
+"lon": 167.6,
+"texte": "Les oiseaux nichent là, puis partent vers le nord après la reproduction."
+},
+{
+"nom": "Équateur (Pacifique central)",
+"lat": 0.0,
+"lon": -165.0,
+"texte": "Ils passent l'équateur vite, jusqu'à 910 km par jour, car la nourriture y est rare."
+},
+{
+"nom": "Alaska / Californie / Japon",
+"lat": 53.0,
+"lon": -160.0,
+"texte": "Ils passent l'été boréal près du Japon, de l'Alaska ou de la Californie."
+},
+{
+"nom": "Corridor du Pacifique central",
+"lat": 0.0,
+"lon": 175.0,
+"texte": "Ils reviennent en Nouvelle-Zélande par un couloir étroit au centre du Pacifique."
+}
+],
+"distance_km": 64000,
+"periode": "environ 200 à 260 jours par tour ; départ vers le nord à l'automne austral ; retour au printemps austral pour nicher",
+"pourquoi": "Les puffins profitent de deux étés par an : ils passent l'hiver austral dans l'hémisphère nord et reviennent en Nouvelle-Zélande pour la belle saison. Les vents du Pacifique dessinent un « huit » géant.",
+"chiffre_cle": "Environ 64 000 km par an (64 037 km dans l'étude), la plus longue migration enregistrée électroniquement à l'époque ; 19 oiseaux suivis, jusqu'à 910 km par jour.",
+"incertitude": "La durée est donnée à environ 200 jours dans deux pages et à 262 jours (± 23) dans une autre ; chaque oiseau choisit une zone d'été (Japon, Alaska ou Californie). Le tracé est un schéma en huit, non la route exacte.",
+"sources": [
+{
+"titre": "Scoop (NZ) : Muttonbirds pursue endless summer across Pacific",
+"url": "https://m.scoop.co.nz/stories/SC0608/S00023.htm"
+},
+{
+"titre": "NZ Herald : Muttonbirds lead scientists on 64,000 km Pacific tour",
+"url": "https://nzherald.co.nz/nz/muttonbirds-lead-scientists-on-64000km-pacific-tour/4SRDEKAWEJBA4M7G22M4EW53AI"
+},
+{
+"titre": "Science News : Seabirds hopped up on summer (PNAS 2006)",
+"url": "https://www.sciencenews.org/?p=1045"
+},
+{
+"titre": "Mother Jones : Seabirds hopped up on summer",
+"url": "https://www.motherjones.com/?p=89146"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Quatre pages concordent : environ 64 000 km par aller-retour, 910 km par jour au maximum, trois zones d'été (Japon, Alaska, Californie), parcours en huit."
+},
+{
+"id": "grue-du-canada-platte",
+"type": "route",
+"categorie": "air",
+"nom": "Grue du Canada (rivière Platte, Nebraska)",
+"latin": "Antigone canadensis",
+"points": [
+[
+40.7,
+-99.1
+],
+[
+50.0,
+-104.0
+],
+[
+60.0,
+-125.0
+],
+[
+63.0,
+-150.0
+],
+[
+64.0,
+-172.0
+]
+],
+"etapes": [
+{
+"nom": "Rivière Platte (Nebraska)",
+"lat": 40.7,
+"lon": -99.1,
+"texte": "Près de 80 % des grues du monde s'y arrêtent, environ un mois, entre février et avril."
+},
+{
+"nom": "Prairies du Canada",
+"lat": 50.0,
+"lon": -104.0,
+"texte": "Elles reprennent leur route vers le nord après les mois de repos."
+},
+{
+"nom": "Alaska",
+"lat": 63.0,
+"lon": -150.0,
+"texte": "Une partie niche en Alaska."
+},
+{
+"nom": "Est de la Sibérie",
+"lat": 64.0,
+"lon": -172.0,
+"texte": "D'autres vont nicher jusqu'en Sibérie orientale."
+}
+],
+"distance_km": null,
+"periode": "février à avril (arrêt dans le Nebraska ; pic vers le 17–21 mars)",
+"pourquoi": "La rivière Platte est le lieu de repos central de ces grues : elles s'y nourrissent des grains de maïs laissés dans les champs voisins pendant environ un mois, puis poursuivent vers le nord, jusqu'à leurs lieux de nidification.",
+"chiffre_cle": "Environ 736 000 grues comptées le 17 mars (record) entre Chapman et Overton, dans un couloir d'environ 80 miles (130 km) ; on dit que 80 % des grues du monde y passent.",
+"incertitude": "Les pages lues ne disent pas où les grues passent l'hiver ; le tracé part donc de la Platte. Les chiffres changent d'une année à l'autre et le chiffre « 80 % » vaut pour la population du centre du continent. Tracé schématique.",
+"sources": [
+{
+"titre": "Smithsonian Magazine : Record 736,000 sandhill cranes in Nebraska",
+"url": "https://www.smithsonianmag.com/smart-news/record-high-736000-sandhill-cranes-flock-to-nebraska-during-spring-migration-peak-with-no-signs-of-bird-flu-despite-concerns-180986317/"
+},
+{
+"titre": "EarthSky : Sandhill cranes migrating in record numbers",
+"url": "https://earthsky.org/earth/sandhill-cranes-migrating-in-record-numbers-in-us-midwest/"
+},
+{
+"titre": "NEBRASKAland Magazine : Mild weather bringing more sandhill cranes",
+"url": "https://magazine.outdoornebraska.gov/?p=105546"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : arrêt sur la Platte de février à avril, pic vers la 3e semaine de mars, destination Alaska/Canada/Sibérie (Smithsonian, EarthSky), centaines de milliers de grues."
+},
+{
+"id": "papillon-bogong-alpes-australiennes",
+"type": "route",
+"categorie": "air",
+"nom": "Papillon de nuit Bogong (Australie du Sud-Est)",
+"latin": "Agrotis infusa",
+"points": [
+[
+-31.0,
+148.0
+],
+[
+-33.5,
+147.0
+],
+[
+-35.3,
+149.1
+],
+[
+-36.4,
+148.3
+]
+],
+"etapes": [
+{
+"nom": "Plaines du sud-est de l'Australie",
+"lat": -31.0,
+"lon": 148.0,
+"texte": "Des milliards de papillons y naissent au printemps."
+},
+{
+"nom": "Canberra (étape possible)",
+"lat": -35.3,
+"lon": 149.1,
+"texte": "Certains font halte à basse altitude, parfois poussés par le vent."
+},
+{
+"nom": "Grottes des Alpes australiennes",
+"lat": -36.4,
+"lon": 148.3,
+"texte": "Ils passent l'été en sommeil dans quelques grottes fraîches de haute montagne."
+}
+],
+"distance_km": 1000,
+"periode": "printemps (vers le sud, la nuit) ; été en sommeil dans les grottes ; automne (retour pour se reproduire)",
+"pourquoi": "Après la naissance sur les plaines au printemps, les papillons volent vers quelques grottes fraîches de haute montagne, où ils passent l'été en sommeil, puis ils retournent se reproduire. Les pages lues ne détaillent pas toutes les raisons de ce choix ; la fraîcheur des grottes est la seule explication donnée.",
+"chiffre_cle": "Plus de 1 000 km de vol, la nuit, vers un petit nombre de grottes jamais visitées auparavant par ces papillons : ils se guident avec les étoiles et le champ magnétique de la Terre.",
+"incertitude": "Les trois pages ne disent pas exactement la même chose sur le retour (les mêmes individus ou leur descendance ?) et la date de départ n'est pas précisée. Le tracé est schématique ; l'espèce est classée vulnérable.",
+"sources": [
+{
+"titre": "Technology Networks : Bogong moths use magnetic fields to navigate",
+"url": "https://www.technologynetworks.com/neuroscience/news/bogong-moths-use-magnetic-fields-to-navigate-305123"
+},
+{
+"titre": "Université de Lund : The incredible journey of the bogong moth",
+"url": "https://www.lunduniversity.lu.se/node/3776"
+},
+{
+"titre": "About Regional : Bogong moths rely on the stars to find their way",
+"url": "https://aboutregional.com.au/world-first-discovery-reveals-bogong-moths-rely-on-the-stars-to-find-their-way/481073/"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois pages concordent : plus de 1 000 km, plaines du sud-est vers grottes des Alpes australiennes, été en sommeil, orientation par les étoiles et le champ magnétique."
+},
+{
+"id": "chauves-souris-kasanka-zambie",
+"type": "route",
+"categorie": "air",
+"nom": "Chauves-souris à col jaune de Kasanka (Zambie)",
+"latin": "Eidolon helvum",
+"points": [
+[
+-6.0,
+24.0
+],
+[
+-9.0,
+27.5
+],
+[
+-12.58,
+31.2
+]
+],
+"etapes": [
+{
+"nom": "République démocratique du Congo",
+"lat": -6.0,
+"lon": 24.0,
+"texte": "Des chauves-souris viennent de là, selon deux pages ; une autre dit que la route est inconnue."
+},
+{
+"nom": "Trajet exact inconnu",
+"lat": -9.0,
+"lon": 27.5,
+"texte": "Les routes de migration sont mal connues : ce point du tracé est indicatif."
+},
+{
+"nom": "Parc national de Kasanka (Zambie)",
+"lat": -12.58,
+"lon": 31.2,
+"texte": "De fin octobre à décembre, elles dorment le jour dans un marais boisé et volent jusqu'à 50 km chaque soir manger des fruits."
+}
+],
+"distance_km": null,
+"periode": "fin octobre à décembre (parfois dès le 26 septembre jusqu'en janvier)",
+"pourquoi": "Les arbres du parc (loquats, baies d'eau, figues) donnent beaucoup de fruits à cette saison. Les chauves-souris sèment les graines de nombreux arbres, d'où le surnom de « jardiniers d'Afrique ». Pourquoi elles se réunissent seulement là reste un mystère.",
+"chiffre_cle": "On parle de 10 à 12 millions de chauves-souris, ce qui en ferait la plus grande migration de mammifères du monde ; un comptage scientifique de 2019 en a mesuré environ 1 million.",
+"incertitude": "Le nombre est une estimation très large (1 million comptés, 10 à 12 millions estimés). La provenance exacte (RDC, Zambie, Tanzanie, Malawi) est mal connue ; un oiseau suivi est allé du Congo au Soudan du Sud. Le tracé est indicatif.",
+"sources": [
+{
+"titre": "Nkwazi Magazine : Nature's grandest spectacle – the Kasanka bat migration",
+"url": "https://nkwazimagazine.com/natures-grandest-spectacle-the-kasanka-bat-migration"
+},
+{
+"titre": "Al Jazeera : World's biggest mammal migration under threat",
+"url": "https://www.aljazeera.com/features/2020/12/7/worlds-biggest-mammal-migration-under-threat"
+},
+{
+"titre": "Smithsonian Magazine : The world's largest mammal migration is in Zambia",
+"url": "https://www.smithsonianmag.com/travel/the-worlds-largest-mammal-migration-is-taking-place-in-zambia-right-now-180985530/"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois pages concordent : environ 10 millions, octobre–décembre, vol d'environ 50 km (ou 60 miles) par nuit pour manger des fruits ; l'origine (RDC) apparaît dans deux pages sur trois."
+},
+{
+"id": "syrphes-grande-bretagne-europe",
+"type": "route",
+"categorie": "air",
+"nom": "Syrphes (mouches des fleurs) : Europe – Grande-Bretagne",
+"latin": null,
+"points": [
+[
+44.0,
+3.0
+],
+[
+48.0,
+2.0
+],
+[
+50.5,
+1.0
+],
+[
+51.2,
+-1.4
+]
+],
+"etapes": [
+{
+"nom": "Europe continentale (sud)",
+"lat": 44.0,
+"lon": 3.0,
+"texte": "Les syrphes naissent là, puis montent vers le nord au printemps."
+},
+{
+"nom": "Manche",
+"lat": 50.5,
+"lon": 1.0,
+"texte": "Ils volent entre 150 m et 1 km d'altitude et attendent les vents favorables."
+},
+{
+"nom": "Sud de l'Angleterre",
+"lat": 51.2,
+"lon": -1.4,
+"texte": "Ils arrivent au printemps ; à l'automne, leurs descendants repartent, plus nombreux."
+}
+],
+"distance_km": null,
+"periode": "arrivée au printemps ; départ à l'automne (la génération dure environ un mois)",
+"pourquoi": "Les syrphes passent d'une région à l'autre en attendant les vents favorables. Au printemps ils arrivent en Grande-Bretagne et s'y reproduisent ; leurs descendants repartent à l'automne. Les adultes pollinisent les fleurs, et leurs larves mangent des pucerons, ce qui protège les cultures.",
+"chiffre_cle": "Jusqu'à 4 milliards de syrphes migrants vont et viennent chaque année au-dessus du sud de la Grande-Bretagne (environ 80 tonnes) ; leurs larves mangent jusqu'à 10 000 milliards de pucerons.",
+"incertitude": "Les pages décrivent la même étude (radar, 10 ans, sud de la Grande-Bretagne) ; les points de départ en Europe et la distance ne sont pas donnés : le tracé est indicatif. Les nombres varient beaucoup d'une année à l'autre.",
+"sources": [
+{
+"titre": "Université d'Exeter (ORE) : Mass seasonal migrations of hoverflies",
+"url": "https://ore.exeter.ac.uk/repository/handle/10871/37621"
+},
+{
+"titre": "EurekAlert : Hoverfly migration news release",
+"url": "https://www.eurekalert.org/news-releases/725254"
+},
+{
+"titre": "Université d'Exeter : Up to four billion hoverflies migrate to and from Britain",
+"url": "https://news-archive.exeter.ac.uk/2019/june/title_720384_en.html"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois pages concordent : jusqu'à 4 milliards de syrphes, arrivée au printemps, départ d'automne, vol à 150 m–1 km, attente des vents favorables (même étude de radar, Hawkes et al.)."
+},
+{
+"id": "rennes-sames-laponie",
+"type": "route",
+"categorie": "terre",
+"nom": "Rennes des éleveurs sames (Laponie, côte – plateau)",
+"latin": "Rangifer tarandus",
+"points": [
+[
+71.0,
+25.8
+],
+[
+70.3,
+25.0
+],
+[
+69.6,
+24.0
+],
+[
+69.0,
+23.3
+]
+],
+"etapes": [
+{
+"nom": "Côte de l'Arctique (Magerøya)",
+"lat": 71.0,
+"lon": 25.8,
+"texte": "Les rennes passent l'été près de la côte ; les femelles y vêlent en mai–juin."
+},
+{
+"nom": "Mi-chemin (automne et printemps)",
+"lat": 70.0,
+"lon": 24.5,
+"texte": "Les rennes broutent sur des pâturages à mi-chemin entre côte et plateau, où les éleveurs trient et marquent les bêtes."
+},
+{
+"nom": "Plateau intérieur, Finnmarksvidda",
+"lat": 69.0,
+"lon": 23.3,
+"texte": "L'hiver ils grattent la neige sèche pour manger du lichen."
+}
+],
+"distance_km": 200,
+"periode": "automne (vers l'intérieur, environ octobre–novembre) ; vêlage en mai–juin ; été sur la côte ; migration jusqu'à 600 km par an sur les anciens trajets",
+"pourquoi": "En hiver, le plateau intérieur est plus froid et la neige y reste sèche et facile à creuser pour trouver du lichen ; en été, la côte est plus douce et humide, ce qui aide les plantes à pousser. Les Sames suivent leurs troupeaux selon huit saisons.",
+"chiffre_cle": "Un exemple : 200 km à l'automne de l'île de Magerøya aux pâturages d'hiver, avec une nage dans un détroit d'environ 1 200 m ; jusqu'à 600 km par an sur les anciens trajets.",
+"incertitude": "Les frontières ont coupé des anciens parcours (Finlande : plus de migration vers la côte, sauf à Enontekiö). Les distances varient selon les familles et les régions ; le tracé suit l'exemple de Finnmark, de façon schématique.",
+"sources": [
+{
+"titre": "Frontiers in Sustainable Food Systems : Reindeer herding and seasonal migration (Finnmarksvidda)",
+"url": "https://www.frontiersin.org/articles/10.3389/fsufs.2020.585685"
+},
+{
+"titre": "Natural Habitat Adventures : Sami reindeer herders",
+"url": "https://www.nathab.com/blog/sami-reindeer-herders"
+},
+{
+"titre": "Jouni Kitti : Reindeer herding in Finnish Lapland (PDF)",
+"url": "https://www.jounikitti.fi/englanti/herding.pdf"
+},
+{
+"titre": "Visit Alta : The 8 Sami seasons",
+"url": "https://visitalta.no/en/article/the-8-sami-seasons/"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Quatre pages concordent : été vers la côte, hiver vers le plateau intérieur, vêlage au printemps ; distances d'un exemple (200 km) et plafond de 600 km donnés par deux pages différentes."
+},
+{
+"id": "transhumance-bakhtiari-zagros",
+"type": "route",
+"categorie": "terre",
+"nom": "Nomades Bakhtiari (monts Zagros, Iran)",
+"latin": null,
+"points": [
+[
+32.33,
+50.86
+],
+[
+32.4,
+50.15
+],
+[
+32.2,
+49.8
+],
+[
+31.9,
+49.3
+]
+],
+"etapes": [
+{
+"nom": "Pâturages d'été du Tchahar Mahal (Zardkuh, 4 548 m)",
+"lat": 32.33,
+"lon": 50.86,
+"texte": "Les familles montent là au printemps : 15 à 45 jours de route à pied."
+},
+{
+"nom": "Cols et gorges du Zagros",
+"lat": 32.2,
+"lon": 49.8,
+"texte": "Il n'y a que cinq à sept cols praticables ; les rivières se traversent sur des outres de peau de chèvre gonflées."
+},
+{
+"nom": "Pâturages d'hiver du Khouzestan",
+"lat": 31.9,
+"lon": 49.3,
+"texte": "À l'automne, elles redescendent dans la plaine chaude : 8 à 30 jours."
+}
+],
+"distance_km": 300,
+"periode": "montée au printemps (avril, 15 à 45 jours) ; descente en automne (octobre, 8 à 30 jours)",
+"pourquoi": "L'été, les pâturages de la plaine sont trop chauds ; l'hiver, la montagne est couverte de neige (octobre à avril) : les nomades changent donc de lieu deux fois par an. La migration est aussi un grand événement social.",
+"chiffre_cle": "Jusqu'à environ 300 km selon les groupes ; autrefois jusqu'à 50 000 personnes ; aujourd'hui, souvent 2 à 20 familles, certaines en camion.",
+"incertitude": "La distance et le nombre de jours dépendent du groupe et de l'année (neige, crues). Les points du tracé sont indicatifs : seules les régions de départ et d'arrivée sont données dans les pages lues.",
+"sources": [
+{
+"titre": "Encyclopaedia Iranica : Bakhtiari tribe",
+"url": "https://www.iranicaonline.org/articles/baktiari-tribe"
+},
+{
+"titre": "Timeless Travels : With the Bakhtiari, on the way where there is no way",
+"url": "https://www.timeless-travels.co.uk/post/with-the-bakhtiari-on-the-way-where-there-is-no-way"
+},
+{
+"titre": "Nomad Tours : Bakhtiari migration",
+"url": "https://nomad.tours/?p=13124"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : environ 300 km, montée au printemps en 15 à 45 jours, descente en 8 à 30 jours, cols du Zagros et traversée du Karoun sur des outres."
+},
+{
+"id": "transhumance-mesta-canada-leonesa",
+"type": "route",
+"categorie": "terre",
+"nom": "Transhumance espagnole (Cañada Real Leonesa Occidentale)",
+"latin": null,
+"points": [
+[
+39.4,
+-6.2
+],
+[
+40.2,
+-5.0
+],
+[
+41.0,
+-5.8
+],
+[
+42.6,
+-5.6
+],
+[
+43.2,
+-4.9
+]
+],
+"etapes": [
+{
+"nom": "Dehesas de Cáceres (Sierra de Fuentes, Extrémadure)",
+"lat": 39.4,
+"lon": -6.2,
+"texte": "Les troupeaux y passent l'hiver sous les chênes verts."
+},
+{
+"nom": "Puerto del Pico (1 391 m)",
+"lat": 40.2,
+"lon": -5.0,
+"texte": "Le point le plus haut de l'exemple, sur la même cañada."
+},
+{
+"nom": "León",
+"lat": 42.6,
+"lon": -5.6,
+"texte": "La route des moutons mérinos traversait la région de León."
+},
+{
+"nom": "Las Pintas, Picos de Europa",
+"lat": 43.2,
+"lon": -4.9,
+"texte": "Les troupeaux y arrivent pour l'estive d'été, après 33 jours de marche."
+}
+],
+"distance_km": 579,
+"periode": "montée au printemps (avril–juin) ; retour au sud en octobre (au Moyen Âge : vers le sud en septembre–octobre)",
+"pourquoi": "L'été, le sud de l'Espagne est trop sec et chaud ; les troupeaux gagnent les pâturages frais du nord. Marcher fait monter les bêtes environ un mois plus tôt que le camion et laisse la végétation se refaire au sud.",
+"chiffre_cle": "Un exemple de 2021 : 579 km en 33 jours (environ 20 km par jour) pour 1 400 moutons ; la Mesta comptait de 2,5 à 5 millions de mérinos selon les siècles ; les troupeaux de León faisaient 550 à 750 km.",
+"incertitude": "Le tracé est celui d'une cañada royale réelle, mais les points sont approximatifs. Les chiffres historiques de la Mesta varient d'une époque à l'autre ; d'autres cañadas relient d'autres régions (Ségovie, Soria, La Manche).",
+"sources": [
+{
+"titre": "Wikipedia : Mesta",
+"url": "https://en.wikipedia.org/wiki/Mesta"
+},
+{
+"titre": "Global Landscapes Forum : Reinstating sheep transhumance in Spain",
+"url": "https://thinklandscape.globallandscapesforum.org/viewpoint/win-win-win-reinstating-sheep-transhumance-in-spain/"
+},
+{
+"titre": "MedNatureCulture : Transhumance in Spain, a new agreement",
+"url": "https://www.mednatureculture.org/?p=7461"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : cañadas royales du nord vers l'Extrémadure, trajets de 550–750 km (Wikipedia), 579 km en 2021 (GLF) et environ 900 km depuis Madrid (MedNatureCulture)."
+},
+{
+"id": "faucon-amour-inde-afrique",
+"type": "route",
+"categorie": "air",
+"nom": "Faucon de l'Amour (Asie du Nord-Est – Afrique)",
+"latin": "Falco amurensis",
+"points": [
+[
+48.0,
+121.0
+],
+[
+26.2,
+94.3
+],
+[
+18.0,
+72.0
+],
+[
+5.0,
+47.0
+],
+[
+-19.0,
+30.0
+]
+],
+"etapes": [
+{
+"nom": "Régions de l'Amour (Sibérie, nord de la Chine)",
+"lat": 48.0,
+"lon": 121.0,
+"texte": "Les faucons y nichent en été."
+},
+{
+"nom": "Nagaland et Manipur (Inde)",
+"lat": 26.2,
+"lon": 94.3,
+"texte": "Dès octobre, des milliers se posent là, notamment près du réservoir de Doyang, pour manger des libellules."
+},
+{
+"nom": "Mer d'Oman",
+"lat": 18.0,
+"lon": 72.0,
+"texte": "Ils traversent la mer d'Oman : plus de 4 000 km au-dessus de l'eau selon un texte."
+},
+{
+"nom": "Somalie",
+"lat": 5.0,
+"lon": 47.0,
+"texte": "Un oiseau suivi y est arrivé en 5 jours et 8 heures sans escale (5 700 km)."
+},
+{
+"nom": "Afrique australe (Zimbabwe, Botswana, Mozambique…)",
+"lat": -19.0,
+"lon": 30.0,
+"texte": "Ils y passent l'hiver austral, jusqu'en mai."
+}
+],
+"distance_km": 22000,
+"periode": "automne (Nagaland en octobre–novembre ; Afrique en novembre–décembre) ; retour vers le nord au printemps, par une route plus au nord",
+"pourquoi": "Les faucons mangent des insectes, surtout des libellules, qui sont nombreux au sud de l'Afrique pendant l'été austral : ils suivent la bonne saison d'un hémisphère à l'autre.",
+"chiffre_cle": "Environ 22 000 km par an ; une femelle suivie a volé 5 700 km sans escale au-dessus de l'océan ; un autre oiseau 14 560 km au total.",
+"incertitude": "Les textes se contredisent un peu : région de nid (Sibérie, Chine, Mongolie), longueur de la traversée sans escale (5 700 ou 5 912 km). Le retour au printemps passe plus au nord et à l'ouest que l'aller. Tracé schématique.",
+"sources": [
+{
+"titre": "Onmanorama : Amur falcon GPS-tagged reaches Somalia",
+"url": "https://www.onmanorama.com/news/kerala/2018/12/07/amur-falcon-gps-tagged-reach-somalia.html"
+},
+{
+"titre": "North East Herald : Amur falcons tagged in Manipur reach Africa",
+"url": "https://neherald.com/tripura/amur-falcons-tagged-in-manipur-reach-africa-three-birds-tracked-in-somalia-zimbabwe-botswana"
+},
+{
+"titre": "Eastern Mirror (Nagaland) : The story of Amur falcon",
+"url": "https://www.easternmirrornagaland.com/the-story-of-amur-falcon-its-conservation-and-safe-passage"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : nid en Asie du Nord-Est, halte en Inde (Manipur, Nagaland) en octobre, traversée de la mer d'Oman, hiver en Afrique australe ; environ 22 000 km par an."
+},
+{
+"id": "antilope-pronghorn-grand-teton",
+"type": "route",
+"categorie": "terre",
+"nom": "Antilocapre (Grand Teton – haut bassin de la Green River)",
+"latin": "Antilocapra americana",
+"points": [
+[
+43.8,
+-110.55
+],
+[
+43.4,
+-110.4
+],
+[
+43.0,
+-110.0
+],
+[
+42.8,
+-109.8
+]
+],
+"etapes": [
+{
+"nom": "Parc national de Grand Teton (Wyoming)",
+"lat": 43.8,
+"lon": -110.55,
+"texte": "Les antilocapres y passent l'été, sur la haute prairie."
+},
+{
+"nom": "Forêt nationale Bridger-Teton",
+"lat": 43.4,
+"lon": -110.4,
+"texte": "Le couloir est parfois large de moins de 150 mètres."
+},
+{
+"nom": "Haut bassin de la Green River (Sublette County)",
+"lat": 42.8,
+"lon": -109.8,
+"texte": "Ils y passent l'hiver, dans la sauge ; départ en octobre-novembre."
+}
+],
+"distance_km": 240,
+"periode": "automne (octobre–novembre vers le sud) ; printemps (retour vers le nord, mars–mai, avec les naissances en route)",
+"pourquoi": "Les antilocapres passent l'été dans les hautes prairies de Grand Teton et l'hiver dans les plaines de sauge du bassin de la Green River, à l'automne ils descendent vers le sud et au printemps ils reviennent, en mettant bas en route. Ils suivent ce chemin depuis au moins 6 000 ans.",
+"chiffre_cle": "Environ 150 miles (240 km) aller-retour sur le chemin protégé, dont 45 miles sur terres de l'État (Forêt nationale) ; moins de 200 bêtes en été à Grand Teton ; 362 animaux équipés d'un collier GPS (2002–2020).",
+"incertitude": "Un texte donne en moyenne 178 km et un record de 902 km pour une bête (autre mesure), et les dates du printemps varient d'un passage à l'autre (mars–avril ou avril–mai). Le tracé est schématique.",
+"sources": [
+{
+"titre": "WCS : US Forest Service designates nation's first wildlife migration corridor",
+"url": "https://newsroom.wcs.org/News-Releases/articleType/ArticleView/articleId/5885/US-Forest-Service-Designates-Nations-First-Wildlife-Migration-Corridor.aspx"
+},
+{
+"titre": "WCS : Protecting the Pronghorn Path",
+"url": "https://newsroom.wcs.org/News-Releases/articleType/ArticleView/articleId/5541/Protecting-the-Pronghorn-Path.aspx"
+},
+{
+"titre": "Mapscaping : Path of the Pronghorn",
+"url": "https://mapscaping.com/path-of-the-pronghorn/"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : couloir de 150 miles entre Grand Teton et le haut bassin de la Green River, utilisé depuis au moins 6 000 ans, moins de 200 antilocapres en été à Grand Teton ; l'automne en octobre–novembre vient d'une seule page."
+},
+{
+"id": "cerf-mulet-red-desert-hoback",
+"type": "route",
+"categorie": "terre",
+"nom": "Cerf mulet (Red Desert – bassin de Hoback, Wyoming)",
+"latin": "Odocoileus hemionus",
+"points": [
+[
+41.8,
+-108.9
+],
+[
+42.4,
+-109.4
+],
+[
+42.9,
+-109.8
+],
+[
+43.2,
+-110.5
+]
+],
+"etapes": [
+{
+"nom": "Red Desert (monts Leucite)",
+"lat": 41.8,
+"lon": -108.9,
+"texte": "L'hiver, les cerfs broutent de la sauge dans le désert."
+},
+{
+"nom": "Pieds de la chaîne Wind River",
+"lat": 42.4,
+"lon": -109.4,
+"texte": "Ils rejoignent d'autres cerfs, puis longent la montagne, au rythme de la fonte des neiges."
+},
+{
+"nom": "Finger Lakes, près de Pinedale",
+"lat": 42.9,
+"lon": -109.8,
+"texte": "Ils traversent lacs et rivières, parfois à la nage."
+},
+{
+"nom": "Bassin de Hoback",
+"lat": 43.2,
+"lon": -110.5,
+"texte": "L'été, ils paissent en haute montagne, souvent au-dessus de la limite des arbres."
+}
+],
+"distance_km": 240,
+"periode": "printemps (vers le nord, avec la fonte des neiges) ; été en haute montagne ; retour en automne avant les grosses neiges (environ une semaine)",
+"pourquoi": "Les cerfs suivent la verdure du printemps qui monte avec la fonte des neiges, jusqu'aux sommets où ils engraissent l'été ; avant les grosses neiges de la montagne, ils redescendent vers leur zone d'hiver du Red Desert (la descente prend environ une semaine).",
+"chiffre_cle": "Environ 150 miles (240 km) : la plus longue migration de grand animal connue dans les 48 États contigus (étude de 2014 sur 40 cerfs) ; une biche a même fait 242 miles depuis 2018.",
+"incertitude": "Les trois pages donnent des détails différents selon l'année et le groupe (environ 500 cerfs au départ ; 4 000 à 5 000 cerfs sur les pieds de la Wind River) ; le tracé est schématique. Les cerfs passent environ 95 % du temps à se reposer et manger aux étapes.",
+"sources": [
+{
+"titre": "WyoFile : America's longest mule deer migration discovered in Wyoming",
+"url": "https://wyofile.com/americas-longest-mule-deer-migration-discovered-in-wyoming/"
+},
+{
+"titre": "National Geographic : Longest land mammal migration in the lower 48 discovered",
+"url": "https://www.nationalgeographic.com/animals/article/140422-mule-deer-migration-wyoming-animals-science"
+},
+{
+"titre": "Wyoming Cooperative Fish and Wildlife Research Unit : Red Desert to Hoback mule deer project",
+"url": "https://wyocoopunit.org/?p=499"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : environ 150 miles entre Red Desert et Hoback, la plus longue migration de grand mammifère terrestre des 48 États ; trajet de printemps et d'été en suivant la verdure."
+},
+{
+"id": "caribou-riviere-george",
+"type": "route",
+"categorie": "terre",
+"nom": "Caribous de la rivière George (Québec – Labrador)",
+"latin": "Rangifer tarandus caribou",
+"points": [
+[
+54.5,
+-66.0
+],
+[
+56.0,
+-66.0
+],
+[
+57.5,
+-66.5
+],
+[
+58.5,
+-67.0
+]
+],
+"etapes": [
+{
+"nom": "Forêt boréale (Schefferville, Québec)",
+"lat": 54.5,
+"lon": -66.0,
+"texte": "L'hiver les caribous vivent dans la forêt."
+},
+{
+"nom": "Vers le nord (vallée de la rivière George)",
+"lat": 56.0,
+"lon": -66.0,
+"texte": "Ils montent vers la toundra ouverte pour mettre bas."
+},
+{
+"nom": "Toundra de l'Ungava",
+"lat": 58.5,
+"lon": -67.0,
+"texte": "Les femelles y ont leurs petits à peu près en même temps, en trois semaines environ."
+}
+],
+"distance_km": null,
+"periode": "printemps (vers la toundra, mise bas en juin) ; automne (retour vers la forêt)",
+"pourquoi": "Comme les caribous de la toundra, ceux de la rivière George quittent la forêt boréale pour la toundra ouverte, où ils mettent bas, puis reviennent à la forêt. La harde a beaucoup baissé depuis les années 1990.",
+"chiffre_cle": "Environ 700 000 à 800 000 bêtes dans les années 1980 (la plus grande harde du monde) ; environ 14 200 en 2014 ; environ 8 600 en 2024.",
+"incertitude": "Les pages donnent « des milliers de kilomètres » (Wikipedia) sans chiffre précis : la distance n'est donc pas retenue. Les trajets d'automne ont raccourci de plus de 100 km en dix ans. Tracé schématique ; plusieurs chiffres de population divergent selon la date.",
+"sources": [
+{
+"titre": "Wikipedia : George River (Quebec)",
+"url": "https://en.wikipedia.org/wiki/George_River_(Quebec)"
+},
+{
+"titre": "Nation Naskapi : Mise à jour du gouvernement du Québec sur le caribou",
+"url": "https://naskapi.ca/?p=3099"
+},
+{
+"titre": "CBC News : Aboriginal groups fear for George River caribou herd",
+"url": "https://amp.cbc.ca/news/canada/north/aboriginal-groups-fear-for-george-river-caribou-herd-1.2740358"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : harde migratrice entre le Québec et le Labrador (forêt, toundra), forte baisse depuis les années 1980–90 (700 000–800 000 puis 14 200 en 2014, 8 600 en 2024)."
+},
+{
+"id": "manchot-magellan-patagonie-bresil",
+"type": "route",
+"categorie": "mer",
+"nom": "Manchot de Magellan (Patagonie – Brésil)",
+"latin": "Spheniscus magellanicus",
+"points": [
+[
+-44.0,
+-65.2
+],
+[
+-40.0,
+-62.0
+],
+[
+-36.0,
+-56.0
+],
+[
+-32.0,
+-51.5
+],
+[
+-27.6,
+-48.5
+]
+],
+"etapes": [
+{
+"nom": "Colonies de Patagonie (nord)",
+"lat": -44.0,
+"lon": -65.2,
+"texte": "La reproduction finit fin février ; les manchots partent ensuite et jusqu'en avril–mai."
+},
+{
+"nom": "Côte argentine et uruguayenne",
+"lat": -36.0,
+"lon": -56.0,
+"texte": "Ils nagent vers le nord, les femelles allant plus loin que les mâles."
+},
+{
+"nom": "Sud du Brésil (Florianópolis)",
+"lat": -27.6,
+"lon": -48.5,
+"texte": "Certains échouent affaiblis sur les plages ; ils sont parfois soignés puis ramenés."
+}
+],
+"distance_km": 2000,
+"periode": "départ de mai ; hiver au nord ; retour aux colonies en septembre–octobre",
+"pourquoi": "Après la reproduction, les manchots vont chercher des poissons plus au nord (anchois et sprats). Les femelles vont plus loin, et ont plus de risque d'échouer sur les plages.",
+"chiffre_cle": "Jusqu'à 2 000 km depuis la colonie (Cabo Vírgenes), alors que 43 % de ces manchots restent près de leur colonie (à moins de 290 km) ; des manchots échoués ont été retrouvés à plus de 1 000 km de leur colonie ; 14 manchots suivis en 2017.",
+"incertitude": "Seule une partie des manchots migre. Les distances varient selon la colonie et l'année ; le tracé suit la côte atlantique de façon schématique et part d'une colonie du nord de la Patagonie.",
+"sources": [
+{
+"titre": "ScienceDaily : Female penguins stranded along South American coast",
+"url": "https://www.sciencedaily.com/releases/2019/01/190107110825.htm"
+},
+{
+"titre": "Seabird Tracking Database : Magellanic penguins",
+"url": "https://seabirdtracking.org/?p=9001"
+},
+{
+"titre": "Université d'Aberystwyth : Academic helps track lost penguins as they journey home",
+"url": "https://www.aber.ac.uk/en/news/archive/2025/07/title-282329-en.html"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : départ de la Patagonie vers le sud du Brésil à partir de mai, jusqu'à 1 000 à 2 000 km, les femelles plus loin que les mâles."
+},
+{
+"id": "tortue-kemp-golfe-du-mexique",
+"type": "route",
+"categorie": "mer",
+"nom": "Tortue de Kemp (Golfe du Mexique)",
+"latin": "Lepidochelys kempii",
+"points": [
+[
+23.2,
+-97.8
+],
+[
+26.0,
+-97.2
+],
+[
+28.0,
+-96.0
+],
+[
+29.0,
+-92.0
+],
+[
+30.0,
+-88.0
+]
+],
+"etapes": [
+{
+"nom": "Rancho Nuevo (Tamaulipas, Mexique)",
+"lat": 23.2,
+"lon": -97.8,
+"texte": "Presque toutes viennent pondre sur cette plage : en un seul jour, des dizaines de milliers de femelles autrefois, plusieurs milliers aujourd'hui."
+},
+{
+"nom": "Île de Padre (Texas)",
+"lat": 27.0,
+"lon": -97.3,
+"texte": "Une petite partie pond aussi ici ; de 1978 à 1988, des œufs de Rancho Nuevo y ont été transférés."
+},
+{
+"nom": "Eaux côtières du Golfe (US et Mexique)",
+"lat": 29.0,
+"lon": -92.0,
+"texte": "Après la ponte, les femelles longent la côte à environ 20 km du rivage, de fin mai à août."
+},
+{
+"nom": "Golfe de l'Alabama",
+"lat": 30.0,
+"lon": -88.0,
+"texte": "Les mêmes couloirs se retrouvent d'année en année."
+}
+],
+"distance_km": null,
+"periode": "trajet des femelles après la ponte de fin mai à août (pic en juin) ; la saison de ponte n'est pas précisée dans les pages lues",
+"pourquoi": "La tortue de Kemp pond presque toujours sur une seule plage, Rancho Nuevo ; la ponte en masse (arribada) en un jour protège les œufs en les mettant en abondance. Les adultes se nourrissent surtout de crabes dans les eaux côtières.",
+"chiffre_cle": "Environ 40 000 femelles arrivées en un seul jour (film de 1947, étudié en 1963) ; en 1985 seulement 702 nids dans le monde ; un record de presque 20 000 nids en 2009.",
+"incertitude": "Les trajets de retour vers les zones de nourriture sont mal connus ; les pages ne donnent pas de distance totale. Les points du tracé sont indicatifs (corridor côtier). Le nombre de nids a baissé depuis 2010 sans raison connue.",
+"sources": [
+{
+"titre": "Sea Turtle Status : The Kemp's ridley – the Gulf of Mexico's only endemic sea turtle",
+"url": "https://www.seaturtlestatus.org/articles/the-gulf-of-mexicos-only-endemic-sea-turtle"
+},
+{
+"titre": "National Park Service : The story of the Kemp's ridley",
+"url": "https://www.nps.gov/pais/learn/nature/kempsridleystory.htm"
+},
+{
+"titre": "USGS : Migratory corridors of adult female Kemp's ridley turtles in the Gulf of Mexico",
+"url": "https://www.usgs.gov/publications/migratory-corridors-adult-female-kemps-ridley-turtles-gulf-mexico"
+}
+],
+"fiche_app": null,
+"verifie": false,
+"notes_verif": "Les sources concordent sur Rancho Nuevo et le corridor côtier après la ponte, mais n'indiquent ni distance, ni trajet complet : verifie=false, texte prudent."
+},
+{
+"id": "criquet-pelerin-afrique-asie",
+"type": "route",
+"categorie": "air",
+"nom": "Criquet pèlerin (Afrique – Asie du Sud-Ouest)",
+"latin": "Schistocerca gregaria",
+"points": [
+[
+20.0,
+-10.0
+],
+[
+22.0,
+10.0
+],
+[
+22.0,
+30.0
+],
+[
+20.0,
+39.0
+],
+[
+23.0,
+48.0
+],
+[
+26.0,
+62.0
+],
+[
+27.5,
+72.0
+]
+],
+"etapes": [
+{
+"nom": "Mauritanie",
+"lat": 20.0,
+"lon": -10.0,
+"texte": "C'est le bord ouest de la zone où l'espèce vit d'habitude."
+},
+{
+"nom": "Sahara",
+"lat": 22.0,
+"lon": 10.0,
+"texte": "Les essaims volent le jour, poussés par le vent, jusqu'à 150 km par jour."
+},
+{
+"nom": "Mer Rouge",
+"lat": 20.0,
+"lon": 39.0,
+"texte": "Les essaims traversent régulièrement la mer Rouge."
+},
+{
+"nom": "Péninsule arabique",
+"lat": 23.0,
+"lon": 48.0,
+"texte": "En 2019–2020, la reproduction non contrôlée dans les déserts d'Arabie a lancé de gros essaims."
+},
+{
+"nom": "Nord-ouest de l'Inde",
+"lat": 27.5,
+"lon": 72.0,
+"texte": "C'est le bord est de la zone habituelle, jusqu'au Pakistan."
+}
+],
+"distance_km": null,
+"periode": "toute l'année selon les pluies ; plagues de 1926–1934, 1940–1948, 1949–1963, 1967–1969, 1987–1989, 2003–2005, 2019–2021 (les dates varient selon les sources)",
+"pourquoi": "Les essaims volent le jour, poussés par le vent, jusqu'à 150 km par jour ; ils ne franchissent pas les hautes montagnes ni les forêts tropicales. Un km² d'essaim mange autant que 35 000 personnes en un jour. Les pages lues ne détaillent pas pourquoi ils partent, seulement où ils vont.",
+"chiffre_cle": "Un essaim vole jusqu'à 150 km par jour ; un km² d'essaim peut contenir jusqu'à 80 millions d'adultes ; l'espèce peut envahir environ 60 pays (≈ 32 millions de km²) ; en 1987–1989 des essaims ont traversé l'Atlantique en 10 jours.",
+"incertitude": "Ce n'est pas un trajet unique mais une zone d'extension : le tracé relie seulement ses bords (Mauritanie – nord-ouest de l'Inde). Le nombre de pays dépend de la source (30 pays en période calme, jusqu'à 60 pendant les invasions).",
+"sources": [
+{
+"titre": "FAO : Desert Locust (Locust Watch)",
+"url": "https://www.fao.org/locusts/en/"
+},
+{
+"titre": "ONU Info : East Africa locusts threaten food security",
+"url": "https://news.un.org/en/node/1055631"
+},
+{
+"titre": "Doc.surf : Desert locust (résumé encyclopédique)",
+"url": "https://www.doc.surf/wiki/desert-locust"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : 150 km par jour, essaims de plusieurs dizaines de millions d'insectes par km², zone d'extension de l'Afrique de l'Ouest au nord-ouest de l'Inde, crises 2019–2021."
+},
+{
+"id": "cygne-chanteur-islande-irlande",
+"type": "route",
+"categorie": "air",
+"nom": "Cygne chanteur (Islande – Irlande et Grande-Bretagne)",
+"latin": "Cygnus cygnus",
+"points": [
+[
+65.0,
+-19.0
+],
+[
+61.0,
+-14.0
+],
+[
+57.5,
+-8.0
+],
+[
+54.5,
+-7.0
+]
+],
+"etapes": [
+{
+"nom": "Islande (est et ouest)",
+"lat": 65.0,
+"lon": -19.0,
+"texte": "Les cygnes nichent en Islande ; ils partent en automne, souvent en famille."
+},
+{
+"nom": "Atlantique Nord",
+"lat": 61.0,
+"lon": -14.0,
+"texte": "Ils traversent la mer d'un seul vol d'environ 1 300 km."
+},
+{
+"nom": "Écosse et Irlande",
+"lat": 57.5,
+"lon": -8.0,
+"texte": "Ils passent l'hiver, d'octobre à avril, dans les prairies près des lacs et des rivières."
+}
+],
+"distance_km": 1300,
+"periode": "octobre (départ et arrivée) ; hivernage jusqu'en avril ; retour en Islande au printemps",
+"pourquoi": "Ils fuient l'hiver très dur d'Islande pour des hivers plus doux en Irlande et en Grande-Bretagne, où ils mangent l'herbe des prairies près de l'eau.",
+"chiffre_cle": "Environ 1 100 km (oiseaux de l'est de l'Islande) à 1 400 km (ouest) ; environ 19 000 cygnes chanteurs comptés en Irlande en 2020 ; environ 20 000 au Royaume-Uni.",
+"incertitude": "Les distances varient selon les oiseaux (1 100, 1 300 ou 1 400 km). Les cygnes de l'ouest vont surtout en Irlande et en Écosse, ceux de l'est surtout en Écosse. L'espèce hiverne exclusivement en Grande-Bretagne et en Irlande pour la population islandaise. Tracé schématique.",
+"sources": [
+{
+"titre": "BTO : Whooper Swan (oiseaux d'Islande hivernant au Royaume-Uni)",
+"url": "https://bto.org/understanding-birds/birdfacts/whooper-swan"
+},
+{
+"titre": "Wildfowl : Movements of whooper swans neckbanded in Iceland",
+"url": "https://wildfowl.wwt.org.uk/index.php/wildfowl/article/view/1390"
+},
+{
+"titre": "West Cork People : The whooper swan – our vocal Icelandic winter visitor",
+"url": "https://westcorkpeople.ie/?p=22003"
+}
+],
+"fiche_app": "cygnus-cygnus",
+"verifie": true,
+"notes_verif": "Trois sources concordent : cygnes d'Islande hivernant en Irlande et Grande-Bretagne (BTO : exclusivement ; Wildfowl : 1 100–1 400 km ; West Cork : 1 300 km d'un seul vol, octobre–avril)."
+},
+{
+"id": "beluga-baie-dhudson",
+"type": "route",
+"categorie": "mer",
+"nom": "Béluga (détroit d'Hudson – baie d'Hudson)",
+"latin": "Delphinapterus leucas",
+"points": [
+[
+62.5,
+-72.0
+],
+[
+61.0,
+-80.0
+],
+[
+59.5,
+-88.0
+],
+[
+58.8,
+-93.8
+]
+],
+"etapes": [
+{
+"nom": "Détroit d'Hudson (hiver)",
+"lat": 62.5,
+"lon": -72.0,
+"texte": "En hiver, les courants forts y gardent l'eau ouverte."
+},
+{
+"nom": "Baie d'Hudson, large",
+"lat": 59.5,
+"lon": -88.0,
+"texte": "En juin, après la débâcle, les bélugas entrent dans la baie."
+},
+{
+"nom": "Estuaires des rivières Churchill et Nelson",
+"lat": 58.8,
+"lon": -93.8,
+"texte": "Ils y mangent, élèvent leurs petits et muent pendant l'été."
+}
+],
+"distance_km": null,
+"periode": "juin (arrivée dans la baie après la débâcle) ; été dans les estuaires ; départ de fin d'été vers le détroit d'Hudson pour l'hiver",
+"pourquoi": "En été, les estuaires de la baie d'Hudson servent à manger, mettre bas, élever les petits et muer. En hiver, les bélugas gagnent le détroit d'Hudson, où les courants forts gardent l'eau libre de glace.",
+"chiffre_cle": "Environ 55 000 à 57 000 bélugas reviennent chaque été en baie d'Hudson ouest : la plus grande population d'été du monde, plus du quart de l'espèce.",
+"incertitude": "Les distances ne sont pas données dans les pages lues (parfois « des milliers de km » pour les mammifères marins arctiques en général). L'estimation varie : 55 000 à 57 000. Le tracé est schématique.",
+"sources": [
+{
+"titre": "Churchill Science : Beluga whales",
+"url": "https://churchillscience.ca/about/the-churchill-area/beluga-whales/"
+},
+{
+"titre": "Mission Blue : Seeking to understand one of the biggest beluga whale migrations",
+"url": "https://missionblue.org/2012/07/seeking-to-understand-one-of-the-biggest-beluga-whale-migrations/"
+},
+{
+"titre": "The Globe and Mail : Beluga whales in Hudson Bay, Churchill",
+"url": "https://www.theglobeandmail.com/canada/science/article-beluga-whales-hudson-bay-churchill-scientists"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : retour de dizaines de milliers de bélugas (55 000–57 000) chaque été dans l'ouest de la baie d'Hudson, estuaires de Churchill et Nelson, hiver plus au nord (détroit d'Hudson)."
+},
+{
+"id": "rorqual-bleu-californie-costa-rica",
+"type": "route",
+"categorie": "mer",
+"nom": "Baleine bleue (Californie – dôme du Costa Rica)",
+"latin": "Balaenoptera musculus",
+"points": [
+[
+34.0,
+-120.5
+],
+[
+28.0,
+-115.5
+],
+[
+22.9,
+-109.9
+],
+[
+15.0,
+-100.0
+],
+[
+9.0,
+-90.0
+]
+],
+"etapes": [
+{
+"nom": "Sud de la Californie (été)",
+"lat": 34.0,
+"lon": -120.5,
+"texte": "De l'été à l'automne, elles mangent du krill."
+},
+{
+"nom": "Basse-Californie (Cabo San Lucas)",
+"lat": 22.9,
+"lon": -109.9,
+"texte": "Quatre baleines sur dix suivies ont descendu la côte de Basse-Californie."
+},
+{
+"nom": "Dôme du Costa Rica",
+"lat": 9.0,
+"lon": -90.0,
+"texte": "Cette zone d'eaux profondes riche en krill pourrait être un lieu de naissance ; une baleine a fini à moins de 450 km, après 2 959 km de plus en 30 jours."
+}
+],
+"distance_km": null,
+"periode": "départ à l'automne ; hiver au sud (Basse-Californie, Costa Rica) ; retour vers la Californie ; pas de jeûne comme chez les baleines grises",
+"pourquoi": "Les baleines bleues suivent le krill : elles s'arrêtent là où la nourriture abonde, et ne migrent pas d'un seul trait. Le dôme du Costa Rica serait leur zone d'hiver et peut-être de naissance.",
+"chiffre_cle": "Un animal suivi a migré plus de 10 000 miles (≈ 16 000 km) ; 159 baleines étiquetées en 1993–2007 ; une baleine a parcouru 2 959 km vers le sud en 30,5 jours.",
+"incertitude": "Beaucoup de baleines restent au large de la Basse-Californie ou y trouvent de la nourriture sans aller plus loin ; la destination exacte varie ; la naissance près du dôme du Costa Rica est une hypothèse. Tracé schématique.",
+"sources": [
+{
+"titre": "Cascadia Research : Movements of North Pacific blue whales (fall migration)",
+"url": "https://cascadiaresearch.org/publications/movements-north-pacific-blue-whales-during-feeding-season-southern-california-and/"
+},
+{
+"titre": "Endangered Species Research : tracking of blue whales (v10, p93–106)",
+"url": "https://int-res.com/abstracts/esr/v10/p93-106"
+},
+{
+"titre": "Oregon State University : blue whale migration tracking",
+"url": "https://today.prod.acquia.cws.oregonstate.edu/node/50335"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : baleines équipées au large de la Californie qui descendent en automne vers la Basse-Californie et l'ouest du dôme du Costa Rica, en s'arrêtant pour manger."
+},
+{
+"id": "saumon-atlantique-groenland-irlande",
+"type": "route",
+"categorie": "mer",
+"nom": "Saumon atlantique (Groenland – rivière Erriff, Irlande)",
+"latin": "Salmo salar",
+"points": [
+[
+60.7,
+-46.0
+],
+[
+58.0,
+-35.0
+],
+[
+55.5,
+-20.0
+],
+[
+53.9,
+-10.5
+],
+[
+53.62,
+-9.8
+]
+],
+"etapes": [
+{
+"nom": "Qaqortoq (sud du Groenland)",
+"lat": 60.7,
+"lon": -46.0,
+"texte": "Le saumon est étiqueté en septembre 2023, au large du Groenland."
+},
+{
+"nom": "Atlantique Nord",
+"lat": 56.0,
+"lon": -25.0,
+"texte": "Il passe deux hivers à manger en mer."
+},
+{
+"nom": "Baie de Killary (comté de Mayo)",
+"lat": 53.62,
+"lon": -9.8,
+"texte": "Un capteur acoustique l'enregistre à l'entrée de la baie, en janvier 2025."
+},
+{
+"nom": "Rivière Erriff",
+"lat": 53.66,
+"lon": -9.7,
+"texte": "Il remonte la rivière pour pondre, probablement dans celle où il est né."
+}
+],
+"distance_km": 2300,
+"periode": "étiquetage en septembre 2023 ; deux hivers en mer ; retour de la rivière à l'hiver 2024–2025",
+"pourquoi": "Le saumon descend en mer pour grossir, ici jusqu'au Groenland et deux hivers à manger dans l'Atlantique ; puis il revient dans une rivière pour pondre, probablement celle où il est né (comportement typique des saumons).",
+"chiffre_cle": "Plus de 2 300 km (1 242 milles marins) entre le Groenland et l'Irlande pour un saumon de 3,3 kg (64 cm) devenu environ 5 kg.",
+"incertitude": "C'est l'histoire d'un seul poisson : la rivière d'origine est déduite du comportement typique des saumons (il n'a pas été étiqueté en Irlande). Le tracé est schématique, et chaque saumon suit son propre chemin en mer.",
+"sources": [
+{
+"titre": "SalmonBusiness : Greenland to Ireland – the amazing journey of a 5 kg wild salmon",
+"url": "https://salmonbusiness.com/greenland-to-ireland-inside-the-amazing-journey-of-a-5kg-salmon"
+},
+{
+"titre": "Inland Fisheries Ireland : IFI picks up trail of salmon that swam from Greenland back to Mayo",
+"url": "https://www.fisheriesireland.ie/news/media-releases/ifi-picks-up-trail-of-salmon-that-swam-from-greenland-back-to-mayo-0"
+},
+{
+"titre": "Western People : Particular fish swam over 2,000 km to Mayo",
+"url": "https://www.westernpeople.ie/news/particular-fish-swam-over-2000km-to-mayo_arid-45283.html"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent sur ce poisson : étiquetage à Qaqortoq en septembre 2023, plus de 2 300 km, deux hivers en mer, retour dans la rivière Erriff (Mayo) ; c'est un cas individuel."
+},
+{
+"id": "manchot-adelie-mer-de-ross",
+"type": "route",
+"categorie": "mer",
+"nom": "Manchot Adélie (île de Ross – océan Austral)",
+"latin": "Pygoscelis adeliae",
+"points": [
+[
+-77.5,
+166.5
+],
+[
+-72.0,
+172.0
+],
+[
+-68.0,
+178.0
+],
+[
+-66.0,
+-170.0
+]
+],
+"etapes": [
+{
+"nom": "Île de Ross (mer de Ross, Antarctique)",
+"lat": -77.5,
+"lon": 166.5,
+"texte": "Les colonies s'y trouvent ; les manchots partent à l'entrée de l'hiver."
+},
+{
+"nom": "Banquise de la mer de Ross",
+"lat": -72.0,
+"lon": 172.0,
+"texte": "Ils profitent des glaces qui dérivent en cercle pour avancer en économisant de l'énergie."
+},
+{
+"nom": "Lisière de la banquise",
+"lat": -66.0,
+"lon": -170.0,
+"texte": "Ils s'arrêtent à environ 500 km du bord de la banquise, en suivant le crépuscule."
+}
+],
+"distance_km": 13000,
+"periode": "départ en hiver ; retour rapide au printemps pour se reproduire",
+"pourquoi": "En hiver, les manchots suivent la lumière du soleil couchant et la nourriture. Ils profitent de la glace qui dérive : s'en servir leur fait gagner du chemin et de l'énergie.",
+"chiffre_cle": "Environ 13 000 km par an en moyenne pour les manchots de l'île de Ross ; record de 17 600 km ; 87 manchots suivis, 146 trajets en trois ans.",
+"incertitude": "Le trajet dépend de la vitesse de la glace : plus la banquise dérive vite, plus les manchots arrivent loin au nord. Le tracé est schématique (cercle de glace dans la mer de Ross) ; les mois exacts ne sont pas précisés dans les pages lues.",
+"sources": [
+{
+"titre": "Phys.org : Adélie penguins' winter journeys and sea ice",
+"url": "https://phys.org/news/2024-01-adlie-penguins-benefits-sea-ice.html"
+},
+{
+"titre": "EurekAlert : Adélie penguins and sea ice news release",
+"url": "https://www.eurekalert.org/news-releases/1031096"
+},
+{
+"titre": "Antarctic Sun (USAP) : Adélie penguins winter",
+"url": "https://antarcticsun.usap.gov/science/2230"
+}
+],
+"fiche_app": "pygoscelis-adeliae",
+"verifie": true,
+"notes_verif": "Trois pages concordent : manchots de l'île de Ross qui voyagent des milliers de km en hiver, aidés par la dérive de la banquise ; 13 000 km par an en moyenne et 17 600 km au record (Antarctic Sun)."
+},
+{
+"id": "pluvier-dore-pacifique-alaska-hawai",
+"type": "route",
+"categorie": "air",
+"nom": "Pluvier fauve (Hawaï – Alaska)",
+"latin": "Pluvialis fulva",
+"points": [
+[
+21.3,
+-157.9
+],
+[
+40.0,
+-153.0
+],
+[
+60.3,
+-144.8
+]
+],
+"etapes": [
+{
+"nom": "Hawaï (hiver)",
+"lat": 21.3,
+"lon": -157.9,
+"texte": "Les pluviers y passent l'hiver, dans les prairies et près des plages."
+},
+{
+"nom": "Pacifique Nord, sans escale",
+"lat": 40.0,
+"lon": -153.0,
+"texte": "Ils volent plusieurs jours sans se poser, environ 63 km/h en moyenne."
+},
+{
+"nom": "Alaska (nid)",
+"lat": 60.3,
+"lon": -144.8,
+"texte": "Ils nichent au printemps dans la toundra ; un oiseau bagué à Oahu a été revu dans le delta de la Bering River le 23 avril."
+}
+],
+"distance_km": 4800,
+"periode": "printemps (vers l'Alaska, environ 3 jours, arrivée vers fin avril) ; automne (retour vers Hawaï, environ 4 jours)",
+"pourquoi": "Le pluvier fauve niche sur la toundra de l'ouest de l'Alaska, puis passe l'hiver sur les îles du Pacifique (Hawaï surtout), parfois jusqu'en Australie et en Nouvelle-Zélande. Les pages lues ne détaillent pas pourquoi il fait ce choix, seulement qu'il traverse l'océan sans escale.",
+"chiffre_cle": "Environ 4 800 km de l'envol à l'arrivée en 3 jours au printemps (24 oiseaux équipés) ; certains ont atteint 167 à 185 km/h grâce aux vents.",
+"incertitude": "Un texte donne environ 3 500 miles (5 600 km) et un autre « plus de 2 000 miles » pour la traversée ; les mois exacts ne sont pas précisés dans les pages lues. Certains pluviers hivernent plutôt en Australie ou Nouvelle-Zélande. Tracé schématique.",
+"sources": [
+{
+"titre": "Phys.org : Plovers tracked across the Pacific",
+"url": "https://phys.org/news/2011-06-plovers-tracked-pacific.amp"
+},
+{
+"titre": "Audubon : Pacific Golden-Plover",
+"url": "https://audubon.org/field-guide/bird/pacific-golden-plover"
+},
+{
+"titre": "Journey North : Pacific golden plover (kolea)",
+"url": "https://journeynorth.org/jnorth/www/critters/everywhere/832631479.html"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : vol sans escale entre Hawaï et l'Alaska, de 3 à 4 jours environ ; distances de 4 800 km (Phys.org), plus de 2 000 miles (Audubon) et 3 500 miles (Journey North)."
+},
+{
+"id": "nomades-mongolie-saisons",
+"type": "route",
+"categorie": "terre",
+"nom": "Éleveurs nomades de Mongolie (quatre camps par an)",
+"latin": null,
+"points": [
+[
+47.47,
+101.45
+],
+[
+47.6,
+101.7
+],
+[
+47.7,
+101.9
+],
+[
+47.55,
+101.6
+]
+],
+"etapes": [
+{
+"nom": "Camp de printemps (khavarjaa)",
+"lat": 47.47,
+"lon": 101.45,
+"texte": "Février–mars : camp abrité, loin des endroits où le vent est le plus fort."
+},
+{
+"nom": "Camp d'été (zuslan)",
+"lat": 47.6,
+"lon": 101.7,
+"texte": "Mai–juin : plaine de rivière où le bétail trouve de l'eau et de l'herbe."
+},
+{
+"nom": "Camp d'automne (namarjaa)",
+"lat": 47.7,
+"lon": 101.9,
+"texte": "Août–septembre : l'herbe qui sèche en premier est mangée d'abord."
+},
+{
+"nom": "Camp d'hiver (ovoljoo)",
+"lat": 47.55,
+"lon": 101.6,
+"texte": "Octobre–novembre : vallée protégée des vents du nord-ouest."
+}
+],
+"distance_km": null,
+"periode": "quatre déménagements par an (printemps, été, automne, hiver) ; six à huit déménagements par an dans les régions plus pluvieuses",
+"pourquoi": "Rester au même endroit épuiserait l'herbe : en déplaçant les campements, les familles laissent les pâturages repousser et profitent des abris, de l'eau et de l'herbe de chaque saison.",
+"chiffre_cle": "Environ 15 à 20 km par déménagement dans la steppe boisée, jusqu'à 150 km dans la steppe montagneuse sèche ; en cas de sécheresse ou de neige épaisse, les distances peuvent être très longues dans le Gobi.",
+"incertitude": "Un exemple (district de Chuluut, province d'Arkhangaï) donne les dates des quatre camps ; les points sont indicatifs, centrés sur cette région. Les distances et les dates dépendent des familles, de la neige et des pluies.",
+"sources": [
+{
+"titre": "Eurasianet : Herders move with the seasons across the Mongolian steppe",
+"url": "https://eurasianet.org/herders-move-with-the-seasons-across-the-mongolian-steppe"
+},
+{
+"titre": "Initiative Satoyama : Mongolia – Nomadic pastoralism in the Mongolian plateau",
+"url": "https://satoyamainitiative.org/case_studies/mongolia-nomadic-pastoralism-in-the-mongolian-plateau"
+},
+{
+"titre": "Horseback Mongolia : Nomadism in Mongolia",
+"url": "https://www.mongolia-trips.com/travel-tips/nomadic-life-traditions/nomadism-mongolia"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : quatre pâturages saisonniers (hiver, printemps, été, automne) ; 15–20 km en steppe boisée et jusqu'à 150 km en steppe sèche (Horseback Mongolia)."
+},
+{
+"id": "transhumance-ait-atta-haut-atlas",
+"type": "route",
+"categorie": "terre",
+"nom": "Transhumance des Aït Atta (Haut Atlas, Maroc)",
+"latin": null,
+"points": [
+[
+31.0,
+-5.6
+],
+[
+31.4,
+-5.9
+],
+[
+31.6,
+-6.2
+]
+],
+"etapes": [
+{
+"nom": "Jbel Saghro et Nkob (Maroc)",
+"lat": 31.0,
+"lon": -5.6,
+"texte": "Au sud, les familles passent l'hiver ; leur troupeau compte environ 1 100 bêtes dans l'exemple filmé."
+},
+{
+"nom": "Versant sud du Haut Atlas",
+"lat": 31.4,
+"lon": -5.9,
+"texte": "Elles marchent environ 20 km par jour, par des montées raides et des descentes rocheuses."
+},
+{
+"nom": "Agdal d'Igourdane / Tamda (Haut Atlas)",
+"lat": 31.6,
+"lon": -6.2,
+"texte": "En été, elles pâturent dans un pâturage communal protégé : l'entrée n'est permise qu'à partir du 1er juin, jusqu'à la première neige."
+}
+],
+"distance_km": 200,
+"periode": "été (entrée dans les pâturages à partir du 1er juin jusqu'à la première neige) ; l'agdal est fermé au printemps pendant la floraison",
+"pourquoi": "Les moutons montent chaque été vers de hauts pâturages communaux (agdal). Des règles coutumières ouvrent et ferment l'agdal pour laisser l'herbe fleurir, faire ses graines, puis nourrir les bêtes l'été.",
+"chiffre_cle": "Environ 200 km à pied (20 km par jour) ; environ 500 familles faisaient le trajet dans les années 1980, seulement 17 en 2018 ; avant, des troupeaux de plus de 600 bêtes.",
+"incertitude": "Les deux pages sur le trajet ne décrivent pas les mêmes pâturages (agdal d'Igourdane d'un côté ; Tamda et vallée d'Aït Bouguemez de l'autre) ; la distance (200 km) vient d'une seule famille. Le nombre de familles qui font encore le voyage baisse vite (10 en 2019, 17 en 2018, plus de 500 dans les années 1980 selon les pages). Le tracé est approximatif.",
+"sources": [
+{
+"titre": "MedNatureCulture : What is an agdal?",
+"url": "https://www.mednatureculture.org/what-is-an-agdal/"
+},
+{
+"titre": "Sud Est Maroc : A shepherd and his flock in the mountains of Morocco",
+"url": "https://sudestmaroc.com/en/morocco-nomadic-shepherds-transhumance/"
+},
+{
+"titre": "Global Diversity Foundation : Transhumance in the High Atlas (documentary)",
+"url": "https://global-diversity.org/2020/12/17/transhumance-in-the-high-atlas-our-new-feature-length-documentary-is-out/"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Trois sources concordent : Aït Atta du Jbel Saghro vers les pâturages d'été du Haut Atlas (agdal d'Igourdane), 1er juin jusqu'à la première neige, déclin du nombre de familles."
+},
+{
+"id": "bondree-apivore-europe-afrique",
+"type": "route",
+"categorie": "air",
+"nom": "Bondrée apivore (Europe – Afrique tropicale)",
+"latin": "Pernis apivorus",
+"points": [
+[
+52.0,
+5.5
+],
+[
+47.0,
+2.0
+],
+[
+40.0,
+-4.0
+],
+[
+36.0,
+-5.6
+],
+[
+22.0,
+-6.0
+],
+[
+10.0,
+-6.0
+]
+],
+"etapes": [
+{
+"nom": "Pays-Bas / Finlande (nid)",
+"lat": 52.0,
+"lon": 5.5,
+"texte": "Après la reproduction, les jeunes partent vers l'Afrique vers la mi-septembre (exemple finlandais)."
+},
+{
+"nom": "Détroit de Gibraltar",
+"lat": 36.0,
+"lon": -5.6,
+"texte": "Les oiseaux d'Europe de l'Ouest passent par Gibraltar ; les Finlandais passent aussi par l'est (mer Noire, Israël) ou l'Italie / Malte."
+},
+{
+"nom": "Sahara",
+"lat": 22.0,
+"lon": -6.0,
+"texte": "Ils ont de grands détours vers l'ouest pour profiter de vents favorables."
+},
+{
+"nom": "Afrique de l'Ouest (Sahel, forêt)",
+"lat": 10.0,
+"lon": -6.0,
+"texte": "Ils passent l'hiver entre le Mali, à l'ouest, et le Congo, à l'est ; leurs adultes hivernent en Afrique de l'Ouest."
+}
+],
+"distance_km": null,
+"periode": "automne (départ vers la mi-septembre ; Sahel vers début novembre) ; retour de mars à mai",
+"pourquoi": "Ces rapaces planent grâce aux courants chauds et aux vents : leur trajet dépend des vents et des courants. Ils font de grands détours pour dépenser moins d'énergie, et passent l'hiver en Afrique tropicale.",
+"chiffre_cle": "Sur 31 jeunes Finlandais suivis, 24 ont survécu à la première migration ; les oiseaux les plus à l'ouest et à l'est étaient séparés de plus de 3 300 km en hiver ; les adultes néerlandais font de grands détours vers l'ouest.",
+"incertitude": "Les trois pages concernent des oiseaux de pays différents (Finlande, Pays-Bas, Europe de l'Ouest) : la route varie selon les années et selon les vents (chaque jeune choisit son trajet). Le tracé suit la voie ouest et reste schématique.",
+"sources": [
+{
+"titre": "ScienceDaily : Honey buzzard migration of Finnish juveniles (2017)",
+"url": "https://www.sciencedaily.com/releases/2017/05/170524084602.htm"
+},
+{
+"titre": "Luomus (Finlande) : Finnish satellite honey buzzards",
+"url": "https://vanha.luomus.fi/en/node/1273"
+},
+{
+"titre": "Université d'Exeter (ORE) : Honey buzzards don't always make a beeline",
+"url": "https://ore.exeter.ac.uk/repository/handle/10871/28658"
+}
+],
+"fiche_app": "pernis-apivorus",
+"verifie": true,
+"notes_verif": "Trois sources concordent : bondrées d'Europe qui migrent vers l'Afrique tropicale par des routes ouest (Gibraltar, Italie) ou est (mer Noire, Israël), avec de grands détours dus au vent."
+},
+{
+"id": "transhumance-provence-alpes",
+"type": "route",
+"categorie": "terre",
+"nom": "Transhumance de Provence vers les Alpes (Crau – vallée de la Stura)",
+"latin": null,
+"points": [
+[
+43.64,
+4.81
+],
+[
+43.9,
+5.6
+],
+[
+44.1,
+6.3
+],
+[
+44.3,
+7.1
+]
+],
+"etapes": [
+{
+"nom": "Plaine de la Crau (Bouches-du-Rhône)",
+"lat": 43.64,
+"lon": 4.81,
+"texte": "Les moutons y passent l'automne et l'hiver ; au printemps ils broutent la steppe sèche, le coussoul."
+},
+{
+"nom": "Drailles de Haute-Provence",
+"lat": 44.1,
+"lon": 6.3,
+"texte": "Les anciennes drailles (chemins de troupeaux) sont devenues le GR 69 « La Routo » (540 km)."
+},
+{
+"nom": "Vallée de la Stura (Piémont, Italie)",
+"lat": 44.3,
+"lon": 7.1,
+"texte": "La Routo, un sentier de 540 km, finit en Italie, dans la vallée de la Stura (Piémont)."
+}
+],
+"distance_km": 540,
+"periode": "départ en juin vers l'alpage (la plupart du temps en camion aujourd'hui) ; retour en automne ; dans le sens inverse, des troupeaux hivernent en Provence de décembre à avril ou juin",
+"pourquoi": "L'été, les troupeaux montent en montagne où il fait plus frais ; cela libère les prés de plaine pour le foin et laisse les bêtes profiter de l'herbe d'altitude. L'hiver, le pâturage en Provence aide aussi à prévenir les incendies.",
+"chiffre_cle": "Plus de 120 000 moutons de la Crau vont vers les Alpes ; environ 550 000 bêtes font encore le trajet entre la Basse-Provence et les alpages, surtout en camion ; les troupeaux provençaux font 200 à 500 km.",
+"incertitude": "Le GR 69 (540 km) suit le parcours des anciens troupeaux mais n'est pas la route des camions d'aujourd'hui. Les chiffres (120 000 de la Crau, 550 000 au total) viennent de deux pages différentes. Tracé schématique.",
+"sources": [
+{
+"titre": "FFRandonnée : La transhumance et le pastoralisme, hier et aujourd'hui",
+"url": "https://www.ffrandonnee.fr/s-informer/actualites/la-transhumance-et-le-pastoralisme-hier-et-aujourd-hui"
+},
+{
+"titre": "MyProvence : La transhumance en Provence (reportage)",
+"url": "https://www.myprovence.fr/ca-s-agite-dans-le-local/sous-toutes-les-coutumes/reportage/arles/la-transhumance-en-provence"
+},
+{
+"titre": "MyProvence : La transhumance inscrite à l'inventaire du patrimoine culturel immatériel",
+"url": "https://www.myprovence.fr/ca-s-agite-dans-le-local/sous-toutes-les-coutumes/breve/inscription-transhumance-a-l-inventaire-national-du-patrimoine-culturel-immateriel"
+},
+{
+"titre": "Ministère de la Culture : Les pratiques et savoir-faire de la transhumance en France (PDF)",
+"url": "https://www.culture.gouv.fr/Media/Medias-creation-rapide/Les-pratiques-et-savoir-faire-de-la-transhumance-en-France.pdf"
+}
+],
+"fiche_app": null,
+"verifie": true,
+"notes_verif": "Quatre pages concordent : départ de la Crau vers les Alpes, GR 69 de 540 km, trajets de 200 à 500 km (Culture), 120 000 moutons (MyProvence), départ en juin le plus souvent en camion."
 }
 ]

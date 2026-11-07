@@ -31,7 +31,8 @@ export function MigrationsConnues() {
 
   const zones: ZoneGlobe[] = useMemo(() => {
     if (!m) return [];
-    const r = m.type === "carrefour" ? 3 : RAYON[m.categorie];
+    const etendue = m.type === "route" ? 60 / cadrer(m.points).zoom : 6; // petit trajet : petites zones
+    const r = m.type === "carrefour" ? 3 : Math.max(0.25, Math.min(RAYON[m.categorie], etendue * 0.2));
     return m.etapes.map((e) => ({ lat: e.lat, lon: e.lon, rayon: r, couleur: COULEUR[m.categorie] }));
   }, [m]);
   const traces: TraceGlobe[] = useMemo(
@@ -41,7 +42,7 @@ export function MigrationsConnues() {
   const vers = useMemo(() => {
     if (!m) return null;
     const c = cadrer(m.type === "carrefour" ? [[m.points[0][0] - 3, m.points[0][1] - 3], [m.points[0][0] + 3, m.points[0][1] + 3]] : m.points);
-    return { lon: c.lon, lat: c.lat, zoom: Math.min(c.zoom, 2.4), n: Date.now() };
+    return { lon: c.lon, lat: c.lat, zoom: Math.min(c.zoom * 0.5, 9), n: Date.now() };
   }, [m]);
 
   return (
