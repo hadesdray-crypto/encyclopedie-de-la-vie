@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Entete, Titre } from "@/components/entete";
 import { Portrait, aUnePhoto } from "@/components/portrait";
 import donnees from "@/data/voyageurs.json";
+import { MigrationsConnues } from "@/components/migrations-connues";
 
 type V = { latin: string; nom: string | null; fiche: string | null; groupe: string; individu: string; km: number | null; debut: string; fin: string; complet?: boolean; points: [number, number][] };
 const TOUS = donnees as unknown as V[];
@@ -36,6 +37,7 @@ export function MigrationsPage() {
           );
         })}
       </ul>
+      <MigrationsConnues />
       <Nage />
     </main>
   );

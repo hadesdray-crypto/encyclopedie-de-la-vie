@@ -1,11 +1,13 @@
 // Le globe : la Terre en 3D, qu'on fait tourner avec un doigt et qu'on zoome avec deux doigts.
 // Tout est dessiné sur l'appareil (sans Internet), à partir des contours des pays de l'application.
 import { useEffect, useRef, useState } from "react";
-import { geoArea, geoBounds, geoCentroid, geoContains, geoGraticule10, geoInterpolate, geoOrthographic, geoPath, type GeoPermissibleObjects } from "d3-geo";
+import { geoArea, geoBounds, geoCentroid, geoCircle, geoContains, geoGraticule10, geoInterpolate, geoOrthographic, geoPath, type GeoPermissibleObjects } from "d3-geo";
 import monde from "@/data/monde.json";
 import { CREDIT_RELIEF, relieSurEcran, reliefPossible } from "@/lib/relief";
 
-export type TraceGlobe = { i: number; couleur: string; points: [number, number][] };
+export type TraceGlobe = { i: number; couleur: string; points: [number, number][]; pointille?: boolean };
+/** Une zone où l'animal séjourne (masse de couleur) : centre, rayon en degrés. */
+export type ZoneGlobe = { lat: number; lon: number; rayon: number; couleur: string };
 
 // Les contours de l'application sont écrits en (x = longitude + 180, y = 90 − latitude) : on les relit en vraies coordonnées.
 export const PAYS: GeoPermissibleObjects = {
@@ -41,7 +43,7 @@ const ETOILES = Array.from({ length: 140 }, (_, i) => {
   return { x: a - Math.floor(a), y: b - Math.floor(b), r: 0.4 + ((i * 7) % 10) / 12, v: (i % 5) / 5 };
 });
 
-export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, surligne = [], hauteur = "h-[62vh] min-h-[340px]" }: { traces: TraceGlobe[]; choisi: number | null; vers: { lon: number; lat: number; zoom: number; n: number } | null; onChoisir: (i: number) => void; pays?: string | null; onPays?: (code: string | null) => void; surligne?: string[]; hauteur?: string }) {
+export function Globe({ traces, zones = [], choisi, vers, onChoisir, pays = null, onPays, surligne = [], hauteur = "h-[62vh] min-h-[340px]" }: { traces: TraceGlobe[]; zones?: ZoneGlobe[]; choisi: number | null; vers: { lon: number; lat: number; zoom: number; n: number } | null; onChoisir: (i: number) => void; pays?: string | null; onPays?: (code: string | null) => void; surligne?: string[]; hauteur?: string }) {
   const toile = useRef<HTMLCanvasElement>(null);
   const etat = useRef<Etat>({ lon: -10, lat: 25, zoom: 1 });
   const elan = useRef({ vlon: 0, vlat: 0 });
@@ -49,8 +51,8 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
   const avant = useRef<{ e: Etat; d: number; x: number; y: number } | null>(null);
   const bouge = useRef(0); // combien le doigt a bougé (en pixels)
   const tenu = useRef({ t: 0, max: 0 });
-  const donnees = useRef({ traces, choisi, pays, surligne });
-  donnees.current = { traces, choisi, pays, surligne };
+  const donnees = useRef({ traces, zones, choisi, pays, surligne });
+  donnees.current = { traces, zones, choisi, pays, surligne };
   const anim = useRef<{ de: Etat; a: Etat; t0: number } | null>(null);
   const calme = useRef(performance.now()); // le dernier moment où on a touché le globe
   // Le relief réel de la Terre : une couche d'ombres douces, ajoutée quand on zoome (seulement avec du réseau).
@@ -179,12 +181,20 @@ export function Globe({ traces, choisi, vers, onChoisir, pays = null, onPays, su
       ctx.fillStyle = ombre; ctx.beginPath(); chemin({ type: "Sphere" }); ctx.fill();
       ctx.strokeStyle = "rgba(150,195,255,.55)"; ctx.lineWidth = 1.2; ctx.beginPath(); chemin({ type: "Sphere" }); ctx.stroke();
       // Les trajets, et la petite lumière qui voyage sur chacun
-      const { traces: tr, choisi: ch } = donnees.current;
+      const { traces: tr, choisi: ch, zones: zs } = donnees.current;
+      // Les zones où l'animal séjourne : des masses de couleur douces
+      for (const z of zs) {
+        ctx.beginPath(); chemin(geoCircle().center([z.lon, z.lat]).radius(z.rayon)());
+        ctx.globalAlpha = 0.3; ctx.fillStyle = z.couleur; ctx.fill();
+        ctx.globalAlpha = 0.7; ctx.strokeStyle = z.couleur; ctx.lineWidth = 1.2; ctx.stroke();
+      }
       for (const v of tr) {
         const actif = ch === null || ch === v.i;
         ctx.globalAlpha = actif ? 0.95 : 0.22;
         ctx.strokeStyle = v.couleur; ctx.lineWidth = ch === v.i ? 3.2 : 1.8; ctx.lineJoin = "round"; ctx.lineCap = "round";
+        ctx.setLineDash(v.pointille ? [2, 7] : []);
         ctx.beginPath(); chemin({ type: "LineString", coordinates: v.points.map(([la, lo]) => [lo, la]) }); ctx.stroke();
+        ctx.setLineDash([]);
         if (actif && v.points.length > 1) {
           const duree = ch === v.i ? 4000 : 7000 + (v.i % 5) * 1000;
           const k = ((((t - debut) / duree + (v.i % 7) * 0.13) % 1) + 1) % 1; // toujours entre 0 et 1
