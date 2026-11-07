@@ -32,6 +32,8 @@ import wikipedia from "@/data/wikipedia-fr.json";
 import galerie from "@/data/galerie.json";
 import crisVerifies from "@/data/cris-verifies.json";
 import creditsPhotos from "@/data/credits-photos.json";
+import creditsPhotosAjouts from "@/data/credits-photos-ajouts.json";
+import photosExistantes from "@/data/photos.json";
 import estimations from "@/data/estimations.json";
 
 type Estimation = { t: string; n: number; p?: number; accord?: number };
@@ -52,7 +54,8 @@ const CREDITS = creditsCris as Record<string, string | Credit>;
 const WIKI = wikipedia as Record<string, { texte: string; titre: string }>;
 const GALERIE = galerie as Record<string, Credit[]>;
 const VERIFIES = new Set(crisVerifies as string[]);
-const CREDITS_PHOTOS = creditsPhotos as Record<string, Credit>;
+const CREDITS_PHOTOS = { ...(creditsPhotosAjouts as Record<string, Credit>), ...(creditsPhotos as Record<string, Credit>) };
+const A_PHOTO = new Set(photosExistantes as string[]);
 
 function credit(c: string | Credit | undefined) {
   if (!c) return "Licence libre";
@@ -280,6 +283,7 @@ function Fiche({ id }: { id: string }) {
       {autre ? <p className="mx-auto mt-3 max-w-sm text-center text-lg"><Texte>{autre.phrase}</Texte></p> : null}
       {autre?.dessin ? <p className="mt-1 text-center text-[11px] texte-doux">Dessin original fait pour l'application : ce n'est pas une photo.</p> : null}
       {CREDITS_PHOTOS[e.id] && !grande ? <p className="mt-1 text-center text-[11px] texte-doux">Photo : {credit(CREDITS_PHOTOS[e.id])}</p> : null}
+      {!CREDITS_PHOTOS[e.id] && A_PHOTO.has(e.id) && !grande ? <p className="mt-1 text-center text-[10px] texte-doux">Source inconnue.</p> : null}
       {GALERIE[e.id]?.length ? (
         <div className="mt-4 grid grid-cols-2 gap-3">
           {GALERIE[e.id].map((c, i) => (

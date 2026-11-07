@@ -1,0 +1,67 @@
+[
+ {
+  "espece": "Canis lupus (loup gris)",
+  "champ": "longevite",
+  "ancien": "record connu : environ 29,5 ans",
+  "nouveau": "record connu : environ 17,0 ans",
+  "sources": [
+   "Britannica : 13 ans au maximum dans la nature",
+   "Zoo Sauvage : 12 à 13 ans",
+   "Cougar Mountain Zoo : jusqu'à 17 ans en captivité"
+  ],
+  "remarque": "Les trois sources sont très en dessous de 29,5 ans ; on garde le haut de leur fourchette. AnAge n'a pas pu être consultée.",
+  "date": "2026-11-05"
+ },
+ {
+  "espece": "Ursus maritimus (ours polaire)",
+  "champ": "regime",
+  "ancien": "omnivore",
+  "nouveau": "carnivore",
+  "sources": [
+   "WWF : le plus carnivore de toutes les espèces d'ours",
+   "Polar Bears International : régime fondé sur les phoques et leur graisse",
+   "bearbiology.org : très carnivore, surtout des phoques",
+   "San Diego Zoo : surtout des phoques"
+  ],
+  "remarque": "Le champ « mange » de l'appli (90 % vertébrés à sang chaud, 10 % poissons) allait déjà dans ce sens.",
+  "date": "2026-11-05"
+ },
+ {
+  "espece": "Ursus maritimus (ours polaire)",
+  "champ": "gestation",
+  "ancien": "environ 5 mois",
+  "nouveau": "environ 8 mois (6 à 8 mois selon les sources)",
+  "sources": [
+   "bearbiology.org : 6 à 8 mois",
+   "San Diego Zoo : 195 à 265 jours",
+   "Pittsburgh Zoo : 8 mois"
+  ],
+  "remarque": "5 mois était en dessous de toutes les valeurs publiées.",
+  "date": "2026-11-05"
+ },
+ {
+  "espece": "Delphinus delphis (dauphin commun)",
+  "champ": "regime",
+  "ancien": "(vide)",
+  "nouveau": "carnivore",
+  "sources": [
+   "mammal.org.uk : poissons et calmars",
+   "NAMMCO : poissons et calmars",
+   "Azores Whale Watch : poissons et calmars"
+  ],
+  "remarque": "Seul le régime est ajouté : aucun pourcentage « mange » n'est inventé.",
+  "date": "2026-11-05"
+ },
+ {
+  "espece": "Ornithorhynchus anatinus (ornithorynque)",
+  "champ": "mange",
+  "ancien": "poissons 20 %, insectes et invertébrés 80 %",
+  "nouveau": "(non modifié)",
+  "sources": [
+   "Australian Museum : invertébrés aquatiques, aucun poisson",
+   "Taronga : même chose"
+  ],
+  "remarque": "Seulement 2 sources lues : pas modifié, à confirmer avec une troisième source.",
+  "date": "2026-11-05"
+ }
+]
