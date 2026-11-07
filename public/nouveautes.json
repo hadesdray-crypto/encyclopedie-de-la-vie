@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026-11-07",
+    "titre": "Trajets connus, Google Earth et relief",
+    "points": [
+      "Nouveau : « Les trajets connus » dans les migrations. Des zones colorées montrent où l'animal séjourne selon la saison, et des pointillés le chemin approximatif entre deux zones, avec le pourquoi et les sources.",
+      "Nouveau : la grue demoiselle qui franchit l'Himalaya, et les grands carrefours migratoires (Gibraltar, Bosphore, Veracruz…).",
+      "Nouveau : pour les oiseaux et les animaux terrestres, un bouton prépare le trajet dans Google Earth (gratuit) pour voler au-dessus de la route de l'animal.",
+      "Nouveau : quand on zoome sur le globe, le relief réel de la Terre apparaît (avec Internet).",
+      "La vue « avec ses yeux » marche maintenant aussi sans Internet, en version simplifiée. Elle n'existe plus pour les animaux marins.",
+      "47 nouveaux cris et 23 nouvelles photos de mammifères.",
+      "Sur un appareil modeste, un message prévient quand une vue peut ramer."
+    ]
+  },
+  {
     "date": "2026-11-01",
     "titre": "Voyager avec ses yeux",
     "points": [
