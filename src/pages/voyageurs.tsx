@@ -17,6 +17,7 @@ import { useInternet } from "@/lib/internet";
 import { VoyageSatellite } from "@/components/voyage-satellite";
 import { VoyageVol } from "@/components/voyage-vol";
 import { connuLatin } from "@/lib/connu";
+import { appareilModeste, AVERTISSEMENT_PUISSANCE } from "@/lib/puissance";
 
 type Voyageur = {
   latin: string; nom: string | null; fiche: string | null; groupe: "marin" | "herbivore" | "oiseau" | "predateur" | "autre";
@@ -397,6 +398,7 @@ export function VoyageursPage({ integre = false, aMontrer, groupeInitial }: { in
             <LuEarth aria-hidden /> Voyager avec ses yeux
           </button>
           ) : null}
+          {v.groupe !== "marin" && appareilModeste() ? <p className="mt-1 text-xs texte-doux">{AVERTISSEMENT_PUISSANCE}</p> : null}
           {vol && v.groupe !== "marin" ? <VoyageVol points={v.points} nom={nomDe(v)} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} groupe={v.groupe} depart={v.depart?.date ?? v.debut} arrivee={v.arrivee?.date ?? v.fin} onFermer={() => setVol(false)} /> : null}
           {satellite ? <VoyageSatellite points={v.points} nom={nomDe(v)} photo={v.fiche && aUnePhoto(v.fiche) ? v.fiche : null} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} complet={estComplet(v)} depart={v.depart?.date ?? v.debut} arrivee={v.arrivee?.date ?? v.fin} onFermer={() => setSatellite(false)} /> : null}
           {(() => {
