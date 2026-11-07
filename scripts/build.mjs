@@ -24,7 +24,8 @@ const luJson = (f) => JSON.parse(readFileSync(join(RACINE, "src/data", f), "utf8
 const licenceDe = (v) => (typeof v === "string" ? v : v?.licence ?? "");
 const libre = (v) => LIBRE.test(licenceDe(v).trim()) && !/\b(nc|nd)\b/i.test(licenceDe(v));
 function ensembles() {
-  const photos = new Set(Object.entries(luJson("credits-photos.json")).filter(([, v]) => libre(v)).map(([id]) => id));
+  // Les crédits retrouvés ensuite (credits-photos-ajouts.json) comptent aussi : le crédit d'origine garde la priorité.
+  const photos = new Set(Object.entries({ ...luJson("credits-photos-ajouts.json"), ...luJson("credits-photos.json") }).filter(([, v]) => libre(v)).map(([id]) => id));
   const cris = new Set(Object.entries(luJson("credits-cris.json")).filter(([, v]) => libre(v)).map(([id]) => id));
   return { photos, cris };
 }

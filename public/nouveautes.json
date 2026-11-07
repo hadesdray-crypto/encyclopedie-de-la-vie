@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-11-07",
+    "titre": "Crédits des photos et faits vérifiés",
+    "points": [
+      "1 325 photos de mammifères ont maintenant leur auteur et leur licence affichés sous la photo.",
+      "Sous une photo dont la source n'est pas connue, une petite mention « Source inconnue » apparaît. Aucune photo n'a été retirée.",
+      "Trois fiches corrigées après vérification avec trois sources : la longévité du loup gris, le régime et la gestation de l'ours polaire, le régime du dauphin commun.",
+      "Édition commerce : les photos dont le crédit a été retrouvé sont désormais conservées."
+    ]
+  },
+  {
+    "date": "2026-11-07",
     "titre": "Trajets connus, Google Earth et relief",
     "points": [
       "Nouveau : « Les trajets connus » dans les migrations. Des zones colorées montrent où l'animal séjourne selon la saison, et des pointillés le chemin approximatif entre deux zones, avec le pourquoi et les sources.",
