@@ -53,8 +53,9 @@ _dernier_envoi = [time.time()]
 
 
 def envoyer(message, force=False):
-    """Sur GitHub Actions, envoie le travail au dépôt toutes les 20 minutes :
-    si la tâche est coupée, rien n'est perdu et la suivante reprend là."""
+    """Sur GitHub Actions, range le travail sur la branche « donnees-auto » toutes les 20 minutes :
+    si la tâche est coupée, rien n'est perdu. Rien n'est publié sans l'accord du propriétaire :
+    à la fin, une demande de publication (pull request) est ouverte."""
     import os
 
     if not os.environ.get("GITHUB_ACTIONS"):
@@ -64,7 +65,7 @@ def envoyer(message, force=False):
     _dernier_envoi[0] = time.time()
     cmd = (
         'git add -A src/data public && (git diff --cached --quiet || git commit -q -m "%s") '
-        "&& git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main"
+        "&& git push -q -f origin HEAD:refs/heads/donnees-auto"
     ) % message
     subprocess.run(cmd, shell=True, cwd=RACINE)
 
