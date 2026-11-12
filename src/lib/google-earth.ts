@@ -2,6 +2,7 @@
 // de l'animal, à sa hauteur (en l'air pour un oiseau, au ras du sol pour un animal terrestre), et on l'envoie à Google Earth.
 // Aucune image de Google n'est copiée dans l'application : elle ne fait que transmettre le trajet.
 // En cascade : 1) partager le fichier (le téléphone propose Google Earth) ; 2) le télécharger ; 3) ouvrir Google Earth au point de départ.
+import { suivreLeGlobe } from "@/lib/trajet";
 import type { Migration } from "@/components/migrations-connues";
 
 export type VitesseVol = "lent" | "normal" | "rapide";
@@ -19,16 +20,8 @@ const cap = (a: [number, number], b: [number, number]) => {
 };
 const xml = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-/** Le trajet découpé en petits pas (au plus 250 km), pour que la visite suive la route sans couper à travers le monde. */
-function densifier(points: [number, number][]) {
-  const out: [number, number][] = [];
-  points.forEach((p, i) => {
-    if (!i) { out.push(p); return; }
-    const q = points[i - 1], n = Math.max(1, Math.ceil(km(q, p) / 250));
-    for (let k = 1; k <= n; k++) out.push([q[0] + ((p[0] - q[0]) * k) / n, q[1] + ((p[1] - q[1]) * k) / n]);
-  });
-  return out;
-}
+/** Le trajet découpé en petits pas qui suivent le grand cercle du globe, pour que la visite suive exactement le chemin tracé. */
+const densifier = (points: [number, number][]) => suivreLeGlobe(points, 250);
 
 export function fabriquerKml(m: Migration, vitesse: VitesseVol): string {
   const air = m.categorie === "air";

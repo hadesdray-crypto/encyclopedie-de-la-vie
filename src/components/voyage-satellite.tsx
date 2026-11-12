@@ -9,6 +9,7 @@ import { createPortal } from "react-dom";
 import { LuDownload, LuFastForward, LuLocateFixed, LuPause, LuPlay, LuRewind, LuScan, LuX } from "react-icons/lu";
 import { Portrait } from "@/components/portrait";
 import { PlumeDessin } from "@/components/plume-dessin";
+import { suivreLeGlobe } from "@/lib/trajet";
 import { useInternet } from "@/lib/internet";
 import { dire } from "@/lib/parole";
 import { appeler, moduleDisponible } from "@/lib/natif";
@@ -87,7 +88,7 @@ export function VoyageSatellite(p: Props) {
 }
 
 function Lecteur({ points: brut, nom, photo, couleur, complet, depart, arrivee, onFermer }: Props) {
-  const pts = useMemo(() => deplier(brut), [brut]);
+  const pts = useMemo(() => deplier(suivreLeGlobe(brut)), [brut]);
   const N = pts.length;
   const monde = useMemo(() => pts.map(([la, lo]) => ({ x: wx(lo), y: wy(la) })), [pts]);
   const cumul = useMemo(() => {

@@ -14,6 +14,7 @@ import monde from "@/data/monde.json";
 import donnees from "@/data/voyageurs.json";
 import { definirEcran, plumeDit } from "@/lib/plume";
 import { useInternet } from "@/lib/internet";
+import { FicheAnimal } from "@/components/fiche-animal";
 import { VoyageSatellite } from "@/components/voyage-satellite";
 import { VoyageVol } from "@/components/voyage-vol";
 import { connuLatin } from "@/lib/connu";
@@ -428,6 +429,7 @@ export function VoyageursPage({ integre = false, aMontrer, groupeInitial }: { in
             {v.fiche ? <a href={`#/mammiferes/e-${v.fiche}`} className="bouton-bois rounded-full px-4 py-2 text-sm font-extrabold">Voir sa fiche</a> : null}
             {LIENS_ETUDES[v.etude] && permis ? <a href={LIENS_ETUDES[v.etude].doi || LIENS_ETUDES[v.etude].page} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 px-4 py-2 text-sm font-extrabold">Les vraies données GPS (gratuit)</a> : null}
           </div>
+          <FicheAnimal id={v.fiche} latin={v.latin} />
         </section>
       ) : null}
       {/* Légende : touche une couleur pour l'afficher ou la cacher */}

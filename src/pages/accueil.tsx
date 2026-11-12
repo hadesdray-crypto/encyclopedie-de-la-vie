@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useState, type ComponentType } from "react";
-import { LuBone, LuBookOpen, LuChevronRight, LuCrown, LuDices, LuDog, LuFlame, LuHourglass, LuLayers, LuMap, LuPawPrint, LuSearch, LuSettings, LuTv } from "react-icons/lu";
+import { LuBird, LuBone, LuBookOpen, LuChevronRight, LuCrown, LuDices, LuDog, LuFlame, LuHourglass, LuLayers, LuMap, LuPawPrint, LuRabbit, LuSearch, LuSettings, LuTv } from "react-icons/lu";
 import { Installer } from "@/components/installer";
 import { voixPossible } from "@/components/voix";
 import { avatar } from "@/lib/reglages";
@@ -31,6 +31,8 @@ const BRANCHES: Medaillon[] = [
 
 const PETITS: { vers: string; label: string; icone: ComponentType<{ className?: string }>; fond: string }[] = [
   { vers: "/animaux", label: "Animaux", icone: LuPawPrint, fond: "linear-gradient(160deg,#e2843f,#a84e1c)" },
+  { vers: "/mammiferes", label: "Mammifères", icone: LuRabbit, fond: "linear-gradient(160deg,#c98a5a,#7a4a2a)" },
+  { vers: "/oiseaux", label: "Oiseaux", icone: LuBird, fond: "linear-gradient(160deg,#5aa8e8,#2a5fa8)" },
   { vers: "/fossiles", label: "Fossiles", icone: LuBone, fond: "linear-gradient(160deg,#a99067,#6b5a3a)" },
   { vers: "/frise", label: "Frise", icone: LuHourglass, fond: "linear-gradient(160deg,#5fc2b0,#2f7d6d)" },
   { vers: "/lexique", label: "Vrais mots", icone: LuBookOpen, fond: "linear-gradient(160deg,#f07aa8,#b8457a)" },
@@ -166,7 +168,7 @@ export function Accueil() {
       </a>
 
       {/* Les autres salles */}
-      <nav className="mt-3 grid grid-cols-6 gap-0.5" aria-label="Les autres salles">
+      <nav className="mt-3 grid grid-cols-4 gap-x-1 gap-y-2" aria-label="Les autres salles">
         {PETITS.map(({ vers, label, icone: Icone, fond }) => (
           <a key={vers} href={`#${vers}`} className="text-center text-[10.5px] font-extrabold leading-tight">
             <span className="mx-auto mb-1 grid size-11 place-items-center rounded-2xl text-white shadow-[inset_0_-3px_0_rgba(0,0,0,.2),0_6px_12px_rgba(0,0,0,.35)]" style={{ background: fond }}>

@@ -10,6 +10,7 @@ import { geoMercator, geoPath } from "d3-geo";
 import { PAYS } from "@/components/globe";
 import { PlumeDessin } from "@/components/plume-dessin";
 import { CREDIT_RELIEF, imageRelief, tuileRelief } from "@/lib/relief";
+import { suivreLeGlobe } from "@/lib/trajet";
 import { useInternet } from "@/lib/internet";
 import { contexteAudio, sonsActifs } from "@/lib/sons";
 
@@ -177,17 +178,19 @@ export function VoyageVol(p: Props) {
 
 const BASE: Record<string, { h: number; v: number; verbe: string }> = {
   oiseau: { h: 150, v: 45, verbe: "On vole" },
-  herbivore: { h: 45, v: 16, verbe: "On court" },
-  predateur: { h: 45, v: 16, verbe: "On court" },
+  herbivore: { h: 18, v: 16, verbe: "On court" },
+  predateur: { h: 18, v: 16, verbe: "On court" },
   marin: { h: 35, v: 14, verbe: "On nage" },
-  autre: { h: 100, v: 30, verbe: "On avance" },
+  autre: { h: 18, v: 30, verbe: "On avance" },
 };
 const VOL_S = 18, TRANSIT_S = 14;
+/** Les animaux qui marchent (tortue, lion, gnou…) restent à hauteur d'animal : jamais dans le ciel. */
+const auSol = (groupe: string) => groupe !== "oiseau" && groupe !== "marin";
 
 function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer, sat }: Props & { sat: boolean }) {
   const b = BASE[groupe] ?? BASE.autre;
-  const pts = useMemo(() => deplier(brut), [brut]);
-  const { etapes, total } = useMemo(() => {
+  const pts = useMemo(() => deplier(suivreLeGlobe(brut)), [brut]);
+  const { etapes, total, at } = useMemo(() => {
     const cum = [0];
     for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + km(pts[i - 1], pts[i]));
     const tot = cum[cum.length - 1] || 0;
@@ -208,18 +211,26 @@ function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer, sa
       if (Math.hypot(c.x - a.x, c.y - a.y) < 1e-9) th = -Math.PI / 2;
       return { ...p0, th, d };
     });
-    return { etapes: e, total: tot };
+    return { etapes: e, total: tot, at };
   }, [pts]);
 
+  const sol = auSol(groupe);
   const phases = useMemo(() => {
     const l: { type: "vol" | "transit"; i: number; t0: number; dur: number }[] = [];
     let t = 0;
+    if (sol) {
+      // À pied : une seule marche continue, exactement le long des points GPS (ceux du globe), sans jamais quitter le sol.
+      const duree = Math.max(60, Math.min(150, total * 20));
+      const seg = duree / Math.max(1, etapes.length - 1);
+      etapes.slice(0, -1).forEach((_, i) => l.push({ type: "vol", i, t0: i * seg, dur: seg }));
+      return { l, fin: duree };
+    }
     etapes.forEach((_, i) => {
       l.push({ type: "vol", i, t0: t, dur: VOL_S }); t += VOL_S;
       if (i < etapes.length - 1) { l.push({ type: "transit", i, t0: t, dur: TRANSIT_S }); t += TRANSIT_S; }
     });
     return { l, fin: t };
-  }, [etapes]);
+  }, [etapes, sol, total]);
 
   const satRef = useRef(sat);
   satRef.current = sat;
@@ -258,6 +269,13 @@ function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer, sa
       const e = etapes[ph.i];
       const mpx = (lat: number) => M_ZOOM0 * Math.cos((lat * Math.PI) / 180);
       const avance = (et: typeof e, s: number) => ({ x: et.x + (Math.cos(et.th) * s) / mpx(et.lat), y: et.y + (Math.sin(et.th) * s) / mpx(et.lat) });
+      if (sol) {
+        const d = Math.min(total, (t / phases.fin) * total);
+        const p0 = at(d), a = at(d - total * 0.012), c2 = at(d + total * 0.012);
+        let th = Math.atan2(c2.y - a.y, c2.x - a.x);
+        if (Math.hypot(c2.x - a.x, c2.y - a.y) < 1e-9) th = e.th;
+        return { x: p0.x, y: p0.y, h: b.h, th, km: d, frac: d / (total || 1), i: Math.min(etapes.length - 1, Math.round((d / (total || 1)) * (etapes.length - 1))), lat: p0.lat, volant: true };
+      }
       if (ph.type === "vol") {
         const p = avance(e, b.v * tau);
         return { x: p.x, y: p.y, h: b.h * (1 + 0.1 * Math.sin(tau * 0.8)), th: e.th + 0.05 * Math.sin(tau * 0.45), km: e.d + (b.v * tau) / 1000, frac: e.d / (total || 1), i: ph.i, lat: e.lat, volant: true };
@@ -456,7 +474,7 @@ function Vol({ points: brut, nom, couleur, groupe, depart, arrivee, onFermer, sa
           </>
         ) : null}
         <div className="pointer-events-none absolute left-3 top-3 rounded-2xl bg-black/45 px-3 py-1.5 text-xs font-extrabold">
-          {groupe === "marin" ? "Profondeur" : "Altitude"} : {fmtH(ui.alt)}
+          {groupe === "marin" ? `Profondeur : ${fmtH(ui.alt)}` : sol ? "À hauteur de l'animal" : `Altitude : ${fmtH(ui.alt)}`}
         </div>
         {!sat ? <div className="pointer-events-none absolute inset-x-0 top-14 mx-auto w-fit max-w-[92%] rounded-full bg-black/55 px-3 py-1 text-center text-xs font-bold">Vue simplifiée : les vraies images arrivent avec Internet.</div> : ui.chargement ? <div className="pointer-events-none absolute inset-x-0 top-14 mx-auto w-fit rounded-full bg-black/55 px-3 py-1 text-xs font-bold">Les images arrivent…</div> : null}
         {!sat ? <p className="pointer-events-none absolute bottom-[4.2rem] right-2 max-w-[60%] text-right text-[9px] leading-tight text-white/55">{CREDIT_RELIEF}</p> : null}

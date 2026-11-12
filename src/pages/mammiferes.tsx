@@ -228,7 +228,7 @@ function Famille({ id }: { id: string }) {
   );
 }
 
-function Fiche({ id }: { id: string }) {
+export function Fiche({ id, integre = false }: { id: string; integre?: boolean }) {
   const e = PAR_ID.get(id);
   useEffect(() => {
     if (e) {
@@ -241,6 +241,7 @@ function Fiche({ id }: { id: string }) {
     return () => definirEcran(null);
   }, [e]);
   if (!e) return <Inconnue />;
+  const Racine = integre ? "div" : "main";
   const autre = AUTRES_PAR_ID.get(e.id);
   const grande = autre ? undefined : FICHE_PAR_LATIN.get(e.latin);
   const vie = grande ? VIE[grande.id] : undefined;
@@ -252,8 +253,8 @@ function Fiche({ id }: { id: string }) {
   const valeur = (cle: string, mesure: string | undefined) =>
     mesure ? { texte: mesure } : est[cle] ? { texte: est[cle].t, note: est[cle] } : { texte: "Mal connu." };
   return (
-    <main className="mx-auto max-w-xl px-4 pt-4">
-      <Entete siVide={`/mammiferes/f-${e.famille}`} />
+    <Racine className={integre ? "pt-2" : "mx-auto max-w-xl px-4 pt-4"}>
+      {integre ? null : <Entete siVide={`/mammiferes/f-${e.famille}`} />}
       <div className={`mx-auto mt-4 grid justify-center gap-4 ${grande?.imageFemelle ? "grid-cols-2" : "grid-cols-1"}`}>
         <figure className="text-center">
           <PhotoEntiere src={grande?.image ?? `m/${e.id}.webp`} id={e.id} nom={e.nom} className="medaillon-or mx-auto block size-40 overflow-hidden"><Portrait id={e.id} src={grande?.image} /></PhotoEntiere>
@@ -349,7 +350,7 @@ function Fiche({ id }: { id: string }) {
         </Rubrique>
       </dl>
       <p className="mx-auto mt-4 max-w-sm text-center text-sm texte-doux">{autre ? "Pas un mammifère. Les chiffres viennent de sources publiées (Vikidia, Futura, articles scientifiques) : quand on n'est pas sûr, c'est écrit « mal connu »." : "Classement : Mammal Diversity Database."} Les chiffres sont des mesures publiées. « Estimé » veut dire calculé d’après les espèces cousines, avec l’écart entre elles en pourcentage. « Mal connu » : ni mesure, ni estimation fiable.</p>
-    </main>
+    </Racine>
   );
 }
 

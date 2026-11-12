@@ -64,11 +64,14 @@ function Liste() {
   );
 }
 
-function Fiche({ o }: { o: Oiseau }) {
+export const oiseauParId = (id: string) => OISEAUX.find((o) => o.id === id);
+export const oiseauParLatin = (latin: string) => OISEAUX.find((o) => o.latin === latin);
+export function Fiche({ o, integre = false }: { o: Oiseau; integre?: boolean }) {
   const voyages = voyagesDe("", o.latin);
+  const Racine = integre ? "div" : "main";
   return (
-    <main className="mx-auto max-w-xl px-4 pb-8 pt-4">
-      <Entete siVide="/oiseaux" />
+    <Racine className={integre ? "pt-2" : "mx-auto max-w-xl px-4 pb-8 pt-4"}>
+      {integre ? null : <Entete siVide="/oiseaux" />}
       <Titre sous={o.latin}>{o.nom}</Titre>
       {o.photos.map((p) => (
         <figure key={p.src} className="mt-4">
@@ -95,9 +98,9 @@ function Fiche({ o }: { o: Oiseau }) {
         <p className="mt-2 whitespace-pre-line leading-relaxed">{o.intro || "Non connu"}</p>
         {o.wiki ? <p className="mt-2 text-xs"><a href={o.wiki} target="_blank" rel="noreferrer">Source : Wikipédia en français</a></p> : null}
       </section>
-      {voyages.length ? (
+      {voyages.length && !integre ? (
         <a href={`#/aventure?voyages=1&suivre=${encodeURIComponent(o.latin)}`} className="bouton-bois mt-4 block rounded-full px-5 py-3 text-center font-extrabold">Voir son vrai voyage ({voyages.length} suivi{voyages.length > 1 ? "s" : ""} par GPS)</a>
       ) : null}
-    </main>
+    </Racine>
   );
 }
