@@ -23,13 +23,17 @@ type Props = {
   complet: boolean;
   depart?: string;
   arrivee?: string;
+  kmReel?: number | null;
   onFermer: () => void;
 };
 
 const TUILE = 256;
 const ZOOM_MAX = 17;
-const VITESSES = [{ x: 1, emoji: "🐢", nom: "Doucement" }, { x: 3, emoji: "🐇", nom: "Vite" }, { x: 8, emoji: "🚀", nom: "Très vite" }];
-const DUREE = 45; // secondes pour tout le voyage, à la vitesse 🐢
+const VITESSES_BASE = [{ x: 1, emoji: "🐢", nom: "Doucement" }, { x: 3, emoji: "🐇", nom: "Vite" }, { x: 8, emoji: "🚀", nom: "Très vite" }];
+const hh = (h: number) => (h < 1 ? `${Math.round(h * 60)} min` : h < 48 ? `${Math.round(h).toLocaleString("fr-FR")} h` : `${Math.round(h / 24).toLocaleString("fr-FR")} jours`);
+const invX = (x: number) => (x / 256) * 360 - 180;
+const invY = (y: number) => (Math.atan(Math.sinh(Math.PI * (1 - (2 * y) / 256))) * 180) / Math.PI;
+const DUREE = 90; // secondes pour tout le voyage, à la vitesse 🐢 (assez lent pour que les images aient le temps d'arriver)
 const tuileUrl = (z: number, x: number, y: number) => `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${y}/${x}`;
 
 // Coordonnées du « monde » (projection des cartes en ligne), au zoom 0 : de 0 à 256.
@@ -87,7 +91,7 @@ export function VoyageSatellite(p: Props) {
   );
 }
 
-function Lecteur({ points: brut, nom, photo, couleur, complet, depart, arrivee, onFermer }: Props) {
+function Lecteur({ points: brut, nom, photo, couleur, complet, depart, arrivee, kmReel, onFermer }: Props) {
   const pts = useMemo(() => deplier(suivreLeGlobe(brut)), [brut]);
   const N = pts.length;
   const monde = useMemo(() => pts.map(([la, lo]) => ({ x: wx(lo), y: wy(la) })), [pts]);
@@ -97,6 +101,17 @@ function Lecteur({ points: brut, nom, photo, couleur, complet, depart, arrivee, 
     return c;
   }, [pts, N]);
   const total = cumul[N - 1] ?? 0;
+  // Sa vraie vitesse : les kilomètres divisés par le temps réel, si le départ et l'arrivée sont connus.
+  const heures = useMemo(() => {
+    if (!complet || !depart || !arrivee) return 0;
+    const h = (new Date(arrivee.replace(" ", "T")).getTime() - new Date(depart.replace(" ", "T")).getTime()) / 36e5;
+    return Number.isFinite(h) && h > 0.05 ? h : 0;
+  }, [complet, depart, arrivee]);
+  const kmVrai = kmReel && kmReel > 0 ? kmReel : total; // la vraie distance additionnée, pas celle des points affichés
+  const kmh = heures > 0 && kmVrai > 0 ? kmVrai / heures : 0;
+  // « Son rythme » : le voyage rejoué à la vraie allure, mais resserré (au plus 1 seconde = 1 heure, ou moins si trop long).
+  const hParSeconde = heures > 0 ? Math.max(1, heures / 240) : 0;
+  const VITESSES = useMemo(() => (heures > 0 ? [...VITESSES_BASE, { x: DUREE / (heures / hParSeconde), emoji: "👣", nom: "Son rythme" }] : VITESSES_BASE), [heures, hParSeconde]);
 
   // La taille de la fenêtre de la carte.
   const boite = useRef<HTMLDivElement>(null);
@@ -173,7 +188,7 @@ function Lecteur({ points: brut, nom, photo, couleur, complet, depart, arrivee, 
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [N, zSuivi, vueTout]);
+  }, [N, zSuivi, vueTout, VITESSES]);
 
   const s = etat.current;
   const { w: W, h: H } = taille;
@@ -203,7 +218,7 @@ function Lecteur({ points: brut, nom, photo, couleur, complet, depart, arrivee, 
 
   const bouton = (dir: 1 | -1) => {
     if (dir > 0 && s.t >= N - 1) { s.t = 0; s.deja.clear(); }
-    if (s.joue && s.dir === dir) s.v = (s.v + 1) % VITESSES.length;
+    if (s.joue && s.dir === dir) s.v = (s.v + 1) % VITESSES_BASE.length;
     else s.v = Math.max(s.v, 1);
     s.dir = dir;
     s.joue = true;
@@ -264,9 +279,10 @@ function Lecteur({ points: brut, nom, photo, couleur, complet, depart, arrivee, 
       {/* Les commandes */}
       <div className="bg-[#1c1240] px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3">
         <div className="flex items-center justify-between text-xs font-extrabold">
-          <span className="text-[#f3d48a]">{fmtKm(pos.km)}</span>
-          <span className="texte-doux">sur {fmtKm(total)}</span>
+          <span className="text-[#f3d48a]">{fmtKm(pos.km)}{heures > 0 ? ` · ${hh(frac * heures)} de voyage` : ""}</span>
+          <span className="texte-doux">sur {fmtKm(total)}{heures > 0 ? ` en ${hh(heures)}` : ""}</span>
         </div>
+        {kmh > 0 ? <p className="mt-1 text-center text-xs font-bold text-white/85">Vitesse moyenne réelle : {kmh < 0.1 ? "moins de 0,1" : kmh < 10 ? kmh.toLocaleString("fr-FR", { maximumFractionDigits: 1 }) : Math.round(kmh).toLocaleString("fr-FR")} km/h{ui.v === VITESSES.length - 1 && heures > 0 ? ` · ici 1 seconde = ${hh(hParSeconde)}` : ""}. Les arrêts ne sont pas connus : le GPS n'a pas gardé l'heure de chaque point.</p> : null}
         <input
           type="range"
           min={0}
@@ -294,6 +310,9 @@ function Lecteur({ points: brut, nom, photo, couleur, complet, depart, arrivee, 
             </button>
           ))}
         </div>
+        <a href={`https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${invY(pos.y).toFixed(6)},${(((invX(pos.x) + 180) % 360 + 360) % 360 - 180).toFixed(6)}`} target="_blank" rel="noopener noreferrer" className="mx-auto mt-3 flex min-h-10 w-fit items-center gap-2 rounded-full bg-white/10 px-4 text-sm font-extrabold ring-1 ring-white/20">
+          <LuScan className="size-4" /> Voir cet endroit en vrai (Street View)
+        </a>
         <button type="button" onClick={() => void ouvrirDansGoogleEarth(brut, nom)} className="mx-auto mt-3 flex min-h-10 items-center gap-2 rounded-full bg-white/10 px-4 text-sm font-extrabold ring-1 ring-white/20">
           <LuDownload className="size-4" /> Voir aussi dans Google Earth (en 3D)
         </button>

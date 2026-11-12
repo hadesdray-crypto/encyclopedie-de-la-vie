@@ -1,6 +1,17 @@
 [
   {
     "date": "2026-11-12",
+    "titre": "Voyages plus vrais, photos qui ouvrent les fiches",
+    "points": [
+      "Voyager avec un animal : sa vraie vitesse moyenne s'affiche, avec une option « Son rythme » qui rejoue le voyage à son allure.",
+      "Un bouton « Voir cet endroit en vrai (Street View) » ouvre l'endroit exact où se trouve l'animal.",
+      "Voyage vu du ciel deux fois plus lent, pour laisser aux images le temps d'arriver.",
+      "Fiche d'un voyageur : une seule carte, en image satellite que l'on touche pour zoomer (sans Internet, la carte dessinée reste).",
+      "Toucher la photo d'un animal ouvre sa fiche, partout où la photo n'est pas déjà un bouton."
+    ]
+  },
+  {
+    "date": "2026-11-12",
     "titre": "Tablette, sons nettoyés, code des parents",
     "points": [
       "Sur tablette, en portrait comme en paysage, les pages sont plus larges et mieux remplies.",

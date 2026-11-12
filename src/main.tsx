@@ -16,6 +16,7 @@ import { useChemin } from "@/lib/routeur";
 import { demarrerHorsLigne } from "@/lib/hors-ligne";
 import { demarrerMajApk } from "@/lib/maj-apk";
 import { demarrerFleche } from "@/lib/fleche";
+import { demarrerImagesFiches } from "@/lib/image-fiche";
 import { demarrerClavier } from "@/lib/clavier";
 import { demarrerLectureLongue } from "@/lib/lecture-longue";
 import { Accueil } from "@/pages/accueil";
@@ -132,6 +133,7 @@ function App() {
 }
 
 demarrerBarreHaut();
+demarrerImagesFiches();
 createRoot(document.getElementById("app")!).render(
   <StrictMode>
     <App />

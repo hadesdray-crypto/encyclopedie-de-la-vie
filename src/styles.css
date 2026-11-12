@@ -1149,3 +1149,4 @@ html[data-natif] body:not([data-dex]) { padding-top: var(--sat); }
   /* en paysage, les listes en grille gagnent des colonnes */
   main ul.grid-cols-2 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+[data-animal] { cursor: pointer; }

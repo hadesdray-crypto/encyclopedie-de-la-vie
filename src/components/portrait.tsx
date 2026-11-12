@@ -45,9 +45,11 @@ export function Portrait({ id, src, couvrir }: { id: string; src?: string; couvr
   };
   // L'animal en entier (pas un morceau coupé au milieu) : la photo tient dans le cercle,
   // et le fond est la même photo, floue, pour remplir joliment.
-  if (couvrir) return <img src={chemin} alt="" loading="lazy" decoding="async" className="block size-full object-cover" onError={secours} />;
+  // Toucher la photo d'un animal ouvre sa fiche (voir lib/image-fiche.ts), sauf si elle sert déjà de bouton.
+  const fiche = PAR_ID.has(id) ? id : undefined;
+  if (couvrir) return <img src={chemin} alt="" data-animal={fiche} loading="lazy" decoding="async" className="block size-full object-cover" onError={secours} />;
   return (
-    <span className="relative block size-full overflow-hidden">
+    <span data-animal={fiche} className="relative block size-full overflow-hidden">
       <img src={chemin} alt="" aria-hidden="true" loading="lazy" decoding="async" className="absolute inset-0 size-full scale-125 object-cover blur-md brightness-75" onError={secours} />
       <img src={chemin} alt="" loading="lazy" decoding="async" className="relative size-full object-contain!" onError={secours} />
     </span>

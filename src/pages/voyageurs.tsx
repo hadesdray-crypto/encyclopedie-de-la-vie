@@ -6,7 +6,7 @@ import { LuEarth, LuMap, LuMinus, LuPlus, LuRotateCcw, LuSearch, LuX } from "rea
 import { Globe, cadrer } from "@/components/globe";
 import { CadreGlobe } from "@/components/cadre-globe";
 import { RecherchePlein } from "@/components/recherche-plein";
-import { Parcours } from "@/components/parcours";
+import { ApercuSatellite } from "@/components/apercu-satellite";
 import liensEtudes from "@/data/voyageurs-liens.json";
 import { Entete, Titre } from "@/components/entete";
 import { Portrait, aUnePhoto } from "@/components/portrait";
@@ -390,7 +390,7 @@ export function VoyageursPage({ integre = false, aMontrer, groupeInitial }: { in
             </div>
           </div>
           <p className={`mt-2 inline-block rounded-full px-3 py-1 text-xs font-extrabold ${estComplet(v) ? "bg-[#4cd964]/20 text-[#9dffb0]" : "bg-white/10 texte-doux"}`}>{estComplet(v) ? "✓ Trajet complet : départ et arrivée connus" : "Trajet partiel : seulement le début est connu"}</p>
-          <Parcours key={v.i} points={v.points} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} arrivee={estComplet(v)} />
+          <ApercuSatellite key={v.i} points={v.points} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} arrivee={estComplet(v)} onOuvrir={() => setSatellite(true)} />
           <button type="button" onClick={() => setSatellite(true)} className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#f3d48a] to-[#e7b75a] py-3.5 text-base font-black text-[#2a1650] shadow-[0_0_18px_rgba(243,212,138,.45)] active:scale-[.98]">
             <LuEarth aria-hidden /> Voyager avec lui, vu du ciel
           </button>
@@ -401,7 +401,7 @@ export function VoyageursPage({ integre = false, aMontrer, groupeInitial }: { in
           ) : null}
           {v.groupe !== "marin" && appareilModeste() ? <p className="mt-1 text-xs texte-doux">{AVERTISSEMENT_PUISSANCE}</p> : null}
           {vol && v.groupe !== "marin" ? <VoyageVol points={v.points} nom={nomDe(v)} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} groupe={v.groupe} depart={v.depart?.date ?? v.debut} arrivee={v.arrivee?.date ?? v.fin} onFermer={() => setVol(false)} /> : null}
-          {satellite ? <VoyageSatellite points={v.points} nom={nomDe(v)} photo={v.fiche && aUnePhoto(v.fiche) ? v.fiche : null} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} complet={estComplet(v)} depart={v.depart?.date ?? v.debut} arrivee={v.arrivee?.date ?? v.fin} onFermer={() => setSatellite(false)} /> : null}
+          {satellite ? <VoyageSatellite kmReel={v.km} points={v.points} nom={nomDe(v)} photo={v.fiche && aUnePhoto(v.fiche) ? v.fiche : null} couleur={GROUPES_VOYAGE[v.groupe as G].couleur} complet={estComplet(v)} depart={v.depart?.date ?? v.debut} arrivee={v.arrivee?.date ?? v.fin} onFermer={() => setSatellite(false)} /> : null}
           {(() => {
             const autres = voyagesDe(v.fiche ?? "", v.latin);
             return autres.length > 1 ? (
