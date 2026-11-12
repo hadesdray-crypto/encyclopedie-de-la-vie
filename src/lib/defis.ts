@@ -1,8 +1,9 @@
 // Le défi du jour : les jours réussis, gardés sur l'appareil.
+import { maintenant } from "@/lib/horloge";
 export const CLE_DEFIS = "leonie-defis";
 
 export function aujourdhui(decalage = 0) {
-  const d = new Date();
+  const d = maintenant();
   d.setDate(d.getDate() - decalage);
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }

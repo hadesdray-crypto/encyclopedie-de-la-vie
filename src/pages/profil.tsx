@@ -10,6 +10,8 @@ import { EST_APK, VERSION_APK, useMajApk, verifierApk, lancerMajApk, telecharger
 import { VERSION_APP, accepterMiseAJour, relancerHorsLigne, useHorsLigne, verifierMiseAJour } from "@/lib/hors-ligne";
 import { permettreInternet, useInternet } from "@/lib/internet";
 import { Portrait } from "@/components/portrait";
+import { PorteParents } from "@/components/porte-parents";
+import { ModeDeveloppeur } from "@/components/dev-parents";
 
 export function ProfilPage() {
   const vues = lireVues();
@@ -91,6 +93,7 @@ export function CoinParents() {
     <section className="mt-4 rounded-3xl bg-card px-4 py-4">
       <button type="button" onClick={() => setOuvert((o) => !o)} className="w-full text-left font-display text-xl">Coin des parents</button>
       {ouvert ? (
+        <PorteParents>
         <div className="mt-2 text-sm">
           <p className="mb-3 font-extrabold">Les paquets de cartes : un paquet de 5, 10 ou 15 cartes chaque jour, et d'autres à gagner en lisant des fiches et en jouant.</p>
           <TempsParJour />
@@ -107,7 +110,9 @@ export function CoinParents() {
               <button type="button" disabled={reponse.trim() !== "91"} onClick={() => permettreInternet(true)} className="bouton-bois ml-2 rounded-full px-4 py-2 font-extrabold disabled:opacity-40">Allumer</button>
             </div>
           )}
+          <ModeDeveloppeur />
         </div>
+        </PorteParents>
       ) : null}
     </section>
   );

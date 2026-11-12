@@ -2,6 +2,7 @@
 // un œuf, un bébé… et parfois un braconnier à faire tomber.
 // Elle avance avec les jours où l'application est ouverte (pas avec le calendrier : si on ne vient pas
 // pendant une semaine, on ne rate rien). Tout reste sur l'appareil, sans Internet.
+import { maintenant } from "@/lib/horloge";
 import { useEffect, useState } from "react";
 import { ORDRE_PRETENDANTS, PRETENDANTS, pretendant, type Pretendant } from "@/lib/pretendants";
 
@@ -80,7 +81,7 @@ export function useHistoire() {
 export const histoire = () => etat;
 
 const aujourdhui = () => {
-  const d = new Date();
+  const d = maintenant();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 };
 /** Le jour en cours : le dernier jour noté (le vrai jour, ou un jour avancé par un parent). */

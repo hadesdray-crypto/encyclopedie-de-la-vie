@@ -1,6 +1,7 @@
 // Le temps d'écran de Leonie : un parent choisit une durée par jour (dans le Coin des parents).
 // On compte seulement le temps où l'application est vraiment ouverte devant elle.
 // Repère : les directives canadiennes conseillent au plus 2 heures d'écran de loisir par jour, tous écrans confondus.
+import { maintenant } from "@/lib/horloge";
 import { useEffect, useState } from "react";
 
 const CLE_LIMITE = "leonie-ecran-limite";
@@ -11,7 +12,7 @@ export const LIMITE_DEFAUT = 45;
 type Jour = { date: string; secondes: number; bonus: number; libre: boolean; prevenu: boolean };
 
 function aujourdhui() {
-  const d = new Date();
+  const d = maintenant();
   return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
 }
 function lire<T>(cle: string, defaut: T): T {

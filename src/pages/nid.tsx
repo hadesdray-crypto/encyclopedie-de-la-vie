@@ -1,5 +1,6 @@
 // Le nid de Plume : où en est l'histoire (le compagnon, l'œuf à réchauffer, le bébé), le journal,
 // et un petit coin des parents (braconnier oui ou non, curseur pour avancer l'histoire).
+import { PorteParents } from "@/components/porte-parents";
 import { useState } from "react";
 import { Entete, Titre } from "@/components/entete";
 import { Compagnon, Couple, Oeuf } from "@/components/histoire";
@@ -109,6 +110,7 @@ export function NidPage() {
       <section className="mt-3 rounded-[1.75rem] bg-white/5 px-4 py-3">
         <button type="button" onClick={() => setParents((o) => !o)} className="w-full text-left text-sm font-extrabold texte-doux">Coin des parents {parents ? "−" : "+"}</button>
         {parents ? (
+          <PorteParents titre="Coin des parents du nid">
           <div className="mt-2 space-y-2 text-sm">
             <p className="texte-doux">L'histoire avance avec les jours où l'application est ouverte (des prétendants qui se présentent, un compagnon, des câlins, un œuf à réchauffer 5 jours, un bébé). Le braconnier vient au plus une fois par jour, au hasard (filet, fusil ou course) : Plume gagne toujours. On peut le toucher ou le lancer avec le doigt : il rebondit, a des bobos, puis s'en va en boitant.</p>
             <label className="flex items-center justify-between gap-3 rounded-2xl bg-white/5 px-3 py-2 font-bold">
@@ -132,6 +134,7 @@ export function NidPage() {
             <button type="button" onClick={avancerUnJour} className="w-full rounded-2xl bg-white/10 py-2.5 font-extrabold">Faire avancer l'histoire d'un jour</button>
             <button type="button" onClick={() => { if (window.confirm("Recommencer toute l'histoire de Plume depuis le début ?")) recommencerHistoire(); }} className="w-full rounded-2xl bg-white/5 py-2 text-xs font-extrabold texte-doux">Recommencer l'histoire</button>
           </div>
+          </PorteParents>
         ) : null}
       </section>
     </main>

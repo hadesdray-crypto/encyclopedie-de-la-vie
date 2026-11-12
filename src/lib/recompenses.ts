@@ -1,5 +1,6 @@
 // Les paquets se gagnent en apprenant : lire des fiches, bien répondre, finir un mémoire.
 // Tout reste sur l'appareil (localStorage).
+import { maintenant } from "@/lib/horloge";
 const CLE_PAQUETS = "leonie-paquets";
 const CLE_ILLIMITE = "leonie-paquets-illimites";
 const CLE_LUES = "leonie-fiches-lues";
@@ -36,7 +37,7 @@ export function paquetsIllimites() {
 
 // Le paquet du jour : un paquet offert chaque jour, de 5, 10 ou 15 cartes (au hasard, découvert en l'ouvrant).
 const CLE_JOUR = "leonie-paquet-du-jour";
-const aujourdhui = () => new Date().toLocaleDateString("fr-CA");
+const aujourdhui = () => maintenant().toLocaleDateString("fr-CA");
 export function paquetDuJour() {
   try {
     return localStorage.getItem(CLE_JOUR) !== aujourdhui();
