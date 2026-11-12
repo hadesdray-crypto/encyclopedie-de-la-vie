@@ -43,10 +43,14 @@ export function MigrationsConnues() {
   );
   const choisi = m ? liste.findIndex((x) => x.id === m.id) : null;
   const vers = useMemo(() => {
-    if (!m) return null;
-    const c = cadrer(m.type === "carrefour" ? [[m.points[0][0] - 3, m.points[0][1] - 3], [m.points[0][0] + 3, m.points[0][1] + 3]] : m.points);
-    return { lon: c.lon, lat: c.lat, zoom: Math.min(c.zoom, 2.4), n: Date.now() };
-  }, [m]);
+    // Un animal choisi : on le cadre. Sinon : on tourne le globe vers tous les trajets (ou carrefours) de l'onglet.
+    const pts: [number, number][] = m
+      ? m.type === "carrefour" ? [[m.points[0][0] - 3, m.points[0][1] - 3], [m.points[0][0] + 3, m.points[0][1] + 3]] : m.points
+      : liste.flatMap((x) => x.points);
+    if (!pts.length) return null;
+    const c = cadrer(pts);
+    return { lon: c.lon, lat: c.lat, zoom: Math.min(c.zoom, m ? 2.4 : 1.4), n: Date.now() };
+  }, [m, liste]);
 
   return (
     <section className="carte-nuit mt-6 rounded-3xl px-4 py-4">
