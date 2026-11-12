@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-11-12",
+    "titre": "Voix à molettes et barre du haut protégée",
+    "points": [
+      "Choix de la voix : deux molettes, sans connexion et avec connexion. La voix parle dès qu'elle s'arrête sur son nom.",
+      "Une case par molette : on garde l'une, l'autre ou les deux. Avec Internet, la voix avec connexion parle, sinon l'autre.",
+      "Réglages de hauteur (grave, aiguë) et de vitesse (lente, rapide), boutons Écouter et Valider.",
+      "La zone de l'heure et de la batterie est une bande réservée : un toucher dessus ne fait plus rien dans l'appli ni dans les jeux."
+    ]
+  },
+  {
+    "date": "2026-11-12",
     "titre": "Plume explique toutes les pages",
     "points": [
       "Plume dit un mot en arrivant sur chaque page : de quoi on parle, et qu'elle peut tout expliquer.",

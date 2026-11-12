@@ -40,7 +40,7 @@ export function MiseAJour() {
 
   if (phase === "propose") {
     return (
-      <div role="dialog" aria-label="Nouvelle mise à jour" className="arrivee fixed inset-x-0 z-50 mx-auto flex max-h-[calc(100dvh-1.5rem)] w-[min(92%,30rem)] flex-col rounded-3xl border-2 border-[#e8c98a] bg-[#24123f] px-4 py-3 shadow-[0_0_30px_rgba(160,110,255,.6)]" style={{ top: "calc(env(safe-area-inset-top, 0px) + 0.75rem)" }}>
+      <div role="dialog" aria-label="Nouvelle mise à jour" className="arrivee fixed inset-x-0 z-50 mx-auto flex max-h-[calc(100dvh-1.5rem)] w-[min(92%,30rem)] flex-col rounded-3xl border-2 border-[#e8c98a] bg-[#24123f] px-4 py-3 shadow-[0_0_30px_rgba(160,110,255,.6)]" style={{ top: "calc(var(--sat) + 0.75rem)" }}>
         <div className="flex items-center gap-3">
           <img src="theme/plume.svg" alt="" className="size-12 shrink-0" />
           <p className="font-display text-xl text-[#f3d48a]">Nouvelle mise à jour !</p>

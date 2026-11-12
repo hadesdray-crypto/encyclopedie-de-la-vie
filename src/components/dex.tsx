@@ -28,7 +28,7 @@ export function DexCadre({ chemin }: { chemin: string }) {
   return (
     <>
       <div className="dex-cadre pointer-events-none fixed inset-0 z-40" aria-hidden="true" />
-      <header className="dex-haut fixed inset-x-0 top-0 z-40 flex items-center gap-2 px-3" style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}>
+      <header className="dex-haut fixed inset-x-0 top-0 z-40 flex items-center gap-2 px-3" style={{ paddingTop: "var(--sat)" }}>
         <span className={`dex-lentille ${parle ? "dex-allumee" : ""}`} />
         <span className="dex-led bg-[#ff5a5a]" />
         <span className="dex-led bg-[#ffd84a]" />

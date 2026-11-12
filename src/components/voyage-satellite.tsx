@@ -238,7 +238,7 @@ function Lecteur({ points: brut, nom, photo, couleur, complet, depart, arrivee, 
         </div>
 
         {/* En haut : le nom, et fermer */}
-        <div className="absolute inset-x-0 top-0 flex items-start gap-2 bg-gradient-to-b from-black/70 to-transparent px-3 pb-6 pt-[max(0.75rem,env(safe-area-inset-top))]">
+        <div className="absolute inset-x-0 top-0 flex items-start gap-2 bg-gradient-to-b from-black/70 to-transparent px-3 pb-6 pt-[max(0.75rem,var(--sat))]">
           <div className="min-w-0 flex-1">
             <p className="font-display text-xl leading-tight text-[#f3d48a]">Le voyage de {nom}</p>
             <p className="text-xs text-white/80">{depart ? `Départ le ${fmtDate(depart)}` : ""}{arrivee && complet ? ` · arrivée le ${fmtDate(arrivee)}` : ""}</p>

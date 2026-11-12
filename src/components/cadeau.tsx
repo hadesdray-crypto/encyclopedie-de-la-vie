@@ -20,7 +20,7 @@ export function Cadeau() {
     <a
       href="#/cartes"
       className="arrivee fixed inset-x-0 z-40 mx-auto flex w-fit max-w-[92%] items-center gap-3 rounded-full border-2 border-[#e8c98a] bg-[#2a1650] px-4 py-2 shadow-[0_0_30px_rgba(160,110,255,.7)]"
-      style={{ top: "calc(env(safe-area-inset-top, 0px) + 0.75rem)" }}
+      style={{ top: "calc(var(--sat) + 0.75rem)" }}
       role="status"
     >
       <img src="theme/plume.svg" alt="" className="size-12" />

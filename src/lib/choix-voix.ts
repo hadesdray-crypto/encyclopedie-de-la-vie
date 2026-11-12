@@ -3,8 +3,14 @@
 import { useEffect, useState } from "react";
 import { appeler, moduleDisponible } from "@/lib/natif";
 
-export type ChoixVoix = { moteur: "auto" | "natif" | "navigateur"; index: number; nom: string; hauteur: number };
-export type OptionVoix = { cle: string; titre: string; etoiles: 1 | 2 | 3; note: string; choix: Omit<ChoixVoix, "hauteur"> };
+export type BaseVoix = { moteur: "auto" | "natif" | "navigateur"; index: number; nom: string };
+/**
+ * La voix gardée pour un caractère. `moteur/index/nom` : la voix à utiliser tout de suite.
+ * Nouveau réglage à deux molettes : `local` (sans connexion) et `reseau` (avec connexion), avec les cases « utiliser ».
+ * Si les deux sont cochées, la voix avec connexion sert quand il y a Internet, sinon celle sans connexion.
+ */
+export type ChoixVoix = BaseVoix & { hauteur: number; vitesse?: number; local?: BaseVoix | null; reseau?: BaseVoix | null; useLocal?: boolean; useReseau?: boolean };
+export type OptionVoix = { cle: string; titre: string; libelle?: string; etoiles: 1 | 2 | 3; reseau?: boolean; note: string; choix: BaseVoix };
 
 const CLE = "leonie-voix-choisies";
 const abonnes = new Set<() => void>();
@@ -16,9 +22,19 @@ function lireTout(): Record<string, ChoixVoix> {
   }
 }
 /** La voix choisie pour un caractère (ou null : la voix habituelle). */
-export function voixChoisie(presence: string): ChoixVoix | null {
+export function voixBrute(presence: string): ChoixVoix | null {
   const v = lireTout()[presence];
   return v && typeof v.hauteur === "number" ? v : null;
+}
+/** La voix à utiliser maintenant : avec deux molettes, celle avec connexion s'il y a Internet, sinon celle sans connexion. */
+export function voixChoisie(presence: string): ChoixVoix | null {
+  const v = voixBrute(presence);
+  if (!v || (v.local === undefined && v.reseau === undefined)) return v;
+  const enLigne = typeof navigator === "undefined" || navigator.onLine !== false;
+  const reseau = v.useReseau !== false && v.reseau ? v.reseau : null;
+  const local = v.useLocal !== false && v.local ? v.local : null;
+  const base = enLigne ? reseau ?? local : local ?? (reseau && !enLigne ? null : reseau);
+  return { ...(base ?? { moteur: "auto", index: -1, nom: "" }), hauteur: v.hauteur, vitesse: v.vitesse };
 }
 export function garderVoix(presence: string, v: ChoixVoix) {
   try {
@@ -29,9 +45,9 @@ export function garderVoix(presence: string, v: ChoixVoix) {
   abonnes.forEach((f) => f());
 }
 export function useVoixChoisie(presence: string) {
-  const [v, setV] = useState(() => voixChoisie(presence));
+  const [v, setV] = useState(() => voixBrute(presence));
   useEffect(() => {
-    const f = () => setV(voixChoisie(presence));
+    const f = () => setV(voixBrute(presence));
     abonnes.add(f);
     f();
     return () => void abonnes.delete(f);
@@ -65,17 +81,17 @@ export async function catalogueVoix(): Promise<OptionVoix[]> {
         if (!/^fr/i.test(v.lang || "") && !/fr[-_]/i.test(nom)) return;
         const reseau = /network/i.test(nom) || v.localService === false;
         const google = /x-[a-z]{3}-(local|network)|google/i.test(nom);
-        out.push({ cle: `n${index}`, etoiles: google || reseau ? 3 : 2, note: reseau ? "Avec Internet" : "Sans Internet", choix: { moteur: "natif", index, nom: "" } });
+        out.push({ cle: `n${index}`, libelle: (v.name || v.voiceURI || "").replace(/^.*\//, ""), reseau, etoiles: google || reseau ? 3 : 2, note: reseau ? "Avec Internet" : "Sans Internet", choix: { moteur: "natif", index, nom: "" } });
       });
     } catch {
       /* pas de liste : la voix du téléphone seulement */
     }
-    if (!out.length) out.push({ cle: "n-1", etoiles: 2, note: "Sans Internet", choix: { moteur: "natif", index: -1, nom: "" } });
+    if (!out.length) out.push({ cle: "n-1", reseau: false, etoiles: 2, note: "Sans Internet", choix: { moteur: "natif", index: -1, nom: "" } });
   } else if ("speechSynthesis" in window) {
     for (const v of window.speechSynthesis.getVoices()) {
       if (!v.lang.toLowerCase().startsWith("fr")) continue;
       const bonne = /google|natural|neural|premium|enhanced|online/i.test(v.name) || !v.localService;
-      out.push({ cle: `p${v.name}`, etoiles: bonne ? 3 : 2, note: v.localService ? "Sans Internet" : "Avec Internet", choix: { moteur: "navigateur", index: -1, nom: v.name } });
+      out.push({ cle: `p${v.name}`, libelle: v.name, reseau: !v.localService, etoiles: bonne ? 3 : 2, note: v.localService ? "Sans Internet" : "Avec Internet", choix: { moteur: "navigateur", index: -1, nom: v.name } });
     }
   }
   out.sort((a, b) => b.etoiles - a.etoiles);

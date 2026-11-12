@@ -19,7 +19,7 @@ export function RecherchePlein({ q, setQ, placeholder, onFermer, children, vide 
     };
   }, []);
   return createPortal(
-    <div role="dialog" aria-label={placeholder} data-sans-remonter className="recherche-plein fixed inset-0 z-[90] flex flex-col bg-[#120a26]/96 backdrop-blur-md" style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 0.75rem)" }}>
+    <div role="dialog" aria-label={placeholder} data-sans-remonter className="recherche-plein fixed inset-0 z-[90] flex flex-col bg-[#120a26]/96 backdrop-blur-md" style={{ paddingTop: "calc(var(--sat) + 0.75rem)" }}>
       <div className="mx-auto w-full max-w-xl px-4">
         <label className="flex items-center gap-2 rounded-full bg-card px-4 py-3 shadow-[0_8px_20px_rgba(0,0,0,.4)]">
           <LuSearch className="size-5 shrink-0 text-[#6d5648]" aria-hidden="true" />

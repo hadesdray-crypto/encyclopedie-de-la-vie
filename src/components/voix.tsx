@@ -75,7 +75,7 @@ export async function lire(texte: string, onFin: () => void) {
     try {
       await native.stop();
       if (moi !== jeton) return;
-      await native.speak({ text: texte, lang: "fr-FR", rate: tauxVoix() * voixDePlume().vitesse, pitch: hauteur, ...(choix?.moteur === "natif" && choix.index >= 0 ? { voice: choix.index } : {}) });
+      await native.speak({ text: texte, lang: "fr-FR", rate: tauxVoix() * (choix?.vitesse ?? voixDePlume().vitesse), pitch: hauteur, ...(choix?.moteur === "natif" && choix.index >= 0 ? { voice: choix.index } : {}) });
     } catch {
       /* pas de voix française installée */
     }
@@ -107,7 +107,7 @@ export async function lire(texte: string, onFin: () => void) {
     const phrase = new SpeechSynthesisUtterance(morceaux[index]);
     index += 1;
     phrase.lang = "fr-FR";
-    phrase.rate = tauxVoix() * voixDePlume().vitesse;
+    phrase.rate = tauxVoix() * (choix?.vitesse ?? voixDePlume().vitesse);
     phrase.pitch = hauteur;
     if (voix) phrase.voice = voix;
     phrase.onend = suite;

@@ -169,7 +169,7 @@ function SousVoix({ id, bonus }: { id: string; bonus: Compagnon | null }) {
   const qui = bonus ? bonus.caractere : id;
   return (
     <Page id={id} bonus={bonus}>
-      <Bandeau id={id} bonus={bonus} titre="Sa voix" icone="🎙️" sous={bonus ? "La voix du téléphone qu'il utilise quand il n'a pas de voix enregistrée. Ses voix enregistrées sont dans « Ses paroles »." : "Touche une voix pour l'écouter, puis garde celle que tu préfères."} />
+      <Bandeau id={id} bonus={bonus} titre="Sa voix" icone="🎙️" sous={bonus ? "La voix du téléphone qu'il utilise quand il n'a pas de voix enregistrée. Ses voix enregistrées sont dans « Ses paroles »." : "Fais tourner les molettes : chaque voix parle quand elle s'arrête. Puis valide celle que tu préfères."} />
       {voixPossible() ? <ChoixVoixPlume qui={qui} nom={bonus ? bonus.nom || "ton personnage" : "Plume"} /> : <p className="carte-nuit mt-4 rounded-3xl px-4 py-4 text-center text-sm">La voix n'est pas disponible sur cet appareil.</p>}
     </Page>
   );
