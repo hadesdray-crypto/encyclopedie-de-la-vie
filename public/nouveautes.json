@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-12",
+    "titre": "Mammifères, oiseaux et trajets sur le globe",
+    "points": [
+      "Accueil : les boutons Mammifères et Oiseaux sont ajoutés à côté de Fossiles et de Chiens et chats.",
+      "Sur le globe, on touche un chemin et la fiche complète de l'animal s'affiche en dessous (photo, cri, chiffres).",
+      "Trajets connus : les chemins de chaque onglet sont visibles sur le globe, qui se tourne vers eux.",
+      "Le suivi d'un trajet passe exactement par les points tracés sur le globe, sans raccourci.",
+      "Les animaux qui marchent (tortue, lion…) restent à hauteur d'animal, sans voler, avec les images les plus nettes."
+    ]
+  },
+  {
     "date": "2026-11-07",
     "titre": "Crédits des photos et faits vérifiés",
     "points": [
