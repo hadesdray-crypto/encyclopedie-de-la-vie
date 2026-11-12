@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-11-12",
+    "titre": "Tablette, sons nettoyés, code des parents",
+    "points": [
+      "Sur tablette, en portrait comme en paysage, les pages sont plus larges et mieux remplies.",
+      "Sons d'animaux nettoyés : on n'entend plus que l'animal, sans silences ni bruits inutiles.",
+      "Le coin des parents est protégé par un code.",
+      "Mode développeur (dans le coin des parents) : changer l'heure de test et lancer les animations. Après avoir changé l'heure, ferme et rouvre l'appli."
+    ]
+  },
+  {
+    "date": "2026-11-12",
     "titre": "Voix à molettes et barre du haut protégée",
     "points": [
       "Choix de la voix : deux molettes, sans connexion et avec connexion. La voix parle dès qu'elle s'arrête sur son nom.",

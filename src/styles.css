@@ -1136,3 +1136,16 @@ html[data-natif] body:not([data-dex]) { padding-top: var(--sat); }
   background: #0d0826; border-bottom: 1px solid rgba(232, 201, 138, 0.35);
   touch-action: none; user-select: none; -webkit-user-select: none;
 }
+
+/* ---- Tablette : pages plus larges (portrait et paysage) ---- */
+@media (min-width: 700px) {
+  main.max-w-xl, nav.max-w-xl, .barre-bas.max-w-xl { max-width: 44rem; }
+  main.accueil-racine { max-width: 40rem; }
+}
+@media (min-width: 1000px) and (orientation: landscape) {
+  main.max-w-xl { max-width: 56rem; }
+  main.accueil-racine { max-width: 44rem; }
+  .barre-bas.max-w-xl { max-width: 40rem; }
+  /* en paysage, les listes en grille gagnent des colonnes */
+  main ul.grid-cols-2 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

@@ -70,7 +70,7 @@ export function Accueil() {
   }, []);
 
   return (
-    <main className="mx-auto max-w-xl px-3.5 pt-3">
+    <main className="accueil-racine mx-auto max-w-xl px-3.5 pt-3">
       {/* Le nom de Leonie */}
       <header className="grid grid-cols-[3.6rem_1fr_3.6rem] items-center gap-1 pt-3">
         <a href="#/options" aria-label="Options" className="grid size-11 place-items-center rounded-full bg-[#2a1844] text-[#f3d48a] ring-1 ring-[#e8c98a]/50">
