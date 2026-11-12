@@ -294,6 +294,7 @@ function Fiche({ sorte, race: r }: { sorte: Sorte; race?: Race }) {
       ) : null}
       <div className="mt-3 flex justify-center"><Ecouter gros texte={aLire} /></div>
       {r.photos[0] ? <p className="mt-1 text-center text-[10px] texte-doux">Photo : {r.photos[0].auteur} · {r.photos[0].licence}</p> : null}
+      {!r.photos[0] ? <p className="mx-auto mt-3 max-w-xs rounded-2xl bg-white/10 px-3 py-2 text-center text-sm font-bold">Pas encore de photo de celui-ci : à toi de la trouver et de la montrer à papa !</p> : null}
 
       {r.photos[1] ? (
         <figure className="mt-4">
@@ -304,7 +305,7 @@ function Fiche({ sorte, race: r }: { sorte: Sorte; race?: Race }) {
 
       {r.intro ? (
         <section className="carte-nuit mt-4 rounded-3xl px-4 py-3">
-          <p className="font-display text-lg text-[#f3d48a]">Ce qu'en dit Wikipédia</p>
+          <p className="font-display text-lg text-[#f3d48a]">{r.id.startsWith("chihuahua-") ? "Une sorte de chihuahua" : "Ce qu'en dit Wikipédia"}</p>
           <p className="mt-1 leading-relaxed">{r.intro}</p>
         </section>
       ) : null}
