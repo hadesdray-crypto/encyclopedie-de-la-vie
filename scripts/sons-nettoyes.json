@@ -1,0 +1,6082 @@
+{
+ "public/s/1000001.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 17842,
+  "octets_apres": 17842
+ },
+ "public/s/1000002.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 31823,
+  "octets_apres": 31823
+ },
+ "public/s/1000013.webm": {
+  "note": "15.0s -> 12.3s (7 passages)",
+  "octets_avant": 80933,
+  "octets_apres": 86668
+ },
+ "public/s/1000019.webm": {
+  "note": "9.1s -> 7.0s (4 passages)",
+  "octets_avant": 38312,
+  "octets_apres": 40912
+ },
+ "public/s/1000021.webm": {
+  "note": "6.0s -> 4.5s (1 passages)",
+  "octets_avant": 18912,
+  "octets_apres": 23725
+ },
+ "public/s/1000023.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 67161,
+  "octets_apres": 67161
+ },
+ "public/s/1000166.webm": {
+  "note": "3.6s -> 0.9s (1 passages)",
+  "octets_avant": 11739,
+  "octets_apres": 5370
+ },
+ "public/s/1000277.webm": {
+  "note": "6.0s -> 3.4s (3 passages)",
+  "octets_avant": 18318,
+  "octets_apres": 20817
+ },
+ "public/s/1000342.webm": {
+  "note": "2.7s -> 2.2s (1 passages)",
+  "octets_avant": 12378,
+  "octets_apres": 12177
+ },
+ "public/s/1000344.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35539,
+  "octets_apres": 35539
+ },
+ "public/s/1000352.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 58457,
+  "octets_apres": 58457
+ },
+ "public/s/1000386.webm": {
+  "note": "15.0s -> 10.9s (15 passages)",
+  "octets_avant": 68284,
+  "octets_apres": 96814
+ },
+ "public/s/1000399.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 65726,
+  "octets_apres": 65726
+ },
+ "public/s/1000402.webm": {
+  "note": "15.0s -> 9.3s (6 passages)",
+  "octets_avant": 58832,
+  "octets_apres": 52129
+ },
+ "public/s/1000404.webm": {
+  "note": "15.0s -> 12.6s (5 passages)",
+  "octets_avant": 64847,
+  "octets_apres": 74315
+ },
+ "public/s/1000424.webm": {
+  "note": "15.0s -> 7.5s (4 passages)",
+  "octets_avant": 58135,
+  "octets_apres": 39215
+ },
+ "public/s/1000442.webm": {
+  "note": "15.0s -> 13.8s (4 passages)",
+  "octets_avant": 67520,
+  "octets_apres": 77622
+ },
+ "public/s/1000521.webm": {
+  "note": "15.0s -> 12.2s (4 passages)",
+  "octets_avant": 67008,
+  "octets_apres": 74638
+ },
+ "public/s/1000522.webm": {
+  "note": "15.0s -> 9.2s (5 passages)",
+  "octets_avant": 68268,
+  "octets_apres": 54667
+ },
+ "public/s/1000523.webm": {
+  "note": "15.0s -> 10.8s (3 passages)",
+  "octets_avant": 68529,
+  "octets_apres": 61902
+ },
+ "public/s/1000524.webm": {
+  "note": "15.0s -> 11.2s (6 passages)",
+  "octets_avant": 83394,
+  "octets_apres": 79376
+ },
+ "public/s/1000525.webm": {
+  "note": "15.0s -> 6.3s (5 passages)",
+  "octets_avant": 64862,
+  "octets_apres": 39351
+ },
+ "public/s/1000528.webm": {
+  "note": "15.0s -> 8.4s (9 passages)",
+  "octets_avant": 60008,
+  "octets_apres": 54648
+ },
+ "public/s/1000540.webm": {
+  "note": "15.0s -> 14.4s (3 passages)",
+  "octets_avant": 67175,
+  "octets_apres": 84742
+ },
+ "public/s/1000549.webm": {
+  "note": "15.0s -> 10.1s (2 passages)",
+  "octets_avant": 66682,
+  "octets_apres": 56388
+ },
+ "public/s/1000554.webm": {
+  "note": "5.3s -> 4.3s (4 passages)",
+  "octets_avant": 27303,
+  "octets_apres": 31869
+ },
+ "public/s/1000563.webm": {
+  "note": "14.9s -> 13.2s (6 passages)",
+  "octets_avant": 71940,
+  "octets_apres": 81672
+ },
+ "public/s/1000565.webm": {
+  "note": "15.0s -> 12.7s (10 passages)",
+  "octets_avant": 74728,
+  "octets_apres": 90051
+ },
+ "public/s/1000567.webm": {
+  "note": "15.0s -> 5.5s (9 passages)",
+  "octets_avant": 69557,
+  "octets_apres": 42991
+ },
+ "public/s/1000573.webm": {
+  "note": "15.0s -> 14.3s (4 passages)",
+  "octets_avant": 65358,
+  "octets_apres": 83238
+ },
+ "public/s/1000574.webm": {
+  "note": "15.0s -> 6.3s (8 passages)",
+  "octets_avant": 62914,
+  "octets_apres": 40387
+ },
+ "public/s/1000575.webm": {
+  "note": "15.0s -> 4.9s (8 passages)",
+  "octets_avant": 61092,
+  "octets_apres": 35275
+ },
+ "public/s/1000576.webm": {
+  "note": "15.0s -> 10.6s (8 passages)",
+  "octets_avant": 65359,
+  "octets_apres": 67933
+ },
+ "public/s/1000577.webm": {
+  "note": "6.5s -> 2.1s (4 passages)",
+  "octets_avant": 27082,
+  "octets_apres": 14428
+ },
+ "public/s/1000578.webm": {
+  "note": "15.0s -> 6.2s (5 passages)",
+  "octets_avant": 68261,
+  "octets_apres": 40064
+ },
+ "public/s/1000579.webm": {
+  "note": "15.0s -> 8.4s (9 passages)",
+  "octets_avant": 66817,
+  "octets_apres": 56765
+ },
+ "public/s/1000586.webm": {
+  "note": "12.5s -> 9.0s (9 passages)",
+  "octets_avant": 51792,
+  "octets_apres": 52410
+ },
+ "public/s/1000587.webm": {
+  "note": "15.0s -> 7.8s (7 passages)",
+  "octets_avant": 61803,
+  "octets_apres": 46459
+ },
+ "public/s/1000588.webm": {
+  "note": "15.0s -> 8.9s (11 passages)",
+  "octets_avant": 63742,
+  "octets_apres": 58168
+ },
+ "public/s/1000590.webm": {
+  "note": "15.0s -> 11.7s (4 passages)",
+  "octets_avant": 65833,
+  "octets_apres": 67792
+ },
+ "public/s/1000594.webm": {
+  "note": "15.0s -> 13.8s (4 passages)",
+  "octets_avant": 70116,
+  "octets_apres": 94831
+ },
+ "public/s/1000595.webm": {
+  "note": "5.4s -> 3.4s (1 passages)",
+  "octets_avant": 23978,
+  "octets_apres": 19500
+ },
+ "public/s/1000596.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 59348,
+  "octets_apres": 59348
+ },
+ "public/s/1000601.webm": {
+  "note": "11.1s -> 6.0s (3 passages)",
+  "octets_avant": 53204,
+  "octets_apres": 39204
+ },
+ "public/s/1000602.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 61646,
+  "octets_apres": 61646
+ },
+ "public/s/1000605.webm": {
+  "note": "14.9s -> 8.2s (11 passages)",
+  "octets_avant": 60479,
+  "octets_apres": 50959
+ },
+ "public/s/1000606.webm": {
+  "note": "15.0s -> 11.7s (4 passages)",
+  "octets_avant": 79608,
+  "octets_apres": 86043
+ },
+ "public/s/1000607.webm": {
+  "note": "15.0s -> 9.1s (6 passages)",
+  "octets_avant": 61567,
+  "octets_apres": 54264
+ },
+ "public/s/1000610.webm": {
+  "note": "15.0s -> 12.0s (3 passages)",
+  "octets_avant": 57258,
+  "octets_apres": 62030
+ },
+ "public/s/1000612.webm": {
+  "note": "15.0s -> 7.4s (8 passages)",
+  "octets_avant": 57737,
+  "octets_apres": 44300
+ },
+ "public/s/1000614.webm": {
+  "note": "15.0s -> 2.3s (6 passages)",
+  "octets_avant": 58391,
+  "octets_apres": 17565
+ },
+ "public/s/1000615.webm": {
+  "note": "15.0s -> 7.0s (4 passages)",
+  "octets_avant": 60430,
+  "octets_apres": 39614
+ },
+ "public/s/1000619.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 61203,
+  "octets_apres": 61203
+ },
+ "public/s/1000623.webm": {
+  "note": "5.4s -> 3.9s (3 passages)",
+  "octets_avant": 22343,
+  "octets_apres": 21348
+ },
+ "public/s/1000624.webm": {
+  "note": "13.7s -> 7.0s (6 passages)",
+  "octets_avant": 57325,
+  "octets_apres": 43099
+ },
+ "public/s/1000626.webm": {
+  "note": "6.0s -> 4.8s (1 passages)",
+  "octets_avant": 20448,
+  "octets_apres": 26748
+ },
+ "public/s/1000627.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 70134,
+  "octets_apres": 70134
+ },
+ "public/s/1000628.webm": {
+  "note": "14.0s -> 4.6s (6 passages)",
+  "octets_avant": 57450,
+  "octets_apres": 28978
+ },
+ "public/s/1000633.webm": {
+  "note": "15.0s -> 8.6s (5 passages)",
+  "octets_avant": 58780,
+  "octets_apres": 47257
+ },
+ "public/s/1000635.webm": {
+  "note": "4.5s -> 2.5s (3 passages)",
+  "octets_avant": 14757,
+  "octets_apres": 16775
+ },
+ "public/s/1000637.webm": {
+  "note": "15.0s -> 7.8s (7 passages)",
+  "octets_avant": 69692,
+  "octets_apres": 54147
+ },
+ "public/s/1000638.webm": {
+  "note": "10.6s -> 7.6s (1 passages)",
+  "octets_avant": 44872,
+  "octets_apres": 40777
+ },
+ "public/s/1000641.webm": {
+  "note": "15.0s -> 11.8s (4 passages)",
+  "octets_avant": 61832,
+  "octets_apres": 67829
+ },
+ "public/s/1000656.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 64506,
+  "octets_apres": 64506
+ },
+ "public/s/1000664.webm": {
+  "note": "5.7s -> 1.5s (2 passages)",
+  "octets_avant": 28141,
+  "octets_apres": 9253
+ },
+ "public/s/1000671.webm": {
+  "note": "15.0s -> 8.7s (3 passages)",
+  "octets_avant": 65347,
+  "octets_apres": 50130
+ },
+ "public/s/1000675.webm": {
+  "note": "15.0s -> 6.2s (6 passages)",
+  "octets_avant": 70601,
+  "octets_apres": 42534
+ },
+ "public/s/1000688.webm": {
+  "note": "15.0s -> 4.1s (8 passages)",
+  "octets_avant": 60383,
+  "octets_apres": 28914
+ },
+ "public/s/1000691.webm": {
+  "note": "6.3s -> 1.8s (1 passages)",
+  "octets_avant": 29514,
+  "octets_apres": 12950
+ },
+ "public/s/1000694.webm": {
+  "note": "15.0s -> 9.4s (6 passages)",
+  "octets_avant": 66349,
+  "octets_apres": 62488
+ },
+ "public/s/1000704.webm": {
+  "note": "14.9s -> 7.3s (13 passages)",
+  "octets_avant": 59363,
+  "octets_apres": 45121
+ },
+ "public/s/1000707.webm": {
+  "note": "14.8s -> 8.2s (6 passages)",
+  "octets_avant": 70610,
+  "octets_apres": 51259
+ },
+ "public/s/1000710.webm": {
+  "note": "15.0s -> 11.0s (5 passages)",
+  "octets_avant": 60405,
+  "octets_apres": 63086
+ },
+ "public/s/1000716.webm": {
+  "note": "12.0s -> 6.6s (9 passages)",
+  "octets_avant": 48906,
+  "octets_apres": 39438
+ },
+ "public/s/1000717.webm": {
+  "note": "9.9s -> 4.1s (4 passages)",
+  "octets_avant": 38165,
+  "octets_apres": 24063
+ },
+ "public/s/1000718.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 26784,
+  "octets_apres": 26784
+ },
+ "public/s/1000719.webm": {
+  "note": "15.0s -> 11.5s (5 passages)",
+  "octets_avant": 63761,
+  "octets_apres": 65129
+ },
+ "public/s/1000720.webm": {
+  "note": "15.0s -> 12.3s (5 passages)",
+  "octets_avant": 65455,
+  "octets_apres": 71229
+ },
+ "public/s/1000722.webm": {
+  "note": "15.0s -> 2.9s (4 passages)",
+  "octets_avant": 60510,
+  "octets_apres": 17969
+ },
+ "public/s/1000724.webm": {
+  "note": "11.3s -> 10.2s (4 passages)",
+  "octets_avant": 61857,
+  "octets_apres": 63954
+ },
+ "public/s/1000726.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 59766,
+  "octets_apres": 59766
+ },
+ "public/s/1000728.webm": {
+  "note": "15.0s -> 7.8s (2 passages)",
+  "octets_avant": 66686,
+  "octets_apres": 43494
+ },
+ "public/s/1000729.webm": {
+  "note": "6.5s -> 3.9s (4 passages)",
+  "octets_avant": 29083,
+  "octets_apres": 23826
+ },
+ "public/s/1000730.webm": {
+  "note": "15.0s -> 6.3s (6 passages)",
+  "octets_avant": 88362,
+  "octets_apres": 45531
+ },
+ "public/s/1000731.webm": {
+  "note": "15.0s -> 9.2s (7 passages)",
+  "octets_avant": 73466,
+  "octets_apres": 62817
+ },
+ "public/s/1000732.webm": {
+  "note": "14.5s -> 10.1s (7 passages)",
+  "octets_avant": 62031,
+  "octets_apres": 58270
+ },
+ "public/s/1000733.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 62787,
+  "octets_apres": 62787
+ },
+ "public/s/1000734.webm": {
+  "note": "15.0s -> 9.2s (4 passages)",
+  "octets_avant": 61402,
+  "octets_apres": 51986
+ },
+ "public/s/1000735.webm": {
+  "note": "15.0s -> 9.9s (7 passages)",
+  "octets_avant": 73886,
+  "octets_apres": 71595
+ },
+ "public/s/1000736.webm": {
+  "note": "9.5s -> 7.1s (1 passages)",
+  "octets_avant": 55492,
+  "octets_apres": 49745
+ },
+ "public/s/1000738.webm": {
+  "note": "15.0s -> 12.7s (5 passages)",
+  "octets_avant": 73440,
+  "octets_apres": 79553
+ },
+ "public/s/1000743.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 64727,
+  "octets_apres": 64727
+ },
+ "public/s/1000744.webm": {
+  "note": "15.0s -> 8.3s (9 passages)",
+  "octets_avant": 80877,
+  "octets_apres": 64964
+ },
+ "public/s/1000751.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 57723,
+  "octets_apres": 57723
+ },
+ "public/s/1000756.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 83372,
+  "octets_apres": 83372
+ },
+ "public/s/1000757.webm": {
+  "note": "15.0s -> 10.7s (6 passages)",
+  "octets_avant": 72317,
+  "octets_apres": 68334
+ },
+ "public/s/1000759.webm": {
+  "note": "15.0s -> 15.0s (1 passages)",
+  "octets_avant": 64975,
+  "octets_apres": 79810
+ },
+ "public/s/1000760.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 69325,
+  "octets_apres": 69325
+ },
+ "public/s/1000761.webm": {
+  "note": "15.0s -> 7.8s (4 passages)",
+  "octets_avant": 77435,
+  "octets_apres": 56789
+ },
+ "public/s/1000762.webm": {
+  "note": "15.0s -> 6.0s (3 passages)",
+  "octets_avant": 58206,
+  "octets_apres": 33953
+ },
+ "public/s/1000763.webm": {
+  "note": "15.0s -> 9.9s (6 passages)",
+  "octets_avant": 65340,
+  "octets_apres": 57227
+ },
+ "public/s/1000764.webm": {
+  "note": "15.0s -> 7.9s (10 passages)",
+  "octets_avant": 72469,
+  "octets_apres": 56269
+ },
+ "public/s/1000765.webm": {
+  "note": "15.0s -> 11.2s (8 passages)",
+  "octets_avant": 77161,
+  "octets_apres": 69395
+ },
+ "public/s/1000768.webm": {
+  "note": "4.1s -> 1.5s (2 passages)",
+  "octets_avant": 20602,
+  "octets_apres": 10652
+ },
+ "public/s/1000769.webm": {
+  "note": "3.7s -> 3.1s (2 passages)",
+  "octets_avant": 22462,
+  "octets_apres": 23254
+ },
+ "public/s/1000770.webm": {
+  "note": "14.9s -> 7.2s (7 passages)",
+  "octets_avant": 58165,
+  "octets_apres": 42568
+ },
+ "public/s/1000772.webm": {
+  "note": "14.8s -> 12.0s (5 passages)",
+  "octets_avant": 64374,
+  "octets_apres": 70326
+ },
+ "public/s/1000773.webm": {
+  "note": "14.8s -> 10.1s (6 passages)",
+  "octets_avant": 66923,
+  "octets_apres": 70699
+ },
+ "public/s/1000774.webm": {
+  "note": "15.0s -> 10.3s (5 passages)",
+  "octets_avant": 63130,
+  "octets_apres": 60247
+ },
+ "public/s/1000777.webm": {
+  "note": "14.8s -> 14.1s (1 passages)",
+  "octets_avant": 63939,
+  "octets_apres": 80767
+ },
+ "public/s/1000778.webm": {
+  "note": "15.0s -> 14.8s (2 passages)",
+  "octets_avant": 66911,
+  "octets_apres": 80925
+ },
+ "public/s/1000779.webm": {
+  "note": "14.7s -> 4.6s (10 passages)",
+  "octets_avant": 65773,
+  "octets_apres": 30034
+ },
+ "public/s/1000781.webm": {
+  "note": "15.0s -> 13.0s (10 passages)",
+  "octets_avant": 74267,
+  "octets_apres": 86334
+ },
+ "public/s/1000782.webm": {
+  "note": "2.6s -> 1.9s (1 passages)",
+  "octets_avant": 13194,
+  "octets_apres": 12093
+ },
+ "public/s/1000783.webm": {
+  "note": "15.0s -> 9.2s (2 passages)",
+  "octets_avant": 70307,
+  "octets_apres": 62095
+ },
+ "public/s/1000784.webm": {
+  "note": "15.0s -> 14.6s (5 passages)",
+  "octets_avant": 79225,
+  "octets_apres": 99750
+ },
+ "public/s/1000786.webm": {
+  "note": "11.5s -> 6.6s (4 passages)",
+  "octets_avant": 49862,
+  "octets_apres": 42696
+ },
+ "public/s/1000787.webm": {
+  "note": "15.0s -> 15.0s (1 passages)",
+  "octets_avant": 72463,
+  "octets_apres": 86194
+ },
+ "public/s/1000788.webm": {
+  "note": "15.0s -> 9.1s (4 passages)",
+  "octets_avant": 76775,
+  "octets_apres": 60555
+ },
+ "public/s/1000789.webm": {
+  "note": "15.0s -> 10.7s (5 passages)",
+  "octets_avant": 66184,
+  "octets_apres": 64351
+ },
+ "public/s/1000790.webm": {
+  "note": "15.0s -> 5.3s (3 passages)",
+  "octets_avant": 67440,
+  "octets_apres": 38257
+ },
+ "public/s/1000792.webm": {
+  "note": "14.9s -> 6.7s (6 passages)",
+  "octets_avant": 61294,
+  "octets_apres": 44710
+ },
+ "public/s/1000795.webm": {
+  "note": "15.0s -> 9.2s (7 passages)",
+  "octets_avant": 62942,
+  "octets_apres": 57224
+ },
+ "public/s/1000801.webm": {
+  "note": "14.2s -> 3.0s (1 passages)",
+  "octets_avant": 56393,
+  "octets_apres": 17443
+ },
+ "public/s/1000806.webm": {
+  "note": "14.9s -> 9.8s (9 passages)",
+  "octets_avant": 60764,
+  "octets_apres": 62988
+ },
+ "public/s/1000808.webm": {
+  "note": "14.6s -> 10.9s (3 passages)",
+  "octets_avant": 55207,
+  "octets_apres": 59072
+ },
+ "public/s/1000809.webm": {
+  "note": "15.0s -> 11.7s (7 passages)",
+  "octets_avant": 67316,
+  "octets_apres": 76437
+ },
+ "public/s/1000810.webm": {
+  "note": "14.8s -> 10.3s (7 passages)",
+  "octets_avant": 69687,
+  "octets_apres": 61948
+ },
+ "public/s/1000812.webm": {
+  "note": "15.0s -> 12.1s (7 passages)",
+  "octets_avant": 73095,
+  "octets_apres": 84331
+ },
+ "public/s/1000814.webm": {
+  "note": "15.0s -> 6.1s (5 passages)",
+  "octets_avant": 60884,
+  "octets_apres": 37882
+ },
+ "public/s/1000817.webm": {
+  "note": "15.0s -> 8.8s (7 passages)",
+  "octets_avant": 67241,
+  "octets_apres": 60419
+ },
+ "public/s/1000819.webm": {
+  "note": "15.0s -> 5.9s (1 passages)",
+  "octets_avant": 68254,
+  "octets_apres": 36110
+ },
+ "public/s/1000820.webm": {
+  "note": "7.1s -> 4.5s (1 passages)",
+  "octets_avant": 33208,
+  "octets_apres": 24557
+ },
+ "public/s/1000822.webm": {
+  "note": "15.0s -> 8.3s (10 passages)",
+  "octets_avant": 73162,
+  "octets_apres": 68106
+ },
+ "public/s/1000826.webm": {
+  "note": "15.0s -> 5.6s (2 passages)",
+  "octets_avant": 64650,
+  "octets_apres": 37011
+ },
+ "public/s/1000829.webm": {
+  "note": "15.0s -> 4.7s (8 passages)",
+  "octets_avant": 84073,
+  "octets_apres": 39182
+ },
+ "public/s/1000836.webm": {
+  "note": "15.0s -> 8.5s (10 passages)",
+  "octets_avant": 63324,
+  "octets_apres": 53502
+ },
+ "public/s/1000839.webm": {
+  "note": "14.8s -> 3.3s (6 passages)",
+  "octets_avant": 59480,
+  "octets_apres": 23533
+ },
+ "public/s/1000843.webm": {
+  "note": "14.1s -> 5.2s (1 passages)",
+  "octets_avant": 54855,
+  "octets_apres": 27041
+ },
+ "public/s/1000844.webm": {
+  "note": "15.0s -> 3.2s (4 passages)",
+  "octets_avant": 72978,
+  "octets_apres": 23283
+ },
+ "public/s/1000846.webm": {
+  "note": "15.0s -> 11.4s (11 passages)",
+  "octets_avant": 62109,
+  "octets_apres": 72542
+ },
+ "public/s/1000847.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 61003,
+  "octets_apres": 61003
+ },
+ "public/s/1000848.webm": {
+  "note": "15.0s -> 9.3s (5 passages)",
+  "octets_avant": 66987,
+  "octets_apres": 58710
+ },
+ "public/s/1000850.webm": {
+  "note": "15.0s -> 10.4s (2 passages)",
+  "octets_avant": 66038,
+  "octets_apres": 61302
+ },
+ "public/s/1000851.webm": {
+  "note": "15.0s -> 9.0s (6 passages)",
+  "octets_avant": 69046,
+  "octets_apres": 61489
+ },
+ "public/s/1000852.webm": {
+  "note": "15.0s -> 10.2s (4 passages)",
+  "octets_avant": 64416,
+  "octets_apres": 60317
+ },
+ "public/s/1000853.webm": {
+  "note": "14.7s -> 3.2s (6 passages)",
+  "octets_avant": 58036,
+  "octets_apres": 23129
+ },
+ "public/s/1000855.webm": {
+  "note": "15.0s -> 8.1s (8 passages)",
+  "octets_avant": 61346,
+  "octets_apres": 52632
+ },
+ "public/s/1000856.webm": {
+  "note": "15.0s -> 9.3s (10 passages)",
+  "octets_avant": 71021,
+  "octets_apres": 67676
+ },
+ "public/s/1000858.webm": {
+  "note": "15.0s -> 13.1s (3 passages)",
+  "octets_avant": 67750,
+  "octets_apres": 76610
+ },
+ "public/s/1000860.webm": {
+  "note": "15.0s -> 12.9s (5 passages)",
+  "octets_avant": 64915,
+  "octets_apres": 74102
+ },
+ "public/s/1000861.webm": {
+  "note": "15.0s -> 15.0s (1 passages)",
+  "octets_avant": 71954,
+  "octets_apres": 82285
+ },
+ "public/s/1000862.webm": {
+  "note": "15.0s -> 11.4s (1 passages)",
+  "octets_avant": 63194,
+  "octets_apres": 60913
+ },
+ "public/s/1000864.webm": {
+  "note": "15.0s -> 11.1s (4 passages)",
+  "octets_avant": 70901,
+  "octets_apres": 69734
+ },
+ "public/s/1000871.webm": {
+  "note": "14.0s -> 11.0s (7 passages)",
+  "octets_avant": 68691,
+  "octets_apres": 71042
+ },
+ "public/s/1000872.webm": {
+  "note": "12.7s -> 8.3s (2 passages)",
+  "octets_avant": 58025,
+  "octets_apres": 51483
+ },
+ "public/s/1000874.webm": {
+  "note": "15.0s -> 7.0s (1 passages)",
+  "octets_avant": 59630,
+  "octets_apres": 37519
+ },
+ "public/s/1000875.webm": {
+  "note": "15.0s -> 8.1s (8 passages)",
+  "octets_avant": 66899,
+  "octets_apres": 50161
+ },
+ "public/s/1000877.webm": {
+  "note": "15.0s -> 14.7s (3 passages)",
+  "octets_avant": 74021,
+  "octets_apres": 82149
+ },
+ "public/s/1000882.webm": {
+  "note": "15.0s -> 14.3s (3 passages)",
+  "octets_avant": 65484,
+  "octets_apres": 81075
+ },
+ "public/s/1000883.webm": {
+  "note": "15.0s -> 3.5s (6 passages)",
+  "octets_avant": 79952,
+  "octets_apres": 32369
+ },
+ "public/s/1000885.webm": {
+  "note": "14.1s -> 7.2s (8 passages)",
+  "octets_avant": 61457,
+  "octets_apres": 53630
+ },
+ "public/s/1000889.webm": {
+  "note": "15.0s -> 14.4s (6 passages)",
+  "octets_avant": 79750,
+  "octets_apres": 87024
+ },
+ "public/s/1000896.webm": {
+  "note": "15.0s -> 13.7s (4 passages)",
+  "octets_avant": 67697,
+  "octets_apres": 81384
+ },
+ "public/s/1000897.webm": {
+  "note": "7.7s -> 4.1s (3 passages)",
+  "octets_avant": 31789,
+  "octets_apres": 25794
+ },
+ "public/s/1000899.webm": {
+  "note": "15.0s -> 6.8s (8 passages)",
+  "octets_avant": 65156,
+  "octets_apres": 45073
+ },
+ "public/s/1000900.webm": {
+  "note": "15.0s -> 10.4s (10 passages)",
+  "octets_avant": 62646,
+  "octets_apres": 62891
+ },
+ "public/s/1000901.webm": {
+  "note": "15.0s -> 5.1s (4 passages)",
+  "octets_avant": 67272,
+  "octets_apres": 38537
+ },
+ "public/s/1000905.webm": {
+  "note": "14.9s -> 6.4s (11 passages)",
+  "octets_avant": 62502,
+  "octets_apres": 53334
+ },
+ "public/s/1000908.webm": {
+  "note": "15.0s -> 8.8s (9 passages)",
+  "octets_avant": 63385,
+  "octets_apres": 56803
+ },
+ "public/s/1000913.webm": {
+  "note": "5.6s -> 3.9s (1 passages)",
+  "octets_avant": 24636,
+  "octets_apres": 27034
+ },
+ "public/s/1000918.webm": {
+  "note": "15.0s -> 2.7s (2 passages)",
+  "octets_avant": 64313,
+  "octets_apres": 15660
+ },
+ "public/s/1000919.webm": {
+  "note": "15.0s -> 6.3s (11 passages)",
+  "octets_avant": 71662,
+  "octets_apres": 49239
+ },
+ "public/s/1000920.webm": {
+  "note": "15.0s -> 12.7s (9 passages)",
+  "octets_avant": 73104,
+  "octets_apres": 65696
+ },
+ "public/s/1000921.webm": {
+  "note": "15.0s -> 14.2s (4 passages)",
+  "octets_avant": 74934,
+  "octets_apres": 91777
+ },
+ "public/s/1000923.webm": {
+  "note": "15.0s -> 8.3s (5 passages)",
+  "octets_avant": 65255,
+  "octets_apres": 50724
+ },
+ "public/s/1000924.webm": {
+  "note": "15.0s -> 8.7s (17 passages)",
+  "octets_avant": 59300,
+  "octets_apres": 60026
+ },
+ "public/s/1000981.webm": {
+  "note": "13.8s -> 10.4s (6 passages)",
+  "octets_avant": 73675,
+  "octets_apres": 74817
+ },
+ "public/s/1001008.webm": {
+  "note": "10.2s -> 5.1s (5 passages)",
+  "octets_avant": 51522,
+  "octets_apres": 35588
+ },
+ "public/s/1001040.webm": {
+  "note": "15.0s -> 10.5s (8 passages)",
+  "octets_avant": 74059,
+  "octets_apres": 74729
+ },
+ "public/s/1001044.webm": {
+  "note": "15.0s -> 7.2s (17 passages)",
+  "octets_avant": 64877,
+  "octets_apres": 60733
+ },
+ "public/s/1001046.webm": {
+  "note": "15.0s -> 6.7s (5 passages)",
+  "octets_avant": 64988,
+  "octets_apres": 40623
+ },
+ "public/s/1001048.webm": {
+  "note": "6.8s -> 5.8s (1 passages)",
+  "octets_avant": 31888,
+  "octets_apres": 36646
+ },
+ "public/s/1001050.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 60094,
+  "octets_apres": 60094
+ },
+ "public/s/1001051.webm": {
+  "note": "10.7s -> 8.7s (8 passages)",
+  "octets_avant": 48967,
+  "octets_apres": 56437
+ },
+ "public/s/1001055.webm": {
+  "note": "14.9s -> 14.0s (1 passages)",
+  "octets_avant": 60315,
+  "octets_apres": 78064
+ },
+ "public/s/1001090.webm": {
+  "note": "6.0s -> 1.4s (2 passages)",
+  "octets_avant": 20155,
+  "octets_apres": 13674
+ },
+ "public/s/1001113.webm": {
+  "note": "3.9s -> 1.6s (3 passages)",
+  "octets_avant": 12611,
+  "octets_apres": 10536
+ },
+ "public/s/1001114.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 19655,
+  "octets_apres": 19655
+ },
+ "public/s/1001131.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 18529,
+  "octets_apres": 18529
+ },
+ "public/s/1001152.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 33963,
+  "octets_apres": 33963
+ },
+ "public/s/1001170.webm": {
+  "note": "garde : rien d'actif",
+  "octets_avant": 27127,
+  "octets_apres": 27127
+ },
+ "public/s/1001171.webm": {
+  "note": "12.4s -> 1.6s (3 passages)",
+  "octets_avant": 48941,
+  "octets_apres": 11193
+ },
+ "public/s/1001172.webm": {
+  "note": "15.0s -> 1.6s (1 passages)",
+  "octets_avant": 59470,
+  "octets_apres": 9105
+ },
+ "public/s/1001190.webm": {
+  "note": "15.0s -> 11.3s (6 passages)",
+  "octets_avant": 60175,
+  "octets_apres": 69019
+ },
+ "public/s/1001209.webm": {
+  "note": "15.0s -> 5.1s (6 passages)",
+  "octets_avant": 61213,
+  "octets_apres": 32030
+ },
+ "public/s/1001212.webm": {
+  "note": "15.0s -> 7.6s (6 passages)",
+  "octets_avant": 62380,
+  "octets_apres": 45463
+ },
+ "public/s/1001213.webm": {
+  "note": "10.8s -> 10.6s (1 passages)",
+  "octets_avant": 54439,
+  "octets_apres": 65800
+ },
+ "public/s/1001215.webm": {
+  "note": "15.0s -> 6.1s (9 passages)",
+  "octets_avant": 60955,
+  "octets_apres": 39841
+ },
+ "public/s/1001222.webm": {
+  "note": "3.6s -> 1.0s (2 passages)",
+  "octets_avant": 16199,
+  "octets_apres": 7359
+ },
+ "public/s/1001224.webm": {
+  "note": "15.0s -> 7.0s (4 passages)",
+  "octets_avant": 58943,
+  "octets_apres": 39079
+ },
+ "public/s/1001236.webm": {
+  "note": "15.0s -> 10.5s (3 passages)",
+  "octets_avant": 58518,
+  "octets_apres": 55365
+ },
+ "public/s/1001254.webm": {
+  "note": "14.9s -> 9.5s (6 passages)",
+  "octets_avant": 58343,
+  "octets_apres": 55401
+ },
+ "public/s/1001339.webm": {
+  "note": "15.0s -> 7.4s (1 passages)",
+  "octets_avant": 59506,
+  "octets_apres": 37585
+ },
+ "public/s/1001365.webm": {
+  "note": "12.2s -> 8.4s (4 passages)",
+  "octets_avant": 52747,
+  "octets_apres": 48003
+ },
+ "public/s/1001396.webm": {
+  "note": "15.0s -> 15.0s (1 passages)",
+  "octets_avant": 63506,
+  "octets_apres": 78453
+ },
+ "public/s/1001397.webm": {
+  "note": "15.0s -> 6.8s (6 passages)",
+  "octets_avant": 61514,
+  "octets_apres": 40004
+ },
+ "public/s/1001410.webm": {
+  "note": "15.0s -> 6.4s (12 passages)",
+  "octets_avant": 67343,
+  "octets_apres": 47540
+ },
+ "public/s/1001446.webm": {
+  "note": "2.2s -> 1.3s (1 passages)",
+  "octets_avant": 9594,
+  "octets_apres": 7480
+ },
+ "public/s/1001494.webm": {
+  "note": "6.0s -> 2.0s (4 passages)",
+  "octets_avant": 18199,
+  "octets_apres": 17546
+ },
+ "public/s/1001506.webm": {
+  "note": "15.0s -> 3.4s (7 passages)",
+  "octets_avant": 57701,
+  "octets_apres": 24131
+ },
+ "public/s/1001529.webm": {
+  "note": "15.0s -> 12.0s (11 passages)",
+  "octets_avant": 59796,
+  "octets_apres": 80367
+ },
+ "public/s/1001530.webm": {
+  "note": "15.0s -> 11.6s (6 passages)",
+  "octets_avant": 63714,
+  "octets_apres": 67493
+ },
+ "public/s/1001537.webm": {
+  "note": "7.1s -> 3.7s (3 passages)",
+  "octets_avant": 29766,
+  "octets_apres": 26242
+ },
+ "public/s/1001538.webm": {
+  "note": "14.8s -> 6.2s (6 passages)",
+  "octets_avant": 59697,
+  "octets_apres": 43247
+ },
+ "public/s/1001539.webm": {
+  "note": "15.0s -> 9.6s (4 passages)",
+  "octets_avant": 67955,
+  "octets_apres": 54964
+ },
+ "public/s/1001541.webm": {
+  "note": "15.0s -> 7.7s (6 passages)",
+  "octets_avant": 64388,
+  "octets_apres": 52206
+ },
+ "public/s/1001544.webm": {
+  "note": "15.0s -> 7.8s (6 passages)",
+  "octets_avant": 69594,
+  "octets_apres": 57767
+ },
+ "public/s/1001547.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 67187,
+  "octets_apres": 67187
+ },
+ "public/s/1001548.webm": {
+  "note": "15.0s -> 6.8s (4 passages)",
+  "octets_avant": 76472,
+  "octets_apres": 46631
+ },
+ "public/s/1001551.webm": {
+  "note": "15.0s -> 8.5s (12 passages)",
+  "octets_avant": 59937,
+  "octets_apres": 65615
+ },
+ "public/s/1001552.webm": {
+  "note": "15.0s -> 11.1s (11 passages)",
+  "octets_avant": 71195,
+  "octets_apres": 69843
+ },
+ "public/s/1001554.webm": {
+  "note": "13.5s -> 8.8s (20 passages)",
+  "octets_avant": 54327,
+  "octets_apres": 63346
+ },
+ "public/s/1001562.webm": {
+  "note": "15.0s -> 9.1s (11 passages)",
+  "octets_avant": 62379,
+  "octets_apres": 57262
+ },
+ "public/s/1001564.webm": {
+  "note": "15.0s -> 10.2s (4 passages)",
+  "octets_avant": 80666,
+  "octets_apres": 65874
+ },
+ "public/s/1001565.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 50627,
+  "octets_apres": 50627
+ },
+ "public/s/1001568.webm": {
+  "note": "14.9s -> 6.7s (13 passages)",
+  "octets_avant": 69784,
+  "octets_apres": 50385
+ },
+ "public/s/1001569.webm": {
+  "note": "14.0s -> 7.1s (9 passages)",
+  "octets_avant": 80412,
+  "octets_apres": 46992
+ },
+ "public/s/1001570.webm": {
+  "note": "15.0s -> 4.5s (6 passages)",
+  "octets_avant": 65401,
+  "octets_apres": 37688
+ },
+ "public/s/1001576.webm": {
+  "note": "15.0s -> 6.8s (8 passages)",
+  "octets_avant": 61918,
+  "octets_apres": 45736
+ },
+ "public/s/1001579.webm": {
+  "note": "15.0s -> 1.3s (2 passages)",
+  "octets_avant": 56615,
+  "octets_apres": 7719
+ },
+ "public/s/1001580.webm": {
+  "note": "15.0s -> 10.0s (5 passages)",
+  "octets_avant": 73645,
+  "octets_apres": 65774
+ },
+ "public/s/1001582.webm": {
+  "note": "15.0s -> 14.1s (4 passages)",
+  "octets_avant": 74092,
+  "octets_apres": 93438
+ },
+ "public/s/1001584.webm": {
+  "note": "15.0s -> 14.9s (2 passages)",
+  "octets_avant": 65482,
+  "octets_apres": 86287
+ },
+ "public/s/1001593.webm": {
+  "note": "15.0s -> 9.5s (14 passages)",
+  "octets_avant": 63320,
+  "octets_apres": 62854
+ },
+ "public/s/1001595.webm": {
+  "note": "15.0s -> 5.7s (11 passages)",
+  "octets_avant": 95503,
+  "octets_apres": 52185
+ },
+ "public/s/1001596.webm": {
+  "note": "15.0s -> 7.3s (3 passages)",
+  "octets_avant": 75652,
+  "octets_apres": 36245
+ },
+ "public/s/1001597.webm": {
+  "note": "15.0s -> 9.9s (2 passages)",
+  "octets_avant": 68050,
+  "octets_apres": 58747
+ },
+ "public/s/1001598.webm": {
+  "note": "14.1s -> 6.2s (6 passages)",
+  "octets_avant": 67854,
+  "octets_apres": 41091
+ },
+ "public/s/1001599.webm": {
+  "note": "15.0s -> 12.5s (6 passages)",
+  "octets_avant": 61002,
+  "octets_apres": 74021
+ },
+ "public/s/1001602.webm": {
+  "note": "6.9s -> 6.0s (4 passages)",
+  "octets_avant": 28872,
+  "octets_apres": 33643
+ },
+ "public/s/1001603.webm": {
+  "note": "14.7s -> 5.2s (11 passages)",
+  "octets_avant": 55817,
+  "octets_apres": 32115
+ },
+ "public/s/1001604.webm": {
+  "note": "15.0s -> 7.0s (5 passages)",
+  "octets_avant": 61673,
+  "octets_apres": 45604
+ },
+ "public/s/1001607.webm": {
+  "note": "15.0s -> 7.9s (10 passages)",
+  "octets_avant": 71037,
+  "octets_apres": 59769
+ },
+ "public/s/1001608.webm": {
+  "note": "15.0s -> 8.1s (8 passages)",
+  "octets_avant": 64427,
+  "octets_apres": 56456
+ },
+ "public/s/1001609.webm": {
+  "note": "11.3s -> 9.9s (3 passages)",
+  "octets_avant": 51397,
+  "octets_apres": 58803
+ },
+ "public/s/1001610.webm": {
+  "note": "15.0s -> 9.2s (5 passages)",
+  "octets_avant": 84201,
+  "octets_apres": 47257
+ },
+ "public/s/1001622.webm": {
+  "note": "15.0s -> 5.4s (11 passages)",
+  "octets_avant": 65897,
+  "octets_apres": 40989
+ },
+ "public/s/1001638.webm": {
+  "note": "15.0s -> 6.3s (8 passages)",
+  "octets_avant": 63001,
+  "octets_apres": 46104
+ },
+ "public/s/1001642.webm": {
+  "note": "13.2s -> 7.1s (2 passages)",
+  "octets_avant": 57132,
+  "octets_apres": 37856
+ },
+ "public/s/1001644.webm": {
+  "note": "14.9s -> 7.8s (15 passages)",
+  "octets_avant": 59231,
+  "octets_apres": 59698
+ },
+ "public/s/1001651.webm": {
+  "note": "5.7s -> 3.1s (4 passages)",
+  "octets_avant": 26463,
+  "octets_apres": 21893
+ },
+ "public/s/1001661.webm": {
+  "note": "13.2s -> 6.0s (5 passages)",
+  "octets_avant": 53689,
+  "octets_apres": 38317
+ },
+ "public/s/1001666.webm": {
+  "note": "1.9s -> 1.7s (2 passages)",
+  "octets_avant": 8630,
+  "octets_apres": 9537
+ },
+ "public/s/1001670.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 84841,
+  "octets_apres": 84841
+ },
+ "public/s/1001671.webm": {
+  "note": "15.0s -> 13.9s (4 passages)",
+  "octets_avant": 61473,
+  "octets_apres": 77493
+ },
+ "public/s/1001675.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 59277,
+  "octets_apres": 59277
+ },
+ "public/s/1001677.webm": {
+  "note": "14.6s -> 10.8s (5 passages)",
+  "octets_avant": 61759,
+  "octets_apres": 63868
+ },
+ "public/s/1001679.webm": {
+  "note": "8.5s -> 7.7s (5 passages)",
+  "octets_avant": 35795,
+  "octets_apres": 46467
+ },
+ "public/s/1001680.webm": {
+  "note": "15.0s -> 7.2s (12 passages)",
+  "octets_avant": 60741,
+  "octets_apres": 46481
+ },
+ "public/s/1001682.webm": {
+  "note": "12.2s -> 8.1s (9 passages)",
+  "octets_avant": 49835,
+  "octets_apres": 58431
+ },
+ "public/s/1001685.webm": {
+  "note": "15.0s -> 6.5s (10 passages)",
+  "octets_avant": 62303,
+  "octets_apres": 48176
+ },
+ "public/s/1001686.webm": {
+  "note": "15.0s -> 1.6s (1 passages)",
+  "octets_avant": 57742,
+  "octets_apres": 9189
+ },
+ "public/s/1001692.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 81426,
+  "octets_apres": 81426
+ },
+ "public/s/1001700.webm": {
+  "note": "14.7s -> 12.7s (2 passages)",
+  "octets_avant": 57820,
+  "octets_apres": 67892
+ },
+ "public/s/1001701.webm": {
+  "note": "14.9s -> 12.9s (5 passages)",
+  "octets_avant": 62878,
+  "octets_apres": 73809
+ },
+ "public/s/1001702.webm": {
+  "note": "14.6s -> 11.4s (8 passages)",
+  "octets_avant": 58153,
+  "octets_apres": 71492
+ },
+ "public/s/1001704.webm": {
+  "note": "13.5s -> 5.5s (8 passages)",
+  "octets_avant": 54550,
+  "octets_apres": 34237
+ },
+ "public/s/1001705.webm": {
+  "note": "3.2s -> 3.2s (1 passages)",
+  "octets_avant": 15291,
+  "octets_apres": 30350
+ },
+ "public/s/1001706.webm": {
+  "note": "15.0s -> 12.1s (15 passages)",
+  "octets_avant": 63298,
+  "octets_apres": 84253
+ },
+ "public/s/1001707.webm": {
+  "note": "7.5s -> 4.4s (1 passages)",
+  "octets_avant": 30186,
+  "octets_apres": 27606
+ },
+ "public/s/1001708.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 59211,
+  "octets_apres": 59211
+ },
+ "public/s/1001709.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 38527,
+  "octets_apres": 38527
+ },
+ "public/s/1001711.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 62718,
+  "octets_apres": 62718
+ },
+ "public/s/1001714.webm": {
+  "note": "15.0s -> 11.8s (7 passages)",
+  "octets_avant": 64099,
+  "octets_apres": 68321
+ },
+ "public/s/1001716.webm": {
+  "note": "9.4s -> 9.1s (5 passages)",
+  "octets_avant": 38960,
+  "octets_apres": 44150
+ },
+ "public/s/1001719.webm": {
+  "note": "13.1s -> 4.6s (10 passages)",
+  "octets_avant": 51363,
+  "octets_apres": 30328
+ },
+ "public/s/1001722.webm": {
+  "note": "15.0s -> 8.9s (8 passages)",
+  "octets_avant": 63084,
+  "octets_apres": 61145
+ },
+ "public/s/1001723.webm": {
+  "note": "15.0s -> 11.2s (6 passages)",
+  "octets_avant": 58057,
+  "octets_apres": 61579
+ },
+ "public/s/1001724.webm": {
+  "note": "11.1s -> 3.4s (2 passages)",
+  "octets_avant": 41771,
+  "octets_apres": 16507
+ },
+ "public/s/1001726.webm": {
+  "note": "15.0s -> 1.2s (1 passages)",
+  "octets_avant": 57748,
+  "octets_apres": 6859
+ },
+ "public/s/1001729.webm": {
+  "note": "garde : rien d'actif",
+  "octets_avant": 34624,
+  "octets_apres": 34624
+ },
+ "public/s/1001730.webm": {
+  "note": "15.0s -> 7.2s (4 passages)",
+  "octets_avant": 66202,
+  "octets_apres": 45616
+ },
+ "public/s/1001732.webm": {
+  "note": "13.1s -> 3.2s (8 passages)",
+  "octets_avant": 47899,
+  "octets_apres": 21063
+ },
+ "public/s/1001734.webm": {
+  "note": "15.0s -> 8.2s (7 passages)",
+  "octets_avant": 66945,
+  "octets_apres": 52412
+ },
+ "public/s/1001736.webm": {
+  "note": "15.0s -> 3.7s (6 passages)",
+  "octets_avant": 58023,
+  "octets_apres": 23763
+ },
+ "public/s/1001739.webm": {
+  "note": "14.5s -> 1.7s (3 passages)",
+  "octets_avant": 52819,
+  "octets_apres": 9846
+ },
+ "public/s/1001741.webm": {
+  "note": "15.0s -> 7.7s (7 passages)",
+  "octets_avant": 60768,
+  "octets_apres": 49425
+ },
+ "public/s/1001743.webm": {
+  "note": "15.0s -> 1.9s (1 passages)",
+  "octets_avant": 64179,
+  "octets_apres": 10399
+ },
+ "public/s/1001745.webm": {
+  "note": "14.3s -> 1.9s (5 passages)",
+  "octets_avant": 54912,
+  "octets_apres": 11715
+ },
+ "public/s/1001746.webm": {
+  "note": "13.6s -> 7.8s (7 passages)",
+  "octets_avant": 52991,
+  "octets_apres": 46316
+ },
+ "public/s/1001760.webm": {
+  "note": "14.2s -> 1.7s (4 passages)",
+  "octets_avant": 54473,
+  "octets_apres": 10848
+ },
+ "public/s/1001763.webm": {
+  "note": "10.4s -> 10.0s (1 passages)",
+  "octets_avant": 45017,
+  "octets_apres": 52151
+ },
+ "public/s/1001765.webm": {
+  "note": "9.8s -> 5.5s (4 passages)",
+  "octets_avant": 43339,
+  "octets_apres": 32410
+ },
+ "public/s/1001766.webm": {
+  "note": "7.6s -> 4.5s (5 passages)",
+  "octets_avant": 29936,
+  "octets_apres": 32292
+ },
+ "public/s/1001768.webm": {
+  "note": "15.0s -> 2.1s (5 passages)",
+  "octets_avant": 58115,
+  "octets_apres": 17079
+ },
+ "public/s/1001772.webm": {
+  "note": "15.0s -> 2.3s (6 passages)",
+  "octets_avant": 67888,
+  "octets_apres": 20869
+ },
+ "public/s/1001773.webm": {
+  "note": "15.0s -> 1.7s (4 passages)",
+  "octets_avant": 61546,
+  "octets_apres": 12053
+ },
+ "public/s/1001785.webm": {
+  "note": "15.0s -> 7.1s (15 passages)",
+  "octets_avant": 58760,
+  "octets_apres": 47752
+ },
+ "public/s/1001786.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 60258,
+  "octets_apres": 60258
+ },
+ "public/s/1001787.webm": {
+  "note": "5.6s -> 1.2s (1 passages)",
+  "octets_avant": 28886,
+  "octets_apres": 8762
+ },
+ "public/s/1001790.webm": {
+  "note": "14.6s -> 6.5s (10 passages)",
+  "octets_avant": 57476,
+  "octets_apres": 39076
+ },
+ "public/s/1001791.webm": {
+  "note": "9.4s -> 2.2s (1 passages)",
+  "octets_avant": 35772,
+  "octets_apres": 10688
+ },
+ "public/s/1001793.webm": {
+  "note": "12.7s -> 1.3s (3 passages)",
+  "octets_avant": 48362,
+  "octets_apres": 9606
+ },
+ "public/s/1001794.webm": {
+  "note": "5.2s -> 1.4s (2 passages)",
+  "octets_avant": 25207,
+  "octets_apres": 9094
+ },
+ "public/s/1001801.webm": {
+  "note": "13.0s -> 1.0s (2 passages)",
+  "octets_avant": 51009,
+  "octets_apres": 6904
+ },
+ "public/s/1001808.webm": {
+  "note": "15.0s -> 12.4s (10 passages)",
+  "octets_avant": 78003,
+  "octets_apres": 96662
+ },
+ "public/s/1001809.webm": {
+  "note": "15.0s -> 11.9s (9 passages)",
+  "octets_avant": 84355,
+  "octets_apres": 90689
+ },
+ "public/s/1001811.webm": {
+  "note": "15.0s -> 9.3s (9 passages)",
+  "octets_avant": 63567,
+  "octets_apres": 59492
+ },
+ "public/s/1001813.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 64757,
+  "octets_apres": 64757
+ },
+ "public/s/1001816.webm": {
+  "note": "15.0s -> 9.2s (13 passages)",
+  "octets_avant": 72979,
+  "octets_apres": 79280
+ },
+ "public/s/1001820.webm": {
+  "note": "7.4s -> 3.6s (4 passages)",
+  "octets_avant": 34286,
+  "octets_apres": 27207
+ },
+ "public/s/1001821.webm": {
+  "note": "12.0s -> 11.6s (3 passages)",
+  "octets_avant": 52436,
+  "octets_apres": 64004
+ },
+ "public/s/1001822.webm": {
+  "note": "15.0s -> 6.1s (2 passages)",
+  "octets_avant": 64787,
+  "octets_apres": 38413
+ },
+ "public/s/1001826.webm": {
+  "note": "8.8s -> 5.5s (3 passages)",
+  "octets_avant": 36397,
+  "octets_apres": 32844
+ },
+ "public/s/1001833.webm": {
+  "note": "13.9s -> 6.5s (17 passages)",
+  "octets_avant": 65525,
+  "octets_apres": 45354
+ },
+ "public/s/1001957.webm": {
+  "note": "2.6s -> 1.6s (1 passages)",
+  "octets_avant": 11455,
+  "octets_apres": 9333
+ },
+ "public/s/1001958.webm": {
+  "note": "15.0s -> 9.1s (6 passages)",
+  "octets_avant": 58372,
+  "octets_apres": 55412
+ },
+ "public/s/1002046.webm": {
+  "note": "15.0s -> 14.9s (2 passages)",
+  "octets_avant": 77329,
+  "octets_apres": 96793
+ },
+ "public/s/1002051.webm": {
+  "note": "14.7s -> 14.5s (2 passages)",
+  "octets_avant": 47495,
+  "octets_apres": 72547
+ },
+ "public/s/1002055.webm": {
+  "note": "6.0s -> 4.1s (8 passages)",
+  "octets_avant": 18523,
+  "octets_apres": 29029
+ },
+ "public/s/1002110.webm": {
+  "note": "14.8s -> 7.9s (7 passages)",
+  "octets_avant": 59680,
+  "octets_apres": 48448
+ },
+ "public/s/1002141.webm": {
+  "note": "12.3s -> 12.0s (5 passages)",
+  "octets_avant": 64583,
+  "octets_apres": 74952
+ },
+ "public/s/1002193.webm": {
+  "note": "13.9s -> 6.0s (6 passages)",
+  "octets_avant": 57169,
+  "octets_apres": 38185
+ },
+ "public/s/1002336.webm": {
+  "note": "14.0s -> 13.3s (2 passages)",
+  "octets_avant": 61326,
+  "octets_apres": 72394
+ },
+ "public/s/1002975.webm": {
+  "note": "14.0s -> 9.9s (5 passages)",
+  "octets_avant": 55313,
+  "octets_apres": 55515
+ },
+ "public/s/1003372.webm": {
+  "note": "5.8s -> 2.7s (3 passages)",
+  "octets_avant": 25248,
+  "octets_apres": 19977
+ },
+ "public/s/1003649.webm": {
+  "note": "15.0s -> 10.9s (10 passages)",
+  "octets_avant": 66066,
+  "octets_apres": 71719
+ },
+ "public/s/1003659.webm": {
+  "note": "11.5s -> 6.0s (2 passages)",
+  "octets_avant": 46432,
+  "octets_apres": 38927
+ },
+ "public/s/1003810.webm": {
+  "note": "13.0s -> 3.5s (2 passages)",
+  "octets_avant": 55097,
+  "octets_apres": 25077
+ },
+ "public/s/1003811.webm": {
+  "note": "15.0s -> 10.2s (6 passages)",
+  "octets_avant": 67639,
+  "octets_apres": 59601
+ },
+ "public/s/1003998.webm": {
+  "note": "14.9s -> 2.8s (5 passages)",
+  "octets_avant": 58697,
+  "octets_apres": 18905
+ },
+ "public/s/1004067.webm": {
+  "note": "8.8s -> 2.7s (4 passages)",
+  "octets_avant": 35294,
+  "octets_apres": 16450
+ },
+ "public/s/1004217.webm": {
+  "note": "11.1s -> 5.6s (6 passages)",
+  "octets_avant": 46401,
+  "octets_apres": 40120
+ },
+ "public/s/1004261.webm": {
+  "note": "5.6s -> 4.7s (3 passages)",
+  "octets_avant": 25945,
+  "octets_apres": 28403
+ },
+ "public/s/1004301.webm": {
+  "note": "9.4s -> 5.9s (3 passages)",
+  "octets_avant": 41142,
+  "octets_apres": 33825
+ },
+ "public/s/1004379.webm": {
+  "note": "14.7s -> 9.0s (3 passages)",
+  "octets_avant": 59352,
+  "octets_apres": 50184
+ },
+ "public/s/1004389.webm": {
+  "note": "15.0s -> 7.0s (12 passages)",
+  "octets_avant": 67737,
+  "octets_apres": 56755
+ },
+ "public/s/1004459.webm": {
+  "note": "15.0s -> 6.6s (4 passages)",
+  "octets_avant": 60546,
+  "octets_apres": 38165
+ },
+ "public/s/1004476.webm": {
+  "note": "15.0s -> 13.2s (5 passages)",
+  "octets_avant": 64085,
+  "octets_apres": 77481
+ },
+ "public/s/1004481.webm": {
+  "note": "14.9s -> 10.1s (7 passages)",
+  "octets_avant": 61014,
+  "octets_apres": 63148
+ },
+ "public/s/1004490.webm": {
+  "note": "15.0s -> 11.4s (7 passages)",
+  "octets_avant": 61633,
+  "octets_apres": 67224
+ },
+ "public/s/1004496.webm": {
+  "note": "15.0s -> 13.4s (6 passages)",
+  "octets_avant": 60924,
+  "octets_apres": 74768
+ },
+ "public/s/1004518.webm": {
+  "note": "9.4s -> 4.3s (11 passages)",
+  "octets_avant": 38416,
+  "octets_apres": 42896
+ },
+ "public/s/1004520.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 56753,
+  "octets_apres": 56753
+ },
+ "public/s/1004526.webm": {
+  "note": "8.5s -> 5.5s (10 passages)",
+  "octets_avant": 32236,
+  "octets_apres": 33124
+ },
+ "public/s/1004529.webm": {
+  "note": "15.0s -> 4.7s (10 passages)",
+  "octets_avant": 79739,
+  "octets_apres": 45860
+ },
+ "public/s/1004539.webm": {
+  "note": "13.9s -> 9.0s (2 passages)",
+  "octets_avant": 60849,
+  "octets_apres": 46844
+ },
+ "public/s/1004557.webm": {
+  "note": "2.0s -> 1.7s (1 passages)",
+  "octets_avant": 8829,
+  "octets_apres": 9095
+ },
+ "public/s/1004559.webm": {
+  "note": "10.1s -> 2.0s (2 passages)",
+  "octets_avant": 41778,
+  "octets_apres": 12527
+ },
+ "public/s/1004568.webm": {
+  "note": "7.2s -> 4.9s (5 passages)",
+  "octets_avant": 27909,
+  "octets_apres": 27926
+ },
+ "public/s/1004577.webm": {
+  "note": "15.0s -> 1.8s (4 passages)",
+  "octets_avant": 59405,
+  "octets_apres": 11670
+ },
+ "public/s/1004583.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 9530,
+  "octets_apres": 9530
+ },
+ "public/s/1004640.webm": {
+  "note": "7.0s -> 4.8s (3 passages)",
+  "octets_avant": 28165,
+  "octets_apres": 26215
+ },
+ "public/s/1004652.webm": {
+  "note": "13.4s -> 8.9s (2 passages)",
+  "octets_avant": 50371,
+  "octets_apres": 48675
+ },
+ "public/s/1004655.webm": {
+  "note": "4.1s -> 2.3s (3 passages)",
+  "octets_avant": 17163,
+  "octets_apres": 16740
+ },
+ "public/s/1004657.webm": {
+  "note": "7.8s -> 7.7s (1 passages)",
+  "octets_avant": 38143,
+  "octets_apres": 48735
+ },
+ "public/s/1004661.webm": {
+  "note": "garde : rien d'actif",
+  "octets_avant": 1480,
+  "octets_apres": 1480
+ },
+ "public/s/1004663.webm": {
+  "note": "15.0s -> 10.9s (2 passages)",
+  "octets_avant": 63179,
+  "octets_apres": 63706
+ },
+ "public/s/1004677.webm": {
+  "note": "6.0s -> 1.7s (4 passages)",
+  "octets_avant": 22909,
+  "octets_apres": 10372
+ },
+ "public/s/1004682.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 6192,
+  "octets_apres": 6192
+ },
+ "public/s/1004684.webm": {
+  "note": "6.0s -> 3.5s (4 passages)",
+  "octets_avant": 19621,
+  "octets_apres": 22018
+ },
+ "public/s/1004693.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 20932,
+  "octets_apres": 20932
+ },
+ "public/s/1004724.webm": {
+  "note": "15.0s -> 4.8s (2 passages)",
+  "octets_avant": 60389,
+  "octets_apres": 27551
+ },
+ "public/s/1004729.webm": {
+  "note": "5.9s -> 4.4s (4 passages)",
+  "octets_avant": 26174,
+  "octets_apres": 29059
+ },
+ "public/s/1004767.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 22186,
+  "octets_apres": 22186
+ },
+ "public/s/1004781.webm": {
+  "note": "3.2s -> 1.3s (1 passages)",
+  "octets_avant": 13070,
+  "octets_apres": 7883
+ },
+ "public/s/1004787.webm": {
+  "note": "5.9s -> 3.6s (3 passages)",
+  "octets_avant": 22901,
+  "octets_apres": 19003
+ },
+ "public/s/1004789.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 57857,
+  "octets_apres": 57857
+ },
+ "public/s/1004794.webm": {
+  "note": "15.0s -> 8.3s (3 passages)",
+  "octets_avant": 65638,
+  "octets_apres": 49221
+ },
+ "public/s/1004800.webm": {
+  "note": "9.5s -> 9.0s (5 passages)",
+  "octets_avant": 36509,
+  "octets_apres": 54393
+ },
+ "public/s/1004801.webm": {
+  "note": "9.7s -> 1.7s (3 passages)",
+  "octets_avant": 41349,
+  "octets_apres": 10997
+ },
+ "public/s/1004812.webm": {
+  "note": "10.0s -> 8.8s (2 passages)",
+  "octets_avant": 42154,
+  "octets_apres": 67600
+ },
+ "public/s/1004819.webm": {
+  "note": "3.2s -> 1.7s (1 passages)",
+  "octets_avant": 13049,
+  "octets_apres": 9451
+ },
+ "public/s/1004825.webm": {
+  "note": "10.8s -> 3.5s (1 passages)",
+  "octets_avant": 40951,
+  "octets_apres": 17955
+ },
+ "public/s/1004826.webm": {
+  "note": "14.1s -> 5.6s (3 passages)",
+  "octets_avant": 55660,
+  "octets_apres": 32045
+ },
+ "public/s/1004836.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 3286,
+  "octets_apres": 3286
+ },
+ "public/s/1004853.webm": {
+  "note": "15.0s -> 2.2s (5 passages)",
+  "octets_avant": 63630,
+  "octets_apres": 17869
+ },
+ "public/s/1004854.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 57866,
+  "octets_apres": 57866
+ },
+ "public/s/1004856.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 70569,
+  "octets_apres": 70569
+ },
+ "public/s/1004858.webm": {
+  "note": "6.2s -> 4.4s (3 passages)",
+  "octets_avant": 27003,
+  "octets_apres": 26539
+ },
+ "public/s/1004864.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 58421,
+  "octets_apres": 58421
+ },
+ "public/s/1004866.webm": {
+  "note": "15.0s -> 1.4s (2 passages)",
+  "octets_avant": 62796,
+  "octets_apres": 9188
+ },
+ "public/s/1004871.webm": {
+  "note": "2.9s -> 1.7s (2 passages)",
+  "octets_avant": 12171,
+  "octets_apres": 10728
+ },
+ "public/s/1004874.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 17162,
+  "octets_apres": 17162
+ },
+ "public/s/1004877.webm": {
+  "note": "4.1s -> 2.1s (4 passages)",
+  "octets_avant": 17783,
+  "octets_apres": 14457
+ },
+ "public/s/1004880.webm": {
+  "note": "6.0s -> 1.7s (3 passages)",
+  "octets_avant": 17755,
+  "octets_apres": 12991
+ },
+ "public/s/1004882.webm": {
+  "note": "3.2s -> 2.5s (3 passages)",
+  "octets_avant": 18082,
+  "octets_apres": 19599
+ },
+ "public/s/1004904.webm": {
+  "note": "10.8s -> 7.4s (6 passages)",
+  "octets_avant": 40972,
+  "octets_apres": 42387
+ },
+ "public/s/1004906.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 57950,
+  "octets_apres": 57950
+ },
+ "public/s/1004909.webm": {
+  "note": "4.6s -> 2.8s (2 passages)",
+  "octets_avant": 20465,
+  "octets_apres": 15897
+ },
+ "public/s/1004913.webm": {
+  "note": "3.7s -> 3.4s (2 passages)",
+  "octets_avant": 14822,
+  "octets_apres": 17648
+ },
+ "public/s/1004941.webm": {
+  "note": "3.5s -> 1.7s (2 passages)",
+  "octets_avant": 16382,
+  "octets_apres": 12045
+ },
+ "public/s/1004952.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 27359,
+  "octets_apres": 27359
+ },
+ "public/s/1004956.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 13203,
+  "octets_apres": 13203
+ },
+ "public/s/1004959.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 6004,
+  "octets_apres": 6004
+ },
+ "public/s/1004960.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 2863,
+  "octets_apres": 2863
+ },
+ "public/s/1004967.webm": {
+  "note": "1.3s -> 1.2s (1 passages)",
+  "octets_avant": 5876,
+  "octets_apres": 7742
+ },
+ "public/s/1004972.webm": {
+  "note": "garde : rien d'actif",
+  "octets_avant": 3988,
+  "octets_apres": 3988
+ },
+ "public/s/1004978.webm": {
+  "note": "2.8s -> 0.9s (1 passages)",
+  "octets_avant": 13113,
+  "octets_apres": 5375
+ },
+ "public/s/1004980.webm": {
+  "note": "2.3s -> 1.2s (3 passages)",
+  "octets_avant": 9767,
+  "octets_apres": 8395
+ },
+ "public/s/1004984.webm": {
+  "note": "2.7s -> 1.3s (2 passages)",
+  "octets_avant": 8047,
+  "octets_apres": 5492
+ },
+ "public/s/1004991.webm": {
+  "note": "15.0s -> 12.3s (4 passages)",
+  "octets_avant": 79022,
+  "octets_apres": 83122
+ },
+ "public/s/1005011.webm": {
+  "note": "3.4s -> 1.9s (4 passages)",
+  "octets_avant": 14983,
+  "octets_apres": 11935
+ },
+ "public/s/1005012.webm": {
+  "note": "4.3s -> 3.6s (3 passages)",
+  "octets_avant": 17957,
+  "octets_apres": 23103
+ },
+ "public/s/1005020.webm": {
+  "note": "3.9s -> 3.0s (2 passages)",
+  "octets_avant": 18623,
+  "octets_apres": 19464
+ },
+ "public/s/1005030.webm": {
+  "note": "14.7s -> 14.4s (4 passages)",
+  "octets_avant": 61059,
+  "octets_apres": 98076
+ },
+ "public/s/1005041.webm": {
+  "note": "1.9s -> 1.1s (2 passages)",
+  "octets_avant": 8513,
+  "octets_apres": 7185
+ },
+ "public/s/1005057.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 12875,
+  "octets_apres": 12875
+ },
+ "public/s/1005064.webm": {
+  "note": "garde : rien d'actif",
+  "octets_avant": 12046,
+  "octets_apres": 12046
+ },
+ "public/s/1005081.webm": {
+  "note": "3.9s -> 2.6s (3 passages)",
+  "octets_avant": 20331,
+  "octets_apres": 13077
+ },
+ "public/s/1005113.webm": {
+  "note": "7.8s -> 2.9s (3 passages)",
+  "octets_avant": 30564,
+  "octets_apres": 18307
+ },
+ "public/s/1005121.webm": {
+  "note": "10.0s -> 8.4s (1 passages)",
+  "octets_avant": 40973,
+  "octets_apres": 42581
+ },
+ "public/s/1005122.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 14957,
+  "octets_apres": 14957
+ },
+ "public/s/1005135.webm": {
+  "note": "3.8s -> 3.2s (1 passages)",
+  "octets_avant": 15060,
+  "octets_apres": 21794
+ },
+ "public/s/1005146.webm": {
+  "note": "10.0s -> 7.8s (7 passages)",
+  "octets_avant": 43650,
+  "octets_apres": 48170
+ },
+ "public/s/1005153.webm": {
+  "note": "5.7s -> 2.6s (2 passages)",
+  "octets_avant": 22250,
+  "octets_apres": 14045
+ },
+ "public/s/1005181.webm": {
+  "note": "15.0s -> 8.0s (10 passages)",
+  "octets_avant": 65363,
+  "octets_apres": 66485
+ },
+ "public/s/1005203.webm": {
+  "note": "15.0s -> 3.5s (4 passages)",
+  "octets_avant": 60231,
+  "octets_apres": 22615
+ },
+ "public/s/1005205.webm": {
+  "note": "8.9s -> 5.5s (1 passages)",
+  "octets_avant": 41567,
+  "octets_apres": 39567
+ },
+ "public/s/1005220.webm": {
+  "note": "15.0s -> 13.0s (8 passages)",
+  "octets_avant": 60907,
+  "octets_apres": 84589
+ },
+ "public/s/1005226.webm": {
+  "note": "15.0s -> 8.1s (2 passages)",
+  "octets_avant": 54479,
+  "octets_apres": 40844
+ },
+ "public/s/1005235.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 30879,
+  "octets_apres": 30879
+ },
+ "public/s/1005236.webm": {
+  "note": "14.4s -> 11.5s (1 passages)",
+  "octets_avant": 70644,
+  "octets_apres": 65021
+ },
+ "public/s/1005256.webm": {
+  "note": "9.7s -> 8.6s (1 passages)",
+  "octets_avant": 39880,
+  "octets_apres": 46242
+ },
+ "public/s/1005262.webm": {
+  "note": "15.0s -> 6.5s (3 passages)",
+  "octets_avant": 59577,
+  "octets_apres": 37165
+ },
+ "public/s/1005264.webm": {
+  "note": "14.9s -> 7.5s (7 passages)",
+  "octets_avant": 60832,
+  "octets_apres": 48507
+ },
+ "public/s/1005267.webm": {
+  "note": "15.0s -> 2.5s (2 passages)",
+  "octets_avant": 63681,
+  "octets_apres": 13519
+ },
+ "public/s/1005360.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 21967,
+  "octets_apres": 21967
+ },
+ "public/s/1005371.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 28723,
+  "octets_apres": 28723
+ },
+ "public/s/1005376.webm": {
+  "note": "15.0s -> 8.5s (3 passages)",
+  "octets_avant": 58017,
+  "octets_apres": 44423
+ },
+ "public/s/1005377.webm": {
+  "note": "15.0s -> 8.8s (6 passages)",
+  "octets_avant": 55103,
+  "octets_apres": 46942
+ },
+ "public/s/1005380.webm": {
+  "note": "6.0s -> 3.6s (3 passages)",
+  "octets_avant": 27269,
+  "octets_apres": 23542
+ },
+ "public/s/1005383.webm": {
+  "note": "15.0s -> 13.3s (1 passages)",
+  "octets_avant": 78128,
+  "octets_apres": 76901
+ },
+ "public/s/1005384.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 9054,
+  "octets_apres": 9054
+ },
+ "public/s/1005387.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 82039,
+  "octets_apres": 82039
+ },
+ "public/s/1005394.webm": {
+  "note": "7.0s -> 4.4s (4 passages)",
+  "octets_avant": 32876,
+  "octets_apres": 27310
+ },
+ "public/s/1005395.webm": {
+  "note": "15.0s -> 10.0s (3 passages)",
+  "octets_avant": 60325,
+  "octets_apres": 52360
+ },
+ "public/s/1005402.webm": {
+  "note": "5.0s -> 2.8s (3 passages)",
+  "octets_avant": 20177,
+  "octets_apres": 17886
+ },
+ "public/s/1005403.webm": {
+  "note": "9.6s -> 4.4s (2 passages)",
+  "octets_avant": 36161,
+  "octets_apres": 23711
+ },
+ "public/s/1005412.webm": {
+  "note": "4.7s -> 3.1s (6 passages)",
+  "octets_avant": 22130,
+  "octets_apres": 25026
+ },
+ "public/s/1005424.webm": {
+  "note": "2.9s -> 2.0s (3 passages)",
+  "octets_avant": 9849,
+  "octets_apres": 11589
+ },
+ "public/s/1005428.webm": {
+  "note": "15.0s -> 8.7s (2 passages)",
+  "octets_avant": 62213,
+  "octets_apres": 49121
+ },
+ "public/s/1005432.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 10013,
+  "octets_apres": 10013
+ },
+ "public/s/1005442.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 40798,
+  "octets_apres": 40798
+ },
+ "public/s/1005443.webm": {
+  "note": "15.0s -> 11.2s (2 passages)",
+  "octets_avant": 71198,
+  "octets_apres": 69097
+ },
+ "public/s/1005444.webm": {
+  "note": "15.0s -> 10.5s (3 passages)",
+  "octets_avant": 68778,
+  "octets_apres": 69757
+ },
+ "public/s/1005445.webm": {
+  "note": "11.0s -> 9.2s (7 passages)",
+  "octets_avant": 48352,
+  "octets_apres": 56142
+ },
+ "public/s/1005447.webm": {
+  "note": "5.3s -> 4.1s (4 passages)",
+  "octets_avant": 18412,
+  "octets_apres": 27142
+ },
+ "public/s/1005450.webm": {
+  "note": "15.0s -> 3.4s (3 passages)",
+  "octets_avant": 54003,
+  "octets_apres": 19886
+ },
+ "public/s/1005456.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 58276,
+  "octets_apres": 58276
+ },
+ "public/s/1005460.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 50611,
+  "octets_apres": 50611
+ },
+ "public/s/1005462.webm": {
+  "note": "1.7s -> 0.9s (2 passages)",
+  "octets_avant": 6649,
+  "octets_apres": 5804
+ },
+ "public/s/1005482.webm": {
+  "note": "15.0s -> 15.0s (1 passages)",
+  "octets_avant": 66661,
+  "octets_apres": 93675
+ },
+ "public/s/1005492.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 67673,
+  "octets_apres": 67673
+ },
+ "public/s/1005494.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 55994,
+  "octets_apres": 55994
+ },
+ "public/s/1005518.webm": {
+  "note": "5.0s -> 1.9s (2 passages)",
+  "octets_avant": 21919,
+  "octets_apres": 11357
+ },
+ "public/s/1005519.webm": {
+  "note": "5.2s -> 4.3s (1 passages)",
+  "octets_avant": 20511,
+  "octets_apres": 21764
+ },
+ "public/s/1005531.webm": {
+  "note": "8.7s -> 7.5s (7 passages)",
+  "octets_avant": 37118,
+  "octets_apres": 55256
+ },
+ "public/s/1005562.webm": {
+  "note": "15.0s -> 6.0s (4 passages)",
+  "octets_avant": 57984,
+  "octets_apres": 34001
+ },
+ "public/s/1005574.webm": {
+  "note": "5.8s -> 1.4s (1 passages)",
+  "octets_avant": 24852,
+  "octets_apres": 8956
+ },
+ "public/s/1005575.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 10261,
+  "octets_apres": 10261
+ },
+ "public/s/1005594.webm": {
+  "note": "13.4s -> 8.9s (5 passages)",
+  "octets_avant": 59178,
+  "octets_apres": 60091
+ },
+ "public/s/1005595.webm": {
+  "note": "11.7s -> 8.2s (2 passages)",
+  "octets_avant": 42831,
+  "octets_apres": 40264
+ },
+ "public/s/1005596.webm": {
+  "note": "15.0s -> 7.6s (3 passages)",
+  "octets_avant": 58159,
+  "octets_apres": 40429
+ },
+ "public/s/1005601.webm": {
+  "note": "garde : rien d'actif",
+  "octets_avant": 3175,
+  "octets_apres": 3175
+ },
+ "public/s/1005602.webm": {
+  "note": "15.0s -> 8.4s (7 passages)",
+  "octets_avant": 71377,
+  "octets_apres": 60910
+ },
+ "public/s/1005604.webm": {
+  "note": "4.8s -> 4.8s (1 passages)",
+  "octets_avant": 12139,
+  "octets_apres": 15102
+ },
+ "public/s/1005605.webm": {
+  "note": "14.8s -> 14.2s (2 passages)",
+  "octets_avant": 62384,
+  "octets_apres": 71977
+ },
+ "public/s/1005607.webm": {
+  "note": "13.1s -> 11.4s (2 passages)",
+  "octets_avant": 68816,
+  "octets_apres": 76780
+ },
+ "public/s/1005608.webm": {
+  "note": "15.0s -> 10.6s (4 passages)",
+  "octets_avant": 93432,
+  "octets_apres": 81468
+ },
+ "public/s/1005619.webm": {
+  "note": "3.0s -> 1.9s (2 passages)",
+  "octets_avant": 12533,
+  "octets_apres": 11821
+ },
+ "public/s/1005620.webm": {
+  "note": "13.9s -> 7.8s (5 passages)",
+  "octets_avant": 51162,
+  "octets_apres": 42607
+ },
+ "public/s/1005623.webm": {
+  "note": "15.0s -> 6.5s (8 passages)",
+  "octets_avant": 60736,
+  "octets_apres": 41705
+ },
+ "public/s/1005624.webm": {
+  "note": "5.3s -> 5.3s (1 passages)",
+  "octets_avant": 24207,
+  "octets_apres": 29337
+ },
+ "public/s/1005627.webm": {
+  "note": "8.7s -> 4.1s (6 passages)",
+  "octets_avant": 34928,
+  "octets_apres": 25521
+ },
+ "public/s/1005628.webm": {
+  "note": "14.2s -> 0.8s (2 passages)",
+  "octets_avant": 47630,
+  "octets_apres": 4824
+ },
+ "public/s/1005632.webm": {
+  "note": "6.4s -> 4.6s (1 passages)",
+  "octets_avant": 34038,
+  "octets_apres": 32588
+ },
+ "public/s/1005633.webm": {
+  "note": "5.2s -> 3.3s (3 passages)",
+  "octets_avant": 20840,
+  "octets_apres": 19868
+ },
+ "public/s/1005649.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 23760,
+  "octets_apres": 23760
+ },
+ "public/s/1005658.webm": {
+  "note": "8.7s -> 5.2s (2 passages)",
+  "octets_avant": 41577,
+  "octets_apres": 31064
+ },
+ "public/s/1005659.webm": {
+  "note": "10.6s -> 10.4s (1 passages)",
+  "octets_avant": 48536,
+  "octets_apres": 62436
+ },
+ "public/s/1005662.webm": {
+  "note": "15.0s -> 9.3s (3 passages)",
+  "octets_avant": 57648,
+  "octets_apres": 47648
+ },
+ "public/s/1005663.webm": {
+  "note": "8.3s -> 8.2s (2 passages)",
+  "octets_avant": 37877,
+  "octets_apres": 49101
+ },
+ "public/s/1005668.webm": {
+  "note": "4.6s -> 3.5s (2 passages)",
+  "octets_avant": 19343,
+  "octets_apres": 20150
+ },
+ "public/s/1005688.webm": {
+  "note": "4.4s -> 4.4s (1 passages)",
+  "octets_avant": 22430,
+  "octets_apres": 35899
+ },
+ "public/s/1005694.webm": {
+  "note": "15.0s -> 14.8s (2 passages)",
+  "octets_avant": 81895,
+  "octets_apres": 93567
+ },
+ "public/s/1005700.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 33528,
+  "octets_apres": 33528
+ },
+ "public/s/1005734.webm": {
+  "note": "10.0s -> 6.9s (3 passages)",
+  "octets_avant": 43282,
+  "octets_apres": 40883
+ },
+ "public/s/1005792.webm": {
+  "note": "15.0s -> 11.5s (3 passages)",
+  "octets_avant": 67689,
+  "octets_apres": 57806
+ },
+ "public/s/1005815.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 6899,
+  "octets_apres": 6899
+ },
+ "public/s/1005819.webm": {
+  "note": "15.0s -> 7.9s (16 passages)",
+  "octets_avant": 61080,
+  "octets_apres": 53520
+ },
+ "public/s/1005820.webm": {
+  "note": "15.0s -> 13.2s (5 passages)",
+  "octets_avant": 69651,
+  "octets_apres": 83452
+ },
+ "public/s/1005822.webm": {
+  "note": "15.0s -> 8.1s (8 passages)",
+  "octets_avant": 61113,
+  "octets_apres": 49187
+ },
+ "public/s/1005824.webm": {
+  "note": "6.0s -> 2.9s (6 passages)",
+  "octets_avant": 18818,
+  "octets_apres": 25305
+ },
+ "public/s/1005832.webm": {
+  "note": "3.3s -> 2.8s (2 passages)",
+  "octets_avant": 14480,
+  "octets_apres": 17425
+ },
+ "public/s/1005842.webm": {
+  "note": "6.0s -> 4.5s (3 passages)",
+  "octets_avant": 18812,
+  "octets_apres": 26691
+ },
+ "public/s/1005844.webm": {
+  "note": "15.0s -> 7.6s (7 passages)",
+  "octets_avant": 61131,
+  "octets_apres": 50734
+ },
+ "public/s/1005846.webm": {
+  "note": "15.0s -> 14.7s (2 passages)",
+  "octets_avant": 65416,
+  "octets_apres": 79218
+ },
+ "public/s/1005848.webm": {
+  "note": "12.9s -> 1.2s (3 passages)",
+  "octets_avant": 53934,
+  "octets_apres": 8506
+ },
+ "public/s/1005851.webm": {
+  "note": "15.0s -> 8.3s (8 passages)",
+  "octets_avant": 62250,
+  "octets_apres": 52367
+ },
+ "public/s/1005852.webm": {
+  "note": "11.9s -> 5.1s (3 passages)",
+  "octets_avant": 48694,
+  "octets_apres": 28407
+ },
+ "public/s/1005859.webm": {
+  "note": "15.0s -> 11.5s (5 passages)",
+  "octets_avant": 64585,
+  "octets_apres": 66154
+ },
+ "public/s/1005863.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 19705,
+  "octets_apres": 19705
+ },
+ "public/s/1005873.webm": {
+  "note": "6.6s -> 5.1s (3 passages)",
+  "octets_avant": 31039,
+  "octets_apres": 34778
+ },
+ "public/s/1005874.webm": {
+  "note": "6.0s -> 5.8s (2 passages)",
+  "octets_avant": 20134,
+  "octets_apres": 33049
+ },
+ "public/s/1005877.webm": {
+  "note": "15.0s -> 10.2s (6 passages)",
+  "octets_avant": 68419,
+  "octets_apres": 63934
+ },
+ "public/s/1005879.webm": {
+  "note": "15.0s -> 10.6s (4 passages)",
+  "octets_avant": 57818,
+  "octets_apres": 57501
+ },
+ "public/s/1005886.webm": {
+  "note": "15.0s -> 6.0s (8 passages)",
+  "octets_avant": 57911,
+  "octets_apres": 44318
+ },
+ "public/s/1005887.webm": {
+  "note": "5.6s -> 3.0s (2 passages)",
+  "octets_avant": 25575,
+  "octets_apres": 19968
+ },
+ "public/s/1005888.webm": {
+  "note": "15.0s -> 11.5s (6 passages)",
+  "octets_avant": 62553,
+  "octets_apres": 70819
+ },
+ "public/s/1005890.webm": {
+  "note": "15.0s -> 13.8s (6 passages)",
+  "octets_avant": 65753,
+  "octets_apres": 86447
+ },
+ "public/s/1005891.webm": {
+  "note": "15.0s -> 8.9s (7 passages)",
+  "octets_avant": 64147,
+  "octets_apres": 62630
+ },
+ "public/s/1005892.webm": {
+  "note": "15.0s -> 8.5s (15 passages)",
+  "octets_avant": 63602,
+  "octets_apres": 59349
+ },
+ "public/s/1005899.webm": {
+  "note": "15.0s -> 11.1s (6 passages)",
+  "octets_avant": 62190,
+  "octets_apres": 64026
+ },
+ "public/s/1005904.webm": {
+  "note": "15.0s -> 6.8s (8 passages)",
+  "octets_avant": 69301,
+  "octets_apres": 45908
+ },
+ "public/s/1005906.webm": {
+  "note": "5.3s -> 1.3s (2 passages)",
+  "octets_avant": 17241,
+  "octets_apres": 8015
+ },
+ "public/s/1005908.webm": {
+  "note": "15.0s -> 11.9s (7 passages)",
+  "octets_avant": 71854,
+  "octets_apres": 71528
+ },
+ "public/s/1005913.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 18681,
+  "octets_apres": 18681
+ },
+ "public/s/1005917.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 18097,
+  "octets_apres": 18097
+ },
+ "public/s/1005918.webm": {
+  "note": "15.0s -> 5.8s (6 passages)",
+  "octets_avant": 68095,
+  "octets_apres": 38528
+ },
+ "public/s/1005919.webm": {
+  "note": "14.3s -> 12.2s (5 passages)",
+  "octets_avant": 60449,
+  "octets_apres": 74807
+ },
+ "public/s/1005934.webm": {
+  "note": "6.0s -> 3.1s (2 passages)",
+  "octets_avant": 17740,
+  "octets_apres": 17658
+ },
+ "public/s/1005935.webm": {
+  "note": "15.0s -> 7.3s (4 passages)",
+  "octets_avant": 73204,
+  "octets_apres": 46636
+ },
+ "public/s/1005939.webm": {
+  "note": "15.0s -> 14.0s (7 passages)",
+  "octets_avant": 82405,
+  "octets_apres": 99163
+ },
+ "public/s/1005940.webm": {
+  "note": "9.1s -> 2.7s (3 passages)",
+  "octets_avant": 38177,
+  "octets_apres": 16338
+ },
+ "public/s/1005941.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 56291,
+  "octets_apres": 56291
+ },
+ "public/s/1005942.webm": {
+  "note": "14.9s -> 8.3s (6 passages)",
+  "octets_avant": 61729,
+  "octets_apres": 50308
+ },
+ "public/s/1005943.webm": {
+  "note": "15.0s -> 11.6s (12 passages)",
+  "octets_avant": 57494,
+  "octets_apres": 77775
+ },
+ "public/s/1005944.webm": {
+  "note": "13.1s -> 2.8s (3 passages)",
+  "octets_avant": 53304,
+  "octets_apres": 17178
+ },
+ "public/s/1005947.webm": {
+  "note": "11.0s -> 8.0s (5 passages)",
+  "octets_avant": 47596,
+  "octets_apres": 45213
+ },
+ "public/s/1005948.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 64926,
+  "octets_apres": 64926
+ },
+ "public/s/1005953.webm": {
+  "note": "15.0s -> 6.0s (6 passages)",
+  "octets_avant": 62496,
+  "octets_apres": 37452
+ },
+ "public/s/1005956.webm": {
+  "note": "15.0s -> 9.0s (10 passages)",
+  "octets_avant": 68506,
+  "octets_apres": 70570
+ },
+ "public/s/1005957.webm": {
+  "note": "7.1s -> 3.2s (5 passages)",
+  "octets_avant": 29580,
+  "octets_apres": 20814
+ },
+ "public/s/1005960.webm": {
+  "note": "6.0s -> 4.7s (5 passages)",
+  "octets_avant": 19371,
+  "octets_apres": 28685
+ },
+ "public/s/1005961.webm": {
+  "note": "1.9s -> 1.5s (1 passages)",
+  "octets_avant": 6581,
+  "octets_apres": 8607
+ },
+ "public/s/1005965.webm": {
+  "note": "15.0s -> 11.0s (11 passages)",
+  "octets_avant": 64282,
+  "octets_apres": 76550
+ },
+ "public/s/1005970.webm": {
+  "note": "15.0s -> 4.4s (6 passages)",
+  "octets_avant": 58569,
+  "octets_apres": 32814
+ },
+ "public/s/1005972.webm": {
+  "note": "15.0s -> 10.0s (10 passages)",
+  "octets_avant": 69690,
+  "octets_apres": 66725
+ },
+ "public/s/1005977.webm": {
+  "note": "13.9s -> 8.5s (8 passages)",
+  "octets_avant": 59366,
+  "octets_apres": 50431
+ },
+ "public/s/1005979.webm": {
+  "note": "6.0s -> 4.5s (2 passages)",
+  "octets_avant": 19685,
+  "octets_apres": 25782
+ },
+ "public/s/1005981.webm": {
+  "note": "6.0s -> 2.3s (5 passages)",
+  "octets_avant": 17913,
+  "octets_apres": 19858
+ },
+ "public/s/1005985.webm": {
+  "note": "15.0s -> 7.0s (7 passages)",
+  "octets_avant": 64510,
+  "octets_apres": 49210
+ },
+ "public/s/1005986.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 5915,
+  "octets_apres": 5915
+ },
+ "public/s/1005990.webm": {
+  "note": "15.0s -> 7.9s (4 passages)",
+  "octets_avant": 61893,
+  "octets_apres": 45021
+ },
+ "public/s/1005991.webm": {
+  "note": "10.9s -> 3.3s (6 passages)",
+  "octets_avant": 31383,
+  "octets_apres": 17063
+ },
+ "public/s/1005997.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 40886,
+  "octets_apres": 40886
+ },
+ "public/s/1006004.webm": {
+  "note": "5.5s -> 3.9s (2 passages)",
+  "octets_avant": 17653,
+  "octets_apres": 24551
+ },
+ "public/s/1006006.webm": {
+  "note": "15.0s -> 12.0s (5 passages)",
+  "octets_avant": 78036,
+  "octets_apres": 82902
+ },
+ "public/s/1006007.webm": {
+  "note": "15.0s -> 13.0s (11 passages)",
+  "octets_avant": 68350,
+  "octets_apres": 78688
+ },
+ "public/s/1006008.webm": {
+  "note": "6.0s -> 4.1s (3 passages)",
+  "octets_avant": 20263,
+  "octets_apres": 24658
+ },
+ "public/s/1006009.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 18891,
+  "octets_apres": 18891
+ },
+ "public/s/1006017.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 7896,
+  "octets_apres": 7896
+ },
+ "public/s/1006020.webm": {
+  "note": "15.0s -> 11.2s (9 passages)",
+  "octets_avant": 58371,
+  "octets_apres": 62832
+ },
+ "public/s/1006021.webm": {
+  "note": "12.5s -> 8.1s (2 passages)",
+  "octets_avant": 62892,
+  "octets_apres": 50114
+ },
+ "public/s/1006022.webm": {
+  "note": "15.0s -> 5.3s (7 passages)",
+  "octets_avant": 57961,
+  "octets_apres": 36278
+ },
+ "public/s/1006023.webm": {
+  "note": "6.0s -> 4.1s (2 passages)",
+  "octets_avant": 19356,
+  "octets_apres": 22682
+ },
+ "public/s/1006024.webm": {
+  "note": "10.0s -> 5.3s (6 passages)",
+  "octets_avant": 36913,
+  "octets_apres": 30896
+ },
+ "public/s/1006027.webm": {
+  "note": "12.4s -> 7.7s (6 passages)",
+  "octets_avant": 67685,
+  "octets_apres": 58482
+ },
+ "public/s/1006028.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 19579,
+  "octets_apres": 19579
+ },
+ "public/s/1006043.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 56601,
+  "octets_apres": 56601
+ },
+ "public/s/1006057.webm": {
+  "note": "14.7s -> 5.4s (4 passages)",
+  "octets_avant": 55882,
+  "octets_apres": 30236
+ },
+ "public/s/1006069.webm": {
+  "note": "7.1s -> 6.8s (2 passages)",
+  "octets_avant": 31313,
+  "octets_apres": 38213
+ },
+ "public/s/1006071.webm": {
+  "note": "15.0s -> 8.9s (7 passages)",
+  "octets_avant": 65108,
+  "octets_apres": 55385
+ },
+ "public/s/1006099.webm": {
+  "note": "15.0s -> 13.8s (2 passages)",
+  "octets_avant": 65389,
+  "octets_apres": 76553
+ },
+ "public/s/1006100.webm": {
+  "note": "14.9s -> 11.0s (5 passages)",
+  "octets_avant": 84029,
+  "octets_apres": 83066
+ },
+ "public/s/1006121.webm": {
+  "note": "13.0s -> 11.9s (2 passages)",
+  "octets_avant": 58154,
+  "octets_apres": 64988
+ },
+ "public/s/1006122.webm": {
+  "note": "14.3s -> 3.0s (5 passages)",
+  "octets_avant": 55710,
+  "octets_apres": 20687
+ },
+ "public/s/1006127.webm": {
+  "note": "6.4s -> 3.6s (1 passages)",
+  "octets_avant": 27454,
+  "octets_apres": 19639
+ },
+ "public/s/1006129.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 18199,
+  "octets_apres": 18199
+ },
+ "public/s/1006130.webm": {
+  "note": "15.0s -> 12.5s (6 passages)",
+  "octets_avant": 67935,
+  "octets_apres": 73341
+ },
+ "public/s/1006131.webm": {
+  "note": "15.0s -> 1.6s (3 passages)",
+  "octets_avant": 73589,
+  "octets_apres": 13476
+ },
+ "public/s/1006134.webm": {
+  "note": "11.3s -> 5.5s (5 passages)",
+  "octets_avant": 47170,
+  "octets_apres": 34725
+ },
+ "public/s/1006136.webm": {
+  "note": "15.0s -> 7.0s (2 passages)",
+  "octets_avant": 57785,
+  "octets_apres": 36870
+ },
+ "public/s/1006180.webm": {
+  "note": "6.0s -> 4.6s (2 passages)",
+  "octets_avant": 18383,
+  "octets_apres": 25684
+ },
+ "public/s/1006184.webm": {
+  "note": "11.3s -> 5.8s (6 passages)",
+  "octets_avant": 46163,
+  "octets_apres": 35611
+ },
+ "public/s/1006185.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 7096,
+  "octets_apres": 7096
+ },
+ "public/s/1006187.webm": {
+  "note": "4.1s -> 3.5s (2 passages)",
+  "octets_avant": 16165,
+  "octets_apres": 18723
+ },
+ "public/s/1006193.webm": {
+  "note": "14.9s -> 2.3s (3 passages)",
+  "octets_avant": 58645,
+  "octets_apres": 13736
+ },
+ "public/s/1006201.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 18424,
+  "octets_apres": 18424
+ },
+ "public/s/1006204.webm": {
+  "note": "15.0s -> 4.7s (4 passages)",
+  "octets_avant": 62243,
+  "octets_apres": 29500
+ },
+ "public/s/1006209.webm": {
+  "note": "6.0s -> 4.9s (5 passages)",
+  "octets_avant": 18892,
+  "octets_apres": 31517
+ },
+ "public/s/1006213.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 53950,
+  "octets_apres": 53950
+ },
+ "public/s/1006216.webm": {
+  "note": "15.0s -> 12.2s (2 passages)",
+  "octets_avant": 62516,
+  "octets_apres": 68306
+ },
+ "public/s/1006236.webm": {
+  "note": "6.0s -> 3.3s (2 passages)",
+  "octets_avant": 19397,
+  "octets_apres": 19395
+ },
+ "public/s/1006244.webm": {
+  "note": "6.9s -> 5.7s (4 passages)",
+  "octets_avant": 29360,
+  "octets_apres": 33148
+ },
+ "public/s/1006245.webm": {
+  "note": "15.0s -> 4.4s (5 passages)",
+  "octets_avant": 61981,
+  "octets_apres": 27414
+ },
+ "public/s/1006256.webm": {
+  "note": "15.0s -> 11.8s (8 passages)",
+  "octets_avant": 62833,
+  "octets_apres": 70054
+ },
+ "public/s/1006267.webm": {
+  "note": "12.6s -> 1.9s (1 passages)",
+  "octets_avant": 45778,
+  "octets_apres": 12977
+ },
+ "public/s/1006269.webm": {
+  "note": "14.9s -> 8.7s (6 passages)",
+  "octets_avant": 66399,
+  "octets_apres": 55494
+ },
+ "public/s/1006274.webm": {
+  "note": "15.0s -> 10.8s (3 passages)",
+  "octets_avant": 61934,
+  "octets_apres": 58186
+ },
+ "public/s/1006281.webm": {
+  "note": "15.0s -> 15.0s (1 passages)",
+  "octets_avant": 71704,
+  "octets_apres": 79975
+ },
+ "public/s/1006282.webm": {
+  "note": "15.0s -> 7.3s (9 passages)",
+  "octets_avant": 66280,
+  "octets_apres": 48763
+ },
+ "public/s/1006283.webm": {
+  "note": "6.0s -> 3.5s (4 passages)",
+  "octets_avant": 18686,
+  "octets_apres": 24250
+ },
+ "public/s/1006285.webm": {
+  "note": "15.0s -> 13.1s (4 passages)",
+  "octets_avant": 60036,
+  "octets_apres": 70958
+ },
+ "public/s/1006286.webm": {
+  "note": "4.4s -> 3.0s (4 passages)",
+  "octets_avant": 18272,
+  "octets_apres": 18886
+ },
+ "public/s/1006287.webm": {
+  "note": "13.1s -> 3.4s (4 passages)",
+  "octets_avant": 53123,
+  "octets_apres": 20174
+ },
+ "public/s/1006288.webm": {
+  "note": "6.0s -> 2.1s (2 passages)",
+  "octets_avant": 19354,
+  "octets_apres": 12530
+ },
+ "public/s/1006300.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 17992,
+  "octets_apres": 17992
+ },
+ "public/s/1006302.webm": {
+  "note": "14.5s -> 7.1s (5 passages)",
+  "octets_avant": 52450,
+  "octets_apres": 36891
+ },
+ "public/s/1006303.webm": {
+  "note": "15.0s -> 7.4s (11 passages)",
+  "octets_avant": 61691,
+  "octets_apres": 47698
+ },
+ "public/s/1006306.webm": {
+  "note": "8.0s -> 6.5s (5 passages)",
+  "octets_avant": 34299,
+  "octets_apres": 39801
+ },
+ "public/s/1006307.webm": {
+  "note": "15.0s -> 4.4s (4 passages)",
+  "octets_avant": 56451,
+  "octets_apres": 24469
+ },
+ "public/s/1006308.webm": {
+  "note": "4.9s -> 1.2s (2 passages)",
+  "octets_avant": 20279,
+  "octets_apres": 7571
+ },
+ "public/s/1006312.webm": {
+  "note": "15.0s -> 11.4s (3 passages)",
+  "octets_avant": 68167,
+  "octets_apres": 66400
+ },
+ "public/s/1006313.webm": {
+  "note": "15.0s -> 4.2s (4 passages)",
+  "octets_avant": 63049,
+  "octets_apres": 27735
+ },
+ "public/s/1006315.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 3619,
+  "octets_apres": 3619
+ },
+ "public/s/1006316.webm": {
+  "note": "15.0s -> 10.1s (9 passages)",
+  "octets_avant": 60275,
+  "octets_apres": 62031
+ },
+ "public/s/1006325.webm": {
+  "note": "15.0s -> 6.0s (3 passages)",
+  "octets_avant": 51911,
+  "octets_apres": 27426
+ },
+ "public/s/1006332.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 64902,
+  "octets_apres": 64902
+ },
+ "public/s/1006335.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 56344,
+  "octets_apres": 56344
+ },
+ "public/s/1006338.webm": {
+  "note": "13.6s -> 3.6s (5 passages)",
+  "octets_avant": 56178,
+  "octets_apres": 22566
+ },
+ "public/s/1006340.webm": {
+  "note": "6.0s -> 2.4s (2 passages)",
+  "octets_avant": 18843,
+  "octets_apres": 14183
+ },
+ "public/s/1006369.webm": {
+  "note": "15.0s -> 3.6s (5 passages)",
+  "octets_avant": 70030,
+  "octets_apres": 26678
+ },
+ "public/s/1006374.webm": {
+  "note": "15.0s -> 9.3s (4 passages)",
+  "octets_avant": 59022,
+  "octets_apres": 51419
+ },
+ "public/s/1006377.webm": {
+  "note": "8.9s -> 5.2s (3 passages)",
+  "octets_avant": 37302,
+  "octets_apres": 29662
+ },
+ "public/s/1006380.webm": {
+  "note": "8.2s -> 5.6s (2 passages)",
+  "octets_avant": 34551,
+  "octets_apres": 30847
+ },
+ "public/s/1006381.webm": {
+  "note": "15.0s -> 3.7s (9 passages)",
+  "octets_avant": 58129,
+  "octets_apres": 32747
+ },
+ "public/s/1006383.webm": {
+  "note": "15.0s -> 3.7s (1 passages)",
+  "octets_avant": 56654,
+  "octets_apres": 18781
+ },
+ "public/s/1006385.webm": {
+  "note": "2.2s -> 1.5s (1 passages)",
+  "octets_avant": 11106,
+  "octets_apres": 8621
+ },
+ "public/s/1006386.webm": {
+  "note": "6.0s -> 4.5s (3 passages)",
+  "octets_avant": 19467,
+  "octets_apres": 26409
+ },
+ "public/s/1006390.webm": {
+  "note": "14.5s -> 9.9s (3 passages)",
+  "octets_avant": 59986,
+  "octets_apres": 53006
+ },
+ "public/s/1006393.webm": {
+  "note": "15.0s -> 9.8s (5 passages)",
+  "octets_avant": 61387,
+  "octets_apres": 54546
+ },
+ "public/s/1006401.webm": {
+  "note": "6.0s -> 3.0s (4 passages)",
+  "octets_avant": 30694,
+  "octets_apres": 23634
+ },
+ "public/s/1006403.webm": {
+  "note": "6.0s -> 5.3s (3 passages)",
+  "octets_avant": 18617,
+  "octets_apres": 30016
+ },
+ "public/s/1006404.webm": {
+  "note": "6.0s -> 4.1s (4 passages)",
+  "octets_avant": 18855,
+  "octets_apres": 27908
+ },
+ "public/s/1006405.webm": {
+  "note": "14.9s -> 8.2s (5 passages)",
+  "octets_avant": 63507,
+  "octets_apres": 48967
+ },
+ "public/s/1006414.webm": {
+  "note": "6.0s -> 4.5s (3 passages)",
+  "octets_avant": 23353,
+  "octets_apres": 28684
+ },
+ "public/s/1006423.webm": {
+  "note": "9.0s -> 6.7s (4 passages)",
+  "octets_avant": 51585,
+  "octets_apres": 41744
+ },
+ "public/s/1006444.webm": {
+  "note": "6.0s -> 2.1s (2 passages)",
+  "octets_avant": 19380,
+  "octets_apres": 14262
+ },
+ "public/s/1006456.webm": {
+  "note": "5.8s -> 5.8s (1 passages)",
+  "octets_avant": 26238,
+  "octets_apres": 31550
+ },
+ "public/s/1006461.webm": {
+  "note": "6.9s -> 1.3s (2 passages)",
+  "octets_avant": 29827,
+  "octets_apres": 10143
+ },
+ "public/s/1006628.webm": {
+  "note": "12.2s -> 2.5s (7 passages)",
+  "octets_avant": 55731,
+  "octets_apres": 21095
+ },
+ "public/s/1006640.webm": {
+  "note": "12.2s -> 1.8s (3 passages)",
+  "octets_avant": 45873,
+  "octets_apres": 10757
+ },
+ "public/s/1006709.webm": {
+  "note": "9.4s -> 8.1s (4 passages)",
+  "octets_avant": 39294,
+  "octets_apres": 44958
+ },
+ "public/s/1006881.webm": {
+  "note": "8.4s -> 2.6s (4 passages)",
+  "octets_avant": 40501,
+  "octets_apres": 21368
+ },
+ "public/oiseaux/s/accipiter-gentilis-0.webm": {
+  "note": "7.9s -> 4.9s (2 passages)",
+  "octets_avant": 28794,
+  "octets_apres": 30185
+ },
+ "public/oiseaux/s/accipiter-gentilis-1.webm": {
+  "note": "12.0s -> 9.1s (3 passages)",
+  "octets_avant": 42790,
+  "octets_apres": 57446
+ },
+ "public/oiseaux/s/accipiter-nisus-0.webm": {
+  "note": "4.2s -> 1.8s (2 passages)",
+  "octets_avant": 12513,
+  "octets_apres": 10705
+ },
+ "public/oiseaux/s/accipiter-nisus-1.webm": {
+  "note": "5.0s -> 3.8s (2 passages)",
+  "octets_avant": 16107,
+  "octets_apres": 23441
+ },
+ "public/oiseaux/s/acrocephalus-arundinaceus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35758,
+  "octets_apres": 35758
+ },
+ "public/oiseaux/s/acrocephalus-arundinaceus-1.webm": {
+  "note": "12.0s -> 9.2s (3 passages)",
+  "octets_avant": 38132,
+  "octets_apres": 53054
+ },
+ "public/oiseaux/s/acrocephalus-palustris-0.webm": {
+  "note": "12.0s -> 11.4s (6 passages)",
+  "octets_avant": 44482,
+  "octets_apres": 76762
+ },
+ "public/oiseaux/s/acrocephalus-palustris-1.webm": {
+  "note": "12.0s -> 6.8s (10 passages)",
+  "octets_avant": 44709,
+  "octets_apres": 58265
+ },
+ "public/oiseaux/s/acrocephalus-schoenobaenus-0.webm": {
+  "note": "12.0s -> 7.2s (2 passages)",
+  "octets_avant": 46607,
+  "octets_apres": 47326
+ },
+ "public/oiseaux/s/acrocephalus-schoenobaenus-1.webm": {
+  "note": "12.0s -> 10.5s (5 passages)",
+  "octets_avant": 40202,
+  "octets_apres": 66079
+ },
+ "public/oiseaux/s/acrocephalus-scirpaceus-0.webm": {
+  "note": "12.0s -> 11.2s (3 passages)",
+  "octets_avant": 35848,
+  "octets_apres": 60368
+ },
+ "public/oiseaux/s/acrocephalus-scirpaceus-1.webm": {
+  "note": "12.0s -> 11.9s (1 passages)",
+  "octets_avant": 40577,
+  "octets_apres": 69620
+ },
+ "public/oiseaux/s/actitis-hypoleucos-0.webm": {
+  "note": "11.9s -> 11.9s (1 passages)",
+  "octets_avant": 51659,
+  "octets_apres": 89930
+ },
+ "public/oiseaux/s/actitis-hypoleucos-1.webm": {
+  "note": "12.0s -> 11.7s (1 passages)",
+  "octets_avant": 48463,
+  "octets_apres": 84174
+ },
+ "public/oiseaux/s/aegithalos-caudatus-0.webm": {
+  "note": "11.7s -> 6.3s (6 passages)",
+  "octets_avant": 33218,
+  "octets_apres": 44033
+ },
+ "public/oiseaux/s/aegithalos-caudatus-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 22417,
+  "octets_apres": 22417
+ },
+ "public/oiseaux/s/alauda-arvensis-0.webm": {
+  "note": "12.0s -> 10.1s (6 passages)",
+  "octets_avant": 39409,
+  "octets_apres": 58076
+ },
+ "public/oiseaux/s/alauda-arvensis-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 33053,
+  "octets_apres": 33053
+ },
+ "public/oiseaux/s/alca-torda-0.webm": {
+  "note": "12.0s -> 10.0s (3 passages)",
+  "octets_avant": 34680,
+  "octets_apres": 70573
+ },
+ "public/oiseaux/s/alca-torda-1.webm": {
+  "note": "12.0s -> 10.5s (5 passages)",
+  "octets_avant": 46370,
+  "octets_apres": 88493
+ },
+ "public/oiseaux/s/alcedo-atthis-0.webm": {
+  "note": "7.8s -> 4.4s (4 passages)",
+  "octets_avant": 24806,
+  "octets_apres": 32610
+ },
+ "public/oiseaux/s/alcedo-atthis-1.webm": {
+  "note": "8.7s -> 3.4s (6 passages)",
+  "octets_avant": 26615,
+  "octets_apres": 25427
+ },
+ "public/oiseaux/s/alectoris-rufa-0.webm": {
+  "note": "12.0s -> 2.1s (4 passages)",
+  "octets_avant": 36903,
+  "octets_apres": 17257
+ },
+ "public/oiseaux/s/alectoris-rufa-1.webm": {
+  "note": "7.0s -> 4.8s (6 passages)",
+  "octets_avant": 21235,
+  "octets_apres": 31451
+ },
+ "public/oiseaux/s/alopochen-aegyptiaca-0.webm": {
+  "note": "12.0s -> 5.8s (8 passages)",
+  "octets_avant": 37394,
+  "octets_apres": 43360
+ },
+ "public/oiseaux/s/alopochen-aegyptiaca-1.webm": {
+  "note": "12.0s -> 2.5s (4 passages)",
+  "octets_avant": 36373,
+  "octets_apres": 16770
+ },
+ "public/oiseaux/s/anas-acuta-0.webm": {
+  "note": "12.0s -> 11.3s (6 passages)",
+  "octets_avant": 40327,
+  "octets_apres": 68637
+ },
+ "public/oiseaux/s/anas-acuta-1.webm": {
+  "note": "12.0s -> 4.7s (3 passages)",
+  "octets_avant": 36572,
+  "octets_apres": 27245
+ },
+ "public/oiseaux/s/anas-crecca-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 28240,
+  "octets_apres": 28240
+ },
+ "public/oiseaux/s/anas-crecca-1.webm": {
+  "note": "12.0s -> 3.3s (2 passages)",
+  "octets_avant": 36302,
+  "octets_apres": 19994
+ },
+ "public/oiseaux/s/anas-platyrhynchos-0.webm": {
+  "note": "9.5s -> 4.0s (9 passages)",
+  "octets_avant": 28211,
+  "octets_apres": 28360
+ },
+ "public/oiseaux/s/anas-platyrhynchos-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34979,
+  "octets_apres": 34979
+ },
+ "public/oiseaux/s/anser-anser-0.webm": {
+  "note": "12.0s -> 7.9s (7 passages)",
+  "octets_avant": 36650,
+  "octets_apres": 51554
+ },
+ "public/oiseaux/s/anser-anser-1.webm": {
+  "note": "3.0s -> 1.2s (1 passages)",
+  "octets_avant": 9924,
+  "octets_apres": 7516
+ },
+ "public/oiseaux/s/anthus-campestris-0.webm": {
+  "note": "12.0s -> 9.4s (5 passages)",
+  "octets_avant": 35097,
+  "octets_apres": 52512
+ },
+ "public/oiseaux/s/anthus-campestris-1.webm": {
+  "note": "5.8s -> 4.4s (5 passages)",
+  "octets_avant": 18292,
+  "octets_apres": 30324
+ },
+ "public/oiseaux/s/anthus-pratensis-0.webm": {
+  "note": "12.0s -> 6.0s (4 passages)",
+  "octets_avant": 39511,
+  "octets_apres": 38694
+ },
+ "public/oiseaux/s/anthus-pratensis-1.webm": {
+  "note": "11.9s -> 8.5s (5 passages)",
+  "octets_avant": 36482,
+  "octets_apres": 51748
+ },
+ "public/oiseaux/s/anthus-spinoletta-0.webm": {
+  "note": "12.0s -> 6.0s (7 passages)",
+  "octets_avant": 38225,
+  "octets_apres": 45597
+ },
+ "public/oiseaux/s/anthus-spinoletta-1.webm": {
+  "note": "12.0s -> 8.7s (6 passages)",
+  "octets_avant": 39594,
+  "octets_apres": 59415
+ },
+ "public/oiseaux/s/anthus-trivialis-0.webm": {
+  "note": "2.0s -> 1.1s (1 passages)",
+  "octets_avant": 7033,
+  "octets_apres": 7184
+ },
+ "public/oiseaux/s/anthus-trivialis-1.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 12300,
+  "octets_apres": 12300
+ },
+ "public/oiseaux/s/aptenodytes-forsteri-0.webm": {
+  "note": "10.0s -> 2.7s (2 passages)",
+  "octets_avant": 37753,
+  "octets_apres": 18220
+ },
+ "public/oiseaux/s/aptenodytes-forsteri-1.webm": {
+  "note": "6.1s -> 4.2s (2 passages)",
+  "octets_avant": 21061,
+  "octets_apres": 26395
+ },
+ "public/oiseaux/s/aptenodytes-patagonicus-0.webm": {
+  "note": "12.0s -> 10.1s (6 passages)",
+  "octets_avant": 36694,
+  "octets_apres": 63131
+ },
+ "public/oiseaux/s/aptenodytes-patagonicus-1.webm": {
+  "note": "12.0s -> 8.2s (4 passages)",
+  "octets_avant": 37292,
+  "octets_apres": 46502
+ },
+ "public/oiseaux/s/apteryx-australis-0.webm": {
+  "note": "9.4s -> 2.3s (3 passages)",
+  "octets_avant": 27674,
+  "octets_apres": 15828
+ },
+ "public/oiseaux/s/apteryx-australis-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 26876,
+  "octets_apres": 26876
+ },
+ "public/oiseaux/s/apus-apus-0.webm": {
+  "note": "12.0s -> 9.0s (7 passages)",
+  "octets_avant": 36038,
+  "octets_apres": 60769
+ },
+ "public/oiseaux/s/apus-apus-1.webm": {
+  "note": "12.0s -> 6.2s (2 passages)",
+  "octets_avant": 39081,
+  "octets_apres": 37378
+ },
+ "public/oiseaux/s/aquila-chrysaetos-0.webm": {
+  "note": "12.0s -> 8.4s (6 passages)",
+  "octets_avant": 37490,
+  "octets_apres": 55486
+ },
+ "public/oiseaux/s/aquila-chrysaetos-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36307,
+  "octets_apres": 36307
+ },
+ "public/oiseaux/s/aquila-fasciata-0.webm": {
+  "note": "12.0s -> 5.1s (9 passages)",
+  "octets_avant": 43136,
+  "octets_apres": 36412
+ },
+ "public/oiseaux/s/aquila-fasciata-1.webm": {
+  "note": "12.0s -> 10.0s (3 passages)",
+  "octets_avant": 41822,
+  "octets_apres": 57351
+ },
+ "public/oiseaux/s/ara-ararauna-0.webm": {
+  "note": "12.0s -> 7.9s (4 passages)",
+  "octets_avant": 37358,
+  "octets_apres": 45237
+ },
+ "public/oiseaux/s/ara-ararauna-1.webm": {
+  "note": "12.0s -> 6.9s (4 passages)",
+  "octets_avant": 41418,
+  "octets_apres": 43514
+ },
+ "public/oiseaux/s/ara-macao-0.webm": {
+  "note": "12.0s -> 9.1s (3 passages)",
+  "octets_avant": 41295,
+  "octets_apres": 52530
+ },
+ "public/oiseaux/s/ara-macao-1.webm": {
+  "note": "12.0s -> 6.0s (10 passages)",
+  "octets_avant": 40019,
+  "octets_apres": 53584
+ },
+ "public/oiseaux/s/archilochus-colubris-0.webm": {
+  "note": "2.8s -> 1.3s (1 passages)",
+  "octets_avant": 8835,
+  "octets_apres": 7729
+ },
+ "public/oiseaux/s/archilochus-colubris-1.webm": {
+  "note": "12.0s -> 3.0s (2 passages)",
+  "octets_avant": 37256,
+  "octets_apres": 19229
+ },
+ "public/oiseaux/s/ardea-alba-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 26233,
+  "octets_apres": 26233
+ },
+ "public/oiseaux/s/ardea-alba-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 13010,
+  "octets_apres": 13010
+ },
+ "public/oiseaux/s/ardea-cinerea-0.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 26322,
+  "octets_apres": 26322
+ },
+ "public/oiseaux/s/ardea-cinerea-1.webm": {
+  "note": "12.0s -> 10.6s (5 passages)",
+  "octets_avant": 36468,
+  "octets_apres": 62145
+ },
+ "public/oiseaux/s/ardea-purpurea-0.webm": {
+  "note": "8.2s -> 4.6s (3 passages)",
+  "octets_avant": 25270,
+  "octets_apres": 25737
+ },
+ "public/oiseaux/s/ardea-purpurea-1.webm": {
+  "note": "11.9s -> 2.7s (6 passages)",
+  "octets_avant": 36611,
+  "octets_apres": 22223
+ },
+ "public/oiseaux/s/ardeola-ralloides-0.webm": {
+  "note": "12.0s -> 7.0s (3 passages)",
+  "octets_avant": 35652,
+  "octets_apres": 39320
+ },
+ "public/oiseaux/s/ardeola-ralloides-1.webm": {
+  "note": "10.0s -> 7.7s (1 passages)",
+  "octets_avant": 29760,
+  "octets_apres": 40075
+ },
+ "public/oiseaux/s/arenaria-interpres-0.webm": {
+  "note": "11.9s -> 8.7s (3 passages)",
+  "octets_avant": 35902,
+  "octets_apres": 52930
+ },
+ "public/oiseaux/s/arenaria-interpres-1.webm": {
+  "note": "2.6s -> 1.4s (1 passages)",
+  "octets_avant": 8418,
+  "octets_apres": 8716
+ },
+ "public/oiseaux/s/asio-otus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36981,
+  "octets_apres": 36981
+ },
+ "public/oiseaux/s/asio-otus-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35147,
+  "octets_apres": 35147
+ },
+ "public/oiseaux/s/athene-noctua-0.webm": {
+  "note": "12.0s -> 3.4s (5 passages)",
+  "octets_avant": 39040,
+  "octets_apres": 24043
+ },
+ "public/oiseaux/s/athene-noctua-1.webm": {
+  "note": "7.0s -> 4.3s (3 passages)",
+  "octets_avant": 21867,
+  "octets_apres": 25444
+ },
+ "public/oiseaux/s/aythya-ferina-0.webm": {
+  "note": "12.0s -> 7.2s (5 passages)",
+  "octets_avant": 39747,
+  "octets_apres": 44673
+ },
+ "public/oiseaux/s/aythya-ferina-1.webm": {
+  "note": "8.4s -> 3.5s (3 passages)",
+  "octets_avant": 25752,
+  "octets_apres": 22417
+ },
+ "public/oiseaux/s/aythya-fuligula-0.webm": {
+  "note": "2.6s -> 1.4s (3 passages)",
+  "octets_avant": 9152,
+  "octets_apres": 10165
+ },
+ "public/oiseaux/s/aythya-fuligula-1.webm": {
+  "note": "12.0s -> 5.5s (5 passages)",
+  "octets_avant": 35557,
+  "octets_apres": 37368
+ },
+ "public/oiseaux/s/botaurus-stellaris-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 14268,
+  "octets_apres": 14268
+ },
+ "public/oiseaux/s/botaurus-stellaris-1.webm": {
+  "note": "5.2s -> 3.2s (2 passages)",
+  "octets_avant": 15602,
+  "octets_apres": 18064
+ },
+ "public/oiseaux/s/branta-bernicla-0.webm": {
+  "note": "12.0s -> 9.6s (5 passages)",
+  "octets_avant": 37944,
+  "octets_apres": 60006
+ },
+ "public/oiseaux/s/branta-bernicla-1.webm": {
+  "note": "12.0s -> 5.8s (6 passages)",
+  "octets_avant": 37552,
+  "octets_apres": 37908
+ },
+ "public/oiseaux/s/branta-canadensis-0.webm": {
+  "note": "12.0s -> 10.6s (5 passages)",
+  "octets_avant": 37283,
+  "octets_apres": 62339
+ },
+ "public/oiseaux/s/branta-canadensis-1.webm": {
+  "note": "12.0s -> 7.1s (7 passages)",
+  "octets_avant": 37770,
+  "octets_apres": 46922
+ },
+ "public/oiseaux/s/bubo-bubo-0.webm": {
+  "note": "12.0s -> 8.8s (5 passages)",
+  "octets_avant": 38979,
+  "octets_apres": 47146
+ },
+ "public/oiseaux/s/bubo-bubo-1.webm": {
+  "note": "12.0s -> 4.6s (3 passages)",
+  "octets_avant": 38102,
+  "octets_apres": 28319
+ },
+ "public/oiseaux/s/bubo-scandiacus-0.webm": {
+  "note": "9.6s -> 6.8s (4 passages)",
+  "octets_avant": 29746,
+  "octets_apres": 38802
+ },
+ "public/oiseaux/s/bubo-scandiacus-1.webm": {
+  "note": "12.0s -> 5.9s (5 passages)",
+  "octets_avant": 36145,
+  "octets_apres": 34534
+ },
+ "public/oiseaux/s/bubulcus-ibis-0.webm": {
+  "note": "12.0s -> 8.0s (5 passages)",
+  "octets_avant": 35885,
+  "octets_apres": 48367
+ },
+ "public/oiseaux/s/bubulcus-ibis-1.webm": {
+  "note": "12.0s -> 10.2s (8 passages)",
+  "octets_avant": 35351,
+  "octets_apres": 67035
+ },
+ "public/oiseaux/s/bucephala-clangula-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 25721,
+  "octets_apres": 25721
+ },
+ "public/oiseaux/s/bucephala-clangula-1.webm": {
+  "note": "7.1s -> 6.9s (3 passages)",
+  "octets_avant": 21683,
+  "octets_apres": 44544
+ },
+ "public/oiseaux/s/burhinus-oedicnemus-0.webm": {
+  "note": "12.0s -> 7.6s (6 passages)",
+  "octets_avant": 36355,
+  "octets_apres": 48437
+ },
+ "public/oiseaux/s/burhinus-oedicnemus-1.webm": {
+  "note": "12.0s -> 6.5s (4 passages)",
+  "octets_avant": 37020,
+  "octets_apres": 37646
+ },
+ "public/oiseaux/s/buteo-buteo-0.webm": {
+  "note": "10.8s -> 2.8s (4 passages)",
+  "octets_avant": 41770,
+  "octets_apres": 22676
+ },
+ "public/oiseaux/s/buteo-buteo-1.webm": {
+  "note": "12.0s -> 5.2s (4 passages)",
+  "octets_avant": 37091,
+  "octets_apres": 31756
+ },
+ "public/oiseaux/s/cacatua-galerita-0.webm": {
+  "note": "12.0s -> 9.7s (8 passages)",
+  "octets_avant": 36946,
+  "octets_apres": 56842
+ },
+ "public/oiseaux/s/cacatua-galerita-1.webm": {
+  "note": "12.0s -> 8.6s (5 passages)",
+  "octets_avant": 36199,
+  "octets_apres": 48622
+ },
+ "public/oiseaux/s/calidris-alba-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 31667,
+  "octets_apres": 31667
+ },
+ "public/oiseaux/s/calidris-alba-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 9986,
+  "octets_apres": 9986
+ },
+ "public/oiseaux/s/calidris-alpina-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36678,
+  "octets_apres": 36678
+ },
+ "public/oiseaux/s/calidris-alpina-1.webm": {
+  "note": "12.0s -> 7.8s (3 passages)",
+  "octets_avant": 36273,
+  "octets_apres": 42985
+ },
+ "public/oiseaux/s/calidris-canutus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34094,
+  "octets_apres": 34094
+ },
+ "public/oiseaux/s/calidris-canutus-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35452,
+  "octets_apres": 35452
+ },
+ "public/oiseaux/s/calidris-minuta-0.webm": {
+  "note": "6.9s -> 2.7s (1 passages)",
+  "octets_avant": 20744,
+  "octets_apres": 16144
+ },
+ "public/oiseaux/s/calidris-minuta-1.webm": {
+  "note": "8.6s -> 8.2s (3 passages)",
+  "octets_avant": 31015,
+  "octets_apres": 54680
+ },
+ "public/oiseaux/s/calidris-pugnax-0.webm": {
+  "note": "12.0s -> 10.4s (3 passages)",
+  "octets_avant": 35922,
+  "octets_apres": 58386
+ },
+ "public/oiseaux/s/calidris-pugnax-1.webm": {
+  "note": "12.0s -> 10.2s (4 passages)",
+  "octets_avant": 38998,
+  "octets_apres": 61655
+ },
+ "public/oiseaux/s/caprimulgus-europaeus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 40818,
+  "octets_apres": 40818
+ },
+ "public/oiseaux/s/caprimulgus-europaeus-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35405,
+  "octets_apres": 35405
+ },
+ "public/oiseaux/s/carduelis-carduelis-0.webm": {
+  "note": "12.0s -> 11.5s (1 passages)",
+  "octets_avant": 38995,
+  "octets_apres": 66473
+ },
+ "public/oiseaux/s/carduelis-carduelis-1.webm": {
+  "note": "12.0s -> 5.5s (6 passages)",
+  "octets_avant": 36213,
+  "octets_apres": 42305
+ },
+ "public/oiseaux/s/carduelis-citrinella-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35429,
+  "octets_apres": 35429
+ },
+ "public/oiseaux/s/carduelis-citrinella-1.webm": {
+  "note": "12.0s -> 2.3s (2 passages)",
+  "octets_avant": 37071,
+  "octets_apres": 15565
+ },
+ "public/oiseaux/s/casuarius-casuarius-0.webm": {
+  "note": "12.0s -> 9.4s (4 passages)",
+  "octets_avant": 35272,
+  "octets_apres": 50687
+ },
+ "public/oiseaux/s/casuarius-casuarius-1.webm": {
+  "note": "11.9s -> 8.0s (2 passages)",
+  "octets_avant": 36224,
+  "octets_apres": 45405
+ },
+ "public/oiseaux/s/cathartes-aura-0.webm": {
+  "note": "12.0s -> 3.3s (3 passages)",
+  "octets_avant": 35010,
+  "octets_apres": 22451
+ },
+ "public/oiseaux/s/cathartes-aura-1.webm": {
+  "note": "12.0s -> 4.2s (6 passages)",
+  "octets_avant": 37045,
+  "octets_apres": 36299
+ },
+ "public/oiseaux/s/certhia-brachydactyla-0.webm": {
+  "note": "12.0s -> 3.3s (4 passages)",
+  "octets_avant": 35140,
+  "octets_apres": 24789
+ },
+ "public/oiseaux/s/certhia-brachydactyla-1.webm": {
+  "note": "2.9s -> 2.3s (2 passages)",
+  "octets_avant": 9533,
+  "octets_apres": 15711
+ },
+ "public/oiseaux/s/certhia-familiaris-0.webm": {
+  "note": "8.1s -> 3.7s (7 passages)",
+  "octets_avant": 24585,
+  "octets_apres": 36610
+ },
+ "public/oiseaux/s/certhia-familiaris-1.webm": {
+  "note": "12.0s -> 9.8s (6 passages)",
+  "octets_avant": 35138,
+  "octets_apres": 57853
+ },
+ "public/oiseaux/s/cettia-cetti-0.webm": {
+  "note": "2.9s -> 2.6s (1 passages)",
+  "octets_avant": 9693,
+  "octets_apres": 14769
+ },
+ "public/oiseaux/s/cettia-cetti-1.webm": {
+  "note": "9.7s -> 6.2s (4 passages)",
+  "octets_avant": 29633,
+  "octets_apres": 39929
+ },
+ "public/oiseaux/s/charadrius-alexandrinus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 37380,
+  "octets_apres": 37380
+ },
+ "public/oiseaux/s/charadrius-alexandrinus-1.webm": {
+  "note": "12.0s -> 8.4s (6 passages)",
+  "octets_avant": 36030,
+  "octets_apres": 50308
+ },
+ "public/oiseaux/s/charadrius-dubius-0.webm": {
+  "note": "12.0s -> 10.3s (2 passages)",
+  "octets_avant": 37602,
+  "octets_apres": 61228
+ },
+ "public/oiseaux/s/charadrius-dubius-1.webm": {
+  "note": "12.0s -> 6.1s (4 passages)",
+  "octets_avant": 37515,
+  "octets_apres": 37049
+ },
+ "public/oiseaux/s/charadrius-hiaticula-0.webm": {
+  "note": "12.0s -> 9.9s (3 passages)",
+  "octets_avant": 38140,
+  "octets_apres": 56442
+ },
+ "public/oiseaux/s/charadrius-hiaticula-1.webm": {
+  "note": "12.0s -> 10.3s (4 passages)",
+  "octets_avant": 36478,
+  "octets_apres": 60633
+ },
+ "public/oiseaux/s/chionis-albus-0.webm": {
+  "note": "10.9s -> 7.5s (1 passages)",
+  "octets_avant": 32367,
+  "octets_apres": 37819
+ },
+ "public/oiseaux/s/chionis-albus-1.webm": {
+  "note": "7.1s -> 3.3s (2 passages)",
+  "octets_avant": 21941,
+  "octets_apres": 19076
+ },
+ "public/oiseaux/s/chlidonias-hybrida-0.webm": {
+  "note": "7.1s -> 1.5s (4 passages)",
+  "octets_avant": 20719,
+  "octets_apres": 10846
+ },
+ "public/oiseaux/s/chlidonias-hybrida-1.webm": {
+  "note": "7.0s -> 1.4s (4 passages)",
+  "octets_avant": 20304,
+  "octets_apres": 10763
+ },
+ "public/oiseaux/s/chlidonias-niger-0.webm": {
+  "note": "12.0s -> 4.8s (6 passages)",
+  "octets_avant": 43580,
+  "octets_apres": 34408
+ },
+ "public/oiseaux/s/chlidonias-niger-1.webm": {
+  "note": "12.0s -> 11.7s (2 passages)",
+  "octets_avant": 41567,
+  "octets_apres": 69631
+ },
+ "public/oiseaux/s/chloris-chloris-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 16927,
+  "octets_apres": 16927
+ },
+ "public/oiseaux/s/chloris-chloris-1.webm": {
+  "note": "12.0s -> 8.2s (8 passages)",
+  "octets_avant": 40987,
+  "octets_apres": 52021
+ },
+ "public/oiseaux/s/chroicocephalus-genei-0.webm": {
+  "note": "12.0s -> 8.7s (5 passages)",
+  "octets_avant": 35835,
+  "octets_apres": 49616
+ },
+ "public/oiseaux/s/chroicocephalus-genei-1.webm": {
+  "note": "10.4s -> 8.3s (1 passages)",
+  "octets_avant": 31811,
+  "octets_apres": 46467
+ },
+ "public/oiseaux/s/chroicocephalus-ridibundus-0.webm": {
+  "note": "12.0s -> 9.3s (3 passages)",
+  "octets_avant": 36503,
+  "octets_apres": 52105
+ },
+ "public/oiseaux/s/chroicocephalus-ridibundus-1.webm": {
+  "note": "12.0s -> 11.5s (4 passages)",
+  "octets_avant": 36888,
+  "octets_apres": 65585
+ },
+ "public/oiseaux/s/ciconia-ciconia-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35657,
+  "octets_apres": 35657
+ },
+ "public/oiseaux/s/ciconia-ciconia-1.webm": {
+  "note": "12.0s -> 10.4s (2 passages)",
+  "octets_avant": 35565,
+  "octets_apres": 61548
+ },
+ "public/oiseaux/s/ciconia-nigra-0.webm": {
+  "note": "12.0s -> 11.9s (2 passages)",
+  "octets_avant": 38048,
+  "octets_apres": 71853
+ },
+ "public/oiseaux/s/ciconia-nigra-1.webm": {
+  "note": "12.0s -> 8.6s (12 passages)",
+  "octets_avant": 37228,
+  "octets_apres": 58927
+ },
+ "public/oiseaux/s/cinclus-cinclus-0.webm": {
+  "note": "12.0s -> 8.6s (6 passages)",
+  "octets_avant": 36572,
+  "octets_apres": 58341
+ },
+ "public/oiseaux/s/cinclus-cinclus-1.webm": {
+  "note": "12.0s -> 4.7s (7 passages)",
+  "octets_avant": 35057,
+  "octets_apres": 34836
+ },
+ "public/oiseaux/s/circaetus-gallicus-0.webm": {
+  "note": "8.5s -> 1.2s (2 passages)",
+  "octets_avant": 25527,
+  "octets_apres": 9565
+ },
+ "public/oiseaux/s/circaetus-gallicus-1.webm": {
+  "note": "9.3s -> 3.4s (5 passages)",
+  "octets_avant": 28224,
+  "octets_apres": 26420
+ },
+ "public/oiseaux/s/circus-aeruginosus-0.webm": {
+  "note": "10.4s -> 7.8s (8 passages)",
+  "octets_avant": 32437,
+  "octets_apres": 53570
+ },
+ "public/oiseaux/s/circus-aeruginosus-1.webm": {
+  "note": "6.6s -> 2.8s (3 passages)",
+  "octets_avant": 20757,
+  "octets_apres": 19147
+ },
+ "public/oiseaux/s/circus-cyaneus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34854,
+  "octets_apres": 34854
+ },
+ "public/oiseaux/s/circus-cyaneus-1.webm": {
+  "note": "12.0s -> 8.1s (7 passages)",
+  "octets_avant": 37623,
+  "octets_apres": 54947
+ },
+ "public/oiseaux/s/circus-pygargus-0.webm": {
+  "note": "12.0s -> 5.2s (4 passages)",
+  "octets_avant": 36806,
+  "octets_apres": 31062
+ },
+ "public/oiseaux/s/circus-pygargus-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36700,
+  "octets_apres": 36700
+ },
+ "public/oiseaux/s/cisticola-juncidis-0.webm": {
+  "note": "12.0s -> 2.2s (2 passages)",
+  "octets_avant": 35972,
+  "octets_apres": 13351
+ },
+ "public/oiseaux/s/cisticola-juncidis-1.webm": {
+  "note": "12.0s -> 9.2s (8 passages)",
+  "octets_avant": 34770,
+  "octets_apres": 59409
+ },
+ "public/oiseaux/s/coccothraustes-coccothraustes-0.webm": {
+  "note": "11.9s -> 3.0s (6 passages)",
+  "octets_avant": 40774,
+  "octets_apres": 26763
+ },
+ "public/oiseaux/s/coccothraustes-coccothraustes-1.webm": {
+  "note": "12.0s -> 1.2s (2 passages)",
+  "octets_avant": 34983,
+  "octets_apres": 9294
+ },
+ "public/oiseaux/s/coloeus-monedula-0.webm": {
+  "note": "12.0s -> 4.3s (6 passages)",
+  "octets_avant": 36189,
+  "octets_apres": 31403
+ },
+ "public/oiseaux/s/coloeus-monedula-1.webm": {
+  "note": "6.5s -> 5.2s (3 passages)",
+  "octets_avant": 25258,
+  "octets_apres": 34038
+ },
+ "public/oiseaux/s/columba-livia-0.webm": {
+  "note": "12.0s -> 8.8s (6 passages)",
+  "octets_avant": 38375,
+  "octets_apres": 53565
+ },
+ "public/oiseaux/s/columba-livia-1.webm": {
+  "note": "8.7s -> 5.6s (6 passages)",
+  "octets_avant": 27254,
+  "octets_apres": 39218
+ },
+ "public/oiseaux/s/columba-oenas-0.webm": {
+  "note": "12.0s -> 3.5s (4 passages)",
+  "octets_avant": 35332,
+  "octets_apres": 24316
+ },
+ "public/oiseaux/s/columba-oenas-1.webm": {
+  "note": "7.4s -> 4.9s (4 passages)",
+  "octets_avant": 21996,
+  "octets_apres": 32131
+ },
+ "public/oiseaux/s/columba-palumbus-0.webm": {
+  "note": "12.0s -> 9.3s (8 passages)",
+  "octets_avant": 36553,
+  "octets_apres": 65137
+ },
+ "public/oiseaux/s/columba-palumbus-1.webm": {
+  "note": "12.0s -> 10.4s (3 passages)",
+  "octets_avant": 38661,
+  "octets_apres": 57987
+ },
+ "public/oiseaux/s/coracias-garrulus-0.webm": {
+  "note": "12.0s -> 4.7s (5 passages)",
+  "octets_avant": 35959,
+  "octets_apres": 31019
+ },
+ "public/oiseaux/s/coracias-garrulus-1.webm": {
+  "note": "11.5s -> 3.2s (5 passages)",
+  "octets_avant": 33969,
+  "octets_apres": 21957
+ },
+ "public/oiseaux/s/corvus-corax-0.webm": {
+  "note": "12.0s -> 8.4s (8 passages)",
+  "octets_avant": 37680,
+  "octets_apres": 52536
+ },
+ "public/oiseaux/s/corvus-corax-1.webm": {
+  "note": "5.9s -> 2.4s (2 passages)",
+  "octets_avant": 18102,
+  "octets_apres": 15649
+ },
+ "public/oiseaux/s/corvus-corone-0.webm": {
+  "note": "12.0s -> 5.2s (8 passages)",
+  "octets_avant": 36512,
+  "octets_apres": 42613
+ },
+ "public/oiseaux/s/corvus-corone-1.webm": {
+  "note": "11.0s -> 7.3s (8 passages)",
+  "octets_avant": 34045,
+  "octets_apres": 48335
+ },
+ "public/oiseaux/s/corvus-frugilegus-0.webm": {
+  "note": "12.0s -> 11.8s (4 passages)",
+  "octets_avant": 37864,
+  "octets_apres": 70953
+ },
+ "public/oiseaux/s/corvus-frugilegus-1.webm": {
+  "note": "8.5s -> 1.3s (3 passages)",
+  "octets_avant": 25448,
+  "octets_apres": 11163
+ },
+ "public/oiseaux/s/coturnix-coturnix-0.webm": {
+  "note": "12.0s -> 7.2s (8 passages)",
+  "octets_avant": 37732,
+  "octets_apres": 50135
+ },
+ "public/oiseaux/s/coturnix-coturnix-1.webm": {
+  "note": "12.0s -> 1.7s (3 passages)",
+  "octets_avant": 35926,
+  "octets_apres": 10701
+ },
+ "public/oiseaux/s/cuculus-canorus-0.webm": {
+  "note": "12.0s -> 4.3s (7 passages)",
+  "octets_avant": 35156,
+  "octets_apres": 29217
+ },
+ "public/oiseaux/s/cuculus-canorus-1.webm": {
+  "note": "12.0s -> 10.8s (4 passages)",
+  "octets_avant": 38521,
+  "octets_apres": 63977
+ },
+ "public/oiseaux/s/curruca-melanocephala-0.webm": {
+  "note": "8.4s -> 7.2s (1 passages)",
+  "octets_avant": 25901,
+  "octets_apres": 39392
+ },
+ "public/oiseaux/s/curruca-melanocephala-1.webm": {
+  "note": "12.0s -> 9.3s (5 passages)",
+  "octets_avant": 39415,
+  "octets_apres": 61360
+ },
+ "public/oiseaux/s/cyanistes-caeruleus-0.webm": {
+  "note": "9.4s -> 4.8s (4 passages)",
+  "octets_avant": 29015,
+  "octets_apres": 34042
+ },
+ "public/oiseaux/s/cyanistes-caeruleus-1.webm": {
+  "note": "8.2s -> 1.6s (2 passages)",
+  "octets_avant": 24794,
+  "octets_apres": 12033
+ },
+ "public/oiseaux/s/cygnus-cygnus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36855,
+  "octets_apres": 36855
+ },
+ "public/oiseaux/s/cygnus-cygnus-1.webm": {
+  "note": "12.0s -> 8.9s (10 passages)",
+  "octets_avant": 38058,
+  "octets_apres": 63567
+ },
+ "public/oiseaux/s/cygnus-olor-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 31429,
+  "octets_apres": 31429
+ },
+ "public/oiseaux/s/cygnus-olor-1.webm": {
+  "note": "12.0s -> 1.4s (2 passages)",
+  "octets_avant": 35377,
+  "octets_apres": 10811
+ },
+ "public/oiseaux/s/dacelo-novaeguineae-0.webm": {
+  "note": "9.8s -> 8.1s (1 passages)",
+  "octets_avant": 29366,
+  "octets_apres": 42054
+ },
+ "public/oiseaux/s/dacelo-novaeguineae-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35869,
+  "octets_apres": 35869
+ },
+ "public/oiseaux/s/delichon-urbicum-0.webm": {
+  "note": "garde : rien d'actif",
+  "octets_avant": 19794,
+  "octets_apres": 19794
+ },
+ "public/oiseaux/s/delichon-urbicum-1.webm": {
+  "note": "12.0s -> 9.7s (4 passages)",
+  "octets_avant": 39352,
+  "octets_apres": 62095
+ },
+ "public/oiseaux/s/dendrocopos-major-0.webm": {
+  "note": "12.0s -> 7.6s (5 passages)",
+  "octets_avant": 37339,
+  "octets_apres": 51159
+ },
+ "public/oiseaux/s/dendrocopos-major-1.webm": {
+  "note": "4.4s -> 3.4s (4 passages)",
+  "octets_avant": 14143,
+  "octets_apres": 26815
+ },
+ "public/oiseaux/s/dendrocoptes-medius-0.webm": {
+  "note": "5.3s -> 4.7s (5 passages)",
+  "octets_avant": 17051,
+  "octets_apres": 32734
+ },
+ "public/oiseaux/s/dendrocoptes-medius-1.webm": {
+  "note": "12.0s -> 10.3s (3 passages)",
+  "octets_avant": 37604,
+  "octets_apres": 57661
+ },
+ "public/oiseaux/s/diomedea-exulans-0.webm": {
+  "note": "12.0s -> 9.7s (6 passages)",
+  "octets_avant": 38768,
+  "octets_apres": 58042
+ },
+ "public/oiseaux/s/diomedea-exulans-1.webm": {
+  "note": "12.0s -> 9.6s (7 passages)",
+  "octets_avant": 40784,
+  "octets_apres": 57522
+ },
+ "public/oiseaux/s/dromaius-novaehollandiae-0.webm": {
+  "note": "4.6s -> 1.6s (2 passages)",
+  "octets_avant": 14743,
+  "octets_apres": 9465
+ },
+ "public/oiseaux/s/dromaius-novaehollandiae-1.webm": {
+  "note": "11.9s -> 1.5s (2 passages)",
+  "octets_avant": 35983,
+  "octets_apres": 8895
+ },
+ "public/oiseaux/s/dryobates-minor-0.webm": {
+  "note": "12.0s -> 9.3s (2 passages)",
+  "octets_avant": 35768,
+  "octets_apres": 52644
+ },
+ "public/oiseaux/s/dryobates-minor-1.webm": {
+  "note": "5.0s -> 3.0s (2 passages)",
+  "octets_avant": 15752,
+  "octets_apres": 19445
+ },
+ "public/oiseaux/s/dryocopus-martius-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 30614,
+  "octets_apres": 30614
+ },
+ "public/oiseaux/s/dryocopus-martius-1.webm": {
+  "note": "12.0s -> 3.1s (4 passages)",
+  "octets_avant": 37076,
+  "octets_apres": 23836
+ },
+ "public/oiseaux/s/egretta-garzetta-0.webm": {
+  "note": "12.0s -> 10.2s (3 passages)",
+  "octets_avant": 36933,
+  "octets_apres": 56789
+ },
+ "public/oiseaux/s/egretta-garzetta-1.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 18718,
+  "octets_apres": 18718
+ },
+ "public/oiseaux/s/elanus-caeruleus-0.webm": {
+  "note": "12.0s -> 4.7s (9 passages)",
+  "octets_avant": 35430,
+  "octets_apres": 28895
+ },
+ "public/oiseaux/s/elanus-caeruleus-1.webm": {
+  "note": "12.0s -> 9.4s (7 passages)",
+  "octets_avant": 36559,
+  "octets_apres": 56694
+ },
+ "public/oiseaux/s/emberiza-calandra-0.webm": {
+  "note": "12.0s -> 6.0s (4 passages)",
+  "octets_avant": 39694,
+  "octets_apres": 44107
+ },
+ "public/oiseaux/s/emberiza-calandra-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36755,
+  "octets_apres": 36755
+ },
+ "public/oiseaux/s/emberiza-cia-0.webm": {
+  "note": "12.0s -> 9.2s (6 passages)",
+  "octets_avant": 38968,
+  "octets_apres": 60370
+ },
+ "public/oiseaux/s/emberiza-cia-1.webm": {
+  "note": "12.0s -> 5.6s (3 passages)",
+  "octets_avant": 35616,
+  "octets_apres": 29745
+ },
+ "public/oiseaux/s/emberiza-cirlus-0.webm": {
+  "note": "12.0s -> 3.8s (5 passages)",
+  "octets_avant": 36127,
+  "octets_apres": 30905
+ },
+ "public/oiseaux/s/emberiza-cirlus-1.webm": {
+  "note": "12.0s -> 7.0s (3 passages)",
+  "octets_avant": 44341,
+  "octets_apres": 45635
+ },
+ "public/oiseaux/s/emberiza-citrinella-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 17147,
+  "octets_apres": 17147
+ },
+ "public/oiseaux/s/emberiza-citrinella-1.webm": {
+  "note": "12.0s -> 5.0s (3 passages)",
+  "octets_avant": 42465,
+  "octets_apres": 31092
+ },
+ "public/oiseaux/s/emberiza-hortulana-0.webm": {
+  "note": "12.0s -> 1.7s (2 passages)",
+  "octets_avant": 35604,
+  "octets_apres": 12340
+ },
+ "public/oiseaux/s/emberiza-hortulana-1.webm": {
+  "note": "12.0s -> 9.4s (2 passages)",
+  "octets_avant": 38165,
+  "octets_apres": 55465
+ },
+ "public/oiseaux/s/emberiza-schoeniclus-0.webm": {
+  "note": "12.0s -> 2.2s (4 passages)",
+  "octets_avant": 34143,
+  "octets_apres": 16615
+ },
+ "public/oiseaux/s/emberiza-schoeniclus-1.webm": {
+  "note": "12.0s -> 8.5s (6 passages)",
+  "octets_avant": 38266,
+  "octets_apres": 52211
+ },
+ "public/oiseaux/s/erithacus-rubecula-0.webm": {
+  "note": "12.0s -> 4.4s (2 passages)",
+  "octets_avant": 36011,
+  "octets_apres": 28639
+ },
+ "public/oiseaux/s/erithacus-rubecula-1.webm": {
+  "note": "12.0s -> 6.5s (5 passages)",
+  "octets_avant": 37319,
+  "octets_apres": 47151
+ },
+ "public/oiseaux/s/falco-columbarius-0.webm": {
+  "note": "12.0s -> 1.3s (1 passages)",
+  "octets_avant": 37283,
+  "octets_apres": 9361
+ },
+ "public/oiseaux/s/falco-columbarius-1.webm": {
+  "note": "12.0s -> 6.0s (8 passages)",
+  "octets_avant": 35757,
+  "octets_apres": 41585
+ },
+ "public/oiseaux/s/falco-peregrinus-0.webm": {
+  "note": "12.0s -> 9.4s (4 passages)",
+  "octets_avant": 36344,
+  "octets_apres": 52614
+ },
+ "public/oiseaux/s/falco-peregrinus-1.webm": {
+  "note": "12.0s -> 2.8s (4 passages)",
+  "octets_avant": 34648,
+  "octets_apres": 20311
+ },
+ "public/oiseaux/s/falco-subbuteo-0.webm": {
+  "note": "7.9s -> 7.4s (2 passages)",
+  "octets_avant": 24758,
+  "octets_apres": 39803
+ },
+ "public/oiseaux/s/falco-subbuteo-1.webm": {
+  "note": "12.0s -> 9.7s (9 passages)",
+  "octets_avant": 45262,
+  "octets_apres": 66385
+ },
+ "public/oiseaux/s/falco-tinnunculus-0.webm": {
+  "note": "6.3s -> 2.5s (1 passages)",
+  "octets_avant": 19367,
+  "octets_apres": 13394
+ },
+ "public/oiseaux/s/falco-tinnunculus-1.webm": {
+  "note": "11.8s -> 10.0s (3 passages)",
+  "octets_avant": 36162,
+  "octets_apres": 63869
+ },
+ "public/oiseaux/s/ficedula-hypoleuca-0.webm": {
+  "note": "12.0s -> 8.0s (3 passages)",
+  "octets_avant": 36476,
+  "octets_apres": 43451
+ },
+ "public/oiseaux/s/ficedula-hypoleuca-1.webm": {
+  "note": "12.0s -> 7.8s (6 passages)",
+  "octets_avant": 37017,
+  "octets_apres": 48224
+ },
+ "public/oiseaux/s/fratercula-arctica-0.webm": {
+  "note": "12.0s -> 5.1s (6 passages)",
+  "octets_avant": 35729,
+  "octets_apres": 36078
+ },
+ "public/oiseaux/s/fratercula-arctica-1.webm": {
+  "note": "12.0s -> 6.1s (5 passages)",
+  "octets_avant": 38249,
+  "octets_apres": 40484
+ },
+ "public/oiseaux/s/fringilla-coelebs-0.webm": {
+  "note": "12.0s -> 7.5s (3 passages)",
+  "octets_avant": 36194,
+  "octets_apres": 47464
+ },
+ "public/oiseaux/s/fringilla-coelebs-1.webm": {
+  "note": "12.0s -> 4.9s (5 passages)",
+  "octets_avant": 36351,
+  "octets_apres": 31972
+ },
+ "public/oiseaux/s/fringilla-montifringilla-0.webm": {
+  "note": "12.0s -> 6.1s (6 passages)",
+  "octets_avant": 35851,
+  "octets_apres": 39819
+ },
+ "public/oiseaux/s/fringilla-montifringilla-1.webm": {
+  "note": "4.4s -> 1.1s (2 passages)",
+  "octets_avant": 13592,
+  "octets_apres": 7806
+ },
+ "public/oiseaux/s/fulica-atra-0.webm": {
+  "note": "12.0s -> 3.3s (2 passages)",
+  "octets_avant": 36302,
+  "octets_apres": 19994
+ },
+ "public/oiseaux/s/fulica-atra-1.webm": {
+  "note": "12.0s -> 4.5s (6 passages)",
+  "octets_avant": 36839,
+  "octets_apres": 34379
+ },
+ "public/oiseaux/s/fulmarus-glacialis-0.webm": {
+  "note": "12.0s -> 9.1s (4 passages)",
+  "octets_avant": 35635,
+  "octets_apres": 53228
+ },
+ "public/oiseaux/s/fulmarus-glacialis-1.webm": {
+  "note": "12.0s -> 7.8s (4 passages)",
+  "octets_avant": 36511,
+  "octets_apres": 45147
+ },
+ "public/oiseaux/s/galerida-cristata-0.webm": {
+  "note": "11.9s -> 4.5s (3 passages)",
+  "octets_avant": 36195,
+  "octets_apres": 27028
+ },
+ "public/oiseaux/s/galerida-cristata-1.webm": {
+  "note": "8.1s -> 3.4s (3 passages)",
+  "octets_avant": 26263,
+  "octets_apres": 23737
+ },
+ "public/oiseaux/s/gallinago-gallinago-0.webm": {
+  "note": "12.0s -> 5.7s (6 passages)",
+  "octets_avant": 36177,
+  "octets_apres": 37093
+ },
+ "public/oiseaux/s/gallinago-gallinago-1.webm": {
+  "note": "12.0s -> 10.6s (1 passages)",
+  "octets_avant": 36562,
+  "octets_apres": 53949
+ },
+ "public/oiseaux/s/gallinula-chloropus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35842,
+  "octets_apres": 35842
+ },
+ "public/oiseaux/s/gallinula-chloropus-1.webm": {
+  "note": "3.5s -> 2.5s (2 passages)",
+  "octets_avant": 11358,
+  "octets_apres": 17074
+ },
+ "public/oiseaux/s/gallus-gallus-0.webm": {
+  "note": "5.3s -> 1.9s (1 passages)",
+  "octets_avant": 17929,
+  "octets_apres": 11206
+ },
+ "public/oiseaux/s/gallus-gallus-1.webm": {
+  "note": "2.7s -> 2.7s (1 passages)",
+  "octets_avant": 10158,
+  "octets_apres": 16945
+ },
+ "public/oiseaux/s/garrulus-glandarius-0.webm": {
+  "note": "6.8s -> 2.2s (2 passages)",
+  "octets_avant": 20012,
+  "octets_apres": 13898
+ },
+ "public/oiseaux/s/garrulus-glandarius-1.webm": {
+  "note": "12.0s -> 2.2s (3 passages)",
+  "octets_avant": 47017,
+  "octets_apres": 15628
+ },
+ "public/oiseaux/s/gelochelidon-nilotica-0.webm": {
+  "note": "7.5s -> 5.0s (4 passages)",
+  "octets_avant": 23917,
+  "octets_apres": 30659
+ },
+ "public/oiseaux/s/gelochelidon-nilotica-1.webm": {
+  "note": "12.0s -> 5.3s (8 passages)",
+  "octets_avant": 34974,
+  "octets_apres": 37242
+ },
+ "public/oiseaux/s/grus-grus-0.webm": {
+  "note": "12.0s -> 6.0s (5 passages)",
+  "octets_avant": 37702,
+  "octets_apres": 39240
+ },
+ "public/oiseaux/s/grus-grus-1.webm": {
+  "note": "12.0s -> 5.7s (2 passages)",
+  "octets_avant": 39582,
+  "octets_apres": 33308
+ },
+ "public/oiseaux/s/gypaetus-barbatus-0.webm": {
+  "note": "12.0s -> 6.4s (2 passages)",
+  "octets_avant": 34954,
+  "octets_apres": 35322
+ },
+ "public/oiseaux/s/gypaetus-barbatus-1.webm": {
+  "note": "12.0s -> 2.6s (2 passages)",
+  "octets_avant": 37523,
+  "octets_apres": 17499
+ },
+ "public/oiseaux/s/gyps-fulvus-0.webm": {
+  "note": "6.6s -> 2.5s (3 passages)",
+  "octets_avant": 19794,
+  "octets_apres": 16547
+ },
+ "public/oiseaux/s/gyps-fulvus-1.webm": {
+  "note": "12.0s -> 6.7s (7 passages)",
+  "octets_avant": 39741,
+  "octets_apres": 48347
+ },
+ "public/oiseaux/s/haematopus-ostralegus-0.webm": {
+  "note": "12.0s -> 11.8s (3 passages)",
+  "octets_avant": 39531,
+  "octets_apres": 70877
+ },
+ "public/oiseaux/s/haematopus-ostralegus-1.webm": {
+  "note": "12.0s -> 2.4s (2 passages)",
+  "octets_avant": 36569,
+  "octets_apres": 16160
+ },
+ "public/oiseaux/s/haliaeetus-albicilla-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 20266,
+  "octets_apres": 20266
+ },
+ "public/oiseaux/s/haliaeetus-albicilla-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 22021,
+  "octets_apres": 22021
+ },
+ "public/oiseaux/s/haliaeetus-leucocephalus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36913,
+  "octets_apres": 36913
+ },
+ "public/oiseaux/s/haliaeetus-leucocephalus-1.webm": {
+  "note": "12.0s -> 10.5s (6 passages)",
+  "octets_avant": 37911,
+  "octets_apres": 67118
+ },
+ "public/oiseaux/s/harpia-harpyja-0.webm": {
+  "note": "12.0s -> 9.1s (4 passages)",
+  "octets_avant": 40328,
+  "octets_apres": 53731
+ },
+ "public/oiseaux/s/harpia-harpyja-1.webm": {
+  "note": "12.0s -> 7.3s (5 passages)",
+  "octets_avant": 39503,
+  "octets_apres": 48335
+ },
+ "public/oiseaux/s/hieraaetus-pennatus-0.webm": {
+  "note": "8.2s -> 4.7s (1 passages)",
+  "octets_avant": 25657,
+  "octets_apres": 26913
+ },
+ "public/oiseaux/s/hieraaetus-pennatus-1.webm": {
+  "note": "12.0s -> 3.2s (6 passages)",
+  "octets_avant": 36244,
+  "octets_apres": 24116
+ },
+ "public/oiseaux/s/himantopus-himantopus-0.webm": {
+  "note": "3.0s -> 1.7s (1 passages)",
+  "octets_avant": 10205,
+  "octets_apres": 10222
+ },
+ "public/oiseaux/s/himantopus-himantopus-1.webm": {
+  "note": "6.1s -> 5.3s (6 passages)",
+  "octets_avant": 18894,
+  "octets_apres": 34622
+ },
+ "public/oiseaux/s/hippolais-polyglotta-0.webm": {
+  "note": "12.0s -> 5.9s (4 passages)",
+  "octets_avant": 41250,
+  "octets_apres": 38303
+ },
+ "public/oiseaux/s/hippolais-polyglotta-1.webm": {
+  "note": "12.0s -> 11.3s (5 passages)",
+  "octets_avant": 38878,
+  "octets_apres": 75123
+ },
+ "public/oiseaux/s/hirundo-rustica-0.webm": {
+  "note": "10.5s -> 8.2s (5 passages)",
+  "octets_avant": 32893,
+  "octets_apres": 50081
+ },
+ "public/oiseaux/s/hirundo-rustica-1.webm": {
+  "note": "12.0s -> 7.4s (10 passages)",
+  "octets_avant": 35691,
+  "octets_apres": 56623
+ },
+ "public/oiseaux/s/hydrocoloeus-minutus-0.webm": {
+  "note": "12.0s -> 11.1s (2 passages)",
+  "octets_avant": 40029,
+  "octets_apres": 62858
+ },
+ "public/oiseaux/s/hydrocoloeus-minutus-1.webm": {
+  "note": "12.0s -> 11.7s (4 passages)",
+  "octets_avant": 38401,
+  "octets_apres": 67396
+ },
+ "public/oiseaux/s/hydroprogne-caspia-0.webm": {
+  "note": "1.7s -> 0.9s (1 passages)",
+  "octets_avant": 5921,
+  "octets_apres": 5607
+ },
+ "public/oiseaux/s/hydroprogne-caspia-1.webm": {
+  "note": "1.7s -> 0.9s (1 passages)",
+  "octets_avant": 5921,
+  "octets_apres": 5607
+ },
+ "public/oiseaux/s/ichthyaetus-melanocephalus-0.webm": {
+  "note": "4.2s -> 1.7s (3 passages)",
+  "octets_avant": 13950,
+  "octets_apres": 11928
+ },
+ "public/oiseaux/s/ichthyaetus-melanocephalus-1.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 14386,
+  "octets_apres": 14386
+ },
+ "public/oiseaux/s/ixobrychus-minutus-0.webm": {
+  "note": "12.0s -> 3.5s (7 passages)",
+  "octets_avant": 36517,
+  "octets_apres": 29913
+ },
+ "public/oiseaux/s/ixobrychus-minutus-1.webm": {
+  "note": "12.0s -> 3.3s (7 passages)",
+  "octets_avant": 36971,
+  "octets_apres": 27988
+ },
+ "public/oiseaux/s/jynx-torquilla-0.webm": {
+  "note": "12.0s -> 6.7s (4 passages)",
+  "octets_avant": 49689,
+  "octets_apres": 45132
+ },
+ "public/oiseaux/s/jynx-torquilla-1.webm": {
+  "note": "12.0s -> 5.4s (4 passages)",
+  "octets_avant": 46891,
+  "octets_apres": 36941
+ },
+ "public/oiseaux/s/lagopus-muta-0.webm": {
+  "note": "5.7s -> 2.1s (2 passages)",
+  "octets_avant": 17709,
+  "octets_apres": 12877
+ },
+ "public/oiseaux/s/lagopus-muta-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35185,
+  "octets_apres": 35185
+ },
+ "public/oiseaux/s/lanius-collurio-0.webm": {
+  "note": "12.0s -> 8.5s (6 passages)",
+  "octets_avant": 38555,
+  "octets_apres": 57598
+ },
+ "public/oiseaux/s/lanius-collurio-1.webm": {
+  "note": "12.0s -> 6.6s (7 passages)",
+  "octets_avant": 36733,
+  "octets_apres": 45082
+ },
+ "public/oiseaux/s/lanius-excubitor-0.webm": {
+  "note": "12.0s -> 3.5s (4 passages)",
+  "octets_avant": 39479,
+  "octets_apres": 22366
+ },
+ "public/oiseaux/s/lanius-excubitor-1.webm": {
+  "note": "12.0s -> 8.2s (5 passages)",
+  "octets_avant": 37199,
+  "octets_apres": 51823
+ },
+ "public/oiseaux/s/lanius-meridionalis-0.webm": {
+  "note": "12.0s -> 2.4s (4 passages)",
+  "octets_avant": 42184,
+  "octets_apres": 15670
+ },
+ "public/oiseaux/s/lanius-meridionalis-1.webm": {
+  "note": "12.0s -> 8.8s (8 passages)",
+  "octets_avant": 39975,
+  "octets_apres": 62671
+ },
+ "public/oiseaux/s/lanius-senator-0.webm": {
+  "note": "12.0s -> 9.5s (11 passages)",
+  "octets_avant": 36129,
+  "octets_apres": 60569
+ },
+ "public/oiseaux/s/lanius-senator-1.webm": {
+  "note": "12.0s -> 8.8s (6 passages)",
+  "octets_avant": 36395,
+  "octets_apres": 56489
+ },
+ "public/oiseaux/s/larus-argentatus-0.webm": {
+  "note": "12.0s -> 9.3s (6 passages)",
+  "octets_avant": 37817,
+  "octets_apres": 55327
+ },
+ "public/oiseaux/s/larus-argentatus-1.webm": {
+  "note": "6.6s -> 5.3s (6 passages)",
+  "octets_avant": 21164,
+  "octets_apres": 36063
+ },
+ "public/oiseaux/s/larus-canus-0.webm": {
+  "note": "12.0s -> 8.8s (8 passages)",
+  "octets_avant": 36797,
+  "octets_apres": 57297
+ },
+ "public/oiseaux/s/larus-canus-1.webm": {
+  "note": "12.0s -> 3.4s (7 passages)",
+  "octets_avant": 41029,
+  "octets_apres": 32443
+ },
+ "public/oiseaux/s/larus-fuscus-0.webm": {
+  "note": "12.0s -> 8.9s (10 passages)",
+  "octets_avant": 37255,
+  "octets_apres": 58778
+ },
+ "public/oiseaux/s/larus-fuscus-1.webm": {
+  "note": "12.0s -> 11.6s (5 passages)",
+  "octets_avant": 38820,
+  "octets_apres": 70228
+ },
+ "public/oiseaux/s/larus-marinus-0.webm": {
+  "note": "12.0s -> 9.7s (5 passages)",
+  "octets_avant": 37393,
+  "octets_apres": 55741
+ },
+ "public/oiseaux/s/larus-marinus-1.webm": {
+  "note": "12.0s -> 5.9s (6 passages)",
+  "octets_avant": 36255,
+  "octets_apres": 38859
+ },
+ "public/oiseaux/s/larus-michahellis-0.webm": {
+  "note": "12.0s -> 5.0s (10 passages)",
+  "octets_avant": 36954,
+  "octets_apres": 43884
+ },
+ "public/oiseaux/s/larus-michahellis-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36694,
+  "octets_apres": 36694
+ },
+ "public/oiseaux/s/larus-ridibundus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 16922,
+  "octets_apres": 16922
+ },
+ "public/oiseaux/s/larus-ridibundus-1.webm": {
+  "note": "12.0s -> 9.2s (6 passages)",
+  "octets_avant": 37534,
+  "octets_apres": 54227
+ },
+ "public/oiseaux/s/limosa-lapponica-0.webm": {
+  "note": "12.0s -> 7.9s (9 passages)",
+  "octets_avant": 37224,
+  "octets_apres": 50312
+ },
+ "public/oiseaux/s/limosa-lapponica-1.webm": {
+  "note": "12.0s -> 8.9s (5 passages)",
+  "octets_avant": 43352,
+  "octets_apres": 58417
+ },
+ "public/oiseaux/s/limosa-limosa-0.webm": {
+  "note": "12.0s -> 11.8s (1 passages)",
+  "octets_avant": 45080,
+  "octets_apres": 70542
+ },
+ "public/oiseaux/s/limosa-limosa-1.webm": {
+  "note": "12.0s -> 11.4s (2 passages)",
+  "octets_avant": 44845,
+  "octets_apres": 72286
+ },
+ "public/oiseaux/s/linaria-cannabina-0.webm": {
+  "note": "12.0s -> 4.2s (4 passages)",
+  "octets_avant": 35771,
+  "octets_apres": 28189
+ },
+ "public/oiseaux/s/linaria-cannabina-1.webm": {
+  "note": "12.0s -> 8.4s (8 passages)",
+  "octets_avant": 37384,
+  "octets_apres": 59503
+ },
+ "public/oiseaux/s/locustella-luscinioides-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 37089,
+  "octets_apres": 37089
+ },
+ "public/oiseaux/s/locustella-luscinioides-1.webm": {
+  "note": "12.0s -> 10.3s (2 passages)",
+  "octets_avant": 71048,
+  "octets_apres": 101698
+ },
+ "public/oiseaux/s/locustella-naevia-0.webm": {
+  "note": "12.0s -> 6.3s (8 passages)",
+  "octets_avant": 37452,
+  "octets_apres": 42137
+ },
+ "public/oiseaux/s/locustella-naevia-1.webm": {
+  "note": "12.0s -> 9.9s (3 passages)",
+  "octets_avant": 40638,
+  "octets_apres": 80669
+ },
+ "public/oiseaux/s/lophophanes-cristatus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 13515,
+  "octets_apres": 13515
+ },
+ "public/oiseaux/s/lophophanes-cristatus-1.webm": {
+  "note": "11.9s -> 7.5s (6 passages)",
+  "octets_avant": 36171,
+  "octets_apres": 46444
+ },
+ "public/oiseaux/s/loxia-curvirostra-0.webm": {
+  "note": "9.2s -> 5.5s (7 passages)",
+  "octets_avant": 27359,
+  "octets_apres": 34309
+ },
+ "public/oiseaux/s/loxia-curvirostra-1.webm": {
+  "note": "9.0s -> 6.1s (4 passages)",
+  "octets_avant": 28351,
+  "octets_apres": 38387
+ },
+ "public/oiseaux/s/lullula-arborea-0.webm": {
+  "note": "10.8s -> 3.1s (3 passages)",
+  "octets_avant": 33311,
+  "octets_apres": 21563
+ },
+ "public/oiseaux/s/lullula-arborea-1.webm": {
+  "note": "12.0s -> 9.2s (3 passages)",
+  "octets_avant": 42671,
+  "octets_apres": 53804
+ },
+ "public/oiseaux/s/luscinia-megarhynchos-0.webm": {
+  "note": "12.0s -> 5.5s (8 passages)",
+  "octets_avant": 38897,
+  "octets_apres": 42970
+ },
+ "public/oiseaux/s/luscinia-megarhynchos-1.webm": {
+  "note": "12.0s -> 8.1s (3 passages)",
+  "octets_avant": 40658,
+  "octets_apres": 47650
+ },
+ "public/oiseaux/s/luscinia-svecica-0.webm": {
+  "note": "4.5s -> 4.0s (1 passages)",
+  "octets_avant": 14963,
+  "octets_apres": 24219
+ },
+ "public/oiseaux/s/luscinia-svecica-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 13164,
+  "octets_apres": 13164
+ },
+ "public/oiseaux/s/lyrurus-tetrix-0.webm": {
+  "note": "12.0s -> 5.2s (5 passages)",
+  "octets_avant": 36481,
+  "octets_apres": 33994
+ },
+ "public/oiseaux/s/lyrurus-tetrix-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34449,
+  "octets_apres": 34449
+ },
+ "public/oiseaux/s/mareca-penelope-0.webm": {
+  "note": "12.0s -> 5.8s (7 passages)",
+  "octets_avant": 35836,
+  "octets_apres": 39805
+ },
+ "public/oiseaux/s/mareca-penelope-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34150,
+  "octets_apres": 34150
+ },
+ "public/oiseaux/s/mareca-strepera-0.webm": {
+  "note": "12.0s -> 3.9s (5 passages)",
+  "octets_avant": 35450,
+  "octets_apres": 27114
+ },
+ "public/oiseaux/s/mareca-strepera-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36241,
+  "octets_apres": 36241
+ },
+ "public/oiseaux/s/meleagris-gallopavo-0.webm": {
+  "note": "11.9s -> 10.0s (6 passages)",
+  "octets_avant": 38474,
+  "octets_apres": 71204
+ },
+ "public/oiseaux/s/meleagris-gallopavo-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 6669,
+  "octets_apres": 6669
+ },
+ "public/oiseaux/s/melopsittacus-undulatus-0.webm": {
+  "note": "12.0s -> 2.4s (4 passages)",
+  "octets_avant": 34781,
+  "octets_apres": 15573
+ },
+ "public/oiseaux/s/melopsittacus-undulatus-1.webm": {
+  "note": "12.0s -> 9.0s (6 passages)",
+  "octets_avant": 35931,
+  "octets_apres": 54406
+ },
+ "public/oiseaux/s/menura-novaehollandiae-0.webm": {
+  "note": "12.0s -> 10.1s (6 passages)",
+  "octets_avant": 39027,
+  "octets_apres": 60575
+ },
+ "public/oiseaux/s/menura-novaehollandiae-1.webm": {
+  "note": "12.0s -> 10.6s (2 passages)",
+  "octets_avant": 38290,
+  "octets_apres": 59718
+ },
+ "public/oiseaux/s/mergus-merganser-0.webm": {
+  "note": "12.0s -> 8.1s (3 passages)",
+  "octets_avant": 34121,
+  "octets_apres": 44464
+ },
+ "public/oiseaux/s/mergus-merganser-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35011,
+  "octets_apres": 35011
+ },
+ "public/oiseaux/s/mergus-serrator-0.webm": {
+  "note": "12.0s -> 5.5s (10 passages)",
+  "octets_avant": 36037,
+  "octets_apres": 44780
+ },
+ "public/oiseaux/s/mergus-serrator-1.webm": {
+  "note": "12.0s -> 5.5s (10 passages)",
+  "octets_avant": 36195,
+  "octets_apres": 44938
+ },
+ "public/oiseaux/s/merops-apiaster-0.webm": {
+  "note": "12.0s -> 6.0s (4 passages)",
+  "octets_avant": 44884,
+  "octets_apres": 37723
+ },
+ "public/oiseaux/s/merops-apiaster-1.webm": {
+  "note": "12.0s -> 9.3s (6 passages)",
+  "octets_avant": 37590,
+  "octets_apres": 54959
+ },
+ "public/oiseaux/s/milvus-migrans-0.webm": {
+  "note": "11.9s -> 6.5s (3 passages)",
+  "octets_avant": 37752,
+  "octets_apres": 36305
+ },
+ "public/oiseaux/s/milvus-migrans-1.webm": {
+  "note": "7.4s -> 2.9s (5 passages)",
+  "octets_avant": 22845,
+  "octets_apres": 24354
+ },
+ "public/oiseaux/s/milvus-milvus-0.webm": {
+  "note": "12.0s -> 5.2s (5 passages)",
+  "octets_avant": 38055,
+  "octets_apres": 33759
+ },
+ "public/oiseaux/s/milvus-milvus-1.webm": {
+  "note": "8.9s -> 6.7s (1 passages)",
+  "octets_avant": 26674,
+  "octets_apres": 34337
+ },
+ "public/oiseaux/s/morus-bassanus-0.webm": {
+  "note": "12.0s -> 10.6s (3 passages)",
+  "octets_avant": 38152,
+  "octets_apres": 67634
+ },
+ "public/oiseaux/s/morus-bassanus-1.webm": {
+  "note": "12.0s -> 7.1s (5 passages)",
+  "octets_avant": 35949,
+  "octets_apres": 46673
+ },
+ "public/oiseaux/s/motacilla-alba-0.webm": {
+  "note": "4.9s -> 3.1s (4 passages)",
+  "octets_avant": 15462,
+  "octets_apres": 21879
+ },
+ "public/oiseaux/s/motacilla-alba-1.webm": {
+  "note": "12.0s -> 7.3s (11 passages)",
+  "octets_avant": 41004,
+  "octets_apres": 48660
+ },
+ "public/oiseaux/s/motacilla-cinerea-0.webm": {
+  "note": "11.9s -> 8.6s (4 passages)",
+  "octets_avant": 38213,
+  "octets_apres": 52104
+ },
+ "public/oiseaux/s/motacilla-cinerea-1.webm": {
+  "note": "12.0s -> 3.5s (3 passages)",
+  "octets_avant": 38836,
+  "octets_apres": 24824
+ },
+ "public/oiseaux/s/motacilla-flava-0.webm": {
+  "note": "12.0s -> 3.4s (6 passages)",
+  "octets_avant": 35226,
+  "octets_apres": 24334
+ },
+ "public/oiseaux/s/motacilla-flava-1.webm": {
+  "note": "11.8s -> 3.0s (6 passages)",
+  "octets_avant": 34455,
+  "octets_apres": 20034
+ },
+ "public/oiseaux/s/muscicapa-striata-0.webm": {
+  "note": "8.7s -> 7.7s (5 passages)",
+  "octets_avant": 27123,
+  "octets_apres": 56210
+ },
+ "public/oiseaux/s/muscicapa-striata-1.webm": {
+  "note": "12.0s -> 9.0s (6 passages)",
+  "octets_avant": 36295,
+  "octets_apres": 59552
+ },
+ "public/oiseaux/s/netta-rufina-0.webm": {
+  "note": "8.9s -> 2.4s (4 passages)",
+  "octets_avant": 31307,
+  "octets_apres": 18270
+ },
+ "public/oiseaux/s/netta-rufina-1.webm": {
+  "note": "12.0s -> 4.2s (7 passages)",
+  "octets_avant": 37362,
+  "octets_apres": 30959
+ },
+ "public/oiseaux/s/nucifraga-caryocatactes-0.webm": {
+  "note": "12.0s -> 10.1s (5 passages)",
+  "octets_avant": 38188,
+  "octets_apres": 62663
+ },
+ "public/oiseaux/s/nucifraga-caryocatactes-1.webm": {
+  "note": "12.0s -> 9.1s (7 passages)",
+  "octets_avant": 37020,
+  "octets_apres": 58495
+ },
+ "public/oiseaux/s/numenius-arquata-0.webm": {
+  "note": "12.0s -> 9.3s (4 passages)",
+  "octets_avant": 38204,
+  "octets_apres": 51711
+ },
+ "public/oiseaux/s/numenius-arquata-1.webm": {
+  "note": "12.0s -> 6.7s (8 passages)",
+  "octets_avant": 39783,
+  "octets_apres": 46042
+ },
+ "public/oiseaux/s/numenius-phaeopus-0.webm": {
+  "note": "12.0s -> 5.2s (2 passages)",
+  "octets_avant": 36513,
+  "octets_apres": 36038
+ },
+ "public/oiseaux/s/numenius-phaeopus-1.webm": {
+  "note": "12.0s -> 9.0s (4 passages)",
+  "octets_avant": 37615,
+  "octets_apres": 50813
+ },
+ "public/oiseaux/s/nycticorax-nycticorax-0.webm": {
+  "note": "8.5s -> 4.0s (5 passages)",
+  "octets_avant": 25999,
+  "octets_apres": 25335
+ },
+ "public/oiseaux/s/nycticorax-nycticorax-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34721,
+  "octets_apres": 34721
+ },
+ "public/oiseaux/s/oenanthe-oenanthe-0.webm": {
+  "note": "12.0s -> 3.5s (4 passages)",
+  "octets_avant": 35810,
+  "octets_apres": 24813
+ },
+ "public/oiseaux/s/oenanthe-oenanthe-1.webm": {
+  "note": "12.0s -> 7.0s (6 passages)",
+  "octets_avant": 36306,
+  "octets_apres": 49597
+ },
+ "public/oiseaux/s/oriolus-oriolus-0.webm": {
+  "note": "12.0s -> 4.9s (4 passages)",
+  "octets_avant": 35344,
+  "octets_apres": 30858
+ },
+ "public/oiseaux/s/oriolus-oriolus-1.webm": {
+  "note": "12.0s -> 8.8s (7 passages)",
+  "octets_avant": 37556,
+  "octets_apres": 61546
+ },
+ "public/oiseaux/s/otus-scops-0.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 14772,
+  "octets_apres": 14772
+ },
+ "public/oiseaux/s/otus-scops-1.webm": {
+  "note": "4.5s -> 1.9s (1 passages)",
+  "octets_avant": 17370,
+  "octets_apres": 11082
+ },
+ "public/oiseaux/s/pandion-haliaetus-0.webm": {
+  "note": "3.7s -> 2.5s (1 passages)",
+  "octets_avant": 11680,
+  "octets_apres": 13481
+ },
+ "public/oiseaux/s/pandion-haliaetus-1.webm": {
+  "note": "4.9s -> 3.3s (1 passages)",
+  "octets_avant": 15446,
+  "octets_apres": 17830
+ },
+ "public/oiseaux/s/panurus-biarmicus-0.webm": {
+  "note": "3.8s -> 1.1s (2 passages)",
+  "octets_avant": 12128,
+  "octets_apres": 7311
+ },
+ "public/oiseaux/s/panurus-biarmicus-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34294,
+  "octets_apres": 34294
+ },
+ "public/oiseaux/s/paradisaea-apoda-0.webm": {
+  "note": "10.9s -> 8.2s (4 passages)",
+  "octets_avant": 34543,
+  "octets_apres": 47952
+ },
+ "public/oiseaux/s/paradisaea-apoda-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35214,
+  "octets_apres": 35214
+ },
+ "public/oiseaux/s/parus-major-0.webm": {
+  "note": "6.2s -> 4.7s (2 passages)",
+  "octets_avant": 21778,
+  "octets_apres": 26279
+ },
+ "public/oiseaux/s/parus-major-1.webm": {
+  "note": "12.0s -> 4.0s (4 passages)",
+  "octets_avant": 35777,
+  "octets_apres": 28551
+ },
+ "public/oiseaux/s/parus-montanus-0.webm": {
+  "note": "7.0s -> 4.0s (2 passages)",
+  "octets_avant": 22273,
+  "octets_apres": 22489
+ },
+ "public/oiseaux/s/parus-montanus-1.webm": {
+  "note": "11.9s -> 6.0s (5 passages)",
+  "octets_avant": 36096,
+  "octets_apres": 38775
+ },
+ "public/oiseaux/s/passer-domesticus-0.webm": {
+  "note": "12.0s -> 9.1s (9 passages)",
+  "octets_avant": 36828,
+  "octets_apres": 64465
+ },
+ "public/oiseaux/s/passer-domesticus-1.webm": {
+  "note": "12.0s -> 7.4s (10 passages)",
+  "octets_avant": 36739,
+  "octets_apres": 57489
+ },
+ "public/oiseaux/s/passer-montanus-0.webm": {
+  "note": "7.2s -> 4.6s (6 passages)",
+  "octets_avant": 26463,
+  "octets_apres": 36271
+ },
+ "public/oiseaux/s/passer-montanus-1.webm": {
+  "note": "10.8s -> 7.2s (9 passages)",
+  "octets_avant": 33542,
+  "octets_apres": 53834
+ },
+ "public/oiseaux/s/pavo-cristatus-0.webm": {
+  "note": "12.0s -> 10.5s (4 passages)",
+  "octets_avant": 40980,
+  "octets_apres": 63358
+ },
+ "public/oiseaux/s/pavo-cristatus-1.webm": {
+  "note": "9.1s -> 4.2s (4 passages)",
+  "octets_avant": 28728,
+  "octets_apres": 27185
+ },
+ "public/oiseaux/s/pelecanus-onocrotalus-0.webm": {
+  "note": "1.7s -> 1.6s (2 passages)",
+  "octets_avant": 6090,
+  "octets_apres": 9741
+ },
+ "public/oiseaux/s/pelecanus-onocrotalus-1.webm": {
+  "note": "9.0s -> 7.7s (7 passages)",
+  "octets_avant": 29054,
+  "octets_apres": 48503
+ },
+ "public/oiseaux/s/perdix-perdix-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 24573,
+  "octets_apres": 24573
+ },
+ "public/oiseaux/s/perdix-perdix-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34302,
+  "octets_apres": 34302
+ },
+ "public/oiseaux/s/periparus-ater-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 12533,
+  "octets_apres": 12533
+ },
+ "public/oiseaux/s/periparus-ater-1.webm": {
+  "note": "12.0s -> 4.4s (3 passages)",
+  "octets_avant": 33353,
+  "octets_apres": 25706
+ },
+ "public/oiseaux/s/pernis-apivorus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36575,
+  "octets_apres": 36575
+ },
+ "public/oiseaux/s/pernis-apivorus-1.webm": {
+  "note": "12.0s -> 7.0s (5 passages)",
+  "octets_avant": 36933,
+  "octets_apres": 42278
+ },
+ "public/oiseaux/s/petronia-petronia-0.webm": {
+  "note": "11.3s -> 5.5s (8 passages)",
+  "octets_avant": 32323,
+  "octets_apres": 34441
+ },
+ "public/oiseaux/s/petronia-petronia-1.webm": {
+  "note": "12.0s -> 7.7s (8 passages)",
+  "octets_avant": 35513,
+  "octets_apres": 43116
+ },
+ "public/oiseaux/s/phalacrocorax-aristotelis-0.webm": {
+  "note": "12.0s -> 8.5s (10 passages)",
+  "octets_avant": 35033,
+  "octets_apres": 54146
+ },
+ "public/oiseaux/s/phalacrocorax-aristotelis-1.webm": {
+  "note": "12.0s -> 9.4s (5 passages)",
+  "octets_avant": 37483,
+  "octets_apres": 54240
+ },
+ "public/oiseaux/s/phalacrocorax-carbo-0.webm": {
+  "note": "11.2s -> 7.1s (6 passages)",
+  "octets_avant": 34531,
+  "octets_apres": 45288
+ },
+ "public/oiseaux/s/phalacrocorax-carbo-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 36299,
+  "octets_apres": 36299
+ },
+ "public/oiseaux/s/phasianus-colchicus-0.webm": {
+  "note": "11.2s -> 0.9s (1 passages)",
+  "octets_avant": 34845,
+  "octets_apres": 5734
+ },
+ "public/oiseaux/s/phasianus-colchicus-1.webm": {
+  "note": "10.4s -> 5.1s (6 passages)",
+  "octets_avant": 31273,
+  "octets_apres": 34458
+ },
+ "public/oiseaux/s/phoenicopterus-roseus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 27236,
+  "octets_apres": 27236
+ },
+ "public/oiseaux/s/phoenicopterus-roseus-1.webm": {
+  "note": "12.0s -> 11.5s (3 passages)",
+  "octets_avant": 39795,
+  "octets_apres": 67824
+ },
+ "public/oiseaux/s/phoenicurus-ochruros-0.webm": {
+  "note": "12.0s -> 6.7s (4 passages)",
+  "octets_avant": 37380,
+  "octets_apres": 44900
+ },
+ "public/oiseaux/s/phoenicurus-ochruros-1.webm": {
+  "note": "12.0s -> 8.3s (6 passages)",
+  "octets_avant": 39552,
+  "octets_apres": 50944
+ },
+ "public/oiseaux/s/phoenicurus-phoenicurus-0.webm": {
+  "note": "12.0s -> 4.3s (3 passages)",
+  "octets_avant": 36550,
+  "octets_apres": 26608
+ },
+ "public/oiseaux/s/phoenicurus-phoenicurus-1.webm": {
+  "note": "12.0s -> 4.1s (8 passages)",
+  "octets_avant": 35505,
+  "octets_apres": 36774
+ },
+ "public/oiseaux/s/phylloscopus-bonelli-0.webm": {
+  "note": "12.0s -> 1.6s (2 passages)",
+  "octets_avant": 36151,
+  "octets_apres": 11037
+ },
+ "public/oiseaux/s/phylloscopus-bonelli-1.webm": {
+  "note": "12.0s -> 4.0s (4 passages)",
+  "octets_avant": 36537,
+  "octets_apres": 24487
+ },
+ "public/oiseaux/s/phylloscopus-collybita-0.webm": {
+  "note": "12.0s -> 11.1s (2 passages)",
+  "octets_avant": 41127,
+  "octets_apres": 66335
+ },
+ "public/oiseaux/s/phylloscopus-collybita-1.webm": {
+  "note": "12.0s -> 7.6s (2 passages)",
+  "octets_avant": 36172,
+  "octets_apres": 41679
+ },
+ "public/oiseaux/s/phylloscopus-trochilus-0.webm": {
+  "note": "12.0s -> 2.4s (1 passages)",
+  "octets_avant": 35250,
+  "octets_apres": 13158
+ },
+ "public/oiseaux/s/phylloscopus-trochilus-1.webm": {
+  "note": "12.0s -> 9.4s (3 passages)",
+  "octets_avant": 41224,
+  "octets_apres": 54053
+ },
+ "public/oiseaux/s/pica-pica-0.webm": {
+  "note": "12.0s -> 2.7s (5 passages)",
+  "octets_avant": 36366,
+  "octets_apres": 20298
+ },
+ "public/oiseaux/s/pica-pica-1.webm": {
+  "note": "6.1s -> 1.1s (1 passages)",
+  "octets_avant": 18677,
+  "octets_apres": 6638
+ },
+ "public/oiseaux/s/picus-viridis-0.webm": {
+  "note": "3.6s -> 2.7s (1 passages)",
+  "octets_avant": 11738,
+  "octets_apres": 14872
+ },
+ "public/oiseaux/s/picus-viridis-1.webm": {
+  "note": "7.6s -> 5.4s (3 passages)",
+  "octets_avant": 23858,
+  "octets_apres": 35090
+ },
+ "public/oiseaux/s/platalea-leucorodia-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 2373,
+  "octets_apres": 2373
+ },
+ "public/oiseaux/s/platalea-leucorodia-1.webm": {
+  "note": "12.0s -> 7.7s (9 passages)",
+  "octets_avant": 35842,
+  "octets_apres": 56507
+ },
+ "public/oiseaux/s/plegadis-falcinellus-0.webm": {
+  "note": "4.0s -> 3.0s (4 passages)",
+  "octets_avant": 13009,
+  "octets_apres": 21256
+ },
+ "public/oiseaux/s/plegadis-falcinellus-1.webm": {
+  "note": "12.0s -> 8.5s (9 passages)",
+  "octets_avant": 37054,
+  "octets_apres": 56340
+ },
+ "public/oiseaux/s/pluvialis-apricaria-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 17552,
+  "octets_apres": 17552
+ },
+ "public/oiseaux/s/pluvialis-apricaria-1.webm": {
+  "note": "12.0s -> 1.8s (4 passages)",
+  "octets_avant": 35826,
+  "octets_apres": 14864
+ },
+ "public/oiseaux/s/pluvialis-squatarola-0.webm": {
+  "note": "4.7s -> 2.4s (2 passages)",
+  "octets_avant": 15253,
+  "octets_apres": 14555
+ },
+ "public/oiseaux/s/pluvialis-squatarola-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 19719,
+  "octets_apres": 19719
+ },
+ "public/oiseaux/s/podiceps-cristatus-0.webm": {
+  "note": "12.0s -> 11.0s (4 passages)",
+  "octets_avant": 37465,
+  "octets_apres": 66722
+ },
+ "public/oiseaux/s/podiceps-cristatus-1.webm": {
+  "note": "11.1s -> 6.4s (7 passages)",
+  "octets_avant": 34600,
+  "octets_apres": 38983
+ },
+ "public/oiseaux/s/podiceps-nigricollis-0.webm": {
+  "note": "11.9s -> 9.5s (9 passages)",
+  "octets_avant": 39817,
+  "octets_apres": 64307
+ },
+ "public/oiseaux/s/podiceps-nigricollis-1.webm": {
+  "note": "11.9s -> 6.8s (7 passages)",
+  "octets_avant": 36968,
+  "octets_apres": 44459
+ },
+ "public/oiseaux/s/poecile-montanus-0.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 11074,
+  "octets_apres": 11074
+ },
+ "public/oiseaux/s/poecile-montanus-1.webm": {
+  "note": "10.0s -> 5.2s (2 passages)",
+  "octets_avant": 30176,
+  "octets_apres": 30160
+ },
+ "public/oiseaux/s/poecile-palustris-0.webm": {
+  "note": "10.6s -> 2.1s (4 passages)",
+  "octets_avant": 30758,
+  "octets_apres": 19018
+ },
+ "public/oiseaux/s/poecile-palustris-1.webm": {
+  "note": "12.0s -> 8.2s (5 passages)",
+  "octets_avant": 35930,
+  "octets_apres": 51597
+ },
+ "public/oiseaux/s/prunella-collaris-0.webm": {
+  "note": "12.0s -> 9.6s (2 passages)",
+  "octets_avant": 38699,
+  "octets_apres": 53083
+ },
+ "public/oiseaux/s/prunella-collaris-1.webm": {
+  "note": "11.9s -> 6.2s (3 passages)",
+  "octets_avant": 36400,
+  "octets_apres": 35020
+ },
+ "public/oiseaux/s/prunella-modularis-0.webm": {
+  "note": "12.0s -> 6.0s (2 passages)",
+  "octets_avant": 35522,
+  "octets_apres": 33108
+ },
+ "public/oiseaux/s/prunella-modularis-1.webm": {
+  "note": "12.0s -> 2.0s (4 passages)",
+  "octets_avant": 35545,
+  "octets_apres": 13554
+ },
+ "public/oiseaux/s/psittacula-krameri-0.webm": {
+  "note": "12.0s -> 8.9s (7 passages)",
+  "octets_avant": 36945,
+  "octets_apres": 56191
+ },
+ "public/oiseaux/s/psittacula-krameri-1.webm": {
+  "note": "12.0s -> 8.8s (10 passages)",
+  "octets_avant": 36083,
+  "octets_apres": 63078
+ },
+ "public/oiseaux/s/psittacus-erithacus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 44517,
+  "octets_apres": 44517
+ },
+ "public/oiseaux/s/psittacus-erithacus-1.webm": {
+  "note": "12.0s -> 8.7s (5 passages)",
+  "octets_avant": 41683,
+  "octets_apres": 53559
+ },
+ "public/oiseaux/s/ptyonoprogne-rupestris-0.webm": {
+  "note": "12.0s -> 2.3s (4 passages)",
+  "octets_avant": 37348,
+  "octets_apres": 18804
+ },
+ "public/oiseaux/s/ptyonoprogne-rupestris-1.webm": {
+  "note": "7.6s -> 1.3s (2 passages)",
+  "octets_avant": 23327,
+  "octets_apres": 8275
+ },
+ "public/oiseaux/s/pygoscelis-adeliae-0.webm": {
+  "note": "12.0s -> 11.4s (5 passages)",
+  "octets_avant": 39529,
+  "octets_apres": 68539
+ },
+ "public/oiseaux/s/pygoscelis-adeliae-1.webm": {
+  "note": "12.0s -> 9.5s (3 passages)",
+  "octets_avant": 38226,
+  "octets_apres": 54876
+ },
+ "public/oiseaux/s/pyrrhocorax-graculus-0.webm": {
+  "note": "12.0s -> 9.6s (4 passages)",
+  "octets_avant": 41160,
+  "octets_apres": 57977
+ },
+ "public/oiseaux/s/pyrrhocorax-graculus-1.webm": {
+  "note": "9.2s -> 6.0s (7 passages)",
+  "octets_avant": 30976,
+  "octets_apres": 42677
+ },
+ "public/oiseaux/s/pyrrhocorax-pyrrhocorax-0.webm": {
+  "note": "7.5s -> 2.1s (3 passages)",
+  "octets_avant": 22122,
+  "octets_apres": 16417
+ },
+ "public/oiseaux/s/pyrrhocorax-pyrrhocorax-1.webm": {
+  "note": "12.0s -> 4.7s (5 passages)",
+  "octets_avant": 35434,
+  "octets_apres": 30069
+ },
+ "public/oiseaux/s/pyrrhula-pyrrhula-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 25398,
+  "octets_apres": 25398
+ },
+ "public/oiseaux/s/pyrrhula-pyrrhula-1.webm": {
+  "note": "9.9s -> 2.9s (4 passages)",
+  "octets_avant": 30162,
+  "octets_apres": 21079
+ },
+ "public/oiseaux/s/rallus-aquaticus-0.webm": {
+  "note": "12.0s -> 1.5s (4 passages)",
+  "octets_avant": 38062,
+  "octets_apres": 12965
+ },
+ "public/oiseaux/s/rallus-aquaticus-1.webm": {
+  "note": "12.0s -> 1.7s (3 passages)",
+  "octets_avant": 35606,
+  "octets_apres": 14361
+ },
+ "public/oiseaux/s/ramphastos-toco-0.webm": {
+  "note": "12.0s -> 4.5s (5 passages)",
+  "octets_avant": 41491,
+  "octets_apres": 32354
+ },
+ "public/oiseaux/s/ramphastos-toco-1.webm": {
+  "note": "12.0s -> 9.9s (7 passages)",
+  "octets_avant": 40790,
+  "octets_apres": 59986
+ },
+ "public/oiseaux/s/recurvirostra-avosetta-0.webm": {
+  "note": "5.5s -> 1.6s (3 passages)",
+  "octets_avant": 17166,
+  "octets_apres": 10905
+ },
+ "public/oiseaux/s/recurvirostra-avosetta-1.webm": {
+  "note": "12.0s -> 3.7s (5 passages)",
+  "octets_avant": 36580,
+  "octets_apres": 23955
+ },
+ "public/oiseaux/s/regulus-ignicapilla-0.webm": {
+  "note": "12.0s -> 11.6s (2 passages)",
+  "octets_avant": 37401,
+  "octets_apres": 75911
+ },
+ "public/oiseaux/s/regulus-ignicapilla-1.webm": {
+  "note": "9.7s -> 5.4s (3 passages)",
+  "octets_avant": 29576,
+  "octets_apres": 34641
+ },
+ "public/oiseaux/s/regulus-regulus-0.webm": {
+  "note": "3.1s -> 1.0s (1 passages)",
+  "octets_avant": 9625,
+  "octets_apres": 6322
+ },
+ "public/oiseaux/s/regulus-regulus-1.webm": {
+  "note": "12.0s -> 8.3s (3 passages)",
+  "octets_avant": 37128,
+  "octets_apres": 50259
+ },
+ "public/oiseaux/s/remiz-pendulinus-0.webm": {
+  "note": "12.0s -> 3.2s (5 passages)",
+  "octets_avant": 36145,
+  "octets_apres": 23017
+ },
+ "public/oiseaux/s/remiz-pendulinus-1.webm": {
+  "note": "8.5s -> 6.4s (3 passages)",
+  "octets_avant": 30100,
+  "octets_apres": 42756
+ },
+ "public/oiseaux/s/rhea-americana-0.webm": {
+  "note": "1.7s -> 1.5s (1 passages)",
+  "octets_avant": 5826,
+  "octets_apres": 8810
+ },
+ "public/oiseaux/s/rhea-americana-1.webm": {
+  "note": "9.8s -> 3.6s (3 passages)",
+  "octets_avant": 29236,
+  "octets_apres": 24437
+ },
+ "public/oiseaux/s/riparia-riparia-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35426,
+  "octets_apres": 35426
+ },
+ "public/oiseaux/s/riparia-riparia-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 18042,
+  "octets_apres": 18042
+ },
+ "public/oiseaux/s/rissa-tridactyla-0.webm": {
+  "note": "12.0s -> 10.4s (2 passages)",
+  "octets_avant": 38332,
+  "octets_apres": 59381
+ },
+ "public/oiseaux/s/rissa-tridactyla-1.webm": {
+  "note": "12.0s -> 9.8s (3 passages)",
+  "octets_avant": 39611,
+  "octets_apres": 56617
+ },
+ "public/oiseaux/s/sagittarius-serpentarius-0.webm": {
+  "note": "12.0s -> 9.5s (7 passages)",
+  "octets_avant": 45109,
+  "octets_apres": 65560
+ },
+ "public/oiseaux/s/sagittarius-serpentarius-1.webm": {
+  "note": "12.0s -> 6.3s (5 passages)",
+  "octets_avant": 41960,
+  "octets_apres": 44825
+ },
+ "public/oiseaux/s/saxicola-rubetra-0.webm": {
+  "note": "12.0s -> 9.0s (5 passages)",
+  "octets_avant": 36231,
+  "octets_apres": 56045
+ },
+ "public/oiseaux/s/saxicola-rubetra-1.webm": {
+  "note": "12.0s -> 9.1s (4 passages)",
+  "octets_avant": 48186,
+  "octets_apres": 63721
+ },
+ "public/oiseaux/s/saxicola-rubicola-0.webm": {
+  "note": "12.0s -> 7.5s (5 passages)",
+  "octets_avant": 42867,
+  "octets_apres": 41333
+ },
+ "public/oiseaux/s/saxicola-rubicola-1.webm": {
+  "note": "12.0s -> 6.8s (5 passages)",
+  "octets_avant": 36754,
+  "octets_apres": 43229
+ },
+ "public/oiseaux/s/saxicola-torquatus-0.webm": {
+  "note": "12.0s -> 4.0s (3 passages)",
+  "octets_avant": 36730,
+  "octets_apres": 26682
+ },
+ "public/oiseaux/s/saxicola-torquatus-1.webm": {
+  "note": "12.0s -> 5.0s (3 passages)",
+  "octets_avant": 44993,
+  "octets_apres": 31784
+ },
+ "public/oiseaux/s/scolopax-rusticola-0.webm": {
+  "note": "6.5s -> 1.8s (3 passages)",
+  "octets_avant": 18883,
+  "octets_apres": 15279
+ },
+ "public/oiseaux/s/scolopax-rusticola-1.webm": {
+  "note": "12.0s -> 2.5s (3 passages)",
+  "octets_avant": 35872,
+  "octets_apres": 17421
+ },
+ "public/oiseaux/s/serinus-serinus-0.webm": {
+  "note": "12.0s -> 9.9s (3 passages)",
+  "octets_avant": 37419,
+  "octets_apres": 56516
+ },
+ "public/oiseaux/s/serinus-serinus-1.webm": {
+  "note": "12.0s -> 2.6s (4 passages)",
+  "octets_avant": 36411,
+  "octets_apres": 21847
+ },
+ "public/oiseaux/s/sitta-europaea-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34304,
+  "octets_apres": 34304
+ },
+ "public/oiseaux/s/sitta-europaea-1.webm": {
+  "note": "7.4s -> 6.4s (2 passages)",
+  "octets_avant": 22990,
+  "octets_apres": 34424
+ },
+ "public/oiseaux/s/somateria-mollissima-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34465,
+  "octets_apres": 34465
+ },
+ "public/oiseaux/s/somateria-mollissima-1.webm": {
+  "note": "12.0s -> 6.0s (6 passages)",
+  "octets_avant": 37743,
+  "octets_apres": 38424
+ },
+ "public/oiseaux/s/spatula-clypeata-0.webm": {
+  "note": "12.0s -> 10.6s (3 passages)",
+  "octets_avant": 36076,
+  "octets_apres": 60691
+ },
+ "public/oiseaux/s/spatula-clypeata-1.webm": {
+  "note": "12.0s -> 10.8s (8 passages)",
+  "octets_avant": 36216,
+  "octets_apres": 72101
+ },
+ "public/oiseaux/s/spatula-querquedula-0.webm": {
+  "note": "12.0s -> 8.2s (8 passages)",
+  "octets_avant": 37540,
+  "octets_apres": 52851
+ },
+ "public/oiseaux/s/spatula-querquedula-1.webm": {
+  "note": "12.0s -> 5.5s (7 passages)",
+  "octets_avant": 37012,
+  "octets_apres": 37834
+ },
+ "public/oiseaux/s/spheniscus-demersus-0.webm": {
+  "note": "12.0s -> 8.8s (5 passages)",
+  "octets_avant": 38409,
+  "octets_apres": 53873
+ },
+ "public/oiseaux/s/spheniscus-demersus-1.webm": {
+  "note": "12.0s -> 10.2s (6 passages)",
+  "octets_avant": 39029,
+  "octets_apres": 61437
+ },
+ "public/oiseaux/s/spinus-spinus-0.webm": {
+  "note": "5.1s -> 0.8s (2 passages)",
+  "octets_avant": 15533,
+  "octets_apres": 7319
+ },
+ "public/oiseaux/s/spinus-spinus-1.webm": {
+  "note": "12.0s -> 10.0s (7 passages)",
+  "octets_avant": 37710,
+  "octets_apres": 59938
+ },
+ "public/oiseaux/s/sterna-hirundo-0.webm": {
+  "note": "12.0s -> 10.8s (6 passages)",
+  "octets_avant": 38168,
+  "octets_apres": 66246
+ },
+ "public/oiseaux/s/sterna-hirundo-1.webm": {
+  "note": "9.9s -> 6.5s (6 passages)",
+  "octets_avant": 30412,
+  "octets_apres": 44572
+ },
+ "public/oiseaux/s/sterna-paradisaea-0.webm": {
+  "note": "12.0s -> 6.5s (5 passages)",
+  "octets_avant": 41229,
+  "octets_apres": 41650
+ },
+ "public/oiseaux/s/sterna-paradisaea-1.webm": {
+  "note": "12.0s -> 11.2s (4 passages)",
+  "octets_avant": 41010,
+  "octets_apres": 68735
+ },
+ "public/oiseaux/s/sternula-albifrons-0.webm": {
+  "note": "7.3s -> 6.0s (2 passages)",
+  "octets_avant": 27921,
+  "octets_apres": 41836
+ },
+ "public/oiseaux/s/sternula-albifrons-1.webm": {
+  "note": "6.4s -> 3.9s (6 passages)",
+  "octets_avant": 20678,
+  "octets_apres": 30527
+ },
+ "public/oiseaux/s/streptopelia-decaocto-0.webm": {
+  "note": "7.0s -> 5.1s (4 passages)",
+  "octets_avant": 22084,
+  "octets_apres": 32936
+ },
+ "public/oiseaux/s/streptopelia-decaocto-1.webm": {
+  "note": "12.0s -> 9.8s (8 passages)",
+  "octets_avant": 36760,
+  "octets_apres": 64483
+ },
+ "public/oiseaux/s/streptopelia-turtur-0.webm": {
+  "note": "12.0s -> 6.1s (6 passages)",
+  "octets_avant": 36054,
+  "octets_apres": 38093
+ },
+ "public/oiseaux/s/streptopelia-turtur-1.webm": {
+  "note": "12.0s -> 10.2s (6 passages)",
+  "octets_avant": 45889,
+  "octets_apres": 61477
+ },
+ "public/oiseaux/s/strix-aluco-0.webm": {
+  "note": "12.0s -> 9.1s (6 passages)",
+  "octets_avant": 36242,
+  "octets_apres": 59107
+ },
+ "public/oiseaux/s/strix-aluco-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 35814,
+  "octets_apres": 35814
+ },
+ "public/oiseaux/s/struthio-camelus-0.webm": {
+  "note": "12.0s -> 8.0s (8 passages)",
+  "octets_avant": 35257,
+  "octets_apres": 52989
+ },
+ "public/oiseaux/s/struthio-camelus-1.webm": {
+  "note": "11.7s -> 5.4s (5 passages)",
+  "octets_avant": 35077,
+  "octets_apres": 35608
+ },
+ "public/oiseaux/s/sturnus-vulgaris-0.webm": {
+  "note": "12.0s -> 6.3s (8 passages)",
+  "octets_avant": 36215,
+  "octets_apres": 40110
+ },
+ "public/oiseaux/s/sturnus-vulgaris-1.webm": {
+  "note": "8.0s -> 5.5s (4 passages)",
+  "octets_avant": 26059,
+  "octets_apres": 33676
+ },
+ "public/oiseaux/s/sylvia-atricapilla-0.webm": {
+  "note": "12.0s -> 8.0s (5 passages)",
+  "octets_avant": 36422,
+  "octets_apres": 52570
+ },
+ "public/oiseaux/s/sylvia-atricapilla-1.webm": {
+  "note": "12.0s -> 4.1s (7 passages)",
+  "octets_avant": 47181,
+  "octets_apres": 33219
+ },
+ "public/oiseaux/s/sylvia-borin-0.webm": {
+  "note": "12.0s -> 12.0s (1 passages)",
+  "octets_avant": 42744,
+  "octets_apres": 68885
+ },
+ "public/oiseaux/s/sylvia-borin-1.webm": {
+  "note": "12.0s -> 9.3s (5 passages)",
+  "octets_avant": 44387,
+  "octets_apres": 59831
+ },
+ "public/oiseaux/s/sylvia-cantillans-0.webm": {
+  "note": "12.0s -> 8.5s (4 passages)",
+  "octets_avant": 46262,
+  "octets_apres": 59930
+ },
+ "public/oiseaux/s/sylvia-communis-0.webm": {
+  "note": "11.9s -> 4.6s (4 passages)",
+  "octets_avant": 35430,
+  "octets_apres": 29671
+ },
+ "public/oiseaux/s/sylvia-communis-1.webm": {
+  "note": "12.0s -> 8.1s (6 passages)",
+  "octets_avant": 41837,
+  "octets_apres": 50886
+ },
+ "public/oiseaux/s/sylvia-curruca-0.webm": {
+  "note": "garde : trop court après nettoyage",
+  "octets_avant": 34839,
+  "octets_apres": 34839
+ },
+ "public/oiseaux/s/sylvia-curruca-1.webm": {
+  "note": "10.2s -> 6.5s (6 passages)",
+  "octets_avant": 30772,
+  "octets_apres": 45751
+ },
+ "public/oiseaux/s/sylvia-melanocephala-0.webm": {
+  "note": "12.0s -> 6.4s (4 passages)",
+  "octets_avant": 38070,
+  "octets_apres": 40666
+ },
+ "public/oiseaux/s/sylvia-melanocephala-1.webm": {
+  "note": "3.5s -> 1.2s (2 passages)",
+  "octets_avant": 11136,
+  "octets_apres": 9579
+ },
+ "public/oiseaux/s/sylvia-undata-0.webm": {
+  "note": "12.0s -> 7.1s (3 passages)",
+  "octets_avant": 37554,
+  "octets_apres": 47029
+ },
+ "public/oiseaux/s/sylvia-undata-1.webm": {
+  "note": "10.9s -> 8.6s (7 passages)",
+  "octets_avant": 33024,
+  "octets_apres": 52217
+ },
+ "public/oiseaux/s/tachybaptus-ruficollis-0.webm": {
+  "note": "8.5s -> 7.5s (4 passages)",
+  "octets_avant": 25884,
+  "octets_apres": 43733
+ },
+ "public/oiseaux/s/tachybaptus-ruficollis-1.webm": {
+  "note": "10.7s -> 7.0s (1 passages)",
+  "octets_avant": 32227,
+  "octets_apres": 41425
+ },
+ "public/oiseaux/s/tachymarptis-melba-0.webm": {
+  "note": "12.0s -> 7.8s (1 passages)",
+  "octets_avant": 47203,
+  "octets_apres": 59551
+ },
+ "public/oiseaux/s/tachymarptis-melba-1.webm": {
+  "note": "6.3s -> 6.1s (2 passages)",
+  "octets_avant": 21820,
+  "octets_apres": 41240
+ },
+ "public/oiseaux/s/tadorna-tadorna-0.webm": {
+  "note": "12.0s -> 8.4s (4 passages)",
+  "octets_avant": 38069,
+  "octets_apres": 50567
+ },
+ "public/oiseaux/s/tadorna-tadorna-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 37152,
+  "octets_apres": 37152
+ },
+ "public/oiseaux/s/tetrao-urogallus-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34599,
+  "octets_apres": 34599
+ },
+ "public/oiseaux/s/tetrao-urogallus-1.webm": {
+  "note": "12.0s -> 9.7s (6 passages)",
+  "octets_avant": 38155,
+  "octets_apres": 61695
+ },
+ "public/oiseaux/s/tetrax-tetrax-0.webm": {
+  "note": "12.0s -> 10.3s (5 passages)",
+  "octets_avant": 36000,
+  "octets_apres": 58691
+ },
+ "public/oiseaux/s/tetrax-tetrax-1.webm": {
+  "note": "12.0s -> 9.0s (5 passages)",
+  "octets_avant": 34371,
+  "octets_apres": 48547
+ },
+ "public/oiseaux/s/thalasseus-sandvicensis-0.webm": {
+  "note": "12.0s -> 9.5s (6 passages)",
+  "octets_avant": 38414,
+  "octets_apres": 56637
+ },
+ "public/oiseaux/s/thalasseus-sandvicensis-1.webm": {
+  "note": "4.3s -> 1.4s (2 passages)",
+  "octets_avant": 13701,
+  "octets_apres": 9420
+ },
+ "public/oiseaux/s/tichodroma-muraria-0.webm": {
+  "note": "12.0s -> 0.8s (1 passages)",
+  "octets_avant": 36541,
+  "octets_apres": 5611
+ },
+ "public/oiseaux/s/tichodroma-muraria-1.webm": {
+  "note": "12.0s -> 4.4s (6 passages)",
+  "octets_avant": 36514,
+  "octets_apres": 33369
+ },
+ "public/oiseaux/s/tringa-erythropus-0.webm": {
+  "note": "12.0s -> 3.3s (4 passages)",
+  "octets_avant": 35696,
+  "octets_apres": 25135
+ },
+ "public/oiseaux/s/tringa-erythropus-1.webm": {
+  "note": "12.0s -> 8.5s (3 passages)",
+  "octets_avant": 38406,
+  "octets_apres": 52710
+ },
+ "public/oiseaux/s/tringa-glareola-0.webm": {
+  "note": "5.6s -> 2.7s (2 passages)",
+  "octets_avant": 20227,
+  "octets_apres": 17318
+ },
+ "public/oiseaux/s/tringa-glareola-1.webm": {
+  "note": "12.0s -> 9.3s (4 passages)",
+  "octets_avant": 43318,
+  "octets_apres": 59960
+ },
+ "public/oiseaux/s/tringa-nebularia-0.webm": {
+  "note": "5.6s -> 4.8s (3 passages)",
+  "octets_avant": 19974,
+  "octets_apres": 30155
+ },
+ "public/oiseaux/s/tringa-nebularia-1.webm": {
+  "note": "12.0s -> 8.9s (6 passages)",
+  "octets_avant": 37092,
+  "octets_apres": 56714
+ },
+ "public/oiseaux/s/tringa-ochropus-0.webm": {
+  "note": "4.7s -> 2.7s (2 passages)",
+  "octets_avant": 14186,
+  "octets_apres": 15979
+ },
+ "public/oiseaux/s/tringa-ochropus-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 34830,
+  "octets_apres": 34830
+ },
+ "public/oiseaux/s/tringa-totanus-0.webm": {
+  "note": "12.0s -> 7.2s (8 passages)",
+  "octets_avant": 37455,
+  "octets_apres": 52574
+ },
+ "public/oiseaux/s/tringa-totanus-1.webm": {
+  "note": "4.8s -> 4.1s (2 passages)",
+  "octets_avant": 15898,
+  "octets_apres": 22982
+ },
+ "public/oiseaux/s/trochilus-polytmus-0.webm": {
+  "note": "4.9s -> 4.0s (6 passages)",
+  "octets_avant": 16316,
+  "octets_apres": 29566
+ },
+ "public/oiseaux/s/trochilus-polytmus-1.webm": {
+  "note": "6.5s -> 3.3s (2 passages)",
+  "octets_avant": 21706,
+  "octets_apres": 21675
+ },
+ "public/oiseaux/s/troglodytes-troglodytes-0.webm": {
+  "note": "12.0s -> 4.9s (7 passages)",
+  "octets_avant": 33265,
+  "octets_apres": 38361
+ },
+ "public/oiseaux/s/troglodytes-troglodytes-1.webm": {
+  "note": "12.0s -> 4.9s (2 passages)",
+  "octets_avant": 35916,
+  "octets_apres": 33444
+ },
+ "public/oiseaux/s/turdus-iliacus-0.webm": {
+  "note": "12.0s -> 1.7s (3 passages)",
+  "octets_avant": 34380,
+  "octets_apres": 14696
+ },
+ "public/oiseaux/s/turdus-iliacus-1.webm": {
+  "note": "9.9s -> 6.1s (4 passages)",
+  "octets_avant": 32573,
+  "octets_apres": 39367
+ },
+ "public/oiseaux/s/turdus-merula-0.webm": {
+  "note": "12.0s -> 7.6s (7 passages)",
+  "octets_avant": 36647,
+  "octets_apres": 55628
+ },
+ "public/oiseaux/s/turdus-merula-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 10906,
+  "octets_apres": 10906
+ },
+ "public/oiseaux/s/turdus-philomelos-0.webm": {
+  "note": "12.0s -> 11.0s (4 passages)",
+  "octets_avant": 41859,
+  "octets_apres": 68387
+ },
+ "public/oiseaux/s/turdus-philomelos-1.webm": {
+  "note": "12.0s -> 8.8s (5 passages)",
+  "octets_avant": 38588,
+  "octets_apres": 53924
+ },
+ "public/oiseaux/s/turdus-pilaris-0.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 24753,
+  "octets_apres": 24753
+ },
+ "public/oiseaux/s/turdus-pilaris-1.webm": {
+  "note": "garde : pas de passage net",
+  "octets_avant": 24683,
+  "octets_apres": 24683
+ },
+ "public/oiseaux/s/turdus-torquatus-0.webm": {
+  "note": "12.0s -> 6.2s (7 passages)",
+  "octets_avant": 38655,
+  "octets_apres": 40563
+ },
+ "public/oiseaux/s/turdus-torquatus-1.webm": {
+  "note": "12.0s -> 5.1s (6 passages)",
+  "octets_avant": 35443,
+  "octets_apres": 32669
+ },
+ "public/oiseaux/s/turdus-viscivorus-0.webm": {
+  "note": "9.0s -> 5.4s (5 passages)",
+  "octets_avant": 27700,
+  "octets_apres": 36057
+ },
+ "public/oiseaux/s/turdus-viscivorus-1.webm": {
+  "note": "12.0s -> 5.0s (5 passages)",
+  "octets_avant": 36164,
+  "octets_apres": 30271
+ },
+ "public/oiseaux/s/tyto-alba-0.webm": {
+  "note": "12.0s -> 1.8s (2 passages)",
+  "octets_avant": 36534,
+  "octets_apres": 13113
+ },
+ "public/oiseaux/s/tyto-alba-1.webm": {
+  "note": "12.0s -> 4.5s (2 passages)",
+  "octets_avant": 36394,
+  "octets_apres": 26578
+ },
+ "public/oiseaux/s/upupa-epops-0.webm": {
+  "note": "10.8s -> 3.8s (5 passages)",
+  "octets_avant": 33404,
+  "octets_apres": 25701
+ },
+ "public/oiseaux/s/upupa-epops-1.webm": {
+  "note": "10.4s -> 6.7s (5 passages)",
+  "octets_avant": 31518,
+  "octets_apres": 42678
+ },
+ "public/oiseaux/s/uria-aalge-0.webm": {
+  "note": "10.9s -> 9.3s (4 passages)",
+  "octets_avant": 33439,
+  "octets_apres": 51637
+ },
+ "public/oiseaux/s/uria-aalge-1.webm": {
+  "note": "12.0s -> 8.2s (4 passages)",
+  "octets_avant": 36172,
+  "octets_apres": 49996
+ },
+ "public/oiseaux/s/vanellus-vanellus-0.webm": {
+  "note": "6.2s -> 2.6s (4 passages)",
+  "octets_avant": 20070,
+  "octets_apres": 17127
+ },
+ "public/oiseaux/s/vanellus-vanellus-1.webm": {
+  "note": "12.0s -> 4.2s (6 passages)",
+  "octets_avant": 36926,
+  "octets_apres": 31026
+ },
+ "public/oiseaux/s/vultur-gryphus-0.webm": {
+  "note": "12.0s -> 3.9s (5 passages)",
+  "octets_avant": 36125,
+  "octets_apres": 25936
+ },
+ "public/oiseaux/s/vultur-gryphus-1.webm": {
+  "note": "12.0s -> 7.6s (4 passages)",
+  "octets_avant": 36469,
+  "octets_apres": 43010
+ }
+}
