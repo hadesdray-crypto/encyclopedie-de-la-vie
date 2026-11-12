@@ -183,6 +183,22 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     return () => window.clearTimeout(t);
   }, [chemin, presence]);
 
+  // Sur chaque page, Plume dit un mot : de quoi on parle ici, et qu'elle peut tout expliquer (une fois par page et par visite).
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      if (!plumePeutProposer() || !presentationFaite()) return;
+      const cle = "leonie-plume-accueil-page";
+      let vus: string[] = [];
+      try { vus = JSON.parse(sessionStorage.getItem(cle) || "[]"); } catch { /* rien */ }
+      if (vus.includes(explicationPage.id)) return;
+      try { sessionStorage.setItem(cle, JSON.stringify([...vus, explicationPage.id])); } catch { /* rien */ }
+      const phrase = `${explicationPage.titre}. ${explicationPage.etapes[0]} Touche-moi pour que je t'explique.`;
+      plumeDit(phrase, 6000);
+      if (plumeParleSeule() && voixPossible()) dire(phrase);
+    }, 1400);
+    return () => window.clearTimeout(t);
+  }, [chemin, explicationPage.id]);
+
   // La peur : elle se cache les yeux et tremble, avec un petit « Hou ! ».
   useEffect(() => {
     if (!peur) return;

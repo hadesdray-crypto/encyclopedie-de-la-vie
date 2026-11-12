@@ -208,6 +208,95 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
     ],
   },
   {
+    id: "compagnon-fiche",
+    titre: "La fiche d'une race",
+    test: (c) => /^\/compagnons\/[^/]+\/[^/]+/.test(c),
+    etapes: [
+      "Voici la fiche d'une race. En haut, sa photo et son nom.",
+      "Dessous, tu lis d'où elle vient, sa taille, son poids et son caractère. Quand on ne sait pas, c'est écrit « Non connu » : je n'invente jamais.",
+      "Le petit cœur rouge la met dans mes préférés.",
+      "Le bouton « Écouter » me fait lire toute la fiche à voix haute.",
+    ],
+  },
+  {
+    id: "compagnon-liste",
+    titre: "Les races",
+    test: (c) => /^\/compagnons\/[^/]+\/?$/.test(c),
+    etapes: [
+      "Voici toutes les races de ce carnet, rangées en groupes.",
+      "Écris un nom à côté de la loupe pour en trouver une vite. Touche une race pour ouvrir sa fiche.",
+      "Les cœurs rouges, ce sont mes préférées.",
+    ],
+  },
+  {
+    id: "oiseau-fiche",
+    titre: "La fiche d'un oiseau",
+    test: (c) => /^\/oiseaux\/[^/]+/.test(c),
+    etapes: [
+      "Voici la fiche d'un oiseau, avec de vraies photos. Sous chaque photo, on lit le nom de son auteur.",
+      "Plus bas, tu peux écouter son cri. Le premier, c'est souvent le chant d'amour. S'il est écrit « NC », on n'a pas encore de cri sûr.",
+      "« À savoir » raconte sa vie. Si l'oiseau a été suivi par GPS, un bouton montre son vrai voyage.",
+    ],
+  },
+  {
+    id: "oiseaux",
+    titre: "Les oiseaux",
+    test: (c) => c.startsWith("/oiseaux"),
+    etapes: [
+      "Ici, tous les oiseaux de l'encyclopédie, avec leurs photos et leurs cris.",
+      "Écris un nom à côté de la loupe pour en trouver un. Touche une carte pour ouvrir sa fiche.",
+      "Les chiffres comme « 2 cris » disent combien d'enregistrements on peut écouter.",
+    ],
+  },
+  {
+    id: "domestiques",
+    titre: "Les animaux domestiques",
+    test: (c) => c.startsWith("/domestiques"),
+    etapes: [
+      "Ici, les animaux qui vivent avec nous ou avec les bergers.",
+      "Chiens et chats : mon carnet avec toutes les races. Les transhumances : quand les troupeaux montent en montagne. Les méthodes éducatives : comment bien éduquer un animal.",
+      "Touche un grand bouton pour l'ouvrir. La flèche Retour te ramène ici.",
+    ],
+  },
+  {
+    id: "migrations",
+    titre: "Les migrations",
+    test: (c) => c.startsWith("/migrations"),
+    etapes: [
+      "Ici, les grands voyages des animaux. Les trajets suivis par GPS sont de vrais points mesurés par des scientifiques.",
+      "Plus bas, « Les trajets connus » : choisis un onglet, dans les airs, sur terre, dans la mer ou les carrefours. Les chemins apparaissent sur le globe.",
+      "Touche un chemin sur le globe : la fiche de l'animal s'ouvre dessous. Le bouton doré le suit du ciel, exactement sur le chemin.",
+      "Les zones colorées montrent où il vit selon la saison, et les pointillés le chemin approximatif entre deux zones. Ce qu'on ignore est toujours écrit.",
+    ],
+  },
+  {
+    id: "chercher",
+    titre: "Chercher un animal",
+    test: (c) => c.startsWith("/chercher"),
+    etapes: [
+      "Écris le nom d'un animal dans la grande barre : je te montre tout ce que je trouve.",
+      "Les filtres sous la barre servent à choisir un pays ou un groupe d'animaux.",
+      "Touche un résultat pour ouvrir sa fiche.",
+    ],
+  },
+  {
+    id: "nid",
+    titre: "Le nid de Plume",
+    test: (c) => c.startsWith("/nid"),
+    etapes: [
+      "Voici mon nid ! Ici, il se passe des choses tous les jours : je te raconte mon histoire.",
+      "Quand il y a un œuf, touche-le une fois par jour pour le réchauffer. Je te dis alors une vraie information sur les chouettes.",
+      "Si le braconnier passe, touche-le : je gagne toujours !",
+      "Les grandes personnes ont un coin à part pour faire avancer l'histoire.",
+    ],
+  },
+  {
+    id: "idees",
+    titre: "La boîte à idées",
+    test: (c) => c.startsWith("/idees"),
+    etapes: ["Ici, tu proposes une amélioration pour l'encyclopédie.", "Les autres idées peuvent recevoir des votes. À 100 votes, elle peut partir chez le Concepteur."],
+  },
+  {
     id: "compagnons",
     titre: "Mon carnet des chiens et des chats",
     test: (c) => c.startsWith("/compagnons"),
@@ -251,8 +340,18 @@ const PAGES: (Explication & { test: (chemin: string, params: URLSearchParams) =>
 /** Toutes les pages que Plume explique (pour que les personnages bonus puissent avoir leurs propres explications). */
 export const PAGES_EXPLIQUEES: Explication[] = PAGES.map(({ id, titre, etapes }) => ({ id, titre, etapes }));
 
+const PAGE_GENERIQUE: Explication = {
+  id: "page",
+  titre: "Cette page",
+  etapes: [
+    "Je suis là sur toutes les pages. Touche-moi deux fois pour ouvrir mon menu.",
+    "Touche un bouton pour continuer. La flèche Retour, en haut, te ramène à la page d'avant.",
+    "Si un mot est difficile, dis-le moi : je l'explique dans « Mots ».",
+  ],
+};
+
 export function explicationPour(chemin: string, params: URLSearchParams): Explication {
-  return PAGES.find((p) => p.test(chemin, params)) ?? PAGES[0];
+  return PAGES.find((p) => p.test(chemin, params)) ?? PAGE_GENERIQUE;
 }
 
 /** Petites phrases de Plume quand il se passe quelque chose. */

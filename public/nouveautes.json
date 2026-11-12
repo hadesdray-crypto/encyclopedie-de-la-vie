@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-11-12",
+    "titre": "Plume explique toutes les pages",
+    "points": [
+      "Plume dit un mot en arrivant sur chaque page : de quoi on parle, et qu'elle peut tout expliquer.",
+      "Explications ajoutées : fiches de races, liste des races, oiseaux, fiche d'un oiseau, animaux domestiques, migrations, recherche, nid, boîte à idées.",
+      "Les pages sans explication ne reprennent plus le texte de l'accueil : Plume donne une aide adaptée."
+    ]
+  },
+  {
+    "date": "2026-11-12",
     "titre": "Mammifères, oiseaux et trajets sur le globe",
     "points": [
       "Accueil : les boutons Mammifères et Oiseaux sont ajoutés à côté de Fossiles et de Chiens et chats.",
