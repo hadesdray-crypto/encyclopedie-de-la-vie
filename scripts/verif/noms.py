@@ -1,12 +1,12 @@
 # Vérifie les noms français des oiseaux auprès de plusieurs sources indépendantes.
 import json, re, subprocess, time, urllib.parse, urllib.request
 H = {"User-Agent": "encyclopedie-de-la-vie/1.0 (verification des noms)"}
-def get(u, t=60):
-    for k in range(3):
+def get(u, t=15):
+    for k in range(2):
         try:
             return urllib.request.urlopen(urllib.request.Request(u, headers=H), timeout=t).read()
         except Exception as e:
-            err = e; time.sleep(2)
+            err = e; time.sleep(1)
     return b""
 latins = [l.strip() for l in open("scripts/verif/latins.txt") if l.strip()]
 res = {l: {} for l in latins}
@@ -23,6 +23,7 @@ for l in latins:
     except Exception:
         t = []
     res[l]["taxref"] = t[:2]
+json.dump(res, open("scripts/verif/resultats.json", "w"), ensure_ascii=False, indent=1)
 # 3) Wikidata : nom vernaculaire officiel (P1843, français) et titre Wikipédia
 for l in latins:
     q = 'SELECT ?v ?t WHERE { ?i wdt:P225 "%s"; wdt:P105 wd:Q7432 . OPTIONAL { ?i p:P1843 ?s . ?s ps:P1843 ?v . FILTER(LANG(?v)="fr") } OPTIONAL { ?a schema:about ?i; schema:isPartOf <https://fr.wikipedia.org/>; schema:name ?t } }' % l
@@ -33,7 +34,8 @@ for l in latins:
         res[l]["wikipedia"] = sorted({x["t"]["value"] for x in b if "t" in x})
     except Exception:
         res[l]["wikidata"] = []; res[l]["wikipedia"] = []
-    time.sleep(0.3)
+    time.sleep(0.2)
+json.dump(res, open("scripts/verif/resultats.json", "w"), ensure_ascii=False, indent=1)
 # 4) GBIF : noms vernaculaires en français
 for l in latins:
     try:
