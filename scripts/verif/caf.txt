@@ -1,0 +1,660 @@
+                                                                                                                                                                                                                                       Liste des Oiseaux de France 2020
+
+
+Liste officielle des Oiseaux
+de France – version 2020                                                                                                             l’apport de la génétique, qui ont contribué à la
+                                                                                                                                     redéfinition du contour des espèces (séparation
+                                                                                                                                                                                                            Remarques
+                                                                                                                                                                                                            Quelques rares espèces peuvent être classées
+                                                                                                                                     d’une espèce en plusieurs espèces ou « split » ;
+(Catégories A, B et C)                                                                                                               fusion de plusieurs espèces en une seule ou
+                                                                                                                                     « lump ») et des genres (changements de nom de
+                                                                                                                                                                                                            dans deux catégories lorsque les populations
+                                                                                                                                                                                                            françaises répondent à l’une et l’autre des défini-
+                                                                                                                                                                                                            tions. C’est par exemple le cas du Canard ­colvert
+                                                                                                                                     genre et éventuellement accord des noms spéci-
+                                                                                                                                                                                                            Anas ­platyrhynchos, placé en catégorie A et C, ou de
+                                                                                                                                     fiques et subspécifiques avec le genre grammatial
+                                                                                                                                                                                                            la Sarcelle élégante Anas formosa (B et D).
+                                                                                                                                     du nouveau nom, mais aussi la mise en synonymie
+Commission de l’Avifaune Française 1                                                                                                                                                                        La mention « appartenance subspécifique inconnue »
+  C 65                             C 60                                                     C 40                                C 20 de certains taxons, par exemple certaines sous-                        indiquée à la suite de certaines espèces signi-
+  M 95                             M 90                                                     M 60                                M 25 espèces   citées par Mayaud et aujourd’hui mises
+                                                                                                                                     en synonymie ;                                                         fie qu’il s’agit d’une espèce ­polytypique, mais
+Préparée
+  J 95   par la Commission de l’Avifaune
+                                   J 90                            au niveau spécifique en France.
+                                                                                            J 50 Ces binômes ou                 J 25 • le retrait d’un taxon suite à la révision des don-                   que les informations disponibles ne permettent
+ Française (CAF) avec le concours de Pierre Le                     trinômes intègrent alors la LOF dans une catégo-                  nées le concernant quand des éléments d’appré-                         pas de déterminer la (ou les) sous-espèce(s)
+­Maréchal 2, cette Liste des oiseaux de France                     rie marquée par un astérisque (exemple : Pétrel                   ciation nouveaux sont intervenus depuis (voir le                       concernée(s).
+ (LOF) 2020 regroupe tous les taxons – espèces et                  gongon/des Desertas, catégorie A*).                               « En direct de la CAF » dans le présent numéro).                       Par ailleurs, plusieurs espèces ou sous-espèces
+ sous-espèces – dûment signalés en France métro-                                                                                     Une sous-espèce – Oenanthe oenanthe libanotica –                       bien documentées observées en France en 2019 –
+ politaine, dont les dossiers ont été traités par le               Conditions d’inscription                                          est précédée d’un point d’interrogation. Il s’agit                     le Fou brun, le Traquet de Seebohm, la Paru-
+ CHN et la CAF en date du 31 décembre 2019.                        d ’ un taxon dans la LOF
+                                                                                                                                     d’une forme dont la présence en France reste à                         line couronnée, la Paruline à gorge orangée et
+ Elle comprend 598 espèces (571 en catégorie A,                    (catégories A, B et C)                                            préciser. La CAF a décidé de signaler ce taxon                         la Paruline noir-et-blanc – n’ont pas encore été
+ 16 en B et 11 en C), contre 583 (557 en catégorie                 Seules les trois premières catégories (A, B et C)                 parce que des critères morphologiques et géo-                          transmises à la CAF, alors que l’Aigle ravisseur est
+ A, 16 en B et 10 en C), lors de la dernière édition,              sont retenues pour constituer la LOF. Lorsqu’il                   graphiques invitent à le considérer, sans toutefois                    en cours d’examen à la CAF ; ils ne figurent donc
+ qui date de 2016 (Ornithos 23-5). L’ordre des                     n’est rien précisé pour une sous-espèce, cela                     être totalement probants.                                              pas encore dans cette liste.
+ taxons est celui recommandé par l’IOC (Gill F.,                   ­signifie qu’elle a été placée dans la même caté-
+ Donsker D. & Rasmussen P., 2020, IOC World Bird                    gorie que l’espèce. Le nom du descripteur est                       1. Grèbe huppé Podiceps cristatus, adulte, lac Léman, Morges, Suisse, mars 2019 (Marc Duquet). Adult Great Crested Grebe.
+ List v10.1, www.worldbirdnames.org).                               indiqué entre parenthèses lorsque le genre du
+ Les taxons examinés par la CAF sont classés dans                   taxon a changé depuis sa description originale
+ cinq catégories : catégorie A (origine naturelle des               (création du nom).
+ individus et des populations concernés, taxon                      La LOF s’inscrit dans la filiation directe de l’Inven-
+ observé au moins une fois depuis le premier ­janvier               taire des oiseaux de France de Noël Mayaud, paru
+ 1950), catégorie B (origine naturelle mais taxon                   en 1936, et des diverses publications qui l’ont
+ pas observé après le 1er janvier 1950), catégorie C                complété, et reprend de fait la quasi-totalité des
+ (individus d’origine naturelle appartenant à une                   taxons cités comme étant d’origine naturelle dans
+ population maintenant établie à l’état sauvage                     ces publications. Les changements par rapport à
+ mais qui dérive d’individus échappés de captivité                  ces ouvrages tiennent aux raisons suivantes :
+ ou introduits), catégorie D (taxons pour lesquels                  • l’ajout d’espèces ou de sous-espèces nouvelle-
+ l’origine naturelle est possible mais pas la plus                  ment observées en France, après validation par
+ probable) et catégorie E (taxons supposés d’ori-                   le CHN et attribution d’une catégorie par la CAF
+ gine non-naturelle). Certaines données examinées                   (voir le « En direct de la CAF » dans le présent
+ par la CAF correspondent à des oiseaux pour                        numéro) ;
+ lesquels l’identification n’a jamais pu être établie               • le changement de catégorie d’une espèce, suite à
+                                                                    l’examen par la CAF de l’évolution de sa situation
+1
+                                                                    en France. C’est le cas par exemple du Cygne noir
+ Stanislas Wroza ( Agence Française pour la Biodiversité),
+                                                                    qui est placé en catégorie C dans cette nouvelle
+Pierre-André Crochet (CEFE, CNRS, Université de Montpellier),
+Philippe J. Dubois (LPO), Paul Dufour (LECA, Université             version de la LOF après examen des données dis-
+Grenoble Alpes), Jean-Marc Pons (ISYEB, MNHN), Frédéric             ponibles sur la population nicheuse française et
+Veyrunes (ISEM, CNRS) et Frédéric Jiguet (CESCO, MNHN).             de la situation de l’espèce dans les pays voisins ;
+2
+    Pierre Le Maréchal (UMR CNRS 8079, Université Paris-Saclay).    • les changements systématiques, notamment
+
+                                                                                               Ornithos 27-3 : 170-185 (2020)           Ornithos 27-3 : 170-185 (2020)
+170                                                                                                                                                                                                                                                                 171
+                                                                                                                                                                                                                                                           Liste des Oiseaux de France 2020
+
+
+
+
+GALLIFORMES                                                            Oie de toundra Anser serrirostris Gould, 1852 – A                                                                                                Martinet noir Apus apus (Linnaeus, 1758) – A
+                                                                         – A. s. rossicus Buturlin, 1933                                                                                                                  – A. a. apus (Linnaeus, 1758)
+Odontophoridae                                                         Oie rieuse Anser albifrons (Scopoli, 1769) – A                                                                                                   Martinet pâle Apus pallidus (Shelley, 1870) – A
+Colin de Californie Callipepla californica (Shaw, 1798) – C              – A. a. flavirostris Dalgety & Scott, P, 1948 Oie rieuse du Groenland                                                                            – A. p. brehmorum Hartert, 1901
+  – appartenance subspécifique inconnue                                  – A. a. albifrons (Scopoli, 1769)
+                                                                                                                                                                                                                        Martinet des maisons Apus affinis (Gray, JE, 1830) – A
+                                                                       Oie naine Anser erythropus (Linnaeus, 1758) – A                                                                                                    – appartenance subspécifique inconnue
+Phasianidae                                                            Cygne noir Cygnus atratus (Latham, 1790) – C                                                                                                     Martinet cafre Apus caffer (Lichtenstein, MHK, 1823) – A
+Gélinotte des bois Tetrastes bonasia (Linnaeus, 1758) – A              Cygne tuberculé Cygnus olor (Gmelin, JF, 1789) – AC
+  – T. b. rupestris (Brehm, CL, 1831)                                  Cygne de Bewick Cygnus columbianus (Ord, 1815) – A
+Grand Tétras Tetrao urogallus Linnaeus, 1758 – A                         – C. c. bewickii Yarrell, 1830                                                                                                                 OTIDIFORMES
+  – T. u. aquitanicus Ingram, C, 1915                                  Cygne chanteur Cygnus cygnus (Linnaeus, 1758) – A                                                                                                Otididae
+  – T. u. crassirostris Brehm, CL, 1831
+                                                                       Ouette d’Égypte Alopochen aegyptiaca (Linnaeus, 1766) – BC
+Tétras lyre Lyrurus tetrix (Linnaeus, 1758) – A                                                                                                                                                                         Outarde barbue Otis tarda Linnaeus, 1758 – A
+                                                                       Tadorne de Belon Tadorna tadorna (Linnaeus, 1758) – A                                                                                              – O. t. tarda Linnaeus, 1758
+  – L. t. tetrix (Linnaeus, 1758)
+                                                                       Tadorne casarca Tadorna ferruginea (Pallas, 1764) – BC                                                                                           Outarde de Macqueen Chlamydotis macqueenii (Gray, JE, 1832) – B
+Lagopède alpin Lagopus muta (Montin, 1781) – A
+  – L. m. helvetica (Thienemann, 1829)                                 Canard mandarin Aix galericulata (Linnaeus, 1758) – C                                                                                            Outarde canepetière Tetrax tetrax (Linnaeus, 1758) – A
+  – L. m. pyrenaica Hartert, 1921                                      Sarcelle élégante Sibirionetta formosa (Georgi, 1775) – BD
+Perdrix bartavelle Alectoris graeca (Meisner, 1804) – A                Sarcelle d’été Spatula querquedula (Linnaeus, 1758) – A
+                                                                                                                                                 2. Outarde barbue Otis tarda, mâle, Estrémadure, Espagne,              CUCULIFORMES
+  – A. g. saxatilis (Bechstein, 1805)                                  Sarcelle à ailes bleues Spatula discors (Linnaeus, 1766) – A              mai 2015 (Christian Aussaguel). Male Great Bustard.
+Perdrix rouge Alectoris rufa (Linnaeus, 1758) – AC                     Canard souchet Spatula clypeata (Linnaeus, 1758) – A                                                                                             Cuculidae
+  – A. r. rufa (Linnaeus, 1758)
+                                                                       Canard chipeau Mareca strepera (Linnaeus, 1758) – A                       Harelde boréale Clangula hyemalis (Linnaeus, 1758) – A
+Perdrix grise Perdix perdix (Linnaeus, 1758) – AC                                                                                                                                                                       Coucou geai Clamator glandarius (Linnaeus, 1758) – A
+                                                                         – M. s. strepera (Linnaeus, 1758)                                       Garrot albéole Bucephala albeola (Linnaeus, 1758) – A
+  – P. p. perdix (Linnaeus, 1758)                                                                                                                                                                                       Coulicou à bec jaune Coccyzus americanus (Linnaeus, 1758) – A
+                                                                       Canard siffleur Mareca penelope (Linnaeus, 1758) – A                      Garrot à œil d’or Bucephala clangula (Linnaeus, 1758) – A
+  – P. p. armoricana Hartert, 1917                                                                                                                                                                                      Coulicou à bec noir Coccyzus erythropthalmus (Wilson, A, 1811) – A
+  – P. p. hispaniensis Reichenow, 1892 Perdrix grise des Pyrénées      Canard à front blanc Mareca americana (Gmelin, JF, 1789) – A                – B. c. clangula (Linnaeus, 1758)
+                                                                       Canard colvert Anas platyrhynchos Linnaeus, 1758 – AC                     Garrot d’Islande Bucephala islandica (Gmelin, JF, 1789) – A            Coucou gris Cuculus canorus Linnaeus, 1758 – A
+Caille des blés Coturnix coturnix (Linnaeus, 1758) – A                                                                                                                                                                    – C. c. canorus Linnaeus, 1758
+  – C. c. coturnix (Linnaeus, 1758)                                      – A. p. platyrhynchos Linnaeus, 1758                                    Harle piette Mergellus albellus (Linnaeus, 1758) – A
+Faisan vénéré Syrmaticus reevesii (Gray, JE, 1829) – C                 Canard noir Anas rubripes Brewster, 1902 – A                              Harle bièvre Mergus merganser Linnaeus, 1758 – A
+                                                                       Canard pilet Anas acuta Linnaeus, 1758 – A                                  – M. m. merganser Linnaeus, 1758                                     PTEROCLIFORMES
+Faisan de Colchide Phasianus colchicus Linnaeus, 1758 – C
+  – plusieurs souches issues d’élevage ont été lâchées en France       Sarcelle d’hiver Anas crecca Linnaeus, 1758 – A                           Harle huppé Mergus serrator Linnaeus, 1758 – A
+                                                                                                                                                                                                                        Pteroclidae
+                                                                       Sarcelle à ailes vertes Anas carolinensis Gmelin, JF, 1789 – A            Érismature rousse Oxyura jamaicensis (Gmelin, JF, 1789) – C
+                                                                       Sarcelle marbrée Marmaronetta angustirostris (Ménétries, 1832) – A        Érismature à tête blanche Oxyura leucocephala (Scopoli, 1769) – A      Syrrhapte paradoxal Syrrhaptes paradoxus (Pallas, 1773) – A
+ANSERIFORMES                                                                                                                                                                                                            Ganga cata Pterocles alchata (Linnaeus, 1766) – A
+                                                                       Nette rousse Netta rufina (Pallas, 1773) – A
+Anatidae                                                                                                                                                                                                                  – P. a. alchata (Linnaeus, 1766)
+                                                                       Fuligule milouin Aythya ferina (Linnaeus, 1758) – A                       CAPRIMULGIFORMES
+Bernache cravant Branta bernicla (Linnaeus, 1758) – A                  Fuligule nyroca Aythya nyroca (Güldenstädt, 1770) – A
+                                                                                                                                                 Caprimulgidae
+  – B. b. nigricans (Lawrence, 1846) Bernache cravant du Pacifique     Fuligule à bec cerclé Aythya collaris (Donovan, 1809) – A                                                                                        COLUMBIFORMES
+  – B. b. bernicla (Linnaeus, 1758) Bernache cravant à ventre sombre   Fuligule morillon Aythya fuligula (Linnaeus, 1758) – A                    Engoulevent d’Amérique Chordeiles minor (Forster, JR, 1771) – A
+  – B. b. hrota (Müller, OF, 1776) Bernache cravant à ventre pâle                                                                                  – appartenance subspécifique inconnue                                Columbidae
+                                                                       Fuligule milouinan Aythya marila (Linnaeus, 1761) – A
+Bernache à cou roux Branta ruficollis (Pallas, 1769) – A                 – A. m. marila (Linnaeus, 1761)                                         Engoulevent à collier roux Caprimulgus ruficollis Temminck, 1820 – A   Pigeon biset Columba livia Gmelin, JF, 1789 – AC
+Bernache du Canada Branta canadensis (Linnaeus, 1758) – C                                                                                          – C. r. ruficollis Temminck, 1820                                      – C. l. livia Gmelin, JF, 1789
+                                                                       Fuligule à tête noire Aythya affinis (Eyton, 1838) – A
+  – B. c. canadensis (Linnaeus, 1758)                                                                                                            Engoulevent d’Europe Caprimulgus europaeus Linnaeus, 1758 – A          Pigeon colombin Columba oenas Linnaeus, 1758 – A
+                                                                       Eider de Steller Polysticta stelleri (Pallas, 1769) – A                     – C. e. europaeus Linnaeus, 1758
+Bernache nonnette Branta leucopsis (Bechstein, 1803) – AC                                                                                                                                                                 – C. o. oenas Linnaeus, 1758
+                                                                       Eider à tête grise Somateria spectabilis (Linnaeus, 1758) – A               – C. e. meridionalis Hartert, 1896
+Oie des neiges Anser caerulescens (Linnaeus, 1758) – BD                                                                                                                                                                 Pigeon ramier Columba palumbus Linnaeus, 1758 – A
+                                                                       Eider à duvet Somateria mollissima (Linnaeus, 1758) – A                                                                                            – C. p. palumbus Linnaeus, 1758
+  – A. c. caerulescens (Linnaeus, 1758)
+                                                                         – S. m. mollissima (Linnaeus, 1758)
+Oie cendrée Anser anser (Linnaeus, 1758) – AC                                                                                                    APODIFORMES                                                            Tourterelle des bois Streptopelia turtur (Linnaeus, 1758) – A
+                                                                       Macreuse à front blanc Melanitta perspicillata (Linnaeus, 1758) – A
+  – A. a. anser (Linnaeus, 1758)                                                                                                                                                                                          – S. t. turtur (Linnaeus, 1758)
+  – A. a. rubrirostris Swinhoe, 1871                                   Macreuse brune Melanitta fusca (Linnaeus, 1758) – A                       Apodidae                                                               Tourterelle orientale Streptopelia orientalis (Latham, 1790) – A
+Oie de taïga Anser fabalis (Latham, 1787) – A                          Macreuse de Sibérie Melanitta stejnegeri (Ridgway, 1887) – B              Martinet ramoneur Chaetura pelagica (Linnaeus, 1758) – A                 – S. o. meena (Sykes, 1832)
+  – A. f. fabalis (Latham, 1787)                                       Macreuse noire Melanitta nigra (Linnaeus, 1758) – A                       Martinet à ventre blanc Tachymarptis melba (Linnaeus, 1758) – A        Tourterelle turque Streptopelia decaocto (Frivaldszky, 1838) – A
+Oie à bec court Anser brachyrhynchus Baillon, 1834 – A                 Macreuse à bec jaune Melanitta americana (Swainson, 1832) – A               – T. m. melba (Linnaeus, 1758)                                         – S. d. decaocto (Frivaldszky, 1838)
+
+
+                                                                                                             Ornithos 27-3 : 170-185 (2020)      Ornithos 27-3 : 170-185 (2020)
+172                                                                                                                                                                                                                                                                                   173
+                                                                                                                                                                                                                                                        Liste des Oiseaux de France 2020
+
+
+
+
+GRUIFORMES                                                               CHARADRIIFORMES                                                          Scolopacidae                                                          Bécassine des marais Gallinago gallinago (Linnaeus, 1758) – A
+                                                                                                                                                                                                                          – G. g. faeroeensis (Brehm, CL, 1831)
+Rallidae                                                                 Burhinidae                                                               Bartramie des champs Bartramia longicauda (Bechstein, 1812) – A         – G. g. gallinago (Linnaeus, 1758)
+                                                                                                                                                  Courlis corlieu Numenius phaeopus (Linnaeus, 1758) – A                Bécassine de Wilson Gallinago delicata (Ord, 1825) – A
+Râle d’eau Rallus aquaticus Linnaeus, 1758 – A                           Œdicnème criard Burhinus oedicnemus (Linnaeus, 1758) – A                   – N. p. phaeopus (Linnaeus, 1758)
+  – R. a. aquaticus Linnaeus, 1758                                                                                                                                                                                      Chevalier bargette Xenus cinereus (Güldenstädt, 1775) – A
+                                                                           – B. o. oedicnemus (Linnaeus, 1758)                                    Courlis à bec grêle Numenius tenuirostris Vieillot, 1817 – A
+Râle des genêts Crex crex (Linnaeus, 1758) – A                                                                                                                                                                          Phalarope de Wilson Phalaropus tricolor (Vieillot, 1819) – A
+                                                                                                                                                  Courlis cendré Numenius arquata (Linnaeus, 1758) – A
+Marouette poussin Porzana parva (Scopoli, 1769) – A                      Haematopodidae                                                                                                                                 Phalarope à bec étroit Phalaropus lobatus (Linnaeus, 1758) – A
+                                                                                                                                                    – N. a. arquata (Linnaeus, 1758)
+Marouette de Baillon Porzana pusilla (Pallas, 1776) – A                                                                                                                                                                 Phalarope à bec large Phalaropus fulicarius (Linnaeus, 1758) – A
+                                                                                                                                                  Barge rousse Limosa lapponica (Linnaeus, 1758) – A
+  – P. p. intermedia (Hermann, 1804)                                     Huîtrier pie Haematopus ostralegus Linnaeus, 1758 – A                                                                                          Chevalier guignette Actitis hypoleucos (Linnaeus, 1758) – A
+                                                                                                                                                    – L. l. lapponica (Linnaeus, 1758)
+                                                                           – H. o. ostralegus Linnaeus, 1758                                                                                                            Chevalier grivelé Actitis macularius (Linnaeus, 1766) – A
+Marouette ponctuée Porzana porzana (Linnaeus, 1766) – A                                                                                           Barge à queue noire Limosa limosa (Linnaeus, 1758) – A
+Marouette de Caroline Porzana carolina (Linnaeus, 1758) – A                                                                                         – L. l. islandica Brehm, CL, 1831                                   Chevalier culblanc Tringa ochropus Linnaeus, 1758 – A
+                                                                         Recurvirostridae                                                           – L. l. limosa (Linnaeus, 1758)
+Talève sultane Porphyrio porphyrio (Linnaeus, 1758) – AC                                                                                                                                                                Chevalier solitaire Tringa solitaria Wilson, A, 1813 – A
+                                                                                                                                                  Tournepierre à collier Arenaria interpres (Linnaeus, 1758) – A          – T. s. solitaria Wilson, A, 1813
+Talève d’Allen Porphyrio alleni Thomson, 1842 – A                        Échasse blanche Himantopus himantopus (Linnaeus, 1758) – A
+                                                                                                                                                    – A. i. interpres (Linnaeus, 1758)
+                                                                                                                                                                                                                        Chevalier à pattes jaunes Tringa flavipes (Gmelin, JF, 1789) – A
+Gallinule poule-d’eau Gallinula chloropus (Linnaeus, 1758) – A           Avocette élégante Recurvirostra avosetta Linnaeus, 1758 – A              Bécasseau maubèche Calidris canutus (Linnaeus, 1758) – A
+                                                                                                                                                                                                                        Chevalier semipalmé Tringa semipalmata (Gmelin, JF, 1789) – A
+  – G. c. chloropus (Linnaeus, 1758)                                                                                                                – C. c. canutus (Linnaeus, 1758)
+                                                                                                                                                                                                                          – T. s. inornata (Brewster, 1887)
+Foulque caronculée Fulica cristata Gmelin, JF, 1789 – B                  Charadriidae                                                               – C. c. islandica (Linnaeus, 1767)
+                                                                                                                                                                                                                        Chevalier gambette Tringa totanus (Linnaeus, 1758) – A
+Foulque macroule Fulica atra Linnaeus, 1758 – A                                                                                                   Combattant varié Calidris pugnax (Linnaeus, 1758) – A
+                                                                         Vanneau huppé Vanellus vanellus (Linnaeus, 1758) – A                                                                                             – T. t. robusta (Schiøler, 1919)
+  – F. a. atra Linnaeus, 1758                                                                                                                     Bécasseau falcinelle Calidris falcinellus (Pontoppidan, 1763) – A       – T. t. totanus (Linnaeus, 1758)
+                                                                         Vanneau sociable Vanellus gregarius (Pallas, 1771) – A                     – C. f. falcinellus (Pontoppidan, 1763)
+                                                                                                                                                                                                                        Chevalier stagnatile Tringa stagnatilis (Bechstein, 1803) – A
+Gruidae                                                                  Vanneau à queue blanche Vanellus leucurus (Lichtenstein, 1823) – A       Bécasseau à queue pointue Calidris acuminata (Horsfield, 1821) – A
+                                                                                                                                                                                                                        Chevalier sylvain Tringa glareola Linnaeus, 1758 – A
+Grue du Canada Antigone canadensis (Linnaeus, 1758) – A                                                                                           Bécasseau à échasses Calidris himantopus (Bonaparte, 1826) – A
+                                                                         Pluvier doré Pluvialis apricaria (Linnaeus, 1758) – A                                                                                          Chevalier arlequin Tringa erythropus (Pallas, 1764) – A
+  – appartenance subspécifique inconnue                                                                                                           Bécasseau cocorli Calidris ferruginea (Pontoppidan, 1763) – A
+                                                                         Pluvier fauve Pluvialis fulva (Gmelin, JF, 1789) – A                                                                                           Chevalier aboyeur Tringa nebularia (Gunnerus, 1767) – A
+Grue demoiselle Grus virgo (Linnaeus, 1758) – A                                                                                                   Bécasseau de Temminck Calidris temminckii (Leisler, 1812) – A
+                                                                                                                                                                                                                        Chevalier criard Tringa melanoleuca (Gmelin, JF, 1789) – A
+                                                                         Pluvier bronzé Pluvialis dominica (Müller, PLS, 1776) – A                Bécasseau à longs doigts Calidris subminuta (Middendorff, 1853) – A
+Grue cendrée Grus grus (Linnaeus, 1758) – A
+                                                                         Pluvier argenté Pluvialis squatarola (Linnaeus, 1758) – A                Bécasseau à cou roux Calidris ruficollis (Pallas, 1776) – A           Glareolidae
+                                                                           – P. s. squatarola (Linnaeus, 1758)                                    Bécasseau sanderling Calidris alba (Pallas, 1764) – A                 Courvite isabelle Cursorius cursor (Latham, 1787) – A
+PODICIPEDIFORMES                                                                                                                                    – C. a. alba (Pallas, 1764)                                           – C. c. cursor (Latham, 1787)
+                                                                         Grand Gravelot Charadrius hiaticula Linnaeus, 1758 – A
+                                                                                                                                                  Bécasseau variable Calidris alpina (Linnaeus, 1758) – A               Glaréole à collier Glareola pratincola (Linnaeus, 1766) – A
+Podicipedidae                                                              – C. h. hiaticula Linnaeus, 1758
+                                                                                                                                                    – C. a. arctica (Schiøler, 1922)                                      – G. p. pratincola (Linnaeus, 1766)
+Grèbe castagneux Tachybaptus ruficollis (Pallas, 1764) – A                 – C. h. tundrae (Lowe, 1915)                                             – C. a. schinzii (Brehm, CL & Schilling, 1822)
+                                                                                                                                                    – C. a. alpina (Linnaeus, 1758)
+                                                                                                                                                                                                                        Glaréole orientale Glareola maldivarum Forster, JR, 1795 – A
+  – T. r. ruficollis (Pallas, 1764)                                      Gravelot semipalmé Charadrius semipalmatus Bonaparte, 1825 – A
+                                                                                                                                                  Bécasseau violet Calidris maritima (Brünnich, 1764) – A               Glaréole à ailes noires Glareola nordmanni Fischer von Waldheim,
+Grèbe à bec bigarré Podilymbus podiceps (Linnaeus, 1758) – A             Petit Gravelot Charadrius dubius Scopoli, 1786 – A                                                                                             1842 – A
+  – appartenance subspécifique inconnue                                                                                                           Bécasseau de Baird Calidris bairdii (Coues, 1861) – A
+                                                                           – C. d. curonicus Gmelin, JF, 1789
+Grèbe jougris Podiceps grisegena (Boddaert, 1783) – A                                                                                             Bécasseau minute Calidris minuta (Leisler, 1812) – A                  Laridae
+  – P. g. grisegena (Boddaert, 1783)                                     Gravelot kildir Charadrius vociferus Linnaeus, 1758 – A                  Bécasseau minuscule Calidris minutilla (Vieillot, 1819) – A           Mouette tridactyle Rissa tridactyla (Linnaeus, 1758) – A
+  – P. g. holbollii Reinhardt, 1853                                        – appartenance subspécifique inconnue
+                                                                                                                                                  Bécasseau de Bonaparte Calidris fuscicollis (Vieillot, 1819) – A        – R. t. tridactyla (Linnaeus, 1758)
+Grèbe huppé Podiceps cristatus (Linnaeus, 1758) – A                      Gravelot pâtre Charadrius pecuarius Temminck, 1823 – A                   Bécasseau rousset Calidris subruficollis (Vieillot, 1819) – A         Mouette blanche Pagophila eburnea (Phipps, 1774) – A
+  – P. c. cristatus (Linnaeus, 1758)
+                                                                         Gravelot à collier interrompu Charadrius alexandrinus Linnaeus,          Bécasseau tacheté Calidris melanotos (Vieillot, 1819) – A             Mouette de Sabine Xema sabini (Sabine, 1819) – A
+Grèbe esclavon Podiceps auritus (Linnaeus, 1758) – A                                                                                              Bécasseau semipalmé Calidris pusilla (Linnaeus, 1766) – A             Goéland railleur Chroicocephalus genei (Brème, 1839) – A
+                                                                         1758 – A
+  – P. a. auritus (Linnaeus, 1758)
+                                                                           – C. a. alexandrinus Linnaeus, 1758                                    Bécasseau d’Alaska Calidris mauri (Cabanis, 1857) – A                 Mouette de Bonaparte Chroicocephalus philadelphia (Ord, 1815) – A
+Grèbe à cou noir Podiceps nigricollis Brehm, CL, 1831 – A
+                                                                         Gravelot mongol Charadrius mongolus Pallas, 1776 – A                     Bécassin à long bec Limnodromus scolopaceus (Say, 1822) – A           Mouette rieuse Chroicocephalus ridibundus (Linnaeus, 1766) – A
+  – P. n. nigricollis Brehm, CL, 1831
+                                                                           – appartenance subspécifique inconnue                                  Bécassin à bec court Limnodromus griseus (Gmelin, JF, 1789) – A       Mouette pygmée Hydrocoloeus minutus (Pallas, 1776) – A
+PHOENICOPTERIFORMES                                                                                                                                 – appartenance subspécifique inconnue                               Mouette de Ross Rhodostethia rosea (MacGillivray, W, 1824) – A
+                                                                         Gravelot de Leschenault Charadrius leschenaultii Lesson, R, 1826 – A
+                                                                                                                                                  Bécasse des bois Scolopax rusticola Linnaeus, 1758 – A                Mouette atricille Leucophaeus atricilla (Linnaeus, 1758) – A
+Phoenicopteridae                                                           – appartenance subspécifique inconnue
+                                                                                                                                                  Bécasse d’Amérique Scolopax minor Gmelin, JF, 1789 – A                  – appartenance subspécifique inconnue
+Flamant rose Phoenicopterus roseus Pallas, 1811 – A                      Gravelot asiatique Charadrius asiaticus Pallas, 1773 – A                 Bécassine sourde Lymnocryptes minimus (Brünnich, 1764) – A            Mouette de Franklin Leucophaeus pipixcan (Wagler, 1831) – A
+Flamant nain Phoeniconaias minor (Geoffroy Saint-Hilaire, É, 1798) – A   Guignard d’Eurasie Charadrius morinellus Linnaeus, 1758 – A              Bécassine double Gallinago media (Latham, 1787) – A                   Goéland d’Audouin Ichthyaetus audouinii (Payraudeau, 1826) – A
+
+
+                                                                                                                 Ornithos 27-3 : 170-185 (2020)   Ornithos 27-3 : 170-185 (2020)
+174                                                                                                                                                                                                                                                                                     175
+                                                                                                                                                                                                                                              Liste des Oiseaux de France 2020
+
+
+
+
+Mouette mélanocéphale Ichthyaetus melanocephalus (Temminck,     Goéland brun Larus fuscus Linnaeus, 1758 – A                             GAVIIFORMES                                                          CICONIIFORMES
+1820) – A                                                         – L. f. graellsii Brehm, AE, 1857
+                                                                  – L. f. intermedius Schioler, 1922                                     Gaviidae                                                             Ciconiidae
+Goéland ichthyaète Ichthyaetus ichthyaetus (Pallas, 1773) – A
+                                                                  – L. f. fuscus Linnaeus, 1758 Goéland de la Baltique
+Goéland cendré Larus canus Linnaeus, 1758 – A                                                                                            Plongeon catmarin Gavia stellata (Pontoppidan, 1763) – A             Cigogne noire Ciconia nigra (Linnaeus, 1758) – A
+                                                                Sterne hansel Gelochelidon nilotica (Gmelin, JF, 1789) – A
+  – L. c. canus Linnaeus, 1758                                                                                                           Plongeon arctique Gavia arctica (Linnaeus, 1758) – A                 Cigogne blanche Ciconia ciconia (Linnaeus, 1758) – A
+                                                                  – G. n. nilotica (Gmelin, JF, 1789)
+Goéland à bec cerclé Larus delawarensis Ord, 1815 – A                                                                                      – G. a. arctica (Linnaeus, 1758)                                     – C. c. ciconia (Linnaeus, 1758)
+                                                                Sterne caspienne Hydroprogne caspia (Pallas, 1770) – A
+Goéland marin Larus marinus Linnaeus, 1758 – A                                                                                           Plongeon imbrin Gavia immer (Brünnich, 1764) – A
+                                                                Sterne royale Thalasseus maximus (Boddaert, 1783) – A
+                                                                                                                                         Plongeon à bec blanc Gavia adamsii (Gray, GR, 1859) – A
+Goéland dominicain Larus dominicanus Lichtenstein, 1823 – A
+                                                                Sterne voyageuse Thalasseus bengalensis (Lesson, R, 1831) – A                                                                                 SULIFORMES
+  – L. d. vetula Bruch, 1853                                      – T. b. torresii Gould, 1843
+Goéland bourgmestre Larus hyperboreus Gunnerus, 1767 – A
+                                                                                                                                                                                                              Fregatidae
+                                                                Sterne caugek Thalasseus sandvicensis (Latham, 1787) – A                 PROCELLARIIFORMES
+  – L. h. hyperboreus Gunnerus, 1767                                                                                                                                                                          Frégate superbe Fregata magnificens Mathews, 1914 – B
+                                                                Sterne élégante Thalasseus elegans (Gambel, 1849) – A                    Oceanitidae
+Goéland à ailes blanches Larus glaucoides Meyer, B, 1822 – A
+  – L. g. glaucoides Meyer, B, 1822                             Sterne naine Sternula albifrons (Pallas, 1764) – A                                                                                            Sulidae
+                                                                  – S. a. albifrons (Pallas, 1764)                                       Océanite de Wilson Oceanites oceanicus (Kühl, 1820) – A
+  – L. g. kumlieni Brewster, 1883 Goéland de Kumlien                                                                                       – appartenance subspécifique inconnue                              Fou de Bassan Morus bassanus (Linnaeus, 1758) – A
+Goéland argenté Larus argentatus Pontoppidan, 1763 – A          Sterne bridée Onychoprion anaethetus (Scopoli, 1786) – A
+                                                                  – O. a. melanopterus (Swainson, 1837)                                                                                                       Fou masqué Sula dactylatra Lesson, R, 1831 – A
+  – L. a. argenteus Brehm, CL & Schilling, 1822                                                                                          Diomedeidae                                                            – appartenance subspécifique inconnue
+  – L. a. argentatus Pontoppidan, 1763                          Sterne fuligineuse Onychoprion fuscatus (Linnaeus, 1766) – A
+                                                                  – O. f. fuscatus (Linnaeus, 1766)                                      Albatros à sourcils noirs Thalassarche melanophris (Temminck,        Fou à pieds rouges Sula sula (Linnaeus, 1766) – A
+Goéland d’Amérique Larus smithsonianus Coues, 1862 – A                                                                                   1828) – A                                                              – appartenance subspécifique inconnue
+                                                                Sterne de Dougall Sterna dougallii Montagu, 1813 – A
+Goéland de la Véga Larus vegae Palmén, 1887 – A                   – S. d. dougallii Montagu, 1813                                        Albatros à bec jaune Thalassarche chlororhynchos (Gmelin, JF,
+  – appartenance subspécifique inconnue                                                                                                  1789) – A                                                            Phalacrocoracidae
+                                                                Sterne pierregarin Sterna hirundo Linnaeus, 1758 – A
+Goéland pontique Larus cachinnans Pallas, 1811 – A                – S. h. hirundo Linnaeus, 1758                                                                                                              Cormoran pygmée Microcarbo pygmaeus (Pallas, 1773) – A
+Goéland leucophée Larus michahellis Naumann, JF, 1840 – A                                                                                Hydrobatidae
+                                                                Sterne arctique Sterna paradisaea Pontoppidan, 1763 – A                                                                                       Cormoran à aigrettes Phalacrocorax auritus (Lesson, R, 1831) – A
+  – L. m. michahellis Naumann, JF, 1840 – A                                                                                              Océanite tempête Hydrobates pelagicus (Linnaeus, 1758) – A             – appartenance subspécifique inconnue
+                                                                Sterne de Forster Sterna forsteri Nuttall, 1834 – A
+                                                                                                                                           – H. p. pelagicus (Linnaeus, 1758)                                 Cormoran huppé Phalacrocorax aristotelis (Linnaeus, 1761) – A
+3. Labbe à longue queue Stercorarius longicaudus, adulte,       Guifette moustac Chlidonias hybrida (Pallas, 1811) – A                     – H. p. melitensis (Schembri, 1843)
+                                                                  – C. h. hybrida (Pallas, 1811)                                                                                                                – P. a. aristotelis (Linnaeus, 1761)
+Hérault, avril 2008 (Frank Dhermain). Adult Long-tailed Skua.                                                                            Océanite de Castro/du Cap-Vert/de Monteiro ­Oceanodroma
+                                                                Guifette leucoptère Chlidonias leucopterus (Temminck, 1815) – A                                                                               Cormoran de Desmarest – P. a. desmarestii (Payraudeau, 1826)
+                                                                                                                                         castro (Harcourt, 1851)/O. jabejabe (Barboza du Bocage,
+                                                                Guifette noire Chlidonias niger (Linnaeus, 1758) – A                                                                                          Grand Cormoran Phalacrocorax carbo (Linnaeus, 1758) – A
+                                                                                                                                         1875)/O. monteiroi Bolton et al., 2008 – A*
+                                                                  – C. n. niger (Linnaeus, 1758)                                                                                                                – P. c. carbo (Linnaeus, 1758)
+                                                                                                                                         Océanite de Swinhoe Oceanodroma monorhis (Swinhoe, 1867) – A           – P. c. sinensis (Staunton, 1796)
+                                                                Stercorariidae                                                           Océanite culblanc Oceanodroma leucorhoa (Vieillot, 1818) – A
+                                                                                                                                           – O. l. leucorhoa (Vieillot, 1818)
+                                                                Grand Labbe Stercorarius skua (Brünnich, 1764) – A                                                                                            PELECANIFORMES
+                                                                Labbe pomarin Stercorarius pomarinus (Temminck, 1815) – A                Procellariidae
+                                                                                                                                                                                                              Threskiornithidae
+                                                                Labbe parasite Stercorarius parasiticus (Linnaeus, 1758) – A             Fulmar géant/de Hall Macronectes giganteus (Gmelin, 1789)/M. halli
+                                                                                                                                         Mathews, 1912 – A*                                                   Ibis sacré Threskiornis aethiopicus (Latham, 1790) – C
+                                                                Labbe à longue queue Stercorarius longicaudus Vieillot, 1819 – A
+                                                                  – S. l. longicaudus Vieillot, 1819                                     Fulmar boréal Fulmarus glacialis (Linnaeus, 1761) – A                Ibis falcinelle Plegadis falcinellus (Linnaeus, 1766) – A
+                                                                                                                                           – F. g. glacialis (Linnaeus, 1761)                                 Spatule blanche Platalea leucorodia Linnaeus, 1758 – A
+                                                                Alcidae                                                                  Pétrel gongon/P. des Desertas Pterodroma feae (Salvatori, 1899)/       – P. l. leucorodia Linnaeus, 1758
+                                                                Mergule nain Alle alle (Linnaeus, 1758) – A                              P. deserta Mathews, 1934 – A*
+                                                                                                                                                                                                              Ardeidae
+                                                                  – A. a. alle (Linnaeus, 1758)                                          Puffin de Scopoli Calonectris diomedea (Scopoli, 1769) – A
+                                                                Guillemot de Brünnich Uria lomvia (Linnaeus, 1758) – A                   Puffin cendré Calonectris borealis (Cory, 1881) – A                  Butor étoilé Botaurus stellaris (Linnaeus, 1758) – A
+                                                                  – appartenance subspécifique inconnue                                                                                                         – B. s. stellaris (Linnaeus, 1758)
+                                                                                                                                         Puffin fuligineux Ardenna grisea (Gmelin, JF, 1789) – A
+                                                                Guillemot de Troïl Uria aalge (Pontoppidan, 1763) – A                                                                                         Blongios nain Ixobrychus minutus (Linnaeus, 1766) – A
+                                                                                                                                         Puffin majeur Ardenna gravis (O’Reilly, 1818) – A                      – I. m. minutus (Linnaeus, 1766)
+                                                                  – U. a. aalge (Pontoppidan, 1763)
+                                                                  – U. a. albionis Witherby, 1923                                        Puffin des Anglais Puffinus puffinus (Brünnich, 1764) – A            Bihoreau gris Nycticorax nycticorax (Linnaeus, 1758) – A
+                                                                Pingouin torda Alca torda Linnaeus, 1758 – A                             Puffin yelkouan Puffinus yelkouan (Acerbi, 1827) – A                   – N. n. nycticorax (Linnaeus, 1758)
+                                                                  – A. t. islandica Brehm, CL, 1831                                      Puffin des Baléares Puffinus mauretanicus Lowe, 1921 – A             Héron vert Butorides virescens (Linnaeus, 1758) – A
+                                                                Guillemot à miroir Cepphus grylle (Linnaeus, 1758) – A                   Puffin de Macaronésie/de Boyd Puffinus baroli (Bonaparte, 1857)/       – appartenance subspécifique inconnue
+                                                                  – C. g. arcticus (Brehm, CL, 1824)                                     P. boydi Mathews, 1912 – A*                                          Crabier chevelu Ardeola ralloides (Scopoli, 1769) – A
+                                                                Macareux moine Fratercula arctica (Linnaeus, 1758) – A                   Pétrel de Bulwer Bulweria bulwerii (Jardine & Selby, 1828) – A       Héron garde-bœufs Bubulcus ibis (Linnaeus, 1758) – A
+
+
+                                                                                                        Ornithos 27-3 : 170-185 (2020)   Ornithos 27-3 : 170-185 (2020)
+176                                                                                                                                                                                                                                                                       177
+                                                                                                                                                                                                                                                 Liste des Oiseaux de France 2020
+
+
+
+
+Héron cendré Ardea cinerea Linnaeus, 1758 – A                      Aigle impérial Aquila heliaca Savigny, 1809 – A                          Chevêchette d’Europe Glaucidium passerinum (Linnaeus, 1758) – A   Pic à dos blanc Dendrocopos leucotos (Bechstein, 1802) – A
+  – A. c. cinerea Linnaeus, 1758                                   Aigle royal Aquila chrysaetos (Linnaeus, 1758) – A                         – G. p. passerinum (Linnaeus, 1758)                               – D. l. leucotos (Bechstein, 1802)
+Grand Héron Ardea herodias Linnaeus, 1758 – A                        – A. c. chrysaetos (Linnaeus, 1758)                                    Chevêche d’Athéna Athene noctua (Scopoli, 1769) – A                 – D. l. lilfordi (Sharpe & Dresser, 1871)
+  – appartenance subspécifique inconnue                            Aigle de Bonelli Aquila fasciata Vieillot, 1822 – A                        – A. n. vidalii Brehm, AE, 1857                                 Pic noir Dryocopus martius (Linnaeus, 1758) – A
+Héron mélanocéphale Ardea melanocephala Children & Vigors,           – A. f. fasciata Vieillot, 1822                                        Chouette de Tengmalm Aegolius funereus (Linnaeus, 1758) – A         – D. m. martius (Linnaeus, 1758)
+1826 – A                                                           Épervier d’Europe Accipiter nisus (Linnaeus, 1758) – A                     – A. f. funereus (Linnaeus, 1758)                               Pic vert Picus viridis Linnaeus, 1758 – A
+Héron pourpré Ardea purpurea Linnaeus, 1766 – A                      – A. n. nisus (Linnaeus, 1758)                                         Hibou moyen-duc Asio otus (Linnaeus, 1758) – A                      – P. v. viridis Linnaeus, 1758
+  – A. p. purpurea Linnaeus, 1766                                    – A. n. wolterstorffi Kleinschmidt, O, 1901                              – A. o. otus (Linnaeus, 1758)                                   Pic de Sharpe Picus sharpei (Saunders, H, 1872) – A
+Grande Aigrette Ardea alba Linnaeus, 1758 – A                      Autour des palombes Accipiter gentilis (Linnaeus, 1758) – A              Hibou des marais Asio flammeus (Pontoppidan, 1763) – A            Pic cendré Picus canus Gmelin, JF, 1788 – A
+  – A. a. alba Linnaeus, 1758                                        – A. g. gentilis (Linnaeus, 1758)                                        – A. f. flammeus (Pontoppidan, 1763)                              – P. c. canus Gmelin, JF, 1788
+                                                                     – A. g. arrigonii (Kleinschmidt, O, 1903)
+Aigrette garzette Egretta garzetta (Linnaeus, 1766) – A
+  – E. g. garzetta (Linnaeus, 1766)                                Busard des roseaux Circus aeruginosus (Linnaeus, 1758) – A
+                                                                     – C. a. aeruginosus (Linnaeus, 1758)                                   BUCEROTIFORMES                                                    FALCONIFORMES
+Aigrette des récifs Egretta gularis (Bosc, 1792) – A
+  – E. g. gularis (Bosc, 1792)                                     Busard Saint-Martin Circus cyaneus (Linnaeus, 1766) – A                  Upupidae                                                          Falconidae
+  – E. g. schistacea (Hemprich & Ehrenberg, 1828)                  Busard pâle Circus macrourus (Gmelin, SG, 1770) – A
+                                                                                                                                            Huppe fasciée Upupa epops Linnaeus, 1758 – A                      Faucon crécerellette Falco naumanni Fleischer, JG, 1818 – A
+                                                                   Busard cendré Circus pygargus (Linnaeus, 1758) – A                         – U. e. epops Linnaeus, 1758
+Pelecanidae                                                                                                                                                                                                   Faucon crécerelle Falco tinnunculus Linnaeus, 1758 – A
+                                                                   Milan royal Milvus milvus (Linnaeus, 1758) – A                                                                                               – F. t. tinnunculus Linnaeus, 1758
+Pélican blanc Pelecanus onocrotalus Linnaeus, 1758 – A               – M. m. milvus (Linnaeus, 1758)
+                                                                                                                                            CORACIIFORMES                                                     Faucon kobez Falco vespertinus Linnaeus, 1766 – A
+Pélican frisé Pelecanus crispus Bruch, 1832 – A                    Milan noir Milvus migrans (Boddaert, 1783) – A
+                                                                     – M. m. migrans (Boddaert, 1783)                                                                                                         Faucon d’Éléonore Falco eleonorae Géné, 1839 – A
+                                                                                                                                            Coraciidae                                                        Faucon concolore Falco concolor Temminck, 1825 – A
+                                                                   Pygargue à queue blanche Haliaeetus albicilla (Linnaeus, 1758) – A
+ACCIPITRIFORMES                                                      – H. a. albicilla (Linnaeus, 1758)                                     Rollier d’Europe Coracias garrulus Linnaeus, 1758 – A             Faucon émerillon Falco columbarius Linnaeus, 1758 – A
+                                                                                                                                              – C. g. garrulus Linnaeus, 1758                                   – F. c. subaesalon Brehm, CL, 1827
+Pandionidae                                                        Buse pattue Buteo lagopus (Pontoppidan, 1763) – A
+                                                                     – B. l. lagopus (Pontoppidan, 1763)                                                                                                        – F. c. aesalon Tunstall, 1771
+Balbuzard pêcheur Pandion haliaetus (Linnaeus, 1758) – A                                                                                    Alcedinidae                                                       Faucon hobereau Falco subbuteo Linnaeus, 1758 – A
+                                                                   Buse féroce Buteo rufinus (Cretzschmar, 1829) – A
+  – P. h. haliaetus (Linnaeus, 1758)                                 – B. r. rufinus (Cretzschmar, 1829)                                    Martin-pêcheur d’Europe Alcedo atthis (Linnaeus, 1758) – A          – F. s. subbuteo Linnaeus, 1758
+                                                                     – B. r. cirtensis (Levaillant, J, 1850)                                  – A. a. ispida Linnaeus, 1758                                   Faucon lanier Falco biarmicus Temminck, 1825 – A
+Accipitridae                                                                                                                                  – A. a. atthis (Linnaeus, 1758)                                   – appartenance subspécifique inconnue
+                                                                   Buse variable Buteo buteo (Linnaeus, 1758) – A
+Élanion blanc Elanus caeruleus (Desfontaines, 1789) – A              – B. b. pojana (Savi, 1831)                                                                                                              Faucon sacre Falco cherrug Gray, JE, 1834 – A
+  – E. c. caeruleus (Desfontaines, 1789)                             – B. b. buteo (Linnaeus, 1758)                                         Meropidae                                                           – F. c. cherrug Gray, JE, 1834
+                                                                     – B. b. vulpinus (Gloger, 1833) Buse des steppes                       Guêpier de Perse Merops persicus Pallas, 1773 – A                 Faucon gerfaut Falco rusticolus Linnaeus, 1758 – A
+Gypaète barbu Gypaetus barbatus (Linnaeus, 1758) – A
+  – G. b. barbatus (Linnaeus, 1758)                                                                                                           – appartenance subspécifique inconnue                           Faucon pèlerin Falco peregrinus Tunstall, 1771 – A
+Vautour percnoptère Neophron percnopterus (Linnaeus, 1758) – A     STRIGIFORMES                                                             Guêpier d’Europe Merops apiaster Linnaeus, 1758 – A                 – F. p. peregrinus Tunstall, 1771
+  – N. p. percnopterus (Linnaeus, 1758)                                                                                                                                                                         – F. p. calidus Latham, 1790
+Bondrée apivore Pernis apivorus (Linnaeus, 1758) – A               Tytonidae                                                                                                                                    – F. p. brookei Sharpe, 1873
+                                                                                                                                            PICIFORMES
+Vautour de Rüppell Gyps rueppelli (Brehm, AE, 1852) – A            Effraie des clochers Tyto alba (Scopoli, 1769) – A
+  – appartenance subspécifique inconnue                              – T. a. alba (Scopoli, 1769)                                           Picidae                                                           PSITTACIFORMES
+Vautour fauve Gyps fulvus (Hablizl, 1783) – AC                       – T. a. guttata (Brehm, CL, 1831)
+                                                                     – T. a. ernesti (Kleinschmidt, O, 1901)                                Torcol fourmilier Jynx torquilla Linnaeus, 1758 – A               Psittaculidae
+  – G. f. fulvus (Hablizl, 1783)                                                                                                              – J. t. torquilla Linnaeus, 1758
+Vautour moine Aegypius monachus (Linnaeus, 1766) – AC                                                                                         – J. t. tschusii Kleinschmidt, O, 1907                          Perruche à collier Psittacula krameri (Scopoli, 1769) – C
+                                                                   Strigidae
+Vautour oricou Torgos tracheliotos (Forster, JR, 1796) – B                                                                                  Pic tridactyle Picoides tridactylus (Linnaeus, 1758) – A            – plusieurs souches issues d’élevage ont été lâchées en France.
+  – appartenance subspécifique inconnue                            Petit-duc scops Otus scops (Linnaeus, 1758) – A                            – P. t. alpinus Brehm, CL, 1831
+                                                                     – O. s. scops (Linnaeus, 1758)
+Circaète Jean-le-blanc Circaetus gallicus (Gmelin, JF, 1788) – A                                                                            Pic mar Dendrocoptes medius (Linnaeus, 1758) – A
+  – C. g. gallicus (Gmelin, JF, 1788)                              Harfang des neiges Bubo scandiacus (Linnaeus, 1758) – A                    – D. m. medius (Linnaeus, 1758)
+                                                                                                                                                                                                              PASSERIFORMES
+Aigle pomarin Clanga pomarina (Brehm, CL, 1831) – A                Grand-duc d’Europe Bubo bubo (Linnaeus, 1758) – A                        Pic épeichette Dryobates minor (Linnaeus, 1758) – A               Laniidae
+                                                                     – B. b. bubo (Linnaeus, 1758)                                            – D. m. hortorum (Brehm, CL, 1831)
+Aigle criard Clanga clanga (Pallas, 1811) – A                                                                                                                                                                 Pie-grièche brune Lanius cristatus Linnaeus, 1758 – A
+                                                                   Chouette hulotte Strix aluco Linnaeus, 1758 – A                            – D. m. buturlini Hartert, 1912
+Aigle botté Hieraaetus pennatus (Gmelin, JF, 1788) – A               – S. a. aluco Linnaeus, 1758                                                                                                               – L. c. cristatus Linnaeus, 1758
+                                                                                                                                            Pic épeiche Dendrocopos major (Linnaeus, 1758) – A
+Aigle des steppes Aquila nipalensis Hodgson, 1833 – A                – S. a. sylvatica Shaw, 1809                                             – D. m. major (Linnaeus, 1758)                                  Pie-grièche écorcheur Lanius collurio Linnaeus, 1758 – A
+  – A. n. orientalis Cabanis, 1854                                 Chouette épervière Surnia ulula (Linnaeus, 1758) – B                       – D. m. pinetorum (Brehm, CL, 1831)                             Pie-grièche isabelle Lanius isabellinus Hemprich & Ehrenberg, 1833 – A
+Aigle ibérique Aquila adalberti Brehm, CL, 1861 – A                  – S. u. ulula (Linnaeus, 1758)                                           – D. m. harterti Arrigoni degli Oddi, 1902                        – L. i. isabellinus Hemprich & Ehrenberg, 1833 Pie-grièche de Daourie
+
+
+                                                                                                           Ornithos 27-3 : 170-185 (2020)   Ornithos 27-3 : 170-185 (2020)
+178                                                                                                                                                                                                                                                                           179
+                                                                                                                                                                                                                                                        Liste des Oiseaux de France 2020
+
+
+
+
+Pie-grièche du Turkestan Lanius phoenicuroides (Schalow, 1875) – A                                                                           Alaudidae                                                                Phylloscopidae
+Pie-grièche à poitrine rose Lanius minor Gmelin, JF, 1788 – A
+                                                                                                                                             Ammomane élégante Ammomanes cinctura (Gould, 1839) – A                   Pouillot siffleur Phylloscopus sibilatrix (Bechstein, 1793) – A
+Pie-grièche grise Lanius excubitor Linnaeus, 1758 – A                                                                                          – appartenance subspécifique inconnue                                  Pouillot de Bonelli Phylloscopus bonelli (Vieillot, 1819) – A
+  – L. e. excubitor Linnaeus, 1758
+                                                                                                                                             Alouette lulu Lullula arborea (Linnaeus, 1758) – A                       Pouillot oriental Phylloscopus orientalis (Brehm, CL, 1855) – A
+  – L. e. homeyeri Cabanis, 1873
+                                                                                                                                               – L. a. arborea (Linnaeus, 1758)
+  – L. e. pallidirostris Cassin, 1851 Pie-grièche des steppes                                                                                                                                                         Pouillot de Hume Phylloscopus humei (Brooks, WE, 1878) – A
+                                                                                                                                               – L. a. pallida Zarudny, 1902
+Pie-grièche méridionale Lanius meridionalis Temminck, 1820 – A                                                                                                                                                          – appartenance subspécifique inconnue
+                                                                                                                                             Alouette des champs Alauda arvensis Linnaeus, 1758 – A
+Pie-grièche à tête rousse Lanius senator Linnaeus, 1758 – A                                                                                    – A. a. arvensis Linnaeus, 1758                                        Pouillot à grands sourcils Phylloscopus inornatus (Blyth, 1842) – A
+  – L. s. senator Linnaeus, 1758                                                                                                               – A. a. cantarella Bonaparte, 1850                                     Pouillot de Pallas Phylloscopus proregulus (Pallas, 1811) – A
+  – L. s. badius Hartlaub, 1854                                                                                                              Cochevis de Thékla Galerida theklae Brehm, AE, 1857 – A                  Pouillot de Schwarz Phylloscopus schwarzi (Radde, 1863) – A
+Pie-grièche masquée Lanius nubicus Lichtenstein, MHK, 1823 – A                                                                                 – G. t. theklae Brehm, AE, 1857
+                                                                                                                                                                                                                      Pouillot brun Phylloscopus fuscatus (Blyth, 1842) – A
+                                                                                                                                             Cochevis huppé Galerida cristata (Linnaeus, 1758) – A                      – appartenance subspécifique inconnue
+Vireonidae                                                                                                                                     – G. c. cristata (Linnaeus, 1758)
+                                                                                                                                                                                                                      Pouillot fitis Phylloscopus trochilus (Linnaeus, 1758) – A
+Viréo à œil rouge Vireo olivaceus (Linnaeus, 1766) – A                                                                                       Alouette haussecol Eremophila alpestris (Linnaeus, 1758) – A               – P. t. trochilus (Linnaeus, 1758)
+                                                                                                                                               – E. a. flava (Gmelin, JF, 1789)                                         – P. t. acredula (Linnaeus, 1758)
+Oriolidae                                                                                                                                    Alouette calandrelle Calandrella brachydactyla (Leisler, 1814) – A       Pouillot véloce Phylloscopus collybita (Vieillot, 1817) – A
+                                                                                                                                               – C. b. brachydactyla (Leisler, 1814)                                    – P. c. abietinus (Nilsson, 1819)
+Loriot d’Europe Oriolus oriolus (Linnaeus, 1758) – A                 4. Hirondelle rousseline Cecropis daurica, adulte, Corse,
+                                                                     mai 2018 (Fabrice Jallu). Adult Red-rumped Swallow.                     Alouette monticole Melanocorypha bimaculata (Ménétries, 1832) – A          – P. c. collybita (Vieillot, 1817)
+Corvidae                                                                                                                                     Alouette calandre Melanocorypha calandra (Linnaeus, 1766) – A              – P. c. tristis Blyth, 1843 Pouillot de Sibérie
+                                                                     Paridae                                                                   – M. c. calandra (Linnaeus, 1766)                                      Pouillot ibérique Phylloscopus ibericus Ticehurst, 1937 – A
+Geai des chênes Garrulus glandarius (Linnaeus, 1758) – A
+  – G. g. glandarius (Linnaeus, 1758)                                                                                                        Sirli de Dupont Chersophilus duponti (Vieillot, 1824) – B                Pouillot de Temminck Phylloscopus coronatus (Temminck & Schlegel,
+                                                                     Mésange noire Periparus ater (Linnaeus, 1758) – A
+  – G. g. rufitergum Hartert, 1903                                                                                                             – C. d. duponti (Vieillot, 1824)                                       1847) – A
+                                                                       – P. a. ater (Linnaeus, 1758)
+  – G. g. corsicanus Laubmann, 1912                                    – P. a. sardus (Kleinschmidt, O, 1903)                                Alouette pispolette Alaudala rufescens (Vieillot, 1819) – A              Pouillot à pattes sombres Phylloscopus plumbeitarsus Swinhoe,
+Pie bavarde Pica pica (Linnaeus, 1758) – A                                                                                                     – appartenance subspécifique inconnue                                  1861 – A
+                                                                     Mésange huppée Lophophanes cristatus (Linnaeus, 1758) – A
+  – P. p. pica (Linnaeus, 1758)                                        – L. c. abadiei (Jouard, 1929)                                                                                                                 Pouillot verdâtre Phylloscopus trochiloides (Sundevall, 1837) – A
+  – P. p. melanotos Brehm, AE, 1857                                    – L. c. mitratus (Brehm, CL, 1831)
+                                                                                                                                             Hirundinidae                                                               – P. t. viridanus Blyth, 1843
+Cassenoix moucheté Nucifraga caryocatactes (Linnaeus, 1758) – A      Mésange nonnette Poecile palustris (Linnaeus, 1758) – A                 Hirondelle paludicole Riparia paludicola (Vieillot, 1817) – A            Pouillot boréal Phylloscopus borealis (Blasius, JH, 1858) – A
+  – N. c. caryocatactes (Linnaeus, 1758)                               – P. p. palustris (Linnaeus, 1758)                                      – appartenance subspécifique inconnue
+  – N. c. macrorhynchos Brehm, CL, 1823                                – P. p. dresseri (Stejneger, 1886)                                    Hirondelle de rivage Riparia riparia (Linnaeus, 1758) – A                Acrocephalidae
+Crave à bec rouge Pyrrhocorax pyrrhocorax (Linnaeus, 1758) – A         – P. p. italicus (Tschusi & Hellmayr, 1900)                             – R. r. riparia (Linnaeus, 1758)
+  – P. p. erythroramphos (Vieillot, 1817)                                                                                                                                                                             Rousserolle turdoïde Acrocephalus arundinaceus (Linnaeus, 1758) – A
+                                                                     Mésange boréale Poecile montanus (Conrad von Baldenstein, 1827) – A     Hirondelle rustique Hirundo rustica Linnaeus, 1758 – A                     – A. a. arundinaceus (Linnaeus, 1758)
+Chocard à bec jaune Pyrrhocorax graculus (Linnaeus, 1766) – A          – P. m. rhenanus (Kleinschmidt, O, 1900)                                – H. r. rustica Linnaeus, 1758
+  – P. g. graculus (Linnaeus, 1766)                                    – P. m. montanus (Conrad von Baldenstein, 1827) Mésange alpestre
+                                                                                                                                                                                                                      Lusciniole à moustaches Acrocephalus melanopogon (Temminck,
+                                                                                                                                             Hirondelle de rochers Ptyonoprogne rupestris (Scopoli, 1769) – A         1823) – A
+Choucas des tours Coloeus monedula (Linnaeus, 1758) – A                – P. m. salicarius (Brehm, CL, 1831) Mésange des saules
+                                                                                                                                             Hirondelle de fenêtre Delichon urbicum (Linnaeus, 1758) – A                – A. m. melanopogon (Temminck, 1823)
+  – C. m. monedula (Linnaeus, 1758)                                  Mésange bleue Cyanistes caeruleus (Linnaeus, 1758) – A                    – D. u. urbicum (Linnaeus, 1758)
+  – C. m. spermologus (Vieillot, 1817)                                 – C. c. obscurus (Pražák, 1894)
+                                                                                                                                                                                                                      Phragmite aquatique Acrocephalus paludicola (Vieillot, 1817) – A
+  – C. m. soemmerringii (Fischer, 1811) Choucas des tours oriental     – C. c. caeruleus (Linnaeus, 1758)
+                                                                                                                                             Hirondelle rousseline Cecropis daurica (Laxmann, 1769) – A               Phragmite des joncs Acrocephalus schoenobaenus (Linnaeus, 1758) – A
+                                                                                                                                               – C. d. rufula (Temminck, 1835)
+Choucas de Daourie Coloeus dauuricus (Pallas, 1776) – A                – C. c. ogliastrae (Hartert, 1905)                                                                                                             Rousserolle isabelle Acrocephalus agricola (Jerdon, 1845) – A
+                                                                                                                                             Hirondelle à front blanc Petrochelidon pyrrhonota (Vieillot, 1817) – A     – appartenance subspécifique inconnue
+Corbeau freux Corvus frugilegus Linnaeus, 1758 – A                   Mésange azurée Cyanistes cyanus (Pallas, 1770) – B
+                                                                                                                                               – appartenance subspécifique inconnue
+  – C. f. frugilegus Linnaeus, 1758                                    – C. c. cyanus (Pallas, 1770)                                                                                                                  Rousserolle des buissons Acrocephalus dumetorum Blyth, 1849 – A
+Corneille noire Corvus corone Linnaeus, 1758 – A                     Mésange charbonnière Parus major Linnaeus, 1758 – A                     Cettiidae                                                                Rousserolle effarvatte Acrocephalus scirpaceus (Hermann, 1804) – A
+  – C. c. corone Linnaeus, 1758                                        – P. m. major Linnaeus, 1758                                                                                                                     – A. s. scirpaceus (Hermann, 1804)
+                                                                       – P. m. corsus Kleinschmidt, O, 1903                                  Bouscarle de Cetti Cettia cetti (Temminck, 1820) – A
+Corneille mantelée Corvus cornix Linnaeus, 1758 – A                                                                                            – C. c. cetti (Temminck, 1820)                                         Rousserolle verderolle Acrocephalus palustris (Bechstein, 1798) – A
+  – C. c. cornix Linnaeus, 1758                                                                                                                                                                                       Hypolaïs bottée Iduna caligata (Lichtenstein, MHK, 1823) – A
+  – C. c. sharpii Oates, 1889 Corneille de Corse                     Remizidae
+                                                                                                                                             Aegithalidae                                                             Hypolaïs rama Iduna rama (Sykes, 1832) – A
+Grand Corbeau Corvus corax Linnaeus, 1758 – A                        Rémiz penduline Remiz pendulinus (Linnaeus, 1758) – A
+  – C. c. corax Linnaeus, 1758                                         – R. p. pendulinus (Linnaeus, 1758)                                   Mésange à longue queue Aegithalos caudatus (Linnaeus, 1758) – A          Hypolaïs pâle Iduna pallida (Hemprich & Ehrenberg, 1833) – A
+                                                                                                                                               – A. c. caudatus (Linnaeus, 1758)                                        – I. p. elaeica (Lindermayer, A, 1843)
+Bombycillidae                                                        Panuridae                                                                 – A. c. europaeus (Hermann, 1804)                                      Hypolaïs obscure Iduna opaca (Cabanis, 1850) – A
+                                                                                                                                               – A. c. aremoricus Whistler, 1929
+Jaseur boréal Bombycilla garrulus (Linnaeus, 1758) – A               Panure à moustaches Panurus biarmicus (Linnaeus, 1758) – A                – A. c. taiti Ingram, W, 1913                                          Hypolaïs polyglotte Hippolais polyglotta (Vieillot, 1817) – A
+  – B. g. garrulus (Linnaeus, 1758)                                    – P. b. biarmicus (Linnaeus, 1758)                                      – A. c. irbii (Sharpe & Dresser, 1871)                                 Hypolaïs ictérine Hippolais icterina (Vieillot, 1817) – A
+
+
+                                                                                                            Ornithos 27-3 : 170-185 (2020)   Ornithos 27-3 : 170-185 (2020)
+180                                                                                                                                                                                                                                                                                   181
+                                                                                                                                                                                                                                                                   Liste des Oiseaux de France 2020
+
+
+
+
+Locustellidae                                                                  Fauvette de Moltoni Sylvia subalpina Temminck, 1820 – A                   Merle à plastron Turdus torquatus Linnaeus, 1758 – A                       Rougequeue à front blanc Phoenicurus phoenicurus (Linnaeus,
+                                                                               Fauvette mélanocéphale Sylvia melanocephala (Gmelin, 1789) – A              – T. t. torquatus Linnaeus, 1758                                         1758) – A
+Locustelle fasciée Helopsaltes fasciolatus (Gray, GR, 1861) – B                                                                                            – T. t. alpestris (Brehm, CL, 1831)                                        – P. p. phoenicurus (Linnaeus, 1758)
+                                                                                 – S. m. melanocephala (Gmelin, JF, 1789)
+Locustelle de Pallas Helopsaltes certhiola (Pallas, 1811) – A                                                                                            Merle noir Turdus merula Linnaeus, 1758 – A                                Rougequeue de Moussier Phoenicurus moussieri (Olphe-Galliard,
+                                                                               Fauvette de Rüppell Sylvia ruppeli Temminck, 1823 – A
+  – appartenance subspécifique inconnue                                                                                                                    – T. m. merula Linnaeus, 1758                                            1852) – A
+Locustelle lancéolée Locustella lanceolata (Temminck, 1840) – A                Regulidae                                                                 Grive obscure Turdus obscurus Gmelin, JF, 1789 – A                         Monticole de roche Monticola saxatilis (Linnaeus, 1766) – A
+  – appartenance subspécifique inconnue                                                                                                                  Grive à gorge noire Turdus atrogularis Jarocki, 1819 – A
+                                                                               Roitelet à triple bandeau Regulus ignicapilla (Temminck, 1820) – A                                                                                   Monticole bleu Monticola solitarius (Linnaeus, 1758) – A
+Locustelle tachetée Locustella naevia (Boddaert, 1783) – A                                                                                               Grive à gorge rousse Turdus ruficollis Pallas, 1776 – A                      – M. s. solitarius (Linnaeus, 1758)
+                                                                                 – R. i. ignicapilla (Temminck, 1820)
+  – L. n. naevia (Boddaert, 1783)
+                                                                               Roitelet huppé Regulus regulus (Linnaeus, 1758) – A                       Grive de Naumann Turdus naumanni Temminck, 1820 – A                        Tarier des prés Saxicola rubetra (Linnaeus, 1758) – A
+Locustelle fluviatile Locustella fluviatilis (Wolf, 1810) – A                    – R. r. regulus (Linnaeus, 1758)                                        Grive à ailes rousses Turdus eunomus Temminck, 1831 – A                    Tarier pâtre Saxicola rubicola (Linnaeus, 1766) – A
+Locustelle luscinioïde Locustella luscinioides (Savi, 1824) – A
+                                                                                                                                                         Grive litorne Turdus pilaris Linnaeus, 1758 – A                              – S. r. hibernans (Hartert, 1910)
+  – L. l. luscinioides (Savi, 1824)                                            Troglodytidae                                                                                                                                          – S. r. rubicola (Linnaeus, 1766)
+                                                                                                                                                         Grive mauvis Turdus iliacus Linnaeus, 1758 – A
+Cisticolidae                                                                   Troglodyte mignon Troglodytes troglodytes (Linnaeus, 1758) – A              – T. i. coburni Sharpe, 1901                                             Tarier de Sibérie Saxicola maurus (Pallas, 1773) – A
+                                                                                 – T. t. indigenus Clancey, 1937                                           – T. i. iliacus Linnaeus, 1758                                             – S. m. variegatus (Gmelin, SG, 1774) Tarier de la Caspienne
+Cisticole des joncs Cisticola juncidis (Rafinesque, 1810) – A                    – T. t. troglodytes (Linnaeus, 1758)
+                                                                                                                                                         Grive musicienne Turdus philomelos Brehm, CL, 1831 – A                     Traquet motteux Oenanthe oenanthe (Linnaeus, 1758) – A
+  – C. j. cisticola (Temminck, 1820)                                             – T. t. koenigi Schiebel, 1910
+                                                                                                                                                           – T. p. clarkei Hartert, 1909                                              – O. o. leucorhoa (Gmelin, JF, 1789)
+  – C. j. juncidis (Rafinesque, 1810)
+                                                                                                                                                           – T. p. philomelos Brehm, CL, 1831                                         – O. o. oenanthe (Linnaeus, 1758)
+                                                                               Sittidae
+                                                                                                                                                         Grive draine Turdus viscivorus Linnaeus, 1758 – A                            – ? O. o. libanotica (Hemprich & Ehrenberg, 1833)
+Leiothrichidae
+                                                                               Sittelle torchepot Sitta europaea Linnaeus, 1758 – A                        – T. v. deichleri Erlanger, 1897                                         Traquet isabelle Oenanthe isabellina (Temminck, 1829) – A
+Léiothrix jaune Leiothrix lutea (Scopoli, 1786) – C                              – S. e. caesia Wolf, 1810                                                 – T. v. viscivorus Linnaeus, 1758
+  – appartenance subspécifique inconnue                                          – S. e. cisalpina Sachtleben, 1919                                                                                                                 Traquet du désert Oenanthe deserti (Temminck, 1825) – A
+                                                                                                                                                                                                                                      – appartenance subspécifique inconnue
+                                                                               Sittelle corse Sitta whiteheadi Sharpe, 1884 – A                          Muscicapidae
+Sylviidae                                                                                                                                                                                                                           Traquet oreillard Oenanthe hispanica (Linnaeus, 1758) – A
+                                                                                                                                                         Agrobate roux Cercotrichas galactotes (Temminck, 1820) – A
+                                                                               Tichodromidae                                                                                                                                        Traquet noir et blanc Oenanthe melanoleuca (Güldenstädt, 1775) – A
+Fauvette à tête noire Sylvia atricapilla (Linnaeus, 1758) – A                                                                                              – C. g. galactotes (Temminck, 1820)
+  – S. a. pauluccii Arrigoni degli Oddi, 1902                                  Tichodrome échelette Tichodroma muraria (Linnaeus, 1766) – A              Gobemouche gris Muscicapa striata (Pallas, 1764) – A                       Traquet pie Oenanthe pleschanka (Lepechin, 1770) – A
+  – S. a. atricapilla (Linnaeus, 1758)                                           – T. m. muraria (Linnaeus, 1766)                                          – M. s. striata (Pallas, 1764)                                           Traquet rieur Oenanthe leucura (Gmelin, JF, 1789) – A
+Fauvette des jardins Sylvia borin (Boddaert, 1783) – A                                                                                                   Gobemouche tyrrhénien Muscicapa tyrrhenica Schiebel, 1910 – A                – O. l. leucura (Gmelin, JF, 1789)
+  – S. b. borin (Boddaert, 1783)                                               Certhiidae                                                                  – M. t. tyrrhenica Schiebel, 1910                                        Traquet à tête blanche Oenanthe leucopyga (Brehm, CL, 1855) – A
+Fauvette épervière Sylvia nisoria (Bechstein, 1792) – A                        Grimpereau des bois Certhia familiaris Linnaeus, 1758 – A                 Rougegorge familier Erithacus rubecula (Linnaeus, 1758) – A                  – appartenance subspécifique inconnue
+  – S. n. nisoria (Bechstein, 1792)                                              – C. f. macrodactyla Brehm, CL, 1831                                      – E. r. melophilus Hartert, 1901                                         Traquet kurde Oenanthe xanthoprymna (Hemprich & Ehrenberg,
+Fauvette babillarde Sylvia curruca (Linnaeus, 1758) – A                          – C. f. corsa Hartert, 1905                                               – E. r. rubecula (Linnaeus, 1758)                                        1833) – A
+  – S. c. curruca (Linnaeus, 1758)                                               – C. f. familiaris Linnaeus, 1758                                         – E. r. witherbyi Hartert, 1910
+  – S. c. blythi Ticehurst & Whistler, 1933                                    Grimpereau des jardins Certhia brachydactyla Brehm, CL, 1820 – A          Gorgebleue à miroir Luscinia svecica (Linnaeus, 1758) – A                  Cinclidae
+  – S. c. minula Hume, 1873/S. c. halimodendri Sushkin, 1904                     – C. b. megarhynchos Brehm, CL, 1831                                      – L. s. svecica (Linnaeus, 1758) Gorgebleue à miroir roux
+                                                                                 – C. b. brachydactyla Brehm, CL, 1820                                     – L. s. namnetum Mayaud, 1934 Gorgebleue de Nantes                       Cincle plongeur Cinclus cinclus (Linnaeus, 1758) – A
+Fauvette orphée Sylvia hortensis (Gmelin, JF, 1789) – A
+                                                                                                                                                           – L. s. cyanecula (Meisner, 1804) Gorgebleue à miroir blanc                – C. c. cinclus (Linnaeus, 1758)
+  – S. h. hortensis (Gmelin, JF, 1789)
+                                                                               Sturnidae                                                                 Rossignol progné Luscinia luscinia (Linnaeus, 1758) – A                      – C. c. aquaticus (Bechstein, 1797)
+Fauvette naine Sylvia nana (Hemprich & Ehrenberg, 1833) – A
+Fauvette grisette Sylvia communis Latham, 1787 – A                             Étourneau roselin Pastor roseus (Linnaeus, 1758) – A                      Rossignol philomèle Luscinia megarhynchos Brehm, CL, 1831 – A              Passeridae
+  – S. c. communis Latham, 1787                                                Étourneau sansonnet Sturnus vulgaris Linnaeus, 1758 – A                     – L. m. megarhynchos Brehm, CL, 1831
+                                                                                 – S. v. vulgaris Linnaeus, 1758                                           – L. m. golzii Cabanis, 1873                                             Moineau domestique Passer domesticus (Linnaeus, 1758) – A
+Fauvette pitchou Sylvia undata (Boddaert, 1783) – A                                                                                                                                                                                   – P. d. domesticus (Linnaeus, 1758)
+  – S. u. dartfordiensis Latham, 1787                                          Étourneau unicolore Sturnus unicolor Temminck, 1820 – A                   Robin à flancs roux Tarsiger cyanurus (Pallas, 1773) – A
+                                                                                                                                                                                                                                      – P. d. balearoibericus von Jordans, 1923
+  – S. u. undata (Boddaert, 1783)                                                                                                                        Gobemouche noir Ficedula hypoleuca (Pallas, 1764) – A
+                                                                               Turdidae                                                                  – F. h. hypoleuca (Pallas, 1764)                                           Moineau cisalpin Passer italiae (Vieillot, 1817) – A
+Fauvette sarde Sylvia sarda Temminck, 1820 – A
+                                                                               Grive de Sibérie Geokichla sibirica (Pallas, 1776) – A                      – F. h. iberiae (Witherby, 1928)/F. speculigera (Bonaparte, 1850) – B*   Moineau espagnol Passer hispaniolensis (Temminck, 1820) – A
+Fauvette de l’Atlas Sylvia deserticola Tristram, 1859 – A
+                                                                                 – appartenance subspécifique inconnue                                   Gobemouche à collier Ficedula albicollis (Temminck, 1815) – A                – P. h. hispaniolensis (Temminck, 1820)
+  – appartenance subspécifique inconnue
+Fauvette à lunettes Sylvia conspicillata Temminck, 1820 – A                    Grive dorée Zoothera aurea (Holandre, 1825) – A                           Gobemouche à demi-collier Ficedula semitorquata (Homeyer,                  Moineau friquet Passer montanus (Linnaeus, 1758) – A
+  – S. c. conspicillata Temminck, 1820                                           – Z. a. aurea (Holandre, 1825)                                          1885) – A                                                                    – P. m. montanus (Linnaeus, 1758)
+
+Fauvette passerinette Sylvia cantillans (Pallas, 1764) – A                     Grive à joues grises Catharus minimus (Lafresnaye, 1848) – A              Gobemouche nain Ficedula parva (Bechstein, 1792) – A                       Moineau soulcie Petronia petronia (Linnaeus, 1766) – A
+  – S. c. cantillans (Pallas, 1764)/S. c. albistriata (Brehm, CL, 1855) Fau-     – appartenance subspécifique inconnue                                   Rougequeue noir Phoenicurus ochruros (Gmelin, SG, 1774) – A                  – P. p. petronia (Linnaeus, 1766)
+  vette des Balkans                                                            Grive à dos olive Catharus ustulatus (Nuttall, 1840) – A                    – P. o. gibraltariensis (Gmelin, JF, 1789)                               Niverolle alpine Montifringilla nivalis (Linnaeus, 1766) – A
+  – S. c. iberiae Svensson, 2013                                                 – C. u. swainsoni (Tschudi, 1845)                                         – P. o. phoenicuroides (Moore, F, 1854)                                    – M. n. nivalis (Linnaeus, 1766)
+
+
+                                                                                                                        Ornithos 27-3 : 170-185 (2020)   Ornithos 27-3 : 170-185 (2020)
+182                                                                                                                                                                                                                                                                                                  183
+                                                                                                                                                                                                                                                          Liste des Oiseaux de France 2020
+
+
+
+
+Estrildidae                                                             Fringillidae                                                                 Calcariidae                                                           Bruant des roseaux Emberiza schoeniclus (Linnaeus, 1758) – A
+                                                                                                                                                                                                                             – E. s. schoeniclus (Linnaeus, 1758)
+Capucin bec-de-plomb Euodice malabarica (Linnaeus, 1758) – C            Pinson des arbres Fringilla coelebs Linnaeus, 1758 – A                       Bruant lapon Calcarius lapponicus (Linnaeus, 1758) – A                  – E. s. witherbyi von Jordans, 1923
+                                                                          – F. c. coelebs Linnaeus, 1758                                               – C. l. lapponicus (Linnaeus, 1758)
+Prunellidae                                                               – F. c. tyrrhenica Schielbel, 1910                                                                                                               Passerellidae
+                                                                                                                                                     Bruant des neiges Plectrophenax nivalis (Linnaeus, 1758) – A
+                                                                          – F. c. africana (Levaillant, 1850)/F. c. spodiogenys (Bonaparte, 1841)/
+Accenteur alpin Prunella collaris (Scopoli, 1769) – A                                                                                                  – P. n. nivalis (Linnaeus, 1758)
+                                                                          F. c. harterti (Svensson, 2015)                                                                                                                  Bruant à couronne blanche Zonotrichia leucophrys (Forster, JR,
+                                                                                                                                                       – P. n. insulae Salomonsen, 1931                                    1772) – A
+  – P. c. collaris (Scopoli, 1769)                                      Pinson du Nord Fringilla montifringilla Linnaeus, 1758 – A
+Accenteur à gorge noire Prunella atrogularis (von Brandt, 1843) – A                                                                                                                                                          – appartenance subspécifique inconnue
+                                                                        Grosbec casse-noyaux Coccothraustes coccothraustes (Linnaeus,                Emberizidae
+  – appartenance subspécifique inconnue                                 1758) – A                                                                                                                                          Bruant à gorge blanche Zonotrichia albicollis (Gmelin, JF, 1789) – A
+Accenteur mouchet Prunella modularis (Linnaeus, 1758) – A                 – C. c. coccothraustes (Linnaeus, 1758)                                    Bruant proyer Emberiza calandra Linnaeus, 1758 – A
+  – P. m. occidentalis (Hartert, 1910)
+                                                                                                                                                       – E. c. calandra Linnaeus, 1758                                     Icteridae
+                                                                        Durbec des sapins Pinicola enucleator (Linnaeus, 1758) – A
+  – P. m. modularis (Linnaeus, 1758)                                      – P. e. enucleator (Linnaeus, 1758)                                        Bruant jaune Emberiza citrinella Linnaeus, 1758 – A                   Goglu des prés Dolichonyx oryzivorus (Linnaeus, 1758) – A
+  – P. m. mabbotti Harper, 1919                                                                                                                        – E. c. citrinella Linnaeus, 1758
+                                                                        Bouvreuil pivoine Pyrrhula pyrrhula (Linnaeus, 1758) – A                                                                                           Vacher à tête brune Molothrus ater (Boddaert, 1783) – A
+                                                                          – P. p. pyrrhula (Linnaeus, 1758)                                          Bruant à calotte blanche Emberiza leucocephalos Gmelin, 1771 – A        – appartenance subspécifique inconnue
+Motacillidae                                                              – P. p. europaea Vieillot, 1816                                              – E. l. leucocephalos Gmelin, SG, 1771
+Bergeronnette printanière Motacilla flava Linnaeus, 1758 – A
+                                                                          – P. p. iberiae Voous, 1952                                                Bruant fou Emberiza cia Linnaeus, 1766 – A                            Parulidae
+  – M. f. flavissima (Blyth, 1834) Bergeronnette flavéole               Roselin githagine Bucanetes githagineus (Lichtenstein, 1823) – A               – E. c. cia Linnaeus, 1766
+                                                                                                                                                                                                                           Paruline des ruisseaux Parkesia noveboracensis (Gmelin, 1789) – A
+  – M. f. flava Linnaeus, 1758                                            – appartenance subspécifique inconnue                                      Bruant ortolan Emberiza hortulana Linnaeus, 1758 – A                  Paruline flamboyante Setophaga ruticilla (Linnaeus, 1758) – A
+  – M. f. iberiae Hartert, 1921 Bergeronnette ibérique                  Roselin cramoisi Carpodacus erythrinus (Pallas, 1770) – A                    Bruant cendrillard Emberiza caesia Cretzschmar, 1827 – B
+  – M. f. cinereocapilla Savi, 1831 Bergeronnette d’Italie                – C. e. erythrinus (Pallas, 1770)                                                                                                                Paruline à collier Setophaga americana (Linnaeus, 1758) – A
+  – M. f. feldegg Michahelles, 1830 Bergeronnette des Balkans                                                                                        Bruant zizi Emberiza cirlus Linnaeus, 1766 – A                        Paruline jaune Setophaga aestiva (Gmelin, JF, 1789) – A
+                                                                        Verdier d’Europe Chloris chloris (Linnaeus, 1758) – A
+  – M. f. thunbergi Billberg, 1828 Bergeronnette nordique                 – C. c. harrisoni Clancey, 1940                                            Bruant nain Emberiza pusilla Pallas, 1776 – A                         Paruline à flancs marron Setophaga pensylvanica (Linnaeus,
+Bergeronnette orientale Motacilla tschutschensis Gmelin, JF, 1789 – A     – C. c. chloris (Linnaeus, 1758)                                           Bruant à sourcils jaunes Emberiza chrysophrys Pallas, 1776 – B        1766) – A
+  – appartenance subspécifique inconnue                                   – C. c. aurantiiventris (Cabanis, 1851)                                                                                                          Paruline rayée Setophaga striata (Forster, JR, 1772) – A
+                                                                                                                                                     Bruant rustique Emberiza rustica Pallas, 1776 – A
+                                                                          – C. c. madaraszi Tschusi, 1911
+Bergeronnette citrine Motacilla citreola Pallas, 1776 – A                                                                                            Bruant auréole Emberiza aureola Pallas, 1773 – A
+  – M. c. citreola Pallas, 1776                                         Linotte à bec jaune Linaria flavirostris (Linnaeus, 1758) – A                                                                                      Cardinalidae
+                                                                                                                                                       – E. a. aureola Pallas, 1773
+                                                                          – L. f. pipilans (Latham, 1787)
+Bergeronnette des ruisseaux Motacilla cinerea Tunstall, 1771 – A          – L. f. flavirostris (Linnaeus, 1758)                                      Bruant roux Emberiza rutila Pallas, 1776 – A                          Tangara écarlate Piranga olivacea (Gmelin, JF, 1789) – A
+  – M. c. cinerea Tunstall, 1771                                                                                                                     Bruant mélanocéphale Emberiza melanocephala Scopoli, 1769 – A         Cardinal à poitrine rose Pheucticus ludovicianus (Linnaeus, 1766) – A
+                                                                        Linotte mélodieuse Linaria cannabina (Linnaeus, 1758) – A
+Bergeronnette grise Motacilla alba Linnaeus, 1758 – A                     – L. c. cannabina (Linnaeus, 1758)                                         Bruant à tête rousse Emberiza bruniceps von Brandt, JF, 1841 – A
+  – M. a. yarrellii Gould, 1837 Bergeronnette de Yarrell                  – L. c. mediterranea (Tschusi, 1903)
+                                                                                                                                                     Bruant masqué Emberiza spodocephala Pallas, 1776 – A                                             Contact : Pierre-André Crochet
+  – M. a. alba Linnaeus, 1758                                           Sizerin flammé Acanthis flammea (Linnaeus, 1758) – A
+  – M. a. subpersonata Meade-Waldo, 1901                                                                                                               – E. s. spodocephala Pallas, 1776                                                          (Pierre-andre.crochet@cefe.cnrs.fr)
+                                                                          – A. f. flammea (Linnaeus, 1758)
+Pipit de Richard Anthus richardi Vieillot, 1818 – A                     Sizerin cabaret Acanthis cabaret (Müller, PLS, 1776) – A
+                                                                                                                                                     5. Bergeronnette citrine Motacilla citreola, mâle, Mongolie, mai 2013 (Aurélien Audevard). Male Citrine Wagtail.
+Pipit de Godlewski Anthus godlewskii (Taczanowski, 1876) – A            Sizerin blanchâtre Acanthis hornemanni (Holböll, 1843) – A
+Pipit rousseline Anthus campestris (Linnaeus, 1758) – A                   – A. h. exilipes (Coues, 1862)
+                                                                          – A. h. hornemanni (Holböll, 1843)
+Pipit farlouse Anthus pratensis (Linnaeus, 1758) – A
+                                                                        Bec-croisé perroquet Loxia pytyopsittacus Borkhausen, 1793 – A
+Pipit des arbres Anthus trivialis (Linnaeus, 1758) – A
+  – A. t. trivialis (Linnaeus, 1758)                                    Bec-croisé des sapins Loxia curvirostra Linnaeus, 1758 – A
+                                                                          – L. c. curvirostra Linnaeus, 1758
+Pipit à dos olive Anthus hodgsoni Richmond, 1907 – A                      – L. c. corsicana Tschusi, 1912
+  – A. h. yunnanensis Uchida & Kuroda, Nagamichi, 1916
+                                                                        Bec-croisé bifascié Loxia leucoptera Gmelin, JF, 1789 – A
+Pipit de la Petchora Anthus gustavi Swinhoe, 1863 – A                     – L. l. bifasciata (Brehm, CL, 1827)
+  – appartenance subspécifique inconnue
+                                                                        Chardonneret élégant Carduelis carduelis (Linnaeus, 1758) – A
+Pipit à gorge rousse Anthus cervinus (Pallas, 1811) – A                   – C. c. britannica (Hartert, 1903)
+Pipit farlousane Anthus rubescens (Tunstall, 1771) – A                    – C. c. carduelis (Linnaeus, 1758)
+  – A. r. rubescens (Tunstall, 1771)                                      – C. c. parva Tschusi, 1901
+                                                                          – C. c. tschusii Arrigoni degli Oddi, 1902
+Pipit spioncelle Anthus spinoletta (Linnaeus, 1758) – A
+                                                                        Venturon montagnard Carduelis citrinella (Pallas, 1764) – A
+  – A. s. spinoletta (Linnaeus, 1758)
+                                                                        Venturon corse Carduelis corsicana (Koenig, AF, 1899) – A
+Pipit maritime Anthus petrosus (Montagu, 1798) – A
+  – A. p. petrosus (Montagu, 1798)                                      Serin cini Serinus serinus (Linnaeus, 1766) – A
+  – A. p. littoralis Brehm, CL, 1823                                    Tarin des aulnes Spinus spinus (Linnaeus, 1758) – A
+
+
+                                                                                                                  Ornithos 27-3 : 170-185 (2020)     Ornithos 27-3 : 170-185 (2020)
+184                                                                                                                                                                                                                                                                                      185
+
