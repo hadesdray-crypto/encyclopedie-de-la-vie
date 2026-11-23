@@ -209,6 +209,9 @@ def main():
     oiseaux, poids = [], {"photos": 0, "cris": 0}
     for k, latin in enumerate(liste_especes(n), 1):
         oid = identifiant(latin)
+        # Ancien nom scientifique d'un oiseau déjà présent (doublon fusionné) : on ne le recrée pas.
+        if any(latin in o.get("anciensLatins", []) for o in deja.values()):
+            continue
         if oid in deja and deja[oid].get("v") == 2:
             oiseaux.append(deja[oid])
             continue

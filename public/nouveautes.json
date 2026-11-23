@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-11-23",
+    "titre": "Les vrais noms des oiseaux",
+    "points": [
+      "76 oiseaux ont maintenant leur nom officiel en français (par exemple Aigle royal au lieu d'« Aigle doré », Chouette hulotte, Balbuzard pêcheur, Pluvier doré). Chaque nom est confirmé par au moins 3 sources : liste officielle des oiseaux de France, Wikipédia, Wikidata, GBIF.",
+      "Sur la fiche de chaque oiseau renommé, un encadré explique son ancien nom et pourquoi il a changé. La recherche trouve toujours l'oiseau avec son ancien nom.",
+      "Majuscules et accents corrigés dans 34 noms (d'Europe, du Canada, de Bassan, Étourneau…).",
+      "Trois oiseaux étaient en double sous deux noms scientifiques (Mouette rieuse, Fauvette mélanocéphale, Mésange boréale) : chaque fois, les deux fiches sont réunies en une seule, avec un chant et un cri."
+    ]
+  },
+  {
+    "date": "2026-11-23",
     "titre": "Plus simple et plus agréable",
     "points": [
       "Plume ne cache plus les pages : elle dit son petit mot une seule fois par page, en bref, puis elle explique tout quand on la touche.",

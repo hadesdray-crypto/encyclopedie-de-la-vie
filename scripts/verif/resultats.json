@@ -1,0 +1,4249 @@
+{
+ "Strix aluco": {
+  "taxref": [],
+  "wikidata": [
+   "Chouette hulotte",
+   "chouette hulotte"
+  ],
+  "wikipedia": [
+   "Chouette hulotte"
+  ],
+  "gbif": [
+   "Chat-huant",
+   "Chouette hulotte",
+   "chouette hulotte"
+  ]
+ },
+ "Tyto alba": {
+  "taxref": [],
+  "wikidata": [
+   "Chouette effraie",
+   "Effraie des clochers",
+   "chouette effraie"
+  ],
+  "wikipedia": [
+   "Effraie des clochers"
+  ],
+  "gbif": [
+   "Chouette Effraie",
+   "Effraie de clochers",
+   "Effraie des clochers",
+   "Effraie des clochers, Chouette effraie",
+   "chouette effraie",
+   "effraie de clochers"
+  ]
+ },
+ "Bubo bubo": {
+  "taxref": [],
+  "wikidata": [
+   "Grand-duc d'Europe",
+   "Grand-duc d’Europe",
+   "Hibou grand-duc",
+   "hibou grand-duc"
+  ],
+  "wikipedia": [
+   "Hibou grand-duc"
+  ],
+  "gbif": [
+   "Grand-Duc d'Europe",
+   "Grand-duc d'Europe",
+   "Grand-duc d’Europe",
+   "Hibou grand-duc",
+   "hibou grand-duc"
+  ]
+ },
+ "Bubo scandiacus": {
+  "taxref": [],
+  "wikidata": [
+   "Harfang des neiges",
+   "chouette harfang"
+  ],
+  "wikipedia": [
+   "Harfang des neiges"
+  ],
+  "gbif": [
+   "Grand-duc harfang",
+   "Harfang des neiges",
+   "chouette harfang",
+   "harfang des neiges"
+  ]
+ },
+ "Athene noctua": {
+  "taxref": [],
+  "wikidata": [
+   "Chevêche d'Athéna",
+   "Chevêche d’Athéna",
+   "Chouette chevêche",
+   "chevêche dathéna"
+  ],
+  "wikipedia": [
+   "Chevêche d'Athéna"
+  ],
+  "gbif": [
+   "Chevêche d'Athéna",
+   "Chevêche d'Athéna, Chouette chevêche",
+   "Chevêche d’Athéna",
+   "Chouette Chevêche",
+   "chevêche dathéna"
+  ]
+ },
+ "Aquila chrysaetos": {
+  "taxref": [],
+  "wikidata": [
+   "Aigle royal",
+   "aigle royal"
+  ],
+  "wikipedia": [
+   "Aigle royal"
+  ],
+  "gbif": [
+   "Aigle doré",
+   "Aigle fauve",
+   "Aigle royal",
+   "aigle royal"
+  ]
+ },
+ "Haliaeetus albicilla": {
+  "taxref": [],
+  "wikidata": [
+   "Pygargue à queue blanche",
+   "pygargue à queue blanche"
+  ],
+  "wikipedia": [
+   "Pygargue à queue blanche"
+  ],
+  "gbif": [
+   "Pygargue à queue blanche",
+   "pygargue à queue blanche"
+  ]
+ },
+ "Haliaeetus leucocephalus": {
+  "taxref": [],
+  "wikidata": [
+   "Pygargue à tête blanche"
+  ],
+  "wikipedia": [
+   "Pygargue à tête blanche"
+  ],
+  "gbif": [
+   "Pygargue à tête blanche",
+   "aigle à tête blanche",
+   "pygargue à tête blanche"
+  ]
+ },
+ "Pandion haliaetus": {
+  "taxref": [],
+  "wikidata": [
+   "Balbuzard pêcheur",
+   "balbuzard pêcheur"
+  ],
+  "wikipedia": [
+   "Balbuzard pêcheur"
+  ],
+  "gbif": [
+   "Aigle pêcheur",
+   "Balbuzard fluviatile",
+   "Balbuzard pêcheur",
+   "aigle de mer",
+   "balbuzard pêcheur"
+  ]
+ },
+ "Falco peregrinus": {
+  "taxref": [],
+  "wikidata": [
+   "Faucon pèlerin",
+   "faucon pèlerin"
+  ],
+  "wikipedia": [
+   "Faucon pèlerin"
+  ],
+  "gbif": [
+   "Faucon pèlerin",
+   "Faucon pélerin",
+   "faucon pèlerin"
+  ]
+ },
+ "Falco tinnunculus": {
+  "taxref": [],
+  "wikidata": [
+   "Faucon crécerelle",
+   "faucon crécerelle"
+  ],
+  "wikipedia": [
+   "Faucon crécerelle"
+  ],
+  "gbif": [
+   "Cresserelle",
+   "Faucon crécerelle",
+   "faucon crécerelle",
+   "Émouchet"
+  ]
+ },
+ "Buteo buteo": {
+  "taxref": [],
+  "wikidata": [
+   "Buse variable",
+   "buse variable"
+  ],
+  "wikipedia": [
+   "Buse variable"
+  ],
+  "gbif": [
+   "Buse commune",
+   "Buse variable",
+   "Buse vulgaire",
+   "buse variable"
+  ]
+ },
+ "Gyps fulvus": {
+  "taxref": [],
+  "wikidata": [
+   "Vautour fauve",
+   "vautour fauve"
+  ],
+  "wikipedia": [
+   "Vautour fauve"
+  ],
+  "gbif": [
+   "Griffon",
+   "Vautour Fauve",
+   "Vautour fauve",
+   "vautour fauve"
+  ]
+ },
+ "Gypaetus barbatus": {
+  "taxref": [],
+  "wikidata": [
+   "Gypaète barbu",
+   "gypaète barbu"
+  ],
+  "wikipedia": [
+   "Gypaète barbu"
+  ],
+  "gbif": [
+   "Gypaète Barbu",
+   "Gypaète barbu",
+   "Phène des Alpes",
+   "gypaète barbu"
+  ]
+ },
+ "Milvus milvus": {
+  "taxref": [],
+  "wikidata": [
+   "Milan royal",
+   "milan royal"
+  ],
+  "wikipedia": [
+   "Milan royal"
+  ],
+  "gbif": [
+   "Milan Royal",
+   "Milan royal",
+   "milan royal"
+  ]
+ },
+ "Circus aeruginosus": {
+  "taxref": [],
+  "wikidata": [
+   "Busard des roseaux",
+   "busard des roseaux"
+  ],
+  "wikipedia": [
+   "Busard des roseaux"
+  ],
+  "gbif": [
+   "Busard des Roseaux",
+   "Busard des roseaux",
+   "Busard harpaye",
+   "busard des roseaux"
+  ]
+ },
+ "Accipiter gentilis": {
+  "taxref": [],
+  "wikidata": [
+   "Autour des palombes",
+   "autour des palombes"
+  ],
+  "wikipedia": [],
+  "gbif": [
+   "Autour des Palombes",
+   "Autour des palombes",
+   "autour des palombes"
+  ]
+ },
+ "Ciconia ciconia": {
+  "taxref": [],
+  "wikidata": [
+   "Cigogne blanche",
+   "cigogne blanche"
+  ],
+  "wikipedia": [
+   "Cigogne blanche"
+  ],
+  "gbif": [
+   "Cigogne blanche",
+   "cigogne blanche"
+  ]
+ },
+ "Ardea cinerea": {
+  "taxref": [],
+  "wikidata": [
+   "Héron cendré",
+   "héron cendré"
+  ],
+  "wikipedia": [
+   "Héron cendré"
+  ],
+  "gbif": [
+   "Héron cendré",
+   "héron cendré"
+  ]
+ },
+ "Egretta garzetta": {
+  "taxref": [],
+  "wikidata": [
+   "Aigrette garzette",
+   "aigrette garzette"
+  ],
+  "wikipedia": [
+   "Aigrette garzette"
+  ],
+  "gbif": [
+   "Aigrette garzette",
+   "Petite aigrette",
+   "aigrette garzette"
+  ]
+ },
+ "Phoenicopterus roseus": {
+  "taxref": [],
+  "wikidata": [
+   "Flamant rose",
+   "flamant rose"
+  ],
+  "wikipedia": [
+   "Flamant rose"
+  ],
+  "gbif": [
+   "Flamant rose",
+   "flamant rose"
+  ]
+ },
+ "Grus grus": {
+  "taxref": [],
+  "wikidata": [
+   "Grue cendrée",
+   "grue cendrée"
+  ],
+  "wikipedia": [
+   "Grue cendrée"
+  ],
+  "gbif": [
+   "Grue cendrée",
+   "grue cendrée"
+  ]
+ },
+ "Cygnus olor": {
+  "taxref": [],
+  "wikidata": [
+   "Cygne muet",
+   "Cygne tuberculé",
+   "cygne tuberculé"
+  ],
+  "wikipedia": [
+   "Cygne tuberculé"
+  ],
+  "gbif": [
+   "Cygne muet",
+   "Cygne tuberculé",
+   "cygne tuberculé",
+   "cygne tuburculé"
+  ]
+ },
+ "Cygnus cygnus": {
+  "taxref": [],
+  "wikidata": [
+   "Cygne chanteur",
+   "cygne sauvage"
+  ],
+  "wikipedia": [
+   "Cygne chanteur"
+  ],
+  "gbif": [
+   "Cygne chanteur",
+   "Cygne sauvage",
+   "cygne chanteur",
+   "cygne sauvage"
+  ]
+ },
+ "Anser anser": {
+  "taxref": [],
+  "wikidata": [
+   "Oie cendrée",
+   "oie cendrée"
+  ],
+  "wikipedia": [
+   "Oie cendrée"
+  ],
+  "gbif": [
+   "Oie cendrée",
+   "oie cendrée"
+  ]
+ },
+ "Branta canadensis": {
+  "taxref": [],
+  "wikidata": [
+   "Bernache du Canada",
+   "bernache du canada"
+  ],
+  "wikipedia": [
+   "Bernache du Canada"
+  ],
+  "gbif": [
+   "Bernache du Canada",
+   "Bernache du canada",
+   "bernache du canada",
+   "outarde"
+  ]
+ },
+ "Anas platyrhynchos": {
+  "taxref": [],
+  "wikidata": [
+   "Canard colvert",
+   "canard colvert"
+  ],
+  "wikipedia": [
+   "Canard colvert"
+  ],
+  "gbif": [
+   "Canard colvert",
+   "canard colvert"
+  ]
+ },
+ "Aythya fuligula": {
+  "taxref": [],
+  "wikidata": [
+   "Fuligule morillon",
+   "fuligule morillon"
+  ],
+  "wikipedia": [
+   "Fuligule morillon"
+  ],
+  "gbif": [
+   "Fuligule morillon",
+   "Morillon huppé",
+   "fuligule morillon"
+  ]
+ },
+ "Tadorna tadorna": {
+  "taxref": [],
+  "wikidata": [
+   "Tadorne de Belon",
+   "tadorne de belon"
+  ],
+  "wikipedia": [
+   "Tadorne de Belon"
+  ],
+  "gbif": [
+   "Tadorne de Belon",
+   "tadorne de belon"
+  ]
+ },
+ "Somateria mollissima": {
+  "taxref": [],
+  "wikidata": [
+   "Eider à duvet",
+   "eider à duvet"
+  ],
+  "wikipedia": [
+   "Eider à duvet"
+  ],
+  "gbif": [
+   "Eider à duvet",
+   "eider commun",
+   "eider à duvet"
+  ]
+ },
+ "Fulica atra": {
+  "taxref": [],
+  "wikidata": [
+   "Foulque macroule",
+   "foulque macroule"
+  ],
+  "wikipedia": [
+   "Foulque macroule"
+  ],
+  "gbif": [
+   "Foulque macroule",
+   "foulque macroule"
+  ]
+ },
+ "Gallinula chloropus": {
+  "taxref": [],
+  "wikidata": [
+   "Gallinule poule-d'eau",
+   "Gallinule poule-d’eau"
+  ],
+  "wikipedia": [
+   "Gallinule poule-d'eau"
+  ],
+  "gbif": [
+   "Gallinule poule-d'eau",
+   "Gallinule poule-d'eau, Poule-d'eau",
+   "Gallinule poule-d’eau",
+   "gallinule poule-d'eau",
+   "gallinule poule-deau, poule deau"
+  ]
+ },
+ "Larus argentatus": {
+  "taxref": [],
+  "wikidata": [
+   "Goéland argenté",
+   "goéland argenté"
+  ],
+  "wikipedia": [
+   "Goéland argenté"
+  ],
+  "gbif": [
+   "Goéland argenté",
+   "goéland argenté"
+  ]
+ },
+ "Larus ridibundus": {
+  "taxref": [],
+  "wikidata": [
+   "Mouette rieuse",
+   "mouette rieuse"
+  ],
+  "wikipedia": [],
+  "gbif": [
+   "Mouette rieuse",
+   "mouette rieuse"
+  ]
+ },
+ "Sterna hirundo": {
+  "taxref": [],
+  "wikidata": [
+   "Sterne pierregarin",
+   "sterne pierregarin"
+  ],
+  "wikipedia": [
+   "Sterne pierregarin"
+  ],
+  "gbif": [
+   "Sterne pierregarin",
+   "sterne pierregarin"
+  ]
+ },
+ "Sterna paradisaea": {
+  "taxref": [],
+  "wikidata": [
+   "Sterne arctique",
+   "sterne arctique"
+  ],
+  "wikipedia": [
+   "Sterne arctique"
+  ],
+  "gbif": [
+   "Sterne arctique",
+   "sterne arctique",
+   "sterne à longue queue"
+  ]
+ },
+ "Fratercula arctica": {
+  "taxref": [],
+  "wikidata": [
+   "Macareux moine",
+   "macareux moine"
+  ],
+  "wikipedia": [
+   "Macareux moine"
+  ],
+  "gbif": [
+   "Macareux moine",
+   "macareux moine",
+   "perroquet de mer"
+  ]
+ },
+ "Alca torda": {
+  "taxref": [],
+  "wikidata": [
+   "Petit Pingouin",
+   "petit pingouin"
+  ],
+  "wikipedia": [
+   "Petit Pingouin"
+  ],
+  "gbif": [
+   "Petit Pingouin",
+   "Petit pingouin",
+   "Pingouin torda",
+   "Pingouin torda, Petit pingouin",
+   "petit pingouin",
+   "pingouin macroptère"
+  ]
+ },
+ "Morus bassanus": {
+  "taxref": [],
+  "wikidata": [
+   "Fou de Bassan",
+   "fou de bassan"
+  ],
+  "wikipedia": [
+   "Fou de Bassan"
+  ],
+  "gbif": [
+   "Fou de Bassan",
+   "fou de bassan"
+  ]
+ },
+ "Phalacrocorax carbo": {
+  "taxref": [],
+  "wikidata": [
+   "Grand Cormoran",
+   "grand cormoran, grand cormoran atlantique"
+  ],
+  "wikipedia": [
+   "Grand Cormoran"
+  ],
+  "gbif": [
+   "Grand Cormoran",
+   "grand cormoran, grand cormoran atlantique"
+  ]
+ },
+ "Pelecanus onocrotalus": {
+  "taxref": [],
+  "wikidata": [
+   "Pélican blanc",
+   "pélican blanc"
+  ],
+  "wikipedia": [
+   "Pélican blanc"
+  ],
+  "gbif": [
+   "Pélican blanc",
+   "pélican blanc"
+  ]
+ },
+ "Aptenodytes forsteri": {
+  "taxref": [],
+  "wikidata": [
+   "Manchot empereur"
+  ],
+  "wikipedia": [
+   "Manchot empereur"
+  ],
+  "gbif": [
+   "Manchot Empereur",
+   "Manchot empereur"
+  ]
+ },
+ "Aptenodytes patagonicus": {
+  "taxref": [],
+  "wikidata": [
+   "Manchot royal"
+  ],
+  "wikipedia": [
+   "Manchot royal"
+  ],
+  "gbif": [
+   "Manchot royal",
+   "manchot royal"
+  ]
+ },
+ "Pygoscelis adeliae": {
+  "taxref": [],
+  "wikidata": [
+   "Manchot d'Adélie",
+   "Manchot d’Adélie"
+  ],
+  "wikipedia": [
+   "Manchot Adélie"
+  ],
+  "gbif": [
+   "Manchot Adelie",
+   "Manchot Adélie",
+   "Manchot d'Adélie",
+   "Manchot d’Adélie"
+  ]
+ },
+ "Spheniscus demersus": {
+  "taxref": [],
+  "wikidata": [
+   "Manchot du Cap",
+   "manchot du Cap"
+  ],
+  "wikipedia": [
+   "Manchot du Cap"
+  ],
+  "gbif": [
+   "Manchot du Cap",
+   "manchot du Cap"
+  ]
+ },
+ "Diomedea exulans": {
+  "taxref": [],
+  "wikidata": [
+   "Albatros hurleur"
+  ],
+  "wikipedia": [
+   "Albatros hurleur"
+  ],
+  "gbif": [
+   "Albatros hurleur",
+   "Albatros hurleur, Grand albatros",
+   "Grand Albatros neigeux",
+   "albatros hurleur"
+  ]
+ },
+ "Fulmarus glacialis": {
+  "taxref": [],
+  "wikidata": [
+   "Fulmar boréal",
+   "pétrel fulmar"
+  ],
+  "wikipedia": [
+   "Fulmar boréal"
+  ],
+  "gbif": [
+   "Fulmar boréal",
+   "Fulmar boréal, Pétrel fulmar",
+   "Pétrel glacial",
+   "fulmar boréal",
+   "pétrel fulmar"
+  ]
+ },
+ "Calidris canutus": {
+  "taxref": [],
+  "wikidata": [
+   "Bécasseau maubèche",
+   "bécasseau maubèche"
+  ],
+  "wikipedia": [
+   "Bécasseau maubèche"
+  ],
+  "gbif": [
+   "Bécasseau maubèche",
+   "bécasseau maubèche"
+  ]
+ },
+ "Numenius arquata": {
+  "taxref": [],
+  "wikidata": [
+   "Courlis cendré",
+   "courlis cendré"
+  ],
+  "wikipedia": [
+   "Courlis cendré"
+  ],
+  "gbif": [
+   "Courlis cendré",
+   "Grand courlis",
+   "courlis cendré"
+  ]
+ },
+ "Haematopus ostralegus": {
+  "taxref": [],
+  "wikidata": [
+   "Huîtrier pie",
+   "huîtrier pie"
+  ],
+  "wikipedia": [
+   "Huîtrier pie"
+  ],
+  "gbif": [
+   "Huîtrier pie",
+   "Huîtrier-pie",
+   "Pie de mer",
+   "huîtrier pie"
+  ]
+ },
+ "Vanellus vanellus": {
+  "taxref": [],
+  "wikidata": [
+   "Vanneau huppé",
+   "vanneau huppé"
+  ],
+  "wikipedia": [
+   "Vanneau huppé"
+  ],
+  "gbif": [
+   "Vanneau huppé",
+   "vanneau huppé"
+  ]
+ },
+ "Scolopax rusticola": {
+  "taxref": [],
+  "wikidata": [
+   "Bécasse des bois",
+   "bécasse des bois"
+  ],
+  "wikipedia": [
+   "Bécasse des bois"
+  ],
+  "gbif": [
+   "Bécasse des bois",
+   "bécasse des bois"
+  ]
+ },
+ "Columba palumbus": {
+  "taxref": [],
+  "wikidata": [
+   "Pigeon ramier",
+   "pigeon ramier"
+  ],
+  "wikipedia": [
+   "Pigeon ramier"
+  ],
+  "gbif": [
+   "Palombe",
+   "Pigeon ramier",
+   "pigeon ramier"
+  ]
+ },
+ "Columba livia": {
+  "taxref": [],
+  "wikidata": [
+   "Pigeon Biset",
+   "Pigeon biset",
+   "pigeon biset"
+  ],
+  "wikipedia": [
+   "Pigeon biset"
+  ],
+  "gbif": [
+   "Pigeon biset",
+   "pigeon biset"
+  ]
+ },
+ "Streptopelia decaocto": {
+  "taxref": [],
+  "wikidata": [
+   "Tourterelle turque",
+   "tourterelle turque"
+  ],
+  "wikipedia": [
+   "Tourterelle turque"
+  ],
+  "gbif": [
+   "Tourterelle turque",
+   "Touterelle turque",
+   "tourterelle turque"
+  ]
+ },
+ "Streptopelia turtur": {
+  "taxref": [],
+  "wikidata": [
+   "Tourterelle des bois",
+   "tourterelle des bois"
+  ],
+  "wikipedia": [
+   "Tourterelle des bois"
+  ],
+  "gbif": [
+   "Tourterelle des bois",
+   "tourterelle des bois"
+  ]
+ },
+ "Cuculus canorus": {
+  "taxref": [],
+  "wikidata": [
+   "Coucou gris",
+   "coucou gris"
+  ],
+  "wikipedia": [
+   "Coucou gris"
+  ],
+  "gbif": [
+   "Coucou gris",
+   "coucou gris"
+  ]
+ },
+ "Upupa epops": {
+  "taxref": [],
+  "wikidata": [
+   "Huppe fasciée",
+   "huppe fasciée"
+  ],
+  "wikipedia": [
+   "Huppe fasciée"
+  ],
+  "gbif": [
+   "Huppe d'Europe",
+   "Huppe fasciée",
+   "huppe fasciée"
+  ]
+ },
+ "Alcedo atthis": {
+  "taxref": [],
+  "wikidata": [
+   "Martin-pêcheur d'Europe",
+   "Martin-pêcheur d’Europe",
+   "martin-pêcheur"
+  ],
+  "wikipedia": [
+   "Martin-pêcheur d'Europe"
+  ],
+  "gbif": [
+   "Martin-pêcheur d'Europe",
+   "Martin-pêcheur d’Europe",
+   "martin-pêcheur"
+  ]
+ },
+ "Merops apiaster": {
+  "taxref": [],
+  "wikidata": [
+   "Guêpier d'Europe",
+   "Guêpier d’Europe",
+   "guêpier deurope"
+  ],
+  "wikipedia": [
+   "Guêpier d'Europe"
+  ],
+  "gbif": [
+   "Guêpier d'Europe",
+   "Guêpier d’Europe",
+   "guêpier deurope"
+  ]
+ },
+ "Coracias garrulus": {
+  "taxref": [],
+  "wikidata": [
+   "Rollier d'Europe",
+   "Rollier d’Europe",
+   "rollier d`europe"
+  ],
+  "wikipedia": [
+   "Rollier d'Europe"
+  ],
+  "gbif": [
+   "Rollier d'Europe",
+   "Rollier d’Europe",
+   "rollier d'Europe",
+   "rollier d`europe"
+  ]
+ },
+ "Picus viridis": {
+  "taxref": [],
+  "wikidata": [
+   "Pic vert",
+   "pic vert"
+  ],
+  "wikipedia": [
+   "Pic vert"
+  ],
+  "gbif": [
+   "Pic vert",
+   "Pic vert, Pivert",
+   "Pivert",
+   "pic vert"
+  ]
+ },
+ "Dendrocopos major": {
+  "taxref": [],
+  "wikidata": [
+   "Pic épeiche",
+   "pic épeiche"
+  ],
+  "wikipedia": [
+   "Pic épeiche"
+  ],
+  "gbif": [
+   "Grand épeiche",
+   "Pic épeiche",
+   "pic épeiche"
+  ]
+ },
+ "Dryocopus martius": {
+  "taxref": [],
+  "wikidata": [
+   "Pic noir",
+   "pic noir"
+  ],
+  "wikipedia": [
+   "Pic noir"
+  ],
+  "gbif": [
+   "Pic noir",
+   "pic noir"
+  ]
+ },
+ "Apus apus": {
+  "taxref": [],
+  "wikidata": [
+   "Martinet noir",
+   "martinet noir"
+  ],
+  "wikipedia": [
+   "Martinet noir"
+  ],
+  "gbif": [
+   "Martinet noir",
+   "martinet noir"
+  ]
+ },
+ "Hirundo rustica": {
+  "taxref": [],
+  "wikidata": [
+   "Hirondelle de cheminée",
+   "Hirondelle rustique",
+   "hirondelle rustique, hirondelle de cheminée"
+  ],
+  "wikipedia": [
+   "Hirondelle rustique"
+  ],
+  "gbif": [
+   "Hirondelle de cheminée",
+   "Hirondelle rustique",
+   "Hirondelle rustique, Hirondelle de cheminée",
+   "hirondelle des granges",
+   "hirondelle rustique, hirondelle de cheminée"
+  ]
+ },
+ "Delichon urbicum": {
+  "taxref": [],
+  "wikidata": [
+   "Hirondelle de fenêtre",
+   "hirondelle de fenêtre"
+  ],
+  "wikipedia": [
+   "Hirondelle de fenêtre"
+  ],
+  "gbif": [
+   "Hirondelle de fenêtre",
+   "hirondelle de fenêtre"
+  ]
+ },
+ "Riparia riparia": {
+  "taxref": [],
+  "wikidata": [
+   "Hirondelle de rivage",
+   "hirondelle de rivage"
+  ],
+  "wikipedia": [
+   "Hirondelle de rivage"
+  ],
+  "gbif": [
+   "Hirondelle de rivage",
+   "hirondelle de rivage"
+  ]
+ },
+ "Alauda arvensis": {
+  "taxref": [],
+  "wikidata": [
+   "Alouette des champs",
+   "alouette des champs"
+  ],
+  "wikipedia": [
+   "Alouette des champs"
+  ],
+  "gbif": [
+   "Alouette des champs",
+   "alouette des champs"
+  ]
+ },
+ "Motacilla alba": {
+  "taxref": [],
+  "wikidata": [
+   "Bergeronnette grise",
+   "bergeronnette grise"
+  ],
+  "wikipedia": [
+   "Bergeronnette grise"
+  ],
+  "gbif": [
+   "Bergeronnette grise",
+   "Hochequeue grise",
+   "Lavandière grise",
+   "bergeronnette grise",
+   "hochequeue gris"
+  ]
+ },
+ "Troglodytes troglodytes": {
+  "taxref": [],
+  "wikidata": [
+   "Troglodyte mignon",
+   "troglodyte mignon"
+  ],
+  "wikipedia": [
+   "Troglodyte mignon"
+  ],
+  "gbif": [
+   "Troglodyte mignon",
+   "troglodyte mignon"
+  ]
+ },
+ "Erithacus rubecula": {
+  "taxref": [],
+  "wikidata": [
+   "Rougegorge",
+   "Rougegorge familier",
+   "rougegorge familier"
+  ],
+  "wikipedia": [
+   "Rouge-gorge familier"
+  ],
+  "gbif": [
+   "Rouge-gorge familier",
+   "Rougegorge",
+   "Rougegorge familier",
+   "rougegorge familier"
+  ]
+ },
+ "Luscinia megarhynchos": {
+  "taxref": [],
+  "wikidata": [
+   "Rossignol philomèle",
+   "rossignol philomèle"
+  ],
+  "wikipedia": [
+   "Rossignol philomèle"
+  ],
+  "gbif": [
+   "Rossignol commun",
+   "Rossignol philomèle",
+   "rossignol philomèle"
+  ]
+ },
+ "Phoenicurus ochruros": {
+  "taxref": [],
+  "wikidata": [
+   "Rougequeue noir",
+   "rougequeue noir"
+  ],
+  "wikipedia": [
+   "Rougequeue noir"
+  ],
+  "gbif": [
+   "Rouge-queue noir",
+   "Rougequeue noir",
+   "Rougequeue titys",
+   "Rubiette titys",
+   "rougequeue noir"
+  ]
+ },
+ "Turdus merula": {
+  "taxref": [],
+  "wikidata": [
+   "Merle noir",
+   "merle noir"
+  ],
+  "wikipedia": [
+   "Merle noir"
+  ],
+  "gbif": [
+   "Merle noir",
+   "merle noir"
+  ]
+ },
+ "Turdus philomelos": {
+  "taxref": [],
+  "wikidata": [
+   "Grive musicienne",
+   "grive musicienne"
+  ],
+  "wikipedia": [
+   "Grive musicienne"
+  ],
+  "gbif": [
+   "Grive chanteuse",
+   "Grive commune",
+   "Grive musicienne",
+   "grive musicienne"
+  ]
+ },
+ "Turdus viscivorus": {
+  "taxref": [],
+  "wikidata": [
+   "Grive draine",
+   "grive draine"
+  ],
+  "wikipedia": [
+   "Grive draine"
+  ],
+  "gbif": [
+   "Grive draine",
+   "Grive du gui",
+   "grive draine"
+  ]
+ },
+ "Sylvia atricapilla": {
+  "taxref": [],
+  "wikidata": [
+   "Fauvette à tête noire",
+   "fauvette à tête noire"
+  ],
+  "wikipedia": [
+   "Fauvette à tête noire"
+  ],
+  "gbif": [
+   "Fauvette à tête noire",
+   "fauvette à tête noire"
+  ]
+ },
+ "Phylloscopus collybita": {
+  "taxref": [],
+  "wikidata": [
+   "Pouillot véloce",
+   "pouillot véloce"
+  ],
+  "wikipedia": [
+   "Pouillot véloce"
+  ],
+  "gbif": [
+   "Pouillot véloce",
+   "pouillot véloce"
+  ]
+ },
+ "Regulus regulus": {
+  "taxref": [],
+  "wikidata": [
+   "Roitelet huppé",
+   "roitelet huppé"
+  ],
+  "wikipedia": [
+   "Roitelet huppé"
+  ],
+  "gbif": [
+   "Roitelet de Tenerife",
+   "Roitelet huppé",
+   "roitelet huppé"
+  ]
+ },
+ "Parus major": {
+  "taxref": [],
+  "wikidata": [
+   "Mésange charbonnière",
+   "mésange charbonnière"
+  ],
+  "wikipedia": [
+   "Mésange charbonnière"
+  ],
+  "gbif": [
+   "Mésange charbonnière",
+   "mésange charbonnière"
+  ]
+ },
+ "Cyanistes caeruleus": {
+  "taxref": [],
+  "wikidata": [
+   "Mésange bleue"
+  ],
+  "wikipedia": [
+   "Mésange bleue"
+  ],
+  "gbif": [
+   "Mésange bleue"
+  ]
+ },
+ "Sitta europaea": {
+  "taxref": [],
+  "wikidata": [
+   "Sittelle torchepot",
+   "sittelle torchepot"
+  ],
+  "wikipedia": [
+   "Sittelle torchepot"
+  ],
+  "gbif": [
+   "Sittelle d'Europe",
+   "Sittelle torchepot",
+   "sittelle torchepot"
+  ]
+ },
+ "Certhia brachydactyla": {
+  "taxref": [],
+  "wikidata": [
+   "Grimpereau des jardins",
+   "grimpereau des jardins"
+  ],
+  "wikipedia": [
+   "Grimpereau des jardins"
+  ],
+  "gbif": [
+   "Grimpereau brachydactyle",
+   "Grimpereau des jardins",
+   "grimpereau des jardins"
+  ]
+ },
+ "Lanius collurio": {
+  "taxref": [],
+  "wikidata": [
+   "Pie-grièche écorcheur",
+   "pie-grièche écorcheur"
+  ],
+  "wikipedia": [
+   "Pie-grièche écorcheur"
+  ],
+  "gbif": [
+   "Pie-grièche écorcheur",
+   "pie-grièche écorcheur"
+  ]
+ },
+ "Oriolus oriolus": {
+  "taxref": [],
+  "wikidata": [
+   "Loriot d'Europe",
+   "Loriot d’Europe",
+   "loriot deurope"
+  ],
+  "wikipedia": [
+   "Loriot d'Europe"
+  ],
+  "gbif": [
+   "Loriot d'Europe",
+   "Loriot d'Europe, Loriot jaune",
+   "Loriot d’Europe",
+   "Loriot jaune",
+   "loriot deurope"
+  ]
+ },
+ "Garrulus glandarius": {
+  "taxref": [],
+  "wikidata": [
+   "Geai des chênes"
+  ],
+  "wikipedia": [
+   "Geai des chênes"
+  ],
+  "gbif": [
+   "Geai des chênes",
+   "geai des chênes"
+  ]
+ },
+ "Pica pica": {
+  "taxref": [],
+  "wikidata": [
+   "Pie bavarde",
+   "pie bavarde"
+  ],
+  "wikipedia": [
+   "Pie bavarde"
+  ],
+  "gbif": [
+   "Pie bavarde",
+   "pie bavarde"
+  ]
+ },
+ "Pyrrhocorax pyrrhocorax": {
+  "taxref": [],
+  "wikidata": [
+   "Crave à bec rouge"
+  ],
+  "wikipedia": [
+   "Crave à bec rouge"
+  ],
+  "gbif": [
+   "Corbin crave",
+   "Crave",
+   "Crave corallin",
+   "Crave à bec rouge"
+  ]
+ },
+ "Corvus corax": {
+  "taxref": [],
+  "wikidata": [
+   "Grand Corbeau",
+   "grand corbeau"
+  ],
+  "wikipedia": [
+   "Grand Corbeau"
+  ],
+  "gbif": [
+   "Grand Corbeau",
+   "Grand corbeau",
+   "grand corbeau"
+  ]
+ },
+ "Corvus corone": {
+  "taxref": [],
+  "wikidata": [
+   "Corneille noire",
+   "corneille noire"
+  ],
+  "wikipedia": [
+   "Corneille noire"
+  ],
+  "gbif": [
+   "Corneille noire",
+   "corneille noire"
+  ]
+ },
+ "Corvus frugilegus": {
+  "taxref": [],
+  "wikidata": [
+   "Corbeau freux",
+   "corbeau freux"
+  ],
+  "wikipedia": [
+   "Corbeau freux"
+  ],
+  "gbif": [
+   "Corbeau freux",
+   "corbeau freux"
+  ]
+ },
+ "Sturnus vulgaris": {
+  "taxref": [],
+  "wikidata": [
+   "Etourneau sansonnet",
+   "Étourneau sansonnet",
+   "étourneau sansonnet"
+  ],
+  "wikipedia": [
+   "Étourneau sansonnet"
+  ],
+  "gbif": [
+   "Etourneau sansonnet",
+   "Étourneau sansonnet",
+   "étourneau sansonnet"
+  ]
+ },
+ "Passer domesticus": {
+  "taxref": [],
+  "wikidata": [
+   "Moineau domestique"
+  ],
+  "wikipedia": [
+   "Moineau domestique"
+  ],
+  "gbif": [
+   "Moineau domestique",
+   "Moineau franc",
+   "moineau domestique"
+  ]
+ },
+ "Fringilla coelebs": {
+  "taxref": [],
+  "wikidata": [
+   "Pinson des arbres",
+   "pinson des arbres"
+  ],
+  "wikipedia": [
+   "Pinson des arbres"
+  ],
+  "gbif": [
+   "Pinson des arbres",
+   "pinson des arbres"
+  ]
+ },
+ "Carduelis carduelis": {
+  "taxref": [],
+  "wikidata": [
+   "Chardonneret élégant",
+   "chardonneret élégant"
+  ],
+  "wikipedia": [
+   "Chardonneret élégant"
+  ],
+  "gbif": [
+   "Chardonneret élégant",
+   "chardonneret élégant"
+  ]
+ },
+ "Chloris chloris": {
+  "taxref": [],
+  "wikidata": [
+   "Verdier d’Europe",
+   "verdier d'Europe"
+  ],
+  "wikipedia": [
+   "Verdier d'Europe"
+  ],
+  "gbif": [
+   "Verdier",
+   "Verdier d'Europe",
+   "Verdier d’Europe",
+   "verdier d'Europe"
+  ]
+ },
+ "Pyrrhula pyrrhula": {
+  "taxref": [],
+  "wikidata": [
+   "Bouvreuil pivoine",
+   "bouvreuil pivoine"
+  ],
+  "wikipedia": [
+   "Bouvreuil pivoine"
+  ],
+  "gbif": [
+   "Bouvreuil pivoine",
+   "Bouvreuil ponceau",
+   "Bouvreuil vulgaire",
+   "bouvreuil pivoine"
+  ]
+ },
+ "Coccothraustes coccothraustes": {
+  "taxref": [],
+  "wikidata": [
+   "Gros-bec casse-noyaux",
+   "grosbec casse-noyaux"
+  ],
+  "wikipedia": [
+   "Gros-bec casse-noyaux"
+  ],
+  "gbif": [
+   "Grosbec casse-noyaux",
+   "gros-bec casse-noyaux",
+   "grosbec casse-noyaux"
+  ]
+ },
+ "Emberiza citrinella": {
+  "taxref": [],
+  "wikidata": [
+   "Bruant jaune",
+   "bruant jaune"
+  ],
+  "wikipedia": [
+   "Bruant jaune"
+  ],
+  "gbif": [
+   "Bruant jaune",
+   "bruant jaune"
+  ]
+ },
+ "Pavo cristatus": {
+  "taxref": [],
+  "wikidata": [
+   "Paon bleu"
+  ],
+  "wikipedia": [
+   "Paon bleu"
+  ],
+  "gbif": [
+   "Paon",
+   "Paon bleu"
+  ]
+ },
+ "Gallus gallus": {
+  "taxref": [],
+  "wikidata": [
+   "Coq bankiva"
+  ],
+  "wikipedia": [
+   "Coq doré"
+  ],
+  "gbif": [
+   "Coq bankiva",
+   "Coq bankiva, Coq, Poule",
+   "Coq doré",
+   "Coq sauvage"
+  ]
+ },
+ "Phasianus colchicus": {
+  "taxref": [],
+  "wikidata": [
+   "Faisan de Colchide"
+  ],
+  "wikipedia": [
+   "Faisan de Colchide"
+  ],
+  "gbif": [
+   "Faisan commun",
+   "Faisan de Colchide",
+   "Faisan de chasse",
+   "faisan de chasse",
+   "faisan de colchide"
+  ]
+ },
+ "Perdix perdix": {
+  "taxref": [],
+  "wikidata": [
+   "Perdrix grise",
+   "perdrix grise"
+  ],
+  "wikipedia": [
+   "Perdrix grise"
+  ],
+  "gbif": [
+   "Perdrix grise",
+   "perdrix grise"
+  ]
+ },
+ "Tetrao urogallus": {
+  "taxref": [],
+  "wikidata": [
+   "Grand Tétras"
+  ],
+  "wikipedia": [
+   "Grand Tétras"
+  ],
+  "gbif": [
+   "Grand Tétras",
+   "Grand coq de bruyère"
+  ]
+ },
+ "Meleagris gallopavo": {
+  "taxref": [],
+  "wikidata": [
+   "Dindon sauvage"
+  ],
+  "wikipedia": [
+   "Dindon sauvage"
+  ],
+  "gbif": [
+   "Dindon sauvage",
+   "dindon sauvage"
+  ]
+ },
+ "Struthio camelus": {
+  "taxref": [],
+  "wikidata": [
+   "Autruche d'Afrique",
+   "Autruche d’Afrique"
+  ],
+  "wikipedia": [
+   "Autruche d'Afrique"
+  ],
+  "gbif": [
+   "Autruche d'Afrique",
+   "Autruche d’Afrique"
+  ]
+ },
+ "Dromaius novaehollandiae": {
+  "taxref": [],
+  "wikidata": [
+   "Émeu d'Australie",
+   "Émeu d’Australie"
+  ],
+  "wikipedia": [
+   "Émeu d'Australie"
+  ],
+  "gbif": [
+   "Émeu d'Australie",
+   "Émeu d’Australie"
+  ]
+ },
+ "Casuarius casuarius": {
+  "taxref": [],
+  "wikidata": [
+   "Casoar à casque"
+  ],
+  "wikipedia": [
+   "Casoar à casque"
+  ],
+  "gbif": [
+   "Casoar à casque"
+  ]
+ },
+ "Rhea americana": {
+  "taxref": [],
+  "wikidata": [
+   "Drongo balicassio (mirabilis)",
+   "Drongo pailleté (longirostris)",
+   "Nandou d'Amérique",
+   "Nandou d’Amérique"
+  ],
+  "wikipedia": [
+   "Nandou d'Amérique"
+  ],
+  "gbif": [
+   "Nandou d'Amérique",
+   "Nandou d’Amérique"
+  ]
+ },
+ "Apteryx australis": {
+  "taxref": [],
+  "wikidata": [
+   "Kiwi austral"
+  ],
+  "wikipedia": [
+   "Kiwi austral"
+  ],
+  "gbif": [
+   "Kiwi austral"
+  ]
+ },
+ "Ara macao": {
+  "taxref": [],
+  "wikidata": [
+   "Ara rouge"
+  ],
+  "wikipedia": [
+   "Ara rouge"
+  ],
+  "gbif": [
+   "Ara Macao",
+   "Ara rouge",
+   "Ara rouge, Ara macao"
+  ]
+ },
+ "Ara ararauna": {
+  "taxref": [],
+  "wikidata": [
+   "Ara bleu"
+  ],
+  "wikipedia": [
+   "Ara bleu"
+  ],
+  "gbif": [
+   "Ara bleu",
+   "Ara bleue"
+  ]
+ },
+ "Psittacus erithacus": {
+  "taxref": [],
+  "wikidata": [
+   "Perroquet jaco"
+  ],
+  "wikipedia": [
+   "Perroquet jaco"
+  ],
+  "gbif": [
+   "Gris du Gabon",
+   "Perroquet gris du Gabon",
+   "Perroquet jaco"
+  ]
+ },
+ "Melopsittacus undulatus": {
+  "taxref": [],
+  "wikidata": [
+   "Perruche ondulée"
+  ],
+  "wikipedia": [
+   "Perruche ondulée"
+  ],
+  "gbif": [
+   "Mélopsitte ondulé",
+   "Perruche ondulée"
+  ]
+ },
+ "Cacatua galerita": {
+  "taxref": [],
+  "wikidata": [
+   "Cacatoès à huppe jaune"
+  ],
+  "wikipedia": [
+   "Cacatoès à huppe jaune"
+  ],
+  "gbif": [
+   "Cacatoès à huppe jaune"
+  ]
+ },
+ "Ramphastos toco": {
+  "taxref": [],
+  "wikidata": [
+   "Toucan toco"
+  ],
+  "wikipedia": [
+   "Toucan toco"
+  ],
+  "gbif": [
+   "Toucan toco"
+  ]
+ },
+ "Trochilus polytmus": {
+  "taxref": [],
+  "wikidata": [
+   "Colibri à tête noire"
+  ],
+  "wikipedia": [
+   "Colibri à tête noire"
+  ],
+  "gbif": [
+   "Ariane à tête noire",
+   "Colibri à tête noire"
+  ]
+ },
+ "Archilochus colubris": {
+  "taxref": [],
+  "wikidata": [
+   "Colibri à gorge rubis"
+  ],
+  "wikipedia": [
+   "Colibri à gorge rubis"
+  ],
+  "gbif": [
+   "Calypte à gorge rubis",
+   "Colibri à gorge rubis",
+   "colibri à gorge rubis"
+  ]
+ },
+ "Menura novaehollandiae": {
+  "taxref": [],
+  "wikidata": [
+   "Ménure superbe"
+  ],
+  "wikipedia": [
+   "Ménure superbe"
+  ],
+  "gbif": [
+   "Ménure superbe"
+  ]
+ },
+ "Dacelo novaeguineae": {
+  "taxref": [],
+  "wikidata": [
+   "Martin-chasseur géant"
+  ],
+  "wikipedia": [
+   "Martin-chasseur géant"
+  ],
+  "gbif": [
+   "Martin-chasseur géant"
+  ]
+ },
+ "Paradisaea apoda": {
+  "taxref": [],
+  "wikidata": [
+   "Paradisier grand-émeraude"
+  ],
+  "wikipedia": [
+   "Paradisier grand-émeraude"
+  ],
+  "gbif": [
+   "Paradisier grand-émeraude"
+  ]
+ },
+ "Chionis albus": {
+  "taxref": [],
+  "wikidata": [
+   "Chionis blanc"
+  ],
+  "wikipedia": [
+   "Chionis blanc"
+  ],
+  "gbif": [
+   "Chionis blanc",
+   "chionis blanc"
+  ]
+ },
+ "Harpia harpyja": {
+  "taxref": [],
+  "wikidata": [
+   "Harpie féroce"
+  ],
+  "wikipedia": [
+   "Harpie féroce"
+  ],
+  "gbif": [
+   "Aigle féroce",
+   "Harpie féroce"
+  ]
+ },
+ "Sagittarius serpentarius": {
+  "taxref": [],
+  "wikidata": [
+   "Messager sagittaire",
+   "Serpentaire"
+  ],
+  "wikipedia": [
+   "Messager sagittaire"
+  ],
+  "gbif": [
+   "Messager sagittaire",
+   "Messager secrétaire",
+   "Serpentaire"
+  ]
+ },
+ "Vultur gryphus": {
+  "taxref": [],
+  "wikidata": [
+   "Condor des Andes"
+  ],
+  "wikipedia": [
+   "Condor des Andes"
+  ],
+  "gbif": [
+   "Condor des Andes"
+  ]
+ },
+ "Cathartes aura": {
+  "taxref": [],
+  "wikidata": [
+   "Urubu à tête rouge"
+  ],
+  "wikipedia": [
+   "Urubu à tête rouge"
+  ],
+  "gbif": [
+   "Urubu à tête rouge",
+   "Urubu à tête rouge, Vautour aura, Vautour à tête rouge"
+  ]
+ },
+ "Larus fuscus": {
+  "taxref": [],
+  "wikidata": [
+   "Goéland brun",
+   "goéland brun"
+  ],
+  "wikipedia": [
+   "Goéland brun"
+  ],
+  "gbif": [
+   "Goéland brun",
+   "goéland brun",
+   "goéland de la Balqitue"
+  ]
+ },
+ "Prunella modularis": {
+  "taxref": [],
+  "wikidata": [
+   "Accenteur mouchet",
+   "accenteur mouchet"
+  ],
+  "wikipedia": [
+   "Accenteur mouchet"
+  ],
+  "gbif": [
+   "Accenteur mouchet",
+   "Mouchet chanteur",
+   "Traîne-buisson",
+   "accenteur mouchet"
+  ]
+ },
+ "Chroicocephalus ridibundus": {
+  "taxref": [],
+  "wikidata": [
+   "Mouette rieuse"
+  ],
+  "wikipedia": [
+   "Mouette rieuse"
+  ],
+  "gbif": [
+   "Mouette rieuse"
+  ]
+ },
+ "Aegithalos caudatus": {
+  "taxref": [],
+  "wikidata": [
+   "Mésange à longue queue",
+   "Orite à longue queue",
+   "mésange à longue queue"
+  ],
+  "wikipedia": [
+   "Mésange à longue queue"
+  ],
+  "gbif": [
+   "Mésange à longue queue",
+   "Mésange à longue queue, Orite à longue queue",
+   "Orite à longue queue",
+   "Tupinet",
+   "mésange à longue queue"
+  ]
+ },
+ "Milvus migrans": {
+  "taxref": [],
+  "wikidata": [
+   "Milan noir",
+   "milan noir"
+  ],
+  "wikipedia": [
+   "Milan noir"
+  ],
+  "gbif": [
+   "Milan noir",
+   "milan noir"
+  ]
+ },
+ "Linaria cannabina": {
+  "taxref": [],
+  "wikidata": [
+   "Linotte mélodieuse"
+  ],
+  "wikipedia": [
+   "Linotte mélodieuse"
+  ],
+  "gbif": [
+   "Linotte des vignes",
+   "Linotte mélodieuse",
+   "Martin triste"
+  ]
+ },
+ "Ardea alba": {
+  "taxref": [],
+  "wikidata": [
+   "Grande Aigrette",
+   "Grande aigrette"
+  ],
+  "wikipedia": [
+   "Grande Aigrette"
+  ],
+  "gbif": [
+   "Grande Aigrette",
+   "Grande aigrette",
+   "Héron aigrette",
+   "grande aigrette"
+  ]
+ },
+ "Coloeus monedula": {
+  "taxref": [],
+  "wikidata": [
+   "Choucas des tours"
+  ],
+  "wikipedia": [
+   "Choucas des tours"
+  ],
+  "gbif": [
+   "Choucas des tours"
+  ]
+ },
+ "Podiceps cristatus": {
+  "taxref": [],
+  "wikidata": [
+   "Grèbe huppé",
+   "grèbe huppé"
+  ],
+  "wikipedia": [
+   "Grèbe huppé"
+  ],
+  "gbif": [
+   "Grèbe huppé",
+   "grèbe huppé"
+  ]
+ },
+ "Serinus serinus": {
+  "taxref": [],
+  "wikidata": [
+   "Serin cini",
+   "serin cini"
+  ],
+  "wikipedia": [
+   "Serin cini"
+  ],
+  "gbif": [
+   "Serin cini",
+   "Serin sauvage",
+   "serin cini"
+  ]
+ },
+ "Larus michahellis": {
+  "taxref": [],
+  "wikidata": [
+   "Goéland leucophée",
+   "goéland leucophée"
+  ],
+  "wikipedia": [
+   "Goéland leucophée"
+  ],
+  "gbif": [
+   "Gabian",
+   "Goéland leucophée",
+   "goéland leucophée"
+  ]
+ },
+ "Poecile palustris": {
+  "taxref": [],
+  "wikidata": [
+   "Mésange nonnette"
+  ],
+  "wikipedia": [
+   "Mésange nonnette"
+  ],
+  "gbif": [
+   "Mésange nonnette"
+  ]
+ },
+ "Sylvia communis": {
+  "taxref": [],
+  "wikidata": [
+   "Fauvette grisette",
+   "fauvette grisette"
+  ],
+  "wikipedia": [
+   "Sylvia communis"
+  ],
+  "gbif": [
+   "Fauvette grisette",
+   "fauvette grisette"
+  ]
+ },
+ "Saxicola rubicola": {
+  "taxref": [],
+  "wikidata": [
+   "Tarier pâtre"
+  ],
+  "wikipedia": [
+   "Saxicola rubicola"
+  ],
+  "gbif": [
+   "Tarier pâtre",
+   "Tarier rubicole",
+   "Traquet",
+   "Traquet pâtre",
+   "Traquet rubicole"
+  ]
+ },
+ "Emberiza cirlus": {
+  "taxref": [],
+  "wikidata": [
+   "Bruant zizi",
+   "bruant zizi"
+  ],
+  "wikipedia": [
+   "Bruant zizi"
+  ],
+  "gbif": [
+   "Bruant zizi",
+   "bruant zizi"
+  ]
+ },
+ "Cettia cetti": {
+  "taxref": [],
+  "wikidata": [
+   "Bouscarle de Cetti",
+   "bouscarle de cetti"
+  ],
+  "wikipedia": [
+   "Bouscarle de Cetti"
+  ],
+  "gbif": [
+   "Bouscarle de Cetti",
+   "bouscarle de cetti"
+  ]
+ },
+ "Accipiter nisus": {
+  "taxref": [],
+  "wikidata": [
+   "Epervier d'Europe",
+   "Épervier d'Europe",
+   "Épervier d’Europe",
+   "épervier deurope"
+  ],
+  "wikipedia": [
+   "Épervier d'Europe"
+  ],
+  "gbif": [
+   "Epervier d'Europe",
+   "Épervier commun",
+   "Épervier d'Europe",
+   "Épervier d’Europe",
+   "épervier deurope"
+  ]
+ },
+ "Emberiza schoeniclus": {
+  "taxref": [],
+  "wikidata": [
+   "Bruant des roseaux",
+   "bruant des roseaux"
+  ],
+  "wikipedia": [
+   "Bruant des roseaux"
+  ],
+  "gbif": [
+   "Bruant des roseaux",
+   "bruant des roseaux"
+  ]
+ },
+ "Lullula arborea": {
+  "taxref": [],
+  "wikidata": [
+   "Alouette lulu",
+   "alouette lulu"
+  ],
+  "wikipedia": [
+   "Alouette lulu"
+  ],
+  "gbif": [
+   "Alouette lulu",
+   "alouette lulu"
+  ]
+ },
+ "Regulus ignicapilla": {
+  "taxref": [],
+  "wikidata": [
+   "Roitelet triple-bandeau",
+   "Roitelet à triple bandeau",
+   "roitelet à triple bandeau"
+  ],
+  "wikipedia": [
+   "Roitelet à triple bandeau"
+  ],
+  "gbif": [
+   "Roitelet triple-bandeau",
+   "Roitelet à triple bandeau",
+   "Roitelet à triple-bandeau",
+   "roitelet à triple bandeau"
+  ]
+ },
+ "Periparus ater": {
+  "taxref": [],
+  "wikidata": [
+   "Mésange noire"
+  ],
+  "wikipedia": [
+   "Mésange noire"
+  ],
+  "gbif": [
+   "Mésange noire",
+   "Petite charbonnière"
+  ]
+ },
+ "Anthus pratensis": {
+  "taxref": [],
+  "wikidata": [
+   "Pipit des prés",
+   "Pipit farlouse",
+   "pipit farlouse"
+  ],
+  "wikipedia": [
+   "Pipit farlouse"
+  ],
+  "gbif": [
+   "Béguinette",
+   "Pipit des prés",
+   "Pipit farlouse",
+   "pipit des prés",
+   "pipit farlouse"
+  ]
+ },
+ "Tachybaptus ruficollis": {
+  "taxref": [],
+  "wikidata": [
+   "Grèbe castagneux",
+   "grèbe castagneux"
+  ],
+  "wikipedia": [
+   "Grèbe castagneux"
+  ],
+  "gbif": [
+   "Grèbe castagneux",
+   "Grébion",
+   "Petit grèbe",
+   "grèbe castagneux"
+  ]
+ },
+ "Acrocephalus scirpaceus": {
+  "taxref": [],
+  "wikidata": [
+   "Rousserolle effarvatte",
+   "rousserolle effarvatte"
+  ],
+  "wikipedia": [
+   "Rousserolle effarvatte"
+  ],
+  "gbif": [
+   "Rousserolle africaine",
+   "Rousserolle effarvatte",
+   "rousserolle effarvatte"
+  ]
+ },
+ "Lophophanes cristatus": {
+  "taxref": [],
+  "wikidata": [
+   "Mésange huppée"
+  ],
+  "wikipedia": [
+   "Mésange huppée"
+  ],
+  "gbif": [
+   "Mésange huppée"
+  ]
+ },
+ "Anas crecca": {
+  "taxref": [],
+  "wikidata": [
+   "Sarcelle d'hiver",
+   "Sarcelle d’hiver",
+   "sarcelle dhiver"
+  ],
+  "wikipedia": [
+   "Sarcelle d'hiver"
+  ],
+  "gbif": [
+   "Canard sarcelline",
+   "Sarcelle d'hiver",
+   "Sarcelle d’hiver",
+   "sarcelle d'hiver",
+   "sarcelle dhiver"
+  ]
+ },
+ "Emberiza calandra": {
+  "taxref": [],
+  "wikidata": [
+   "Bruant proyer",
+   "bruant proyer"
+  ],
+  "wikipedia": [
+   "Bruant proyer"
+  ],
+  "gbif": [
+   "Bruant proyer",
+   "bruant proyer"
+  ]
+ },
+ "Motacilla cinerea": {
+  "taxref": [],
+  "wikidata": [
+   "Bergeronnette des ruisseaux",
+   "bergeronnette des ruisseaux"
+  ],
+  "wikipedia": [
+   "Bergeronnette des ruisseaux"
+  ],
+  "gbif": [
+   "Bergeronnette des ruisseaux",
+   "Bergeronnette jaune",
+   "Hochequeue jaune",
+   "Lavandière jaune",
+   "bergeronnette des ruisseaux"
+  ]
+ },
+ "Spinus spinus": {
+  "taxref": [],
+  "wikidata": [
+   "Tarin des aulnes"
+  ],
+  "wikipedia": [
+   "Tarin des aulnes"
+  ],
+  "gbif": [
+   "Tarin des aulnes"
+  ]
+ },
+ "Motacilla flava": {
+  "taxref": [],
+  "wikidata": [
+   "Bergeronnette printanière",
+   "bergeronnette printanière"
+  ],
+  "wikipedia": [
+   "Bergeronnette printanière"
+  ],
+  "gbif": [
+   "Bergeronnette printanière",
+   "bergeronnette printanière"
+  ]
+ },
+ "Hippolais polyglotta": {
+  "taxref": [],
+  "wikidata": [
+   "Hypolaïs polyglotte",
+   "hypolaïs polyglotte"
+  ],
+  "wikipedia": [
+   "Hypolaïs polyglotte"
+  ],
+  "gbif": [
+   "Contrefaisant à ailes courtes",
+   "Hypolaïs polyglotte",
+   "Hypolaïs polyglotte, Petit contrefaisant",
+   "hypolaïs polyglotte"
+  ]
+ },
+ "Phoenicurus phoenicurus": {
+  "taxref": [],
+  "wikidata": [
+   "Rougequeue à front blanc",
+   "rougequeue à front blanc"
+  ],
+  "wikipedia": [
+   "Rougequeue à front blanc"
+  ],
+  "gbif": [
+   "Rossignol de muraille",
+   "Rougequeue à front blanc",
+   "rougequeue à front blanc"
+  ]
+ },
+ "Phylloscopus trochilus": {
+  "taxref": [],
+  "wikidata": [
+   "Pouillot fitis",
+   "pouillot fitis"
+  ],
+  "wikipedia": [
+   "Pouillot fitis"
+  ],
+  "gbif": [
+   "Pouillot chantre",
+   "Pouillot fitis",
+   "pouillot fitis"
+  ]
+ },
+ "Sylvia melanocephala": {
+  "taxref": [],
+  "wikidata": [
+   "Fauvette mélanocéphale",
+   "fauvette mélanocéphale"
+  ],
+  "wikipedia": [],
+  "gbif": [
+   "Fauvette mélanocéphale",
+   "fauvette mélanocéphale"
+  ]
+ },
+ "Anthus trivialis": {
+  "taxref": [],
+  "wikidata": [
+   "Pipit des arbres",
+   "pipit des arbres"
+  ],
+  "wikipedia": [
+   "Pipit des arbres"
+  ],
+  "gbif": [
+   "Pipit des arbres",
+   "Pipit des buissons",
+   "pipit des arbres"
+  ]
+ },
+ "Aythya ferina": {
+  "taxref": [],
+  "wikidata": [
+   "Fuligule milouin",
+   "fuligule milouin"
+  ],
+  "wikipedia": [
+   "Fuligule milouin"
+  ],
+  "gbif": [
+   "Fuligule milouin",
+   "fuligule milouin"
+  ]
+ },
+ "Actitis hypoleucos": {
+  "taxref": [],
+  "wikidata": [
+   "Chevalier guignette",
+   "chevalier guignette"
+  ],
+  "wikipedia": [
+   "Chevalier guignette"
+  ],
+  "gbif": [
+   "Chevalier guignette",
+   "chevalier guignette"
+  ]
+ },
+ "Ichthyaetus melanocephalus": {
+  "taxref": [],
+  "wikidata": [
+   "Mouette mélanocéphale"
+  ],
+  "wikipedia": [
+   "Mouette mélanocéphale"
+  ],
+  "gbif": [
+   "Goéland mélanocéphale",
+   "Mouette mélanocéphale"
+  ]
+ },
+ "Circus cyaneus": {
+  "taxref": [],
+  "wikidata": [
+   "Busard Saint-Martin",
+   "busard saint-martin"
+  ],
+  "wikipedia": [
+   "Busard Saint-Martin"
+  ],
+  "gbif": [
+   "Busard Saint-Martin",
+   "Busard saint-martin",
+   "Jean-le-Blanc",
+   "busard saint-martin"
+  ]
+ },
+ "Turdus pilaris": {
+  "taxref": [],
+  "wikidata": [
+   "Grive litorne",
+   "grive litorne"
+  ],
+  "wikipedia": [
+   "Grive litorne"
+  ],
+  "gbif": [
+   "Grive litorne",
+   "Merle litorne",
+   "grive litorne"
+  ]
+ },
+ "Spatula clypeata": {
+  "taxref": [],
+  "wikidata": [
+   "Canard souchet"
+  ],
+  "wikipedia": [
+   "Canard souchet"
+  ],
+  "gbif": [
+   "Canard rouge de rivière",
+   "Canard souchet",
+   "Louchard"
+  ]
+ },
+ "Cisticola juncidis": {
+  "taxref": [],
+  "wikidata": [
+   "Cisticole des joncs",
+   "cisticole des joncs"
+  ],
+  "wikipedia": [
+   "Cisticole des joncs"
+  ],
+  "gbif": [
+   "Cisticole des joncs",
+   "cisticole des joncs"
+  ]
+ },
+ "Gallinago gallinago": {
+  "taxref": [],
+  "wikidata": [
+   "Bécassine des marais",
+   "bécassine des marais"
+  ],
+  "wikipedia": [
+   "Bécassine des marais"
+  ],
+  "gbif": [
+   "Bécassine des marais",
+   "bécassine des marais"
+  ]
+ },
+ "Circaetus gallicus": {
+  "taxref": [],
+  "wikidata": [
+   "Circaète Jean-le-Blanc",
+   "circaète jean-le-blanc"
+  ],
+  "wikipedia": [
+   "Circaète Jean-le-Blanc"
+  ],
+  "gbif": [
+   "Aigle Jean-le-Blanc",
+   "Circaète Jean-le-Blanc",
+   "circaète jean-le-blanc"
+  ]
+ },
+ "Sylvia borin": {
+  "taxref": [],
+  "wikidata": [
+   "Fauvette des jardins",
+   "fauvette des jardins"
+  ],
+  "wikipedia": [
+   "Fauvette des jardins"
+  ],
+  "gbif": [
+   "Becfigue",
+   "Fauvette des jardins",
+   "fauvette des jardins"
+  ]
+ },
+ "Bubulcus ibis": {
+  "taxref": [],
+  "wikidata": [
+   "Héron garde-boeufs",
+   "Héron garde-bœufs",
+   "héron garde-boeuf"
+  ],
+  "wikipedia": [],
+  "gbif": [
+   "Héron garde-boeufs",
+   "Héron garde-boeufs, Pique bœufs",
+   "Héron garde-bœufs",
+   "héron garde-boeuf",
+   "héron garde-boeufs"
+  ]
+ },
+ "Fringilla montifringilla": {
+  "taxref": [],
+  "wikidata": [
+   "Pinson du Nord",
+   "pinson du nord"
+  ],
+  "wikipedia": [
+   "Pinson du Nord"
+  ],
+  "gbif": [
+   "Pinson des Ardennes",
+   "Pinson du Nord",
+   "Pinson du nord",
+   "Pinson du nord, Pinson des Ardennes",
+   "pinson du Nord",
+   "pinson du nord"
+  ]
+ },
+ "Mareca strepera": {
+  "taxref": [],
+  "wikidata": [
+   "Canard chipeau"
+  ],
+  "wikipedia": [
+   "Canard chipeau"
+  ],
+  "gbif": [
+   "Canard chipeau",
+   "Ridenne"
+  ]
+ },
+ "Oenanthe oenanthe": {
+  "taxref": [],
+  "wikidata": [
+   "Traquet motteux",
+   "traquet motteux"
+  ],
+  "wikipedia": [
+   "Traquet motteux"
+  ],
+  "gbif": [
+   "Motteux cendré",
+   "Traquet motteux",
+   "traquet motteux"
+  ]
+ },
+ "Tringa ochropus": {
+  "taxref": [],
+  "wikidata": [
+   "Chevalier cul-blanc",
+   "chevalier culblanc"
+  ],
+  "wikipedia": [
+   "Chevalier cul-blanc"
+  ],
+  "gbif": [
+   "Chevalier cul-blanc",
+   "Chevalier culblanc",
+   "chevalier culblanc"
+  ]
+ },
+ "Himantopus himantopus": {
+  "taxref": [],
+  "wikidata": [
+   "echasse blanche",
+   "Échasse blanche"
+  ],
+  "wikipedia": [
+   "Échasse blanche"
+  ],
+  "gbif": [
+   "Echasse blanche",
+   "echasse blanche",
+   "Échasse blanche"
+  ]
+ },
+ "Pernis apivorus": {
+  "taxref": [],
+  "wikidata": [
+   "Bondrée apivore",
+   "bondrée apivore"
+  ],
+  "wikipedia": [
+   "Bondrée apivore"
+  ],
+  "gbif": [
+   "Bondrée apivore",
+   "Buse bondrée",
+   "bondrée apivore"
+  ]
+ },
+ "Columba oenas": {
+  "taxref": [],
+  "wikidata": [
+   "Pigeon colombin",
+   "pigeon colombin"
+  ],
+  "wikipedia": [
+   "Pigeon colombin"
+  ],
+  "gbif": [
+   "Petit bleu",
+   "Pigeon bleu",
+   "Pigeon colombin",
+   "pigeon colombin"
+  ]
+ },
+ "Passer montanus": {
+  "taxref": [],
+  "wikidata": [
+   "Moineau friquet",
+   "moineau friquet"
+  ],
+  "wikipedia": [
+   "Moineau friquet"
+  ],
+  "gbif": [
+   "Moineau friquet",
+   "moineau friquet"
+  ]
+ },
+ "Platalea leucorodia": {
+  "taxref": [],
+  "wikidata": [
+   "Spatule blanche",
+   "spatule blanche"
+  ],
+  "wikipedia": [
+   "Spatule blanche"
+  ],
+  "gbif": [
+   "Spatule blanche",
+   "spatule blanche"
+  ]
+ },
+ "Turdus iliacus": {
+  "taxref": [],
+  "wikidata": [
+   "Grive mauvis",
+   "grive mauvis"
+  ],
+  "wikipedia": [
+   "Grive mauvis"
+  ],
+  "gbif": [
+   "Grive mauvis",
+   "Merle mauvis",
+   "grive mauvis"
+  ]
+ },
+ "Acrocephalus schoenobaenus": {
+  "taxref": [],
+  "wikidata": [
+   "Phragmite des joncs",
+   "phragmite des joncs"
+  ],
+  "wikipedia": [
+   "Phragmite des joncs"
+  ],
+  "gbif": [
+   "Phragmite des joncs",
+   "phragmite des joncs"
+  ]
+ },
+ "Tringa totanus": {
+  "taxref": [],
+  "wikidata": [
+   "Chevalier gambette"
+  ],
+  "wikipedia": [
+   "Chevalier gambette"
+  ],
+  "gbif": [
+   "Chevalier gambette",
+   "Chevalier à pattes rouges",
+   "Pieds-rouges",
+   "chevalier gambette",
+   "chevalier gambette, chevalier gambette européen"
+  ]
+ },
+ "Circus pygargus": {
+  "taxref": [],
+  "wikidata": [
+   "Busard cendré",
+   "busard cendré"
+  ],
+  "wikipedia": [
+   "Busard cendré"
+  ],
+  "gbif": [
+   "Busard Cendré",
+   "Busard cendré",
+   "Busard de Montagu",
+   "busard cendré"
+  ]
+ },
+ "Phylloscopus bonelli": {
+  "taxref": [],
+  "wikidata": [
+   "Pouillot de Bonelli",
+   "pouillot de bonelli"
+  ],
+  "wikipedia": [
+   "Pouillot de Bonelli"
+  ],
+  "gbif": [
+   "Pouillot de Bonelli",
+   "pouillot de bonelli"
+  ]
+ },
+ "Alectoris rufa": {
+  "taxref": [],
+  "wikidata": [
+   "Perdrix rouge"
+  ],
+  "wikipedia": [
+   "Perdrix rouge"
+  ],
+  "gbif": [
+   "Bartavelle rouge",
+   "Perdrix rouge"
+  ]
+ },
+ "Rallus aquaticus": {
+  "taxref": [],
+  "wikidata": [
+   "Râle d'eau",
+   "Râle d’eau",
+   "râle deau"
+  ],
+  "wikipedia": [
+   "Râle d'eau"
+  ],
+  "gbif": [
+   "Râle d'eau",
+   "Râle d’eau",
+   "râle deau"
+  ]
+ },
+ "Calidris alpina": {
+  "taxref": [],
+  "wikidata": [
+   "Bécasseau variable",
+   "bécasseau variable"
+  ],
+  "wikipedia": [
+   "Bécasseau variable"
+  ],
+  "gbif": [
+   "Bécasseau variable",
+   "bécasseau de Laponie",
+   "bécasseau variable"
+  ]
+ },
+ "Ficedula hypoleuca": {
+  "taxref": [],
+  "wikidata": [
+   "Gobemouche noir",
+   "gobemouche noir"
+  ],
+  "wikipedia": [
+   "Gobemouche noir"
+  ],
+  "gbif": [
+   "Gobemouche becfigue",
+   "Gobemouche noir",
+   "Piquemouche noir",
+   "gobemouche noir"
+  ]
+ },
+ "Falco subbuteo": {
+  "taxref": [],
+  "wikidata": [
+   "Faucon hobereau",
+   "faucon hobereau"
+  ],
+  "wikipedia": [
+   "Faucon hobereau"
+  ],
+  "gbif": [
+   "Faucon Hobereau",
+   "Faucon hobereau",
+   "faucon hobereau"
+  ]
+ },
+ "Recurvirostra avosetta": {
+  "taxref": [],
+  "wikidata": [
+   "Avocette à tête noire",
+   "Avocette élégante",
+   "avocette élégante"
+  ],
+  "wikipedia": [
+   "Avocette élégante"
+  ],
+  "gbif": [
+   "Avocette à nuque noire",
+   "Avocette à tête noire",
+   "Avocette élégante",
+   "avocette élégante"
+  ]
+ },
+ "Dryobates minor": {
+  "taxref": [],
+  "wikidata": [
+   "Pic épeichette"
+  ],
+  "wikipedia": [
+   "Pic épeichette"
+  ],
+  "gbif": [
+   "Petit épeiche",
+   "Pic épeichette"
+  ]
+ },
+ "Ptyonoprogne rupestris": {
+  "taxref": [],
+  "wikidata": [
+   "Hirondelle de rochers"
+  ],
+  "wikipedia": [
+   "Hirondelle de rochers"
+  ],
+  "gbif": [
+   "Hirondelle de rochers"
+  ]
+ },
+ "Coturnix coturnix": {
+  "taxref": [],
+  "wikidata": [
+   "Caille des blés"
+  ],
+  "wikipedia": [
+   "Caille des blés"
+  ],
+  "gbif": [
+   "Caille des blés",
+   "caille des blés"
+  ]
+ },
+ "Muscicapa striata": {
+  "taxref": [],
+  "wikidata": [
+   "Gobemouche gris",
+   "gobemouche gris"
+  ],
+  "wikipedia": [
+   "Gobemouche gris"
+  ],
+  "gbif": [
+   "Gobe-mouche gris",
+   "Gobemouche gris",
+   "gobemouche gris"
+  ]
+ },
+ "Psittacula krameri": {
+  "taxref": [],
+  "wikidata": [
+   "Perruche à collier",
+   "perruche à collier"
+  ],
+  "wikipedia": [
+   "Perruche à collier"
+  ],
+  "gbif": [
+   "Perruche à collier",
+   "perruche à collier"
+  ]
+ },
+ "Anthus spinoletta": {
+  "taxref": [],
+  "wikidata": [
+   "Pipit spioncelle",
+   "pipit spioncelle"
+  ],
+  "wikipedia": [
+   "Pipit spioncelle"
+  ],
+  "gbif": [
+   "Pipit spioncelle",
+   "Pipit spioncelle montagnard",
+   "pipit spioncelle"
+  ]
+ },
+ "Luscinia svecica": {
+  "taxref": [],
+  "wikidata": [
+   "Gorgebleue",
+   "Gorgebleue à miroir",
+   "gorgebleue"
+  ],
+  "wikipedia": [
+   "Gorgebleue à miroir"
+  ],
+  "gbif": [
+   "Gorge-bleue à miroir",
+   "Gorgebleue",
+   "Gorgebleue à miroir",
+   "gorgebleue"
+  ]
+ },
+ "Saxicola rubetra": {
+  "taxref": [],
+  "wikidata": [
+   "Tarier des prés",
+   "Traquet tarier",
+   "tarier des prés, traquet tarier"
+  ],
+  "wikipedia": [
+   "Tarier des prés"
+  ],
+  "gbif": [
+   "Tarier des prés",
+   "Tarier des prés, Traquet tarier",
+   "Traquet tarier",
+   "tarier des prés",
+   "tarier des prés, traquet tarier"
+  ]
+ },
+ "Mareca penelope": {
+  "taxref": [],
+  "wikidata": [
+   "Canard siffleur"
+  ],
+  "wikipedia": [
+   "Canard siffleur"
+  ],
+  "gbif": [
+   "Canard siffleur"
+  ]
+ },
+ "Dendrocoptes medius": {
+  "taxref": [],
+  "wikidata": [
+   "Pic mar",
+   "pic mar"
+  ],
+  "wikipedia": [
+   "Pic mar"
+  ],
+  "gbif": [
+   "Moyen épeiche",
+   "Pic mar"
+  ]
+ },
+ "Tringa nebularia": {
+  "taxref": [],
+  "wikidata": [
+   "Chevalier aboyeur",
+   "chevalier aboyeur"
+  ],
+  "wikipedia": [
+   "Chevalier aboyeur"
+  ],
+  "gbif": [
+   "Chevalier aboyeur",
+   "chevalier aboyeur"
+  ]
+ },
+ "Burhinus oedicnemus": {
+  "taxref": [],
+  "wikidata": [
+   "Oedicnème criard",
+   "oedicnème criard",
+   "Œdicnème criard"
+  ],
+  "wikipedia": [
+   "Œdicnème criard"
+  ],
+  "gbif": [
+   "Courlis de terre",
+   "Kerlu",
+   "Oedicnème criard",
+   "oedicnème criard",
+   "Œdicnème criard"
+  ]
+ },
+ "Charadrius hiaticula": {
+  "taxref": [],
+  "wikidata": [
+   "Grand Gravelot",
+   "Pluvier grand-gravelot",
+   "grand gravelot occidental",
+   "grand gravelot occidental, grand gravelot"
+  ],
+  "wikipedia": [
+   "Pluvier grand-gravelot"
+  ],
+  "gbif": [
+   "Grand Gravelot",
+   "Pluvier grand-gravelot",
+   "grand gravelot",
+   "grand gravelot occidental",
+   "grand gravelot occidental, grand gravelot"
+  ]
+ },
+ "Cinclus cinclus": {
+  "taxref": [],
+  "wikidata": [
+   "Cincle plongeur",
+   "cincle plongeur"
+  ],
+  "wikipedia": [
+   "Cincle plongeur"
+  ],
+  "gbif": [
+   "Cincle aquatique",
+   "Cincle plongeur",
+   "Merle d'eau",
+   "cincle plongeur"
+  ]
+ },
+ "Thalasseus sandvicensis": {
+  "taxref": [],
+  "wikidata": [
+   "Sterne caugek"
+  ],
+  "wikipedia": [
+   "Sterne caugek"
+  ],
+  "gbif": [
+   "Sterne caugek"
+  ]
+ },
+ "Ardea purpurea": {
+  "taxref": [],
+  "wikidata": [
+   "Héron pourpré",
+   "héron pourpré"
+  ],
+  "wikipedia": [
+   "Héron pourpré"
+  ],
+  "gbif": [
+   "Héron pourpré",
+   "héron pourpré"
+  ]
+ },
+ "Larus marinus": {
+  "taxref": [],
+  "wikidata": [
+   "Goéland marin",
+   "goéland marin"
+  ],
+  "wikipedia": [
+   "Goéland marin"
+  ],
+  "gbif": [
+   "Goéland marin",
+   "Géland à manteau noir",
+   "goéland marin"
+  ]
+ },
+ "Charadrius dubius": {
+  "taxref": [],
+  "wikidata": [
+   "Petit Gravelot",
+   "Pluvier petit-gravelot",
+   "petit gravelot"
+  ],
+  "wikipedia": [
+   "Pluvier petit-gravelot"
+  ],
+  "gbif": [
+   "Petit Gravelot",
+   "Pluvier petit-gravelot",
+   "petit gravelot"
+  ]
+ },
+ "Netta rufina": {
+  "taxref": [],
+  "wikidata": [
+   "Nette rousse",
+   "nette rousse"
+  ],
+  "wikipedia": [
+   "Nette rousse"
+  ],
+  "gbif": [
+   "Brante roussâtre",
+   "Canard espagnol",
+   "Canard rufin",
+   "Canard siffleur huppé",
+   "Fuligule roux",
+   "Nette rousse"
+  ]
+ },
+ "Galerida cristata": {
+  "taxref": [],
+  "wikidata": [
+   "Cochevis huppé",
+   "cochevis huppé"
+  ],
+  "wikipedia": [
+   "Cochevis huppé"
+  ],
+  "gbif": [
+   "Alouette huppée",
+   "Cochevis huppé",
+   "cochevis huppé"
+  ]
+ },
+ "Anas acuta": {
+  "taxref": [],
+  "wikidata": [
+   "Canard pilet",
+   "canard pilet"
+  ],
+  "wikipedia": [
+   "Canard pilet"
+  ],
+  "gbif": [
+   "Canard pilet",
+   "canard pilet",
+   "paille-en-queue"
+  ]
+ },
+ "Pluvialis apricaria": {
+  "taxref": [],
+  "wikidata": [
+   "Pluvier doré",
+   "pluvier doré"
+  ],
+  "wikipedia": [
+   "Pluvier doré"
+  ],
+  "gbif": [
+   "Greater golden-plover",
+   "Pluvier doré",
+   "pluvier doré"
+  ]
+ },
+ "Tetrax tetrax": {
+  "taxref": [],
+  "wikidata": [
+   "Outarde canepetière",
+   "outarde canepetière"
+  ],
+  "wikipedia": [
+   "Outarde canepetière"
+  ],
+  "gbif": [
+   "Outarde canepetière",
+   "Petite outarde",
+   "outarde canepetière"
+  ]
+ },
+ "Sylvia undata": {
+  "taxref": [],
+  "wikidata": [
+   "Fauvette pitchou",
+   "fauvette pitchou"
+  ],
+  "wikipedia": [],
+  "gbif": [
+   "Fauvette pitchou",
+   "fauvette pitchou"
+  ]
+ },
+ "Podiceps nigricollis": {
+  "taxref": [],
+  "wikidata": [
+   "Grèbe à cou noir",
+   "grèbe à cou noir"
+  ],
+  "wikipedia": [
+   "Grèbe à cou noir"
+  ],
+  "gbif": [
+   "Grèbe à cou noir",
+   "grèbe à cou noir"
+  ]
+ },
+ "Pluvialis squatarola": {
+  "taxref": [],
+  "wikidata": [
+   "Pluvier argenté",
+   "pluvier argenté"
+  ],
+  "wikipedia": [
+   "Pluvier argenté"
+  ],
+  "gbif": [
+   "Pluvier argenté",
+   "pluvier argenté"
+  ]
+ },
+ "Nycticorax nycticorax": {
+  "taxref": [],
+  "wikidata": [
+   "Bihoreau gris",
+   "Héron bihoreau",
+   "bihoreau gris, héron bihoreau"
+  ],
+  "wikipedia": [
+   "Bihoreau gris"
+  ],
+  "gbif": [
+   "Bihoreau gris",
+   "Bihoreau gris, Héron bihoreau",
+   "Héron bihoreau",
+   "bihoreau gris",
+   "bihoreau gris, héron bihoreau",
+   "bihoreau à manteau noir"
+  ]
+ },
+ "Jynx torquilla": {
+  "taxref": [],
+  "wikidata": [
+   "Torcol",
+   "Torcol fourmilier",
+   "torcol fourmilier"
+  ],
+  "wikipedia": [
+   "Torcol fourmilier"
+  ],
+  "gbif": [
+   "Torcol",
+   "Torcol fourmilier",
+   "torcol fourmilier"
+  ]
+ },
+ "Limosa limosa": {
+  "taxref": [],
+  "wikidata": [
+   "Barge à queue noire",
+   "barge à queue noire"
+  ],
+  "wikipedia": [
+   "Barge à queue noire"
+  ],
+  "gbif": [
+   "Barge à queue noire",
+   "barge à queue noire"
+  ]
+ },
+ "Loxia curvirostra": {
+  "taxref": [],
+  "wikidata": [
+   "Bec-croisé des sapins",
+   "beccroisé des sapins"
+  ],
+  "wikipedia": [
+   "Bec-croisé des sapins"
+  ],
+  "gbif": [
+   "Bec-croisé des sapins",
+   "Bec-croisé rouge",
+   "bec-croisé des sapins",
+   "beccroisé des sapins"
+  ]
+ },
+ "Arenaria interpres": {
+  "taxref": [],
+  "wikidata": [
+   "Tournepierre à collier",
+   "tournepierre à collier"
+  ],
+  "wikipedia": [
+   "Tournepierre à collier"
+  ],
+  "gbif": [
+   "Pluvier des Salines",
+   "Tournepierre à collier",
+   "Tournepierre à collier, Pluvier des Salines",
+   "tournepierre à collier"
+  ]
+ },
+ "Charadrius alexandrinus": {
+  "taxref": [],
+  "wikidata": [
+   "Gravelot à collier interrompu",
+   "Pluvier à collier interrompu",
+   "gravelot à collier interrompu"
+  ],
+  "wikipedia": [
+   "Pluvier à collier interrompu"
+  ],
+  "gbif": [
+   "Gravelot à collier interrompu",
+   "Gravelot à collier interrompu, Gravelot de Kent",
+   "Pluvier à collier interrompu",
+   "gravelot à collier interrompu"
+  ]
+ },
+ "Curruca melanocephala": {
+  "taxref": [],
+  "wikidata": [
+   "Fauvette mélanocéphale",
+   "fauvette mélanocéphale"
+  ],
+  "wikipedia": [
+   "Fauvette mélanocéphale"
+  ],
+  "gbif": [
+   "Fauvette mélanocéphale"
+  ]
+ },
+ "Ciconia nigra": {
+  "taxref": [],
+  "wikidata": [
+   "Cigogne noire",
+   "cigogne noire"
+  ],
+  "wikipedia": [
+   "Cigogne noire"
+  ],
+  "gbif": [
+   "Cigogne noire",
+   "cigogne noire"
+  ]
+ },
+ "Calidris pugnax": {
+  "taxref": [],
+  "wikidata": [
+   "Combattant varié"
+  ],
+  "wikipedia": [
+   "Combattant varié"
+  ],
+  "gbif": [
+   "Bécasseau combattant",
+   "Chevalier combattant",
+   "Combattant varié",
+   "Combattant varié, Chevalier combattant"
+  ]
+ },
+ "Spatula querquedula": {
+  "taxref": [],
+  "wikidata": [
+   "Sarcelle d’été"
+  ],
+  "wikipedia": [
+   "Sarcelle d'été"
+  ],
+  "gbif": [
+   "Canard sarcelle",
+   "Sarcelle d'été",
+   "Sarcelle d’été"
+  ]
+ },
+ "Locustella naevia": {
+  "taxref": [],
+  "wikidata": [
+   "Locustelle tachetée",
+   "locustelle tachetée"
+  ],
+  "wikipedia": [
+   "Locustelle tachetée"
+  ],
+  "gbif": [
+   "Locustelle tachetée",
+   "locustelle tachetée"
+  ]
+ },
+ "Tringa glareola": {
+  "taxref": [],
+  "wikidata": [
+   "Chevalier sylvain",
+   "chevalier sylvain"
+  ],
+  "wikipedia": [
+   "Chevalier sylvain"
+  ],
+  "gbif": [
+   "Chevalier sylvain",
+   "chevalier sylvain"
+  ]
+ },
+ "Anthus campestris": {
+  "taxref": [],
+  "wikidata": [
+   "Pipit rousseline",
+   "pipit rousseline"
+  ],
+  "wikipedia": [
+   "Pipit rousseline"
+  ],
+  "gbif": [
+   "Pipit rousseline",
+   "pipit rousseline"
+  ]
+ },
+ "Asio otus": {
+  "taxref": [],
+  "wikidata": [
+   "Hibou moyen-duc",
+   "hibou moyen-duc"
+  ],
+  "wikipedia": [
+   "Hibou moyen-duc"
+  ],
+  "gbif": [
+   "Hibou moyen-duc",
+   "hibou moyen-duc"
+  ]
+ },
+ "Caprimulgus europaeus": {
+  "taxref": [],
+  "wikidata": [
+   "Engoulevent d'Europe",
+   "Engoulevent d’Europe",
+   "engoulevent d`europe"
+  ],
+  "wikipedia": [
+   "Engoulevent d'Europe"
+  ],
+  "gbif": [
+   "Engoulevent d'Europe",
+   "Engoulevent de Vaurie",
+   "Engoulevent d’Europe",
+   "engoulevent d`europe"
+  ]
+ },
+ "Larus canus": {
+  "taxref": [],
+  "wikidata": [
+   "Goéland cendré",
+   "goéland cendré"
+  ],
+  "wikipedia": [
+   "Goéland cendré"
+  ],
+  "gbif": [
+   "Goéland cendré",
+   "goéland cendré"
+  ]
+ },
+ "Plegadis falcinellus": {
+  "taxref": [],
+  "wikidata": [
+   "Ibis falcinelle",
+   "ibis falcinelle"
+  ],
+  "wikipedia": [
+   "Ibis falcinelle"
+  ],
+  "gbif": [
+   "Ibis falcinelle",
+   "ibis falcinelle"
+  ]
+ },
+ "Sylvia curruca": {
+  "taxref": [],
+  "wikidata": [
+   "Fauvette babillarde",
+   "fauvette babillarde"
+  ],
+  "wikipedia": [],
+  "gbif": [
+   "Fauvette babillarde",
+   "fauvette babillarde"
+  ]
+ },
+ "Mergus merganser": {
+  "taxref": [],
+  "wikidata": [
+   "Grand Harle",
+   "harle bièvre"
+  ],
+  "wikipedia": [
+   "Harle bièvre"
+  ],
+  "gbif": [
+   "Grand Harle",
+   "Grand bec-scie",
+   "Harle bièvre",
+   "grand harle",
+   "harle bièvre"
+  ]
+ },
+ "Acrocephalus arundinaceus": {
+  "taxref": [],
+  "wikidata": [
+   "Rousserolle turdoïde",
+   "rousserolle turdoïde"
+  ],
+  "wikipedia": [
+   "Rousserolle turdoïde"
+  ],
+  "gbif": [
+   "Rousserolle turdoïde",
+   "rousserolle turdoïde"
+  ]
+ },
+ "Branta bernicla": {
+  "taxref": [],
+  "wikidata": [
+   "Bernache cravant",
+   "bernache cravant"
+  ],
+  "wikipedia": [
+   "Bernache cravant"
+  ],
+  "gbif": [
+   "Bernache cravant",
+   "bernache cravant",
+   "bernachle cravant"
+  ]
+ },
+ "Saxicola torquatus": {
+  "taxref": [],
+  "wikidata": [
+   "Tarier d'Afrique",
+   "Tarier pâtre",
+   "Traquet pâtre"
+  ],
+  "wikipedia": [
+   "Tarier d'Afrique"
+  ],
+  "gbif": [
+   "Tarier d’Afrique",
+   "Tarier pâtre",
+   "Tarier pâtre, Traquet pâtre",
+   "Traquet pâtre",
+   "tarier pâtre, traquet pâtre"
+  ]
+ },
+ "Poecile montanus": {
+  "taxref": [],
+  "wikidata": [
+   "Mésange boréale"
+  ],
+  "wikipedia": [
+   "Mésange boréale"
+  ],
+  "gbif": [
+   "Mésange boréale"
+  ]
+ },
+ "Otus scops": {
+  "taxref": [],
+  "wikidata": [
+   "Hibou Petit-duc",
+   "Petit-duc scops",
+   "petit-duc scops"
+  ],
+  "wikipedia": [
+   "Petit-duc scops"
+  ],
+  "gbif": [
+   "Hibou Petit-duc",
+   "Petit-Duc scops",
+   "Petit-duc scops",
+   "Petit-duc scops, Hibou petit-duc",
+   "petit-duc scops"
+  ]
+ },
+ "Numenius phaeopus": {
+  "taxref": [],
+  "wikidata": [
+   "Courlis corlieu",
+   "courlis corlieu"
+  ],
+  "wikipedia": [
+   "Courlis corlieu"
+  ],
+  "gbif": [
+   "Courlis corlieu",
+   "courlis corlieu",
+   "courlis corllieu"
+  ]
+ },
+ "Sternula albifrons": {
+  "taxref": [],
+  "wikidata": [
+   "Sterne naine"
+  ],
+  "wikipedia": [
+   "Sterne naine"
+  ],
+  "gbif": [
+   "Sterne naine"
+  ]
+ },
+ "Emberiza cia": {
+  "taxref": [],
+  "wikidata": [
+   "Bruant fou"
+  ],
+  "wikipedia": [
+   "Bruant fou"
+  ],
+  "gbif": [
+   "Bruant fou"
+  ]
+ },
+ "Tringa erythropus": {
+  "taxref": [],
+  "wikidata": [
+   "Chevalier arlequin",
+   "chevalier arlequin"
+  ],
+  "wikipedia": [
+   "Chevalier arlequin"
+  ],
+  "gbif": [
+   "Chevalier arlequin",
+   "chevalier arlequin"
+  ]
+ },
+ "Tachymarptis melba": {
+  "taxref": [],
+  "wikidata": [
+   "Martinet alpin",
+   "Martinet à ventre blanc"
+  ],
+  "wikipedia": [
+   "Martinet à ventre blanc"
+  ],
+  "gbif": [
+   "Martinet alpin",
+   "Martinet royal",
+   "Martinet à ventre blanc",
+   "Martinet à ventre blanc, Martinet alpin"
+  ]
+ },
+ "Lanius senator": {
+  "taxref": [],
+  "wikidata": [
+   "Pie-grièche à tête rousse",
+   "pie-grièche à tête rousse"
+  ],
+  "wikipedia": [
+   "Pie-grièche à tête rousse"
+  ],
+  "gbif": [
+   "Pie-grièche rousse",
+   "Pie-grièche à tête rousse",
+   "pie-grièche à tête rousse"
+  ]
+ },
+ "Certhia familiaris": {
+  "taxref": [],
+  "wikidata": [
+   "Grimpereau des bois",
+   "grimpereau des bois"
+  ],
+  "wikipedia": [
+   "Grimpereau des bois"
+  ],
+  "gbif": [
+   "Grimpereau des bois",
+   "grimpereau des bois"
+  ]
+ },
+ "Pyrrhocorax graculus": {
+  "taxref": [],
+  "wikidata": [
+   "Chocard à bec jaune"
+  ],
+  "wikipedia": [
+   "Chocard à bec jaune"
+  ],
+  "gbif": [
+   "Chocard des Alpes",
+   "Chocard à bec jaune",
+   "Corbin chocard"
+  ]
+ },
+ "Hieraaetus pennatus": {
+  "taxref": [],
+  "wikidata": [
+   "Aigle botté"
+  ],
+  "wikipedia": [
+   "Aigle botté"
+  ],
+  "gbif": [
+   "Aigle Botté",
+   "Aigle botté"
+  ]
+ },
+ "Lyrurus tetrix": {
+  "taxref": [],
+  "wikidata": [
+   "Tétras lyre"
+  ],
+  "wikipedia": [
+   "Tétras lyre"
+  ],
+  "gbif": [
+   "Coq des bouleaux",
+   "Petit coq de bruyère",
+   "Petit tétras",
+   "Tétras lyre"
+  ]
+ },
+ "Calidris alba": {
+  "taxref": [],
+  "wikidata": [
+   "Bécasseau sanderling"
+  ],
+  "wikipedia": [
+   "Bécasseau sanderling"
+  ],
+  "gbif": [
+   "Bécasseau sanderling",
+   "bécasseau sanderling"
+  ]
+ },
+ "Elanus caeruleus": {
+  "taxref": [],
+  "wikidata": [
+   "Elanion blanc",
+   "Élanion blac",
+   "élanion blanc"
+  ],
+  "wikipedia": [
+   "Élanion blac"
+  ],
+  "gbif": [
+   "Elanion Blanc",
+   "Milan à épaulettes noires",
+   "Élanion blac",
+   "Élanion blanc",
+   "élanion blanc"
+  ]
+ },
+ "Calidris minuta": {
+  "taxref": [],
+  "wikidata": [
+   "Bécasseau minute",
+   "bécasseau minute"
+  ],
+  "wikipedia": [
+   "Bécasseau minute"
+  ],
+  "gbif": [
+   "Bécasseau minute",
+   "bécasseau minute"
+  ]
+ },
+ "Chlidonias hybrida": {
+  "taxref": [],
+  "wikidata": [
+   "Guifette moustac",
+   "guifette moustac"
+  ],
+  "wikipedia": [
+   "Guifette moustac"
+  ],
+  "gbif": [
+   "Guifette moustac",
+   "guifette moustac"
+  ]
+ },
+ "Rissa tridactyla": {
+  "taxref": [],
+  "wikidata": [
+   "Mouette tridactyle",
+   "mouette tridactyle"
+  ],
+  "wikipedia": [
+   "Mouette tridactyle"
+  ],
+  "gbif": [
+   "Mouette tridactyle",
+   "mouette tridactyle",
+   "risse tridactyle"
+  ]
+ },
+ "Remiz pendulinus": {
+  "taxref": [],
+  "wikidata": [
+   "Rémiz penduline",
+   "rémiz penduline"
+  ],
+  "wikipedia": [
+   "Rémiz penduline"
+  ],
+  "gbif": [
+   "Mésange rémiz",
+   "Rémiz penduline",
+   "Rémiz penduline, Mésange rémiz",
+   "rémiz penduline"
+  ]
+ },
+ "Uria aalge": {
+  "taxref": [],
+  "wikidata": [
+   "Guillemot de Troïl",
+   "Guillemot marmette",
+   "guillemot de troïl"
+  ],
+  "wikipedia": [
+   "Guillemot de Troïl"
+  ],
+  "gbif": [
+   "Guillemot de Troïl",
+   "Guillemot marmette",
+   "guillemot de Troïl",
+   "guillemot de troïl",
+   "guillemot à capuchon"
+  ]
+ },
+ "Acrocephalus palustris": {
+  "taxref": [],
+  "wikidata": [
+   "Rousserolle verderolle",
+   "rousserolle verderolle"
+  ],
+  "wikipedia": [
+   "Rousserolle verderolle"
+  ],
+  "gbif": [
+   "Rousserolle verderolle",
+   "rousserolle verderolle"
+  ]
+ },
+ "Turdus torquatus": {
+  "taxref": [],
+  "wikidata": [
+   "Merle à plastron",
+   "merle à plastron"
+  ],
+  "wikipedia": [
+   "Merle à plastron"
+  ],
+  "gbif": [
+   "Merle à collier",
+   "Merle à plastron",
+   "lanielle à queue blanche",
+   "merle à plastron"
+  ]
+ },
+ "Nucifraga caryocatactes": {
+  "taxref": [],
+  "wikidata": [
+   "Cassenoix moucheté",
+   "casse-noix moucheté"
+  ],
+  "wikipedia": [
+   "Cassenoix moucheté"
+  ],
+  "gbif": [
+   "Cassenoix moucheté",
+   "Cassenoix moucheté, Casse-noix",
+   "Geai des montagnes",
+   "casse-noix moucheté"
+  ]
+ },
+ "Chroicocephalus genei": {
+  "taxref": [],
+  "wikidata": [
+   "Goéland railleur"
+  ],
+  "wikipedia": [
+   "Goéland railleur"
+  ],
+  "gbif": [
+   "Goéland railleur",
+   "Mouette railleuse"
+  ]
+ },
+ "Alopochen aegyptiaca": {
+  "taxref": [],
+  "wikidata": [
+   "Oie d'Egypte",
+   "Ouette d'Égypte",
+   "Ouette d’Égypte",
+   "ouette d'Égypte, oie d'Égypte"
+  ],
+  "wikipedia": [
+   "Ouette d'Égypte"
+  ],
+  "gbif": [
+   "Oie d'Egypte",
+   "Ouette d'egypte",
+   "Ouette d'Égypte",
+   "Ouette d'Égypte, Oie d'Égypte",
+   "Ouette d’Égypte",
+   "Tadorne d'Égypte"
+  ]
+ },
+ "Phalacrocorax aristotelis": {
+  "taxref": [],
+  "wikidata": [
+   "Cormoran huppé"
+  ],
+  "wikipedia": [],
+  "gbif": [
+   "Cormoran huppé",
+   "cormoran huppé"
+  ]
+ },
+ "Falco columbarius": {
+  "taxref": [],
+  "wikidata": [
+   "Faucon émerillon",
+   "faucon émerillon"
+  ],
+  "wikipedia": [
+   "Faucon émerillon"
+  ],
+  "gbif": [
+   "Faucon des pigeons",
+   "Faucon émerillon",
+   "faucon émerillon"
+  ]
+ },
+ "Panurus biarmicus": {
+  "taxref": [],
+  "wikidata": [
+   "Panure à moustaches"
+  ],
+  "wikipedia": [
+   "Panure à moustaches"
+  ],
+  "gbif": [
+   "Mésange à moustaches",
+   "Panure à moustaches",
+   "Panure à moustaches, Mésange à moustaches",
+   "panure à moustaches"
+  ]
+ },
+ "Limosa lapponica": {
+  "taxref": [],
+  "wikidata": [
+   "Barge rousse",
+   "barge rousse"
+  ],
+  "wikipedia": [
+   "Barge rousse"
+  ],
+  "gbif": [
+   "Barge rousse",
+   "barge rousse"
+  ]
+ },
+ "Chlidonias niger": {
+  "taxref": [],
+  "wikidata": [
+   "Guifette noire",
+   "guifette noire"
+  ],
+  "wikipedia": [
+   "Guifette noire"
+  ],
+  "gbif": [
+   "Guifette noire",
+   "Sterne épouvantail",
+   "guifette noire"
+  ]
+ },
+ "Aquila fasciata": {
+  "taxref": [],
+  "wikidata": [
+   "Aigle de Bonelli"
+  ],
+  "wikipedia": [
+   "Aigle de Bonelli"
+  ],
+  "gbif": [
+   "Aigle de Bonelli"
+  ]
+ },
+ "Emberiza hortulana": {
+  "taxref": [],
+  "wikidata": [
+   "Bruant Ortolan",
+   "Bruant ortolan",
+   "bruant ortolan"
+  ],
+  "wikipedia": [
+   "Bruant ortolan"
+  ],
+  "gbif": [
+   "Bruant Ortolan",
+   "Bruant ortolan",
+   "bruant ortolan"
+  ]
+ },
+ "Ixobrychus minutus": {
+  "taxref": [],
+  "wikidata": [],
+  "wikipedia": [],
+  "gbif": [
+   "Blongios nain",
+   "Blongios nain, Butor blongios",
+   "blongios nain"
+  ]
+ },
+ "Lanius excubitor": {
+  "taxref": [],
+  "wikidata": [
+   "Pie-grièche grise",
+   "pie-grièche grise"
+  ],
+  "wikipedia": [
+   "Pie-grièche grise"
+  ],
+  "gbif": [
+   "Pie-grièche grise",
+   "pie-grièche grise"
+  ]
+ },
+ "Bucephala clangula": {
+  "taxref": [],
+  "wikidata": [
+   "Garrot à oeil d’or",
+   "Garrot à œil d'or",
+   "garrot à oeil dor"
+  ],
+  "wikipedia": [
+   "Garrot à œil d'or"
+  ],
+  "gbif": [
+   "Garrot à oeil d'or",
+   "Garrot à oeil d’or",
+   "Garrot à œil d'or",
+   "Garrot à œil d’or",
+   "garrot à oeil d'or",
+   "garrot à oeil dor"
+  ]
+ },
+ "Prunella collaris": {
+  "taxref": [],
+  "wikidata": [
+   "Accenteur alpin",
+   "accenteur alpin"
+  ],
+  "wikipedia": [
+   "Accenteur alpin"
+  ],
+  "gbif": [
+   "Accenteur alpin",
+   "Accenteur pégot",
+   "accenteur alpin"
+  ]
+ },
+ "Parus montanus": {
+  "taxref": [],
+  "wikidata": [
+   "mésange boréale"
+  ],
+  "wikipedia": [],
+  "gbif": [
+   "Mésange boréale",
+   "mésange boréale"
+  ]
+ },
+ "Lanius meridionalis": {
+  "taxref": [],
+  "wikidata": [
+   "Pie-grièche méridionale"
+  ],
+  "wikipedia": [
+   "Pie-grièche méridionale"
+  ],
+  "gbif": [
+   "Pie-grièche méridionale"
+  ]
+ },
+ "Tichodroma muraria": {
+  "taxref": [],
+  "wikidata": [
+   "Tichodrome échelette",
+   "tichodrome échelette"
+  ],
+  "wikipedia": [
+   "Tichodrome échelette"
+  ],
+  "gbif": [
+   "Grimpereau des murailles",
+   "Grimpereau des rochers",
+   "Tichodrome des murailles",
+   "Tichodrome échelette",
+   "tichodrome échelette"
+  ]
+ },
+ "Hydrocoloeus minutus": {
+  "taxref": [],
+  "wikidata": [
+   "Mouette pygmée"
+  ],
+  "wikipedia": [
+   "Mouette pygmée"
+  ],
+  "gbif": [
+   "Mouette pygmée"
+  ]
+ },
+ "Botaurus stellaris": {
+  "taxref": [],
+  "wikidata": [
+   "Butor étoilé",
+   "butor étoilé"
+  ],
+  "wikipedia": [
+   "Butor étoilé"
+  ],
+  "gbif": [
+   "Butor étoilé",
+   "Grand butor",
+   "Héron butor",
+   "butor étoilé"
+  ]
+ },
+ "Lagopus muta": {
+  "taxref": [],
+  "wikidata": [
+   "Lagopède alpin"
+  ],
+  "wikipedia": [
+   "Lagopède alpin"
+  ],
+  "gbif": [
+   "Lagopède alpin",
+   "lagopède alpin"
+  ]
+ },
+ "Mergus serrator": {
+  "taxref": [],
+  "wikidata": [
+   "Harle huppé",
+   "harle huppé"
+  ],
+  "wikipedia": [
+   "Harle huppé"
+  ],
+  "gbif": [
+   "Harle huppé",
+   "bec-scie à poitrine rousse",
+   "harle huppé"
+  ]
+ },
+ "Carduelis citrinella": {
+  "taxref": [],
+  "wikidata": [
+   "Venturon montagnard"
+  ],
+  "wikipedia": [
+   "Venturon montagnard"
+  ],
+  "gbif": [
+   "Venturon montagnard"
+  ]
+ },
+ "Gelochelidon nilotica": {
+  "taxref": [],
+  "wikidata": [
+   "Sterne hansel",
+   "sterne hansel"
+  ],
+  "wikipedia": [
+   "Sterne hansel"
+  ],
+  "gbif": [
+   "Sterne hansel",
+   "sterne hansel"
+  ]
+ },
+ "Petronia petronia": {
+  "taxref": [],
+  "wikidata": [
+   "Moineau soulcie"
+  ],
+  "wikipedia": [
+   "Moineau soulcie"
+  ],
+  "gbif": [
+   "Moineau soulcie",
+   "Soulcie des rochers"
+  ]
+ },
+ "Ardeola ralloides": {
+  "taxref": [],
+  "wikidata": [
+   "Crabier chevelu",
+   "Héron crabier",
+   "héron crabier"
+  ],
+  "wikipedia": [
+   "Crabier chevelu"
+  ],
+  "gbif": [
+   "Crabier chevelu",
+   "Crabier chevelu, Héron crabier",
+   "Héron crabier",
+   "héron crabier"
+  ]
+ },
+ "Locustella luscinioides": {
+  "taxref": [],
+  "wikidata": [
+   "Locustelle luscinioïde",
+   "locustelle luscinioïde"
+  ],
+  "wikipedia": [
+   "Locustelle luscinioïde"
+  ],
+  "gbif": [
+   "Locustelle luscinioïde",
+   "locustelle luscinioïde"
+  ]
+ },
+ "Hydroprogne caspia": {
+  "taxref": [],
+  "wikidata": [
+   "Sterne caspienne"
+  ],
+  "wikipedia": [
+   "Sterne caspienne"
+  ],
+  "gbif": [
+   "Sterne caspienne"
+  ]
+ }
+}

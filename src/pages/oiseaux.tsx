@@ -9,13 +9,17 @@ import { GROUPES_OISEAUX, groupeOiseau } from "@/lib/groupes-oiseaux";
 
 type Photo = { src: string; sexe: "male" | "femelle" | null; auteur: string; licence: string; page: string };
 type Cri = { src: string; sorte: "chant" | "cri"; auteur: string; licence: string; page: string };
-type Oiseau = { id: string; latin: string; nom: string; intro: string; wiki?: string; photos: Photo[]; cris: Cri[] };
+type Oiseau = {
+  id: string; latin: string; nom: string; intro: string; wiki?: string; photos: Photo[]; cris: Cri[];
+  /** Les autres noms qu'on lui donne (ancien nom, nom de région), et pourquoi le nom a changé. */
+  aussi?: string[]; ancienNom?: string; anciensLatins?: string[]; anciensIds?: string[]; pourquoi?: string;
+};
 const OISEAUX = (donnees as { oiseaux: Oiseau[] }).oiseaux;
 const sansAccent = (t: string) => t.toLocaleLowerCase("fr").normalize("NFD").replace(/\p{M}/gu, "");
 const SEXE = { male: "Le mâle", femelle: "La femelle" } as const;
 
 export function OiseauxPage({ id, params }: { id?: string; params?: URLSearchParams }) {
-  const fiche = id ? OISEAUX.find((o) => o.id === id) : undefined;
+  const fiche = id ? oiseauParId(id) : undefined;
   if (id) return fiche ? <Fiche o={fiche} /> : <Absent />;
   return <Liste groupe={params?.get("groupe") ?? null} />;
 }
@@ -46,7 +50,7 @@ function Absent() {
 function Liste({ groupe }: { groupe: string | null }) {
   const [q, setQ] = useState("");
   const g = GROUPES_OISEAUX.find((x) => x.id === groupe);
-  const vus = useMemo(() => OISEAUX.filter((o) => (q ? sansAccent(`${o.nom} ${o.latin}`).includes(sansAccent(q)) : !g || groupeOiseau(o.latin) === g.id)), [q, g]);
+  const vus = useMemo(() => OISEAUX.filter((o) => (q ? sansAccent(`${o.nom} ${o.latin} ${(o.aussi ?? []).join(" ")} ${o.ancienNom ?? ""} ${(o.anciensLatins ?? []).join(" ")}`).includes(sansAccent(q)) : !g || groupeOiseau(o.latin) === g.id)), [q, g]);
   // Les groupes, avec la photo d'un oiseau connu du groupe et le nombre d'oiseaux.
   const groupes = useMemo(
     () =>
@@ -94,13 +98,13 @@ function Liste({ groupe }: { groupe: string | null }) {
           </ul>
         </>
       )}
-      <p className="mx-auto mt-5 max-w-sm text-center text-[11px] texte-doux">Photos : Wikimedia Commons. Cris : GBIF (Xeno-canto, iNaturalist). Seulement des licences libres.</p>
+      <p className="mx-auto mt-5 max-w-sm text-center text-[11px] texte-doux">Photos : Wikimedia Commons. Cris : GBIF (Xeno-canto, iNaturalist). Seulement des licences libres. Noms français vérifiés dans au moins 3 sources : liste officielle des oiseaux de France (Commission de l'avifaune française), Wikipédia, Wikidata, GBIF.</p>
     </main>
   );
 }
 
-export const oiseauParId = (id: string) => OISEAUX.find((o) => o.id === id);
-export const oiseauParLatin = (latin: string) => OISEAUX.find((o) => o.latin === latin);
+export const oiseauParId = (id: string) => OISEAUX.find((o) => o.id === id || o.anciensIds?.includes(id));
+export const oiseauParLatin = (latin: string) => OISEAUX.find((o) => o.latin === latin || o.anciensLatins?.includes(latin));
 export function Fiche({ o, integre = false }: { o: Oiseau; integre?: boolean }) {
   const voyages = voyagesDe("", o.latin);
   const Racine = integre ? "div" : "main";
@@ -108,6 +112,13 @@ export function Fiche({ o, integre = false }: { o: Oiseau; integre?: boolean }) 
     <Racine className={integre ? "pt-2" : "mx-auto max-w-xl px-4 pb-8 pt-4"}>
       {integre ? null : <Entete siVide="/oiseaux" />}
       <Titre sous={o.latin}>{o.nom}</Titre>
+      {o.pourquoi ? (
+        <div className="mx-auto mt-2 max-w-sm rounded-2xl bg-white/8 px-3 py-2 text-center text-sm leading-snug">
+          {o.aussi?.length ? <p><b>Aussi appelé :</b> {o.aussi.join(", ")}</p> : null}
+          {o.anciensLatins?.length ? <p><b>Ancien nom scientifique :</b> <i>{o.anciensLatins.join(", ")}</i></p> : null}
+          {o.pourquoi ? <p className="mt-1 texte-doux">{o.pourquoi}</p> : null}
+        </div>
+      ) : null}
       {o.photos.map((p) => (
         <figure key={p.src} className="mt-4">
           <img src={p.src} alt={o.nom} className="mx-auto aspect-[4/3] w-full rounded-3xl object-cover shadow-[0_10px_22px_rgba(0,0,0,.45)]" />
