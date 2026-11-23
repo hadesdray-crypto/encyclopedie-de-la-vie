@@ -9,13 +9,14 @@ import { plumeFete } from "@/lib/plume";
 import { NidVivant, useFps } from "@/components/nid-vivant";
 import { PRETENDANTS } from "@/lib/pretendants";
 import {
-  MAX_VISITES, refusDe, COUVAGES_POUR_ECLORE, ETAPES_HISTOIRE, ageBebe, allerAEtape, amiPresent, avancerUnJour, bebePresent, couver, dejaCouveAujourdhui, etapeActuelle,
+  SECRETS_CHOUETTE, MAX_VISITES, refusDe, COUVAGES_POUR_ECLORE, ETAPES_HISTOIRE, ageBebe, allerAEtape, amiPresent, avancerUnJour, bebePresent, couver, dejaCouveAujourdhui, etapeActuelle,
   oeufPresent, permettreBraconnier, pretendantAmi, recommencerHistoire, useHistoire,
 } from "@/lib/histoire";
 
 export function NidPage() {
   const h = useHistoire();
   const [savoir, setSavoir] = useState<string | null>(null);
+  const [secret, setSecret] = useState(-1);
   const [chaleur, setChaleur] = useState(0);
   const [parents, setParents] = useState(false);
   const [etape, setEtape] = useState(() => etapeActuelle());
@@ -33,7 +34,8 @@ export function NidPage() {
     dire(`Merci ! ${s}`);
   };
 
-  let phrase = "Le nid de Plume est tout calme… Reviens demain : il va peut-être se passer quelque chose !";
+  const calme = !ami && !oeuf && !bebe;
+  let phrase = "Le nid est calme aujourd'hui. Fais un câlin à Plume, écoute un secret de chouette, ou joue avec elle dans le nid vivant, juste en dessous !";
   if (ami && !oeuf && !bebe) phrase = `Plume et ${h.nomAmi} sont bien installés dans le nid.`;
   if (oeuf) phrase = fait ? "L'œuf est bien au chaud pour aujourd'hui. Reviens demain pour le réchauffer encore !" : "Touche l'œuf pour le réchauffer. Une fois par jour, c'est parfait.";
   if (bebe) {
@@ -71,6 +73,13 @@ export function NidPage() {
         ) : null}
 
         <p className="mt-3 text-[15px] leading-relaxed">{phrase}</p>
+        {calme ? (
+          <div className="mt-3 flex flex-wrap justify-center gap-2">
+            <button type="button" onClick={() => { plumeFete(); dire("Merci pour le câlin !"); }} className="bouton-bois min-h-12 rounded-full px-4 py-2 font-extrabold">Un câlin à Plume</button>
+            <button type="button" onClick={() => { const n = (secret + 1) % SECRETS_CHOUETTE.length; setSecret(n); dire(SECRETS_CHOUETTE[n]); }} className="bouton-bois min-h-12 rounded-full px-4 py-2 font-extrabold">{secret < 0 ? "Un secret de chouette" : "Un autre secret"}</button>
+          </div>
+        ) : null}
+        {calme && secret >= 0 ? <p key={secret} className="apparait mt-3 rounded-2xl bg-white/8 px-3 py-2 text-left text-sm leading-snug"><b>Le savais-tu ?</b> {SECRETS_CHOUETTE[secret]}</p> : null}
         {savoir ? <p className="apparait mt-3 rounded-2xl bg-white/8 px-3 py-2 text-left text-sm leading-snug">🦉 <b>Le savais-tu ?</b> {savoir}</p> : null}
         {h.renvoyes ? <p className="mt-3 text-sm font-extrabold">🛡️ Braconniers renvoyés : {h.renvoyes}</p> : null}
       </section>

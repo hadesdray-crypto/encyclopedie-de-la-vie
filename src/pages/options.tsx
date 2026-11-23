@@ -342,7 +342,7 @@ function ChoixInterface() {
     <>
       <Choix titre="Quand une page s'ouvre" sous="Après un bouton du bas : la page monte comme un volet, sort du centre, ou s'affiche tout de suite." options={[{ id: "volet", nom: "Volet du bas" }, { id: "centre", nom: "Du centre" }, { id: "aucune", nom: "Sans animation" }]} valeur={i.ouverture} choisir={(id) => changerInterface({ ouverture: id as Ouverture })} />
       <Choix titre="Les boutons du bas" sous="De vrais boutons qui s'enfoncent, ou des médailles dessinées." options={[{ id: "3d", nom: "Boutons 3D" }, { id: "medailles", nom: "Médailles" }]} valeur={i.boutons} choisir={(id) => changerInterface({ boutons: id as StyleBoutons })} />
-      <Choix titre="Mettre un bouton en avant" sous="Le bouton choisi est plus gros que les autres." options={[{ id: "", nom: "Aucun" }, { id: "/", nom: "Accueil" }, { id: "/arbre", nom: "Arbre" }, { id: "/voyageurs", nom: "Carte" }, { id: "/cartes", nom: "Cartes" }, { id: "/jouer", nom: "Jouer" }]} valeur={i.vedette ?? ""} choisir={(id) => changerInterface({ vedette: id || null })} />
+      <Choix titre="Mettre un bouton en avant" sous="Le bouton choisi est plus gros que les autres." options={[{ id: "", nom: "Aucun" }, { id: "/", nom: "Accueil" }, { id: "/animaux", nom: "Animaux" }, { id: "/voyageurs", nom: "Globe" }, { id: "/cartes", nom: "Cartes" }, { id: "/jouer", nom: "Jouer" }]} valeur={i.vedette ?? ""} choisir={(id) => changerInterface({ vedette: id || null })} />
     </>
   );
 }

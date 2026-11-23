@@ -122,7 +122,12 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       premier.current = false;
       marquerPresentation();
       marquerExplique(explicationPage.id);
-      window.setTimeout(() => ouvrirPlume(true, "presentation"), 600);
+      window.setTimeout(() => {
+        ouvrirPlume(true, "presentation");
+        // Sur un téléphone, on fait monter le cercle de la vie en haut de l'écran : la bulle se pose en dessous, sans le cacher.
+        const cercle = document.querySelector('a[href="#/arbre/reptiles"]');
+        if (cercle && window.innerHeight < 1000) window.scrollBy({ top: cercle.getBoundingClientRect().top - 8, behavior: "smooth" });
+      }, 600);
       return;
     }
     premier.current = false;
@@ -133,7 +138,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     } else ouvrirPlume(false);
   }, [explicationPage.id]);
 
-  // Une page avec des mots de scientifique : Plume propose (une fois) de les expliquer.
+  // Une page avec des mots de scientifique : Plume propose de les expliquer, une seule fois par sorte de page.
   useEffect(() => {
     const t = window.setTimeout(() => {
       if (!plumePeutProposer() || !presentationFaite()) return;
@@ -142,13 +147,13 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       const cle = `leonie-mots-proposes`;
       let vus: string[] = [];
       try {
-        vus = JSON.parse(sessionStorage.getItem(cle) || "[]");
+        vus = JSON.parse(localStorage.getItem(cle) || "[]");
       } catch {
         /* rien */
       }
       if (vus.includes(explicationPage.id)) return;
       try {
-        sessionStorage.setItem(cle, JSON.stringify([...vus, explicationPage.id]));
+        localStorage.setItem(cle, JSON.stringify([...vus, explicationPage.id]));
       } catch {
         /* rien */
       }
@@ -158,7 +163,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     return () => window.clearTimeout(t);
   }, [chemin]);
 
-  // Passionnée : sur une page à lire, elle propose (une fois) de la lire, avec enthousiasme.
+  // Passionnée : sur une page à lire, elle propose de la lire, une seule fois par sorte de page.
   useEffect(() => {
     const t = window.setTimeout(() => {
       if (!plumePassionnee() || !plumePeutProposer() || !voixPossible()) return;
@@ -167,13 +172,13 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
       const cle = "leonie-lecture-proposee";
       let vus: string[] = [];
       try {
-        vus = JSON.parse(sessionStorage.getItem(cle) || "[]");
+        vus = JSON.parse(localStorage.getItem(cle) || "[]");
       } catch {
         /* rien */
       }
-      if (vus.includes(chemin)) return;
+      if (vus.includes(explicationPage.id)) return;
       try {
-        sessionStorage.setItem(cle, JSON.stringify([...vus, chemin]));
+        localStorage.setItem(cle, JSON.stringify([...vus, explicationPage.id]));
       } catch {
         /* rien */
       }
@@ -183,17 +188,18 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
     return () => window.clearTimeout(t);
   }, [chemin, presence]);
 
-  // Sur chaque page, Plume dit un mot : de quoi on parle ici, et qu'elle peut tout expliquer (une fois par page et par visite).
+  // Sur chaque page, Plume dit un petit mot la toute première fois seulement (ensuite, on la touche pour qu'elle explique).
   useEffect(() => {
     const t = window.setTimeout(() => {
       if (!plumePeutProposer() || !presentationFaite()) return;
       const cle = "leonie-plume-accueil-page";
       let vus: string[] = [];
-      try { vus = JSON.parse(sessionStorage.getItem(cle) || "[]"); } catch { /* rien */ }
+      try { vus = JSON.parse(localStorage.getItem(cle) || "[]"); } catch { /* rien */ }
       if (vus.includes(explicationPage.id)) return;
-      try { sessionStorage.setItem(cle, JSON.stringify([...vus, explicationPage.id])); } catch { /* rien */ }
+      try { localStorage.setItem(cle, JSON.stringify([...vus, explicationPage.id])); } catch { /* rien */ }
       const phrase = `${explicationPage.titre}. ${explicationPage.etapes[0]} Touche-moi pour que je t'explique.`;
-      plumeDit(phrase, 6000);
+      // À l'écran, une bulle courte qui ne cache rien ; la voix, elle, dit la phrase entière.
+      plumeDit(`${explicationPage.titre} ! Touche-moi pour que je t'explique.`, 4000);
       if (plumeParleSeule() && voixPossible()) dire(phrase);
     }, 1400);
     return () => window.clearTimeout(t);
@@ -508,7 +514,7 @@ export function Plume({ chemin, params }: { chemin: string; params: URLSearchPar
 
         {/* Une petite phrase, quelques secondes. */}
         {reaction && !ouvert && !parle && !proposition && !vol ? (
-          <span role="status" className={`arrivee pointer-events-none absolute bottom-3 w-max max-w-[min(15rem,70vw)] rounded-2xl bg-[#fff8ea] px-3 py-2 text-sm font-extrabold leading-snug text-[#4a2a8a] shadow-[0_6px_18px_rgba(0,0,0,.4)] ${cote}`}>
+          <span role="status" className={`arrivee pointer-events-none absolute bottom-3 w-max max-w-[min(12rem,60vw)] rounded-2xl bg-[#fff8ea] px-3 py-2 text-sm font-extrabold leading-snug text-[#4a2a8a] shadow-[0_6px_18px_rgba(0,0,0,.4)] ${cote}`}>
             {reaction}
           </span>
         ) : null}
@@ -679,7 +685,14 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
     style.transform = "translateX(-50%)";
     style.bottom = "calc(env(safe-area-inset-bottom, 0px) + 8px)";
   }
-  const haut = !visite && pos.bas > window.innerHeight * 0.55;
+  // Sur un téléphone, la bienvenue se pose tout en bas, à côté de Plume : le cercle de la vie reste visible.
+  const bienvenueEnBas = contenu === "presentation" && window.innerHeight < 1000 && pos.bas < window.innerHeight * 0.3;
+  if (bienvenueEnBas) {
+    style.bottom = `calc(env(safe-area-inset-bottom, 0px) + ${pos.bas}px)`;
+    style[gauche ? "left" : "right"] = TAILLE + 16;
+    style.width = `min(20rem, calc(100vw - ${TAILLE + 26}px))`;
+  }
+  const haut = !visite && !bienvenueEnBas && pos.bas > window.innerHeight * 0.55;
   if (haut) {
     delete style.bottom;
     style.top = `calc(${window.innerHeight - pos.bas + 6}px)`;
@@ -819,7 +832,7 @@ function Bulle({ chemin, params, pos }: { chemin: string; params: URLSearchParam
       ) : null}
 
       {/* Les quatre boutons ronds de Plume */}
-      <div className={`mt-2.5 flex justify-between border-t border-[#e3d3f5] pt-2 ${visite ? "hidden" : ""}`}>
+      <div className={`mt-2.5 flex justify-between border-t border-[#e3d3f5] pt-2 ${visite || bienvenueEnBas ? "hidden" : ""}`}>
         {voix ? (
           <Rond
             icone={parle ? LuPause : LuPlay}

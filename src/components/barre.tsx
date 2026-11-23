@@ -6,8 +6,8 @@ import { direBoutons } from "@/lib/reglages";
 import { dire } from "@/lib/parole";
 import { voixPossible } from "@/components/voix";
 import { sons } from "@/lib/sons";
-import { IconeAccueil, IconeArbre, IconeCarte, IconeCartes, IconeJouer, PastillePiece } from "@/components/icones-salles";
-import { LuBookOpen, LuDices, LuGlobe, LuHouse } from "react-icons/lu";
+import { IconeAccueil, IconeAnimaux, IconeCarte, IconeCartes, IconeJouer, PastillePiece } from "@/components/icones-salles";
+import { LuBookOpen, LuDices, LuGlobe, LuHouse, LuPawPrint } from "react-icons/lu";
 import { useInterface } from "@/lib/interface";
 
 /** Le petit arbre de la vie en rond, en traits blancs (pour le bouton 3D de l'Arbre). */
@@ -23,6 +23,7 @@ function GlypheArbre(props: { className?: string }) {
 const GLYPHES: Record<string, { Glyphe: (p: { className?: string }) => React.ReactElement; couleur: string }> = {
   "/": { Glyphe: LuHouse, couleur: "#ff6fa8" },
   "/arbre": { Glyphe: GlypheArbre, couleur: "#3fae5a" },
+  "/animaux": { Glyphe: LuPawPrint, couleur: "#e2843f" },
   "/voyageurs": { Glyphe: LuGlobe, couleur: "#3a8fe0" },
   "/cartes": { Glyphe: LuBookOpen, couleur: "#8a5ad8" },
   "/jouer": { Glyphe: LuDices, couleur: "#ff9a3a" },
@@ -36,7 +37,7 @@ type Salle = { vers: string; label: string; dit: string; Icone: () => React.Reac
 
 const SALLES: Salle[] = [
   { vers: "/", label: "Accueil", dit: "L'accueil", Icone: IconeAccueil, actif: (c) => c === "/" || c === "" },
-  { vers: "/arbre", label: "Arbre", dit: "L'arbre de la vie", Icone: IconeArbre, actif: (c) => c.startsWith("/arbre") || c.startsWith("/frise") },
+  { vers: "/animaux", label: "Animaux", dit: "Les animaux", Icone: IconeAnimaux, actif: (c) => ["/animaux", "/mammiferes", "/oiseaux", "/domestiques", "/chercher"].some((d) => c === d || c.startsWith(`${d}/`)) },
   { vers: "/voyageurs", label: "Globe", dit: "Le globe des animaux", Icone: IconeCarte, actif: (c) => c.startsWith("/voyageurs") || c.startsWith("/aventure") || c.startsWith("/suivi") },
   { vers: "/cartes", label: "Cartes", dit: "Mes cartes", Icone: IconeCartes, actif: (c) => c.startsWith("/cartes") },
   { vers: "/jouer", label: "Jouer", dit: "Les jeux", Icone: IconeJouer, actif: (c) => c.startsWith("/jouer") },

@@ -1150,3 +1150,7 @@ html[data-natif] body:not([data-dex]) { padding-top: var(--sat); }
   main ul.grid-cols-2 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 [data-animal] { cursor: pointer; }
+
+/* Les volets des fiches : la flèche tourne quand le volet est ouvert. */
+.volet-fiche > summary::-webkit-details-marker { display: none; }
+.volet-fiche[open] .volet-fleche { transform: rotate(180deg); }

@@ -50,6 +50,16 @@ export const SAVOIRS_OEUF = [
   "Pour sortir, le poussin casse la coquille avec une petite pointe sur son bec, la « dent de l'œuf ». Elle tombe quelques jours plus tard.",
 ];
 
+/** Les secrets des chouettes, pour les jours calmes du nid (faits connus des ornithologues). */
+export const SECRETS_CHOUETTE = [
+  "Les yeux d'une chouette ne bougent pas dans sa tête. Pour regarder ailleurs, elle tourne la tête : jusqu'à trois quarts de tour !",
+  "Le bord de ses plumes est frangé, comme un petit peigne. C'est pour ça que la chouette vole presque sans bruit.",
+  "La chouette effraie entend si bien qu'elle peut attraper une souris dans le noir complet, rien qu'au bruit.",
+  "Souvent, la chouette avale sa proie entière. Ensuite, elle recrache une petite boule de poils et d'os : la pelote de réjection.",
+  "Chez les chouettes, la femelle est souvent un peu plus grande que le mâle.",
+  "Une chouette a quatre doigts à chaque patte. L'un d'eux peut se tourner vers l'avant ou vers l'arrière pour mieux tenir une branche.",
+];
+
 let etat: EtatHistoire = lire();
 const abonnes = new Set<(e: EtatHistoire) => void>();
 

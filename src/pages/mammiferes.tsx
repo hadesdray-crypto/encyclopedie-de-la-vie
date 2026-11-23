@@ -23,7 +23,7 @@ import { CarteMonde, ilesDe } from "@/components/carte-monde";
 import { voirAnimal } from "@/lib/carnet";
 import { AUTRES_PAR_ID } from "@/data/autres";
 import { CheminEvolution } from "@/components/chemin-evolution";
-import { LuBaby, LuCalendarHeart, LuShield, LuEar, LuHeartPulse, LuHourglass, LuMapPin, LuSatellite, LuScale, LuShieldCheck, LuTreePine, LuUsers, LuUtensils } from "react-icons/lu";
+import { LuChevronDown, LuSparkles, LuBookOpen, LuPlay, LuBaby, LuCalendarHeart, LuShield, LuEar, LuHeartPulse, LuHourglass, LuMapPin, LuSatellite, LuScale, LuShieldCheck, LuTreePine, LuUsers, LuUtensils } from "react-icons/lu";
 import type { IconType } from "react-icons";
 import { lireFiche } from "@/lib/recompenses";
 import { plumeRegarde } from "@/lib/caractere";
@@ -295,27 +295,12 @@ export function Fiche({ id, integre = false }: { id: string; integre?: boolean }
           ))}
         </div>
       ) : null}
-      {WIKI[e.id] ? (
-        <section className="carte-nuit mt-4 rounded-3xl px-4 py-3">
-          <p className="font-display text-lg text-[#f3d48a]">Ce qu'en dit Wikipédia</p>
-          <p className="mt-1 leading-relaxed">{WIKI[e.id].texte}</p>
-          <p className="mt-1 text-[11px] texte-doux">Extrait de l'article « {WIKI[e.id].titre} », Wikipédia en français, licence CC BY-SA.</p>
-        </section>
-      ) : null}
-      <Videos id={e.id} nom={e.nom} latin={e.latin} />
-      {autre ? (
-        <section className="mt-4 space-y-3" aria-label="Ce qu'il faut savoir">
-          {autre.extras.map((x) => (
-            <div key={x.titre} className="carte-nuit rounded-3xl px-4 py-3">
-              <p className="font-display text-xl text-[#f3d48a]">{x.titre}</p>
-              <p className="mt-1 leading-relaxed"><Texte>{x.texte}</Texte></p>
-            </div>
-          ))}
-        </section>
-      ) : null}
-      <CheminEvolution id={e.id} nom={e.nom} />
-      <dl className="mt-5 space-y-3">
-        <Rubrique mot="repartition" picto={<MiniGlobe pays={e.pays ?? []} className="size-11" />}><Texte>{vie?.ou ?? e.ou}</Texte>{e.pays?.length || ilesDe(e.ou).length ? <div className="mt-2"><CarteMonde pays={e.pays ?? []} ou={e.ou} /><p className="mt-1 text-xs">Pays en or, petites îles en point doré : d'après la Mammal Diversity Database.</p></div> : null}</Rubrique>
+      {/* L'essentiel, tout de suite : le cri, ce qu'il mange, où il vit, son poids. Le reste est rangé dans des volets à ouvrir. */}
+      <p className="mt-5 text-center font-display text-2xl text-[#f3d48a]">L'essentiel</p>
+      <dl className="mt-2 space-y-3">
+        <Rubrique mot="cri">
+          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.webm`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p>{VERIFIES.has(e.id) ? <p className="mt-1 text-xs font-extrabold">Cri vérifié : enregistrement d'archive scientifique.</p> : <p className="mt-1 text-xs font-extrabold text-[#8d4e1f]">Pas encore vérifié : on entend peut-être d'autres animaux derrière.</p>}</>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
+        </Rubrique>
         <Rubrique mot="regime" picto={regime ? <span className="grid size-11 place-items-center rounded-full bg-white text-2xl shadow-[0_0_0_3px_#b5562a]">{EMOJI_REGIME[e.regime ?? vie?.regime ?? regimeEstime?.t ?? ""] ?? "🍽️"}</span> : undefined}>
           <div className="font-display text-2xl">{regime ? (regimeEstime ? `Sans doute ${regime.nom.toLowerCase()}` : regime.nom) : "Mal connu."}</div>
           {regimeEstime ? <NoteEstimation est={regimeEstime} /> : null}
@@ -335,22 +320,81 @@ export function Fiche({ id, integre = false }: { id: string; integre?: boolean }
             <p className="mt-1 text-xs">D'après COMBINE{habitats.autres.length ? " et PHYLACINE" : ""}.</p>
           </Rubrique>
         ) : <BlocValeur mot="milieu" v={valeur("milieu", e.milieu)} />}
+        {grande ? (<><Bloc mot="male" texte={grande.male} /><Bloc mot="femelle" texte={grande.femelle} /><Bloc mot="dimorphisme" texte={grande.difference} /></>) : <BlocValeur mot="masse" v={valeur("masse", e.masse)}>{comparerPoids(e.masse ?? est.masse?.t) ? <p className="mt-1 text-sm font-extrabold text-[#8d4e1f]">{comparerPoids(e.masse ?? est.masse?.t)}</p> : null}</BlocValeur>}
+      </dl>
+      <p className="mt-5 text-center font-display text-2xl text-[#f3d48a]">En savoir plus</p>
+      <p className="text-center text-sm texte-doux">Touche un titre pour l'ouvrir.</p>
+      <div className="mt-2 space-y-3">
+        <Volet titre="Où il vit dans le monde" picto="repartition">
+          <dl>
+        <Rubrique mot="repartition" picto={<MiniGlobe pays={e.pays ?? []} className="size-11" />}><Texte>{vie?.ou ?? e.ou}</Texte>{e.pays?.length || ilesDe(e.ou).length ? <div className="mt-2"><CarteMonde pays={e.pays ?? []} ou={e.ou} /><p className="mt-1 text-xs">Pays en or, petites îles en point doré : d'après la Mammal Diversity Database.</p></div> : null}</Rubrique>
+          </dl>
+        </Volet>
+        <Volet titre="Ses bébés et sa durée de vie" picto="portee">
+          <dl className="space-y-3">
         <BlocValeur mot="portee" v={valeur("portee", vie?.bebes ?? e.portee)} />
         <BlocValeur mot="gestation" v={valeur("gestation", vie?.gestation ?? e.gestation)} />
-        {grande ? (<><Bloc mot="male" texte={grande.male} /><Bloc mot="femelle" texte={grande.femelle} /><Bloc mot="dimorphisme" texte={grande.difference} /></>) : <BlocValeur mot="masse" v={valeur("masse", e.masse)}>{comparerPoids(e.masse ?? est.masse?.t) ? <p className="mt-1 text-sm font-extrabold text-[#8d4e1f]">{comparerPoids(e.masse ?? est.masse?.t)}</p> : null}</BlocValeur>}
         <BlocValeur mot="longevite" v={valeur("longevite", grande?.vie ?? e.longevite)} />
+          </dl>
+        </Volet>
+        <Volet titre="Est-il menacé ?" picto="statut">
+          <dl>
         <Rubrique mot="statut" picto={<span className="grid size-11 place-items-center rounded-full text-white" style={{ background: statutDe(e.statut).couleur }}><LuShield className="size-6" /></span>}>
           <span className="font-extrabold" style={{ color: statutDe(e.statut).couleur }}>{statutDe(e.statut).court}</span> <span className="text-sm">({e.statut ?? "Non évalué"})</span>
         </Rubrique>
-        <Rubrique mot="cri">
-          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.webm`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p>{VERIFIES.has(e.id) ? <p className="mt-1 text-xs font-extrabold">Cri vérifié : enregistrement d'archive scientifique.</p> : <p className="mt-1 text-xs font-extrabold text-[#8d4e1f]">Pas encore vérifié : on entend peut-être d'autres animaux derrière.</p>}</>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
-        </Rubrique>
+          </dl>
+        </Volet>
+        {autre ? (
+          <Volet titre="Ce qu'il faut savoir" picto="savoir">
+        <section className="mt-4 space-y-3" aria-label="Ce qu'il faut savoir">
+          {autre.extras.map((x) => (
+            <div key={x.titre} className="carte-nuit rounded-3xl px-4 py-3">
+              <p className="font-display text-xl text-[#f3d48a]">{x.titre}</p>
+              <p className="mt-1 leading-relaxed"><Texte>{x.texte}</Texte></p>
+            </div>
+          ))}
+        </section>
+          </Volet>
+        ) : null}
+        {WIKI[e.id] ? (
+          <Volet titre="Ce qu'en dit Wikipédia" picto="wiki">
+        <section className="carte-nuit mt-4 rounded-3xl px-4 py-3">
+          <p className="font-display text-lg text-[#f3d48a]">Ce qu'en dit Wikipédia</p>
+          <p className="mt-1 leading-relaxed">{WIKI[e.id].texte}</p>
+          <p className="mt-1 text-[11px] texte-doux">Extrait de l'article « {WIKI[e.id].titre} », Wikipédia en français, licence CC BY-SA.</p>
+        </section>
+          </Volet>
+        ) : null}
+        <Volet titre="Ses ancêtres" picto="ancetres">
+          <CheminEvolution id={e.id} nom={e.nom} />
+        </Volet>
+        <Volet titre="Vidéos" picto="videos">
+          <Videos id={e.id} nom={e.nom} latin={e.latin} />
+        </Volet>
+        <Volet titre="Son voyage suivi par GPS" picto="gps">
+          <dl>
         <Rubrique mot="gps" titre={<span className="font-extrabold">Suivi GPS</span>}>
           <VoyageGps id={e.id} latin={e.latin} />
         </Rubrique>
-      </dl>
+          </dl>
+        </Volet>
+      </div>
       <p className="mx-auto mt-4 max-w-sm text-center text-sm texte-doux">{autre ? "Pas un mammifère. Les chiffres viennent de sources publiées (Vikidia, Futura, articles scientifiques) : quand on n'est pas sûr, c'est écrit « mal connu »." : "Classement : Mammal Diversity Database."} Les chiffres sont des mesures publiées. « Estimé » veut dire calculé d’après les espèces cousines, avec l’écart entre elles en pourcentage. « Mal connu » : ni mesure, ni estimation fiable.</p>
     </Racine>
+  );
+}
+
+/** Un volet fermé : on touche son titre pour l'ouvrir. Rien n'est enlevé de la fiche, tout est juste rangé. */
+function Volet({ titre, picto, children }: { titre: string; picto: string; children: React.ReactNode }) {
+  return (
+    <details className="volet-fiche carte-nuit rounded-3xl px-3 py-2">
+      <summary className="flex min-h-12 cursor-pointer list-none items-center gap-3 font-display text-xl text-[#f3d48a]">
+        <Picto mot={picto} />
+        <span className="flex-1">{titre}</span>
+        <LuChevronDown className="volet-fleche size-6 shrink-0 transition-transform" aria-hidden="true" />
+      </summary>
+      <div className="pb-2 pt-2">{children}</div>
+    </details>
   );
 }
 
@@ -369,6 +413,10 @@ const PICTOS: Record<string, { icone: IconType; couleur: string }> = {
   statut: { icone: LuShieldCheck, couleur: "#2f7d6d" },
   cri: { icone: LuEar, couleur: "#b5562a" },
   gps: { icone: LuSatellite, couleur: "#2f5fa8" },
+  savoir: { icone: LuSparkles, couleur: "#7a4fd0" },
+  wiki: { icone: LuBookOpen, couleur: "#8a5ad8" },
+  ancetres: { icone: LuTreePine, couleur: "#3f7f2f" },
+  videos: { icone: LuPlay, couleur: "#c0161b" },
 };
 
 function Picto({ mot, special }: { mot: string; special?: React.ReactNode }) {

@@ -44,6 +44,16 @@ export function IconeAccueil() {
   );
 }
 
+/** Les animaux : le tigre du cercle de la vie, dans la même médaille dorée. */
+export function IconeAnimaux() {
+  return (
+    <Medaille fond="#5a2a10">
+      <clipPath id="medaille-animaux"><circle cx="32" cy="32" r="27.5" /></clipPath>
+      <image href="evo/animaux.webp" x="4.5" y="4.5" width="55" height="55" preserveAspectRatio="xMidYMid slice" clipPath="url(#medaille-animaux)" />
+    </Medaille>
+  );
+}
+
 export function IconeArbre() {
   return (
     <Medaille fond="#140c30">

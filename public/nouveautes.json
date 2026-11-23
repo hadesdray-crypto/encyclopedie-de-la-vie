@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-11-23",
+    "titre": "Plus simple et plus agréable",
+    "points": [
+      "Plume ne cache plus les pages : elle dit son petit mot une seule fois par page, en bref, puis elle explique tout quand on la touche.",
+      "Au tout premier lancement sur téléphone, la bulle de bienvenue se pose en bas : le cercle de la vie reste visible.",
+      "Nouveau bouton « Animaux » dans la barre du bas (mammifères, oiseaux, animaux domestiques). L'arbre de la vie reste sur l'accueil.",
+      "Les oiseaux sont rangés en 11 groupes : chouettes, rapaces, oiseaux de mer, petits chanteurs… La recherche trouve toujours tous les oiseaux.",
+      "Fiche d'un animal : l'essentiel en haut (cri, ce qu'il mange, où il vit, poids), le reste dans des volets « En savoir plus » à ouvrir. Rien n'a été enlevé.",
+      "Le nid calme : un câlin à Plume et des secrets de chouette."
+    ]
+  },
+  {
     "date": "2026-11-13",
     "titre": "Toutes les sortes de chihuahuas",
     "points": [
