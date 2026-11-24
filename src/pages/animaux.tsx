@@ -3,7 +3,9 @@
 // (on peut déjà les découvrir dans l'arbre de la vie).
 import { Entete, Titre } from "@/components/entete";
 import { ChoixAffichage, Tuiles, useAffichage, type Tuile } from "@/components/tuiles";
-import { ESPECES } from "@/data/catalogue";
+import { LuChevronDown } from "react-icons/lu";
+import { ESPECES, estMammifere } from "@/data/catalogue";
+import { Portrait } from "@/components/portrait";
 import { IMAGES_EVO } from "@/data/arbre";
 
 const GROUPES: { id: string; titre: string; sous: string; vers?: string }[] = [
@@ -23,23 +25,47 @@ const GROUPES: { id: string; titre: string; sous: string; vers?: string }[] = [
   { id: "echinodermes", titre: "Étoiles de mer et oursins", sous: "Souvent cinq bras, ou cinq parties." },
 ];
 
+// Les mammifères, sans le tardigrade (qui n'en est pas un), et combien ont disparu.
+const MAMMIFERES = ESPECES.filter(estMammifere);
+const DISPARUES = MAMMIFERES.filter((e) => e.disparue).length;
+const MOUTON = ESPECES.find((e) => e.latin === "Ovis aries");
+
+// Une image déjà dans l'appli pour les deux tuiles qui n'en avaient pas : un mouton (domestiques) et la grue cendrée (migrations).
+const IMAGES_TUILES: Record<string, React.ReactNode> = {
+  domestiques: MOUTON ? <Portrait id={MOUTON.id} couvrir /> : null,
+  migrations: <img src="oiseaux/p/grus-grus-0.webp" alt="" loading="lazy" className="object-top" />,
+};
+
 export function AnimauxPage({ id }: { id?: string }) {
   const [aff, choisir] = useAffichage("leonie-animaux-affichage");
   if (id) return <Bientot id={id} />;
-  const tuiles: Tuile[] = GROUPES.map((g) => ({
+  const toutes: Tuile[] = GROUPES.map((g) => ({
     vers: g.vers ?? `/animaux/${g.id}`,
     titre: g.titre,
     sous: g.sous,
-    image: IMAGES_EVO[g.id] ? <img src={IMAGES_EVO[g.id].src} alt="" loading="lazy" /> : <span />,
-    badge: g.id === "mammiferes" ? `${ESPECES.length} espèces` : g.vers ? undefined : "Bientôt",
+    image: IMAGES_TUILES[g.id] ?? (IMAGES_EVO[g.id] ? <img src={IMAGES_EVO[g.id].src} alt="" loading="lazy" /> : <span />),
+    badge: g.id === "mammiferes" ? `${MAMMIFERES.length.toLocaleString("fr-FR")} espèces, dont ${DISPARUES} disparues` : undefined,
     eteinte: !g.vers,
   }));
+  const tuiles = toutes.filter((t) => !t.eteinte);
+  const bientot = toutes.filter((t) => t.eteinte);
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
       <Entete siVide="/" />
       <Titre sous="Choisis un groupe d'animaux.">Les animaux</Titre>
       <ChoixAffichage aff={aff} choisir={choisir} />
       <Tuiles items={tuiles} aff={aff} grande />
+      <details className="volet-fiche carte-nuit mt-5 rounded-3xl px-3 py-1">
+        <summary className="flex min-h-12 cursor-pointer list-none items-center gap-3 font-display text-xl text-[#f3d48a]">
+          <span className="flex-1">Bientôt dans l'encyclopédie</span>
+          <span className="text-xs font-black text-[#e7d7ff]">{bientot.length} groupes</span>
+          <LuChevronDown className="volet-fleche size-6 shrink-0 transition-transform" aria-hidden="true" />
+        </summary>
+        <div className="pb-3">
+          <p className="mt-1 text-sm">Ces groupes arrivent plus tard, avec de vraies données. Tu peux déjà les découvrir dans l'arbre de la vie.</p>
+          <Tuiles items={bientot} aff={aff} />
+        </div>
+      </details>
       <p className="mx-auto mt-4 max-w-sm text-center text-[11px] texte-doux">Images : Wikimedia Commons, licences libres (les auteurs sont cités dans l'arbre de la vie).</p>
     </main>
   );
