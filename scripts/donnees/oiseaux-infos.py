@@ -233,6 +233,15 @@ def depuis_wikipedia(texte):
                 a = nombre(m.group(1))
                 b = nombre(m.group(2)) if m.group(2) else a
                 out["vie"] = {"min": min(a, b), "max": max(a, b), "phrase": ph.strip()[:220], "captivite": "captivité" in ph.lower()}
+    # Le mâle et la femelle se ressemblent-ils ? Seulement si l'article le dit clairement.
+    for ph in phrases(" ".join(s.values())):
+        bas = ph.lower()
+        if re.search(r"(pas de dimorphisme|sans dimorphisme|dimorphisme (?:sexuel )?(?:(?:est|très|quasi) )*(?:absent|nul|inexistant|faible|peu marqué)|mâles? et (?:les |la )?femelles? (?:se ressemblent|sont (?:très |quasi )?(?:semblables|similaires|identiques))|(?:mâle|mâles) et (?:femelle|femelles) (?:ont|présentent) (?:le même|un même|un plumage (?:identique|semblable)))", bas):
+            out["dimorphisme"] = {"valeur": "non"}
+            break
+        if re.search(r"(dimorphisme sexuel (?:(?:est|très|bien|fortement|nettement|assez) )*(?:marqué|prononcé|net|important|visible|présent)|mâles? (?:se distingue|diffère)[a-z]* (?:facilement |nettement )?(?:de la femelle|des femelles)|mâles? et femelles? (?:diffèrent|sont différents|ne se ressemblent pas))", bas):
+            out["dimorphisme"] = {"valeur": "oui"}
+            break
     for cle, (lo, hi) in LIMITES.items():
         if cle in out and not (lo <= out[cle]["min"] and out[cle]["max"] <= hi):
             del out[cle]
@@ -289,7 +298,7 @@ def main():
         if time.time() - t0 > 2200:
             print("temps presque écoulé : on s'arrête, la prochaine fois on reprend")
             break
-        if o["id"] in infos and infos[o["id"]].get("fini"):
+        if o["id"] in infos and infos[o["id"]].get("fini") == 2:
             continue
         q = par_oiseau.get(o["id"])
         fiche = {"wikidata": q} if q else {}
@@ -328,16 +337,19 @@ def main():
             for cle, v in wp.items():
                 if cle in fiche:
                     continue
+                if cle == "dimorphisme":
+                    fiche[cle] = {"valeur": v["valeur"], "source": f"Wikipédia en français (article « {titre} »)"}
+                    continue
                 fiche[cle] = {"min": v["min"], "max": v["max"], "source": f"Wikipédia en français (article « {titre} »)"}
                 if v.get("captivite"):
                     fiche[cle]["captivite"] = True
-        fiche["fini"] = True
+        fiche["fini"] = 2
         infos[o["id"]] = fiche
         if k % 10 == 0:
             enregistrer(infos)
             print(f"[{k + 1}/{len(oiseaux)}] {o['nom']} : {', '.join(c for c in fiche if c not in ('wikidata', 'gbif', 'fini')) or 'rien'}")
     enregistrer(infos)
-    print("fini :", sum(1 for v in infos.values() if isinstance(v, dict) and v.get("fini")), "oiseaux")
+    print("fini :", sum(1 for v in infos.values() if isinstance(v, dict) and v.get("fini") == 2), "oiseaux")
 
 
 if __name__ == "__main__":
