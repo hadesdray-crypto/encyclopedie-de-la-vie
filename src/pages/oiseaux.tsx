@@ -98,7 +98,7 @@ function Liste({ groupe }: { groupe: string | null }) {
           </ul>
         </>
       )}
-      <p className="mx-auto mt-5 max-w-sm text-center text-[11px] texte-doux">Photos : Wikimedia Commons. Cris : GBIF (Xeno-canto, iNaturalist). Seulement des licences libres. Noms français vérifiés dans au moins 3 sources : liste officielle des oiseaux de France (Commission de l'avifaune française), Wikipédia, Wikidata, GBIF.</p>
+      <p className="mx-auto mt-5 max-w-sm text-center text-[11px] texte-doux">Photos : Wikimedia Commons. Cris : GBIF (Xeno-canto, iNaturalist). Licences libres ; certaines interdisent l'usage commercial. Noms français vérifiés dans au moins 3 sources : liste officielle des oiseaux de France (Commission de l'avifaune française), Wikipédia, Wikidata, GBIF.</p>
     </main>
   );
 }

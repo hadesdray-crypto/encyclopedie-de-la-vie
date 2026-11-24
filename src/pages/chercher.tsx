@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { LuCat, LuDog, LuGlobe, LuMap, LuSearch, LuShieldAlert, LuTrees, LuX } from "react-icons/lu";
+import { LuBird, LuCat, LuDog, LuGlobe, LuMap, LuSearch, LuShieldAlert, LuTrees, LuX } from "react-icons/lu";
 import { GROUPES } from "@/data/catalogue";
 import { REGIMES } from "@/data/fiches-vie";
 import monde from "@/data/monde.json";
@@ -36,6 +36,7 @@ function vueDe(continent?: string) {
 
 const SORTES: { id: NonNullable<Filtres["sorte"]>; nom: string; icone: typeof LuDog }[] = [
   { id: "sauvages", nom: "Animaux sauvages", icone: LuTrees },
+  { id: "oiseaux", nom: "Oiseaux", icone: LuBird },
   { id: "chiens", nom: "Chiens", icone: LuDog },
   { id: "chats", nom: "Chats", icone: LuCat },
   { id: "menaces", nom: "Menacés", icone: LuShieldAlert },
@@ -80,7 +81,7 @@ export function ChercherPage({ params }: { params: URLSearchParams }) {
           className="min-w-0 flex-1 bg-transparent text-lg font-bold outline-none placeholder:font-normal placeholder:text-[#8a7462]"
         />
         {texte ? (
-          <button type="button" onClick={() => { setTexte(""); champ.current?.focus(); }} aria-label="Effacer" className="grid size-8 place-items-center rounded-full bg-[#e7d3b0]">
+          <button type="button" onClick={() => { setTexte(""); champ.current?.focus(); }} aria-label="Effacer" className="grid size-11 place-items-center rounded-full bg-[#e7d3b0]">
             <LuX className="size-4" />
           </button>
         ) : null}
@@ -100,7 +101,7 @@ export function ChercherPage({ params }: { params: URLSearchParams }) {
 
       {/* Catégories : grands groupes et régime */}
       <details className="mt-2 rounded-2xl bg-[#2a1844]/70 px-3 py-2">
-        <summary className="cursor-pointer font-extrabold text-[#f0d090]">Plus de catégories</summary>
+        <summary className="flex min-h-11 cursor-pointer items-center font-extrabold text-[#f0d090]">Plus de catégories</summary>
         <p className="mt-2 text-xs font-extrabold text-[#e7d7ff]">Le groupe</p>
         <div className="mt-1 flex flex-wrap gap-1.5">
           {GROUPES.map((g) => (
@@ -125,7 +126,7 @@ export function ChercherPage({ params }: { params: URLSearchParams }) {
             {resultats.length ? `${resultats.length} résultat${resultats.length > 1 ? "s" : ""}` : "Rien trouvé"}
           </p>
           {aDesFiltres(f) ? (
-            <button type="button" onClick={() => setF({})} className="rounded-full bg-[#3a2266] px-3 py-1 text-xs font-extrabold text-[#e7d7ff]">
+            <button type="button" onClick={() => setF({})} className="min-h-11 rounded-full bg-[#3a2266] px-4 text-xs font-extrabold text-[#e7d7ff]">
               Tout effacer
             </button>
           ) : null}
@@ -164,7 +165,7 @@ function Puce({ actif, onClick, children, petite = false }: { actif: boolean; on
       type="button"
       aria-pressed={actif}
       onClick={onClick}
-      className={`inline-flex items-center gap-1.5 rounded-full font-extrabold ${petite ? "px-2.5 py-1 text-xs" : "min-h-10 px-3.5 text-sm"} ${actif ? "bg-[#f3d48a] text-[#2a1c14]" : "bg-card text-[#2a1c14]"}`}
+      className={`inline-flex items-center gap-1.5 rounded-full font-extrabold ${petite ? "min-h-11 px-3 text-xs" : "min-h-11 px-3.5 text-sm"} ${actif ? "bg-[#f3d48a] text-[#2a1c14]" : "bg-card text-[#2a1c14]"}`}
     >
       {children}
     </button>
@@ -179,10 +180,10 @@ function Carte({ r }: { r: Resultat }) {
         {r.sorte === "espece" ? (
           <Portrait id={r.id} />
         ) : r.photo ? (
-          <img src={r.photo} alt="" loading="lazy" className="size-full object-cover" />
+          <img src={r.photo} alt="" loading="lazy" className={`size-full object-cover ${r.sorte === "oiseau" ? "object-top" : ""}`} />
         ) : (
           <span className="grid size-full place-items-center bg-[#3a2266] text-[#f3d48a]">
-            {r.sorte === "chien" ? <LuDog className="size-6" /> : r.sorte === "chat" ? <LuCat className="size-6" /> : <LuGlobe className="size-6" />}
+            {r.sorte === "chien" ? <LuDog className="size-6" /> : r.sorte === "oiseau" ? <LuBird className="size-6" /> : r.sorte === "chat" ? <LuCat className="size-6" /> : <LuGlobe className="size-6" />}
           </span>
         )}
       </span>
@@ -231,7 +232,7 @@ function CarteChoix({ f, changer }: { f: Filtres; changer: (x: Partial<Filtres>)
       {f.pays ? (
         <p className="mt-2 text-center font-display text-xl text-[#f3d48a]">
           {PAYS[f.pays]?.n ?? f.pays}
-          <button type="button" onClick={() => changer({ pays: undefined })} className="ml-2 align-middle text-xs font-extrabold text-[#e7d7ff] underline">
+          <button type="button" onClick={() => changer({ pays: undefined })} className="ml-2 inline-flex min-h-11 items-center align-middle text-xs font-extrabold text-[#e7d7ff] underline">
             enlever
           </button>
         </p>

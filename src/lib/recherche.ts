@@ -1,12 +1,13 @@
 // Le grand moteur de recherche : tous les animaux, les chiens et les chats.
 // Il cherche pendant qu'on écrit, sans se soucier des accents, et il pardonne les fautes de frappe.
-import { ESPECES, FAMILLES, GROUPES, ORDRES, plier, type Espece } from "@/data/catalogue";
+import { ESPECES, FAMILLES, GROUPES, ORDRES, plier, synonymeDe, type Espece } from "@/data/catalogue";
 import { connu } from "@/lib/connu";
 import { CHATS, CHIENS, nomCourt, type Race } from "@/pages/compagnons";
 import { aUnePhoto } from "@/components/portrait";
 import pays from "@/data/pays.json";
+import oiseauxBruts from "@/data/oiseaux.json";
 
-export type Sorte = "espece" | "chien" | "chat" | "famille" | "ordre";
+export type Sorte = "espece" | "oiseau" | "chien" | "chat" | "famille" | "ordre";
 export type Resultat = {
   sorte: Sorte;
   id: string;
@@ -23,6 +24,8 @@ export type Resultat = {
   mots: string[];
   sons: string[]; // les mots « comme ils se prononcent » (k → c, y → i, ph → f…)
   autres: string; // nom latin et autres noms, moins importants
+  latin?: string; // nom scientifique (pour les synonymes)
+  alias: string[]; // les autres vrais noms (ancien nom, nom de région), pliés
 };
 
 export const PAYS = pays as Record<string, { n: string; c: string }>;
@@ -38,11 +41,23 @@ export function son(m: string) {
   return m.replace(/ph/g, "f").replace(/[kq]/g, "c").replace(/y/g, "i").replace(/h/g, "").replace(/(.)\1+/g, "$1").replace(/e?au/g, "o");
 }
 
-function entree(r: Omit<Resultat, "cle" | "mots" | "sons" | "autres">, autres = ""): Resultat {
+function entree(r: Omit<Resultat, "cle" | "mots" | "sons" | "autres" | "alias">, autres = "", alias: string[] = []): Resultat {
   const cle = plier(r.nom);
   const mots = cle.split(/[^a-z0-9]+/).filter(Boolean);
-  return { ...r, cle, mots, sons: mots.map(son), autres: plier(autres) };
+  return { ...r, cle, mots, sons: mots.map(son), autres: plier(autres), alias: alias.map(plier).filter(Boolean) };
 }
+
+type OiseauBrut = { id: string; latin: string; nom: string; photos: { src: string }[]; aussi?: string[]; ancienNom?: string; anciensLatins?: string[] };
+const OISEAUX = (oiseauxBruts as { oiseaux: OiseauBrut[] }).oiseaux;
+
+function depuisOiseau(o: OiseauBrut): Resultat {
+  return entree(
+    { sorte: "oiseau", id: o.id, nom: o.nom, sous: `Oiseau · ${o.latin}`, vers: `/oiseaux/${o.id}`, photo: o.photos[0]?.src, pays: [], latin: o.latin, connu: 3 + (o.photos.length ? 1 : 0) },
+    `${o.latin} ${(o.anciensLatins ?? []).join(" ")}`,
+    [...(o.aussi ?? []), ...(o.ancienNom ? [o.ancienNom] : [])],
+  );
+}
+
 
 function depuisEspece(e: Espece): Resultat {
   return entree(
@@ -53,6 +68,7 @@ function depuisEspece(e: Espece): Resultat {
       sous: (FAMILLES[e.famille]?.nom ?? "") + (e.langue === "en" ? " · nom anglais (français en cours)" : e.langue === "trad" ? " · nom traduit" : ""),
       vers: `/mammiferes/e-${e.id}`,
       pays: e.pays ?? [],
+      latin: e.latin,
       groupe: GROUPE_DE_ORDRE.get(e.ordre),
       regime: e.regime,
       menace: MENACES.has(e.statut ?? ""),
@@ -86,6 +102,7 @@ export const TOUT: Resultat[] = [
     entree({ sorte: "famille", id: code, nom: f.nom, sous: `Famille · ${f.n} espèce${f.n > 1 ? "s" : ""}`, vers: `/mammiferes/f-${code}`, pays: [], groupe: GROUPE_DE_ORDRE.get(f.ordre), connu: 3 }, code),
   ),
   ...ESPECES.map(depuisEspece),
+  ...OISEAUX.map(depuisOiseau),
   ...CHIENS.map((r) => depuisRace(r, "chien")),
   ...CHATS.map((r) => depuisRace(r, "chat")),
 ];
@@ -113,16 +130,23 @@ function proche(m: string, w: string, ws: string) {
   if (w.startsWith(m)) return 0;
   const ms = son(m);
   if (ms.length >= 2 && ws.startsWith(ms)) return 0.5;
-  if (m.length < 3 || ws[0] !== ms[0]) return 9; // le premier son doit être le bon
+  if (m.length < 4 || ws[0] !== ms[0]) return 9; // le premier son doit être le bon
   const tolere = m.length >= 6 ? 2 : 1;
   return Math.min(distance(ms, ws.slice(0, ms.length), tolere), distance(ms, ws, tolere), distance(ms, ws.slice(0, ms.length + 1), tolere));
 }
 
-/** Note d'un résultat pour ce qu'on a écrit (0 = pas du tout). */
-function note(r: Resultat, q: string, mq: string[]) {
-  if (r.cle.startsWith(q)) return 100;
-  if (r.mots.some((m) => m.startsWith(q))) return 85;
+/** Note d'un résultat pour ce qu'on a écrit (0 = pas du tout). L'ordre : nom exact, début du nom, mot entier, mot commencé, contenu. */
+function noteBase(r: Resultat, q: string, mq: string[]) {
+  if (r.cle === q) return 100;
+  const syn = r.latin && (r.sorte === "espece" || r.sorte === "oiseau") ? synonymeDe(r.latin, q) : 0;
+  if (syn === 2) return 95;
+  if (r.alias.includes(q)) return 92;
+  if (r.cle.startsWith(q)) return 90;
+  if (mq.length && mq.every((m) => r.mots.includes(m))) return 80;
+  if (r.alias.some((a) => a.startsWith(q))) return 78;
+  if (r.mots.some((m) => m.startsWith(q))) return 75;
   if (r.cle.includes(q)) return 70;
+  if (syn === 1) return 68;
   // Chaque mot écrit se retrouve (même mal écrit), dans n'importe quel ordre.
   let total = 0;
   let ok = true;
@@ -135,16 +159,27 @@ function note(r: Resultat, q: string, mq: string[]) {
     }
     total += mieux;
   }
-  if (ok && mq.length) return total === 0 ? 65 : 60 - total * 10;
+  if (ok && mq.length) return total === 0 ? 65 : total < 1 ? 62 : 60 - total * 10;
   // Le nom latin ou les autres noms comptent, mais moins.
   if (r.autres && r.autres.split(/[^a-z0-9]+/).some((w) => w.startsWith(q))) return 40;
   return 0;
 }
 
-export type Filtres = { sorte?: "sauvages" | "chiens" | "chats" | "menaces"; groupe?: string; regime?: string; pays?: string; continent?: string };
+function note(r: Resultat, q: string, mq: string[]) {
+  let n = noteBase(r, q, mq);
+  // « chat persan », « race de chien beagle » : le mot « chat » ou « chien » dit juste de quelle sorte de race on parle.
+  if ((r.sorte === "chien" || r.sorte === "chat") && mq.length > 1) {
+    const reste = mq.filter((m) => m !== r.sorte && m !== `${r.sorte}s` && m !== "race" && m !== "de" && m !== "du");
+    if (reste.length && reste.length < mq.length) n = Math.max(n, noteBase(r, reste.join(" "), reste));
+  }
+  return n;
+}
+
+export type Filtres = { sorte?: "sauvages" | "oiseaux" | "chiens" | "chats" | "menaces"; groupe?: string; regime?: string; pays?: string; continent?: string };
 
 export function filtrer(r: Resultat, f: Filtres) {
   if (f.sorte === "sauvages" && r.sorte !== "espece") return false;
+  if (f.sorte === "oiseaux" && r.sorte !== "oiseau") return false;
   if (f.sorte === "chiens" && r.sorte !== "chien") return false;
   if (f.sorte === "chats" && r.sorte !== "chat") return false;
   if (f.sorte === "menaces" && !r.menace) return false;
@@ -157,19 +192,20 @@ export function filtrer(r: Resultat, f: Filtres) {
 }
 
 export function chercherTout(texte: string, f: Filtres = {}) {
-  const q = plier(texte);
+  const q = plier(texte).replace(/\s+/g, " ");
   const mq = q.split(/[^a-z0-9]+/).filter(Boolean);
   const liste: { r: Resultat; n: number }[] = [];
   for (const r of TOUT) {
     if (!filtrer(r, f)) continue;
     const n = q ? note(r, q, mq) : 1;
-    if (n > 0) liste.push({ r, n: n + (n >= 65 ? r.connu * 3 : r.connu) });
+    if (n > 0) liste.push({ r, n });
   }
-  // S'il y a assez de bonnes réponses, on n'affiche pas celles « avec une faute ».
-  const bonnes = liste.filter((x) => x.n >= 65).length;
+  // S'il y a de vraies réponses (nom exact, début, mot entier…), on n'affiche ni les « avec une faute » ni les noms trop éloignés.
   const meilleure = Math.max(0, ...liste.map((x) => x.n));
-  const garde = bonnes >= 6 ? liste.filter((x) => x.n >= 65) : q && meilleure >= 55 ? liste.filter((x) => x.n >= meilleure - 12) : liste;
-  garde.sort((a, b) => b.n - a.n || a.r.cle.length - b.r.cle.length || a.r.nom.localeCompare(b.r.nom, "fr"));
+  const seuil = !q ? 0 : meilleure >= 65 ? 65 : meilleure >= 45 ? meilleure - 3 : 0;
+  const garde = liste.filter((x) => x.n >= seuil);
+  // D'abord la qualité de la réponse, puis les animaux les plus connus (Léonie reconnaît d'abord ceux-là).
+  garde.sort((a, b) => b.n - a.n || b.r.connu - a.r.connu || a.r.cle.length - b.r.cle.length || a.r.nom.localeCompare(b.r.nom, "fr"));
   return garde.map((x) => x.r);
 }
 

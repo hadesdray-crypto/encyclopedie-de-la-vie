@@ -1,6 +1,6 @@
 import { AUTRES, AUTRES_PAR_ID } from "@/data/autres";
 import { ETAPES, cheminVers } from "@/data/arbre";
-import { FAMILLES, ORDRES, PAR_ID, chercher, chercherFamilles, chercherOrdres, especesDe, famillesDe, ordreDe, plier } from "@/data/catalogue";
+import { FAMILLES, ORDRES, PAR_ID, chercherRang, chercherFamilles, chercherOrdres, especesDe, famillesDe, ordreDe, plier, rangDuNom } from "@/data/catalogue";
 
 /** Les trois grandes branches des mammifères : la place de chaque ordre vient de la classification publiée. */
 const MARSUPIAUX = new Set(["Paucituberculata", "Didelphimorphia", "Microbiotheria", "Notoryctemorphia", "Dasyuromorphia", "Peramelemorphia", "Diprotodontia"]);
@@ -107,11 +107,21 @@ export function dateEnClair(ma: number) {
 export function chercherArbre(texte: string): Noeud[] {
   const cle = plier(texte);
   if (cle.length < 2) return [];
-  const etapes = Object.values(ETAPES).filter((e) => plier(`${e.nom} ${e.id}`).includes(cle)).map((e) => noeudEtape(e.id));
-  const ordres = chercherOrdres(texte).filter((o) => o.id !== "Tardigrada").map((o) => noeudOrdre(o.id));
-  const familles = chercherFamilles(texte).filter(([code]) => code !== "Tardigrada").slice(0, 8).map(([code]) => noeudFamille(code));
-  const especes = chercher(texte).map((e) => noeudEspece(e.id));
-  return [...etapes, ...ordres, ...familles, ...especes].slice(0, 40);
+  // Tout est classé ENSEMBLE (nom exact, début du nom, mot entier, reste) avant de couper : « lion » trouve le Lion en premier.
+  const ordreSorte = { etape: 0, ordre: 1, famille: 2, espece: 3 } as const;
+  const liste: { n: Noeud; rang: number }[] = [
+    ...Object.values(ETAPES).filter((x) => plier(`${x.nom} ${x.id}`).includes(cle)).map((x) => ({ n: noeudEtape(x.id), rang: rangDuNom(x.nom, texte) })),
+    ...chercherOrdres(texte).filter((o) => o.id !== "Tardigrada").map((o) => ({ n: noeudOrdre(o.id), rang: rangDuNom(o.nom, texte) })),
+    ...chercherFamilles(texte).filter(([code]) => code !== "Tardigrada").map(([code, f]) => ({ n: noeudFamille(code), rang: rangDuNom(f.nom, texte) })),
+    ...chercherRang(texte).map((t) => ({ n: noeudEspece(t.espece.id), rang: t.rang })),
+  ];
+  const vus = new Set<string>();
+  return liste
+    .map((x, i) => ({ ...x, i }))
+    .sort((a, b) => a.rang - b.rang || ordreSorte[a.n.sorte] - ordreSorte[b.n.sorte] || a.i - b.i)
+    .filter((x) => (vus.has(x.n.cle) ? false : (vus.add(x.n.cle), true)))
+    .slice(0, 40)
+    .map((x) => x.n);
 }
 
 /** Les cousins d'un animal : même famille d'abord, puis les autres familles de son ordre. */

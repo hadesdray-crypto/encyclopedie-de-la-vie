@@ -132,20 +132,40 @@ export function famillesDe(ordre: string) {
 
 const INDEX = ESPECES.map((espece) => ({
   espece,
-  cle: `${espece.nom} ${espece.latin}`.toLocaleLowerCase("fr").normalize("NFD").replace(/\p{M}/gu, ""),
+  nom: plier(espece.nom),
+  cle: plier(`${espece.nom} ${espece.latin}`),
 }));
 
+/** Cherche des espèces : le nom exact d'abord, puis le début du nom, puis un mot entier, puis le reste. On trie AVANT de couper à 30. */
 export function chercher(texte: string) {
-  const cle = texte.trim().toLocaleLowerCase("fr").normalize("NFD").replace(/\p{M}/gu, "");
+  return chercherRang(texte).map((t) => t.espece);
+}
+
+/** Le rang d'un nom pour ce qu'on a écrit : 0 exact, 1 début du nom, 2 mot entier, 3 contenu, 4 ailleurs. */
+export function rangDuNom(nom: string, texte: string) {
+  const n = plier(nom);
+  const cle = plier(texte);
+  if (n === cle) return 0;
+  if (n.startsWith(cle)) return 1;
+  if (n.split(/[^a-z0-9]+/).includes(cle)) return 2;
+  return n.includes(cle) ? 3 : 4;
+}
+
+export function chercherRang(texte: string) {
+  const cle = plier(texte);
   if (cle.length < 2) return [];
-  const trouves: Espece[] = [];
+  const trouves: { espece: Espece; rang: number }[] = [];
   for (const entree of INDEX) {
-    if (entree.cle.includes(cle)) {
-      trouves.push(entree.espece);
-      if (trouves.length === 30) break;
-    }
+    let rang = -1;
+    if (entree.nom === cle || synonymeDe(entree.espece.latin, cle) === 2) rang = 0;
+    else if (entree.nom.startsWith(cle)) rang = 1;
+    else if (entree.nom.split(/[^a-z0-9]+/).includes(cle)) rang = 2;
+    else if (entree.nom.includes(cle)) rang = 3;
+    else if (entree.cle.includes(cle)) rang = 4;
+    if (rang >= 0) trouves.push({ espece: entree.espece, rang });
   }
-  return trouves;
+  trouves.sort((a, b) => a.rang - b.rang || parConnu(a.espece, b.espece));
+  return trouves.slice(0, 30);
 }
 
 export function chercherFamilles(texte: string) {
@@ -161,8 +181,54 @@ export function chercherOrdres(texte: string) {
 }
 
 export function plier(texte: string) {
-  return texte.trim().toLocaleLowerCase("fr").normalize("NFD").replace(/\p{M}/gu, "");
+  return texte.trim().toLocaleLowerCase("fr").normalize("NFD").replace(/\p{M}/gu, "").replace(/œ/g, "oe").replace(/æ/g, "ae");
 }
+
+/**
+ * Les mots de tous les jours qu'on tape pour trouver un animal dont le nom officiel est différent :
+ * « vache » → le bœuf domestique, « poule » → le coq bankiva (l'ancêtre de nos poules), « pingouin » → petit pingouin et manchots…
+ * On reconnaît l'animal par son nom scientifique (ou son genre), pas par son nom, qui peut changer.
+ */
+const OWL = ["Strix", "Tyto", "Athene", "Glaucidium", "Aegolius", "Surnia"];
+export const SYNONYMES: { mots: string[]; latins?: string[]; genres?: string[] }[] = [
+  { mots: ["vache", "boeuf", "taureau", "veau", "bovin"], latins: ["Bos taurus"] },
+  { mots: ["buffle", "bufflonne"], latins: ["Bubalus bubalis"] },
+  { mots: ["poule", "poulet", "coq", "poussin", "poulette"], latins: ["Gallus gallus"] },
+  { mots: ["cochon", "porc", "truie", "goret", "pourceau"], latins: ["Sus domesticus", "Sus scrofa"] },
+  { mots: ["poney", "jument", "etalon", "poulain"], latins: ["Equus caballus"] },
+  { mots: ["mouton", "brebis", "agneau", "belier"], latins: ["Ovis aries"] },
+  { mots: ["chevre", "bouc", "chevreau"], latins: ["Capra hircus"] },
+  { mots: ["lapin", "lapine", "lapereau"], latins: ["Oryctolagus cuniculus"] },
+  { mots: ["ane", "anesse", "baudet"], latins: ["Equus asinus"] },
+  { mots: ["cobaye", "cochon d'inde"], latins: ["Cavia porcellus"] },
+  { mots: ["souris"], latins: ["Mus musculus"] },
+  { mots: ["rat"], latins: ["Rattus norvegicus", "Rattus rattus"] },
+  { mots: ["loup"], latins: ["Canis lupus"] },
+  { mots: ["chat sauvage"], latins: ["Felis silvestris"] },
+  { mots: ["dinde", "dindon"], latins: ["Meleagris gallopavo"] },
+  { mots: ["oie"], latins: ["Anser anser"] },
+  { mots: ["canard"], latins: ["Anas platyrhynchos"] },
+  { mots: ["pigeon"], latins: ["Columba livia"] },
+  { mots: ["chouette"], latins: ["Bubo scandiacus"], genres: OWL },
+  { mots: ["hibou"], genres: ["Asio", "Otus", "Bubo"] },
+  { mots: ["pingouin"], latins: ["Alca torda"], genres: ["Aptenodytes", "Pygoscelis", "Spheniscus", "Eudyptes", "Megadyptes"] },
+  { mots: ["manchot"], genres: ["Aptenodytes", "Pygoscelis", "Spheniscus", "Eudyptes", "Megadyptes"] },
+  { mots: ["perroquet"], genres: ["Psittacus", "Ara", "Psittacula"] },
+  { mots: ["rapace"], genres: ["Aquila", "Buteo", "Falco", "Accipiter", "Milvus", "Circus", "Haliaeetus", "Gyps", "Pandion"] },
+];
+
+export function synonymeDe(latin: string, q: string): 0 | 1 | 2 {
+  const genre = latin.split(" ")[0];
+  const sing = q.length > 3 ? q.replace(/[sx]$/, "") : q;
+  let res: 0 | 1 | 2 = 0;
+  for (const s of SYNONYMES) {
+    if (!((s.latins?.includes(latin)) || s.genres?.includes(genre))) continue;
+    if (s.mots.some((m) => m === q || m === sing)) return 2;
+    if (q.length >= 3 && s.mots.some((m) => m.startsWith(q))) res = 1;
+  }
+  return res;
+}
+
 
 /** Les dix grands groupes faciles, puis les vrais ordres dedans. */
 export const GROUPES: { id: string; nom: string; phrase: string; ordres: string[] }[] = [
