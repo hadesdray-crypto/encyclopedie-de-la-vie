@@ -41,7 +41,7 @@ UICN = {  # élément Wikidata -> (code, nom en français)
 UICN_GBIF = {"LC": "Préoccupation mineure", "NT": "Quasi menacé", "VU": "Vulnérable", "EN": "En danger", "CR": "En danger critique",
              "EW": "Éteint à l'état sauvage", "EX": "Éteint", "DD": "Données insuffisantes"}
 # Valeurs possibles pour un oiseau : ce qui sort de là est une erreur de source, on le jette.
-LIMITES = {"longueur": (4, 300), "envergure": (8, 400), "poids": (1.5, 150000)}  # cm, cm, g
+LIMITES = {"longueur": (4, 300), "envergure": (8, 400), "poids": (1.5, 150000), "vie": (0.3, 90), "oeufs": (1, 30)}  # cm, cm, g, années, œufs
 
 
 def get(url, donnees=None, essais=5, json_out=True):
@@ -273,7 +273,11 @@ def main():
 
     # 2. Les éléments Wikidata
     latins = sorted({o["latin"] for o in oiseaux} | {l for o in oiseaux for l in o.get("anciensLatins", [])})
-    q_de = elements(latins)
+    try:
+        q_de = elements(latins)
+    except Exception as exc:  # noqa: BLE001
+        print("erreur éléments", exc)
+        q_de = {}
     print(f"{len(q_de)} éléments Wikidata trouvés sur {len(latins)} noms latins")
     par_oiseau = {}
     for o in oiseaux:
@@ -285,13 +289,19 @@ def main():
     quant = {}
     for cle in ("longueur", "envergure", "poids", "vie", "oeufs"):
         if P.get(cle) and time.time() - t0 < 1500:
-            quant[cle] = quantites(P[cle], items)
-            print(cle, ":", len(quant[cle]), "éléments")
+            try:
+                quant[cle] = quantites(P[cle], items)
+                print(cle, ":", len(quant[cle]), "éléments")
+            except Exception as exc:  # noqa: BLE001
+                print("erreur", cle, exc)
     lib = {}
     for cle in ("uicn", "regime", "milieu"):
         if P.get(cle):
-            lib[cle] = libelles(P[cle], items)
-            print(cle, ":", len(lib[cle]), "éléments")
+            try:
+                lib[cle] = libelles(P[cle], items)
+                print(cle, ":", len(lib[cle]), "éléments")
+            except Exception as exc:  # noqa: BLE001
+                print("erreur", cle, exc)
 
     facteur = {"longueur": 100, "envergure": 100, "poids": 1000, "vie": 1 / 31556952, "oeufs": 1}  # m -> cm, m -> cm, kg -> g, secondes -> années
     for k, o in enumerate(oiseaux):
@@ -300,6 +310,20 @@ def main():
             break
         if o["id"] in infos and infos[o["id"]].get("fini") == 2:
             continue
+        try:
+            infos[o["id"]] = un_oiseau(o, par_oiseau, quant, lib, facteur)
+        except Exception as exc:  # noqa: BLE001
+            print("erreur", o["id"], exc)
+        if k % 10 == 0:
+            enregistrer(infos)
+            fi = infos.get(o["id"], {})
+            print(f"[{k + 1}/{len(oiseaux)}] {o['nom']} : {', '.join(c for c in fi if c not in ('wikidata', 'gbif', 'fini')) or 'rien'}")
+    enregistrer(infos)
+    print("fini :", sum(1 for v in infos.values() if isinstance(v, dict) and v.get("fini") == 2), "oiseaux")
+
+
+def un_oiseau(o, par_oiseau, quant, lib, facteur):
+    if True:  # (un seul bloc)
         q = par_oiseau.get(o["id"])
         fiche = {"wikidata": q} if q else {}
         # Wikidata
@@ -344,12 +368,7 @@ def main():
                 if v.get("captivite"):
                     fiche[cle]["captivite"] = True
         fiche["fini"] = 2
-        infos[o["id"]] = fiche
-        if k % 10 == 0:
-            enregistrer(infos)
-            print(f"[{k + 1}/{len(oiseaux)}] {o['nom']} : {', '.join(c for c in fiche if c not in ('wikidata', 'gbif', 'fini')) or 'rien'}")
-    enregistrer(infos)
-    print("fini :", sum(1 for v in infos.values() if isinstance(v, dict) and v.get("fini") == 2), "oiseaux")
+        return fiche
 
 
 if __name__ == "__main__":
