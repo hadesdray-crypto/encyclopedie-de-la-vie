@@ -1,6 +1,7 @@
 # Vérifie les noms français des mammifères auprès de plusieurs sources indépendantes.
-# Sources : Wikidata (nom officiel P1843), Wikipédia en français (titre de l'article),
-# GBIF (noms usuels en français), TAXREF du Muséum (INPN), iNaturalist (noms français).
+# Sources : Wikidata (nom officiel P1843 + étiquette française), Wikipédia en français (titre de l'article),
+# Wikispecies (noms usuels), GBIF, Catalogue of Life (ChecklistBank), iNaturalist.
+# TAXREF / INPN (Muséum) refusent les machines de GitHub (erreur 403) : ils sont essayés mais ne répondent pas.
 # Sortie : scripts/verif/mammiferes-resultats.json  { nom latin : { source : [noms] } }
 import json, os, sys, time, unicodedata, urllib.parse, urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -82,7 +83,78 @@ for i in range(0, len(a_faire), 150):
 print("wikidata fini", round(time.time() - DEBUT), "s", flush=True)
 
 
-# 2) GBIF et TAXREF : une requête par nom, en parallèle
+# 1 bis) Étiquette française Wikidata et Wikispecies (noms usuels, par lots)
+def etiquettes(lot):
+    valeurs = " ".join('"%s"' % l.replace('"', "") for l in lot)
+    q = ("SELECT ?l ?lab WHERE { VALUES ?l { %s } ?i wdt:P225 ?l; wdt:P105 wd:Q7432 . ?i rdfs:label ?lab . FILTER(LANG(?lab)=\"fr\") }" % valeurs)
+    j = get("https://query.wikidata.org/sparql", 60, ("format=json&query=" + urllib.parse.quote(q)).encode(),
+            {"Content-Type": "application/x-www-form-urlencoded"})
+    try:
+        return [(x["l"]["value"], x["lab"]["value"]) for x in json.loads(j)["results"]["bindings"]]
+    except Exception:
+        return None
+
+
+a_faire = [l for l in latins if "wikidata_etiquette" not in res[l]]
+for i in range(0, len(a_faire), 150):
+    if not reste():
+        break
+    lot = a_faire[i:i + 150]
+    r = etiquettes(lot)
+    if r is None:
+        continue
+    for l in lot:
+        res[l]["wikidata_etiquette"] = sorted({n for ll, n in r if ll == l and n != l})
+    enregistrer(res)
+    time.sleep(1)
+print("etiquettes fini", round(time.time() - DEBUT), "s", flush=True)
+
+import re
+
+
+def wikispecies(lot):
+    j = get("https://species.wikimedia.org/w/api.php?action=query&format=json&redirects=1&prop=revisions&rvprop=content&rvslots=main&titles=" + urllib.parse.quote("|".join(lot)), 30)
+    try:
+        q = json.loads(j)["query"]
+    except Exception:
+        return None
+    ver = {}
+    for r in q.get("redirects", []):
+        ver[r["to"]] = r["from"]
+    out = {}
+    for p in q["pages"].values():
+        try:
+            t = p["revisions"][0]["slots"]["main"]["*"]
+        except Exception:
+            continue
+        m = re.search(r"\{\{VN(.*?)\}\}", t, re.S)
+        noms = []
+        if m:
+            f = re.search(r"(?:^|[|\s])fr\s*=\s*([^|\n}]+)", m.group(1))
+            if f:
+                noms = [x.strip() for x in re.split(r"[;,]", f.group(1)) if x.strip()]
+        out[ver.get(p["title"], p["title"])] = noms
+    return out
+
+
+a_faire = [l for l in latins if "wikispecies" not in res[l]]
+for i in range(0, len(a_faire), 40):
+    if not reste():
+        break
+    lot = a_faire[i:i + 40]
+    out = wikispecies(lot)
+    if out is None:
+        continue
+    for l in lot:
+        res[l]["wikispecies"] = out.get(l, [])
+    if i % 400 == 0:
+        enregistrer(res)
+    time.sleep(0.3)
+enregistrer(res)
+print("wikispecies fini", round(time.time() - DEBUT), "s", flush=True)
+
+
+# 2) GBIF, Catalogue of Life et TAXREF : une requête par nom, en parallèle
 def gbif(l):
     try:
         k = json.loads(get("https://api.gbif.org/v1/species/match?class=Mammalia&name=" + urllib.parse.quote(l)))["usageKey"]
@@ -112,10 +184,22 @@ def par_nom(cle, fonction, fils):
         enregistrer(res)
 
 
+def col(l):
+    try:
+        j = json.loads(get("https://api.checklistbank.org/dataset/3LR/nameusage/search?limit=1&q=" + urllib.parse.quote(l)))["result"][0]
+        if l not in json.dumps(j, ensure_ascii=False):
+            return []
+        v = json.loads(get(f"https://api.checklistbank.org/dataset/3LR/taxon/{j['id']}/vernacular"))
+        return sorted({x["name"] for x in v if x.get("language") == "fra"})[:8]
+    except Exception:
+        return []
+
+
 par_nom("gbif", gbif, 8)
+par_nom("col", col, 6)
+print("col fini", round(time.time() - DEBUT), "s", flush=True)
 print("gbif fini", round(time.time() - DEBUT), "s", flush=True)
-par_nom("taxref", taxref, 6)  # s'il ne répond pas, les listes restent vides et on continue
-print("taxref fini", round(time.time() - DEBUT), "s", flush=True)
+# TAXREF refuse les machines de GitHub (403) : plus essayé ici.
 
 
 # 3) iNaturalist (noms français) : seulement pour les noms où moins de 3 sources s'accordent
@@ -125,7 +209,7 @@ def sans_accent(s):
 
 
 def inat(l):
-    time.sleep(0.8)
+    time.sleep(1.0)
     try:
         j = json.loads(get("https://api.inaturalist.org/v1/taxa?rank=species&locale=fr&q=" + urllib.parse.quote(l)))["results"]
         return sorted({x["preferred_common_name"] for x in j if x.get("name") == l and x.get("preferred_common_name")})[:3]
@@ -135,13 +219,13 @@ def inat(l):
 
 def nb_accord(r):
     c = {}
-    for src in ("wikidata", "wikipedia", "gbif", "taxref"):
+    for src in ("wikidata", "wikidata_etiquette", "wikipedia", "wikispecies", "gbif", "col"):
         for n in {sans_accent(x) for x in r.get(src, [])}:
             c[n] = c.get(n, 0) + 1
     return max(c.values()) if c else 0
 
 
-todo = [l for l in latins if "inaturalist" not in res[l] and 1 <= nb_accord(res[l]) < 3]
+todo = sorted([l for l in latins if "inaturalist" not in res[l] and 1 <= nb_accord(res[l]) < 3], key=lambda l: -nb_accord(res[l]))
 for i in range(0, len(todo), 100):
     if not reste():
         break
