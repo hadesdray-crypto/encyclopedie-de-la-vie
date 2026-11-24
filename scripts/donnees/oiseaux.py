@@ -104,6 +104,17 @@ def liste_especes(n):
 
 
 # ---------- texte français ----------
+def nettoyer_texte(t, n=900):
+    """Enlève les restes de Wikipédia ((en), [Quand ?]) et coupe proprement à la fin d'une phrase complète."""
+    t = re.sub(r"\s*\((?:en|de|es|it|la)\)", "", t or "")
+    t = re.sub(r"\s*\[(?:[^\]]{0,40}\?|réf\.[^\]]*|\d+)\]", "", t).strip()
+    if len(t) <= n and re.search(r"[.!?»)]$", t):
+        return t
+    coupe = t[:n]
+    fins = [m.end() for m in re.finditer(r"[.!?»](?=\s|$)", coupe)]
+    return coupe[: fins[-1]].strip() if fins else coupe.rsplit(" ", 1)[0].rstrip(",;: ") + "."
+
+
 def texte_fr(latin):
     q = urllib.parse.urlencode({"action": "query", "format": "json", "redirects": 1, "prop": "extracts|pageprops|info",
                                 "exintro": 1, "explaintext": 1, "inprop": "url", "titles": latin})
@@ -221,7 +232,7 @@ def main():
             if not cle or not txt:
                 print(f"[{k}] {latin} : introuvable, ignoré")
                 continue
-            fiche = {"v": 2, "id": oid, "latin": latin, "nom": nom or txt["nom_wiki"], "intro": txt["intro"][:900], "wiki": txt["page"], "photos": [], "cris": []}
+            fiche = {"v": 2, "id": oid, "latin": latin, "nom": nom or txt["nom_wiki"], "intro": nettoyer_texte(txt["intro"]), "wiki": txt["page"], "photos": [], "cris": []}
             groupes = [("", photos_commons(latin, 2)), ("male", photos_commons(latin, 1, f"{latin} (male)")), ("femelle", photos_commons(latin, 1, f"{latin} (female)"))]
             vus = set()
             for sexe, liste in groupes:
