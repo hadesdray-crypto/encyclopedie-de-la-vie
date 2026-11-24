@@ -10,6 +10,8 @@ Sources :
     mètres et kilogrammes, que l'on convertit en cm et en g), P141 statut UICN, P1034 régime, P2974 milieu de vie, et (si la propriété
     existe avec le bon nom) durée de vie et taille de la ponte. On note aussi « l'état indiqué par » de la référence quand elle existe ;
   - GBIF : la catégorie de la Liste rouge UICN (api.gbif.org/v1/species/<clé>/iucnRedListCategory) ;
+  - AVONET (Tobias et coll., 2022, Ecology Letters, figshare, licence CC BY 4.0) : poids moyen mesuré, régime principal, milieu principal, voyage
+    (migrateur ou pas). Il sert aussi à VÉRIFIER les chiffres des autres sources : un poids ou une taille impossible pour l'oiseau est écarté ;
   - Wikipédia en français : quelques phrases sûres (« pond 4 à 6 œufs », « mesure 38 cm », « pèse 450 g »…) quand Wikidata n'a rien.
     Seulement des phrases où le mot-clé et le chiffre sont côte à côte ; les valeurs impossibles sont jetées.
 Le fichier est sauvegardé au fur et à mesure : si le travail est coupé, on reprend où on s'était arrêté.
@@ -150,6 +152,103 @@ def libelles(prop, items):
     return sortie
 
 
+# ---------- AVONET ----------
+REGIME_AVONET = {"Invertivore": "insectes, vers, araignées (petits animaux sans squelette)", "Frugivore": "fruits", "Granivore": "graines",
+                 "Nectarivore": "nectar des fleurs", "Herbivore terrestrial": "herbe, feuilles et bourgeons", "Herbivore aquatic": "plantes aquatiques",
+                 "Aquatic predator": "poissons et autres animaux de l'eau", "Vertivore": "petits animaux à squelette (souris, oiseaux, lézards…)",
+                 "Omnivore": "un peu de tout", "Scavenger": "animaux morts (charognes)"}
+MILIEU_AVONET = {"Forest": "forêt", "Woodland": "bois et bocage", "Shrubland": "buissons et landes", "Grassland": "prairies", "Wetland": "zones humides",
+                 "Rock": "rochers et falaises", "Desert": "désert", "Human Modified": "villes et campagne (milieux changés par les humains)",
+                 "Marine": "mer", "Riverine": "rivières et fleuves", "Coastal": "côtes"}
+VOYAGE_AVONET = {1: "il reste toute l'année dans la même région", 2: "certains voyagent, d'autres restent", 3: "grand voyageur : il migre chaque année"}
+SRC_AVONET = "AVONET, base de mesures d'oiseaux (Tobias et coll., 2022)"
+
+
+def avonet():
+    """Nom latin -> {mass (g), wing (cm), regime, milieu, voyage}. Si le fichier est introuvable, on continue sans."""
+    try:
+        import io
+        import openpyxl  # installé par le workflow
+        art = get("https://api.figshare.com/v2/articles/16586228")
+        fichiers = [f for f in (art or {}).get("files", []) if f["name"].lower().endswith(".xlsx")]
+        if not fichiers:
+            print("AVONET : fichier introuvable")
+            return {}
+        brut = get(fichiers[0]["download_url"], json_out=False)
+        wb = openpyxl.load_workbook(io.BytesIO(brut), read_only=True, data_only=True)
+        nom = next((n for n in wb.sheetnames if "birdlife" in n.lower()), wb.sheetnames[1] if len(wb.sheetnames) > 1 else wb.sheetnames[0])
+        lignes = wb[nom].iter_rows(values_only=True)
+        tete = [str(c or "") for c in next(lignes)]
+        print("AVONET feuille", nom, "colonnes :", tete[:40])
+        col = {c: i for i, c in enumerate(tete)}
+        esp = col.get("Species1", 0)
+        sortie = {}
+        for l in lignes:
+            if not l or not l[esp]:
+                continue
+            def val(c):
+                i = col.get(c)
+                return l[i] if i is not None and i < len(l) else None
+            d = {}
+            inf = str(val("Traits.inferred") or "")
+            m = val("Mass")
+            if isinstance(m, (int, float)) and m > 0 and "mass" not in inf.lower():
+                d["mass"] = float(m)
+            w = val("Wing.Length")
+            if isinstance(w, (int, float)) and w > 0 and "wing" not in inf.lower():
+                d["wing"] = float(w) / 10  # mm -> cm
+            if val("Trophic.Niche") in REGIME_AVONET:
+                d["regime"] = REGIME_AVONET[val("Trophic.Niche")]
+            if val("Habitat") in MILIEU_AVONET:
+                d["milieu"] = MILIEU_AVONET[val("Habitat")]
+            mig = val("Migration")
+            if isinstance(mig, (int, float)) and int(mig) in VOYAGE_AVONET:
+                d["voyage"] = VOYAGE_AVONET[int(mig)]
+            sortie[str(l[esp]).strip()] = d
+        print("AVONET :", len(sortie), "espèces")
+        return sortie
+    except Exception as exc:  # noqa: BLE001
+        print("AVONET indisponible :", exc)
+        return {}
+
+
+def ligne_avonet(av, o):
+    """La ligne AVONET de l'oiseau : par son nom latin (ou ses anciens noms), sinon par un mot d'espèce unique."""
+    for n in [o["latin"], *o.get("anciensLatins", [])]:
+        if n in av:
+            return av[n]
+    fin = o["latin"].split(" ")[-1]
+    trouves = [v for k, v in av.items() if k.split(" ")[-1] == fin and k.split(" ")[0] != o["latin"].split(" ")[0]]
+    return trouves[0] if len(trouves) == 1 else {}
+
+
+def verifier(fiche, ref, ecartes):
+    """Écarte les chiffres impossibles pour cet oiseau (erreurs de source) ; complète le poids avec AVONET."""
+    M = ref.get("mass")
+    L, E, P = fiche.get("longueur"), fiche.get("envergure"), fiche.get("poids")
+    if M:
+        if P and not (M / 2.5 <= P["min"] and P["max"] <= M * 2.5):
+            ecartes.append(f"poids {P['min']}-{P['max']} g (AVONET : {M:.0f} g)")
+            del fiche["poids"]
+        if L and not (2.5 <= L["max"] / M ** (1 / 3) and L["min"] / M ** (1 / 3) <= 11.5):
+            ecartes.append(f"longueur {L['min']}-{L['max']} cm (poids moyen {M:.0f} g)")
+            del fiche["longueur"]
+        if E and not (3 <= E["min"] / M ** (1 / 3) and E["max"] / M ** (1 / 3) <= 32):
+            ecartes.append(f"envergure {E['min']}-{E['max']} cm (poids moyen {M:.0f} g)")
+            del fiche["envergure"]
+        if "poids" not in fiche:
+            fiche["poids"] = {"min": arrondi(M), "max": arrondi(M), "moyenne": True, "source": SRC_AVONET}
+    else:
+        if P and E and not (6e-5 <= P["min"] / E["max"] ** 3 and P["max"] / E["min"] ** 3 <= 4e-3):
+            ecartes.append(f"poids {P['min']}-{P['max']} g (envergure {E['min']}-{E['max']} cm)")
+            del fiche["poids"]
+    if ref.get("wing") and "envergure" in fiche:
+        r = fiche["envergure"]["min"] / ref["wing"], fiche["envergure"]["max"] / ref["wing"]
+        if not (1.8 <= r[0] and r[1] <= 5.6):
+            ecartes.append(f"envergure {fiche['envergure']['min']}-{fiche['envergure']['max']} cm (aile {ref['wing']:.0f} cm)")
+            del fiche["envergure"]
+
+
 # ---------- GBIF ----------
 def gbif_uicn(latin):
     res = get(f"{GBIF}/species/match?{urllib.parse.urlencode({'name': latin, 'kingdom': 'Animalia', 'rank': 'SPECIES'})}")
@@ -200,11 +299,13 @@ def depuis_wikipedia(texte):
     for ph in phrases(desc):
         if "longueur" not in out:
             m = re.search(r"(?:mesure|mesurant|longueur(?: totale| du corps)?(?: de| d'environ| moyenne de)?|long de)\s+(?:entre\s+|environ\s+|de\s+)?" + NB + SEP + r"\s*(cm|mm|m)\b", ph)
-            if m and not re.search(r"\b(bec|queue|aile|tarse|œuf|oeuf|poussin|jeune|juvénile)\b", ph[: m.start()].lower()[-60:]):
+            if m and not re.search(r"\b(bec|queue|aile|tarse|œuf|oeuf|poussin|jeune|juvénile)\b", ph[: m.start()].lower()[-60:]) \
+                    and not re.search(r"^\W{0,12}(?:d'envergure|d'aile|de bec|de queue|de tarse|pour (?:le|la) (?:bec|queue))", ph[m.end():].lower()):
                 u = {"cm": 1, "mm": 0.1, "m": 100}[m.group(3)]
                 a = nombre(m.group(1)) * u
                 b = nombre(m.group(2)) * u if m.group(2) else a
-                out["longueur"] = {"min": arrondi(min(a, b)), "max": arrondi(max(a, b)), "phrase": ph.strip()[:220]}
+                if min(a, b) >= 5:
+                    out["longueur"] = {"min": arrondi(min(a, b)), "max": arrondi(max(a, b)), "phrase": ph.strip()[:220]}
         if "envergure" not in out:
             m = re.search(r"envergure[^.\d]{0,45}" + NB + SEP + r"\s*(cm|m)\b", ph)
             if m:
@@ -233,15 +334,18 @@ def depuis_wikipedia(texte):
                 a = nombre(m.group(1))
                 b = nombre(m.group(2)) if m.group(2) else a
                 out["vie"] = {"min": min(a, b), "max": max(a, b), "phrase": ph.strip()[:220], "captivite": "captivité" in ph.lower()}
-    # Le mâle et la femelle se ressemblent-ils ? Seulement si l'article le dit clairement.
+    # Le mâle et la femelle se ressemblent-ils ? Seulement si TOUTES les phrases claires de l'article disent la même chose.
+    verdicts = []
     for ph in phrases(" ".join(s.values())):
         bas = ph.lower()
-        if re.search(r"(pas de dimorphisme|sans dimorphisme|dimorphisme (?:sexuel )?(?:(?:est|très|quasi) )*(?:absent|nul|inexistant|faible|peu marqué)|mâles? et (?:les |la )?femelles? (?:se ressemblent|sont (?:très |quasi )?(?:semblables|similaires|identiques))|(?:mâle|mâles) et (?:femelle|femelles) (?:ont|présentent) (?:le même|un même|un plumage (?:identique|semblable)))", bas):
-            out["dimorphisme"] = {"valeur": "non"}
-            break
-        if re.search(r"(dimorphisme sexuel (?:(?:est|très|bien|fortement|nettement|assez) )*(?:marqué|prononcé|net|important|visible|présent)|mâles? (?:se distingue|diffère)[a-z]* (?:facilement |nettement )?(?:de la femelle|des femelles)|mâles? et femelles? (?:diffèrent|sont différents|ne se ressemblent pas))", bas):
-            out["dimorphisme"] = {"valeur": "oui"}
-            break
+        if re.search(r"\b(juvéniles?|immatures?|jeunes)\b", bas):
+            continue
+        if re.search(r"(pas de dimorphisme|sans dimorphisme|dimorphisme (?:sexuel )?(?:(?:est|très|quasi) )*(?:absent|nul|inexistant|faible|peu marqué)|mâles? et (?:les |la )?femelles? (?:se ressemblent|sont (?:très |quasi )?(?:semblables|similaires|identiques)))", bas):
+            verdicts.append(("non", ph.strip()[:200]))
+        elif re.search(r"(dimorphisme sexuel (?:(?:est|très|bien|fortement|nettement|assez) )*(?:marqué|prononcé|net|important|visible|présent)|mâles? et femelles? (?:diffèrent|sont différents|ne se ressemblent pas))", bas):
+            verdicts.append(("oui", ph.strip()[:200]))
+    if verdicts and len({v for v, _ in verdicts}) == 1:
+        out["dimorphisme"] = {"valeur": verdicts[0][0], "phrase": verdicts[0][1]}
     for cle, (lo, hi) in LIMITES.items():
         if cle in out and not (lo <= out[cle]["min"] and out[cle]["max"] <= hi):
             del out[cle]
@@ -303,15 +407,16 @@ def main():
             except Exception as exc:  # noqa: BLE001
                 print("erreur", cle, exc)
 
+    av = avonet()
     facteur = {"longueur": 100, "envergure": 100, "poids": 1000, "vie": 1 / 31556952, "oeufs": 1}  # m -> cm, m -> cm, kg -> g, secondes -> années
     for k, o in enumerate(oiseaux):
         if time.time() - t0 > 2200:
             print("temps presque écoulé : on s'arrête, la prochaine fois on reprend")
             break
-        if o["id"] in infos and infos[o["id"]].get("fini") == 2:
+        if o["id"] in infos and infos[o["id"]].get("fini") == 3:
             continue
         try:
-            infos[o["id"]] = un_oiseau(o, par_oiseau, quant, lib, facteur)
+            infos[o["id"]] = un_oiseau(o, par_oiseau, quant, lib, facteur, av)
         except Exception as exc:  # noqa: BLE001
             print("erreur", o["id"], exc)
         if k % 10 == 0:
@@ -319,10 +424,10 @@ def main():
             fi = infos.get(o["id"], {})
             print(f"[{k + 1}/{len(oiseaux)}] {o['nom']} : {', '.join(c for c in fi if c not in ('wikidata', 'gbif', 'fini')) or 'rien'}")
     enregistrer(infos)
-    print("fini :", sum(1 for v in infos.values() if isinstance(v, dict) and v.get("fini") == 2), "oiseaux")
+    print("fini :", sum(1 for v in infos.values() if isinstance(v, dict) and v.get("fini") == 3), "oiseaux")
 
 
-def un_oiseau(o, par_oiseau, quant, lib, facteur):
+def un_oiseau(o, par_oiseau, quant, lib, facteur, av):
     if True:  # (un seul bloc)
         q = par_oiseau.get(o["id"])
         fiche = {"wikidata": q} if q else {}
@@ -362,12 +467,23 @@ def un_oiseau(o, par_oiseau, quant, lib, facteur):
                 if cle in fiche:
                     continue
                 if cle == "dimorphisme":
-                    fiche[cle] = {"valeur": v["valeur"], "source": f"Wikipédia en français (article « {titre} »)"}
+                    fiche[cle] = {"valeur": v["valeur"], "source": f"Wikipédia en français (article « {titre} »)", "preuve": v["phrase"]}
                     continue
-                fiche[cle] = {"min": v["min"], "max": v["max"], "source": f"Wikipédia en français (article « {titre} »)"}
+                fiche[cle] = {"min": v["min"], "max": v["max"], "source": f"Wikipédia en français (article « {titre} »)", "preuve": v["phrase"]}
                 if v.get("captivite"):
                     fiche[cle]["captivite"] = True
-        fiche["fini"] = 2
+        # AVONET : vérifie les chiffres, complète le poids, le régime, le milieu et le voyage
+        ref = ligne_avonet(av, o)
+        ecartes = []
+        verifier(fiche, ref, ecartes)
+        for cle in ("regime", "milieu"):
+            if cle not in fiche and ref.get(cle):
+                fiche[cle] = {"valeurs": [ref[cle]], "source": SRC_AVONET}
+        if ref.get("voyage"):
+            fiche["voyage"] = {"texte": ref["voyage"], "source": SRC_AVONET}
+        if ecartes:
+            fiche["ecartes"] = ecartes
+        fiche["fini"] = 3
         return fiche
 
 

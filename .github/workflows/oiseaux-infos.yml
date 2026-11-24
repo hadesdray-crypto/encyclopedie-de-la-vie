@@ -22,7 +22,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Collecter (Wikidata, GBIF, Wikipédia en français)
+      - run: pip install openpyxl
+      - name: Collecter (Wikidata, GBIF, AVONET, Wikipédia en français)
         run: |
           # 40 minutes au plus ; le fichier est enregistré au fur et à mesure, donc rien n'est perdu si ça s'arrête.
           timeout 40m python -u scripts/donnees/oiseaux-infos.py 2>&1 | tee oiseaux-infos-journal.txt || true
