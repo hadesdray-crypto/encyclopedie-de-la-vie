@@ -138,19 +138,27 @@ def wikispecies(lot):
 
 
 a_faire = [l for l in latins if "wikispecies" not in res[l]]
-for i in range(0, len(a_faire), 40):
+echecs = 0
+for i in range(0, len(a_faire), 25):
     if not reste():
         break
-    lot = a_faire[i:i + 40]
-    out = wikispecies(lot)
+    lot = a_faire[i:i + 25]
+    out = None
+    for essai in range(3):
+        out = wikispecies(lot)
+        if out is not None:
+            break
+        time.sleep(3)
     if out is None:
+        echecs += 1
         continue
     for l in lot:
         res[l]["wikispecies"] = out.get(l, [])
-    if i % 400 == 0:
+    if i % 250 == 0:
         enregistrer(res)
-    time.sleep(0.3)
+    time.sleep(1)
 enregistrer(res)
+print("wikispecies : lots échoués", echecs, flush=True)
 print("wikispecies fini", round(time.time() - DEBUT), "s", flush=True)
 
 
@@ -196,8 +204,7 @@ def col(l):
 
 
 par_nom("gbif", gbif, 8)
-par_nom("col", col, 6)
-print("col fini", round(time.time() - DEBUT), "s", flush=True)
+
 print("gbif fini", round(time.time() - DEBUT), "s", flush=True)
 # TAXREF refuse les machines de GitHub (403) : plus essayé ici.
 
@@ -225,7 +232,9 @@ def nb_accord(r):
     return max(c.values()) if c else 0
 
 
-todo = sorted([l for l in latins if "inaturalist" not in res[l] and 1 <= nb_accord(res[l]) < 3], key=lambda l: -nb_accord(res[l]))
+_nf = json.load(open("src/data/noms-fr.json"))
+_pas_fr = {e["latin"] for e in especes if e.get("langue") != "fr" and e["id"] not in _nf}
+todo = sorted([l for l in latins if l in _pas_fr and "inaturalist" not in res[l] and 1 <= nb_accord(res[l]) < 3], key=lambda l: -nb_accord(res[l]))
 for i in range(0, len(todo), 100):
     if not reste():
         break
