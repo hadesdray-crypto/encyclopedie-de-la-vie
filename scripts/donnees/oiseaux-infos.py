@@ -34,6 +34,7 @@ WDAPI = "https://www.wikidata.org/w/api.php"
 GBIF = "https://api.gbif.org/v1"
 WIKI = "https://fr.wikipedia.org/w/api.php"
 LOT = 30
+VERSION = 4  # on le monte quand la façon de calculer change : tous les oiseaux sont alors recalculés
 
 UICN = {  # élément Wikidata -> (code, nom en français)
     "Q211005": ("LC", "Préoccupation mineure"), "Q719675": ("NT", "Quasi menacé"), "Q278113": ("VU", "Vulnérable"),
@@ -413,7 +414,7 @@ def main():
         if time.time() - t0 > 2200:
             print("temps presque écoulé : on s'arrête, la prochaine fois on reprend")
             break
-        if o["id"] in infos and infos[o["id"]].get("fini") == 3:
+        if o["id"] in infos and infos[o["id"]].get("fini") == VERSION:
             continue
         try:
             infos[o["id"]] = un_oiseau(o, par_oiseau, quant, lib, facteur, av)
@@ -424,7 +425,7 @@ def main():
             fi = infos.get(o["id"], {})
             print(f"[{k + 1}/{len(oiseaux)}] {o['nom']} : {', '.join(c for c in fi if c not in ('wikidata', 'gbif', 'fini')) or 'rien'}")
     enregistrer(infos)
-    print("fini :", sum(1 for v in infos.values() if isinstance(v, dict) and v.get("fini") == 3), "oiseaux")
+    print("fini :", sum(1 for v in infos.values() if isinstance(v, dict) and v.get("fini") == VERSION), "oiseaux")
 
 
 def un_oiseau(o, par_oiseau, quant, lib, facteur, av):
@@ -490,7 +491,7 @@ def un_oiseau(o, par_oiseau, quant, lib, facteur, av):
             fiche["voyage"] = {"texte": ref["voyage"], "source": SRC_AVONET}
         if ecartes:
             print("  écarté pour", o["nom"], ":", "; ".join(ecartes))
-        fiche["fini"] = 3
+        fiche["fini"] = VERSION
         return fiche
 
 
