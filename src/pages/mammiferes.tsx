@@ -43,7 +43,7 @@ const ESTIMATIONS = estimations as Record<string, Record<string, Estimation>>;
 function NoteEstimation({ est }: { est: Estimation }) {
   return (
     <span className="mt-0.5 block text-xs font-extrabold text-[#7a5a8a]">
-      Estimé d'après {est.n} espèces du même genre{est.p ? ` · ± ${est.p} %` : ""}
+      Estimation, pas une mesure (d'après {est.n} espèce{est.n > 1 ? "s" : ""} du même genre{est.p ? ` · ± ${est.p} %` : ""})
     </span>
   );
 }
@@ -161,11 +161,25 @@ function Groupe({ g }: { g: (typeof GROUPES)[number] }) {
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
       <Entete siVide="/mammiferes" />
-      <p className="mt-4 text-center text-sm font-extrabold text-[#f0d090]"><a href="#/animaux" className="underline">Les animaux</a> · <a href="#/mammiferes" className="underline">Mammifères</a></p>
+      <Fil liens={[["/animaux", "Les animaux"], ["/mammiferes", "Mammifères"]]} />
       <Titre sous={g.phrase}>{g.nom}</Titre>
       <ChoixAffichage aff={aff} choisir={choisir} />
       <Tuiles aff={aff} items={items} />
     </main>
+  );
+}
+
+/** Le fil d'Ariane : des liens faciles à toucher (au moins 44 px de haut). */
+export function Fil({ liens }: { liens: [string, string][] }) {
+  return (
+    <nav aria-label="Où je suis" className="mt-2 flex flex-wrap items-center justify-center text-sm font-extrabold text-[#f0d090]">
+      {liens.map(([vers, nom], i) => (
+        <span key={vers} className="inline-flex items-center">
+          {i ? <span aria-hidden="true">·</span> : null}
+          <a href={`#${vers}`} className="inline-flex min-h-11 items-center px-2.5 underline">{nom}</a>
+        </span>
+      ))}
+    </nav>
   );
 }
 
@@ -190,7 +204,7 @@ function Ordre({ id }: { id: string }) {
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
       <Entete siVide={g ? `/mammiferes?groupe=${g.id}` : "/mammiferes"} />
-      <p className="mt-4 text-center text-sm font-extrabold text-[#f0d090]"><a href="#/mammiferes" className="underline">Mammifères</a>{g ? <> · <a href={`#/mammiferes?groupe=${g.id}`} className="underline">{g.nom}</a></> : null}</p>
+      <Fil liens={[["/mammiferes", "Mammifères"], ...(g ? [[`/mammiferes?groupe=${g.id}`, g.nom] as [string, string]] : [])]} />
       <Titre sous={ordre.phrase}>{ordre.nom}</Titre>
       <p className="text-center text-sm texte-doux">{id}</p>
       <ChoixAffichage aff={aff} choisir={choisir} />
@@ -207,7 +221,7 @@ function Famille({ id }: { id: string }) {
   return (
     <main className="mx-auto max-w-xl px-4 pt-4">
       <Entete siVide={`/mammiferes/o-${famille.ordre}`} />
-      <p className="mt-4 text-center text-sm font-extrabold text-[#f0d090]"><a href="#/mammiferes" className="underline">Mammifères</a> · <a href={`#/mammiferes/o-${famille.ordre}`} className="underline">{ordreDe(famille.ordre)?.nom}</a></p>
+      <Fil liens={[["/mammiferes", "Mammifères"], [`/mammiferes/o-${famille.ordre}`, ordreDe(famille.ordre)?.nom ?? ""]]} />
       <Titre sous={`${especes.length} espèces`}>{famille.nom}</Titre>
       <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
         {especes.slice(0, montre).map((e) => (
@@ -258,7 +272,7 @@ export function Fiche({ id, integre = false }: { id: string; integre?: boolean }
       <div className={`mx-auto mt-4 grid justify-center gap-4 ${grande?.imageFemelle ? "grid-cols-2" : "grid-cols-1"}`}>
         <figure className="text-center">
           <PhotoEntiere src={grande?.image ?? `m/${e.id}.webp`} id={e.id} nom={e.nom} className="medaillon-or mx-auto block size-40 overflow-hidden"><Portrait id={e.id} src={grande?.image} /></PhotoEntiere>
-          <p className="mt-1 text-[11px] texte-doux">Touche la photo pour la voir en entier.</p>
+          {A_PHOTO.has(e.id) || grande?.image || autre ? <p className="mt-1 text-[11px] texte-doux">Touche la photo pour la voir en entier.</p> : null}
           {grande?.imageFemelle ? <figcaption className="mt-2 text-sm">Mâle</figcaption> : null}
         </figure>
         {grande?.imageFemelle ? (
@@ -269,14 +283,14 @@ export function Fiche({ id, integre = false }: { id: string; integre?: boolean }
       <p className="text-center italic texte-doux">{e.latin}</p>
       <p className="text-center text-sm"><Mot id="nom-scientifique" /></p>
       {e.langue === "trad" ? <p className="mx-auto mt-1 max-w-sm text-center text-sm texte-doux">Pas encore de nom français officiel : nom traduit de l'anglais (« {e.nomAnglais} ») par Claude, l'IA qui a fabriqué l'application.</p> : e.langue !== "fr" ? <p className="mt-1 text-center text-sm texte-doux">Nom anglais : le nom français est en cours.</p> : null}
-      <p className="mt-2 text-center text-sm font-extrabold text-[#f0d090]"><a href={`#/mammiferes/f-${e.famille}`} className="underline">{FAMILLES[e.famille]?.nom}</a> · <a href={`#/mammiferes/o-${e.ordre}`} className="underline">{ordreDe(e.ordre)?.nom}</a></p>
+      <Fil liens={[[`/mammiferes/f-${e.famille}`, FAMILLES[e.famille]?.nom ?? ""], [`/mammiferes/o-${e.ordre}`, ordreDe(e.ordre)?.nom ?? ""]]} />
       <div className="mt-3 flex justify-center">
         <Ecouter gros texte={[e.nom, grande?.phrase, `Répartition. ${vie?.ou ?? e.ou}`, regime ? `Régime. ${regime.nom}. ${regime.explique}` : "Régime. Mal connu.", `Portée. ${vie?.bebes ?? e.portee ?? "Mal connu."}`, `Gestation. ${vie?.gestation ?? e.gestation ?? "Mal connu."}`, `Longévité. ${grande?.vie ?? e.longevite ?? "Mal connu."}`, `Statut. ${e.statut ?? "Non évalué."}`].filter(Boolean).join(" ")} />
       </div>
       {e.disparue ? <p className="mt-2 text-center font-extrabold text-[#f3a0a0]">Espèce disparue.</p> : null}
       {e.domestique ? <p className="mt-2 text-center font-extrabold">Espèce domestique.</p> : null}
       {e.latin === "Canis familiaris" || e.latin === "Felis catus" ? (
-        <a href={`#/compagnons/${e.latin === "Canis familiaris" ? "chiens" : "chats"}`} className="bouton-bois mx-auto mt-3 flex w-max items-center gap-2 rounded-full px-5 py-2.5 font-extrabold">
+        <a href={`#/compagnons/${e.latin === "Canis familiaris" ? "chiens" : "chats"}`} className="bouton-bois mx-auto mt-3 flex max-w-full items-center justify-center gap-2 rounded-3xl px-5 py-2.5 text-center font-extrabold">
           {e.latin === "Canis familiaris" ? "Toutes les races de chiens" : "Toutes les races de chats"} · le carnet de Plume
         </a>
       ) : null}
@@ -284,7 +298,7 @@ export function Fiche({ id, integre = false }: { id: string; integre?: boolean }
       {autre ? <p className="mx-auto mt-3 max-w-sm text-center text-lg"><Texte>{autre.phrase}</Texte></p> : null}
       {autre?.dessin ? <p className="mt-1 text-center text-[11px] texte-doux">Dessin original fait pour l'application : ce n'est pas une photo.</p> : null}
       {CREDITS_PHOTOS[e.id] && !grande ? <p className="mt-1 text-center text-[11px] texte-doux">Photo : {credit(CREDITS_PHOTOS[e.id])}</p> : null}
-      {!CREDITS_PHOTOS[e.id] && A_PHOTO.has(e.id) && !grande ? <p className="mt-1 text-center text-[10px] texte-doux">Source inconnue.</p> : null}
+      {!CREDITS_PHOTOS[e.id] && A_PHOTO.has(e.id) && !grande ? <p className="mt-1 text-center text-[10px] texte-doux">Source non connue.</p> : null}
       {GALERIE[e.id]?.length ? (
         <div className="mt-4 grid grid-cols-2 gap-3">
           {GALERIE[e.id].map((c, i) => (
@@ -299,7 +313,7 @@ export function Fiche({ id, integre = false }: { id: string; integre?: boolean }
       <p className="mt-5 text-center font-display text-2xl text-[#f3d48a]">L'essentiel</p>
       <dl className="mt-2 space-y-3">
         <Rubrique mot="cri">
-          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.webm`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p>{VERIFIES.has(e.id) ? <p className="mt-1 text-xs font-extrabold">Cri vérifié : enregistrement d'archive scientifique.</p> : <p className="mt-1 text-xs font-extrabold text-[#8d4e1f]">Pas encore vérifié : on entend peut-être d'autres animaux derrière.</p>}</>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
+          {CRIS.has(e.id) ? (<><audio controls preload="none" src={`s/${e.id}.webm`} className="mt-2 w-full" /><p className="mt-1 text-xs">{credit(CREDITS[e.id])}</p>{VERIFIES.has(e.id) ? <p className="mt-1 text-xs font-extrabold">Cri vérifié : enregistrement d'archive scientifique.</p> : <p className="mt-2 rounded-2xl border-2 border-[#b5562a] bg-[#fff1d0] px-3 py-1.5 text-sm font-extrabold text-[#7a2d00]">Pas encore vérifié : on entend peut-être d'autres animaux derrière.</p>}</>) : <p className="font-display text-3xl">NC <span className="font-sans text-base font-extrabold">non connu</span></p>}
         </Rubrique>
         <Rubrique mot="regime" picto={regime ? <span className="grid size-11 place-items-center rounded-full bg-white text-2xl shadow-[0_0_0_3px_#b5562a]">{EMOJI_REGIME[e.regime ?? vie?.regime ?? regimeEstime?.t ?? ""] ?? "🍽️"}</span> : undefined}>
           <div className="font-display text-2xl">{regime ? (regimeEstime ? `Sans doute ${regime.nom.toLowerCase()}` : regime.nom) : "Mal connu."}</div>
@@ -340,7 +354,7 @@ export function Fiche({ id, integre = false }: { id: string; integre?: boolean }
         <Volet titre="Est-il menacé ?" picto="statut">
           <dl>
         <Rubrique mot="statut" picto={<span className="grid size-11 place-items-center rounded-full text-white" style={{ background: statutDe(e.statut).couleur }}><LuShield className="size-6" /></span>}>
-          <span className="font-extrabold" style={{ color: statutDe(e.statut).couleur }}>{statutDe(e.statut).court}</span> <span className="text-sm">({e.statut ?? "Non évalué"})</span>
+          <span className="font-extrabold" style={{ color: statutDe(e.statut).couleur }}>{statutDe(e.statut).court}</span>{(e.statut ?? "Non évalué").toLowerCase() === statutDe(e.statut).court.toLowerCase() ? null : <span className="text-sm"> ({e.statut ?? "Non évalué"})</span>}
         </Rubrique>
           </dl>
         </Volet>
