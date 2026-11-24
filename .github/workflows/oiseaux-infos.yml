@@ -1,0 +1,37 @@
+name: Infos des oiseaux (longueur, poids, régime, statut…)
+
+on:
+  push:
+    branches: [donnees-oiseaux]
+    paths: [scripts/donnees/oiseaux-infos.py]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oiseaux-infos
+  cancel-in-progress: false
+
+jobs:
+  infos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Collecter (Wikidata, GBIF, Wikipédia en français)
+        run: |
+          # 40 minutes au plus ; le fichier est enregistré au fur et à mesure, donc rien n'est perdu si ça s'arrête.
+          timeout 40m python -u scripts/donnees/oiseaux-infos.py 2>&1 | tee oiseaux-infos-journal.txt || true
+      - name: Enregistrer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
+          git add src/data/oiseaux-infos.json
+          git diff --cached --quiet && echo "rien de nouveau" && exit 0
+          git commit -q -m "Données : infos des oiseaux (Wikidata, GBIF, Wikipédia)"
+          git pull --rebase -X theirs origin donnees-oiseaux || true
+          git push origin HEAD:donnees-oiseaux
