@@ -26,7 +26,7 @@
    "oreilles": "Droites, petites, attachées haut.",
    "queue": "Non coupée.",
    "caractere": "Intrépide, attentif, fidèle.",
-   "intro": "L'Affenpinscher est un chien d'origine allemande dont le nom signifie « griffon-singe ». Il est également appelé Zwergaffen. L'espérance moyenne de vie pour cette race est d'environ 15 ans.[réf. souhaitée]",
+   "intro": "L'Affenpinscher est un chien d'origine allemande dont le nom signifie « griffon-singe ». Il est également appelé Zwergaffen. L'espérance moyenne de vie pour cette race est d'environ 15 ans.",
    "histoire": "Cette race de chiens originaire d'Allemagne est très ancienne. À l'origine c'était probablement des chiens de famille. Des chiens semblables ont été représentés dès les XVe et XVIe siècles par les artistes Jan Van Eyck et Albrecht Dürer.",
    "groupe": "2",
    "fci": "186",
@@ -210,7 +210,7 @@
    "oreilles": "petites, tombantes.",
    "queue": "non coupée, tombante.",
    "caractere": "Chien de garde, protecteur mais très affectueux et fidèle envers son maître.",
-   "intro": "L'Alapaha Blue Blood Bulldog est une race de chiens. Descendant du Old English Bulldog",
+   "intro": "L'Alapaha Blue Blood Bulldog est une race de chiens.",
    "histoire": "Cette race de chien trouve son origine dans la région de la rivière Alapaha dans la Géorgie aux États-Unis, plus précisément au sud de cette région. Il gardait les plantations dans cette région. Cette race a été sauvée in extremis de l'extinction grâce au travail assidu de quelques passionnés.",
    "vie": "environ 13 ans",
    "photos": [
@@ -348,8 +348,8 @@
    "poids": "4,5 à 14 kg",
    "poil": "Aucun",
    "robe": "Variété de couleurs, avec ou sans taches blanches",
-   "intro": "L'American Hairless terrier est une race de chien anciennement considérée comme une variante du Rat Terrier (en). Le AHT n'est pas reconnu par la FCI mais il appartient au Groupe des terriers. Il a été reconnu le 1er janvier 2004 par le United Kennel Club qui considère l'AHT comme une race séparée de terriers. C'est un chien de travail intelligent, social et énergique, l'American Hairless terrier est souvent catégorisé comme une race pouvant limiter les risques d'allergies.",
-   "histoire": "Les origines américaines de l'American Hairless terrier remontent à une race croisée de terrier appelée Feist (chien) (en) qui fut importé d'Europe jusqu'en Amérique du Nord dès le XVIIIe siècle. À la fin des années 1800, la race de chien Rat Terrier (en) fut développée à partir du croisement du (chien) Feist avec des lignées de Beagle, Petit lévrier italien et de Pinscher nain. La race précise de l'American Hairless terrier débuta en 1972 à la naissance d'un chiot nu, baptisée Joséphine, dans une portée de Rat Terrier en Louisiane, aux États-Unis.",
+   "intro": "L'American Hairless terrier est une race de chien anciennement considérée comme une variante du Rat Terrier. Le AHT n'est pas reconnu par la FCI mais il appartient au Groupe des terriers. Il a été reconnu le 1er janvier 2004 par le United Kennel Club qui considère l'AHT comme une race séparée de terriers. C'est un chien de travail intelligent, social et énergique, l'American Hairless terrier est souvent catégorisé comme une race pouvant limiter les risques d'allergies.",
+   "histoire": "Les origines américaines de l'American Hairless terrier remontent à une race croisée de terrier appelée Feist (chien) qui fut importé d'Europe jusqu'en Amérique du Nord dès le XVIIIe siècle. À la fin des années 1800, la race de chien Rat Terrier fut développée à partir du croisement du (chien) Feist avec des lignées de Beagle, Petit lévrier italien et de Pinscher nain. La race précise de l'American Hairless terrier débuta en 1972 à la naissance d'un chiot nu, baptisée Joséphine, dans une portée de Rat Terrier en Louisiane, aux États-Unis.",
    "vie_texte": "Espérance de vie : 14 à 16 ans.",
    "vie": "environ 10 ans",
    "photos": [
@@ -392,7 +392,7 @@
     {
      "fichier": "000 American Pit Bull Terrier.jpg",
      "src": "chiens/american-pit-bull-terrier-1.webp",
-     "auteur": "https://www.flickr.com/people/geoggirl/",
+     "auteur": "geoggirl",
      "licence": "CC BY 2.0",
      "page": "https://commons.wikimedia.org/wiki/File:000_American_Pit_Bull_Terrier.jpg"
     },
@@ -422,7 +422,7 @@
    "oreilles": "En demi rose, sont souvent taillées illégalement pour obtenir un port droit.",
    "queue": "Longue, souvent basse.",
    "intro": "L’American Staffordshire terrier, aussi connu sous les diminutifs Am staff, Amstaff ou Staff, est un chien de type terrier classé dans le groupe 3 selon la Fédération cynologique internationale. Étroitement apparenté et assimilé par la loi en France à l'American Pit Bull Terrier, l'American Staffordshire fait partie en France, depuis janvier 1999, des races de 2e catégorie (chien de garde ou de défense) pour autant qu'il soit inscrit au Livre des origines français (LOF) et de 1re catégorie (chien d'attaque) s'il ne l'est pas. L'achat, la vente et la détention sont donc soumis à conditions strictes pour tout futur détenteur ou détenteur d'un chien de catégories 1 et 2. Dans d'autres pays, comme la Belgique et les États-Unis, les American Staffordshire terriers et les Pit Bulls sont considérés comme deux races distinctes.",
-   "histoire": "Depuis longtemps[Quand ?], des combats furent organisés opposant divers animaux, notamment des taureaux, à des chiens de combat. Les chiens utilisés étaient principalement des Bulldogs. Ceux de l'époque étaient cependant différents des Bulldogs actuels ; ils étaient plus grands et plus puissants.",
+   "histoire": "Depuis longtemps, des combats furent organisés opposant divers animaux, notamment des taureaux, à des chiens de combat. Les chiens utilisés étaient principalement des Bulldogs. Ceux de l'époque étaient cependant différents des Bulldogs actuels ; ils étaient plus grands et plus puissants.",
    "vie_texte": "L'American Staffordshire Terrier a une espérance de vie moyenne de 12 à 16 ans.",
    "groupe": "3",
    "fci": "286",
@@ -438,7 +438,7 @@
     {
      "fichier": "American Staffordshire Terrier(Cleo).JPG",
      "src": "chiens/american-staffordshire-terrier-2.webp",
-     "auteur": "[User:Conny48592]",
+     "auteur": "Conny48592",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:American_Staffordshire_Terrier(Cleo).JPG"
     }
@@ -713,7 +713,7 @@
    "silhouette": "Musclé, athlétique",
    "robe": "Bleu, noir, atigré",
    "caractere": "Loyal, protecteur, courageux",
-   "intro": "Le Basati Alaunt, également connu sous le nom de Presa Navarro, est une race canine navarre en cours de reconnaissance en Espagne par le Ministère de l'Agriculture. Il est aussi reconnu comme un groupe ethnique canin par la Real Sociedad Canina de España (es) (RSCE).",
+   "intro": "Le Basati Alaunt, également connu sous le nom de Presa Navarro, est une race canine navarre en cours de reconnaissance en Espagne par le Ministère de l'Agriculture. Il est aussi reconnu comme un groupe ethnique canin par la Real Sociedad Canina de España (RSCE).",
    "histoire": "L'origine du Basati Alaunt remonte au XXe siècle. En 1992, un programme de sélection a été initié afin d'établir une lignée fonctionnelle de chiens de prise adaptés à la chasse au gros gibier. Ce projet a sélectionné des chiens sans race spécifique mais possédant des aptitudes naturelles pour cette activité.",
    "photos": [
     {
@@ -747,7 +747,7 @@
    "queue": "Longue, d'insertion haute, s'enroule en boucle serrée.",
    "caractere": "calme, indépendant, intelligent.",
    "intro": "Le Basenji, appelé aussi parfois Terrier Nyam-Nyam, ou Terrier du Congo, est une race de chien originaire d'Afrique centrale, et plus précisément de la République démocratique du Congo. Il tire son nom du lingala Mbwá na basɛ́nzi, signifiant « Chien des sauvages ».",
-   "histoire": "Le basenji est une race très ancienne, qui existe depuis des milliers d'années. On a retrouvé des représentations d'un chien lui ressemblant dans plusieurs tombeaux de pharaons. Il semble que cette race ne soit arrivée en Europe qu'au XXe siècle[réf. nécessaire].",
+   "histoire": "Le basenji est une race très ancienne, qui existe depuis des milliers d'années. On a retrouvé des représentations d'un chien lui ressemblant dans plusieurs tombeaux de pharaons. Il semble que cette race ne soit arrivée en Europe qu'au XXe siècle.",
    "groupe": "5",
    "fci": "43",
    "portee": "environ 4,8 petits",
@@ -780,7 +780,7 @@
    "queue": "Portée en sabre, atteint tout juste le sol.",
    "caractere": "Fin de nez, gai, très affectueux.",
    "intro": "Le basset artésien normand est une race de chien de chasse d'origine française. C'est un chien courant de type basset, long et bas sur pattes, de couleur tricolore ou bicolore. Il est utilisé comme un chien de chasse pour le petit gibier et comme chien de compagnie.",
-   "histoire": "Créé au XIXe siècle, par Jean-Emmanuel Le Coulteux de Canteleu et Louis Lane[réf. nécessaire], le basset artésien normand résulte de croisements entre deux races de chiens aujourd'hui disparues : le basset de Normandie et le basset d'Artois (issus du Chien d'Artois). Le premier standard date de 1898. Il est modifié en 1910 et en 1923.",
+   "histoire": "Créé au XIXe siècle, par Jean-Emmanuel Le Coulteux de Canteleu et Louis Lane, le basset artésien normand résulte de croisements entre deux races de chiens aujourd'hui disparues : le basset de Normandie et le basset d'Artois (issus du Chien d'Artois). Le premier standard date de 1898. Il est modifié en 1910 et en 1923.",
    "groupe": "6",
    "fci": "34",
    "photos": [
@@ -824,7 +824,7 @@
     {
      "fichier": "Basset bleu de Gascogne.jpg",
      "src": "chiens/basset-bleu-de-gascogne-1.webp",
-     "auteur": "M.W. Reichert (Eingestellt von Caronna 10:10, 25 January 2006)",
+     "auteur": "M.W. Reichert",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Basset_bleu_de_Gascogne.jpg"
     },
@@ -861,7 +861,7 @@
     {
      "fichier": "Westfälische Dachsbracke tricolor.jpg",
      "src": "chiens/basset-de-westphalie-1.webp",
-     "auteur": "Westfälische-dachsbracke.JPG: Stute.s derivative work: Anka Friedrich (talk)",
+     "auteur": "Stute.s",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Westf%C3%A4lische_Dachsbracke_tricolor.jpg"
     },
@@ -892,7 +892,7 @@
    "queue": "En brosse, atteignant tout juste le sol.",
    "caractere": "Impavide, éveillé et aimable",
    "intro": "Le basset des Alpes (Alpenländische Dachsbracke) est une race de chiens originaire d'Autriche. C'est un chien courant de type basset, construit dans la robustesse. La robe à poil court est fauve unicolore ou noire et feu. C'est un chien de chasse notamment utilisé comme chien de recherche au sang des ongulés ou comme chien courant sur le lièvre et le renard.",
-   "histoire": "Les chiens de chasse employés dans l'Antiquité évoquent le type du basset des Alpes. Le basset des Alpes serait originaire d'Allemagne, plus précisément des monts Métallifères entre la Bohême et la Saxe. La race se répandit très vite et fut initialement connue sous le nom de braque de Mauersberg.[réf. nécessaire] En 1881 et 1885, Rodolphe de Habsbourg demande d'emmener des « dachsbracken », littéralement des « chiens courants à pattes courtes », pour des battues en Turquie et en Égypte à ses chasseurs professionnels de Mürzsteg et d'Ischl.",
+   "histoire": "Les chiens de chasse employés dans l'Antiquité évoquent le type du basset des Alpes. Le basset des Alpes serait originaire d'Allemagne, plus précisément des monts Métallifères entre la Bohême et la Saxe. La race se répandit très vite et fut initialement connue sous le nom de braque de Mauersberg. En 1881 et 1885, Rodolphe de Habsbourg demande d'emmener des « dachsbracken », littéralement des « chiens courants à pattes courtes », pour des battues en Turquie et en Égypte à ses chasseurs professionnels de Mürzsteg et d'Ischl.",
    "groupe": "6",
    "fci": "254",
    "vie": "environ 14 ans",
@@ -976,7 +976,7 @@
     {
      "fichier": "Bvdb-bassethound2.jpg",
      "src": "chiens/basset-hound-1.webp",
-     "auteur": "Bonnie van den Born, http://www.bonfoto.nl",
+     "auteur": "Bonnie van den Born",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Bvdb-bassethound2.jpg"
     },
@@ -1372,7 +1372,7 @@
     {
      "fichier": "Tervueren.jpg",
      "src": "chiens/berger-belge-tervueren-1.webp",
-     "auteur": "The original uploader was UFA at Swedish Wikipedia.",
+     "auteur": "UFA",
      "licence": "CC BY-SA 2.5",
      "page": "https://commons.wikimedia.org/wiki/File:Tervueren.jpg"
     },
@@ -1493,7 +1493,7 @@
     {
      "fichier": "Среднеазиатские овчарки (кобель и сука).jpg",
      "src": "chiens/berger-d-asie-centrale-1.webp",
-     "auteur": "http://kara-yulduz.com/asian_shepherd_dogs/used_in_breeding/sheih (Webpage with photo &amp; СС license)",
+     "auteur": "Auteur non connu",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:%D0%A1%D1%80%D0%B5%D0%B4%D0%BD%D0%B5%D0%B0%D0%B7%D0%B8%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B5_%D0%BE%D0%B2%D1%87%D0%B0%D1%80%D0%BA%D0%B8_(%D0%BA%D0%BE%D0%B1%D0%B5%D0%BB%D1%8C_%D0%B8_%D1%81%D1%83%D0%BA%D0%B0).jpg"
     },
@@ -1688,7 +1688,7 @@
     {
      "fichier": "Briard_fauve.JPG",
      "src": "chiens/berger-de-brie-1.webp",
-     "auteur": "Birgit Balzer, Deutschland (uploaded by Caronna 17:00, 10 Feb 2005 (UTC))",
+     "auteur": "Birgit Balzer, Deutschland",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Briard_fauve.JPG"
     }
@@ -1725,7 +1725,7 @@
     {
      "fichier": "RUSMARKA-1954.jpg",
      "src": "chiens/berger-de-russie-meridionale-2.webp",
-     "auteur": "Stamp issuing authority - MARKA Publishing &amp; Trading Centre. Printer - Association GOZNAK of the Ministry of Finance",
+     "auteur": "MARKA Publishing & Trading Centre",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:RUSMARKA-1954.jpg"
     }
@@ -1774,7 +1774,7 @@
    "yeux": "plutôt petits, légèrement en amande,bien centrés, légèrement obliques, vifs",
    "oreilles": "cassées, réduites par rapport à la tête et triangulaires",
    "queue": "attachée à l’horizontale et de section circulaire, assez épaisse à sa racine.",
-   "intro": "Le berger de Majorque est un chien de berger, de garde et de défense originaire d'Espagne. Il fut reconnu au XVIIIe siècle. Il semble avoir été utilisé depuis des époques lointaines dans la garde de toutes sortes d'animaux : dindes, porcs, bovins, chèvres et essentiellement ovins, et également dans la garde des maisons et des biens. Ses origines exactes sont floues mais on suppose qu'il est arrivé au XIIIe siècle avec la conquête du roi Jacques Ier ou peu de temps après[réf. nécessaire], et au fil des siècles, les bergers et les ruraux de Majorque lui ont conféré des caractéristiques très propres qui se sont différenciées des autres chiens des îles et d'Europe.",
+   "intro": "Le berger de Majorque est un chien de berger, de garde et de défense originaire d'Espagne. Il fut reconnu au XVIIIe siècle. Il semble avoir été utilisé depuis des époques lointaines dans la garde de toutes sortes d'animaux : dindes, porcs, bovins, chèvres et essentiellement ovins, et également dans la garde des maisons et des biens. Ses origines exactes sont floues mais on suppose qu'il est arrivé au XIIIe siècle avec la conquête du roi Jacques Ier ou peu de temps après, et au fil des siècles, les bergers et les ruraux de Majorque lui ont conféré des caractéristiques très propres qui se sont différenciées des autres chiens des îles et d'Europe.",
    "groupe": "1",
    "fci": "321",
    "portee": "environ 1,1 petits",
@@ -1938,7 +1938,7 @@
     {
      "fichier": "Berger-des-Pyrenees Adeux 0565x0404.jpg",
      "src": "chiens/berger-des-pyrenees-a-poil-long-1.webp",
-     "auteur": "No machine-readable author provided. KeJa~commonswiki assumed (based on copyright claims).",
+     "auteur": "KeJa",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Berger-des-Pyrenees_Adeux_0565x0404.jpg"
     },
@@ -1996,14 +1996,14 @@
    "queue": "Attachée haut. En forme de faucille, de crochet ou d’anneau.",
    "caractere": "Type de très grande activité nerveuse, fort, équilibré, calme, mais indépendant, donc difficile à éduquer.",
    "intro": "Le berger du Caucase (en géorgien : ქართული ნაგაზი Kartuli nagazi, ou კავკასიური ნაგაზი) est une race de chien molossoïde, originaire du Caucase, au versant sud (Géorgie). Au cours de l'histoire, son élevage s'est répandu dans l'ancien empire russe et l'URSS. La Fédération cynologique internationale le reconnaît sous le nom russe de kavkazskaïa ovtcharka (Кавказская овчарка).",
-   "histoire": "Le nom de berger du Caucase, est un nom assez récent d'après plusieurs sources[Lesquelles ?]. Le berger du Caucase est un croisement entre des bergers géorgiens (Berger de Khazbeg, en géorgien: ყაზბეგური ნაგაზი) et des gamprs arméniens de type montagne (poils longs). On le connaissait en Géorgie, sous le nom de \"Tarti\" (en géorgien : თართი), comme le précise Soulkhan Saba Orbéliani.",
+   "histoire": "Le nom de berger du Caucase, est un nom assez récent d'après plusieurs sources. Le berger du Caucase est un croisement entre des bergers géorgiens (Berger de Khazbeg, en géorgien: ყაზბეგური ნაგაზი) et des gamprs arméniens de type montagne (poils longs). On le connaissait en Géorgie, sous le nom de \"Tarti\" (en géorgien : თართი), comme le précise Soulkhan Saba Orbéliani.",
    "groupe": "2",
    "fci": "328",
    "photos": [
     {
      "fichier": "RUSMARKA-1955.jpg",
      "src": "chiens/berger-du-caucase-1.webp",
-     "auteur": "Stamp issuing authority - MARKA Publishing &amp; Trading Centre. Printer - Association GOZNAK of the Ministry of Finance",
+     "auteur": "MARKA Publishing & Trading Centre",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:RUSMARKA-1955.jpg"
     },
@@ -2296,7 +2296,7 @@
     {
      "fichier": "maltais.jpg",
      "src": "chiens/bichon-maltais-2.webp",
-     "auteur": "No machine-readable author provided. Jeanmass assumed (based on copyright claims).",
+     "auteur": "Jeanmass",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Maltais.jpg"
     }
@@ -2437,7 +2437,7 @@
     {
      "fichier": "Bobtail.JPG",
      "src": "chiens/bobtail-1.webp",
-     "auteur": "Mona (uploaded by Caronna 08:14, 15 Apr 2005 (UTC))",
+     "auteur": "Mona",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Bobtail.JPG"
     }
@@ -2513,7 +2513,7 @@
    "nom": "Border Terrier",
    "wiki": "Border Terrier",
    "taille": "30 à 40 cm. Il n'existe pas de taille dans le standard. Le garde fou du standard est de pouvoir cercler le chien derrière les épaules avec les 2 mains d'un homme. (+ le poids)",
-   "poids": "5,9 à 7,1 kg. (M), 5,1 à 6,4 kg (F) https://www.fci.be/Nomenclature/Standards/010g03-fr.pdf",
+   "poids": "5,9 à 7,1 kg. (M), 5,1 à 6,4 kg (F)",
    "poil": "Le poil est dur et dense et le sous-poil serré.",
    "robe": "Rouge, froment, grisonné et feu ou bleu et feu.",
    "tete": "ressemble à une loutre",
@@ -2590,7 +2590,7 @@
    "queue": "Courte, en chignon",
    "caractere": "Sociable, gai, joueur, possessif, éveillé",
    "intro": "Le bouledogue français est une race canine de la famille des molosses qui apparut d'abord en Orient avec le molosse de Sumer, et dont les principales caractéristiques sont un crâne brachycéphale, un corps trapu et court près du sol, des babines pendantes et une imposante musculature. Il descend du bulldog anglais, dont il tire certaines particularités, comme le museau aplati et la mâchoire puissante. Le poil est assez court, la robe parfois bringée. Il a de longues oreilles pointées vers le haut et rondes.",
-   "histoire": "Les fossiles qui pourraient permettre de situer la localisation d'origine des chiens de ce type sont rares. En revanche, il existe des indices anciens de leur existence : les Assyriens ont laissé des bas-reliefs datés du Ve siècle av. J.-C., où apparaissent des chiens de ce type, proches des chiens du Tibet[réf. nécessaire].",
+   "histoire": "Les fossiles qui pourraient permettre de situer la localisation d'origine des chiens de ce type sont rares. En revanche, il existe des indices anciens de leur existence : les Assyriens ont laissé des bas-reliefs datés du Ve siècle av. J.-C., où apparaissent des chiens de ce type, proches des chiens du Tibet.",
    "groupe": "9",
    "fci": "101",
    "vie": "environ 11 ans",
@@ -2877,7 +2877,7 @@
     {
      "fichier": "Boykin Spaniel Cropped.jpg",
      "src": "chiens/boykin-spaniel-2.webp",
-     "auteur": "Boykin_Spaniel_Winter.jpg: Sarah and Jason derivative work: Miyagawa (talk)",
+     "auteur": "Sarah and Jason",
      "licence": "CC BY-SA 2.0",
      "page": "https://commons.wikimedia.org/wiki/File:Boykin_Spaniel_Cropped.jpg"
     }
@@ -3077,7 +3077,7 @@
     {
      "fichier": "Duitse staande korthaar 10-10-2.jpg",
      "src": "chiens/braque-allemand-a-poil-court-1.webp",
-     "auteur": "Bonnie van den Born, http://www.bonfoto.nl",
+     "auteur": "Bonnie van den Born",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Duitse_staande_korthaar_10-10-2.jpg"
     },
@@ -3268,14 +3268,14 @@
    "oreilles": "Longueur moyenne, tombantes.",
    "queue": "Écourtée ou non.",
    "caractere": "Intelligent, obéissant et très attaché à son maître.",
-   "intro": "Le braque français est une race de chiens originaire du sud-ouest de la France. Il s'agit d'un braque élevé dans le sud-ouest de la France depuis des centaines d'années. C'est un chien de chasse et d'arrêt qui existe sous deux standards : Le braque français, type Pyrénées : de petite taille Le braque français, type Gascogne : de grande taille",
+   "intro": "Le braque français est une race de chiens originaire du sud-ouest de la France. Il s'agit d'un braque élevé dans le sud-ouest de la France depuis des centaines d'années.",
    "groupe": "7",
    "fci": "133134",
    "photos": [
     {
      "fichier": "0805 braque francais text.jpg",
      "src": "chiens/braque-francais-1.webp",
-     "auteur": "Johan &amp; Maria Michaëlsson",
+     "auteur": "Johan & Maria Michaëlsson",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:0805_braque_francais_text.jpg"
     },
@@ -3350,7 +3350,7 @@
     {
      "fichier": "0805 braque francais text.jpg",
      "src": "chiens/braque-francais-type-pyrenees-2.webp",
-     "auteur": "Johan &amp; Maria Michaëlsson",
+     "auteur": "Johan & Maria Michaëlsson",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:0805_braque_francais_text.jpg"
     }
@@ -3599,7 +3599,7 @@
     {
      "fichier": "Broholmer.JPG",
      "src": "chiens/broholmer-2.webp",
-     "auteur": "No machine-readable author provided. Ivarr~commonswiki assumed (based on copyright claims).",
+     "auteur": "Ivarr",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:Broholmer.JPG"
     }
@@ -3723,7 +3723,7 @@
    "queue": "Attachée bas, la queue part en saillie, plutôt droite, puis s’incline vers le bas. Elle est ronde, lisse et dépourvue de frange ou de poils rudes. De longueur modérée – plutôt courte que longue – épaisse à la base, elle s’amincit rapidement en une fine pointe. Elle est portée bas, sans courbe marquée vers le haut à l’extrémité. Elle n’est jamais portée au-dessus du dos.",
    "caractere": "Donne une impression de détermination, de force et d’activité. Vif, hardi, fidèle, digne de confiance, courageux, doué d’une nature affectueuse, il est aussi très docile et gentil avec les enfants, même dès le plus jeune âge.",
    "intro": "Le bouledogue ou bulldog anglais est une race de chien du type molosse. Le bulldog anglais (littéralement, en anglais, « chien-taureau ») est un chien trouvant naturellement son origine en Grande-Bretagne. Son apparition a été favorisée par le développement d'un sport apparu au XIIIe siècle : le combat entre chien et taureau désigné en anglais comme bullbaiting.",
-   "histoire": "À la suite de l'interdiction du bullbaiting, en 1835, le bulldog anglais disparait quasiment, jusqu’à ce que des passionnés de cette race tels que Bill George (en) se mobilisent pour la sauver. Celle-ci est remaniée de façon à produire un chien équilibré dans son caractère et son comportement. Ainsi le redouté combattant des arènes qui défiait les taureaux devient un chien peu agressif, un animal de compagnie réputé au contraire pour son tempérament peu actif.",
+   "histoire": "À la suite de l'interdiction du bullbaiting, en 1835, le bulldog anglais disparait quasiment, jusqu’à ce que des passionnés de cette race tels que Bill George se mobilisent pour la sauver. Celle-ci est remaniée de façon à produire un chien équilibré dans son caractère et son comportement. Ainsi le redouté combattant des arènes qui défiait les taureaux devient un chien peu agressif, un animal de compagnie réputé au contraire pour son tempérament peu actif.",
    "groupe": "2",
    "portee": "environ 5,4 petits",
    "photos": [
@@ -3768,7 +3768,7 @@
    "oreilles": "tombantes de chaque côté de la tête",
    "queue": "tombante, en queue de serpent",
    "caractere": "Bon gardien, calme et loyal",
-   "intro": "Le bullmastiff (parfois orthographié bull mastiff) est un dogue d'origine britannique. La pression de la mâchoire du bullmastiff peut atteindre 552 livres-force par pouce carré soit 38,8 kgf/cm2.[réf. nécessaire]",
+   "intro": "Le bullmastiff (parfois orthographié bull mastiff) est un dogue d'origine britannique. La pression de la mâchoire du bullmastiff peut atteindre 552 livres-force par pouce carré soit 38,8 kgf/cm2.",
    "vie_texte": "Durée de vie : 7 ans en moyenne, selon les sondages d’éleveurs et de propriétaires.",
    "groupe": "2",
    "fci": "157",
@@ -3783,7 +3783,7 @@
     {
      "fichier": "CURRO PQ OESTE.JPG",
      "src": "chiens/bullmastiff-2.webp",
-     "auteur": "No machine-readable author provided. Chrisdelimanetto assumed (based on copyright claims).",
+     "auteur": "Chrisdelimanetto",
      "licence": "CC BY-SA 2.5",
      "page": "https://commons.wikimedia.org/wiki/File:CURRO_PQ_OESTE.JPG"
     }
@@ -3947,7 +3947,7 @@
    "silhouette": "variable",
    "robe": "Frisé : bouclé ou cordé",
    "caractere": "comique, calme, affectueux, sportif ou chien de salon en fonction de la taille",
-   "intro": "Le caniche est une race de chiens originaire de France selon la Fédération cynologique internationale (FCI) et d'Allemagne selon l'American Kennel Club (AKC) et The Kennel Club (KC). C'était autrefois un chien adapté à la chasse au canard dans l'eau, ce qui explique le toilettage « en lion » qui lui est souvent appliqué, et qui était fort à la mode à la Belle Époque, il descend du barbet. Régulièrement utilisé dans différents domaines, comme animal de cirque, chien de chasse, chien-guide d'aveugle, chien d'agility ou chien de recherche, il est très polyvalent et est classé parmi les trois races canines les plus intelligentes (cf. livre The Intelligence of Dogs (en)). Sa durée de vie moyenne varie entre 12 et 15 ans.",
+   "intro": "Le caniche est une race de chiens originaire de France selon la Fédération cynologique internationale (FCI) et d'Allemagne selon l'American Kennel Club (AKC) et The Kennel Club (KC). C'était autrefois un chien adapté à la chasse au canard dans l'eau, ce qui explique le toilettage « en lion » qui lui est souvent appliqué, et qui était fort à la mode à la Belle Époque, il descend du barbet. Régulièrement utilisé dans différents domaines, comme animal de cirque, chien de chasse, chien-guide d'aveugle, chien d'agility ou chien de recherche, il est très polyvalent et est classé parmi les trois races canines les plus intelligentes. Sa durée de vie moyenne varie entre 12 et 15 ans.",
    "histoire": "La véritable ascendance de cette race de chien n'est pas claire et reste contestée, en grande partie parce qu'elle est très ancienne. Les clubs canins de France ont toujours pensé qu'il était un descendant du Barbet. Cependant, d'autres organisations ont également pensé que ce chien était un très ancien épagneul d'eau allemand, notamment en raison de l'étymologie de son nom en allemand et en anglais : poodle ou Pudelhund tous deux dérivés du bas allemand pudeln qui signifie « éclabousser ».",
    "vie_texte": "Sa durée de vie moyenne varie entre 12 et 15 ans.",
    "groupe": "9",
@@ -4326,7 +4326,7 @@
     {
      "fichier": "Istrische Bracke.jpg",
      "src": "chiens/chien-courant-d-istrie-a-poil-ras-1.webp",
-     "auteur": "No machine-readable author provided. Cazadero assumed (based on copyright claims).",
+     "auteur": "Cazadero",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:Istrische_Bracke.jpg"
     },
@@ -4400,7 +4400,7 @@
     {
      "fichier": "Haldenstovare.jpg",
      "src": "chiens/chien-courant-de-halden-1.webp",
-     "auteur": "Sabine (dogwiki) on http://www.profi1a.de/dogwiki/index.php/Benutzer:Sabine",
+     "auteur": "Sabine (dogwiki)",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Haldenstovare.jpg"
     }
@@ -4771,7 +4771,7 @@
     {
      "fichier": "Hellinikos Ichnilatis (Georging) cropped.jpg",
      "src": "chiens/chien-courant-grec-2.webp",
-     "auteur": "Hellinikos_Ichnilatis_(Georging).jpg: Georging (Georging91) derivative work: Anka Friedrich (talk)",
+     "auteur": "Georging (Georging91)",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Hellinikos_Ichnilatis_(Georging)_cropped.jpg"
     }
@@ -4810,7 +4810,7 @@
     {
      "fichier": "SIPF larger.jpg",
      "src": "chiens/chien-courant-italien-a-poil-dur-2.webp",
-     "auteur": "SIPF.jpg: it:User:Frustan derivative work: Anka Friedrich (talk)",
+     "auteur": "Frustan",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:SIPF_larger.jpg"
     }
@@ -5345,7 +5345,7 @@
     {
      "fichier": "7.11.2003 Spanish waterdog.jpg",
      "src": "chiens/chien-d-eau-espagnol-1.webp",
-     "auteur": "No machine-readable author provided. Perrodeaguas assumed (based on copyright claims).",
+     "auteur": "Perrodeaguas",
      "licence": "CC BY 2.5",
      "page": "https://commons.wikimedia.org/wiki/File:7.11.2003_Spanish_waterdog.jpg"
     }
@@ -5587,7 +5587,7 @@
     {
      "fichier": "Jämthund drvd.png",
      "src": "chiens/chien-d-elan-suedois-1.webp",
-     "auteur": "Jämthund.jpg: Jörgen Blom derivative work: Anka Friedrich (talk)",
+     "auteur": "Jörgen Blom",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:J%C3%A4mthund_drvd.png"
     },
@@ -5648,7 +5648,7 @@
     {
      "fichier": "IcelandSheepdog21.jpg",
      "src": "chiens/chien-de-berger-islandais-1.webp",
-     "auteur": "Gangleri http://fi.wikipedia.org/wiki/K%C3%A4ytt%C3%A4j%C3%A4:Gangleri",
+     "auteur": "Gangleri",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:IcelandSheepdog21.jpg"
     },
@@ -5764,7 +5764,7 @@
     {
      "fichier": "CanaanDogChakede.jpg",
      "src": "chiens/chien-de-canaan-1.webp",
-     "auteur": "Canaan Dog, Hodowla Samorodok Hanaana http://www.ruscanaan.ru",
+     "auteur": "Canaan Dog, Hodowla Samorodok Hanaana",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:CanaanDogChakede.jpg"
     },
@@ -6069,7 +6069,7 @@
     {
      "fichier": "Bavorsky barvar.JPG",
      "src": "chiens/chien-de-recherche-au-sang-de-la-montagne-bavaroise-1.webp",
-     "auteur": "cs:User:Moniique",
+     "auteur": "Moniique",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:Bavorsky_barvar.JPG"
     }
@@ -6123,7 +6123,7 @@
    "oreilles": "Tombantes, attachées assez haut, de taille moyenne, plutôt large à la base, pointe arrondie.",
    "queue": "Forte à la naissance et s’amenuise vers l’extrémité, de longueur modérée, portée avec une légère courbe vers le haut.",
    "caractere": "Digne, intelligent, distant avec les étrangers, ni agressif ni peureux.",
-   "intro": "Le chien de Rhodésie à crête dorsale, plus couramment appelé Rhodesian ridgeback, est une race de chiens originellement développée en Rhodésie du Sud, actuel Zimbabwe. De nos jours l'Afrique du Sud détient le standard de la race et poursuit activement son développement en Afrique australe. Il est le fruit d'un croisement entre les chiens des pionniers européens et les chiens de chasse et de protection des troupeaux à crête dorsale semi-domestiques des Khoïkhoïs. Le rhodesian ridgeback est robuste, musclé, très rapide et très endurant.[style à revoir].",
+   "intro": "Le chien de Rhodésie à crête dorsale, plus couramment appelé Rhodesian ridgeback, est une race de chiens originellement développée en Rhodésie du Sud, actuel Zimbabwe. De nos jours l'Afrique du Sud détient le standard de la race et poursuit activement son développement en Afrique australe. Il est le fruit d'un croisement entre les chiens des pionniers européens et les chiens de chasse et de protection des troupeaux à crête dorsale semi-domestiques des Khoïkhoïs. Le rhodesian ridgeback est robuste, musclé, très rapide et très endurant..",
    "histoire": "Le Rhodesian ridgeback est une race autochtone du sud de l'Afrique issue de croisements entre les chiens des pionniers et les chiens de chasse et de garde des troupeaux (contre les lions, entre autres) à crête dorsale semi-domestiqués des Khoïkhoïs. La crête dorsale, typique de la race, se retrouve seulement chez une autre race reconnue par la FCI : le chien thaïlandais à crête dorsale. Provenant soit d'Asie, soit plus vraisemblablement de chiens autochtones d'Afrique, ces chiens à crête ont donné au Rhodesian ridgeback une crête dorsale caractéristique.",
    "vie_texte": "L'espérance de vie est estimée à environ 10 à 12 ans.",
    "groupe": "6",
@@ -6444,7 +6444,7 @@
    "yeux": "De forme presque ronde, couleur noisette à marron foncé.",
    "oreilles": "Longues, pendantes, attachées bas et bien en arrière.",
    "queue": "Forme un angle droit avec le dos lorsque le chien est en action.",
-   "intro": "Le chien noir et feu pour la chasse au raton laveur ou black and tan coonhound est une race de chien originaire des États-Unis mais dont les ancêtres sont européens (Irlande et France). C'est un chien courant de grande taille à la robe noire et feu. C'est une race ancienne, résultat de croisements entre le talbot, le chien de Saint-Hubert et foxhound américain de Virginie. Employé principalement au pistage du raton laveur, il est également capable à la chasse au chevreuil, à l'ours ou au puma",
+   "intro": "Le chien noir et feu pour la chasse au raton laveur ou black and tan coonhound est une race de chien originaire des États-Unis mais dont les ancêtres sont européens (Irlande et France). C'est un chien courant de grande taille à la robe noire et feu. C'est une race ancienne, résultat de croisements entre le talbot, le chien de Saint-Hubert et foxhound américain de Virginie.",
    "groupe": "6",
    "fci": "300",
    "photos": [
@@ -6527,7 +6527,7 @@
     {
      "fichier": "PHDStandardStanding - Perro Sin Pelo del Perú.jpg",
      "src": "chiens/chien-nu-du-perou-1.webp",
-     "auteur": "No machine-readable author provided. Brunobarreto~commonswiki assumed (based on copyright claims).",
+     "auteur": "Brunobarreto",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:PHDStandardStanding_-_Perro_Sin_Pelo_del_Per%C3%BA.jpg"
     },
@@ -6600,7 +6600,7 @@
     {
      "fichier": "Two otterhounds.jpg",
      "src": "chiens/chien-a-loutre-1.webp",
-     "auteur": "No machine-readable author provided. Machinecha~commonswiki assumed (based on copyright claims).",
+     "auteur": "Machinecha",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:Two_otterhounds.jpg"
     },
@@ -7549,7 +7549,7 @@
     {
      "fichier": "Dandie_Dinmont_Terrier_600.jpg",
      "src": "chiens/dandie-dinmont-terrier-1.webp",
-     "auteur": "en:User:Sannse",
+     "auteur": "Sannse",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Dandie_Dinmont_Terrier_600.jpg"
     }
@@ -7694,7 +7694,7 @@
     {
      "fichier": "Dogge Odin-2.jpg",
      "src": "chiens/dogue-allemand-1.webp",
-     "auteur": "Dogge_Odin.jpg: bearbeitet durch Regi51 derivative work: Regi51 (talk)",
+     "auteur": "bearbeitet durch Regi51",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Dogge_Odin-2.jpg"
     },
@@ -7724,7 +7724,7 @@
    "oreilles": "Interdiction de couper depuis 2004.",
    "queue": "Courte et grosse, naturellement tombante.",
    "caractere": "Joueur et courageux.",
-   "intro": "Le dogue argentin (en espagnol, Dogo argentino) est un molosse de type dogue créé en Argentine au début du XXe siècle. Ce chien de grande taille (60-65 cm), musclé et doté d'une mâchoire puissante est traditionnellement utilisé dans la pampa, dans les montagnes et marais en Argentine pour la chasse au puma et au sanglier. Cette race de chiens fut créée par Antonio Nores Martinez : les premiers croisements eurent lieu en 1920. Malgré ses performances physiques remarquables et sa stature impressionnante, le dogue argentin est facile à éduquer et aboie peu, ce qui en fait un chien adapté à la vie en famille[réf. nécessaire].",
+   "intro": "Le dogue argentin (en espagnol, Dogo argentino) est un molosse de type dogue créé en Argentine au début du XXe siècle. Ce chien de grande taille (60-65 cm), musclé et doté d'une mâchoire puissante est traditionnellement utilisé dans la pampa, dans les montagnes et marais en Argentine pour la chasse au puma et au sanglier. Cette race de chiens fut créée par Antonio Nores Martinez : les premiers croisements eurent lieu en 1920. Malgré ses performances physiques remarquables et sa stature impressionnante, le dogue argentin est facile à éduquer et aboie peu, ce qui en fait un chien adapté à la vie en famille.",
    "groupe": "2",
    "fci": "292",
    "photos": [
@@ -7822,7 +7822,7 @@
    "taille": "61-74cm (F) et 66-80cm (M)",
    "poids": "40-55 kg (F) et 55-75 kg (M)",
    "caractere": "Indépendant, très protecteur (sans être agressif pour autant), calme, méfiant envers les étrangers",
-   "intro": "Le dogue du Tibet ou mastiff du Tibet est une race de dogue utilisée comme chien de travail, d'origine ancienne, employée par les bergers nomades de l'Himalaya. སྒོ་ཁྱི, sgo-khyi (prononcé go-kyi), son nom tibétain, signifie littéralement « chien de porte » ou « chien attaché », il fut en effet le chien de garde traditionnel des monastères tibétains. Parmi les chiens tibétains, il est le seul qui soit classé dans le deuxième groupe, celui des molosses bien que les autres races tibétaines (lhassa apso, shi tzu, épagneul du Tibet, terrier du Tibet) soient des molossoïdes[réf. souhaitée].",
+   "intro": "Le dogue du Tibet ou mastiff du Tibet est une race de dogue utilisée comme chien de travail, d'origine ancienne, employée par les bergers nomades de l'Himalaya. སྒོ་ཁྱི, sgo-khyi (prononcé go-kyi), son nom tibétain, signifie littéralement « chien de porte » ou « chien attaché », il fut en effet le chien de garde traditionnel des monastères tibétains. Parmi les chiens tibétains, il est le seul qui soit classé dans le deuxième groupe, celui des molosses bien que les autres races tibétaines (lhassa apso, shi tzu, épagneul du Tibet, terrier du Tibet) soient des molossoïdes.",
    "histoire": "La race est propre aux hauts plateaux de l'Himalaya, les bergers l'utilisent pour protéger des troupeaux de chèvres, yacks et moutons des prédateurs. Bien qu'il ait évolué, des traces possibles de son existence remontent à plus de trois mille ans. Une description en a été faite environ en 350 av.",
    "groupe": "2",
    "fci": "230",
@@ -8145,7 +8145,7 @@
     {
      "fichier": "Fox-terriers.jpg",
      "src": "chiens/fox-terrier-a-poil-dur-2.webp",
-     "auteur": "Myosotis &amp; Tulipes",
+     "auteur": "Myosotis & Tulipes",
      "licence": "CC BY-SA 4.0",
      "page": "https://commons.wikimedia.org/wiki/File:Fox-terriers.jpg"
     }
@@ -8235,7 +8235,7 @@
     {
      "fichier": "English Foxhound.jpg",
      "src": "chiens/foxhound-anglais-1.webp",
-     "auteur": "Chasse_a_courre.jpg: Luna04 at fr.wikipedia derivative work: Anka Friedrich (talk)",
+     "auteur": "Luna04 at fr.wikipedia",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:English_Foxhound.jpg"
     },
@@ -8376,7 +8376,7 @@
     {
      "fichier": "Petit Gascon Saintongeois croped.JPG",
      "src": "chiens/gascon-saintongeois-1.webp",
-     "auteur": "Petit_Gascon_de_Saintonge.JPG: Jérôme BARDIAU derivative work: Anka Friedrich",
+     "auteur": "Jérôme BARDIAU",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Petit_Gascon_Saintongeois_croped.JPG"
     },
@@ -8517,7 +8517,7 @@
     {
      "fichier": "Grand anglo francais tricol mod.jpg",
      "src": "chiens/grand-anglo-francais-tricolore-1.webp",
-     "auteur": "derivative work: Caronna (talk) Grand_anglo_francais_tricol.jpg: Alephalpha",
+     "auteur": "Alephalpha",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Grand_anglo_francais_tricol_mod.jpg"
     }
@@ -8673,7 +8673,7 @@
     {
      "fichier": "Un chien Spitz allemand.jpg",
      "src": "chiens/grand-spitz-1.webp",
-     "auteur": "The original uploader was Teuteul at French Wikipedia. Later versions were uploaded by Tornad at fr.wikipedia.",
+     "auteur": "Teuteul",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Un_chien_Spitz_allemand.jpg"
     }
@@ -9035,7 +9035,7 @@
     {
      "fichier": "Hokkaido 02 der.jpg",
      "src": "chiens/hokkaido-1.webp",
-     "auteur": "Hokkaido_02.jpg: Magdalena Niemiec derivative work: Anka Friedrich (talk)",
+     "auteur": "Magdalena Niemiec",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Hokkaido_02_der.jpg"
     },
@@ -9283,7 +9283,7 @@
     {
      "fichier": "Jindo dog.jpg",
      "src": "chiens/jindo-coreen-1.webp",
-     "auteur": "The original uploader was Hairwizard91 at English Wikipedia.",
+     "auteur": "Hairwizard91",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Jindo_dog.jpg"
     },
@@ -9655,7 +9655,7 @@
     {
      "fichier": "YellowLabradorLooking new.jpg",
      "src": "chiens/labrador-retriever-1.webp",
-     "auteur": "derivative work: Djmirko (talk)wereweweewewewg.jpg",
+     "auteur": "Djmirko",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:YellowLabradorLooking_new.jpg"
     }
@@ -9958,7 +9958,7 @@
    "yeux": "De brun clair à brun foncé",
    "caractere": "Calme, équilibré, sociable",
    "intro": "Le Leonberg ou chien de Leonberg (en allemand : Leonberger) est une race de chien de grande taille originaire d'Allemagne, dont le nom est issu de la ville de Leonberg, dans le Bade-Wurtemberg. Selon la chronique municipale, la race a été créée au milieu du XIXe siècle par le conseiller municipal Heinrich Essig, qui voulait un chien ressemblant au lion des armoiries de la ville.",
-   "histoire": "Heinrich Essig (1808-1887) était conseiller municipal et marchand de chiens à Leonberg, à une quinzaine de kilomètres de Stuttgart, dans ce qui était alors le royaume de Wurtemberg. Il se présentait comme « baron de Leonberg » lorsqu'il se trouvait à l'étranger[réf. souhaitée]. D'après la chronique de la ville, il croise dans les années 1840 une femelle terre-neuve noire et blanche (Landseer) avec un mâle saint-bernard, fait se reproduire les descendants entre eux pendant quatre générations, puis introduit un chien de montagne des Pyrénées blanc ; le premier chien appelé « Leonberger » naît en 1846.",
+   "histoire": "Heinrich Essig (1808-1887) était conseiller municipal et marchand de chiens à Leonberg, à une quinzaine de kilomètres de Stuttgart, dans ce qui était alors le royaume de Wurtemberg. Il se présentait comme « baron de Leonberg » lorsqu'il se trouvait à l'étranger. D'après la chronique de la ville, il croise dans les années 1840 une femelle terre-neuve noire et blanche (Landseer) avec un mâle saint-bernard, fait se reproduire les descendants entre eux pendant quatre générations, puis introduit un chien de montagne des Pyrénées blanc ; le premier chien appelé « Leonberger » naît en 1846.",
    "vie_texte": "Comme toutes les races géantes, le Leonberg a une espérance de vie réduite.",
    "groupe": "2",
    "fci": "145",
@@ -11116,7 +11116,7 @@
     {
      "fichier": "Kleinemunsterlander.jpg",
      "src": "chiens/petit-epagneul-de-munster-1.webp",
-     "auteur": "No machine-readable author provided. PeterHalmstad~commonswiki assumed (based on copyright claims).",
+     "auteur": "PeterHalmstad",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:Kleinemunsterlander.jpg"
     },
@@ -11152,7 +11152,7 @@
     {
      "fichier": "Deutscher Pinscher.JPG",
      "src": "chiens/pinscher-allemand-1.webp",
-     "auteur": "No machine-readable author provided. Stesi-cliff assumed (based on copyright claims).",
+     "auteur": "Stesi-cliff",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Deutscher_Pinscher.JPG"
     }
@@ -11336,7 +11336,7 @@
    "queue": "souvent retroussée sur le dos",
    "caractere": "sociable, affectueux, joyeux Régions : Auvergne, Rhône-Alpes pouvant être utilisés en chiens de traineaux.",
    "intro": "Le Pomsky est un chien croisé, de type designer dog, ressemblant à un Husky miniature à l'allure juvénile. Il est le résultat de croisements entre des Huskys sibériens et de spitz-nains, également appelés \"Loulous de Poméranie\".",
-   "histoire": "Le Pomsky est un phénomène arrivé avec les réseaux sociaux et l'Internet, qui a pris de l'ampleur aux États-Unis à partir de 2011. Une photo, montrant un chien adulte, annoncé comme étant croisé entre un Husky de Sibérie et un Loulou de Poméranie, devient virale, bien qu'il s'agisse en réalité d'un chien de race Lapphund. L'engouement lié à cette photo, aura conduit des éleveurs américains à inséminer artificiellement leurs Huskys avec des spitz de type Loulou de Poméranie, dans l’espoir de faire du célèbre Pomsky, une réalité[source insuffisante].",
+   "histoire": "Le Pomsky est un phénomène arrivé avec les réseaux sociaux et l'Internet, qui a pris de l'ampleur aux États-Unis à partir de 2011. Une photo, montrant un chien adulte, annoncé comme étant croisé entre un Husky de Sibérie et un Loulou de Poméranie, devient virale, bien qu'il s'agisse en réalité d'un chien de race Lapphund. L'engouement lié à cette photo, aura conduit des éleveurs américains à inséminer artificiellement leurs Huskys avec des spitz de type Loulou de Poméranie, dans l’espoir de faire du célèbre Pomsky, une réalité.",
    "vie_texte": "L'espérance de vie moyenne de ce type de chien est comprise entre 15 et 17 ans.",
    "photos": [
     {
@@ -11535,7 +11535,7 @@
    "oreilles": "En forme de cœur",
    "queue": "Courbée sur le dos",
    "intro": "Le pékinois est un petit chien de compagnie originaire de Chine.",
-   "histoire": "Le pékinois était le chien de compagnie préféré de la cour impériale chinoise à la Cité interdite, particulièrement sous la dynastie Tsing entre 1644 et 1912. Il est souvent représenté dans les œuvres d'art de l'époque.[réf. souhaitée] Les Chinois semblent avoir sélectionné ce chien pour lui donner la même apparence que les statues de lion. La commercialisation de la race est interdite hors des frontières de Chine, mais des officiers britanniques l'amènent en Europe au XIXe siècle, en exportant deux couples.",
+   "histoire": "Le pékinois était le chien de compagnie préféré de la cour impériale chinoise à la Cité interdite, particulièrement sous la dynastie Tsing entre 1644 et 1912. Il est souvent représenté dans les œuvres d'art de l'époque. Les Chinois semblent avoir sélectionné ce chien pour lui donner la même apparence que les statues de lion. La commercialisation de la race est interdite hors des frontières de Chine, mais des officiers britanniques l'amènent en Europe au XIXe siècle, en exportant deux couples.",
    "groupe": "9",
    "fci": "207",
    "photos": [
@@ -11633,7 +11633,7 @@
    "nom": "Ratier valencien",
    "wiki": "Ratier valencien",
    "origine": "Communauté valencienne (Espagne)",
-   "intro": "Le Ratier valencien (en espagnol : Ratonero Valenciano et en anglais : Valencian Terrier), ou Gos Rater Valencià, est une race de chien originaire de la Communauté valencienne en Espagne. La race a été officiellement reconnu par la Real Sociedad Canina de España (en) en 2004, il a connu un succès récent avec un membre de la race remportant l'exposition canine nationale espagnole en 2011. En 2022, la Fédération cynologique internationale (FCI) a reconnu à titre provisoire la race.",
+   "intro": "Le Ratier valencien (en espagnol : Ratonero Valenciano et en anglais : Valencian Terrier), ou Gos Rater Valencià, est une race de chien originaire de la Communauté valencienne en Espagne. La race a été officiellement reconnu par la Real Sociedad Canina de España en 2004, il a connu un succès récent avec un membre de la race remportant l'exposition canine nationale espagnole en 2011. En 2022, la Fédération cynologique internationale (FCI) a reconnu à titre provisoire la race.",
    "groupe": "3",
    "fci": "370",
    "photos": [
@@ -11654,13 +11654,13 @@
    "nom": "Redbone Coonhound",
    "wiki": "Redbone Coonhound",
    "origine": "États-Unis",
-   "intro": "Le Redbone Coonhound est une race de chien américaine largement utilisée pour chasser l'ours noir, le raton laveur, et le puma, mais le chien est également capable de chasser le jaguar, le grizzli et les plus grandes espèces de cerfs comme le wapiti. Son agilité lui permet de chasser aussi bien dans les marécages que dans les montagnes et les forets, et certains peuvent être utilisés comme chiens d'eau. D'après le standard de l'American Kennel Club (AKC), « le Redbone mélange à la fois beauté et caractère équilibré, avec un air confiant et un grand talent de chasseur. » Cette race est enregistrée à l’United Kennel Club depuis 1904 et à l'AKC depuis 2009. Il s'agit de la race des chiens de chasse présents dans le roman Where the Red Fern Grows (en).",
-   "histoire": "À la fin du XVIIIe siècle, beaucoup de chiens de chasse de race européenne, la plupart d’origine écossaise, française, anglaise ou irlandaise, furent importés en Amérique, dont le Foxhound anglais, le Grand bleu de Gascogne, le Welsh Hound (en), le Beagle, le Chien de Saint-Hubert. Le plus souvent, ces chiens étaient importés par les riches propriétaires de plantations de la région de Tidewater (en) en Virginie pour imiter la bourgeoisie européenne et faire des chasses à courre avec un petit nombre de chiens pistant des proies sur les terrains des fermes. Cependant, après à la révolution américaine, et comme les colonies s’étendaient de plus en plus vers le sud et l'ouest, les chasseurs se rendirent compte que les chiens de chasse importés des îles Britanniques et de France à la fin du XVIIIe siècle et au début du XIXe avaient été élevés pour évoluer sur des types de terrains bien différents de ceux du sud de l’Amérique.",
+   "intro": "Le Redbone Coonhound est une race de chien américaine largement utilisée pour chasser l'ours noir, le raton laveur, et le puma, mais le chien est également capable de chasser le jaguar, le grizzli et les plus grandes espèces de cerfs comme le wapiti. Son agilité lui permet de chasser aussi bien dans les marécages que dans les montagnes et les forets, et certains peuvent être utilisés comme chiens d'eau. D'après le standard de l'American Kennel Club (AKC), « le Redbone mélange à la fois beauté et caractère équilibré, avec un air confiant et un grand talent de chasseur. » Cette race est enregistrée à l’United Kennel Club depuis 1904 et à l'AKC depuis 2009. Il s'agit de la race des chiens de chasse présents dans le roman Where the Red Fern Grows.",
+   "histoire": "À la fin du XVIIIe siècle, beaucoup de chiens de chasse de race européenne, la plupart d’origine écossaise, française, anglaise ou irlandaise, furent importés en Amérique, dont le Foxhound anglais, le Grand bleu de Gascogne, le Welsh Hound, le Beagle, le Chien de Saint-Hubert. Le plus souvent, ces chiens étaient importés par les riches propriétaires de plantations de la région de Tidewater en Virginie pour imiter la bourgeoisie européenne et faire des chasses à courre avec un petit nombre de chiens pistant des proies sur les terrains des fermes. Cependant, après à la révolution américaine, et comme les colonies s’étendaient de plus en plus vers le sud et l'ouest, les chasseurs se rendirent compte que les chiens de chasse importés des îles Britanniques et de France à la fin du XVIIIe siècle et au début du XIXe avaient été élevés pour évoluer sur des types de terrains bien différents de ceux du sud de l’Amérique.",
    "photos": [
     {
      "fichier": "Memphis_the_Redbone_Coonhound_(7_Nov_2004).jpg",
      "src": "chiens/redbone-coonhound-1.webp",
-     "auteur": "The original uploader was Arlawson at English Wikipedia.",
+     "auteur": "Arlawson",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Memphis_the_Redbone_Coonhound_(7_Nov_2004).jpg"
     },
@@ -11845,7 +11845,7 @@
    "oreilles": "moyennes et triangulaires, elles ont la particularité d'être écartées l'une de l'autre ; quand le rottweiler les ramène vers l'avant, sa tête apparaît encore plus large",
    "queue": "longue naturelle, portée pendante ou en sabre, jamais enroulée ni déviée latéralement. Dans les pays où la caudectomie est encore autorisée, coupée au niveau de la première ou de la deuxième vertèbre",
    "caractere": "fidèle, courageux, protecteur, très intelligent, docile, zélé, sportif, paisible, robuste, allures nobles, paresseux pour un chien de famille mais peut être sportif si son maître le fait courir régulièrement.",
-   "intro": "Le rottweiler ou bouvier allemand est une race de chien originaire d'Allemagne, utilisée historiquement pour garder les troupeaux et effectuer des missions de défense de son maître. Le standard du Rottweiler admet un écart de taille de 7 cm entre la taille la plus petite et la plus grande (61 à 68 cm pour les mâles et 56 à 63 cm pour les femelles), on peut donc parler de sujets de petite, moyenne ou de grande taille",
+   "intro": "Le rottweiler ou bouvier allemand est une race de chien originaire d'Allemagne, utilisée historiquement pour garder les troupeaux et effectuer des missions de défense de son maître.",
    "histoire": "À l'époque romaine, des mâtins, ancêtres des rottweilers du XXIe siècle, gardent le bétail destiné à nourrir les légionnaires pendant les grandes campagnes militaires. Une fois les Alpes passées, les Romains progressent jusqu'en Germanie, où ils installent des garnisons, notamment à Rottweil, dans la région du Wurtemberg. Au Moyen Âge, Rottweil devient une ville très prospère, avec une forte activité commerciale.",
    "vie_texte": "Avec une espérance de vie qui oscille entre 9 et 12 ans, le rottweiler a une santé correcte pour un chien de sa taille.",
    "groupe": "2",
@@ -12025,14 +12025,14 @@
     {
      "fichier": "Schipperke gismo 12.jpg",
      "src": "chiens/schipperke-1.webp",
-     "auteur": "No machine-readable author provided. Pleple2000 assumed (based on copyright claims).",
+     "auteur": "Pleple2000",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Schipperke_gismo_12.jpg"
     },
     {
      "fichier": "Schipperke0001.jpg",
      "src": "chiens/schipperke-2.webp",
-     "auteur": "No machine-readable author provided. 鏑木對馬守 assumed (based on copyright claims).",
+     "auteur": "鏑木對馬守",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:Schipperke0001.jpg"
     }
@@ -12489,7 +12489,7 @@
     {
      "fichier": "Shih-Tzu.JPG",
      "src": "chiens/shih-tzu-1.webp",
-     "auteur": "Melanie Dullinger - White Magic Kennels &lt;info@whitemagickennels.com&gt;",
+     "auteur": "Melanie Dullinger - White Magic Kennels",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Shih-Tzu.JPG"
     },
@@ -12613,7 +12613,7 @@
     {
      "fichier": "Sloughi sandcolor.jpg",
      "src": "chiens/sloughi-1.webp",
-     "auteur": "No machine-readable author provided. Romey~commonswiki assumed (based on copyright claims).",
+     "auteur": "Romey",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:Sloughi_sandcolor.jpg"
     }
@@ -12641,7 +12641,7 @@
     {
      "fichier": "Hollandse Smoushond Amsterdam cropped.jpg",
      "src": "chiens/smous-des-pays-bas-1.webp",
-     "auteur": "Hollandse_Smoushond_Amsterdam.jpg: ZeppWeb derivative work: Abujoy",
+     "auteur": "ZeppWeb",
      "licence": "CC BY 2.0",
      "page": "https://commons.wikimedia.org/wiki/File:Hollandse_Smoushond_Amsterdam_cropped.jpg"
     },
@@ -12943,7 +12943,7 @@
     {
      "fichier": "Szpic wilczy09.jpg",
      "src": "chiens/spitz-loup-1.webp",
-     "auteur": "No machine-readable author provided. Pleple2000 assumed (based on copyright claims).",
+     "auteur": "Pleple2000",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Szpic_wilczy09.jpg"
     },
@@ -13245,7 +13245,7 @@
    "poil": "Dur",
    "robe": "Brun, feu, caramel, sable, arlequin, chocolat",
    "caractere": "Sociable, docile, attachant, têtu, énergique, grégaire",
-   "intro": "Le teckel à poil dur est réputé pour être le plus sociable et le plus docile de tous les teckels. C'est également le teckel le plus recherché[réf. nécessaire]. Il est originaire d'Allemagne. À l'origine, le teckel est un chien de chasse et de recherche au sang (ce qui a pour but de rechercher les animaux morts ou blessés à partir de traces de sang).",
+   "intro": "Le teckel à poil dur est réputé pour être le plus sociable et le plus docile de tous les teckels. C'est également le teckel le plus recherché. Il est originaire d'Allemagne. À l'origine, le teckel est un chien de chasse et de recherche au sang (ce qui a pour but de rechercher les animaux morts ou blessés à partir de traces de sang).",
    "photos": [
     {
      "fichier": "Teckel - 39.jpg",
@@ -13298,7 +13298,7 @@
    "queue": "large et puissante",
    "caractere": "doux, bienveillant, intelligent, digne, joyeux, déterminé, confiant, sûr de lui, câlin, affectueux",
    "intro": "Le terre-neuve (ou retriever de Terre-Neuve) est une race de chien originaire de l'île canadienne de Terre-Neuve, à forte taille et présentant généralement une épaisse fourrure noire. Il est apprécié pour sa force, sa loyauté et ses aptitudes aquatiques. On le surnomme aussi NewFoundland, Newfie ou Saint-Bernard des mers. Ses pattes dites « palmées », sa corpulence et sa docilité font du terre-neuve l'animal idéal pour le sauvetage, notamment en mer.",
-   "histoire": "« Le terre-neuve descend des chiens autochtones de l’île de Terre-Neuve et de gros chiens de chasse à l’ours introduits par les Vikings vers l’an mille. Avec l’arrivée des pêcheurs européens, la race a été améliorée grâce à des croisements avec d’autres races, mais elle conserva, semble-t-il, ses caractéristiques premières. Au début de la colonisation en 1610, les attitudes comportementales ainsi que les principaux traits physiques du terre-neuve étaient déjà solidement établis. »[réf. souhaitée] À la fin du XVIIIe siècle, on a utilisé le terre-neuve pour tirer les troncs d’arbre abattus.",
+   "histoire": "« Le terre-neuve descend des chiens autochtones de l’île de Terre-Neuve et de gros chiens de chasse à l’ours introduits par les Vikings vers l’an mille. Avec l’arrivée des pêcheurs européens, la race a été améliorée grâce à des croisements avec d’autres races, mais elle conserva, semble-t-il, ses caractéristiques premières. Au début de la colonisation en 1610, les attitudes comportementales ainsi que les principaux traits physiques du terre-neuve étaient déjà solidement établis. » À la fin du XVIIIe siècle, on a utilisé le terre-neuve pour tirer les troncs d’arbre abattus.",
    "vie_texte": "Son espérance de vie est de 10-12 ans.",
    "groupe": "2",
    "fci": "50",
@@ -13371,7 +13371,7 @@
     {
      "fichier": "AustralianSilkyTerrier2004.jpg",
      "src": "chiens/terrier-australien-a-poil-soyeux-1.webp",
-     "auteur": "The original uploader was Tjark1 at German Wikipedia.",
+     "auteur": "Tjark1",
      "licence": "CC BY-SA 2.0 de",
      "page": "https://commons.wikimedia.org/wiki/File:AustralianSilkyTerrier2004.jpg"
     }
@@ -13750,14 +13750,14 @@
     {
      "fichier": "Czarny terier rosyjski 64.jpg",
      "src": "chiens/terrier-noir-russe-1.webp",
-     "auteur": "Pleple2000 (talk)",
+     "auteur": "Pleple2000",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Czarny_terier_rosyjski_64.jpg"
     },
     {
      "fichier": "RUSMARKA-1957.jpg",
      "src": "chiens/terrier-noir-russe-2.webp",
-     "auteur": "Stamp issuing authority - MARKA Publishing &amp; Trading Centre. Printer - Association GOZNAK of the Ministry of Finance",
+     "auteur": "MARKA Publishing & Trading Centre",
      "licence": "Public domain",
      "page": "https://commons.wikimedia.org/wiki/File:RUSMARKA-1957.jpg"
     }
@@ -14114,7 +14114,7 @@
     {
      "fichier": "Welshterrier.jpg",
      "src": "chiens/welsh-terrier-1.webp",
-     "auteur": "Fotograf: Ebba Persson. The original uploader was Ebbsson at Swedish Wikipedia. Later versions were uploaded by Solkoll,",
+     "auteur": "Ebba Persson",
      "licence": "CC BY-SA 2.5",
      "page": "https://commons.wikimedia.org/wiki/File:Welshterrier.jpg"
     }
@@ -14746,7 +14746,7 @@
    "yeux": "Arrondis, placés de biais",
    "oreilles": "Taille moyenne, peu ouvertes",
    "queue": "Epaisse à la base, longueur moyenne",
-   "intro": "L'American Wirehair est une race de chats originaire des États-Unis. Ce chat est caractérisé par sa robe à poils ondulé et frisé",
+   "intro": "L'American Wirehair est une race de chats originaire des États-Unis.",
    "histoire": "Cette race descend de l'American shorthair. Il apparut dans une portée d'American shorthairs en 1966 dans l'État de New York. Un des mâles de la portée, le seul roux avait cette fourrure.",
    "vie_texte": "Son espérance de vie reste faible pour un chat, entre sept et douze ans.",
    "photos": [
@@ -15131,7 +15131,7 @@
     {
      "fichier": "Japanese Bobtail Cat, Japan.jpg",
      "src": "chiens/bobtail-japonais-2.webp",
-     "auteur": "en:User:Toby Woodwark",
+     "auteur": "Toby Woodwark",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Japanese_Bobtail_Cat,_Japan.jpg"
     }
@@ -15230,7 +15230,7 @@
     {
      "fichier": "British Longhair - Black Silver Shaded.jpg",
      "src": "chiens/british-longhair-1.webp",
-     "auteur": "Chatterie des Millenovæ http://www.millenovae.com",
+     "auteur": "Chatterie des Millenovæ",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:British_Longhair_-_Black_Silver_Shaded.jpg"
     },
@@ -15457,7 +15457,7 @@
    "yeux": "Ovales et bien ouverts",
    "oreilles": "Larges, pointues et très mince",
    "queue": "En forme de fouet",
-   "intro": "Le californian rex est une race de chat originaire des États-Unis. Ce chat est caractérisé par sa robe à poils mi-longs et ondulés. Il est la variété à poils mi-longs du cornish rex",
+   "intro": "Le californian rex est une race de chat originaire des États-Unis. Ce chat est caractérisé par sa robe à poils mi-longs et ondulés.",
    "histoire": "Cette variété a été découverte dans les années 1960 en Californie, comme son nom l'indique. Elle reste actuellement extrêmement rare et très peu reconnue par les diverses associations félines. En France, le LOOF reconnaît la race comme « nouvelle race » ce qui ne lui permet pas de participer au championnat, mais elle peut cependant être exposée.",
    "photos": [],
    "pays": [
@@ -16074,7 +16074,7 @@
     {
      "fichier": "Korat in cat show-cropped.JPG",
      "src": "chiens/korat-1.webp",
-     "auteur": "Korat_in_cat_show.JPG: heikkisiltala derivative work: Abujoy (talk)",
+     "auteur": "heikkisiltala",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Korat_in_cat_show-cropped.JPG"
     },
@@ -16401,7 +16401,7 @@
     {
      "fichier": "Munchkin cat grooming.jpg",
      "src": "chiens/munchkin-2.webp",
-     "auteur": "en:User:Pockle",
+     "auteur": "Pockle",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Munchkin_cat_grooming.jpg"
     }
@@ -16728,7 +16728,7 @@
    "oreilles": "Presque aussi larges que hautes",
    "queue": "Moyenne",
    "intro": "Le sacré de Birmanie, ou birman, est une race de chat originaire de France. Ce chat de taille moyenne est caractérisé par sa robe à poil mi-long, qui présente le même patron colourpoint que le siamois mais ses pattes sont d'un blanc pur, comme s'il possédait des gants, un élément qui caractérise la race. Les yeux du birman sont d'un bleu profond.",
-   "histoire": "Une légende répandue, que l'on prête à la romancière Marcelle Adam[réf. nécessaire], raconte qu'il y a longtemps en Birmanie, dans un temple consacré à une déesse dorée aux yeux de saphir, un vieux prêtre possédait un chat blanc nommé Sinh. Un jour, le temple fut envahi et les ennemis tuèrent le vieux prêtre. Sinh sauta sur la tête de son maître en regardant dans les yeux la statue de la déesse.",
+   "histoire": "Une légende répandue, que l'on prête à la romancière Marcelle Adam, raconte qu'il y a longtemps en Birmanie, dans un temple consacré à une déesse dorée aux yeux de saphir, un vieux prêtre possédait un chat blanc nommé Sinh. Un jour, le temple fut envahi et les ennemis tuèrent le vieux prêtre. Sinh sauta sur la tête de son maître en regardant dans les yeux la statue de la déesse.",
    "photos": [
     {
      "fichier": "Minerva-25.jpg",
@@ -16890,7 +16890,7 @@
     {
      "fichier": "Serengeti.jpg",
      "src": "chiens/serengeti-2.webp",
-     "auteur": "No machine-readable author provided. Kickboxer~commonswiki assumed (based on copyright claims).",
+     "auteur": "Kickboxer",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Serengeti.jpg"
     }
@@ -16918,7 +16918,7 @@
     {
      "fichier": "Seychellois at Jämsä Cat show.JPG",
      "src": "chiens/seychellois-1.webp",
-     "auteur": "Seychellois-Jämsä_show.JPG: Heikki Siltala derivative work: Abujoy (talk)",
+     "auteur": "Heikki Siltala",
      "licence": "CC BY 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Seychellois_at_J%C3%A4ms%C3%A4_Cat_show.JPG"
     },
@@ -17080,7 +17080,7 @@
     {
      "fichier": "Sokoke dalili.jpg",
      "src": "chiens/sokoke-1.webp",
-     "auteur": "The original uploader was SHD at English Wikipedia. A. Turto en:User:SHD (self made)",
+     "auteur": "SHD",
      "licence": "CC BY-SA 2.5",
      "page": "https://commons.wikimedia.org/wiki/File:Sokoke_dalili.jpg"
     }
@@ -17141,7 +17141,7 @@
     {
      "fichier": "Sphynx - ChickenCat - edit.jpg",
      "src": "chiens/sphynx-2.webp",
-     "auteur": "Sphynx_-_ChickenCat.jpg: Steve Carlin from Colorado Springs, US derivative work: Trycatch (talk)",
+     "auteur": "Steve Carlin from Colorado Springs, US",
      "licence": "CC BY-SA 2.0",
      "page": "https://commons.wikimedia.org/wiki/File:Sphynx_-_ChickenCat_-_edit.jpg"
     }
@@ -17165,13 +17165,13 @@
    "oreilles": "Larges à la base, taille moyenne",
    "queue": "Taille moyenne, arrondie au bout",
    "intro": "Le chat Thaï est une race originaire de Thaïlande. Autres noms : Chat Royal du Siam, chat des temples, Wichien-maat (\"diamant de lune\" en langue thaï). Ce chat de taille moyenne et bien musclé se caractérise par son physique de siamois traditionnel ou ancien type (\"apple-head\" siamese /siamois à tête ronde). Les siamois actuels, dits \"siamois orientaux\", sont une évolution par sélection des siamois ancien type, apparue au milieu du XXe siècle.",
-   "histoire": "De nombreuses légendes racontent l'apparition du siamois. Parmi elles, celle relatée par George Cansdale dans Les animaux et les hommes : lors du voyage sur l'arche de Noé, un singe serait tombé amoureux d'une lionne. Ceci expliquerait la raison pour laquelle le siamois a l'agilité d'un singe et le courage d'une lionne[réf. nécessaire].",
+   "histoire": "De nombreuses légendes racontent l'apparition du siamois. Parmi elles, celle relatée par George Cansdale dans Les animaux et les hommes : lors du voyage sur l'arche de Noé, un singe serait tombé amoureux d'une lionne. Ceci expliquerait la raison pour laquelle le siamois a l'agilité d'un singe et le courage d'une lionne.",
    "vie": "environ 15 ans",
    "photos": [
     {
      "fichier": "Niobe050905-Siamese Cat.jpeg",
      "src": "chiens/thai-1.webp",
-     "auteur": "en:User:TrinnyTrue",
+     "auteur": "TrinnyTrue",
      "licence": "CC BY-SA 3.0",
      "page": "https://commons.wikimedia.org/wiki/File:Niobe050905-Siamese_Cat.jpeg"
     }
