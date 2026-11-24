@@ -160,7 +160,7 @@ REGIME_AVONET = {"Invertivore": "insectes, vers, araignées (petits animaux sans
 MILIEU_AVONET = {"Forest": "forêt", "Woodland": "bois et bocage", "Shrubland": "buissons et landes", "Grassland": "prairies", "Wetland": "zones humides",
                  "Rock": "rochers et falaises", "Desert": "désert", "Human Modified": "villes et campagne (milieux changés par les humains)",
                  "Marine": "mer", "Riverine": "rivières et fleuves", "Coastal": "côtes"}
-VOYAGE_AVONET = {1: "il reste toute l'année dans la même région", 2: "certains voyagent, d'autres restent", 3: "grand voyageur : il migre chaque année"}
+VOYAGE_AVONET = {1: "il reste toute l'année dans la même région", 2: "certains voyagent, d'autres restent", 3: "il migre : il change de région selon les saisons"}
 SRC_AVONET = "AVONET, base de mesures d'oiseaux (Tobias et coll., 2022)"
 
 
@@ -338,8 +338,8 @@ def depuis_wikipedia(texte):
     verdicts = []
     for ph in phrases(" ".join(s.values())):
         bas = ph.lower()
-        if re.search(r"\b(juvéniles?|immatures?|jeunes)\b", bas):
-            continue
+        if re.search(r"\b(juvéniles?|immatures?|jeunes)\b|sous-espèce", bas) or re.search(r"\b[A-Z]\. [a-z]\. [a-z]+", ph):
+            continue  # phrases sur les jeunes ou sur une sous-espèce : on ne s'en sert pas
         if re.search(r"(pas de dimorphisme|sans dimorphisme|dimorphisme (?:sexuel )?(?:(?:est|très|quasi) )*(?:absent|nul|inexistant|faible|peu marqué)|mâles? et (?:les |la )?femelles? (?:se ressemblent|sont (?:très |quasi )?(?:semblables|similaires|identiques)))", bas):
             verdicts.append(("non", ph.strip()[:200]))
         elif re.search(r"(dimorphisme sexuel (?:(?:est|très|bien|fortement|nettement|assez) )*(?:marqué|prononcé|net|important|visible|présent)|mâles? et femelles? (?:diffèrent|sont différents|ne se ressemblent pas))", bas):
@@ -467,9 +467,9 @@ def un_oiseau(o, par_oiseau, quant, lib, facteur, av):
                 if cle in fiche:
                     continue
                 if cle == "dimorphisme":
-                    fiche[cle] = {"valeur": v["valeur"], "source": f"Wikipédia en français (article « {titre} »)", "preuve": v["phrase"]}
+                    fiche[cle] = {"valeur": v["valeur"], "source": f"Wikipédia en français (article « {titre} »)"}
                     continue
-                fiche[cle] = {"min": v["min"], "max": v["max"], "source": f"Wikipédia en français (article « {titre} »)", "preuve": v["phrase"]}
+                fiche[cle] = {"min": v["min"], "max": v["max"], "source": f"Wikipédia en français (article « {titre} »)"}
                 if v.get("captivite"):
                     fiche[cle]["captivite"] = True
         # AVONET : vérifie les chiffres, complète le poids, le régime, le milieu et le voyage
@@ -477,12 +477,19 @@ def un_oiseau(o, par_oiseau, quant, lib, facteur, av):
         ecartes = []
         verifier(fiche, ref, ecartes)
         for cle in ("regime", "milieu"):
-            if cle not in fiche and ref.get(cle):
-                fiche[cle] = {"valeurs": [ref[cle]], "source": SRC_AVONET}
+            if ref.get(cle):
+                fiche[cle] = {"valeurs": [ref[cle]], "source": SRC_AVONET}  # AVONET : propre, en français, même mot pour tous les oiseaux
+            elif cle in fiche:
+                # Wikidata seul : on enlève les mots qui ne sont pas du français courant (noms savants, pays, anglais)
+                bons = [v for v in fiche[cle]["valeurs"] if v[:1].islower() and not re.search(r"(idae|inae|oidea|ina|ptera)$| kl\.| sp\.|\b(beetle|fish|lagoons?)\b", v, re.I)]
+                if bons:
+                    fiche[cle]["valeurs"] = bons
+                else:
+                    del fiche[cle]
         if ref.get("voyage"):
             fiche["voyage"] = {"texte": ref["voyage"], "source": SRC_AVONET}
         if ecartes:
-            fiche["ecartes"] = ecartes
+            print("  écarté pour", o["nom"], ":", "; ".join(ecartes))
         fiche["fini"] = 3
         return fiche
 
